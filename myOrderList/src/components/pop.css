@@ -1,0 +1,27 @@
+body,ul,li,ol,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div,dl,dt,dd,input,button { margin:0; padding: 0;}
+body { font-size:14px; font-family: "microsoft yahei", sans-serif; min-width: 1200px; -moz-user-select: text;}
+img {border:none; display: block;}
+li {list-style: none}
+textarea {resize:none;}
+textarea, input, button { outline: none;}
+a, a:hover {text-decoration: none; color: #424242;}
+button { cursor: pointer;}
+textarea, input, button { font-family: "microsoft yahei";}
+.wrap { margin:35px auto;width:1200px;}
+
+.cover, .cover1, .cover2 { position: fixed; background: rgba(0,0,0,0.3); top: 0; bottom: 0; left: 0; right: 0; width: 100%; height: 100%; display: none; z-index: 100;}
+.cover-box { width: 400px; height: 235px; position: absolute; top: 40%; left: 50%; margin-left: -200px; margin-top: -120px; background: #fff;}
+.cover-box .title { background:none; padding:0; height: 42px; line-height: 42px; color: #666666; font-size: 16px; border-bottom:1px #dddddd solid; text-indent:1em;}
+.cover-box .title span.close2,
+.cover-box .title span.close3 { background: url("../img/closed.png") no-repeat; display: inline-block; float: right; width: 16px; height: 16px;margin: 18px 12px 0 0; cursor: pointer;}
+.cover-box .context { height: 145px; line-height: 145px; text-align: center; font-size: 16px; color: #666666;}
+.cover-box .context a { color: #FF9429; text-decoration: underline;}
+.cover-box .context a:hover { color: #FF9429;}
+.cover-box .bt-choose { border-top:1px #dddddd solid; height: 37px; padding-top:9px; text-align: right;}
+.cover-box .bt-choose button { width: 58px; height: 30px; line-height: 28px; color: #fff; font-size: 16px; margin-right:10px;}
+.cover-box .bt-choose button.bg_red { background: #ff0000; border:1px #ff0000 solid;}
+.cover-box .bt-choose button.bg_red:hover { background:#fd5352; border:1px #fd5352 solid;}
+.cover-box .bt-choose button.bd_gray { background:#fff; border:1px #dddddd solid; color:#646566;}
+.cover-box .bt-choose button.bd_gray:hover { border:1px #646566 solid;}
+.cover-box .title1 { background: #ffb24a; height: 30px; line-height: 30px; color: #fff; font-size: 16px; text-align: center; margin-top: 10px;}
+.cover-box .title1 span { background: url("../img/closed.png") no-repeat; display: inline-block; width: 28px; height: 46px; cursor: pointer; position: absolute; right: 0; top: 0; margin-top: -46px;}

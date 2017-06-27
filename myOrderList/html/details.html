@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>details</title>
+		<style>
+			body,ul,li,ol,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div,dl,dt,dd,input,button { margin:0; padding: 0;}
+			body { font-size:14px; font-family: "microsoft yahei", sans-serif; min-width: 1200px; -moz-user-select: text;}
+			img {border:none; display: block;}
+			li {list-style: none}
+			textarea {resize:none;}
+			textarea, input, button { outline: none;}
+			a, a:hover {text-decoration: none; color: #424242;}
+			button { cursor: pointer;}
+			textarea, input, button { font-family: "microsoft yahei";}
+			.wrap { margin:35px auto;width:1200px;}
+			
+			.left { float:left;}
+			.right { float:right;}
+			.red { color:#F04134;}
+			.blue { color:#23A4FF;}
+			.green { color:#36D569;}
+			span.bubble-box { position:relative;}
+			span.bubble-box:hover {}
+			span.bubble-box> i { display:inline-block; border-radius:50%; border:1px #666 solid;color:#666; width:15px;height:15px; line-height:15px; font-style:normal; text-indent:0;text-align:center; margin-left:4px; cursor:pointer;}
+			span.bubble-box i:hover { border:1px #23A4FF solid;color:#23A4FF;}
+			span.bubble { position:absolute;left:0;top:32px; line-height: 0;text-indent: 0; display:none;}
+			span.bubble-box> i:hover +span.bubble{ display: inline-block;}
+			span.bubble-box span.bubble span { width: 177px; padding: 8px 10px; color: #fff; text-align: left; text-decoration: none; background-color: rgba(64,64,64,.85); border-radius: 4px; box-shadow: 0 1px 6px rgba(0,0,0,.2); min-height: 34px; font-size:12px;line-height:18px;text-indent:0; display:inline-block;}
+			.timer span.bubble-box span.bubble span { margin-left:-167px;}
+			span.bubble-box span.bubble i { top: -5px; left:8px;position: absolute; width: 0; height: 0; border-color: transparent; border-style: solid;border-width: 0 5px 5px;border-bottom-color: rgba(64,64,64,.85);}
+			/*以上为公共样式 列表页有*/
+			
+			
+			.breadcrumb-nav { height:40px; line-height:40px; border-bottom:1px #E0EAF1 solid;}
+			.breadcrumb-nav span { color:#23A4FF;}
+			.details-box { font-size:14px;}
+			.details-box h3 { line-height:75px; font-size:16px; font-weight:normal; color:#333;}
+			.details-box ul { width:100%; border-bottom: 1px solid #E0EAF1; overflow: hidden;}
+			.details-box ul li { height:48px; float:left; width:50%;}
+			.details-box ul li label,.order-state label.state-label,.order-state label.state-label2 { color:#666; width:8em; display:inline-block;}
+			.order-state label.state-label2 { width:auto; margin-right:20px;}
+			.details-box ul li span { color:#333;}
+			.details-box ul li span.blue { color:#23A4FF;}
+			.details-box ul li a { color:#23A4FF; text-decoration:underline;}
+			.order-state a { color:#23A4FF;}
+			.order-state a:hover { text-decoration:underline;}
+			.order-state { padding:30px 0;}
+			.order-state p { color:#666;}
+			.btn-box { padding:30px 0 20px 0;}
+			.order-state h4 { line-height:65px; font-size:16px; font-weight:normal; color:#333; border-bottom:1px #E0EAF1 solid;}
+			.order-state h4+p { padding:30px 0;}
+			p.tips { line-height:19px; color:#666; font-size:12px; background: #FFFAEB; border: 1px solid #FFE9A7; border-radius: 4px; width:470px; padding:10px 15px; margin:16px 0 0 0;}
+			
+			
+			/*以下为style样式表样式，如果引用就不用添加以下样式，不引用需要添加（弹出层样式）*/
+			.progress_speed{position: fixed;left:0;top:0;display: none;z-index:10;width:100%;height:100%;background: rgba(0,0,0,.3);}
+			.progress_speed>div{ position: absolute;left:50%;top:50%;transform: translate(-50%,-50%);-webkit-transform: translate(-50%,-50%);-moz-transform: translate(-50%,-50%);-ms-transform: translate(-50%,-50%);-o-transform: translate(-50%,-50%);width:1000px;background: #fff;border-radius: 4px;overflow: hidden;}
+			.progress_speed>div .top{height:40px;line-height:40px;background: #f66248;color:#fff;padding:0px 20px;font-size:16px;}
+			.progress_speed>div .top .close,
+			.progress_speed>div .top .close1{margin-top:12px;opacity: 1;}
+			.progress_speed>div .main{padding:20px;}
+			.progress_speed>div .main .demand_list{padding: 20px;background: #eff7fb;margin-bottom:20px;}
+			.progress_speed>div .main .demand_list p.demand_title{ margin-bottom:20px;font-size:18px;font-weight: 700;}
+			.progress_speed>div .main .demand_list p.demand_main>span{margin-right:40px;color:#666;line-height:13px;}
+			.progress_speed>div .main .demand_list p.demand_main>span:nth-last-of-type(1){float:right;}
+			.progress_speed>div .main .demand_list p.demand_main>span:nth-last-of-type(1) span.red{color:#ff6666;}
+			.progress_speed>div .main .demand_list p.demand_main>span:nth-last-of-type(1) span.size{font-size:24px;}
+			.progress_speed>div .bottom{height:50px;line-height:50px;background: #dddddd;padding:0px 20px;text-align: center;}
+			.progress_speed>div .bottom button{width:160px;height:40px;line-height:40px;border-radius: 4px;border:none;outline:none;background: #31aae1;color:#fff;font-size:18px;}
+			.progress_speed>.demand_submit{width:580px;}
+			.progress_speed>.demand_submit .top {text-align: center;}
+			.progress_speed>.demand_submit .main {height:155px; min-height:155px;display:table;width:100%;}
+			.progress_speed>.demand_submit .main p{display:table-cell;vertical-align: middle;text-align: center;margin-left:20px;font-size:16px;}
+			.progress_speed>.demand_submit .bottom button:nth-of-type(2){background: #cccccc;margin-left:20px;}
+			table.tab {border-collapse: collapse;border: 1px #ccc solid;text-align: center;width:100%; margin-top:20px;}
+			table.tab th,table.tab td { border:1px #ddd solid;}
+			.tab th { height: 50px; font-weight: 400; background: #e6e6e6;}
+			.tab td { height: 50px; background: #fff;}
+			.tab-scroll {height: 380px;overflow: auto;}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="cont-box">
+				
+				<div class="breadcrumb-nav">
+					您的位置： > <a href="">我的订单</a> > <span>订单详情</span>
+				</div>
+				<div class="details-box">
+					<h3>订单信息</h3>
+					<ul>
+						<li>
+							<label>订单名称：</label>
+							<span>指派订单的订单名称</span>
+						</li>
+						<li>
+							<label>业务类型：</label>
+							<span>销售线索挖掘<span class="bubble-box"><i>？</i>
+						<span class="bubble"><i></i><span>对用户行为和特征进行分析，通过有效触达，挖掘意向客户</span></span></span></span>
+						</li>
+						<li>
+							<label>订单号：</label>
+							<span>3214341345341313</span>
+						</li>
+						<li>
+							<label>目标区域：</label>
+							<span>上海</span>
+						</li>
+						<li>
+							<label>订单号总金额：</label>
+							<span>¥40000.00</span>
+						</li>
+						<li>
+							<label>开始日期：</label>
+							<span>2016-08-26</span>
+						</li>
+						<li>
+							<label>订单数量：</label>
+							<span>1000</span>
+						</li>
+						<li>
+							<label>结束日期：</label>
+							<span>2016-09-26</span>
+						</li>
+						<li>
+							<label>单价：</label>
+							<span>¥40.00</span>
+						</li>
+						<li>
+							<label>结算时间：</label>
+							<span>45个工作日</span>
+						</li>
+						<li>
+							<label>特别注意：</label>
+							<span>抓取后台创建任务时任务的备注，显示不下换行</span>
+						</li><li>
+							<label>发票类型：</label>
+							<span>以实际开票为准，小规模纳税人增票补收3%税费，普票补收6%税费</span>
+						</li>
+						<li>
+							<label>订单服务费：</label>
+							<span>¥1000.00<span class="bubble-box"><i>？</i>
+						<span class="bubble"><i></i><span>根据订单数量，每一条收取1元钱的订单服务费</span></span></span></span>
+						</li>
+						<li>
+							<label>质检标准附件：</label>
+							<span><a href="#">下载</a></span>
+						</li>
+						<li>
+							<label>精准信息服务：</label>
+							<span>不使用 或者 MSO平台，按结算金额8%收费</span>
+						</li>
+						<li>
+							<label>销售线索模板：</label>
+							<span><a href="#">下载</a></span>
+						</li>
+						<li>
+							<label>订单状态：</label>
+							<span class="blue">待领取</span>
+						</li>
+						<li>
+							<label>话术文件：</label>
+							<span><a href="#">下载</a></span>
+						</li>
+					</ul>
+					<!----待领取--->
+					<div class="order-state">
+						<p>此订单剩余领取时间还有：<span class="red">15小时36分<span class="bubble-box"><i>？</i>
+						<span class="bubble"><i></i><span>每个订单的领取时间为24小时，超过时间未领取的订单将被视为自动放弃</span></span></span></span></p>
+						<div class="btn-box">
+							<button type="button" class="ant-btn ant-btn-primary">立即领取</button>
+							<button type="button" class="ant-btn">放弃订单</button>
+						</div>
+						<label class="ant-checkbox-wrapper"><span class="ant-checkbox ant-checkbox-checked"><input type="checkbox" class="ant-checkbox-input" value="on"><span class="ant-checkbox-inner"></span></span><span>我已阅读并同意<a target="_blank" href="//www.mshuoke.com/terms-receive.html">《眸事网订单领取条例》</a></span></label>
+					</div>
+					<!----待领取--->
+					<div class="order-state">
+						<span class="red">此订单已被放弃，您可以领取其他订单！</span>
+					</div>
+					<!----进行中--->
+					<div class="order-state">
+						<p>
+							<label class="state-label">订单已完成：</label>
+							<span class="red">458 条</span>
+						</p>
+						<h4>上传成单报告</h4>
+						<p>上传数量：<input type="text" placeholder="default size" class="ant-input">条</p>
+						<div>antd上传插件</div>
+						<div class="btn-box">
+							<button type="button" class="ant-btn ant-btn-primary">确认上传</button>
+							<button type="button" class="ant-btn">上传记录</button>
+						</div>
+					</div>
+					<!----暂停--->
+					<div class="order-state">
+						<p>
+							<label class="state-label">订单已完成：</label>
+							<span class="red">458 条</span>
+						</p>
+						<p class="tips">此订单已被暂停执行，您暂时无法上传成单报告，您可以点击右侧的联系客服了解详情。暂停原因：后台操作暂停时填写的暂停原因。</p>
+						<div class="btn-box">
+							<button type="button" class="ant-btn">上传记录</button>
+						</div>
+					</div>
+					<!----结算中--->
+					<div class="order-state">
+						<p>
+							<label class="state-label">订单已完成：</label>
+							<span class="red">458 条</span>
+						</p>
+						<p>
+							<label class="state-label2">此订单正在结算中，预计结算金额：</label>
+							<span class="red">¥18200.00</span>
+						</p>
+						<div class="btn-box">
+							<button type="button" class="ant-btn">上传记录</button>
+						</div>
+					</div>
+					<!----结算中-续传成单报告--->
+					<div class="order-state">
+						<p>
+							<label class="state-label">订单已完成：</label>
+							<span class="red">458 条</span>
+						</p>
+						<p>
+							<label class="state-label2">此订单正在结算中，预计结算金额：</label>
+							<span class="red">¥18200.00</span>
+						</p>
+						<h4>上传成单报告</h4>
+						<p>上传数量：<input type="text" placeholder="default size" class="ant-input">条</p>
+						<div>antd上传插件</div>
+						<div class="btn-box">
+							<button type="button" class="ant-btn ant-btn-primary">确认上传</button>
+							<button type="button" class="ant-btn">上传记录</button>
+						</div>
+					</div>
+					<!----已完成--->
+					<div class="order-state">
+						<p>
+							<label class="state-label">订单已完成：</label>
+							<span class="red">458 条</span>
+						</p>
+						<p>
+							<label class="state-label2">此订单已完成，实际结算金额：</label>
+							<span class="red">¥18200.00</span>
+						</p>
+						<div class="btn-box">
+							<button type="button" class="ant-btn">上传记录</button>
+						</div>
+					</div>
+					
+					
+					
+					
+					
+					<!-----弹出层-查看上传记录---->
+					<div class="progress_speed" style="display: none;">
+					<div style="width:auto;">
+					
+						<div style="width:900px" class="upload_info">
+							<div class="top"><span>成单报告上传记录</span><i class="close1"></i></div>
+							<div class="main" >
+								<div class="new_demand">
+									<div class="time_search">antd日期插件</div>
+									<div class="tab-scroll">
+									<table class="tab">
+										<tr>
+											<th>上传时间</th>
+											<th>上传量</th>
+											<th>成功量</th>
+											<th>失败量</th>
+											<th>重复数据明细</th>
+											<th>质检反馈报告</th>
+											<th>dba审查</th>
+											<th>qa审查</th>
+										</tr>
+										<tr>
+											<td>2017-05-27 11:50:28</td>
+											<td>50</td>
+											<td>50</td>
+											<td>0</td>
+											<td>下载</td>
+											<td>下载</td>
+											<td>正确</td>
+											<td>正确</td>
+										</tr>
+									</table>
+									</div>
+								</div>
+							</div>
+							<div class="bottom"><button type="button" class="button_close1">确&nbsp;定</button></div>
+						</div>
+					</div>
+					</div>
+					<!-------->
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

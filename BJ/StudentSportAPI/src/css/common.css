@@ -1,0 +1,18 @@
+body,div,ul,li,h1,h2,h3,h4,h5,span{
+    padding: 0;
+    margin: 0;
+    list-style:none;
+}
+.clear::before,.clear::after{
+    content:"";
+    clear:both;
+    zoom:1;
+    display: block;
+}
+
+.fl{
+    float: left;
+}
+.rl{
+    float: right;
+}

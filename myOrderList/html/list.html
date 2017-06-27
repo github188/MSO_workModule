@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>list</title>
+		<style>
+			body,ul,li,ol,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div,dl,dt,dd,input,button { margin:0; padding: 0;}
+			body { font-size:14px; font-family: "microsoft yahei", sans-serif; min-width: 1200px; -moz-user-select: text;}
+			img {border:none; display: block;}
+			li {list-style: none}
+			textarea {resize:none;}
+			textarea, input, button { outline: none;}
+			a, a:hover {text-decoration: none; color: #424242;}
+			button { cursor: pointer;}
+			textarea, input, button { font-family: "microsoft yahei";}
+			.wrap { margin:35px auto;width:1200px;}
+			
+			.left { float:left;}
+			.right { float:right;}
+			.red { color:#F04134;}
+			.blue { color:#23A4FF;}
+			.green { color:#36D569;}
+			.tab-title { line-height:40px;height:40px;width:100%; border-bottom:1px #E0EAF1 solid; font-size:13px;}
+			.tab-title li { display:inline-block;float:left;text-indent:1em;}
+			li.col1, li.icon-bg { width:28.75%;}
+			li.col2 { width:11.25%;}
+			li.col3 { width:10.8%;}
+			li.col4 { width:14.15%;}
+			li.col5 { width:20.8%;}
+			li.col6 { width:160px;}
+			span.bubble-box { position:relative;}
+			span.bubble-box:hover {}
+			span.bubble-box> i { display:inline-block; border-radius:50%; border:1px #666 solid;color:#666; width:15px;height:15px; line-height:15px; font-style:normal; text-indent:0;text-align:center; margin-left:4px; cursor:pointer;}
+			span.bubble-box i:hover { border:1px #23A4FF solid;color:#23A4FF;}
+			span.bubble { position:absolute;left:0;top:32px; line-height: 0;text-indent: 0; display:none;}
+			span.bubble-box> i:hover +span.bubble{ display: inline-block;}
+			span.bubble-box span.bubble span { width: 177px; padding: 8px 10px; color: #fff; text-align: left; text-decoration: none; background-color: rgba(64,64,64,.85); border-radius: 4px; box-shadow: 0 1px 6px rgba(0,0,0,.2); min-height: 34px; font-size:12px;line-height:18px;text-indent:0; display:inline-block;}
+			.timer span.bubble-box span.bubble span { margin-left:-167px;}
+			span.bubble-box span.bubble i { top: -5px; left:8px;position: absolute; width: 0; height: 0; border-color: transparent; border-style: solid;border-width: 0 5px 5px;border-bottom-color: rgba(64,64,64,.85);}
+			.my-order { height:188px;margin-top:15px; border:1px #E0EAF1 solid;}
+			.my-order:hover { border:1px #23A4FF solid; box-shadow: 0 2px 5px 0 rgba(35,164,255,0.20);}
+			.order-title { background: #F7FCFF; height:45px;line-height:45px; padding:0 20px; font-size:12px; color:#666;}
+			.order-title .date { font-size:14px; color:#333; margin-right:32px;}
+			.order-info { padding:25px 0 0 20px; color:#333;}
+			.order-info ul li { float:left;}
+			.order-info ul li h3, .order-info ul li h3 a { color:#23A4FF; font-weight:normal; font-size:20px;}
+			.order-info ul li h3 { margin-bottom:5px;}
+			.order-info ul li.col1 p { color:#666; font-size:12px;}
+			.order-info ul li.col1,.order-info ul li.col2,.order-info ul li.col3,.order-info ul li.col4,.order-info ul li.col5,.order-info ul li.col6 { height:74px;}
+			.order-info ul li.col2,.order-info ul li.col3,.order-info ul li.col4 { font-size:16px;}
+			.order-info ul li.col5 { text-indent:1em;}
+			li.icon-bg {}
+			li.icon-bg span { border-radius:4px; padding:0 8px; font-size:12px; line-height:20px; display:inline-block; color:#fff; margin-right:4px;}
+			.bg-blue { background:#23A4FF;}
+			.bg-yellow { background:#FFC032;}
+			.bg-orange { background:#FF9A4D;}
+			.outter-bar { margin-top:5px; margin-right:16px;}
+			.progress-bar .outter-bar { width:335px; height:5px; background:#EAF1F5; border-radius:2.5px; overflow:hidden;}
+			.progress-bar .outter-bar div { height:100%; background:#36D569; border-radius:2.5px; 
+			animation:gogogo .5s; -moz-animation:gogogo .5s; -webkit-animation:gogogo .5s; -o-animation:gogogo .5s;}
+			.outter-bar,.finish-num {float:left;}
+			.finish-num{ font-size:12px; line-height:14px;}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="cont-box">
+				<ul class="tab-title">
+					<li class="col1">订单</li>
+					<li class="col2">订单数量</li>
+					<li class="col3">订单单价</li>
+					<li class="col4">订单服务费<span class="bubble-box"><i>？</i>
+						<span class="bubble"><i></i><span>根据订单数量，每一条收取1元钱的订单服务费</span></span></span></li>
+					<li class="col5">订单状态</li>
+					<li class="col6">订单操作</li>
+				</ul>
+				<div class="list-box">
+					<!---列表一块开始--->
+					<div class="my-order">
+						<div class="order-title">
+							<div class="left">
+								<span class="date">2017-5-31</span>
+								<span class="order-num">订单号：123456789</span>
+							</div>
+							<div class="right">
+								<span class="timer">此订单剩余时间还有：<span class="red">15小时36分<span class="bubble-box"><i>？</i>
+						<span class="bubble"><i></i><span>每个订单的领取时间为24小时，超过时间未领取的订单将被视为自动放弃</span></span></span></span></span>
+								<span class="cash">实际结算金额：<span class="blue">¥54000.00</span></span>
+							</div>
+						</div>
+						<div class="order-info">
+							<ul>
+								<li class="col1">
+									<h3><a href="#" target="_blank">线下E北京-1608</a></h3>
+									<p>起止时间:2017-06-01~2017-06-31<span class="bubble-box"><i>？</i>
+						<span class="bubble"><i></i><span>起止时间是指执行这个订单的时间周期，到期的订单将停止执行并根据执行情况进行结算</span></span></span></p>
+								</li>
+								<li class="col2">
+									<span>2100</span>
+								</li>
+								<li class="col3">45.00</li>
+								<li class="col4">2100</li>
+								<li class="col5"><span class="red">待领取</span><span class="blue">进行中</span><span class="blue">结算中</span><span class="green">已完成</span></li>
+								<li class="col6">
+									<div>
+										<button type="button" class="ant-btn ant-btn-primary"><span>立即领取</span></button>
+									</div>
+									<div><a href="#" target="_blank">查看详情</a></div>
+								</li>
+								<li class="icon-bg">
+									<span class="bg-blue">销售线索挖掘</span>
+									<span class="bg-yellow">上海</span>
+									<span class="bg-orange">数据加工</span>
+								</li>
+								<li class="progress-bar">
+									<div class="outter-bar"><div class="jquery" style="width:50%"></div></div>
+									<!----注：此处css为精度条动效，width与上方width保持一致----->
+									<style>
+										@keyframes gogogo
+										{
+										from {width:0;}
+										to {width:50%;}
+										}
+
+										@-moz-keyframes gogogo
+										{
+										from {width:0;}
+										to {width:50%;}
+										}
+
+										@-webkit-keyframes gogogo
+										{
+										from {width:0;}
+										to {width:50%;}
+										}
+
+										@-o-keyframes gogogo
+										{
+										from {width:0;}
+										to {width:50%;}
+										}
+									</style>
+									<!----注：此处css为精度条动效，width与上方width保持一致----->
+									<div class="finish-num">已完成：12000000 条</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<!---列表一块结束--->
+					<!---列表一块开始--->
+					<div class="my-order">
+						<div class="order-title">
+							<div class="left">
+								<span class="date">2017-5-31</span>
+								<span class="order-num">订单号：123456789</span>
+							</div>
+							<div class="right">
+								<span class="timer">此订单剩余时间还有：<span class="red">15小时36分<span class="bubble-box"><i>？</i>
+						<span class="bubble"><i></i><span>每个订单的领取时间为24小时，超过时间未领取的订单将被视为自动放弃</span></span></span></span></span>
+								<span class="cash">实际结算金额：<span class="blue">¥54000.00</span></span>
+							</div>
+						</div>
+						<div class="order-info">
+							<ul>
+								<li class="col1">
+									<h3><a href="#" target="_blank">线下E北京-1608</a></h3>
+									<p>起止时间:2017-06-01~2017-06-31<span class="bubble-box"><i>？</i>
+						<span class="bubble"><i></i><span>起止时间是指执行这个订单的时间周期，到期的订单将停止执行并根据执行情况进行结算</span></span></span></p>
+								</li>
+								<li class="col2">
+									<span>2100</span>
+								</li>
+								<li class="col3">45.00</li>
+								<li class="col4">2100</li>
+								<li class="col5"><span class="red">待领取</span><span class="blue">进行中</span><span class="blue">结算中</span><span class="green">已完成</span></li>
+								<li class="col6">
+									<div>
+										<button type="button" class="ant-btn ant-btn-primary"><span>立即领取</span></button>
+									</div>
+									<div><a href="#" target="_blank">查看详情</a></div>
+								</li>
+								<li class="icon-bg">
+									<span class="bg-blue">销售线索挖掘</span>
+									<span class="bg-yellow">上海</span>
+									<span class="bg-orange">数据加工</span>
+								</li>
+								<li class="progress-bar">
+									<div class="outter-bar"><div class="jquery" style="width:50%"></div></div>
+									<!----注：此处css为精度条动效，width与上方width保持一致----->
+									<style>
+										@keyframes gogogo
+										{
+										from {width:0;}
+										to {width:50%;}
+										}
+
+										@-moz-keyframes gogogo
+										{
+										from {width:0;}
+										to {width:50%;}
+										}
+
+										@-webkit-keyframes gogogo
+										{
+										from {width:0;}
+										to {width:50%;}
+										}
+
+										@-o-keyframes gogogo
+										{
+										from {width:0;}
+										to {width:50%;}
+										}
+									</style>
+									<!----注：此处css为精度条动效，width与上方width保持一致----->
+									<div class="finish-num">已完成：12000000 条</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<!---列表一块结束--->
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,444 @@
+.root {
+    font-family: MicrosoftYaHei;
+    color: #333333;
+    font-size: 16px;
+}
+
+.titles {
+    border-bottom: 1px solid #D9D9D9;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 20px;
+    background: url("../images/Group.png") center left no-repeat;
+}
+
+body, ul, li, ol, p, h1, h2, h3, h4, h5, h6, form, fieldset, table, td, img, div, dl, dt, dd, input, button {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 14px;
+    font-family: "microsoft yahei", sans-serif;
+    min-width: 1200px;
+    -moz-user-select: text;
+}
+
+img {
+    border: none;
+    display: block;
+}
+
+li {
+    list-style: none
+}
+
+textarea {
+    resize: none;
+}
+
+textarea, input, button {
+    outline: none;
+}
+
+a, a:hover {
+    text-decoration: none;
+    color: #424242;
+}
+
+button {
+    cursor: pointer;
+}
+
+textarea, input, button {
+    font-family: "microsoft yahei";
+}
+
+.wrap {
+    margin: 35px auto;
+    width: 1200px;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.red {
+    color: #F04134;
+}
+
+.blue {
+    color: #23A4FF;
+}
+
+.green {
+    color: #36D569;
+}
+
+span.bubble-box {
+    position: relative;
+}
+
+span.bubble-box:hover {
+}
+
+span.bubble-box > i {
+    display: inline-block;
+    border-radius: 50%;
+    border: 1px #666 solid;
+    color: #666;
+    width: 15px;
+    height: 15px;
+    line-height: 15px;
+    font-style: normal;
+    text-indent: 0;
+    text-align: center;
+    margin-left: 4px;
+    cursor: pointer;
+}
+
+span.bubble-box i:hover {
+    border: 1px #23A4FF solid;
+    color: #23A4FF;
+}
+
+span.bubble {
+    position: absolute;
+    left: 0;
+    top: 32px;
+    line-height: 0;
+    text-indent: 0;
+    display: none;
+}
+
+span.bubble-box > i:hover + span.bubble {
+    display: inline-block;
+}
+
+span.bubble-box span.bubble span {
+    width: 177px;
+    padding: 8px 10px;
+    color: #fff;
+    text-align: left;
+    text-decoration: none;
+    background-color: rgba(64, 64, 64, .85);
+    border-radius: 4px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, .2);
+    min-height: 34px;
+    font-size: 12px;
+    line-height: 18px;
+    text-indent: 0;
+    display: inline-block;
+}
+
+.timer span.bubble-box span.bubble span {
+    margin-left: -167px;
+}
+
+span.bubble-box span.bubble i {
+    top: -5px;
+    left: 8px;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 0 5px 5px;
+    border-bottom-color: rgba(64, 64, 64, .85);
+}
+
+/*以上为公共样式 列表页有*/
+
+.breadcrumb-nav {
+    margin-top: 16px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    color:#333333;
+    border-bottom: 1px #E0EAF1 solid;
+}
+
+
+
+.back {
+    margin-top: 14px;
+    width: 86px;
+    height: 36px;
+    position: relative;
+    padding-left: 22px;
+    line-height: 36px;
+    color: #333333;
+    font-size: 16px;
+    text-align: center;
+    background-color: #E0E5EC;
+}
+.back:hover{
+    cursor: pointer;
+}
+
+.back img {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    margin-top: -8px;
+}
+
+.details-box {
+    font-size: 14px;
+}
+
+.details-box h3 {
+    line-height: 75px;
+    font-size: 16px;
+    font-weight: normal;
+    color: #333;
+}
+
+.details-box ul {
+    padding-top: 20px;
+    width: 1004px;
+    border-bottom: 1px solid #E0EAF1;
+    overflow: hidden;
+}
+
+.details-box ul li {
+    min-height: 48px;
+    float: left;
+    width: 502px;
+}
+
+.details-box ul li label, .order-state label.state-label, .order-state label.state-label2 {
+    color: #666;
+    padding-right: 20px;
+    width: 122px;
+    display: inline-block;
+    float:left;
+    text-align: left;
+}
+
+.order-state label.state-label2 {
+    width: auto;
+    margin-right: 20px;
+}
+
+.details-box ul li span {
+    color: #333;
+    float:left;
+    display: inline-block;
+    width:380px;
+    padding-right: 20px;
+}
+
+.details-box ul li span span {
+    width: auto;
+    float: none;
+}
+
+.details-box ul li span.blue {
+    color: #23A4FF;
+}
+
+.details-box ul li a {
+    color: #23A4FF;
+    text-decoration: underline;
+}
+
+.order-state a {
+    color: #23A4FF;
+}
+
+.order-state a:hover {
+    text-decoration: underline;
+}
+
+.order-state {
+    padding: 30px 0;
+}
+
+.order-state p {
+    color: #666;
+}
+
+.btn-box {
+    padding: 30px 0 20px 0;
+}
+
+.order-state h4 {
+    line-height: 65px;
+    font-size: 16px;
+    font-weight: normal;
+    color: #333;
+    border-bottom: 1px #E0EAF1 solid;
+}
+
+.order-state h4 + p {
+    padding: 30px 0;
+}
+
+p.tips {
+    line-height: 19px;
+    color: #666;
+    font-size: 12px;
+    background: #FFFAEB;
+    border: 1px solid #FFE9A7;
+    border-radius: 4px;
+    width: 470px;
+    padding: 10px 15px;
+    margin: 16px 0 0 0;
+}
+
+/*以下为style样式表样式，如果引用就不用添加以下样式，不引用需要添加（弹出层样式）*/
+.progress_speed {
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: none;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .3);
+}
+
+.progress_speed > div {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    width: 1000px;
+    background: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress_speed > div .top {
+    height: 40px;
+    line-height: 40px;
+    background: #f66248;
+    color: #fff;
+    padding: 0px 20px;
+    font-size: 16px;
+}
+
+.progress_speed > div .top .close,
+.progress_speed > div .top .close1 {
+    margin-top: 12px;
+    opacity: 1;
+}
+
+.progress_speed > div .main {
+    padding: 20px;
+}
+
+.progress_speed > div .main .demand_list {
+    padding: 20px;
+    background: #eff7fb;
+    margin-bottom: 20px;
+}
+
+.progress_speed > div .main .demand_list p.demand_title {
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.progress_speed > div .main .demand_list p.demand_main > span {
+    margin-right: 40px;
+    color: #666;
+    line-height: 13px;
+}
+
+.progress_speed > div .main .demand_list p.demand_main > span:nth-last-of-type(1) {
+    float: right;
+}
+
+.progress_speed > div .main .demand_list p.demand_main > span:nth-last-of-type(1) span.red {
+    color: #ff6666;
+}
+
+.progress_speed > div .main .demand_list p.demand_main > span:nth-last-of-type(1) span.size {
+    font-size: 24px;
+}
+
+.progress_speed > div .bottom {
+    height: 50px;
+    line-height: 50px;
+    background: #dddddd;
+    padding: 0px 20px;
+    text-align: center;
+}
+
+.progress_speed > div .bottom button {
+    width: 160px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    background: #31aae1;
+    color: #fff;
+    font-size: 18px;
+}
+
+.progress_speed > .demand_submit {
+    width: 580px;
+}
+
+.progress_speed > .demand_submit .top {
+    text-align: center;
+}
+
+.progress_speed > .demand_submit .main {
+    height: 155px;
+    min-height: 155px;
+    display: table;
+    width: 100%;
+}
+
+.progress_speed > .demand_submit .main p {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    margin-left: 20px;
+    font-size: 16px;
+}
+
+.progress_speed > .demand_submit .bottom button:nth-of-type(2) {
+    background: #cccccc;
+    margin-left: 20px;
+}
+
+table.tab {
+    border-collapse: collapse;
+    border: 1px #ccc solid;
+    text-align: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+table.tab th, table.tab td {
+    border: 1px #ddd solid;
+}
+
+.tab th {
+    height: 50px;
+    font-weight: 400;
+    background: #e6e6e6;
+}
+
+.tab td {
+    height: 50px;
+    background: #fff;
+}
+
+.tab-scroll {
+    height: 380px;
+    overflow: auto;
+}
