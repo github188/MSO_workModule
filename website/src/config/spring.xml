@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"    
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xmlns:aop="http://www.springframework.org/schema/aop"   
+    xmlns:context="http://www.springframework.org/schema/context"  
+    xmlns:jee="http://www.springframework.org/schema/jee"  
+    xmlns:tx="http://www.springframework.org/schema/tx"  
+    xmlns:task="http://www.springframework.org/schema/task"  
+    xsi:schemaLocation="    
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd  
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd  
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd  
+        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd  
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+        http://www.springframework.org/schema/task  
+        http://www.springframework.org/schema/task/spring-task-3.1.xsd"> 
+    
+    
+    <!-- 启用注解 -->
+	<context:annotation-config />
+	
+	
+	<!-- 启动组件扫描，排除@Controller组件，该组件由SpringMVC配置文件扫描 -->
+	<context:component-scan base-package="com.mso">
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+	
+
+
+	
+	<!--最后是我们的task任务扫描注解 -->
+	<task:annotation-driven/>  
+	<context:annotation-config/>  
+     <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>  
+    <context:component-scan base-package="com.mso.task"/>
+    
+    
+    
+    <!--  导入springMvc.xml配置文件 -->
+    <import resource="classpath:config/spring-mvc.xml" />
+    <!-- 加载数据库配置 -->
+    <context:property-placeholder location="classpath:config/db.properties" />
+    
+    <!-- 加载key文件 -->
+    <bean id="propertyConfigurer" 
+	    class="com.mso.utils.CustomizedPropertyPlaceholderConfigurer"> 
+	    <property name="ignoreResourceNotFound" value="true" /> 
+	    <property name="locations"> 
+	        <list> 
+	            <value>classpath:config/key.properties</value> 
+	        </list> 
+	    </property> 
+	</bean> 
+
+  
+    
+	<!-- 加载数据源 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${db.driverClassName}" />
+		<property name="url" value="${db.url}" />
+		<property name="username" value="${db.username}" />
+		<property name="password" value="${db.password}" />
+		<property name="maxActive" value="${db.maxActive}" />
+		<property name="maxIdle" value="${db.maxIdle}" />
+		<property name="minIdle" value="${db.minIdle}" />
+		<property name="maxWait" value="${db.maxWait}" />
+	</bean>
+    
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">  
+        <property name="dataSource" ref="dataSource" />  
+        <property name="mappingDirectoryLocations">  
+          	<list>
+				<value>classpath:config/hbm/</value>
+			</list>
+        </property>  
+        <property name="hibernateProperties">  
+            <props>
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+				<!--<prop key="hibernate.query.factory_class">org.hibernate.hql.ast.ASTQueryTranslatorFactory</prop>-->
+				</props> 
+        </property>  
+    </bean>
+    
+    
+
+ 	<!-- 声明式事务 -->   
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">  
+        <property name="sessionFactory" ref="sessionFactory" />  
+    </bean>  
+    <!-- Could not obtain transaction-synchronized Session for current thread  -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	          
+	          
+	           
+<!--     <aop:config>   -->
+<!--         <aop:pointcut id="productServiceMethods" expression="execution(* com.mso.service..*.*(..))" />   -->
+<!--         <aop:advisor advice-ref="txAdvice" pointcut-ref="productServiceMethods" />   -->
+<!--     </aop:config>   -->
+<!--     <tx:advice id="txAdvice" transaction-manager="transactionManager">   -->
+<!--         <tx:attributes>   -->
+<!--         	<tx:method name="save*"   propagation="REQUIRED" /> -->
+<!-- 			<tx:method name="add*"    propagation="REQUIRED" /> -->
+<!-- 			<tx:method name="create*" propagation="REQUIRED" /> -->
+<!-- 			<tx:method name="insert*" propagation="REQUIRED" /> -->
+<!-- 			<tx:method name="update*" propagation="REQUIRED" /> -->
+<!-- 			<tx:method name="merge*"  propagation="REQUIRED" /> -->
+<!-- 			<tx:method name="del*"    propagation="REQUIRED" /> -->
+<!-- 			<tx:method name="remove*" propagation="REQUIRED" /> -->
+<!-- 			<tx:method name="put*"    propagation="REQUIRED" /> -->
+<!--             <tx:method name="*" propagation="SUPPORTS" read-only="true" />   -->
+<!--         </tx:attributes>   -->
+<!--     </tx:advice>  -->
+
+</beans>  

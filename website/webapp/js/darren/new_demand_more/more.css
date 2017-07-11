@@ -1,0 +1,10 @@
+@charset "utf-8";
+
+div.select-block { z-index:6; }
+.error.task-age { position:absolute; left:0; top:0; }
+#new_demand div.demend_left div[class^=form_col] .main>table tr td.age{
+	position:relative;
+}
+.main>table tr td.age p.error{ left:10px; top:30px; }
+#new_demand div.demend_left  .main>table tr td input[type=number], .block-box .main>table tr td input[type=number] { margin-left:10px; }
+   

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<title>MSO-眸事网，国内专业营销服务外包平台</title>
+	<link rel="stylesheet" href="html/css/style.css">
+	<script src="html/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+	<script src="html/js/react.min.js"></script>
+	<script src="html/js/react-dom.js"></script>
+	<script src="html/js/browser.min.js"></script>
+	<script src="html/js/main_index.js"></script>
+	<script src="html/js/url.js"></script>
+	<script src="html/js/hide.js"></script>
+	<style>
+		body { padding: 0;}
+		.about-banner { background: url(images/about/banner-bg.jpg) center top no-repeat; height: 200px;}
+		.about-banner img { margin: 0 auto; padding-top: 65px;
+			-webkit-animation-name: fadeIn;
+			-webkit-animation-duration: 2s;
+			-webkit-animation-iteration-count: 1;
+			-webkit-animation-delay: 0s;}
+		@-webkit-keyframes fadeIn {
+			0% {
+				opacity: 0;
+			}
+			100% {
+				opacity: 1;
+			}
+		}
+		body.about main { background: #fff;}
+		.about-box { width: 1200px; margin: 0 auto; padding: 40px 0 140px 0; min-height: 870px;}
+		.about-box.moreHeihgt { height:2360px;}
+		.tab_menu { width: 280px; height: 870px; background: #f8fbff; float: left; box-shadow: 0 0 5px #c7dffe;}
+		.tab_menu p { border-bottom: 1px #dae9fd solid; font-size: 20px; line-height: 58px; font-family: simhei; text-indent: 60px; color: #333;}
+		.tab_menu ul { padding-top: 18px;}
+		.tab_menu li { line-height: 40px; text-indent: 60px; color: #333; font-size: 16px; background: url(images/about/li.png) 46px center no-repeat; cursor: pointer;}
+		.tab_menu li.hover{}
+		.tab_menu li.selected{ background: url(images/about/li-slct.png) 46px center no-repeat; color: #37b4f5;}
+		.tab_box, .breadcrumb { width: 870px; float: right;}
+		.breadcrumb { border-bottom: 1px #dae9fd solid; font-size: 14px; line-height: 58px; color: #666666; margin-bottom: 20px;}
+		.breadcrumb a { color: #666; display: inline-block; background: url(images/about/breadcrumb.png) right center no-repeat; padding-right: 13px; margin-right: 4px;}
+		.breadcrumb a:hover { color: #37b4f5; text-decoration: underline;}
+		.hide{ display: none;}
+		.tab_box img.about-info { margin-bottom: 40px; width: 100%;}
+		.tab_box p.about-info { font-size: 16px; line-height: 32px; color: #666666; text-indent:2em; padding-bottom:10px;}
+		.tab_box h1 { height: 46px; line-height: 44px; color: #37b4f5; font-size: 24px; font-weight: 500; background: url(images/about/title-bg.png) left bottom repeat-x; overflow: hidden;}
+		.tab_box h1:not(:first-child) { margin-top: 40px;}
+		.tab_box h1 span { height: 44px; border-bottom: 2px #37b4f5 solid; display: inline-block; float: left;}
+		.tab_box h1 a { background: url(images/about/qq.png) no-repeat; width: 28px; height: 32px; display: inline-block; margin-left: 20px; margin-top: 6px; float: left;}
+		.tab_box h1 a:hover { background: url(images/about/qq-h.png) no-repeat;}
+		.tab_box p.info { font-size: 16px; color: #333; padding: 30px 0 10px 0; height: 16px; line-height: 16px;}
+		.tab_box p.email,
+		.tab_box p.tel { font-size: 16px; color: #666; padding-top: 16px; height: 16px; line-height: 16px;}
+		footer div.nav_bottom>div { height: 120px; padding: 40px 0px 0 0px; box-sizing: content-box;}
+		.tab_box h2 { font-size:20px; color:#333333; font-family:simhei; padding-bottom:30px; padding-top:20px;}
+		.tab_box h3 { font-size:16px; color:#777777; font-weight:500; padding-bottom:22px;}
+		.tab_box section p { font-size:14px; color:#555555; padding-bottom:22px;}
+		.nav_bottom { clear:both;}
+		footer div.nav_bottom>div div.right { padding:0;}
+		
+		.profile { border-bottom: 1px solid #dae9fd; padding:50px 0; margin-bottom:35px;}
+		.profile h3 { text-align:center; font-size:20px; color:#333; padding-bottom: 15px;}
+		.profile p { text-align:center; font-size:14px; color:#555; line-height:36px;}
+		.address { padding:35px 0 75px 0;}
+		.address p { font-size:14px; color:#555; line-height:36px;}
+		.about-img {}
+		.about-img h3 { font-size:20px; font-weight:bold; color:#333;}
+		.about-img ul { overflow:hidden; padding-bottom:30px;}
+		.about-img li { float:left; display:inline-block; width:280px; height:213px; margin-bottom:25px; margin-right:13px;}
+		.about-img li img { width:100%;}
+		.about-img li.margin0 { margin-right:0;}
+	</style>
+</head>
+<body>
+	<header></header>
+	<main>
+		<div class="about-banner"><img src="images/about/banner-text.png" /></div>
+		<div class="about-box">
+			<div class="tab_menu">
+				<p>关于我们</p>
+		        <ul>
+		            <li class="selected">公司介绍</li>
+		            <li>联系我们</li>
+		            <li>加入我们</li>
+		        </ul>
+		    </div>
+		    <div class="breadcrumb">
+		   		<a href="index.html">首页</a>
+		   		<a href="">关于我们</a>
+		   		<span>公司介绍</span>
+		    </div>
+		    <div class="tab_box"> 
+		        <div>
+		        	<img class="about-info" src="images/about/img.jpg" />
+		        	<p class="about-info">MS眸事网（上海脉豪商务信息咨询有限公司旗下网站）是国内首家以人工智能驱动的大数据获客平台。大数据联盟会员单位、拥有增值电信业务许可证。企业可根据自身市场需求定制销售线索，相比其他传统的获客渠道，为企业提升2倍的销售转化率。公司总部位于上海，并在芜湖和昆山设立200人的大数据处理中心。</p>
+		        	<p class="about-info">眸事网拥有1亿+移动用户大数据，并以每月200万+的量增长，第三方服务机构超过50家。目前，为国内最大的英语培训行业销售线索供应商，每年为教育培训行业输送超过1万名学员，累积销售额超过2亿。目标用户覆盖120多个城市，月获客订单发布量超10万+，入驻企业包括韦博英语、英孚教育、沪江网校、华尔街英语、VIPJR、VIPKID、DaDaABC一对一等线上线下服务机构。 </p>         
+		        	<p class="about-info">2017年1月，眸事获得元禾原点领投、宁波天使基金跟投的数百万人民币天使投资。</p>
+		        </div>
+		        <div class="hide">
+		        	<h1><span class="title">业务咨询</span><a href="tencent://message/?uin=2850840269&Site=&menu=yes"></a></h1>
+		        	<p class="info">如果您有获客方面的业务需求或疑惑，欢迎致电我们或给我们发送邮件。</p>
+		        	<p class="email">邮箱：sales.sh@mshuoke.com</p>
+		        	<p class="tel">电话：400-900-5288</p>
+		        	<h1><span class="title">客户服务</span><a href="tencent://message/?uin=2850840269&Site=&menu=yes"></a></h1>
+		        	<p class="info">5*8小时在线客服，为您保驾护航！</p>
+		        	<p class="email">邮箱：service@mshuoke.com</p>
+		        	<p class="tel">电话：400-900-5288</p>
+		        	<h1><span class="title">市场推广</span></h1>
+		        	<p class="info">如果您有拓展市场的需求，请与我们联系！</p>
+		        	<p class="email">邮箱：marketing@mshuoke.com</p>
+		        	<p class="tel">电话：021-5509 1213</p>
+		        	<h1><span class="title">人事招聘</span></h1>
+		        	<p class="info">广纳贤才，欢迎想与眸事一起发展的人才投递简历！</p>
+		        	<p class="email">邮箱：hr.sh@mshuoke.com</p>
+		        	<p class="tel">电话：021-5509 1213</p>
+		        </div>
+				<div class="hide">
+					<div class="profile">
+						<h3>眸主召集令</h3>
+						<p>如果一份工作做了5年</p>
+						<p>薪资上涨的速度跟不上额前的皱纹</p>
+						<p>如果拿着5位数的月薪</p>
+						<p>却撑不起一家人生活的梦想</p>
+						<p>无论是一眼就望到头的命运</p>
+						<p>还是看到了光明却无能为力</p>
+						<p>你是否想过，人生应该换条赛道</p>
+						<p>去志同道合的地方</p>
+						<p>如果你是一个“颜控、文字控、数据控、逻辑控、细节控、营销控、产品控”</p>
+						<p>以及“偏执狂、自虐狂、社交狂、自大狂、自恋狂、臆想狂”</p>
+						<p>恭喜你，成为我们想要的人。</p>
+						<p>来这里并肩，共“眸”大事！</p>
+					</div>
+					<section>
+						<h2>产品经理</h2>
+						<h3>岗位职责：</h3>
+						<p>1、负责平台产品功能的实现。</p>
+						<p>2、主导完成需求调研和产品设计，制作合乎产品需求、逻辑性缜密、可交付研发的系统原型，编写和维护PRD。</p>
+						<p>3、关注用户反馈和体验，就目标群体特点及需求，对产品交互提出建设性意见。</p>
+						<p>4、根据产品运营现状和发展目标，与业务部门充分沟通，理解并分析需求，提供产品解决方案。</p>
+						<p>5、组织对市场、竞品的研究工作，挖掘用户的深层需求。</p>
+						<h3>职位要求：</h3>
+						<p>1、大专及以上学历，4年及以上B2B平台开发经验，负责过多款产品的多版本迭代和规划，有敏锐的市场需求嗅觉。</p>
+						<p>2、强烈的用户导向思维、商业敏感度和创新意识。</p>
+						<p>3、具备优秀的数据分析能力。</p>
+						<p>4、具有良好的沟通与语言表达能力，良好的团队协作、执行力与学习能力，乐观平和，能和小伙伴们愉快的玩耍。</p>
+					</section>
+					<section>
+						<h2>测试工程师</h2>
+						<h3>岗位职责：</h3>
+						<p>1、负责web产品的功能、性能、系统测试工作</p>
+						<p>2、根据项目计划，制定测试计划、制作并实施测试用例，保证项目质量和进度，提交测试报告</p>
+						<p>3、跟踪定位产品项目中的缺陷或问题，负责BUG的生命周期管理</p>
+						<p>4、根据项目特点，开发合适测试工具或自动化解决方案，提高测试效率</p>
+						<h3>职位要求：</h3>
+						<p>1、正规高校计算机及相关专业；</p>
+						<p>2、3年及以上测试经验；</p>
+						<p>3、熟悉性能测试者优先 ；</p>
+						<p>4、有呼叫平台测试经验者优先；</p>
+						<p>5、精通软件测试理论、方法和过程，掌握多种自动化测试技术，并能够不断地学习、总结和提高 ；</p>
+						<p>6、对软件测试有浓厚的兴趣和丰富的经验，有很强的分析能力和定位问题的能力 ；</p>
+						<p>7、在软件测试流程、规范的制定和实施方面有着丰富的经验 ；</p>
+						<p>8、有很强的质量意识，能严格地遵照测试流程规范；</p>
+						<p>9、良好的沟通能力和积极主动精神，能够有力推动、协调工作的开展；</p>
+						<p>10、强烈的责任心和敬业精神，结果导向型思维；</p>
+						<p>11、能熟练应用以下一门或几门技术进行软件开发：</p>
+						<p>1）Java; Linux/Unix Shell编程</p>
+						<p>2) Perl/Python/PHP; 网络技术及相应的开发</p>
+						<p>3) JavaScript/Html/Ajax；MySql/MongoDB及相关数据库技术</p>
+					</section>
+					<section>
+						<h2>高级JAVA工程师</h2>
+						<h3>岗位职责：</h3>
+						<p>1、负责CRM/呼叫中心等相关产品研发；</p>
+						<p>2、负责基于Java以及数据库方面开发，要求开发的系统具有高性能和高可靠性；</p>
+						<p>3、能够承担技术攻坚任务；</p>
+						<p>4、参与平台架构设计。</p>
+						<h3>职位要求：</h3>
+						<p>1、本科以上学历，计算机相关专业，具有互联网项目开发经验；</p>
+						<p>2、对CRM概念有深入的了解，熟悉了解当前主流CRM系统；</p>
+						<p>3、5年或以上J2EE开发经验;，熟悉MVC架构和UML建模语言等相关技术；</p>
+						<p>4、精通Java语言，熟练运用常见框架 （Spring, Mybatis, Jersey, RabbitMQ）， 有丰富的后端平台（Restful API）开发经验。</p>
+						<p>5、精通Asterisk或Freeswitch等呼叫中心开源项目</p>
+						<p>6、精通常见关系型数据库（Oracle, Mysql,Postgresql）以及NoSQL数据库（Redis, Cassandra）</p>
+						<p>7、有大数据服务开发经验；能够处理高并发服务者优先。熟悉网络、多线程、IO、内存管理等方面编程；</p>
+						<p>8、熟悉自动化单元测试技术，测试驱动模式和敏捷开发模式，学习能力强；</p>
+						<p>9、良好的学习和沟通能力，责任心强，能够独立并有效解决问题。  </p>
+					</section>
+					<section>
+						<h2>node.js开发工程师</h2>
+						<h3>岗位职责：</h3>
+						<p>1、负责nodejs服务端功能模块编写，持续优化，以提高前端的用户体验</p>
+						<p>2、负责与前端的(ajax,websocket)数据交互；</p>
+						<p>3、在Nodejs平台上编写出基于Restful的数据接口；</p>
+						<p>4、编写出阅读性好，维护性强，清晰的代码。</p>
+						<p>5、分析项目需求，能给出良好的解决方案，并协助其他人员完开发及调试工作。</p>
+						<h3>职位要求：</h3>
+						<p>1、精通JavaScript, 对闭包、事件和异步有独到的见解；</p>
+						<p>2、熟悉Node.js，熟悉异步编程、熟练使用异步流程控制库； </p> 
+						<p>4、有使用Webpack/Make/file/Gulp等构建工具开发项目经验；</p>
+						<p>5、熟悉mysql,redis,mongodb</p>
+						<p>6、熟悉git，能使用git进行代码管理；</p>
+						<p>7、熟悉Linux，熟悉常用的Shell命令，会使用pm2管理服务；</p>
+						<p>8、 熟悉AngularJS和ReactJS;</p>
+						<p>9、理解 TCP/IP,Http,https,Websocket通讯协议；</p>
+						<p>10、良好的沟通、协调能力，有高度责任感和敬业精神，具有团队合作精神。</p>
+					</section>
+					<section>
+						<h2>BD商务拓展专员/大客户经理</h2>
+						<h3>岗位职责：</h3>
+						<p>1、针对目标客户群（教育培训机构），拓展客户资源、挖掘客户需求，商务洽谈、维护客户关系，提升销售业绩；</p>
+						<p>2、定期对客户档案进行分析、整理，提供销售分析数据；</p>
+						<p>3、每月完成公司下达的销售业绩指标；</p>
+						<p>4、建立和管理公司BD团队，制定销售计划，带领团队达成业绩目标指标（经理级岗位） </p>
+						<h3>职位要求：</h3>
+						<p>1、大专及以上学历，专业不限；</p>
+						<p>2、一年以上教育行业营销类工作经验优先；</p>
+						<p>3、良好的口头表达能力和沟通技巧；</p>
+						<p>4、积极主动的心态，愿意接受挑战，能承受较大的工作压力，学习能力强；</p>
+						<p>5、性格开朗、务实，能吃苦耐劳，富有协作和团队精神，积极、自信、敬业，具有开拓精神。</p>
+					</section>
+					<section>
+						<h2>数据挖掘工程师</h2>
+						<h3>岗位职责：</h3>
+						<p>1、负责互联网用户行为数据挖掘，行为特征研究以及数据营销；</p>
+						<p>2、负责数据分析和模型构建执行；能结合互联网业务方向和趋势，探索和研究有效的数据模型。</p>
+						<h3>职位要求：</h3>
+						<p>1、熟悉主流的机器学习，数据挖掘基本算法和数据模型，有大量数据搜集、整理分析与推测的经验；</p>
+						<p>2、有数据处理、统计分析，数据建模，机器学习等相关算法应用经历；</p>
+						<p>3、对海量数据挖掘分析有浓厚兴趣，了解Hadoop技术；</p>
+						<p>4、精通Hive SQL</p>
+					</section>
+					<section>
+						<h2>商业数据分析师</h2>
+						<h3>岗位职责：</h3>
+						<p>1、深入了解公司业务模型，建立基于业务场景的数据分析需求，解决各类业务问题；</p>
+						<p>2、基于数据分析，与销售、运营、大数据团队开展跨职能协作，识别业务与运营瓶颈，分析关键原因，牵头其他团队，提出适用的解决方案；</p>
+						<p>3、提供高级数据分析的技术支持，与技术开发团队共同设计公司大数据分析平台，建立数据分析的流程、规范和方法；</p>
+						<p>4、设计与制作定期需要的公司运营关键数据报表；</p>
+						<p>5、承担独立的数据分析任务，具备独立从数据获取，清洗，分析，编程，产出报表的能力。</p>
+						<h3>职位要求：</h3>
+						<p>1、本科及以上学历，数学，经济学、统计学、计算机等和数据处理高度相关专业，1年及以上互联网公司数据分析工作经验；</p>
+						<p>2、具备杰出的定量分析能力；具有优秀的商业敏感度和突出的分析能力，能够灵活利用数据，设计分析方案解决复杂的商业问题；</p>
+						<p>3、擅长与内部及外部合作团队交流沟通，具有优秀的报告讲解及沟通能力，能够独立的分析和解决问题；</p>
+						<p>4、具有较强结构化思维、逻辑思维能力，优异的学习能力，对数据敏感，能够形成清晰的业务观点和前瞻判断；</p>
+						<p>5、有数据建模实践经验者优先，能够使用SQL，Hive等至少一门查询语言；能够使用一种常用数据分析软件，例如R，SPSS，SAS，Matlab等，了解
+    至少一门高级编程语言并能进行数据分析算法编程，如Python，Java等；了解Hadoop或Spark等大数据分析平台者优先，了解主流机器学习算法者优先。</p>
+					</section>
+					<section>
+						<h2>数据仓库工程师</h2>
+						<h3>岗位职责：</h3>
+						<p>1、负责数据仓库和集市的设计和开发；</p>
+						<p>2、对业务数据需求进行整理，设计数据模型；</p>
+						<p>3、负责元数据管理，数据模型的ETL实施；</p>
+						<p>4、完善数据指标体系，快速响应业务部门对数据和报表的需求。</p>
+						<h3>职位要求：</h3>
+						<p>1、全日制统招大学本科及以上学历，统计学、数学、计算机、数理统计或相关专业；</p>
+						<p>2、互联网行业1年以上数据仓库建模经验；</p>
+						<p>3、熟练掌握数据仓库架构、数据模型设计方法，并有相关的项目经验；</p>
+						<p>4、熟悉Linux系统，能使用Shell或Python等脚本语言编写脚本；</p>
+						<p>5、思维敏捷，具备良好的数据敏感度和业务视野，能够敏锐的捕获数据价值；</p>
+						<p>6、工作认真、负责、仔细，有较强的团队合作意识，同时具有良好的逻辑表达能力、沟通能力；</p>
+						<p>7、熟悉Hadoop和Hive优先。</p>
+					</section>
+					<section>
+						<h2>数据平台开发工程师（实习生）</h2>
+						<h3>岗位职责：</h3>
+						<p>1、负责大数据平台工具的开发、维护、优化工作；</p>
+						<p>2、参与数据接口的开发维护工作。</p>
+						<h3>职位要求：</h3>
+						<p>1、3个月以上大数据平台相关开发经验；</p>
+						<p>2、计算机相关专业全日制统招本科及以上；</p>
+						<p>3、掌握Java编程语言，及常用的框架，如spring，mybatis等；</p>
+						<p>4、具有Hadoop、Hbase、Hive、Spark等大数据集群相关经验优先；</p>
+						<p>5、学习能力强，喜欢研究新技术，有团队观念。</p>
+					</section>
+					<div class="address">
+						<p>【上班时间】：周一到周五，弹性8小时，周末双休</p>
+						<p>【公司地址】：上海市虹口区四平路198号轻工国际大厦3楼</p>
+						<p>【交通路线】：地铁4/10号线海伦路站7号口出</p>
+						<p>【其他福利】：*您有可能成长为合伙人</p>
+						<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;*丰富的户外拓展活动</p>
+						<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;*扁平化管理，完善的晋升机制</p>
+						<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;*定期举行各项文体娱乐活动</p>
+						<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;*情人节、妇女节、中秋、端午、万圣、圣诞、春节等精心准备的节日礼品</p>
+					</div>
+					<div class="about-img">
+						<h3>公司场景展示</h3>
+						<ul>
+							<li><img src="images/about/about1.jpg" /></li>
+							<li><img src="images/about/about2.jpg" /></li>
+							<li class="margin0"><img src="images/about/about3.jpg" /></li>
+							<li><img src="images/about/about4.jpg" /></li>
+							<li><img src="images/about/about5.jpg" /></li>
+							<li class="margin0"><img src="images/about/about6.jpg" /></li>
+						</ul>
+					</div>
+				</div>
+		    </div>
+		</div>
+	</main>
+	<footer></footer>
+<div class="aside_bar"></div>
+<script src="html/js/asideBar.js" type="text/babel"></script>
+<script src="html/js/home_index/header.js" type="text/babel"></script>
+<script src="html/js/home_index/footer.js" type="text/babel"></script>
+<script>
+	var $div_li =$("div.tab_menu ul li");
+	$div_li.click(function(){
+		$(this).addClass("selected").siblings().removeClass("selected");
+		$(".breadcrumb span").text($(this).text());
+		var index =  $div_li.index(this);
+		$("div.tab_box > div").eq(index).show().siblings().hide();
+	});
+</script>
+</body>
+</html>

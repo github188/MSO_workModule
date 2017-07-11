@@ -1,0 +1,23 @@
+.about-banner { background: url(images/about/banner-bg.jpg) center top no-repeat; height: 200px;}
+		.about-banner img { margin: 0 auto; padding-top: 65px;
+			-webkit-animation-name: fadeIn;
+			-webkit-animation-duration: 2s;
+			-webkit-animation-iteration-count: 1;
+			-webkit-animation-delay: 0s;}
+		@-webkit-keyframes fadeIn {
+			0% {
+				opacity: 0;
+			}
+			100% {
+				opacity: 1;
+			}
+		}
+		body.about main { background: #fff;}
+		.about-box {}
+		
+		
+		.tab_menu li{ }
+.tab_menu li.hover{ }
+.tab_menu li.selected{ }
+.tab_box{ }
+.hide{ display: none;}

@@ -1,0 +1,46 @@
+@charset "utf-8";
+
+body,ul,li,ol,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div,dl,dt,dd,input,button { margin:0; padding: 0;}
+body { font-size:14px; background: #fff; font-family: "microsoft yahei", sans-serif; min-width: 1200px; -moz-user-select: text;}
+img {border:none; display: block;}
+li {list-style: none}
+textarea {resize:none;}
+textarea, input, button { outline: none;}
+a, a:hover {text-decoration: none; color: #424242;}
+button { cursor: pointer;}
+textarea, input, button { font-family: "microsoft yahei";}
+.area a:hover { color: #1aa0ff;}
+/* Internet Explorer 10+ placeholder颜色*/
+input::-ms-input-placeholder { color: #999;}
+body { background: #fff;}
+
+
+body.about main { background: #fff;}
+.about-box { width: 1200px; margin: 0 auto; padding: 40px 0 140px 0; min-height: 870px;}
+.tab_menu { width: 280px; height: 100%; background: #f8fbff; float: left; box-shadow: 0 0 5px #c7dffe; padding-bottom: 20px;}
+.tab_menu p { border-bottom: 1px #dae9fd solid; font-size: 20px; line-height: 58px; font-family: simhei; text-indent: 60px; color: #333;}
+.tab_menu ul {}
+.tab_menu li { line-height: 40px; text-indent: 70px; color: #333; font-size: 14px; background: url(/images/about/li.png) 50px center no-repeat; cursor: pointer;}
+.tab_menu li:hover{ color: #37b4f5;}
+.tab_menu ul.selected li.selected{ background: url(/images/about/li-slct.png) 50px center no-repeat; color: #37b4f5;}
+.tab_menu h3 { margin-top: 18px; text-indent:60px; background: url(/images/help/bg-h3.png) 30px center no-repeat; line-height: 40px; color:#333; cursor:pointer;}
+.tab_menu h3:hover { background: url(/images/help/bg-h3-h.png) 30px center no-repeat; color:#008cd6;}
+.tab_box, .breadcrumb { width: 870px; float: right;}
+.breadcrumb { border-bottom: 1px #dae9fd solid; font-size: 14px; line-height: 58px; color: #666666; margin-bottom: 20px;}
+.breadcrumb a { color: #666; display: inline-block; background: url(/images/about/breadcrumb.png) right center no-repeat; padding-right: 13px; margin-right: 4px;}
+.breadcrumb a:hover { color: #37b4f5; text-decoration: underline;}
+.hide{ display: none;}
+.tab_box img.about-info { margin-bottom: 40px; width: 100%;}
+.tab_box p.about-info { font-size: 16px; line-height: 32px; color: #666666;}
+.tab_box h1 { color:#333; font-size:16px; margin-top:10px; padding-bottom:15px;}
+.tab_box h1:not(:first-child) { margin-top: 40px;}
+.tab_box h1 span { height: 44px; border-bottom: 2px #37b4f5 solid; display: inline-block; float: left;}
+.tab_box a { color:#37b4f5;}
+.tab_box a:hover { text-decoration:underline;}
+.tab_box h3,
+.tab_box p { font-size: 14px; color: #333; padding: 0; line-height: 26px;}
+.tab_box h3 {color: #37b4f5; font-weight:500; padding:0 0 8px 0;}
+.nav_bottom { clear:both;}
+div.tab_box > div { padding-bottom:50px;}
+footer div.nav_bottom>div div.right { padding:0;}
+footer div.nav_bottom>div {box-sizing: content-box;}

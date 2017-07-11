@@ -1,0 +1,215 @@
+
+div.area>div{
+    width:714px;
+    border:1px solid #ddd;
+    color:#666;
+    background: #fff;
+    display:none;
+    position:absolute;
+    z-index:3;
+}
+
+div.area div[class^=list]{display:none;}
+div.area div[class^=list].active{display:inline-block;}
+div.area li a{color:#666;text-decoration: none;}
+div.area li a.active{color:#1aa0ff;}
+div.area ul.list{
+    height:38px;
+    font-family: "microsoft yahei", serif;
+}
+div.area ul.list{
+    width:100%;
+    text-align: center;
+    background: #f3f1f1;
+    border-bottom:1px solid #ddd;
+    font-size:0;
+    position: relative;
+}
+div.area ul.list i.close{
+    display: inline-block;
+    position:absolute;
+    right:20px;
+    top:9px;
+    width:20px;
+    height:20px;
+    background: url("../images/public/close.png")no-repeat center center;
+}
+div.area ul.list i.close:hover{
+    background-color:#d6edfd;
+}
+div.area ul.list li{
+    width:122px;
+    display:inline-block;
+    font-size:16px;
+    line-height:38px;
+    color:#999;
+    cursor: pointer;
+}
+div.area ul.list li.active{
+    border-left:1px solid #ddd;
+    border-right:1px solid #ddd;
+    border-bottom:1px solid white;
+    background:white;
+    color:#1aa0ff;
+}
+div.area div.hot{
+    margin:30px 20px;
+    font-size:0px;
+}
+div.area div.hot span{
+    font-size:14px;
+}
+div.area div.hot li {
+    display: inline-block;
+    font-size:14px;
+    margin-left: 30px;
+}
+div.area div.search{
+    height:40px;
+    line-height:38px;
+    margin:0px 20px 30px 20px;
+    border:1px solid #ddd;
+    background: #f3f1f1;
+}
+div.area div.search input{
+    width:130px;
+    height:30px;
+    border:1px solid #1aa0ff;
+    margin:0px 24px 0px 10px;
+    padding:0px 10px;
+    font-size:12px;
+}
+div.area div.search ul{
+    float: right;
+    font-size:0;
+    margin-top:-1px;
+    height:40px;
+}
+div.area div.search ul li{
+    line-height: 40px;
+    text-align: center;
+    padding:0 14px;
+    display: inline-block;
+    font-size:16px;
+    color:#999;
+    cursor: pointer;
+}
+div.area div.search ul li.current{
+    background: #1aa0ff;
+    color:#fff;
+    position: relative;
+}
+div.area div.search ul li.current i{
+    display:block;
+    position: absolute;
+    left:50%;
+    bottom: -7px;
+    margin-left:-6px;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 7px solid #1aa0ff;
+}
+div.area div.list3 ul.area{
+    margin:0px 20px;
+}
+div.area div.list3 ul.area li{
+    margin-bottom:30px;
+    color:#999;
+}
+div.area div.list3 ul.area li a{
+    margin-right:30px;
+}
+div.area div.list4 p button{width:100px;height:40px;margin-top:-10px;border:none;background: #0099ff;color:#fff;border-radius: 4px;}
+div.area div.list4 div.activeCity,#zdycs div.activeCity{
+    margin:0px 20px 10px 20px;
+}
+#zdycs td>div{float:right;width:calc(100% - 56px);}
+#zdycs div.activeCity{display: inline-block;vertical-align: middle;margin:0px;}
+#zdycs div.activeCity ul{padding:0 !important;display: initial;}
+#zdycs div.activeCity ul li{margin:0px 10px 10px 0px;padding:0 !important;}
+/*#zdycs div.activeCity ul li:nth-last-of-type(1){background: #fff;}*/
+div.area div.list4 div.activeCity:after,#zdycs div.activeCity:after{
+    content:" "; display:block; height:0; visibility:hidden; clear:both;
+}
+div.area div.list4 div.activeCity li,#zdycs div.activeCity li{
+    width:100px;
+    height:26px !important;
+    line-height:26px !important;
+    background: #dff3ff;
+    border-radius: 4px;
+    text-align: center;
+    float:left;
+    margin:0px 14px 10px 0px;
+    cursor: pointer;
+
+}
+div.area div.list4 div.activeCity li:hover,#zdycs div.activeCity li:hover{background: #c9e5f6;}
+
+div.area div.list4 div.activeCity li:nth-of-type(6n),#zdycs div.activeCity li:nth-of-type(6n){
+    margin:0px 0px 10px 0px;
+}
+div.area div.list4 div.activeCity li i.close,#zdycs div.activeCity li i.close{
+    display:inline-block;
+    float:right;
+    width:16px;
+    height:16px;
+    margin-top:5px;
+    margin-right:10px;
+    background: url("../images/public/close.png")no-repeat;
+    background-size: 8px 8px;
+    background-position: 4px 4px;
+    opacity: 1;
+    border-radius: 50%;
+}
+div.area div.list4 div.activeCity li i.close:hover,#zdycs div.activeCity li i.close:hover{
+    background-color:#a6cce3;
+}
+/*.area div.list4 .search-citys-list li.click{*/
+    /*height:16px;*/
+/*}*/
+
+.area div.list4 .search-citys-list i{
+    display: inline-block;
+    width:14px;height:14px;
+    background: url("../images/public/radio_normal.png");
+    vertical-align: top;
+    margin-top:1px;
+    margin-right:5px;
+}
+.area div.list4 .search-citys-list a{
+    color:#666;
+}
+.area div.list4 .search-citys-list li.active i{
+    background: url("../images/public/radio_active.png");
+}
+.area div.list4 .search-citys-list li.active a{
+    color:#1aa0ff;
+}
+
+
+.search-citys{margin:50px auto;position:relative;width:370px;font-size:14px;}
+.search-citys input.text{color:#b7b7b7;width:369px;border:1px solid #cfcfcf;float:left;margin-right:8px;font-size:12px;padding:10px 7px;outline:none;}
+.search-citys-tit{padding:10px 10px 0;}
+.search-citys-tt{margin:12px;border-bottom:1px solid #d5d5d5;height:22px;}
+.search-citys-tt a{display:block;height:22px;float:left;line-height:22px;text-align:center;position:relative;padding:0 8px;margin-left:10px;_display:inline-block;margin-bottom:-1px;position:relative;}
+.search-citys-tt a.current{background-color:#fff;color:#5e5e5e;text-decoration:none; border:#ccc 1px solid; border-bottom:#FFF 1px solid;}
+.search-citys-list{background:#fff;}
+.search-citys-list ul{overflow:hidden;margin:0px 20px;}
+.area>div div:not(.list4) .search-citys-list li{float:left;width:70px;margin-bottom:30px;text-align: center;line-height: 16px;}
+.area>div div:not(.list4) .search-citys-list li:nth-of-type(10n-9){text-align: left;width:56px;}
+.area>div div:not(.list4) .search-citys-list li:nth-of-type(10n){text-align: right;width:56px;}
+
+.area div.list4 .search-citys-list li{float:left;height:16px;line-height: 16px;min-width:86px;padding-left:20px;margin-bottom:30px;}
+.area div.list4 .search-citys-list li:nth-of-type(8n-7){min-width:67px;padding-left:0px;}
+.area div.list4 .search-citys-list li:nth-of-type(8n-6){min-width:87px;}
+.area div.list4 .search-citys-list li:nth-of-type(8n){min-width:87px;}
+.area div.list4 .search-citys-list li a{position: absolute}
+
+/*搜索联想*/
+.search-text{z-index: 4;}
+.search-text ul{border:1px solid #ccc;}
+.search-text ul li{height:40px;line-height:40px;background:#fff;padding:0 15px;border-bottom:1px solid #eee;cursor: pointer;}
+.search-text ul li strong{font-weight:bold;}
+.search-text ul li.ac_over{background:#1aa0ff;color:#fff;}

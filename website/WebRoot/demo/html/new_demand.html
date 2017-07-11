@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<title>发布新需求 - 眸事网</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/index-1.css" />
+	<link rel="stylesheet" href="css/index-2.css" />
+    <link rel="stylesheet" href="css/newstyle.css">
+    <link href="css/css.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="css/drop-down-1.css">
+    <link rel="stylesheet" href="css/bootstrap-datetimepicker.css">
+	
+	<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script> 
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/url.js"></script>
+    <script src="js/new_demend/new_demend.js"></script>
+    <!--<script src="js/react.min.js"></script>-->
+	<script src="https://cdn.bootcss.com/react/15.5.4/react.js"></script>
+	
+	<script src="https://cdn.bootcss.com/react/15.5.4/react-dom.js"></script>
+    <!--<script src="js/react-dom.js"></script>-->
+
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/select-widget-min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js" charset="UTF-8"></script>
+    <script src="js/cities.js"  type="text/javascript"></script>
+    <script src="js/jquery.autocomplete.js" type="text/javascript"></script>
+    <script src="js/plupload.full.min.js"></script>
+	<script src="js/hide.js"></script>
+	<!--<script src="js/antd-2.9.3.js"></script>-->
+	<!---<script src="//kefu.mshuoke.com/im/4028838b5ac815e3015ac81645f90000.html"></script>-->
+    <script>
+        var file1;
+    </script>
+    <style>
+    	span.target-population { display: inline-block; width: 10em; overflow: hidden; text-overflow: ellipsis; line-height: 19px; white-space: nowrap; float: right; margin-right: 22px;}
+		
+   </style>
+</head>
+
+<script type="text/javascript" >
+    function seachtop1(){
+        var a=document.getElementById("ztseach");
+        a.value="supplier_lj_demandHall";
+        var seachtop=document.getElementById("seachtop");
+        seachtop.action="/html/supplierDemandHall.html";
+        seachtop.method="post";
+        seachtop.submit();
+    }
+</script>
+
+<body class="supplier bg-white bzfb supplierNew">
+<div class="topNav"></div>
+<div class="content padding0">
+  <div class="title">
+    <h2>您正在发布一个新的需求:</h2>
+  </div>
+
+    <div class="new-demand" id="new_demand">
+				 <div style="display:none;" class="industrySelect title_select">
+					<ul>
+							<li class="education selected"><a href="javascript:;">教育培训</a></li>
+							<li class="car public other icon-new1"><a href="javascript:;">汽车行业</a></li>
+							<li class="financial public other icon-new2"><a href="javascript:;">金融行业</a></li>
+							<li class="web public other icon-new3"><a href="javascript:;">互联网</a></li>
+							<li class="medical public other icon-new4"><a href="javascript:;">医美行业</a></li>
+							<li class="other  public icon-new5"><a href="javascript:;">其他行业</a></li>
+						</ul>
+						
+				</div>
+				
+				
+				
+
+                <div class="demend_left">
+                    <div class="form_col1">
+                      
+                        <div class="main">
+                        </div>
+                    </div>
+                    <div class="form_col2">
+                      
+                        <div class="main">
+
+                        </div>
+                    </div>
+                    <div class="form_col3 form_col4">
+                        
+                        <div class="main">
+
+                        </div>
+                    </div>
+                    <div class="form_col4 retail">
+                       
+                        <div class="main">
+
+                        </div>
+                    </div>
+                    <div class="form_col5 message">
+                      
+                        <div class="main">
+              
+                        </div>
+                    </div>
+                    <div class="area"></div>
+                    <div class="progress_speed">
+                    </div>
+                  	<div class="loading_cover">
+                  		<div class="loader">
+                  	        <div class="loader-inner ball-spin-fade-loader">
+                  	          <div></div>
+                  	          <div></div>
+                  	          <div></div>
+                  	          <div></div>
+                  	          <div></div>
+                  	          <div></div>
+                  	          <div></div>
+                  	          <div></div>
+                  	        </div>
+                  	    </div>
+                  	</div>
+                </div>
+                <div class="demend_right">
+                    <div class="right" style="margin-bottom:20px;">
+                    </div>
+                    <div class="service"></div>
+                </div>
+				<div id="demend_right_test">
+                 
+                </div>
+    </div>
+    <div class="footer_box"></div>
+    <form name=theform>
+        <input type="radio" name="myradio" value="random_name" checked style="display:none;"/>
+        <input type="hidden" id="pagename" value="customer_lj_DemandManagement2">
+    </form>
+    <div class="aside_bar"></div>
+
+	
+    <script type="text/javascript" src="js/upload.js"></script>
+    <script type="text/javascript" src="js/new_demend/post.js"></script>
+	<script src="../new_demand.bundle.js" charset="utf-8"></script>
+    <script>
+	
+    	jQuery(function(){
+		
+    		$("li.public").click(function(){
+    			sessionStorage.removeItem("industry");
+    			sessionStorage.setItem("industry",$(this).text());
+    			window.location.href = "new_demand_more.html";
+    		});
+			
+    		$("li.education").click(function(){
+    			sessionStorage.removeItem("industry");
+    			sessionStorage.setItem("industry",$(this).text());
+    			window.location.href = "new_demand.html";
+    		});
+			
+            $(".bubble-hover").click(function(){
+                $(this).next().css("display","inline-block");
+            }).mouseout(function(){
+                $(this).next().hide();
+            });
+			var sWidth = $(window).width();
+			
+	        $(window).scroll( function() {
+			    var stickTop = $(document).scrollTop();
+			    //console.log(stickTop);
+			    if(stickTop > 160){
+			        $(".title_select").addClass("fixTop");
+			        if(sWidth > 1200){
+			        	var sLeft = (sWidth-1200)/2-7;
+			        	$(".title_select").css("left",sLeft);
+			        }
+			    }else{
+			        $(".title_select").removeClass("fixTop");
+			        $(".title_select").css("left",'');
+			    }
+			});
+    	});
+    </script>
+</body>
+</html>

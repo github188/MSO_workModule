@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.mso.model.RecommendArticle" table="mk_recommend">
+		<id name="recommendid" type="java.lang.String">
+			<column name="recommendid"/>
+			<generator class="assigned"/>    
+		</id>
+		<property name="title" type="java.lang.String">
+			<column name="title" >
+			</column>
+		</property>
+		<property name="type" type="java.lang.String">
+			<column name="type" >
+			</column>
+		</property>
+		<property name="reading" type="java.lang.Integer">
+			<column name="reading">
+			</column>
+		</property>
+		<property name="rank" type="java.lang.Integer">
+			<column name="rank">
+			</column>
+		</property>
+		<property name="createtime" type="java.lang.String">
+			<column name="createtime" length="20">
+			</column>
+		</property>
+		<property name="updatetime" type="java.lang.String">
+			<column name="updatetime" length="20" >
+			</column>
+		</property>
+		<property name="url" type="java.lang.String">
+			<column name="url">
+			</column>
+		</property>
+		<property name="thumbnail" type="java.lang.String">
+			<column name="thumbnail">
+			</column>
+		</property>
+	
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+/*头部导航样式*/
+.topNav .top .right ul li.photo-box .photo-details { width:190px; background:#202c38; height:300px; overflow:hidden; }
+.topNav .top .right ul li.photo-box .photo-details .pd-bottom ul li { width:100%;  padding-left:60px; margin-top:15px; }
+.topNav .top .right ul li.photo-box .photo-details .pd-top .default-photo { margin:auto; margin-top:20px;  float:none; }
+.topNav .top .right ul li.photo-box .photo-details .pd-bottom { border-top: 1px #243647 solid; margin-top:0px; }
+.topNav .top .right ul li.photo-box .photo-details .pd-top { height:160px; }
+.topNav .top .right ul li.photo-box .photo-details .pd-bottom { padding-top:0px;}
+.topNav .top .right ul li.photo-box .photo-details .pd-bottom ul li.icon-pswd {
+    background: url(/images/public/icon-pswd.png) 30px top no-repeat;
+}
+
+.topNav .top .right ul li.photo-box .photo-details .pd-bottom ul li.icon-update {
+    background: url(/images/public/icon-user.png) 30px top no-repeat;
+}
+
+.topNav .top .right ul li.photo-box .photo-details .pd-bottom ul li.myhone {
+    background: url(/images/public/myhome.png) 30px top no-repeat;
+}
+.topNav .top .right ul li.photo-box .photo-details .pd-top .default-info { padding-top:20px; height:75px; }

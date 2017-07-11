@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.mso.model.BaseLabel" table="base_label" >
+        <id name="labelId" type="java.lang.String">
+            <column name="label_id" />
+             <generator class="assigned" />
+        </id>
+        <property name="labelName" type="java.lang.String">
+            <column name="label_name" >
+            </column>
+        </property>
+        <property name="labelAttribute" type="java.lang.Integer">
+            <column name="label_attribute" length="120" >
+            </column>
+        </property>
+        <property name="labelType" type="java.lang.Integer">
+            <column name="label_type" not-null="true">
+            </column>
+        </property>
+        <property name="labelState" type="java.lang.Integer">
+            <column name="label_state" not-null="true">
+            </column>
+        </property>
+        <property name="labelCode" type="java.lang.String">
+            <column name="label_code" length="120" not-null="true">
+            </column>
+        </property>
+        <property name="createtime" type="java.lang.String">
+            <column name="createtime" length="100" />
+        </property>
+         <property name="updatetime" type="java.lang.String">
+            <column name="updatetime" length="100" />
+        </property>
+        <property name="labelPrice" type="java.math.BigDecimal">
+            <column name="label_price" />
+        </property>
+        <property name="labelRemark" type="java.lang.String">
+            <column name="label_remark" length="120" not-null="true">
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

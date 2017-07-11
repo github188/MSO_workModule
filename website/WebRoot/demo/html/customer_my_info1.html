@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta charset="UTF-8">
+    <title>我的信息 - 眸事网</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/index-1.css" />
+	<link rel="stylesheet" href="css/index-2.css" />
+    <link rel="stylesheet" href="css/style.css"/>
+	
+	<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script> 
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <script src="../js/plupload.full.min.js"></script>
+    <script src="js/react.min.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/url.js"></script>
+	<script src="js/hide.js"></script>
+	<!---<script src="//kefu.mshuoke.com/im/4028838b5ac815e3015ac81645f90000.html"></script>-->
+    <style>
+	.account .sub-account .context .right ul li ul.select-list-second {
+		position: absolute;
+		padding: 0;
+		z-index: 2;
+		left: 431px;
+		top: 40px;
+		border: 1px #dddddd solid;
+		margin-left: -1px;
+		width:400px;
+		background: #fff;
+		padding: 0px 20px;
+		display:none;
+		padding-bottom:20px;
+	}
+	
+	.account .sub-account .context .right ul li ul.select-list-second li {
+		float:left;
+		
+		line-height: 24px;
+		width: auto;
+		height:auto;
+		padding: 0px 10px;
+		cursor: pointer;
+		margin-right:20px;
+		line-height:25px;
+		margin-top:15px; 
+		border-radius:6px;
+	
+	}
+	.account .sub-account .context .right ul li ul.select-list-second li:hover{
+		color:#1aa0ff;
+	}
+	.account .sub-account .context .right ul li ul.select-list-second li.current{
+		background:#1aa0ff;
+		color:#ffffff;
+	}
+	.account .sub-account .context .right ul li .select-box p.classify {
+		position:absolute; 
+		left:430px; 
+		top:0;  
+		display: inline-block;
+		line-height: 40px;
+		width: 300px;
+		height: 40px;
+		border: 1px #dddddd solid;
+		border-radius: 3px;
+		margin-right: 6px;
+		display:none;
+	}
+	 .account .sub-account .context .right ul li .select-box p.classify.current {
+		color:#1aa0ff;
+		border-color:#1aa0ff;
+	 }
+	
+	
+	</style>
+</head>
+<body class="account">
+<div class="topNav"></div>
+    <div class="content sub-account">
+	    <div class="title">
+			<h2>账号管理</h2>
+		</div>
+		<div class="context">
+			<div class="left"></div>
+			
+			
+			<div class="right">
+				
+				
+				
+				<!--编辑-->
+				<div class="edit">
+					<div class="box">
+						<h3>公司基本信息</h3>
+						<div class="info-box">
+							<ul class="base-info">
+								<li>
+									<label>姓名：</label>
+									<input type="text" class="realName" maxlength="50" placeholder="请输入您的真实姓名" />
+								</li>
+								<li>
+									<label>手机号：</label>
+									<input type="text" class="tel" maxlength="50" placeholder="请输入您的手机号" />
+									<span>注：为了能及时联系到您，请留下您的手机号哦！</span>
+									<p class="msg-error">请输入正确的手机号</p>
+								</li>
+								<li>
+									<label>电子邮箱：</label>
+									<input type="text" class="mail" maxlength="50" placeholder="请输入您的电子邮箱" />
+									<span>注：此邮箱用来接收平台发出的一些重要通知邮件！c</span>
+								</li>
+								<li>
+									<label>QQ/微信：</label>
+									<input type="text" class="qq" maxlength="50" placeholder="请输入QQ或微信号码" />
+								</li>
+								<li>
+									<label>公司网址：</label>
+									<input type="text" class="companyDomain" maxlength="50" placeholder="您的公司网站链接" />
+								</li>
+								<li>
+									<label>品牌名：</label>
+									<input type="text" class="brandName" maxlength="50" placeholder="请输入您的品牌名称，如眸事网" />
+								</li>
+								<li class="heightH">
+									<label>公司图片：</label>
+									<div class="upload_img"></div>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+
+					<div class="btn-box">
+						<button type="button" class="btn_tj">确认提交</button>
+						<button type="button" class="btn_cg">保存</button>
+					</div>
+				</div>
+				<!--编辑-->
+				
+				
+			</div>
+		</div>
+    </div>
+<div class="footer_box"></div>
+<div class="aside_bar"></div>
+<div class="cover1">
+	<div class="cover-box">
+		<div class="title">提示<span class="close2"></span></div>
+		<div class="context">保存成功！</div>
+		<div class="bt-choose">
+			<button type="button" class="bg_blue close2">确定</button>
+		</div>
+	</div>
+</div>
+
+
+<script>
+
+	jQuery(function(){
+
+        //手机验证
+        var mobile = $.trim($("input.contactTel").val());
+        var isMobile = /^1\d{10}$/; 
+        $("input.contactTel").blur(function(){
+			var MobileOk = isMobile.test($(this).val());
+            if($.trim($(this).val()) != ''){
+				if(!MobileOk){
+					$(this).addClass("error");
+					$(this).next().show().text(请填写正确的手机号码);
+				}
+            }
+			
+        });
+		
+        $("input.contactTel").focus(function(){
+            $(this).removeClass("error_red");
+            $(this).next().hide();
+        });
+
+	});
+</script>
+<script src="js/asideBar.js" type="text/babel"></script>
+<script type="text/babel" src="js/header-customer.js"></script>
+<script src="js/customer/leftMenu.js" type="text/babel"></script>
+<script src="js/footer.js" type="text/babel"></script>
+<script src="../customer_my_info.bundle.js" type="text/babel"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!Doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>MSO-眸事网，国内专业营销服务外包平台</title>
+    <meta name="description" content="MSO（眸事网）是一家以数据为驱动的营销科技公司，旨在以前沿的营销科技，通过数据挖据技术，电话营销、呼叫中心等方式，不断为企业获取客户对产品的兴趣度、购买意向等。直连意向客户，大大提升销售精准度，解决企业成长过程中获客成本高的痛点。">
+    <meta name="keywords" content="">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	
+	<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script> 
+    <script src="html/js/jquery-1.7.2.min.js"></script>
+		
+	<style>
+		.loading{ width: 150px; height: 15px; position: fixed; top: 50%; left: 50%; margin-left: -75px; margin-top: -10px;}
+        .loading span{ display: inline-block; width: 15px; height: 100%; margin-right: 5px; border-radius: 50%; background: #00d0ee; -webkit-animation: load 1.04s ease infinite;}
+        .loading span:last-child{ margin-right: 0px;}
+        @-webkit-keyframes load{
+            0%{
+                opacity: 1;
+            }
+            100%{
+                opacity: 0;
+            }
+        }
+        .loading span:nth-child(1){ -webkit-animation-delay:0.13s;}
+        .loading span:nth-child(2){ -webkit-animation-delay:0.26s;}
+        .loading span:nth-child(3){ -webkit-animation-delay:0.39s;}
+        .loading span:nth-child(4){ -webkit-animation-delay:0.52s;}
+        .loading span:nth-child(5){ -webkit-animation-delay:0.65s;}
+	</style>
+	<script>
+		jQuery(function(){
+			var url = "https://back.mshuoke.com/publicApi/insertes";
+			var data = {
+				type:"2"
+			};
+			$.ajax({
+				type:"get",
+				url:url,
+				async:true,
+				data:data,
+				contentType:"application/x-www-form-urlencoded;charset=utf-8",
+				dataType: "json",
+				success:function(data){
+					if(data.code=="Y"){
+						location.href="https://www.mshuoke.com/register.html#tomail";
+					}else{
+						alert("网络繁忙，请稍后再试");
+					}
+				},
+				error : function(XMLHttpRequest, textStatus, errorThrown) {
+					if(XMLHttpRequest.status=="500"){
+						window.location.href = "page500.html";
+					}else if(XMLHttpRequest.status=="404"){
+						window.location.href = "page404.html";
+					}else{
+						console.log(XMLHttpRequest);
+						console.log(textStatus);
+						console.log(errorThrown);
+					}
+				},
+			});
+			
+		});
+	</script>
+</head>
+<body>
+	<div class="loading">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+	</div>
+</body>
+</html>

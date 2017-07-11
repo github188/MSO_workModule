@@ -1,0 +1,259 @@
+@charset "utf-8";
+div.area ul.list li:nth-child(2){ display:none; }
+div.area ul.list li:nth-child(3){ display:none; }
+.click.js_key.current { background:blue; }
+.choosedCity { overflow:hidden; }
+.choosedCity li { float:left; margin-left:5px;   width:50px; height:30px; background:blue;  position:relative; }
+.choosedCity li span { position:absolute; right:0; top:0; width:20px; height:20px; background:red; }
+
+
+
+.account .sub-account .context .right { border:1px solid #e0eaf1; }
+.infoList { width:100%; }
+.infoList li{ width:100%; }
+.infoList li .infoName{  float:left; width:150px; }
+.sub-account .context .right ul { padding-left:40px;  }
+.infoTitle {font-size:16px; color:#666666; padding-left:40px; margin-top:22px;  display:block; }
+.ant-upload.ant-upload-select-picture-card { width:225px; height:150px; }
+.uploadPhoto { float:left; }
+.ant-btn.ant-btn-primary { float:left;  margin-top:40px; margin-bottom:40px; width:140px; height:40px;  }
+.sub-account .context .right ul li button  { margin-left:0px; background:#1aa0ff; }
+.sub-account .context .right ul li button:hover { background:#51b1fb;}
+
+.anticon-exclamation-circle-o:before {
+    content:url(/images/alert.png);
+}
+.ant-alert-warning { width:796px; margin:auto; margin-top:30px; }
+index-1.css:1
+.anticon:before {
+    display: block;
+    font-family: anticon!important;
+}
+.uploadcertificate {width:798px; margin:auto; border-top:1px solid #e0eaf1; min-height:300px; }
+.uploadcertificate .infoTitle { padding-left:0px; }
+.sub-account .context .right { height:auto; }
+i { font-style:normal; }
+i.current { color:red; }
+i.node-icon { background:#888888; width:6px; height:6px; display:table; border-radius:50%; position:absolute; left:0; top:7px;   }
+.uploadcertificate ul li { position:relative; }
+
+.sub-account .context .right .uploadcertificate ul li { padding-left:20px; margin-bottom:5px; line-height:20px; height:auto; }
+.citify { float:left; overflow:hidden; }
+.ant-radio-wrapper { float:left; }
+.citifyword { float:left; }
+.uploadPhoto { padding-left:40px; margin-top:50px; }
+.citify:nth-child(2){
+	margin-left:48px; 
+}
+
+
+
+
+
+.clearfix { float:left; position:relative;  }
+.faceplus { position:absolute; left:0; top:0; overflow:hidden; width:225px; height:150px; } 
+
+.anticon.anticon-plus { margin-top:-35px;  position:absolute; left:0; top:50%; width:225px;  height:28px; font-size:28px; }
+
+.pluswords { margin-top:65px;  text-align:center; }
+.faceplus img{ width:100%; height:100%; }
+.sub-account .context .right ul li.heightH{ height:150px; }
+.ant-upload.ant-upload-select-picture-card > .ant-upload { display:none; }
+
+.three-each { display:none; }
+.sub-account .context .right ul.three-one { height:220px; overflow:hidden;  padding-left:0; margin-left:-15px;  padding-top:20px; }
+.sub-account .context .right ul.three-each { height:220px; overflow:hidden;  padding-left:0; margin-left:-15px;  padding-top:20px; }
+.sub-account .context .right ul.three-each  li { float:left; }
+.sub-account .context .right ul.comfirm { padding-left:0; padding-top:30px; padding-bottom:50px; }
+.sub-account .context .right ul.comfirm li { padding-left:5px; }
+
+p.product-classify {
+    padding-left: 5px;
+    background: url(/images/public/select_bg.png) 278px center no-repeat;
+    cursor: pointer;
+	height:40px;
+}
+
+.context .right ul li .select-box {
+    display: inline-block;
+    line-height: 40px;
+    width: 300px;
+    height: 40px;
+    border: 1px #dddddd solid;
+    border-radius: 3px;
+    margin-right: 6px;
+}
+
+.context .right ul li .select-box p.classify {
+    position: absolute;
+    left: 475px;
+    top: 0;
+    display: inline-block;
+    line-height: 40px;
+    width: 300px;
+    height: 40px;
+    border: 1px #dddddd solid;
+    border-radius: 3px;
+    margin-right: 6px;
+    display: none;
+}
+
+.context .right ul li p.msg-error {
+    background: url(/images/home/icon-msg.png) left center no-repeat;
+    padding-left: 28px;
+    color: #fd5352;
+    font-size: 14px;
+    height: 18px;
+    line-height: 18px;
+    position: absolute;
+	margin-left:-5px;
+	
+    display: none;
+}
+.select-list { display:none; background:#ffffff; }
+
+.context .right ul li ul.select-list {
+    position: absolute;
+    padding: 0;
+    z-index: 2;
+    top: 39px;
+    border: 1px #dddddd solid;
+    margin-left: -1px;
+    display: none;
+}
+li.industry-list{ position:relative; }
+
+.context .right ul li ul.select-list li {
+    background: #fff;
+    height: 24px;
+    line-height: 24px;
+    width: 298px;
+    padding-left: 5px;
+    cursor: pointer;
+	margin-bottom:1px; 
+}
+
+ .context .right ul li ul.select-list li:hover {
+    background: #1e90ff;
+    color: #fff;
+ }
+ .context .right ul li ul.select-list-second li {
+    float: left;
+    line-height: 24px;
+    width: auto;
+    height: auto;
+    padding: 0px 10px;
+    cursor: pointer;
+    margin-right: 20px;
+    line-height: 25px;
+    margin-top: 15px;
+	border-radius: 6px;
+	margin-bottom:0px;
+ }
+ 
+ .context .right ul li ul.select-list-second li.current {
+    background: #1aa0ff;
+    color: #ffffff;
+
+}
+
+.context .right ul li ul.select-list-second {
+    position: absolute;
+    padding: 0;
+    z-index: 2;
+    left: 431px;
+    top: 40px;
+    border: 1px #dddddd solid;
+    margin-left: -1px;
+    width: 400px;
+    background: #fff;
+    padding: 0px 20px;
+    display: none;
+    padding-bottom: 20px;
+}
+ 
+ 
+.context .right ul li .select-box p.classify.current {
+    color: #1aa0ff;
+    border-color: #1aa0ff;
+}
+
+.context .right ul li .select-box p {
+    padding-left: 5px;
+    background: url(/images/public/select_bg.png) 278px center no-repeat;
+    cursor: pointer;
+}
+
+ .context .right ul li input[type=text].error {
+    border: 1px #fd5352 solid;
+}
+
+
+.context .right ul li input[type=text] {
+    width: 300px;
+    height: 40px;
+    border: 1px #dddddd solid;
+    border-radius: 3px;
+}
+
+
+ .context .right ul li input[type=text]:focus, .context .right ul li input[type=password]:focus {
+    border: 1px #1aa0ff solid; 
+}
+
+.sub-account .context .right ul li input[type=text], .sub-account .context .right ul li input[type=password] {
+    height: 40px;
+    width: 300px;
+    border: 1px #bbbbbb solid;
+    padding-left: 5px;
+    font-size: 15px;
+}
+input.other-select { position:absolute; left:475px; top:0px; }
+.sub-account .context .right ul li label.error { color:red; position:absolute; display:block; left:150px; top:35px;  }
+.infoList li { position:relative; }
+
+
+.uploads-js-id { position:relative; }
+.uploads-js-id  span.name { position:absolute; left:107px; top:180px; }
+.processingwarning { width:880px; height:auto; overflow:hidden; float:right; }
+.processingwarning .top.ant-alert.ant-alert-warning.ant-alert-no-icon {  padding-right:0; }
+.processingwarning .ant-alert-warning.top { width:878px; margin-top:0px; margin-bottom:20px; color:#333333; display:none;  line-height:25px; }
+
+.context .right ul.three-one li p.msg-error{
+ top:157px; left:25px;
+}
+.context .right ul.three-each li p.msg-error{
+ top:157px; left:25px;
+}
+
+.coverd-box { width:225px; height:150px; background:#f9f9f9; display:none; }
+.ant-alert-error { display:none; }
+
+
+.reasonError { color:red; font-style:normal; }
+.reasoning { margin-left:5px; }
+.ant-alert-success {  display:none; }
+.special { color:red; position:absolute; top:20px; }
+.coverd-box img { width:100%; height:100%; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

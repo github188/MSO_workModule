@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" id="viewport" content="width=device-width,initial-scale=0.5,maximum-scale=0.5,minimum-scale=0.5,user-scalable=no">
+    <title>MSO-眸事网，国内专业营销服务...</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/index-1.css" />
+	<link rel="stylesheet" href="css/index-2.css" />
+	
+	<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script> 
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/url.js"></script>
+    <style>
+      html{width:100%;height:100%;}
+      body{background: #f2f2f2;}
+      div.receive{font-family:"黑体";margin:20px 20px 50px 20px;}
+      div.receive ul.nav{
+        height:88px;line-height:100%;margin:0px 0px 50px 0px;
+        border:2px solid #18b4ed;border-radius: 6px;text-align: center;
+      }
+      div.receive ul.nav li{
+        width:50%;float:left;line-height:84px;color:#18b4ed;font-size:34px;
+        background: #f2f2f2;
+      }
+      div.receive ul.nav li.active{
+        background: #18b4ed;color:#fff;
+      }
+      .receive div[class^=form]:not(.active){display:none;}
+      .receive form table{width:100%;}
+      .receive form td span.red_star{
+        color:#fd5352;vertical-align: sub;
+      }
+      .receive form tr td:nth-of-type(1){line-height:68px;vertical-align: top;font-size:32px;}
+      .receive form tr td input.test{width:calc(100% - 42px);height:68px;line-height:64px;font-size:28px;border-radius: 4px;padding:0px 8px;border:2px solid #999999;outline:none;}
+      .receive form tr td textarea.test{width:calc(100% - 42px);height:200px;resize:none;font-size:28px;border-radius: 4px;padding:0px 8px;border:2px solid #999999;outline:none;}
+      .receive form td p.red_p{
+        font-size:26px;color:#fd5352;line-height:24px;margin:14px 0px 36px 0px;visibility: hidden;
+      }
+      .receive form td .test+i{vertical-align:top;width:26px;height:26px;display:inline-block;margin:21px 0px 0px 8px;}
+      .receive form td.error .test+i{
+        background: url(images/h5/test_error.png);background-size: 100% 100%;
+      }
+      .receive form td.right .test+i{
+        background: url(images/h5/test_right.png);background-size: 100% 100%;
+      }
+      .receive form td.error .test{border-color:#fd5352;}
+      .receive form td.error textarea.test{border-color:#fd5352;}
+      .receive form td.error p.red_p{visibility: visible}
+      .receive form td.error .test:focus{border-color:#999999;}
+      .receive form td.error .test:focus+i{background: none;}
+      .receive .bottom{position:absolute;left:0;bottom:0px;padding:20px 20px 80px 20px;width:100%;background: #f2f2f2;}
+      .receive .bottom button{width:100%;height:88px;border-radius: 6px;line-height:88px;color:#fff;
+                              padding:0;font-size:36px;border:none;outline:none;background:#fd5352;}
+      .receive .bottom p{text-align: center;margin:20px 0px 0px 0px;color:#666666;font-size:28px;line-height:26px;}
+      .receive .mask{position: fixed;width:100%;height:100%;left:0;top:0;background: rgba(0,0,0,.5);display:none;}
+      .receive .mask .submit_success{position: absolute;left:0;top:calc(50% - 220px);margin:0px 54px;width:calc(100% - 108px);height:440px;
+        background:rgba(255,255,255,.3);border-radius: 14px;padding:20px;display:none;}
+      .receive .mask .submit_success>div{width:100%;height:100%;
+        background:url(images/h5/submit_success_back.png);background-size:100% 100%;border-radius: 14px;}
+      .receive .mask .submit_success>div p:nth-of-type(1){padding:95px 0px 0px 0px;font-size:36px;color:#333;text-align: center;}
+      .receive .mask .submit_success>div p:nth-of-type(2){margin:26px 0px 0px 0px;font-size:24px;color:#666;text-align: center;}
+      .receive .mask .submit_success>div button{width:300px;height:80px;border-radius:40px;border:none;background:#18b4ed;text-align:center;display:block;margin:26px auto 0px;font-size:36px;color:#fff;}
+      .receive .mask .input_type{position: absolute;left:30px;top:calc(50% - 320px);min-width:580px;width:calc(100% - 60px);height:640px;padding:60px 30px;border-radius: 16px;background: #fff;display:none;}
+      .receive .mask .input_organization{position: absolute;left:30px;top:calc(50% - 320px);width:calc(100% - 60px);height:310px;padding:60px;border-radius: 16px;background: #fff;display:none;}
+      .receive .mask .input_type i.input_close,.receive .mask .input_organization i.input_close{position: absolute;right:30px;top:-102px;display:block;width:58px;height:102px;background: url('images/h5/input_close.png');background-size:100% 100%;}
+      .receive .mask .input_type .type_list,.receive .mask .input_organization .organization_list{width:calc(50% - 25px);height:80px;float:left;border-radius:40px;line-height:76px;text-align: center;font-size:30px;margin-bottom:30px;background:#fff;border:2px solid #18b4ed;color:#18b4ed;}
+      .receive .mask .input_type .type_list:nth-of-type(2n),.receive .mask .input_organization .organization_list:nth-of-type(2n){margin-left:25px;}
+      .receive .mask .input_type .type_list:nth-of-type(2n-1),.receive .mask .input_organization .organization_list:nth-of-type(2n-1){margin-right:25px;}
+      .receive .mask .input_type .type_list.active,.receive .mask .input_organization .organization_list.active{background:#18b4ed;border:2px solid #18b4ed;color:#fff;}
+    </style>
+</head>
+<body  ondragstart="return false">
+      <div class="receive">
+           <ul class="nav">
+             <li class="active">我有获客需求</li>
+             <li>我能提供服务</li>
+           </ul>
+        <div class="form1">
+          <form onsubmit="return demand_submit(this);">
+            <table>
+              <tr>
+                <td style="min-width:7em;"><span class="red_star">*</span><span>您所在的行业:</span></td>
+                <td style="min-width:calc(100% - 7em)"><input type="text"  name="type"  class="test" readonly placeholder="请选择行业" /><i></i><p class="red_p">请选择正确行业</p></td>
+              </tr>
+              <tr>
+                <td><span class="red_star">*</span><span>您的手机号码:</span></td>
+                <td ><input type="text" class="test" name="nubmer"  placeholder="请输入您的手机号码" /><i></i><p class="red_p">请填写正确的手机号码</p></td>
+              </tr>
+              <tr>
+                <td><span class="red_star">*</span><span>您的称呼:</span></td>
+                <td ><input type="text" class="test" name="userName" maxlength="10" placeholder="请填写您的称呼" /><i></i><p class="red_p">必须是中文或英文，限定十个字数</p></td>
+              </tr>
+              <tr>
+                <td><span class="red_star">*</span><span>贵公司名称:</span></td>
+                <td ><input type="text" class="test" name="companyName"  placeholder="请填写贵公司名称，以便联络" /><i></i><p class="red_p">请填写正确的公司名称，必须是中文</p></td>
+              </tr>
+              <tr>
+                <td><span class="red_star" style="visibility: hidden">*</span><span>您的需求:</span></td>
+                <td ><textarea class="test" name="demand" placeholder="请详细描述您的需求,至少十个字"></textarea><i></i><p class="red_p">请填写正确的需求，必须是中文</p></td>
+              </tr>
+            </table>
+            <div class="bottom">
+              <button type="submit" class="btn" >提交需求</button>
+              <p>您的专属客服将在一个工作日内给您回复</p>
+            </div>
+          </form>
+        </div>
+        <div class="form2">
+          <form onsubmit="return service_submit(this);">
+            <table>
+              <tr>
+                <td style="min-width:7em;"><span class="red_star">*</span><span>您所在的机构:</span></td>
+                <td style="min-width:calc(100% - 7em)"><input type="text"  name="organization" readonly class="test" placeholder="请选择机构类别" /><i></i><p class="red_p">请选择正确机构</p></td>
+              </tr>
+              <tr>
+                <td><span class="red_star">*</span><span>您的手机号码:</span></td>
+                <td ><input type="text" class="test" name="nubmer"  placeholder="请输入您的手机号码" /><i></i><p class="red_p">请填写正确的手机号码</p></td>
+              </tr>
+              <tr>
+                <td><span class="red_star">*</span><span>您的称呼:</span></td>
+                <td ><input type="text" class="test" name="userName" maxlength="10" placeholder="请填写您的称呼" /><i></i><p class="red_p">必须是中文或英文，限定十个字数</p></td>
+              </tr>
+              <tr>
+                <td><span class="red_star">*</span><span>贵公司名称:</span></td>
+                <td ><input type="text" class="test" name="companyName"  placeholder="请填写贵公司名称，以便联络" /><i></i><p class="red_p">请填写正确的公司名称，必须是中文</p></td>
+              </tr>
+            </table>
+            <div class="bottom">
+              <button type="submit" class="btn" >提交需求</button>
+              <p>您的专属客服将在一个工作日内给您回复</p>
+            </div>
+          </form>
+        </div>
+        <div class="mask">
+          <div class="submit_success">
+            <div>
+              <p>您已成功提交</p>
+              <p>您的专属客服将在一个工作日内给您回复</p>
+              <button type="button">确定</button>
+            </div>
+          </div>
+          <div class="input_type">
+            <div class="type_list" value="1">成人教育培训</div>
+            <div class="type_list" value="6">金融</div>
+            <div class="type_list" value="2">青少年教育培训</div>
+            <div class="type_list" value="7">互联网</div>
+            <div class="type_list" value="3">房地产</div>
+            <div class="type_list" value="8">电商平台</div>
+            <div class="type_list" value="4">汽车</div>
+            <div class="type_list" value="9">运营商增值服务</div>
+            <div class="type_list" value="5">汽车后市场</div>
+            <div class="type_list" value="10">其他行业</div>
+            <i class="input_close"></i>
+          </div>
+          <div class="input_organization">
+            <div class="organization_list" value="1">呼叫中心</div>
+            <div class="organization_list" value="3">地推推广</div>
+            <div class="organization_list" value="2">网络推广</div>
+            <div class="organization_list" value="4">其他</div>
+            <i class="input_close"></i>
+          </div>
+        </div>
+      </div>
+      <script>
+        var zywen=new RegExp("^[\u4E00-\u9FFF_a-zA-Z]+$");
+        var zhongwen=new RegExp("^[\u4E00-\u9FFF]+$");
+        var phone=new RegExp("^[1][358][0-9]{9}$");
+        $(window).load(function(){
+          $(".receive form .bottom").css("position","absolute");
+          $(".receive").height()+234>$("html").height()?$(".receive form .bottom").css({"position":"static","padding-bottom":"30px"}):$(".receive form .bottom").css({"position":"absolute","padding-bottom":"80px"});
+        }).resize(function(){
+          $(".receive form .bottom").css("position","absolute");
+          $(".receive").height()+234>$("html").height()?$(".receive form .bottom").css({"position":"static","padding-bottom":"30px"}):$(".receive form .bottom").css({"position":"absolute","padding-bottom":"80px"});
+        }).ready(function(){
+          $(".receive form .bottom").css("position","absolute");
+          $(".receive").height()+234>$("html").height()?$(".receive form .bottom").css({"position":"static","padding-bottom":"30px"}):$(".receive form .bottom").css({"position":"absolute","padding-bottom":"80px"});
+        });
+        $(".receive ul.nav li").bind("click",function(){
+          $(this).addClass("active").siblings().removeClass("active");
+          $(".receive div[class^=form]").eq($(this).index()).addClass("active").siblings().removeClass("active");
+        });
+        $(".submit_success button").bind("click",function(){
+          $(".submit_success").hide();
+          $(".mask").hide();
+          window.location.href=window.location.href+"?"+Math.random();
+        });
+        $("input[name=type]").bind("click",function(){
+          $(".mask").show();
+          $(".input_type").show();
+        });
+        $(".type_list").bind("click",function(){
+          $(this).addClass("active").siblings().removeClass("active");
+          $("input[name=type]").val($(this).text());
+          $(".mask").hide();
+          $(".input_type").hide();
+        });
+        $("input[name=organization]").bind("click",function(){
+          $(".mask").show();
+          $(".input_organization").show();
+        });
+        $(".organization_list").bind("click",function(){
+          $(this).addClass("active").siblings().removeClass("active");
+          $("input[name=organization]").val($(this).text());
+          $(".mask").hide();
+          $(".input_organization").hide();
+        });
+        $(".mask .input_organization .input_close").bind("click",function(){
+          $(".mask").hide();
+          $(".input_organization").hide();
+        });
+        $(".mask .input_type .input_close").bind("click",function(){
+          $(".mask").hide();
+          $(".input_type").hide();
+        });
+
+
+
+        function demand_submit(dom){
+          if($(dom).find(".test[name=type]").val()==""){
+            $(dom).find(".test[name=type]").parent().addClass("error");
+            $(dom).find(".test[name=type]").click();
+            return false;
+          }else{
+            $(dom).find(".test[name=type]").parent().removeClass("error").addClass("right");
+          }
+
+          if($(dom).find(".test[name=nubmer]").val()!=""&&phone.test($(dom).find(".test[name=nubmer]").val().replace(/\s+/g,""))){
+            $(dom).find(".test[name=nubmer]").parent().removeClass("error").addClass("right");
+          }else{
+            $(dom).find(".test[name=nubmer]").parent().addClass("error").end().focus();
+            return false;
+          }
+
+          if($(dom).find(".test[name=userName]").val()!=""&&zywen.test($(dom).find(".test[name=userName]").val().replace(/\s+/g,""))){
+            $(dom).find(".test[name=userName]").parent().removeClass("error").addClass("right");
+          }else{
+            $(dom).find(".test[name=userName]").parent().addClass("error").end().focus();
+            return false;
+          }
+          if($(dom).find(".test[name=companyName]").val()!=""&&zhongwen.test($(dom).find(".test[name=companyName]").val().replace(/\s+/g,""))){
+            $(dom).find(".test[name=companyName]").parent().removeClass("error").addClass("right");
+          }else{
+            $(dom).find(".test[name=companyName]").parent().addClass("error").end().focus();
+            return false;
+          }
+          var data={
+              fitname:$(dom).find(".test[name=userName]").val(),
+              fitmobilephone:$(dom).find(".test[name=nubmer]").val(),
+              ficomp:$(dom).find(".test[name=companyName]").val(),
+              fitdemand:$(dom).find(".test[name=demand]").val(),
+              fiid:$(".input_type .type_list.active").attr("value")
+          }
+          $.ajax({
+            type:"GET",
+            url:urlIntentiontourists_tofAddJson,
+            dataType:"json",
+            cache:false,
+            data:data,
+            success:function(data){
+              if(data.code=="N"){
+                console.log(data.msg);
+              }
+              if(data.code=="Y"){
+                console.log(data.msg);
+                $(".mask").show();
+                $(".submit_success").show();
+              }
+            },
+            error:function(msg){
+              console.log(msg);
+            }
+          });
+          return false;
+        }
+        function service_submit(dom){
+          if($(dom).find(".test[name=organization]").val()==""){
+            $(dom).find(".test[name=organization]").parent().addClass("error").end().click();
+            return false;
+          }else{
+            $(dom).find(".test[name=organization]").parent().removeClass("error").addClass("right");
+          }
+          if($(dom).find(".test[name=nubmer]").val()!=""&&phone.test($(dom).find(".test[name=nubmer]").val().replace(/\s+/g,""))){
+            $(dom).find(".test[name=nubmer]").parent().removeClass("error").addClass("right");
+          }else{
+            $(dom).find(".test[name=nubmer]").parent().addClass("error").end().focus();
+            return false;
+          }
+          if($(dom).find(".test[name=userName]").val()==""){
+            $(dom).find(".test[name=userName]").parent().addClass("error").end().focus();
+            return false;
+          }else{
+            $(dom).find(".test[name=userName]").parent().removeClass("error").addClass("right");
+          }
+
+          var data={
+            jmcid:$(".input_organization .organization_list.active").attr("value"),
+            jitname:$(dom).find(".test[name=userName]").val(),
+            jitmobilephone:$(dom).find(".test[name=nubmer]").val(),
+            jitorganization:$(dom).find(".test[name=companyName]").val()
+          }
+          console.log(data);
+          $.ajax({
+            type:"GET",
+            url:urlIntentiontourists_tojAddJson,
+            dataType:"json",
+            cache:false,
+            data:data,
+            success:function(data){
+              if(data.code=="N"){
+                console.log(data.msg);
+              }
+              if(data.code=="Y"){
+                console.log(data.msg);
+                $(".mask").show();
+                $(".submit_success").show();
+              }
+            },
+            error:function(msg){
+              console.log(msg);
+            }
+          });
+          return false;
+        }
+
+        function GetRequest() {
+          var url = location.search; //获取url中"?"符后的字串
+          var theRequest = new Object();
+          if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for(var i = 0; i < strs.length; i ++) {
+              theRequest[strs[i].split("=")[0]]=strs[i].substring(strs[i].indexOf("=")+1,strs[i].length);
+            }
+          }
+          return theRequest;
+        }
+        var active=GetRequest();
+        if(active.type==1){
+          $(".receive .nav li").eq(0).click();
+        }else if(active.type==2){
+          $(".receive .nav li").eq(1).click();
+        }
+      </script>
+</body>
+</html>

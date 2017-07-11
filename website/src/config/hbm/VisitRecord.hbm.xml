@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.mso.model.VisitRecord" table="h_visit_record" >
+         <id name="visitid" type="java.lang.String"> 
+             <column name="visitid" length="100" />
+              <generator class="assigned" />
+         </id> 
+        <property name="jfuid" type="java.lang.String">
+            <column name="jfuid" />
+        </property>
+        <property name="referrer" type="java.lang.String">
+            <column name="referrer" />
+        </property>
+        <property name="remark" type="java.lang.String">
+            <column name="remark" />
+        </property>
+        <property name="ip" type="java.lang.String">
+            <column name="ip" />
+        </property>
+        <property name="createtime" type="java.lang.String">
+            <column name="createtime" />
+        </property>
+        <property name="updatetime" type="java.lang.String">
+            <column name="updatetime" />
+        </property>
+    </class>
+    
+</hibernate-mapping>

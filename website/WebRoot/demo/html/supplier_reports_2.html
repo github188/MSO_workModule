@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>成单报表 - 眸事网</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap-datetimepicker.css">
+	
+	<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script> 
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <script src="js/react.min.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/url.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
+	<script src="js/hide.js"></script>
+	<!---<script src="//kefu.mshuoke.com/im/4028838b5ac815e3015ac81645f90000.html"></script>-->
+</head>
+<body>
+<div class="topNav"></div>
+<div class="content">
+    <div class="title">
+        <h2>成单报表</h2>
+    </div>
+    <div class="reports">
+        <span style="margin:8px 50px 25px 0px;line-height:30px;">订单名称:&emsp;<span>线上E-成都-1609</span></span>
+        <span style="margin:8px 48px 25px 0px;line-height:30px;">竞拍量:&emsp;<span>竞拍量： 120350</span></span>
+        <div class="right">
+            <span>上传时间:&emsp;</span><input type="text" class="form_date startDate" placeholder="发布时间"   ><i class="date_icon"></i><span style="color:#ddd;">&nbsp;—&nbsp;</span>
+            <input type="text" class="form_date endDate" placeholder="发布时间" ><i class="date_icon"></i>
+            <button type="button" class="search">搜索</button>
+        </div>
+        <table class="reports reports_2">
+            <thead>
+                <tr>
+                    <th rowspan="2">序号</th>
+                    <th rowspan="2">上传量</th>
+                    <th rowspan="2">接收量</th>
+                    <th colspan="2">成功量</th>
+                    <th colspan="3">失败量</th>
+                    <th rowspan="2">查重附件</th>
+                    <th rowspan="2">质检附件</th>
+                    <th rowspan="2">上传时间</th>
+                </tr>
+                <tr>
+                    <th>合格量</th>
+                    <th>话术不规范量</th>
+                    <th>重复量</th>
+                    <th>取消量</th>
+                    <th>不合格量</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>200</td>
+                <td>200</td>
+                <td>190</td>
+                <td>5</td>
+                <td>3</td>
+                <td>1</td>
+                <td>1</td>
+                <td><a href="#">下载</a></td>
+                <td><a href="#">下载</a></td>
+                <td>2016-09-20 16:20:20</td>
+            </tr>
+            </tbody>
+        </table>
+        <p style="color:#fd5352;margin-top:18px;">注：当天的一些数据可能会因为平台质检的原因到次日才生成，请知悉</p>
+        <a href="javascript:hostory.go(-1)" type="button" class="back">返回</a>
+        <hr/>
+        <p class="reports_title">汇总</p>
+        <table  class="reports">
+            <thead>
+                <tr>
+                    <th rowspan="2">上传量</th>
+                    <th rowspan="2">接收量</th>
+                    <th colspan="2">成功量</th>
+                    <th colspan="3">失败量</th>
+                </tr>
+                <tr>
+                    <th>合格量</th>
+                    <th>话术不规范量</th>
+                    <th>重复量</th>
+                    <th>取消量</th>
+                    <th>不合格量</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>120350</td>
+                    <td>120350</td>
+                    <td>78</td>
+                    <td>5</td>
+                    <td>11</td>
+                    <td>22</td>
+                    <td>11</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="footer_box">
+    </div>
+    <div class="aside_bar"></div>
+	<script src="js/asideBar.js" type="text/babel"></script>
+    <script src="js/header-supplier.js" type="text/babel"></script>
+    <script src="js/footer.js" type="text/babel"></script>
+    <script>
+        $(".startDate").datetimepicker({
+            language:  'zh-CN',
+            weekStart: 1,
+            todayBtn:  1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0,
+            format: 'yyyy-mm-dd',
+        }).on("click",function(ev){
+            $(".startDate").datetimepicker("setEndDate", $(".endDate").val());
+        });
+        $(".endDate").datetimepicker({
+            language:  'zh-CN',
+            weekStart: 1,
+            todayBtn:  1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0,
+            format: 'yyyy-mm-dd',
+        }).on("click", function (ev) {
+            $(".endDate").datetimepicker("setStartDate", $(".startDate").val());
+        })
+    </script>
+</body>
+</html>

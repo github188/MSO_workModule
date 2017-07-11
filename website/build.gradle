@@ -1,0 +1,38 @@
+apply plugin: 'war'
+webAppDirName = 'WebRoot'
+version = ''
+buildDir = 'target'
+sourceCompatibility='1.8'
+war{
+    baseName ="msof"
+}
+
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src']
+        }
+
+		resources {  
+            srcDir 'src'  
+        } 
+       
+    }
+}
+
+
+
+
+
+dependencies {
+
+ 
+
+    providedCompile fileTree(dir: 'WebRoot/WEB-INF/lib', include: '*.jar')
+}
+
+//设置编码  
+tasks.withType(JavaCompile) {  
+    options.encoding = "UTF-8"  
+} 

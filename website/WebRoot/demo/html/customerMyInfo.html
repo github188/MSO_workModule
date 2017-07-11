@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta charset="UTF-8">
+    <title>我的信息 - 眸事网</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/index-1.css" />
+	<link rel="stylesheet" href="css/index-2.css" />
+    <link rel="stylesheet" href="css/style.css"/>
+	
+	<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script> 
+    <script src="js/jquery-1.7.2.min.js"></script>
+	
+    <script src="js/plupload.full.min.js"></script>
+    <script src="js/react.min.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/url.js"></script>
+	<script src="js/mock.js"></script>
+	<script src="js/hide.js"></script>
+	<!---<script src="//kefu.mshuoke.com/im/4028838b5ac815e3015ac81645f90000.html"></script>-->
+    <style>
+	.account .sub-account .context .right ul li ul.select-list-second {
+		position: absolute;
+		padding: 0;
+		z-index: 2;
+		left: 431px;
+		top: 40px;
+		border: 1px #dddddd solid;
+		margin-left: -1px;
+		width:400px;
+		background: #fff;
+		padding: 0px 20px;
+		display:none;
+		padding-bottom:20px;
+	}
+	
+	.account .sub-account .context .right ul li ul.select-list-second li {
+		float:left;
+		
+		line-height: 24px;
+		width: auto;
+		height:auto;
+		padding: 0px 10px;
+		cursor: pointer;
+		margin-right:20px;
+		line-height:25px;
+		margin-top:15px; 
+		border-radius:6px;
+	
+	}
+	.account .sub-account .context .right ul li ul.select-list-second li:hover{
+		color:#1aa0ff;
+	}
+	.account .sub-account .context .right ul li ul.select-list-second li.current{
+		background:#1aa0ff;
+		color:#ffffff;
+	}
+	.account .sub-account .context .right ul li .select-box p.classify {
+		position:absolute; 
+		left:430px; 
+		top:0;  
+		display: inline-block;
+		line-height: 40px;
+		width: 300px;
+		height: 40px;
+		border: 1px #dddddd solid;
+		border-radius: 3px;
+		margin-right: 6px;
+		display:none;
+	}
+	 .account .sub-account .context .right ul li .select-box p.classify.current {
+		color:#1aa0ff;
+		border-color:#1aa0ff;
+	 }
+	
+	
+	</style>
+</head>
+<body class="account">
+<div class="topNav"></div>
+    <div class="content sub-account">
+	    <div class="title">
+			<h2>账号管理</h2>
+		</div>
+		<div class="context">
+			<div class="left"></div>
+			
+			
+			<div class="right">
+			
+				<!--编辑-->
+			</div>
+			
+			
+		</div>
+    </div>
+	
+<div class="footer_box"></div>
+<div class="aside_bar"></div>
+
+<div class="cover1">
+	<div class="cover-box">
+		<div class="title">提示<span class="close2"></span></div>
+		<div class="context">保存成功！</div>
+		<div class="bt-choose">
+			<button type="button" class="bg_blue close2">确定</button>
+		</div>
+	</div>
+</div>
+<div class="cover2">
+	<div class="cover-box">
+		<div class="title">提示<span class="close3"></span></div>
+		<div class="context">确认提交吗？</div>
+		<div class="bt-choose">
+			<button type="button" class="bg_blue">确定</button>
+			<button type="button" class="bg_gray close3">取消</button>
+		</div>
+	</div>
+</div>
+<div class="cover-bg"></div>
+<script>
+
+	/*
+	jQuery(function(){
+		var data = {
+			jfuid:sessionStorage.getItem("jfuid"),
+		};
+		$.ajax({
+			type:"get",
+			url:UrlInformationSeach,
+			data:data,
+			async:false,
+			contentType:"application/x-www-form-urlencoded;charset=utf-8",
+			dataType: "json",
+			success:function(data){
+				//console.log(data.jfustate);
+				localStorage.setItem("jfustate",data.jfustate);
+				sessionStorage.setItem("jfustate",data.jfustate);
+			}
+			
+		});
+	
+		
+		var oIndustry;
+		$(".select-box p.product-classify").click(function(){
+			$('.select-list').show();
+			$(".cover-bg").show();
+		});
+		
+		$(".select-box p.classify").click(function(){
+			$('.select-list-second').show();
+		});
+		function selectBox(){
+			$(".cover-bg, .select-box li").click(function(){
+				
+				$(".cover-bg").hide();
+				$(".select-list").hide();
+				$(".edit input.other-select").removeClass("error");
+			});
+			$(".select-box li").click(function(){
+				
+				$("p.msg-error.hy").hide();
+				$(".select-box").removeClass("error");
+				if($(this).hasClass("last")){
+					$(".other-select").show();
+					oIndustry = $(".other-select").val();
+				}else{
+					$(".other-select").hide();
+					oIndustry = $(this).text();
+				}
+				//$(this).addClass("selected").siblings().removeClass("selected").parent().prev().text($(this).text());
+				$('p.product-classify').html($(this).text());
+				$(this).parent().hide();
+				var data = $(this).data('myself');
+				
+				
+				
+				
+				if(data.nfiid == 'ff8080815b64e782015b66b67603001f'){
+					$('.classify').hide();
+					$('.other-select').show();
+				}else{
+					$('.classify').removeClass('current');
+					$('.select-list-second').hide();
+					$('.classify').html('选择行业分类');
+					$('.classify').show();
+					$('.other-select').hide();
+				}
+				createListSecond(data);
+			});
+		}
+		
+		
+		//表单验证
+		//公司全称
+        $("input.companyName").blur(function(){
+            if($.trim($(this).val()) == ''){
+                $(this).addClass("error");
+                $(this).next().show();
+            }else{
+                $(this).removeClass("error");
+                $(this).next().hide();
+            }
+        });
+        $("input.companyName").focus(function(){
+            $(this).removeClass("error");
+            $(this).next().hide();
+        });
+        //公司地址
+        $("input.companyAdd").blur(function(){
+            if($.trim($(this).val()) == ''){
+                $(this).addClass("error");
+                $(this).next().show();
+            }else{
+                $(this).removeClass("error");
+                $(this).next().hide();
+            }
+        });
+        $("input.companyAdd").focus(function(){
+            $(this).removeClass("error");
+            $(this).next().hide();
+        });
+        //联系人
+        $("input.contact").blur(function(){
+            if($.trim($(this).val()) == ''){
+                $(this).addClass("error");
+                $(this).next().show();
+            }else{
+                $(this).removeClass("error");
+                $(this).next().hide();
+            }
+        });
+        $("input.contact").focus(function(){
+            $(this).removeClass("error");
+            $(this).next().hide();
+        });
+        //手机验证
+        var mobile = $.trim($("input.contactTel").val());
+        var isMobile = /^1\d{10}$/; 
+        $("input.contactTel").blur(function(){
+			var MobileOk = isMobile.test($(this).val());
+            if($.trim($(this).val()) == ''){
+                $(this).addClass("error");
+                $(this).next().show().text("请填写您的联系电话");
+            }else if(MobileOk){
+            	$(this).removeClass("error");
+            	$(this).next().hide();
+            }else{
+                $(this).addClass("error");
+                $(this).next().show().text("请输入正确的手机号码");
+            }
+			
+        });
+		
+        $("input.contactTel").focus(function(){
+            $(this).removeClass("error_red");
+            $(this).next().hide();
+        });
+		//邮箱验证
+        $("input.contactMail").blur(function(){
+            if($.trim($(this).val() == '')){
+                $(this).addClass("error");
+                $(this).next().show().text("请填写您的电子邮箱");
+            }else if (!$(this).val().match(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/)){
+            	$(this).addClass("error");
+            	$(this).next().show().text("请填写正确的邮箱");
+            }else{
+                $(this).removeClass("error");
+                $(this).next().hide;
+            }
+        });
+        $("input.contactMail").focus(function(){
+            $(this).removeClass("error");
+            $(this).next().hide();
+        });
+        //行业验证
+        $(".edit input.other-select").blur(function(){
+            if($(this).val() == ''){
+                $(this).addClass("error");
+                $(this).next().show();
+            }else{
+                $(this).removeClass("error");
+                $(this).next().hide();
+            }
+        });
+        $(".edit input.other-select").focus(function(){
+            $(this).removeClass("error");
+            $(this).next().hide();
+        });
+		
+		
+         //https://gateway.mshuoke.com/bs3/getIndustryList
+		 
+		 function getListdata(callBack){
+			callBack = callBack || function (){};
+			var  url = domain137 + '/bs3/getIndustryList';
+			$.ajax({
+				type:"get",
+				url:url,
+				data:{onoff:0},
+			   // contentType:"application/x-www-form-urlencoded;charset=utf-8",
+				dataType: "json",
+				success:function(data){
+					//debugger;
+					if(data.msg == 'success'){
+						callBack(data.data);
+					}
+					
+				}
+			});
+		 }
+		 getListdata(createList);
+		 function createList(data){
+			data.list.map(function (data,index){
+				var oLi =  $('<li></li>');
+				oLi.data('myself',data);
+				oLi.html(data.name);
+				$('.select-list').append(oLi);
+			});
+			selectBox();
+		 }
+		function createListSecond(data){
+			$('.select-list-second').html('');
+			data.list.map(function (data,index){
+				var oLi = $('<li></li>');
+				oLi.html(data.name);
+				oLi.data('switch',false);
+				$('.select-list-second').append(oLi);
+			});
+			//console.log(data);
+			
+			
+			var haveCurrenttxt = '';
+			function findHaveCurrent(){
+				haveCurrenttxt = "";
+				$('.select-list-second li').map(function (index,data){
+					if($(data).hasClass('current')){
+						haveCurrenttxt+=  $(data).html()+',';
+					}
+				});
+
+				 return haveCurrenttxt.substr(0,haveCurrenttxt.length-1);
+				
+			}
+			
+			$('.select-list-second li').click(function (ev){
+				
+				//console.log('---);
+				var _switch  = $(this).data('switch');
+				if(!_switch){
+					$(this).data('switch',true);
+					$(this).addClass('current');
+				}else{
+					$(this).data('switch',false);
+					$(this).removeClass('current');
+				}
+				var text = findHaveCurrent();
+				
+		
+				if(text){
+					$('p.classify').addClass('current');
+					 if(text.length>16){
+						$('p.classify').html(text.substr(0,16)+'......');
+					 }else{
+						$('p.classify').html(text);
+					 }
+					 $('p.classify').attr('title',text);
+				}else{
+					$('p.classify').removeClass('current');
+					$('p.classify').html('选择行业分类');
+				}
+				
+			});
+			
+			
+			$(document).click(function (ev){
+				var target = ev.target || ev.srcElement;
+				if(!($(target).parents().hasClass('select-list-second') || $(target).hasClass('classify'))){
+					$('.select-list-second').hide();
+				}
+			});
+			
+		}
+		 
+        if(sessionStorage.getItem("jfustate")=="0"){
+		//0-初始状态body.account .audit-ing, body.account .audit-ed, body.account .pass, body.account .edit
+			
+        	$(".account .edit").show();
+        	if(localStorage.getItem("cgid")==undefined||localStorage.getItem("cgid")!=sessionStorage.getItem("jfuid")){
+				initialList();
+			}else{
+				cgList();
+			}
+        }else if(sessionStorage.getItem("jfustate")=="1"){//1-填写资料-提交
+        	$(".account .audit-ing").show();
+        	$(".account .pass").show();
+        	showList();
+        }else if(sessionStorage.getItem("jfustate")=="3"){//3-驳回
+			//console.log("222");
+        	$(".account .audit-ed").show();
+        	$(".account .edit").show();
+        	if(localStorage.getItem("cgid")==undefined||localStorage.getItem("cgid")!=sessionStorage.getItem("jfuid")||localStorage.getItem("from1")=="1"){
+				editList();
+			}else{
+				cgList();
+			}
+        }else{//4-已审核 
+        	$(".account .pass").show();
+        	showList();
+        }
+        
+        
+        function showList(){
+        	var data = {
+	            jfuid:sessionStorage.getItem("jfuid")
+    		};
+        	$.ajax({
+    			type:"get",
+    			url:urlCinfo,
+    			data:data,
+    			async:true,
+                contentType:"application/x-www-form-urlencoded;charset=utf-8",
+                dataType: "json",
+                success:function(data){
+                	//console.log(data);
+                	if(data.code=="Y"){
+	            		$("p.companyName").text(data.compname);
+	            		$("p.brandName").text(data.brandname);
+	            		$("p.companyAdd").text(data.compaddr);
+	            		var compind = data.compind;
+			    		$(".pass .select-list li").each(function(){
+						
+			    			var textLi = $(this).text();
+							
+							
+				            if(compind==textLi){
+				                $(this).parent().prev().text(compind);
+				                $(".pass .other-select").val("").hide();
+				                return false;
+				            }else{
+				            	$(this).parent().prev().text("其他");
+				            	$(".pass .other-select").show();
+				            	$(".pass input.other-select").val(compind);
+				            }
+							
+				        });
+						
+						
+	            		$("p.other-select").text(data.compind);
+	            		$("p.companyDomain").text(data.compwebsite);
+	            		if(data.compimg=="images/customer/photo.png"){
+	            			$("p.gszp img").attr("src","images/customer/gszp.png");
+	            		}else{
+	            			$("p.gszp img").attr("src",data.compimg);
+	            		}
+	            		$("p.contact").text(data.contacts);
+	            		$("p.contactTel").text(data.contactsphone);
+	            		$("p.contactMail").text(data.compemail);
+	            		if(data.complicense=="images/customer/photo.png"){
+	            			$("div.yyzz img").attr("src","images/customer/yyzz.png");
+	            		}else{
+	            			$("div.yyzz img").attr("src",data.complicense);
+	            		}
+	            		if(data.comptaxcer=="images/customer/photo.png"){
+	            			$("div.swdj img").attr("src","images/customer/swdj.png");
+	            		}else{
+	            			$("div.swdj img").attr("src",data.comptaxcer);
+	            		}
+	            		if(data.comporgcode=="images/customer/photo.png"){
+	            			$("div.zzjg img").attr("src","images/customer/zzjg.png");
+	            		}else{
+	            			$("div.zzjg img").attr("src",data.comporgcode);
+	            		}
+	            	}else{
+	            	    alert(data.msg);
+	            	}
+                },
+                error : function(XMLHttpRequest, textStatus, errorThrown) {
+                	if(XMLHttpRequest.status=="500"){
+                		window.location.href = "../page500.html";
+                	}else if(XMLHttpRequest.status=="404"){
+                		window.location.href = "../page500.html";
+                	}else{
+                		console.log(XMLHttpRequest);
+						console.log(textStatus);
+						console.log(errorThrown);
+                	}
+			    },
+    		});
+        }
+        
+        function editList(){
+        	var data = {
+	            jfuid:sessionStorage.getItem("jfuid")
+    		};
+        	$.ajax({
+    			type:"get",
+    			url:urlCinfo,
+    			data:data,
+    			async:true,
+                contentType:"application/x-www-form-urlencoded;charset=utf-8",
+                dataType: "json",
+                success:function(data){
+                	console.log(data);
+                	if(data.code=="Y"){
+	            		$("input.companyName").val(data.compname);
+	            		$("input.brandName").val(data.brandname);
+	            		$("input.companyAdd").val(data.compaddr);
+	            		
+	            		var compind = data.compind;
+			    		$(".edit .select-list li").each(function(){
+			    			var textLi = $(this).text();
+					
+				        });
+
+	            		$("input.companyDomain").val(data.compwebsite);
+	            		$("p.gszp img").attr("src",data.compimg);
+	            		$("input.contact").val(data.contacts);
+	            		$("input.contactTel").val(data.contactsphone);
+	            		$("input.contactMail").val(data.compemail);
+	            		$("p.reason-bh").text(data.approveremark);
+	            		//localStorage.setItem("reason",data.approveremark);
+	            	}else{
+	            	    alert(data.msg);
+	            	}
+                },
+                error : function(XMLHttpRequest, textStatus, errorThrown) {
+                	if(XMLHttpRequest.status=="500"){
+                		window.location.href = "../page500.html";
+                	}else if(XMLHttpRequest.status=="404"){
+                		window.location.href = "../page500.html";
+                	}else{
+                		console.log(XMLHttpRequest);
+						console.log(textStatus);
+						console.log(errorThrown);
+                	}
+			    },
+    		});
+        }
+        
+        function editListCG(){
+        	var data = {
+	            jfuid:sessionStorage.getItem("jfuid")
+    		};
+        	$.ajax({
+    			type:"get",
+    			url:urlCinfo,
+    			data:data,
+    			async:true,
+                contentType:"application/x-www-form-urlencoded;charset=utf-8",
+                dataType: "json",
+                success:function(data){
+                	console.log(data);
+                	if(data.code=="Y"){
+	            		$("p.reason-bh").text(data.approveremark);
+	            	}else{
+	            	    alert(data.msg);
+	            	}
+                },
+                error : function(XMLHttpRequest, textStatus, errorThrown) {
+                	if(XMLHttpRequest.status=="500"){
+                		//window.location.href = "../page500.html";
+                	}else if(XMLHttpRequest.status=="404"){
+                		//window.location.href = "../page500.html";
+                	}else{
+                		console.log(XMLHttpRequest);
+						console.log(textStatus);
+						console.log(errorThrown);
+                	}
+			    },
+    		});
+        }
+        
+        function initialList(){
+        	var data = {
+	            jfuid:sessionStorage.getItem("jfuid")
+    		};
+        	$.ajax({
+    			type:"get",
+    			url:urlCinfo,
+    			data:data,
+    			async:true,
+                contentType:"application/x-www-form-urlencoded;charset=utf-8",
+                dataType: "json",
+                success:function(data){
+                	//console.log(data);
+                	if(data.code=="Y"){
+	            		$("input.companyName").val(data.compname);
+	            		$("input.contactMail").val(data.compemail);
+	            	}else{
+	            	    alert(data.msg);
+	            	}
+                },
+                error : function(XMLHttpRequest, textStatus, errorThrown) {
+                	if(XMLHttpRequest.status=="500"){
+                		window.location.href = "../page500.html";
+                	}else if(XMLHttpRequest.status=="404"){
+                		window.location.href = "../page500.html";
+                	}else{
+                		console.log(XMLHttpRequest);
+						console.log(textStatus);
+						console.log(errorThrown);
+                	}
+			    },
+    		});
+        }
+        
+        function cgList(){
+        	editListCG();
+        	var jfuid = sessionStorage.getItem("jfuid");
+        	var cgid = localStorage.getItem("cgid");
+        	if(jfuid==cgid){
+        		//$("p.reason-bh").text(localStorage.getItem("reason"));
+        		if(localStorage.getItem("jfustate")=="0"){
+        			$("input.companyName").val(localStorage.getItem("compname"));
+        		}
+        		if(localStorage.getItem("jfustate")=="3"){
+        			$("input.companyName").val(localStorage.getItem("compnameEdit"));
+        		}
+	    		$("input.brandName").val(localStorage.getItem("brandname"));
+	    		$("input.companyAdd").val(localStorage.getItem("compaddr"));
+				var compind = localStorage.getItem("compind");
+				$(".edit .select-list li").each(function(){
+	    			var textLi = $(this).text();
+	    			if(compind=="请选择贵公司行业性质"){
+	    				return false;
+	    			}else if(compind==textLi){
+		                $(this).parent().prev().text(compind);
+		                $(".edit .other-select").val("").hide();
+		                return false;
+		            }else{
+		            	$(this).parent().prev().text("其他");
+		            	$(".edit .other-select").show();
+		            	$(".edit input.other-select").val(localStorage.getItem("compind"));
+		            }
+		        });
+	        	$("input.companyDomain").val(localStorage.getItem("compwebsite"));
+	    		$("input.contact").val(localStorage.getItem("contacts"));
+	    		$("input.contactTel").val(localStorage.getItem("contactsphone"));
+	    		$("input.contactMail").val(localStorage.getItem("compemail"));
+        	}       	
+        }
+        
+        $(".btn_tj").click(function(){
+        	$("input:visible").blur();
+        	if($(".edit .select-box p").text()=="请选择贵公司行业性质"){
+        		$(".edit .select-box").addClass("error");
+        		$("p.msg-error.hy").show();
+        		return false;
+        	}
+        	if(file2==''||file3==''||file4==''||file2==undefined||file3==undefined||file4==undefined){
+                $(".img-box .msg").addClass("msg-error").text("请上传营业执照/税务登记证/组织机构代码证");	
+                return false;			           				
+           }
+        	if($("input").hasClass("error")){
+        		$('html,body').animate({scrollTop:$(".error").offset().top-200}, 800);
+        	}else{
+        		if($(".edit .select-box p").text()=="其他"){
+	        		oIndustry = $(".edit .other-select").val();
+	        	}else{
+					if($($(".edit .select-box p")[1]).hasClass('current')){
+						oIndustry = $($(".edit .select-box p")[0]).text() + ','+$($(".edit .select-box p")[1]).text();
+					}else{
+						oIndustry = ($($(".edit .select-box p")[0]).text());
+					}
+	        		
+	        	}
+				
+        		var data = {
+        			jfuid:sessionStorage.getItem("jfuid"),
+		            compname:$("input.companyName").val(),
+		            brandname:$("input.brandName").val(),
+		            compaddr:$("input.companyAdd").val(),
+		            compind:oIndustry,//所属行业
+		            compwebsite:$("input.companyDomain").val(),
+		            compimg:f1,
+		            contacts:$("input.contact").val(),
+		            contactsphone:$("input.contactTel").val(),
+		            compemail:$("input.contactMail").val(),
+		            complicense:f2,
+		            comptaxcer:f3,
+		            comporgcode:f4,
+        		};
+        		//console.log(data);
+        		$.ajax({
+        			type:"post",
+        			url:urlFinfo,
+        			async:true,
+        			data:data,
+                    contentType:"application/x-www-form-urlencoded;charset=utf-8",
+                    dataType: "json",
+                    success:function(data){
+                    	if(data.code=="Y"){
+		            		//console.log(data);
+		            		$(".cover2").show();
+		            		localStorage.setItem("from1","1");
+		            		localStorage.setItem("jfustate","1");
+							
+		            		$(".bg_blue").click(function(){
+					            window.location.href = "customerSuccess.html";
+					        });
+		            	}else{
+		            	    alert(data.msg);
+		            	}
+                    },
+                    error : function(XMLHttpRequest, textStatus, errorThrown) {
+                    	if(XMLHttpRequest.status=="500"){
+                    		//window.location.href = "../page500.html";
+                    	}else if(XMLHttpRequest.status=="404"){
+                    		//window.location.href = "../page500.html";
+                    	}else{
+                    		console.log(XMLHttpRequest);
+							console.log(textStatus);
+							console.log(errorThrown);
+                    	}
+				    },
+        		});
+        	}
+        });
+        
+        $(".btn_cg").click(function(){
+        	//localStorage.setItem("reason",$("p.reason-bh").text());
+        	localStorage.setItem("cgid",sessionStorage.getItem("jfuid"));
+        	localStorage.setItem("compnameEdit",$("input.companyName").val());
+        	localStorage.setItem("brandname",$("input.brandName").val());
+        	localStorage.setItem("compaddr",$("input.companyAdd").val());
+        	localStorage.setItem("compwebsite",$("input.companyDomain").val());
+        	localStorage.setItem("contacts",$("input.contact").val());
+        	localStorage.setItem("contactsphone",$("input.contactTel").val());
+        	localStorage.setItem("compemail",$("input.contactMail").val());
+        	if($(".edit .select-box p").text()=="请选择贵公司行业性质"){
+        		
+        	}else if($(".edit .select-box p").text()=="其他"){
+        		localStorage.setItem("compind",$(".edit input.other-select").val());
+        	}else{
+        		localStorage.setItem("compind",$(".edit .select-box p").text());
+        	}
+			if(localStorage.getItem("jfustate")=="1"){
+				localStorage.setItem("from1","1");
+			}
+        	$(".cover1").show();
+        });
+        
+        $(".close2").click(function(){
+            $(".cover1").hide();
+            window.scrollTo(0,0);
+        });
+        $(".close3").click(function(){
+            $(".cover2").hide();
+        });
+        
+        $("#postfiles").click(function(){
+        	$(".heightH .msg").removeClass("msg-error").text("");
+        });
+        $("#postfiles2, #postfiles3, #postfiles4").click(function(){
+        	$(".img-box .msg").removeClass("msg-error").text("");
+        });
+        
+        
+
+	});
+	*/
+</script>
+
+<script src="../customerMyInfo.bundle.js"></script>
+
+<script src="js/customer/upload.js"></script>
+<script src="js/PerfectData_upload-darren.js"></script>
+
+</body>
+</html>

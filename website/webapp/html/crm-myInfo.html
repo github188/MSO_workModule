@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta charset="UTF-8">
+    <title>完善信息 - 眸事网</title>
+
+    <link rel="stylesheet" href="css/drop-down-2.css"/>
+    <link rel="stylesheet" href="css/css.css"/>
+	<link rel="stylesheet" href="css/crm.css"/>
+	
+	<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script> 
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <script src="js/react.min.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/url.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/select-widget-min.js"></script>
+    <script src="js/new_demend/new_demend.js"></script>
+    <script src="js/cities.js"  type="text/javascript"></script>
+	<script src="js/hide.js"></script>
+	<style>
+		.content-right { float: left; min-height: 600px; padding:15px 15px 80px 15px;}
+		.sub-account .title h2 { line-height:66px; font-size:22px; color:#333333; font-weight:normal;}
+		.sub-account .context { width:878px; color:#666; position:relative;}
+		.search-citys-list ul { clear:both;}
+		.search-citys-list { background: #fff; padding-top: 28px;}
+		.area div.list4 .search-citys-list li { width:86px; padding:0 8px 0 0;}
+		i.radio +span { margin-right:20px;}
+		td.aRight { text-align:right; color:#5b9bd1}
+		table.td-padding td { padding-bottom:20px;}
+		
+		
+		/*接包方完善资料*/
+		.right>div[class^=row]>div{ margin-bottom:20px;}
+		.right>div[class^=row] .rowtitle{width:100%;height:40px;line-height:40px;background: #eeeeee;text-align: center;color:#333;font-size:14px;}
+		.right>div[class^=row] .rowmain{padding:25px 20px 40px 40px; border-bottom:1px #ccc solid;}
+		.right>div[class^=row] .rowmain table{width:auto;margin:0px;border:none;text-align: left;color:#888888;}
+		.right>div[class^=row] .rowmain table tr td:nth-of-type(2){height:40px;}
+		.right>div.row_verified td{height:14px !important;}
+		.right>div[class^=row] .rowmain table td{border:none;}
+		.right>div[class^=row] .rowmain table tr td:nth-of-type(1){vertical-align: top;line-height:40px;}
+		.right>div[class^=row] .rowmain table tr td input[type=text]{width:300px;height:40px;border:1px solid #dddddd;border-radius: 4px; padding:0px 10px;line-height:38px;}
+		.right>div[class^=row] .rowmain table tr td input[type=text]:focus{border-color:#1aa0ff;}
+		.right>div[class^=row] .rowmain table tr.error input[type=text]{border-color:#fd5352;}
+		.right>div[class^=row] .rowmain table tr td span.red{color:#fd5352;}
+		.right>div[class^=row] .rowmain table tr td label{font-weight: 400;min-width:106px;color:#333333;}
+		.right>div.row_2 .rowmain table tr td label{min-width:76px;}
+		.right>div[class^=row] .rowmain table tr#zdycs{display:none;}
+		.right>div[class^=row] .rowmain table tr td.scxm label{color:#666; height: 46px; display: inline-block; line-height: 46px;}
+		.right>div[class^=row] .rowmain table tr td.scxm label i.radio{ display: inline-block; width: 14px; height: 14px; background: url("../images/public/radio_normal.png"); vertical-align: middle; margin-right: 5px;}
+		.right>div[class^=row] .rowmain table tr td.scxm label.active i.radio{background: url("../images/public/radio_active.png");}
+		.right>div[class^=row] .rowmain table tr td p.error-info{white-space: nowrap;background:url("../images/public/error.png")no-repeat;background-position-y:3px;padding-left:23px;line-height:24px;font-size:14px;color:#fd5352;visibility: hidden;}
+		.right>div[class^=row] .rowmain table tr td input[type=text].other{display:none;margin-left:10px;}
+		.right>div[class^=row] .rowmain table tr td input[type=text].schy_other{display:none;margin-left:10px;}
+		.right>div[class^=row] .rowmain table tr td input[type=text].error{border-color:#fd5352;}
+		.right>div[class^=row] .rowmain table tr td input[type=text].error:focus{border-color:#ddd;}
+		.right>div[class^=row] .rowmain table div.file-list{width:300px;height:150px;margin-bottom:18px;}
+		.right>div[class^=row] .rowmain table div[class^=file-list] img{cursor: pointer;width:100%;height:100%;}
+		.right>div[class^=row] .rowmain table button[id^=selectfiles],
+		.right>div[class^=row] .rowmain table button[id^=postfiles]{ outline:none;width:143px;height:30px;line-height:30px;border-radius: 4px;background: #0099ff;color:#fff;border:none;padding:0 10px;vertical-align: middle;}
+		.right>div[class^=row] .rowmain table button[id^=selectfiles]:hover{background: #51b1fb;}
+		.right>div[class^=row] .rowmain table button[id^=postfiles]:hover{background: #51b1fb;}
+		.right>div[class^=row] .rowmain table input[type=radio]{width:14px;height:14px;margin:0px 6px 0px 0px ;vertical-align:middle;}
+		.right>div.row_2 label{min-width:77px;}
+		.right>div[class^=row] .rowmain table button.add_city{outline:none;width:100px;height:26px;line-height:26px;border-radius: 4px;background: #0099ff;color:#fff;border:none;padding:0 10px;vertical-align: top;}
+		.right>div[class^=row] .rowmain table button.add_city:hover{background: #51b1fb;}
+		.right>div[class^=row] .rowmain table tr td input[name=kfplx]+span{margin-right:50px;}
+		.right>div[class^=row] .rowmain table tr td .file-list2{width:250px;height:150px;margin-right:20px;}
+		.right>div[class^=row] .rowmain table tr td .file-list3{width:250px;height:150px;margin-right:20px;}
+		.right>div[class^=row] .rowmain table tr td .file-list4{width:250px;height:150px;}
+		.right>div[class^=row] .rowmain table tr td .ossfile{width:300px;}
+		.right>div[class^=row] .rowmain table tr td .ossfile2{width:250px;}
+		.right>div[class^=row] .rowmain table tr td .ossfile3{width:250px;}
+		.right>div[class^=row] .rowmain table tr td .ossfile4{width:250px;}
+		.right>div.row_4 .rowmain table button[id^=selectfiles],
+		.right>div.row_4 .rowmain table button[id^=postfiles]{width:120px;}
+		.right>div.row_4 .rowmain>p{margin-bottom:20px;}
+		.right>div[class^=row] .rowmain div[class^=file-list]{margin-bottom:18px;position:relative;}
+		.right>div[class^=row] .rowmain div[class^=file-list] div[class^=ossfile]{position: absolute;display:none;bottom:0px;left:0;width:100%;height:30px;line-height:30px;background: #eeeeee;color:#333333;padding:0 31px 0 10px;vertical-align: middle;box-sizing: border-box;}
+
+		.right>div[class^=row] .rowmain div[class^=file-list] div[class^=ossfile] .progress{ width:100%;height:30px;border-radius: 0;background: #eeeeee; position: absolute;left:0;top:0; -webkit-box-shadow: none; box-shadow: none;}
+		.right>div[class^=row] .rowmain div[class^=file-list] div[class^=ossfile] .progress-bar{ background-color: #7cd1ef; -webkit-box-shadow: none; box-shadow: none; -webkit-transition: width 0s ease; -o-transition: width 0s ease; transition: width 0s ease;}
+		.right>div[class^=row] .rowmain div[class^=file-list] div[class^=ossfile] .file_name{ position: relative; z-index: 2;}
+		.right>div[class^=row] .rowmain div[class^=file-list] div[class^=ossfile] .file_close{ display: inline-block; position: absolute; right:10px; z-index: 2; width:11px;height:11px;margin-top:8.5px; background: url("../images/public/close.png");}
+		.right .submit_box{text-align: center;}
+		.right .submit_box button.submit{width:125px;height:40px;line-height:40px;background: #1aa0ff;border:none; border-radius: 4px;color:#fff;margin-right:20px;padding:0;outline:none;font-size:16px;}
+		.right .submit_box button.submit:hover{background: #51b1fb;}
+		.right .submit_box button.save{width:125px;height:40px;line-height:40px;background: #adddfc;border:none;border-radius: 4px;color:#0099ff;border:none;padding:0;outline:none;font-size:16px;}
+		.right .submit_box button.save:hover{background: #c1e6fd;}
+		/*接包方完善资料*/
+		.context .right.success .title {width:100%;height:40px;line-height:40px;background: #eeeeee;text-align: center;color:#333;font-size:14px;}
+		.context .right.success .box { background:url(images/supplier/bg-success.gif) 20px 121px no-repeat; padding:121px 0 0 376px; text-align:center; height:460px;}
+		.context .right.success h3 { font-size:22px; color:#666666; font-weight:normal; margin:35px 0 25px 0;}
+		.context .right.success p { font-size:16px; color:#666666;}
+		.context .right.success p a { color:#5b9bd1;}
+		.context .right.success p a:hover { color:#1aa0ff; text-decoration:underline;}
+		.context .right.success a.btn-refresh { width:400px; height:40px; line-height:40px; background:#428bcb; font-size:16px; color:#fff; display:inline-block; margin-top:95px;}
+		.context .right.success a.btn-refresh:hover { background:#51b1fb;}
+	</style>
+</head>
+<body class="supplier">
+<div class="topNav"></div>
+<div class="content sub-account">
+	<div class="leftNav"></div>
+	<div class="content-right">
+		<div class="title">
+			<h2>账号管理</h2>
+		</div>
+		<div class="context">
+			
+			<div class="right">
+				<div class="row_verified"></div>
+				<div class="row_0"></div>
+				<div class="row_1"></div>
+				<div class="row_2"></div>
+				<div class="row_3"></div>
+				<div class="row_4"></div>
+				<div class="submit_box"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<form name=theform>
+    <input type="radio" name="myradio" value="random_name" checked style="display:none;"/>
+    <input type="hidden" id="pagename" value="credentials">
+</form>
+<div class="footer"></div>
+<div class="area"></div>
+<div class="progress_speed submit_window"></div>
+<div class="progress_speed save_window"></div>
+<div class="aside_bar"></div>
+<script src="js/asideBar-j.js" type="text/babel"></script>
+
+<script src="js/jquery.autocomplete.js" type="text/javascript"></script>
+<script src="js/crm-public.js" type="text/babel"></script>
+
+
+<script src="js/supplier/crm-myInfo0.js" id="rightMain" type="text/babel"></script>
+<script src="https://www.mshuoke.com/js/plupload.full.min.js"></script>
+<script src="js/PerfectData_upload.js"></script>
+<script>
+    //console.time("test");
+    var i=localStorage.getItem("jfustate");
+    switch(i){
+        case "1":
+            $("#rightMain").attr({"src":"js/supplier/crm-myInfo1.js","type":"text/babel"});
+            break;
+        case "3":
+            $("#rightMain").attr({"src":"js/supplier/crm-myInfo3.js","type":"text/babel"});
+            break;
+        case "4":
+            $("#rightMain").attr({"src":"js/supplier/supplier_rightMain3.js","type":"text/babel"});
+            break;
+    }
+</script>
+</body>
+</html>

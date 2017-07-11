@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.mso.model.MkNews" table="mk_news">
+		<id name="newsid" type="java.lang.String">
+			<column name="newsid"/>
+			<generator class="assigned"/>    
+		</id>
+		<property name="title_html" type="java.lang.String">
+			<column name="title_html" >
+			</column>
+		</property>
+		<property name="title" type="java.lang.String">
+			<column name="title" >
+			</column>
+		</property>
+		<property name="author" type="java.lang.String">
+			<column name="author">
+			</column>
+		</property>
+		<property name="description" type="java.lang.String">
+			<column name="description">
+			</column>
+		</property>
+		<property name="keywords" type="java.lang.String">
+			<column name="keywords">
+			</column>
+		</property>
+		<property name="begintime" type="java.lang.String">
+			<column name="begintime">
+			</column>
+		</property>
+		<property name="isshare" type="java.lang.Integer">
+			<column name="isshare">
+			</column>
+		</property>
+		<property name="thumbnail" type="java.lang.String">
+			<column name="thumbnail">
+			</column>
+		</property>
+		<property name="content" type="java.lang.String">
+			<column name="content">
+			</column>
+		</property>
+		<property name="content_html" type="java.lang.String">
+			<column name="content_html">
+			</column>
+		</property>
+		<property name="url" type="java.lang.String">
+			<column name="url">
+			</column>
+		</property>
+		<property name="templet" type="java.lang.String">
+			<column name="templet">
+			</column>
+		</property>
+		<property name="state" type="java.lang.Integer">
+			<column name="state">
+			</column>
+		</property>
+		<property name="reading" type="java.lang.Integer">
+			<column name="reading">
+			</column>
+		</property>
+		<property name="createtime" type="java.lang.String">
+			<column name="createtime" >
+			</column>
+		</property>
+		<property name="updatetime" type="java.lang.String">
+			<column name="updatetime" >
+			</column>
+		</property>
+		<property name="label" type="java.lang.String">
+			<column name="label">
+			</column>
+		</property>
+			
+	</class>
+</hibernate-mapping>

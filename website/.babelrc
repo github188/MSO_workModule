@@ -1,0 +1,17 @@
+{
+  "presets": ["es2015","stage-0", "react"],
+  "plugins": [
+	"transform-decorators-legacy",
+	"transform-class-properties",
+
+	"transform-object-assign",
+    "add-module-exports",
+    "transform-object-rest-spread",
+	[
+      "import",
+      {
+        "libraryName": "antd",
+        "style": true
+      }
+    ]]
+}

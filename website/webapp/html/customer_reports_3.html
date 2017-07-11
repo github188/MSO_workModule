@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>成单报表 - 眸事网</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/index-1.css" />
+	<link rel="stylesheet" href="css/index-2.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap-datetimepicker.css">
+	<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script> 
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <script src="js/react.min.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/url.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
+	<script src="js/hide.js"></script>
+	<!---<script src="//kefu.mshuoke.com/im/4028838b5ac815e3015ac81645f90000.html"></script>-->
+</head>
+<body>
+<div class="topNav"></div>
+<div class="content">
+    <div class="title">
+        <h2>成单报表</h2>
+    </div>
+    <div class="reports">
+        <span style="margin:8px 50px 25px 0px;line-height:30px;">需求名称:&emsp;<span  class="demand_name">抓取需求名称</span></span>
+        <span style="margin:8px 48px 25px 0px;line-height:30px;">目标区域:&emsp;<span  class="demand_name">目标区域</span></span>
+        <span style="margin:8px 0px 25px 0px;line-height:30px;">发布量:&emsp;<span  class="demand_name">发布量</span></span>
+        <div class="right">
+            <input type="text" class="form_date startDate" required><i class="date_icon"></i><span style="color:#ddd;">&nbsp;—&nbsp;</span>
+            <input type="text" class="form_date endDate" required><i class="date_icon"></i>
+            <button type="button" class="search">搜索</button>
+        </div>
+        <table class="reports">
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>完成量</th>
+                    <th>成单时间</th>
+                    <th>成单报告</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>400</td>
+                <td>2016-09-20</td>
+                <td><a href="#">下载</a></td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="javascript:hostory.go(-1)" type="button" class="back">返回</a>
+        <hr/>
+        <p class="reports_title">汇总</p>
+        <table  class="reports">
+            <thead>
+                <tr>
+                    <th>发布量</th>
+                    <th>完成量</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>500</td>
+                    <td>400</td>
+                </tr>
+            </tbody>
+        </table>
+        <hr/>
+        <p class="reports_title">录音文件</p>
+        <table  class="reports_file">
+            <tbody>
+            <tr>
+                <td>1.&emsp;&emsp;&emsp;录音文件对应时间</td>
+                <td>2016-09-20</td>
+                <td><a href="#">下载</a></td>
+            </tr>
+            <tr>
+                <td>1.&emsp;&emsp;&emsp;录音文件对应时间</td>
+                <td>2016-09-20</td>
+                <td><a href="#">下载</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="footer_box">
+    </div>
+    <script src="js/header-customer.js" type="txext/babel"></script>
+    <script src="js/footer.js" type="text/babel"></script>
+    <script>
+        $(".startDate").datetimepicker({
+            language:  'zh-CN',
+            weekStart: 1,
+            todayBtn:  1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0,
+            format: 'yyyy-mm-dd',
+        }).on("click",function(ev){
+            $(".startDate").datetimepicker("setEndDate", $(".endDate").val());
+        });
+        $(".endDate").datetimepicker({
+            language:  'zh-CN',
+            weekStart: 1,
+            todayBtn:  1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0,
+            format: 'yyyy-mm-dd',
+        }).on("click", function (ev) {
+            $(".endDate").datetimepicker("setStartDate", $(".startDate").val());
+        })
+    </script>
+</body>
+</html>

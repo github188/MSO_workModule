@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- identity -->
+<hibernate-mapping>
+
+    <class name="com.mso.model.HFservicetype" table="h_f_service_type">
+         <id name="fstid" type="java.lang.String"> 
+             <column name="fstid" />
+             <generator class="assigned"/> 
+         </id> 
+         
+        <property name="fstname" type="java.lang.String">
+            <column name="fstname" />
+        </property>
+        
+        <property name="sort" type="java.lang.Integer">
+            <column name="sort" />
+        </property>
+        
+        <property name="display" type="java.lang.Integer">
+            <column name="display" />
+        </property>
+        
+        <property name="open" type="java.lang.Integer">
+            <column name="open"/>
+        </property>
+        
+        <property name="introduce" type="java.lang.String">
+            <column name="introduce"/>
+        </property>
+        
+        <property name="createtime" type="java.lang.String">
+           <column name="createtime"/>
+        </property>
+        
+        <property name="updatetime" type="java.lang.String">
+           <column name="updatetime"/>
+        </property>
+        
+    </class>
+    
+</hibernate-mapping>

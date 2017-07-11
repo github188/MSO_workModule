@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,minimum-scale=0.2,maximum-scale=0.5,user-scalable=yes" />
+		<title>现在入驻眸事网，立享200元现金奖励</title>
+		<script src="active/js/jquery-1.7.2.min.js"></script>
+		<script src="active/js/main.js"></script>
+		<script src="active/js/url.js"></script>
+		<style>
+			body { background: url(images/bg1.jpg) center top no-repeat #143eaa; font-family: "microsoft yahei",sans-serif; padding: 0; margin: 0;}
+			p,ul,li { padding: 0; margin: 0;}
+			li { list-style: none;}
+			img { border: 0; display: inherit;}
+			.wrap { width: 1200px; padding-top: 20px; margin: 0 auto;}
+			.footer { background: #1d2088; height: 100px; padding-top: 50px; font-size: 18px; color: #5478d3; text-align: center; width: 100%; min-width: 1200px;}
+			.footer a { color: #b1c5f9; text-decoration: none;}
+			.footer a:hover { color: #f1f3f9; text-decoration: underline;}
+			.hot-demand { padding-top: 50px;}
+			.hot-demand .title { text-align: center; padding-bottom: 80px;}
+			.hot-demand .title img { margin: 0 auto;}
+			.hot-demand .content { overflow: hidden;}
+			.active-btn { text-align: center; padding-bottom: 125px;}
+			.active-btn a { width: 296px; height: 110px; line-height: 0; font-size: 0; overflow: hidden; text-indent: 100%; margin: 0 10px;}
+			.active-register { padding-top: 70px;}
+			.active-time p { text-align: center; font-size: 38px; color: #fff; padding-bottom: 60px;}
+			.active-time p span { color: #ffe249;}
+		</style>
+		<script>
+			var code = isNull(GetRequest().jfuinvitationcode)?"":GetRequest().jfuinvitationcode;
+			var codeUrl = "active/register.html?jfuinvitationcode=" + code;
+		</script>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="logo"><a href="//www.mshuoke.com" target="_blank"><img src="active/images/logo.png" alt="logo" /></a></div>
+			<div class="active-time"><img src="active/images/active-title.png" width="100%" alt="活动时间" /></div>
+			<div class="active-time"><img src="active/images/active-step1.png" width="100%" alt="活动规则" /></div>
+			<div class="active-time"><img src="active/images/active-step2.png" width="100%" alt="活动规则" /></div>
+			<div class="active-time"><img src="active/images/active-step3.png" width="100%" alt="活动规则" /></div>
+			<div class="active-time">
+				<p>您的邀请码：<span></span></p>
+			</div>
+			<div class="active-btn">
+				<!-- JiaThis Button BEGIN -->
+				<div class="jiathis_style_32x32">
+				<a class="jiathis_button_weixin"></a>
+				<a class="jiathis_button_cqq"></a>
+				<!--<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>-->
+				<a class="jiathis_counter_style" style="display: none;"></a>
+				</div>
+				<script type="text/javascript" >
+				var jiathis_config={
+					url:codeUrl,
+					summary:"",
+					title:"",
+					pic:"html/images/home/logo.png",
+					shortUrl:false,
+					hideMore:false
+				}
+				</script>
+				<script type="text/javascript" src="html/js/jia.js" charset="utf-8"></script>
+				<!-- JiaThis Button END -->
+
+			</div>
+
+		</div>
+		<div class="footer">
+			<p>Copyright © 2011-2016   上海脉豪商务信息咨询有限公司   版权所有  沪ICP备15029022号-1</p>
+			<p>眸事网&nbsp;<a href="//www.mshuoke.com" target="_blank">www.mshuoke.com</a> 丨 400-900-5288</p>
+		</div>
+		<style>
+			.jiathis_style_32x32 .jtico.jtico_weixin { background: url(images/share-we.jpg) no-repeat;}
+			.jiathis_style_32x32 .jtico.jtico_weixin:hover { background: url(images/share-we-h.jpg) no-repeat;}
+			.jiathis_style_32x32 .jtico.jtico_cqq { background: url(images/share-qq.jpg) no-repeat;}
+			.jiathis_style_32x32 .jtico.jtico_cqq:hover { background: url(images/share-qq-h.jpg) no-repeat;}
+			.jiathis_style_32x32 .jtico { width: 296px!important; height: 110px!important; display: inline-block;}
+			.jiathis_style_32x32  .jiathis_txt { float: none;}
+			#jiathis_webchat img { margin: 0 auto;}
+			.jiathis_button_weixin,
+			.jiathis_button_cqq { display: inline-block;}
+			.jiathis_style_32x32 .jtico:hover { opacity: 1;}
+		</style>
+		<script>
+			$(".active-time p span").text(code);
+		</script>
+	</body>
+	<script></script>
+</html>

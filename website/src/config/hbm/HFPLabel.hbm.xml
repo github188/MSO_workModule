@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.mso.model.HFPLabel" table="h_f_p_label" >
+        <id name="dlid" type="java.lang.String">
+            <column name="dlid" />
+             <generator class="assigned" />
+        </id>
+        <property name="labelId" type="java.lang.String">
+            <column name="label_id" >
+            </column>
+        </property>
+        <property name="pid" type="java.lang.String">
+            <column name="pid"  >
+            </column>
+        </property>
+        <property name="createtime" type="java.lang.String">
+            <column name="createtime" length="100" />
+        </property>
+         <property name="updatetime" type="java.lang.String">
+            <column name="updatetime" length="100" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta charset="UTF-8">
+    <title>新增子账号 - 眸事网</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css"/>
+	
+	<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script> 
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/url.js"></script>
+	<script src="js/hide.js"></script>
+	<!---<script src="//kefu.mshuoke.com/im/4028838b5ac815e3015ac81645f90000.html"></script>-->
+</head>
+<body class="supplier">
+<div class="topNav"></div>
+    <div class="content sub-account">
+	    <div class="title">
+			<h2>账号管理</h2>
+		</div>
+		<div class="context">
+			<div class="left"></div>
+			<div class="right">
+				<h3>新增子账号</h3>
+				<div class="add-box">
+					<ul>
+	                    <li>
+	                        <label><span class="required">*</span> 用户账号：</label>
+	                        <input type="text" class="accountName" placeholder="请输入3~20位以字母开头，字母和数字组成的账号" />
+	                        <span class="msg"></span>
+	                    </li>
+	                    <li>
+	                        <label><span class="required">*</span> 登录密码：</label>
+	                        <input type="password" class="loginPsd" placeholder="请输入6~20位数字或字母组成的密码" />
+	                        <span class="msg"></span>
+	                    </li>
+	                    <li>
+	                        <label><span class="required">*</span> 确认密码：</label>
+	                        <input type="password" class="loginPsd1" />
+	                        <span class="msg"></span>
+	                    </li>
+	                    <li>
+	                        <label><span class="required">*</span> 用户状态：</label>
+    						<input type="radio" name="jfudisable" id="input1" checked="checked" class="qy" /><label for="input1">启用</label>
+    						<input type="radio" name="jfudisable" id="input2" class="ty" /><label for="input2">停用</label>
+    						<span class="msg"></span>
+	                    </li>
+	                    <li>
+	                        <button class="btn_submit" type="button">确定提交</button>
+	                    </li>
+	                </ul>
+				</div>
+			</div>
+		</div>
+    </div>
+<div class="footer_box"></div>
+<div class="aside_bar"></div>
+<script src="js/asideBar.js" type="text/babel"></script>
+<script>
+	jQuery(function(){
+		//用户账户
+		var oUser = /^[a-zA-Z0-9]{1,}$/;
+		var oFirstletter = /^[a-zA-Z]{1}/;
+		$("input.accountName").blur(function(){
+			if($(this).val() == ''){
+                $(this).addClass("error");
+                $(this).next().text("请输入用户账号");
+                $(this).next().removeClass("correct").addClass("error");
+            }else if($(this).val().length<3){
+                $(this).addClass("error");
+                $(this).next().removeClass("correct").addClass("error").text("请输入3~20位字母或数字组成的账号");
+            }else if($(this).val().length>20){
+                $(this).addClass("error");
+                $(this).next().removeClass("correct").addClass("error").text("请输入3~20位字母或数字组成的账号");
+            }else if(!$(this).val().match(oFirstletter)){
+            	$(this).addClass("error");
+            	$(this).next().addClass("error").text("第一个字符必须为字母");
+            }else if(!$(this).val().match(oUser)){
+            	$(this).addClass("error");
+            	$(this).next().removeClass("correct").addClass("error").text("只能输入字母与数字且必须是以字母开头");
+            }else{
+                $(this).removeClass("error");
+                $(this).next().text("").addClass("correct");
+            }
+		});
+		$("input.accountName").focus(function(){
+            $(this).removeClass("error");
+            $(this).next().removeClass("error").text("");
+        });
+		//密码验证
+        $("input.loginPsd, input.loginPsd1").blur(function(){
+            if($(this).val() == ''){
+                $(this).addClass("error");
+                $(this).next().removeClass("correct").addClass("error").text("请输入您的6~20位密码");
+            }else if($(this).val().length<6){
+                $(this).addClass("error");
+                $(this).next().removeClass("correct").addClass("error").text("请输入您的6~20位密码");
+            }else if($(this).val().length>20){
+                $(this).addClass("error");
+                $(this).next().removeClass("correct").addClass("error").text("请输入您的6~20位密码");
+            }else if(!$(this).val().match(oUser)){
+            	$(this).addClass("error");
+            	$(this).next().removeClass("correct").addClass("error").text("只能输入字母与数字");
+            }else{
+                $(this).removeClass("error");
+                $(this).next().text("");
+                $(this).next().removeClass("error").addClass("correct");
+            }
+        });
+        $("input.loginPsd, input.loginPsd1").focus(function(){
+            $(this).removeClass("error");
+            $(this).next().removeClass("error").text("");
+        });
+        //确认新密码
+        $("input.loginPsd1").blur(function(){
+        	if($("input.loginPsd1").val()==""){
+	        	$(this).next().removeClass("correct").addClass("error").text("请再次输入您的密码");
+	        }else if($("input.loginPsd1").val() != $("input.loginPsd").val()){
+        		$(this).addClass("error");
+	        	$(this).next().text("两次输入不一致");
+	        	$(this).next().removeClass("correct").addClass("error");
+	        }else{
+	        	$(this).removeClass("error");
+	        	$(this).next().text("");
+	        	$(this).next().removeClass("error").addClass("correct");	
+	        }
+        });
+        $(".btn_submit").click(function(){
+        	$("input").blur();
+        	if($("input").hasClass("error")){
+        		
+        	}else{
+        		addAccount();
+        	}
+        });
+	});
+	function addAccount(){
+		 var subAccount={
+            "jfutype":3,  //1-发包方   2-接包方 3-子账号
+            "jfuname":$("input.accountName").val(),//用户名/昵称-用于登录(3-20 位    不区分大小写)
+            "jfupassword":$("input.loginPsd").val(),//密码(密文)用于登录(6-20 位    区分大小写)
+            "jfudisable":$("input[name=jfudisable]:checked").is("#input1")?"1":"2",//1-启用  2-停用
+            "pid":sessionStorage.getItem("jfuid"),
+        };
+		$.post("/user_toRegoster",subAccount,function(date){
+			if(date.code=="Y"){
+				//alert("新增成功！");
+				window.location="subAccount.html";
+			}else if(date.code=="ER002"){
+				$("input.accountName").addClass("error").next().removeClass("correct").addClass("error").text("账号已被占用，请重新设置!");
+			}else{
+				console.log(date.msg);
+			}
+		});
+	}
+</script>
+
+<script type="text/babel" src=js/header-supplier.js></script>
+<script src="js/supplier/leftMenu.js" type="text/babel"></script>
+<!--<script src="js/supplier/subAccountNew.js" type="text/babel"></script>-->
+<script src="js/footer.js" type="text/babel"></script>
+</body>
+</html>

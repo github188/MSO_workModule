@@ -1,0 +1,7 @@
+.sub-account .context { width: 1200px; margin: 0 auto; padding-top: 20px; padding-bottom: 40px; overflow: hidden;}
+.sub-account .context .left { width: 300px; height: 600px; background: #fff; border: 1px #dddddd solid;}
+.sub-account .context .left li { height: 60px; line-height: 60px; color: #666666; background: url(../images/supplier/bg_subDashed.gif) center bottom no-repeat;}
+.sub-account .context .left li a { padding-left: 100px; border-left: 6px #fff solid; font-size: 16px; color: #666666; display: block;}
+.sub-account .context .left li a.selected { border-left: 6px #008cd6 solid; background: #f1f1f1;}
+.sub-account .context .left li a:hover { color: #008cd6;}
+.sub-account .context .left li.bg-none { background: none;}

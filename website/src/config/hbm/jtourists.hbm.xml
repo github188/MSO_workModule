@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- 
+    用户信息表-/接包方 h_j_intention_tourists
+-->
+<hibernate-mapping>
+  
+	<!-- h_j_intention_tourists -->
+    <class name="com.mso.model.JTourists" table="h_j_intention_tourists">
+         <id name="jitid" type="java.lang.String"> 
+             <column name="jitid" />
+             <generator class="assigned"></generator>
+         </id> 
+        <property name="jmcid" type="java.lang.String">
+            <column name="jmcid" />
+        </property>
+        <property name="jitname" type="java.lang.String">
+            <column name="jitname" />
+        </property>
+        <property name="jitmobilephone" type="java.lang.String">
+            <column name="jitmobilephone" />
+        </property>
+        <property name="jitorganization" type="java.lang.String">
+            <column name="jitorganization" />
+        </property>
+        <property name="jitinvitationcode" type="java.lang.String">
+            <column name="jitinvitationcode" />
+        </property>
+        <property name="jitstate" type="java.lang.Integer">
+            <column name="jitstate" />
+        </property>
+        <property name="createtime" type="java.lang.String">
+            <column name="createtime" />
+        </property>
+        <property name="updatetime" type="java.lang.String">
+            <column name="updatetime" />
+        </property> 
+    </class>
+
+</hibernate-mapping>

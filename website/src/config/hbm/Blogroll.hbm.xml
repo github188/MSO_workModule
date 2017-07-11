@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.mso.model.Blogroll" table="mk_blogroll">
+		<id name="linkid" type="java.lang.Integer">
+			<column name="linkid"/>
+			<generator class="identity"/>    
+		</id>
+		<property name="url" type="java.lang.String">
+			<column name="url" not-null="true">
+			</column>
+		</property>
+		<property name="websitename" type="java.lang.String">
+			<column name="websitename" length="100" not-null="true">
+			</column>
+		</property>
+		<property name="createtime" type="java.lang.String">
+			<column name="createtime" >
+			</column>
+		</property>
+		<property name="updatetime" type="java.lang.String">
+			<column name="updatetime" >
+			</column>
+		</property>
+		<property name="weblogourl" type="java.lang.String">
+			<column name="weblogourl" not-null="true">
+			</column>
+		</property>
+		<property name="clickcount" type="java.math.BigInteger">
+			<column name="clickcount" >
+			</column>
+		</property>
+		<property name="isdelete" type="java.lang.Integer">
+			<column name="isdelete" >
+			</column>
+		</property>
+
+	
+	</class>
+</hibernate-mapping>

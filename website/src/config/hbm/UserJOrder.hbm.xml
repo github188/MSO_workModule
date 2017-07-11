@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- identity -->
+<hibernate-mapping>
+
+    <class name="com.mso.model.UserJOrder" table="user_j_order">
+<!-- 		<property name="orderid" type="java.lang.String"> -->
+<!--             <column name="orderid"  /> -->
+<!--         </property> -->
+        
+        
+        
+        <id name="orderid" type="java.lang.String">
+            <column name="orderid"  />
+            <generator class="assigned" />
+        </id>
+        
+        
+        
+        <property name="userId" type="java.lang.String">
+            <column name="USER_ID" />
+        </property>
+        <property name="isreview" type="java.lang.Integer">
+            <column name="isreview" />
+        </property>
+    </class>
+    
+</hibernate-mapping>

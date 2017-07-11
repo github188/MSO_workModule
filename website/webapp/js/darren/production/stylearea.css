@@ -1,0 +1,202 @@
+@charset "utf-8";
+
+.industry .line2{ display:none; }
+.areaList { width: 800px;
+    background: rgba(242,249,253,.8);
+    margin-bottom: 20px;
+    padding: 20px 10px 30px 10px;
+    position: relative;
+   }
+ div.area>div {
+    width: 714px;
+    border: 1px solid #ddd;
+    color: #666;
+    background: #fff;
+    display: -none;
+    position: absolute;
+    z-index: 3;
+}
+
+div.area ul.list {
+    width: 100%;
+    text-align: center;
+    background: #f3f1f1;
+    border-bottom: 1px solid #ddd;
+    font-size: 0;
+    position: relative;
+}
+
+div.area ul.list li.active {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid white;
+    background: white;
+    color: #1aa0ff;
+}
+div.area ul.list li {
+    width: 122px;
+    display: inline-block;
+    font-size: 16px;
+    line-height: 38px;
+    color: #999;
+    cursor: pointer;
+}
+
+div.area div.hot {
+    margin: 30px 20px;
+    font-size: 0px;
+	overflow:hidden;
+}
+
+div.area div.hot span {
+    font-size: 14px;
+	margin-top:1px;
+	display:table;
+	float:left; 
+}
+
+div.area ul[class^=list].active {
+    display: inline-block;
+}
+
+div.area div.hot li {
+    display: inline-block;
+    font-size: 14px;
+    margin-left: 30px;
+}
+
+div.area div.search {
+    height: 40px;
+    line-height: 38px;
+    margin: 0px 20px 30px 20px;
+    border: 1px solid #ddd;
+    background: #f3f1f1;
+}
+
+div.area div.search input {
+    width: 130px;
+    height: 30px;
+    border: 1px solid #1aa0ff;
+    margin: 0px 24px 0px 10px;
+    padding: 0px 10px;
+    font-size: 12px;
+	border-radius: 4px;
+}
+
+div.area div.search ul {
+    float: right;
+    font-size: 0;
+    margin-top: -1px;
+    height: 40px;
+}
+
+div.area div.search ul li.current {
+    background: #1aa0ff;
+    color: #fff;
+    position: relative;
+}
+
+div.area div.search ul li {
+    line-height: 40px;
+    text-align: center;
+    padding: 0 13px;
+    display: inline-block;
+    font-size: 16px;
+    color: #999;
+    cursor: pointer;
+}
+
+.search-citys-list ul {
+    overflow: hidden;
+    margin: 0px 20px;
+}
+
+.area>div div:not(.list4) .search-citys-list li:nth-of-type(10n-9) {
+    text-align: left;
+    width: 56px;
+}
+
+.area>div div:not(.list4) .search-citys-list li {
+    float: left;
+    width: 70px;
+    margin-bottom: 30px;
+    text-align: center;
+    line-height: 16px;
+}
+
+div.area div.list3 ul.area {
+    margin: 0px 20px;
+}
+
+div.area div.list3 ul.area li.js_key {
+    margin-bottom: 30px;
+    color: #999;
+	float:none;
+}
+div.area div.list3 ul.area li {
+    margin-bottom: 30px;
+    color: #999;
+	float:left;
+}
+
+.search-citys-list ul {
+    overflow: hidden;
+    margin: 0px 20px;
+}
+
+.area>div div:not(.list4) .search-citys-list li:nth-of-type(10n-9) {
+    text-align: left;
+    width: 56px;
+}
+
+.area>div div:not(.list4) .search-citys-list li {
+    float: left;
+    width: 70px;
+    margin-bottom: 30px;
+    text-align: center;
+    line-height: 16px;
+}
+
+.area a {
+    color: #999;
+}
+
+div.area li a {
+    color: #666;
+    text-decoration: none;
+}
+
+div.area ul.list i.close {
+    display: inline-block;
+    position: absolute;
+    right: 20px;
+    top: 9px;
+    width: 20px;
+    height: 20px;
+    background: url(/images/public/close.png)no-repeat center center;
+}
+
+.area>div div:not(.list4) .search-citys-list li:nth-of-type(10n) {
+    text-align: right;
+    width: 56px;
+}
+
+.area>div div:not(.list4) .search-citys-list li {
+    float: left;
+    width: 70px;
+    margin-bottom: 30px;
+    text-align: center;
+    line-height: 16px;
+}
+
+.areaList input.select, .block-box input.select {
+    width: 122px;
+    padding-right: 34px;
+}
+.areaList input[type=text], .block-box input[type=text] {
+    width: 280px;
+    height: 30px;
+    border: 1px solid #ddd;
+    padding: 0px 10px;
+    border-radius: 4px;
+}

@@ -1,0 +1,152 @@
+.content{
+    width: 1200px;
+    margin: 0 auto;
+    height: 598px;
+}
+.titleCharts{
+    min-height: 156px;
+    padding-top: 25px;
+}
+
+.titleCharts > h2 {
+    font-style: "微软雅黑";
+    font-weight: 500;
+    text-align: center;
+    font-size: 26px;
+    height: 60px;
+    line-height: 60px;
+    color: #353535;
+    padding: 10px 0;
+}
+
+
+.titleCharts > h2:nth-child(2) > span {
+    color: #00D0EE;
+    font-size: 46px;
+    padding: 0 20px;
+}
+
+div,ul,li,h2{
+    padding: 0;
+    margin: 0;
+}
+li {
+    list-style: none;
+
+}
+
+.content > ul > li {
+    float: left;
+    height: 450px;
+    width: 380px;
+    position: relative;
+}
+.content > ul > li:nth-child(2),.content > ul > li:nth-child(5){
+    margin: 0 30px;
+}
+.content h2 {
+    text-align: center;
+    background-color: #E3FBFE;
+    font-weight: 500;
+    font-family: "Microsoft Yahei";
+    font-size: 18px;
+    height: 38px;
+    line-height: 38px;
+}
+
+.echarts {
+    padding-top: 30px;
+    height: 380px;
+    width: 100%;
+}
+
+.sex {
+    font-size: 12px;
+    width: 100%;
+    top: 30px;
+    left: 0;
+    position: absolute;
+}
+
+.right {
+    float: right;
+}
+
+.right > ul > li {
+    font-size: 14px;
+    width: 120px;
+    color:#333333;
+}
+.right > ul > li>label{
+    font-weight: normal;
+}
+#bmap {
+    margin-top: 5px;
+    height: 332px;
+    border: 2px solid #E2FAFC;
+    overflow: hidden;
+}
+#div1{
+    margin-top: -24px;
+}
+#div3{
+    width: 100%;
+    height: 384px;
+}
+
+.clear::before, .clear::after {
+    clear: both;
+    content: '';
+    zoom: 1;
+    display: block;
+    height: 0;
+}
+.spin{
+    position: absolute;
+    width: 100%;
+    height: 412px;
+    width: 380px;
+    top: 38px;
+    left: 0;
+}
+.spinPos{
+    position: absolute;
+    width: 100%;
+    height: 412px;
+    left: 0;
+    top: 0;
+    text-align: center;
+    z-index: 30;
+    background-color: #ffffff;
+}
+.tip{
+    position: absolute;
+    margin-top: -25px;
+    top: 50%;
+    text-align: center;
+    left:50%;
+    margin-left: -25.12px;
+}
+.tipTitle{
+    font-size: 20px;
+    color:#444444;
+}
+.noData{
+    text-align: center;
+}
+.noData p{
+    color:#666666;
+
+}
+.noData p:nth-child(2){
+    margin-bottom: 40px;
+}
+.center{
+    font-size: 16px;
+    margin-top: 20px;
+    text-align: left;
+    padding-left: 387px;
+}
+.center a:hover{
+    text-decoration: underline;
+}

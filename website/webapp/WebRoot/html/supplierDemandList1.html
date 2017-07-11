@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>我的订单 - 眸事网</title>
+
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css"/>
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/drop-down.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/bootstrap-datetimepicker.css">
+	<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script> 
+	<script src="js/jquery-ui.min.js"></script>
+
+	<script src="js/react.js"></script>
+	<script src="js/react-dom.js"></script>
+	<script src="js/browser.min.js"></script>
+	<script src="js/circle-progress.js"></script>
+	<script src="js/echarts.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/url.js"></script>
+<script src="js/hide.js"></script>
+	<script src="js/select-widget-min.js"></script>
+<!---<script src="//kefu.mshuoke.com/im/4028838b5ac815e3015ac81645f90000.html"></script>-->
+
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js" charset="UTF-8"></script>
+
+    <script src="js/jquery.autocomplete.js" type="text/javascript"></script>
+    <script src="js/jquery.AshAlom.gaugeMeter-2.0.0.min.js"></script>
+</head>
+<body class="bg-white">
+
+    <div class="topNav"></div>
+    <input type="hidden" name="currentPage" id="currentPage" value="1">
+    <input type="hidden" name="jdstate" id="jdstate" value="0">
+    <input type="hidden" name="classify" id="classify" value="1">
+    <div class="content padding0">
+    	<div class="title">
+    		<h2>查看我的订单:</h2>
+    	</div>
+    	<div class="title_select">
+    		<ul>
+    			<li class="selected">订单列表</li>
+    			<li>异常订单</li>
+    		</ul>
+    	</div>
+    	<div class="demand-box supplier">
+    		<!--列表需求-->
+    		<div class="deman_hall_search demand-list all-list">
+    			<div class="search-box">
+    				<ul>
+    					<li class="selected">全部<span></span></li>
+    					<li>审核中<span></span></li>
+    					<li>进行中<span></span></li>
+    					<li>结算中<span></span></li>
+    					<li>已完成<span></span></li>
+    				</ul>
+    				<input type="text" placeholder="订单名称" class="demand-name" id="demandname" />
+    				<input type="text" placeholder="订单编号" class="demand-name" id="orderid" />
+    				<div class="right">
+    					<label>竞拍时间：</label>
+    					<input type="text" class="form_date start_date" date-format="yyyy-mm-dd" readonly id="start_date"/><i class="date_icon"></i>
+    					<label>-</label>
+    					<input type="text" class="form_date end_date" date-format="yyyy-mm-dd" readonly id="end_date"/><i class="date_icon"></i>
+    					<button type="button" id="seach" value="" onclick="getDemandList('page')">确定</button>
+    				</div>
+    			</div>
+    			<div class="search-result all-list" id="search_reslut"></div>
+
+    		</div>
+    		<!--异常需求-->
+    		<div class="deman_hall_search demand-list abnormal hide">
+    			<div class="search-box abnormal">
+    				<input type="text" placeholder="订单名称" class="demand-name" id="ycdemandname" />
+    				<input type="text" placeholder="订单编号" class="demand-name" id="ycorderid" />
+    				<div class="left" style="width: 686px;">
+    					<label>竞拍时间：</label>
+    					<input type="text" class="form_date start_date" date-format="yyyy-mm-dd" readonly  id="ycstart_date" /><i class="date_icon"></i>
+    					<label>-</label>
+    					<input type="text" class="form_date end_date" date-format="yyyy-mm-dd" readonly id="ycend_date" /><i class="date_icon"></i>
+    					<button type="button" id="seach1" value="" onclick="getDemandList('page')">确定</button>
+    				</div>
+    			</div>
+    			<div class="search-result" id="search_reslut_abnormal"></div>
+
+    		</div>
+
+    	</div>
+    	<div class="center_text"><div class="page" id="page"></div></div>
+    </div>
+    <!--页脚信息开始-->
+    <div class="footer_box"></div>
+    <div class="loading_cover">
+		<div class="loader">
+	        <div class="loader-inner ball-spin-fade-loader">
+	          <div></div>
+	          <div></div>
+	          <div></div>
+	          <div></div>
+	          <div></div>
+	          <div></div>
+	          <div></div>
+	          <div></div>
+	        </div>
+	    </div>
+	</div>
+	<div class="cover-bg"></div>
+
+	<div class="aside_bar"></div>
+	<script src="js/asideBar.js" type="text/babel"></script>
+    <script src="js/header-supplier.js" type="text/babel"></script>
+<!--    <script src="js/customer/demand-done.js" type="text/babel"></script>-->
+	<script src="js/footer.js" type="text/babel"></script>
+	<script>
+		if(sessionStorage.getItem("pid")!==""){
+			$(".title_select").hide();
+		}
+		
+		//选项卡切换
+		var $div_li = $(".content .title_select li");
+        $div_li.click(function(){
+            $(this).addClass("selected").siblings().removeClass("selected");
+            var index2 =  $div_li.index(this);
+            $(".content .demand-box .demand-list").eq(index2).removeClass("hide").siblings().addClass("hide");
+        });
+
+	    //搜索框选择切换
+	    $(".demand-list .search-box li").click(function(){
+	    	$(this).addClass("selected").siblings().removeClass("selected")
+	    });
+		//日期控件
+        $(".start_date").datetimepicker({
+    		language:  'zh-CN',
+            weekStart: 1,
+            todayBtn:  1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0,
+            format: 'yyyy-mm-dd',
+		}).on("click",function(ev){
+		    $(".start_date").datetimepicker("setEndDate", $(".end_date").val());
+		});
+		$(".end_date").datetimepicker({
+		    language:  'zh-CN',
+            weekStart: 1,
+            todayBtn:  1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0,
+            format: 'yyyy-mm-dd',
+		}).on("click", function (ev) {
+		    $(".end_date").datetimepicker("setStartDate", $(".start_date").val());
+		});
+
+
+
+	//1-我的需求全部 2-我的需求审核中 3-我的需求进行中 4-我的需求结算中 5-我的需求已完成 6-异常需求 7-草稿箱  ?par={par}&currentPage={currentPage}
+	//ajax，分页
+	function toTZ(){
+		var toPaggeVlue = document.getElementById("toGoPage").value;
+		var tolPageValue = document.getElementById("tolPageValue").value;
+		if(toPaggeVlue == ''){
+			document.getElementById("toGoPage").value=1;return;
+		}
+		if(isNaN(Number(toPaggeVlue))){
+			document.getElementById("toGoPage").value=1;return;
+		}
+		if(Number(toPaggeVlue)>Number(tolPageValue)){
+			document.getElementById("toGoPage").value=tolPageValue;return;
+		}
+		nextPage(toPaggeVlue);
+	}
+	function nextPage(page){
+	   document.getElementById("currentPage").value=page;
+	   getDemandList("page");
+	}
+
+
+
+	$(".demand-list .search-box li:nth-child(1)").click(function(){
+		document.getElementById("classify").value="1";
+		document.getElementById("jdstate").value="0";
+		clearVal();
+		getDemandList("");
+	});
+	$(".demand-list .search-box li:nth-child(2)").click(function(){
+		document.getElementById("classify").value="1";
+		document.getElementById("jdstate").value="1";
+		clearVal();
+		getDemandList("");
+	});
+	$(".demand-list .search-box li:nth-child(3)").click(function(){
+		document.getElementById("classify").value="1";
+	    document.getElementById("jdstate").value="8";
+	    clearVal();
+		getDemandList("");
+	});
+	$(".demand-list .search-box li:nth-child(4)").click(function(){
+		document.getElementById("classify").value="1";
+	    document.getElementById("jdstate").value="5";
+	    clearVal();
+		getDemandList("");
+	});
+	$(".demand-list .search-box li:nth-child(5)").click(function(){
+		document.getElementById("classify").value="1";
+	    document.getElementById("jdstate").value="6";
+	    clearVal();
+		getDemandList("");
+	});
+
+	$(".content .title_select ul li:nth-child(1)").click(function(){
+		document.getElementById("classify").value="1";
+		document.getElementById("jdstate").value="0";
+		clearVal();
+		getDemandList("");
+	});
+	$(".content .title_select ul li:nth-child(2)").click(function(){
+		document.getElementById("classify").value="2";
+		document.getElementById("jdstate").value="0";
+		clearVal();
+		getDemandList("");
+	});
+
+	//取得需求列表
+  	function getDemandList(page){
+		 //非分页过来的  默认到第一页
+		if("page"!=page){
+		  document.getElementById("currentPage").value="1";
+		}
+		var classify=document.getElementById("classify").value;
+        var jfuid=sessionStorage.getItem("jfuid");
+        var demandname="";
+        var orderid="";
+        var begintime="";
+        var endtime="";
+    	var currentPage=$("#currentPage").val();
+        var jdstate=document.getElementById("jdstate").value;
+	    if(classify==1){//我的订单
+	        demandname=$("#demandname").val();
+	        orderid=$("#orderid").val();
+	        begintime=$("#start_date").val();
+	        endtime=$("#end_date").val();
+	    }else{//异常订单
+	        demandname=$("#ycdemandname").val();
+	        orderid=$("#ycorderid").val();
+	        begintime=$("#start_date").val();
+	        endtime=$("#ycend_date").val();
+	    }
+        var data={
+	        classify:classify,
+	        jdstate:jdstate,
+	        begintime:begintime,
+	        endtime:endtime,
+	        demandname:demandname,
+	        currentPage:currentPage,
+	        orderid:orderid
+        };
+		var midDemandList = domain + "/orderlist";
+		urlDemandList = midDemandList + "/" + jfuid + "/" + classify + "/" + jdstate;
+
+	        $.ajax({
+	            type: "GET",
+	            url: urlDemandList,
+	            data:data,
+	            contentType:"application/x-www-form-urlencoded;charset=utf-8",
+	            dataType: "json",
+	            cache: false,
+	            success: function(r){
+
+					if(r.code=="Y"){
+						$(".loading_cover").hide();
+						if("2"==classify){//异常需求
+					        sessionStorage.setItem(urlDemandList,JSON.stringify(r));
+							listB(sessionStorage.getItem(urlDemandList));
+
+					    }else{//列表需求
+					        sessionStorage.setItem(urlDemandList,JSON.stringify(r));
+							listA(sessionStorage.getItem(urlDemandList));
+
+					    }
+						sessionStorage.removeItem(urlDemandList);
+					}else{
+						$(".loading_cover").hide();
+						document.getElementById("search_reslut").innerHTML="加载失败!";
+						document.getElementById("page").innerHTML="";
+					}
+					//点击翻页跳转到顶部
+					$(".page a").click(function(){
+			            $('html,body').animate({scrollTop: '0px'}, 0);
+			        });
+				},
+	            error:function(){
+
+	            }
+            });
+
+  	}
+  	//初始化搜索
+  	$(document).ready(function(){
+  		clearVal();
+	  	getDemandList("");
+	});
+
+
+
+	//需求列表 拼结构
+	function listA(data){
+		var r = JSON.parse(data);
+		if(undefined==r.resultlist.length || r.resultlist.length==0){
+			$(".loading_cover").hide();
+			$("#search_reslut").addClass("no-reslut");
+			$("#search_reslut").html("暂无数据");
+		}else{
+			$(".loading_cover").hide();
+			$("#search_reslut").removeClass("no-reslut");
+			$("#search_reslut").html("");
+		    $.each(r.resultlist,function(index,d)
+			{
+			    var str='';
+				var createtime = d.createtime;//竞拍时间
+				var demandname = d.demandname;//需求名称
+				var releasenum = d.releasenum;//发布量
+				var fishnum = d.fishnum;//完成量
+				var auctionnum = d.auctionnum;//竞拍量
+				var schedule = parseInt(fishnum/auctionnum*100);//进度百分比（发布量跟完成量相比的进度显示）
+				var orderprice = d.orderprice;//订单单价
+				var paymentstandard = d.paymentstandard;//结算模式
+				var jdstate = d.jdstate;//(竞拍)1-待审核  2-通过(审核) 3-驳回   4-执行中  5-结算(付款中) 6-完成(已付款) 7-被关闭
+				var demandpricetol = d.auctionnum*d.orderprice;//结算金额 总金额
+				var industry = d.industry;//行业
+				var twolevindustry = d.twolevindustry;//二级行业 线上  线下
+				var threelevindustry = d.threelevindustry;//三级行业
+				var pid = sessionStorage.getItem("pid");//包id
+				var orderid = d.orderid;//订单编号
+        		var servicetype = d.servicetype;
+        		var pricetol = d.pricetol;//double,坐席预计收益  总价
+        		var settlementmethod = d.settlementmethod;//"integer,结算方法  1-客户效果付费  2-包坐席 ",
+
+				var jp = 'jp' + index;
+				var div = 'div' + index;
+				var demandid=d.demandid;//需求编号
+				var zq="";
+				var begintime="";
+				var endtime="";
+				var demandtype=d.demandtype;// 1-套餐    2-个性化需求
+
+
+
+					str='<div class="reslut_box" id="'+div+'">';
+					str+='<div class="title"><h3 title="'+demandname+'">'+demandname+'</h3><ul>';
+					if(null==twolevindustry||''==twolevindustry){
+						str+='<li class="bg_green hide"></li>';
+					}
+					else{
+						str+='<li class="bg_green">'+twolevindustry+'</li>';
+					}
+					if(null==industry||''==industry){
+						str+='<li class="bg_blue1 hide"></li>';
+					}
+					else{
+						str+='<li class="bg_blue1">'+industry+'</li>';
+					}
+					if("2"==settlementmethod){
+						if(pid!==""){
+							str+='<li class="cash">&nbsp;</li>';
+						}else{
+							str+='<li class="cash"><span>￥</span>'+pricetol+'</li>';
+						}
+						
+					}else{
+						if(pid!==""){
+							str+='<li class="cash">&nbsp;</li>';
+						}else{
+							str+='<li class="cash"><span>￥</span>'+demandpricetol+'</li>';
+						}	
+					}
+					
+					
+					str+='<li class="number"><span>订单编号：</span>'+orderid+'</li></ul></div>';
+					if(pid!==""){
+						str+='<div class="bottom"><div class="type"><p>订单单价</p><h3><span class="font18">**</span><span class="font12">元</span></h3></div>';
+					}else{
+						str+='<div class="bottom"><div class="type"><p>订单单价</p><h3>'+orderprice.toFixed(2) +'<span>元</span></h3></div>';
+					}
+					
+					str+='<div class="mode"><p>结算模式</p><h3>';
+					if('查重后质检'==paymentstandard){
+						str+=paymentstandard+'<i>?<span>与甲方数据查重后进行录音的质量检验</span></i></h3></div>';
+					}
+					else if('回访电话接通数'==paymentstandard){
+						str+=paymentstandard+'<i>?<span>甲方回访后的接通数量，剔除无效与未接通数（>4次）</span></i></h3></div>';
+					}
+					else if('数据条目'==paymentstandard){
+						str+=paymentstandard+'<i>?<span>按实际提交数据条目数乘以单价进行结算</span></i></h3></div>';
+					}
+					else{
+						str+=paymentstandard+'<i>?<span>暂无</span></i></h3></div>';
+					}
+					str+='<div class="date"><p>竞拍时间</p><h3>'+createtime.substr(0, 10)+'</h3></div>';
+					if(0<=schedule&&schedule<=100){
+						str+='<div class="schedule"><div class="GaugeMeter" data-percent="'+schedule+'" data-append="%" data-size="150" data-style="Semi" data-width="5" data-color="#ff9429"></div>';
+						str+='<span class="data">'+schedule+'<i>%</i></span>';
+					}
+					else if(schedule>100){
+						str+='<div class="schedule"><div class="GaugeMeter" data-percent="100" data-append="%" data-size="150" data-style="Semi" data-width="5" data-color="#ff9429"></div>';
+						str+='<span class="data">100<i>%</i></span>';
+					}else{
+						str+='<div class="schedule"><div class="GaugeMeter" data-percent="0" data-append="%" data-size="150" data-style="Semi" data-width="5" data-color="#ff9429"></div>';
+						str+='<span class="data">0<i>%</i></span>';
+					}
+
+					str+='<span class="start">0</span><span class="descript">完成进度</span><span class="end">'+auctionnum+'</span></div>';
+					if(servicetype=='数据加工'){
+						str+='<div class="btn-box"><a href="supplier_dataMinng.html?state'+jdstate+'#'+orderid+'"><button type="button" class="bg_blue">查看详情</button></a></div></div>';
+					}
+					else if(servicetype=='销售线索挖掘'){
+						str+='<div class="btn-box"><a href="supplier_customerMining.html?state'+jdstate+'#'+orderid+'"><button type="button" class="bg_blue">查看详情</button></a></div></div>';
+					}else {
+						str+='<div class="btn-box"><a href="supplier_customerMining.html?state'+jdstate+'#'+orderid+'"><button type="button" class="bg_blue">查看详情</button></a></div></div>';
+					}
+
+
+					if('1'==jdstate){
+						str+='<div class="tag"><span>审核中</span><i class=""></i></div></div>';
+					}
+					if('2'==jdstate||'4'==jdstate){
+						str+='<div class="tag"><span>进行中</span><i class="ing-blue"></i></div></div>';
+					}
+					if('5'==jdstate){
+						str+='<div class="tag"><span>结算中</span><i class="ing-red"></i></div></div>';
+					}
+					if('6'==jdstate){
+						str+='<div class="tag"><span>已完成</span><i class="done"></i></div></div>';
+					}
+					$("#search_reslut").append(str);
+					$(".loading_cover").hide();
+
+				});
+			}
+			document.getElementById("page").innerHTML=r.ajaxPageStr;
+
+
+			//问号点击出解释
+	        $(".demand-list .bottom h3 i").click(function(){
+	            $(this).addClass("selected");
+	            $(this).children("span").show();
+	            $(".cover-bg").show();
+		    });
+	    	$(".cover-bg").click(function(){
+	    		$(".demand-list .bottom h3 i").removeClass("selected").children("span").hide();
+	    		$(".cover-bg").hide();
+	    	});
+    		//半圆形调用
+    		$(".GaugeMeter").gaugeMeter();
+    		//$(".topNav .top .menu ul li:nth-child(3) a").addClass("selected");
+
+
+	}
+	function listB(data){
+		//console.log(urlDemandList);
+		var r = JSON.parse(data);
+		if(undefined==r.resultlist.length || r.resultlist.length==0){
+			$(".loading_cover").hide();
+			$("#search_reslut_abnormal").addClass("no-reslut");
+			$("#search_reslut_abnormal").html("暂无数据");
+		}else{
+			$(".loading_cover").hide();
+			$("#search_reslut_abnormal").removeClass("no-reslut");
+			$("#search_reslut_abnormal").html("");
+		    $.each(r.resultlist,function(index,d)
+			{	//console.log(r.resultlist);
+				var str='';
+				var createtime = d.createtime;//竞拍时间
+				var demandname = d.demandname;//需求名称
+				var releasenum = d.releasenum;//发布量
+				var fishnum = d.fishnum;//完成量
+				var auctionnum = d.auctionnum;//竞拍量
+				var schedule = parseInt(fishnum/auctionnum*100);//进度百分比（发布量跟完成量相比的进度显示）
+				var orderprice = d.orderprice;//订单单价
+				var paymentstandard = d.paymentstandard;//结算模式
+				var jdstate = d.jdstate;//(竞拍)1-待审核  2-通过(审核) 3-驳回   4-执行中  5-结算(付款中) 6-完成(已付款) 7-被关闭
+				var demandpricetol = d.auctionnum*d.orderprice;//结算金额 总金额
+				var industry = d.industry;//行业
+				var twolevindustry = d.twolevindustry;//二级行业 线上  线下
+				var threelevindustry = d.threelevindustry;//三级行业
+				var orderid = d.orderid;//订单编号
+				var servicetype = d.servicetype;
+				//var pausedescription = d.pausedescription;//暂停原因
+				var pause = d.pause;//暂停状态
+				var pricetol = d.pricetol;//double,坐席预计收益  总价
+        		var settlementmethod = d.settlementmethod;//"integer,结算方法  1-客户效果付费  2-包坐席 ",
+
+				var jp = 'jp' + index;
+				var div = 'div' + index;
+				var demandid=d.demandid;//需求编号
+				var zq="";
+				var begintime="";
+				var endtime="";
+
+
+
+				str='<div class="reslut_box" id="'+div+'">';
+				str+='<div class="title"><h3 title="'+demandname+'">'+demandname+'</h3><ul>';
+				if(null==twolevindustry||''==twolevindustry){
+					str+='<li class="bg_green hide"></li>';
+				}
+				else{
+					str+='<li class="bg_green">'+twolevindustry+'</li>';
+				}
+				if(null==industry||''==industry){
+					str+='<li class="bg_blue1 hide"></li>';
+				}
+				else{
+					str+='<li class="bg_blue1">'+industry+'</li>';
+				}
+				if("2"==settlementmethod){
+					str+='<li class="cash"><span>￥</span>'+pricetol+'</li>';
+				}else{
+					str+='<li class="cash"><span>￥</span>'+demandpricetol+'</li>';
+				}
+				str+='<li class="number"><span>订单编号：</span>'+orderid+'</li></ul></div>';
+				str+='<div class="bottom"><div class="type"><p>业务类型</p><h3>'+servicetype+'<i>?<span>通过致电目标群体，以标准话术挖掘意向客户</span></i></h3></div>';
+				str+='<div class="mode"><p>结算模式</p><h3>';
+				if('查重后质检'==paymentstandard){
+					str+=paymentstandard+'<i>?<span>与甲方数据查重后进行录音的质量检验</span></i></h3></div>';
+				}
+				else if('回访电话接通数'==paymentstandard){
+					str+=paymentstandard+'<i>?<span>甲方回访后的接通数量，剔除无效与未接通数（>4次）</span></i></h3></div>';
+				}
+				else if('数据条目'==paymentstandard){
+					str+=paymentstandard+'<i>?<span>按实际提交数据条目数乘以单价进行结算</span></i></h3></div>';
+				}
+				else{
+					str+=paymentstandard+'<i>?<span>暂无</span></i></h3></div>';
+				}
+				str+='<div class="date"><p>发布时间</p><h3>'+createtime.substr(0, 10)+'</h3></div>';
+				str+='<div class="date"><p>审核状态</p><h3 class="color-red">';
+				if('0'==pause){//不暂停的状态，显示下面2个状态
+					if('3'==jdstate){
+						str+='驳回';
+					}
+					if('7'==jdstate){
+						str+='被关闭';
+					}
+				}
+				if('1'==pause){//暂停的时候就显示暂停
+					str+='暂停';
+				}
+				str+='</h3></div>';
+        if(servicetype=='数据加工'){
+          str+='<div class="btn-box"><a href="supplier_dataMinng.html#'+orderid+'"><button type="button" class="bg_blue">查看详情</button></a></div></div>';
+        }
+        else if(servicetype=='销售线索挖掘'){
+          str+='<div class="btn-box"><a href="supplier_customerMining.html#'+orderid+'"><button type="button" class="bg_blue">查看详情</button></a></div></div>';
+        }else {
+          str+='<div class="btn-box"><a href="supplier_customerMining.html#'+orderid+'"><button type="button" class="bg_blue">查看详情</button></a></div></div>';
+        }
+
+
+				$("#search_reslut_abnormal").append(str);
+				$(".loading_cover").hide();
+
+			});
+		}
+		document.getElementById("page").innerHTML=r.ajaxPageStr;
+
+		$(".demand-list .bottom h3 i").click(function(){
+	            $(this).addClass("selected");
+	            $(this).children("span").show();
+	            $(".cover-bg").show();
+		    });
+	    	$(".cover-bg").click(function(){
+	    		$(".demand-list .bottom h3 i").removeClass("selected").children("span").hide();
+	    		$(".cover-bg").hide();
+	    	});
+	}
+	function clearVal(){
+		demandname=$(".demand-name").val("");
+        begintime=$(".start_date").val("");
+        endtime=$(".end_date").val("");
+	}
+	</script>
+</body>
+</html>

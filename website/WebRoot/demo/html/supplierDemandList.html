@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>我的订单 - 眸事网</title>
+
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css"/>
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/drop-down.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/bootstrap-datetimepicker.css" />
+	<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script> 
+	<script src="js/jquery-1.7.2.min.js"></script>
+	<script src="js/jquery-ui.min.js"></script>
+
+	<script src="js/react.min.js"></script>
+	<script src="js/react-dom.js"></script>
+	<script src="js/browser.min.js"></script>
+	<script src="js/circle-progress.js"></script>
+	<script src="js/echarts.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/url.js"></script>
+<script src="js/hide.js"></script>
+	<script src="js/select-widget-min.js"></script>
+
+<!---<script src="//kefu.mshuoke.com/im/4028838b5ac815e3015ac81645f90000.html"></script>-->
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js" charset="UTF-8"></script>
+
+    <script src="js/jquery.autocomplete.js" type="text/javascript"></script>
+    <script src="js/jquery.AshAlom.gaugeMeter-2.0.0.min.js"></script>
+</head>
+<body class="bg-white">
+
+    <div class="topNav"></div>
+    <input type="hidden" name="currentPage" id="currentPage" value="1">
+    <input type="hidden" name="jdstate" id="jdstate" value="0">
+    <input type="hidden" name="classify" id="classify" value="1">
+    <div class="content padding0">
+    	<div class="title">
+    		<h2>查看我的订单:</h2>
+    	</div>
+    	<div class="title_select">
+    		<ul>
+    			<li data-state="list" data-jdstate="0" class="selected">订单列表</li>
+    			<li data-state="abnormal" data-jdstate="8">异常订单</li>
+    		</ul>
+    	</div>
+    	<div class="demand-box supplier">
+    		<!--列表需求-->
+    		<div class="deman_hall_search demand-list all-list">
+    			<div class="search-box">
+    				<ul>
+    					<li data-jdstate="0" data-state="0" class="selected">全部<span></span></li>
+    					<li data-jdstate="1" data-state="1">审核中<span></span></li>
+    					<li data-jdstate="2" data-state="2">进行中<span></span></li>
+    					<li data-jdstate="5" data-state="5">结算中<span></span></li>
+    					<li data-jdstate="6" data-state="6">已完成<span></span></li>
+    				</ul>
+    				<input type="text" placeholder="订单名称" class="demand-name" id="demandname" />
+    				<input type="text" placeholder="订单编号" class="demand-name" id="orderid" />
+    				<div class="right">
+    					<label>竞拍时间：</label>
+    					<input type="text" class="form_date start_date" date-format="yyyy-mm-dd" readonly id="start_date"/><i class="date_icon"></i>
+    					<label>-</label>
+    					<input type="text" class="form_date end_date" date-format="yyyy-mm-dd" readonly id="end_date"/><i class="date_icon"></i>
+    					<button type="button" id="seach" value="">确定</button>
+    				</div>
+    			</div>
+    			<div class="search-result all-list" id="search_reslut"></div>
+
+    		</div>
+    		<!--异常需求-->
+
+
+    	</div>
+    	<div class="center_text"><div class="page" id="page"></div></div>
+    </div>
+    <!--页脚信息开始-->
+    <div class="footer_box"></div>
+    <div class="loading_cover">
+		<div class="loader">
+	        <div class="loader-inner ball-spin-fade-loader">
+	          <div></div>
+	          <div></div>
+	          <div></div>
+	          <div></div>
+	          <div></div>
+	          <div></div>
+	          <div></div>
+	          <div></div>
+	        </div>
+	    </div>
+	</div>
+	<div class="cover-bg"></div>
+
+	<div class="aside_bar"></div>
+	<script src="js/asideBar.js" type="text/babel"></script>
+    <script src="js/header-supplier.js" type="text/babel"></script>
+	<script type="text/babel" src="js/supplier/supplierDemandList.js"></script>
+	<script src="js/footer.js" type="text/babel"></script>
+	
+</body>
+</html>

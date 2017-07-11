@@ -1,0 +1,14 @@
+.aside_bar { position: fixed; right: 50px; bottom: 50px; z-index: 10;}
+.aside_bar ul { height: 170px;}
+.aside_bar li{ width:50px; height:50px; margin-bottom:10px; text-align: center; line-height:17px; position: relative;}
+.aside_bar li a { display: block; width: 100%; height: 100%; font-size: 16px;}
+.aside_bar li:nth-of-type(1) a { background:url("/images/asidebar/aside_qq.png"); background-size:100% 100%;}
+.aside_bar li:nth-of-type(2) a { background:url("/images/asidebar/aside_service.png"); background-size:100% 100%;}
+.aside_bar li:nth-of-type(3) a { background:url("/images/asidebar/aside_top.png"); background-size:100% 100%;}
+.aside_bar li:hover a:after {visibility:visible;}
+.aside_bar li a:after {display:block;width:50px;height:50px;background:#259efb;color:#fff;visibility:hidden;padding:6px 9px;border-radius: 6px;}
+.aside_bar li:nth-of-type(1) a:after {content: "在线客服"; box-sizing: border-box;}
+.aside_bar li:nth-of-type(2) a:after { content: "400-900-5288"; overflow: hidden; text-indent: 100%; font-size: 0; width: 246px; height: 0; line-height: 0; text-align: left; padding: 50px 0 0 0; position: absolute; right: 0; top: 0; margin-left: -246px; background:url("/images/asidebar/aside_service-h.png") right top no-repeat;}
+.aside_bar li:nth-of-type(3) a:after {content: "向上置顶"; box-sizing: border-box;}
+a.go-to-top { text-decoration: none;}
+#ukefu-point{ opacity:0;}

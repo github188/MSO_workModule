@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.mso.model.CustomArea" table="custom_area" >
+        <id name="areaId" type="java.lang.Integer">
+            <column name="area_id" />
+            <generator class="identity" />
+        </id>
+        
+        <property name="fuid" type="java.lang.String">
+            <column name="fuid" length="100">
+                <comment>所属用户id</comment>
+            </column>
+        </property>
+        
+        <property name="areaName" type="java.lang.String">
+            <column name="area_name" length="120" not-null="true">
+                <comment>名</comment>
+            </column>
+        </property>
+        
+        <property name="areaRemark" type="java.lang.String">
+            <column name="area_remark" length="500" not-null="true">
+                <comment>描述</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

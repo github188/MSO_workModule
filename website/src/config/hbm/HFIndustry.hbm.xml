@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.mso.model.HFIndustry" table="h_f_industry">
+		<id name="fiid" type="java.lang.String">
+			<column name="fiid" length="100" />
+			<generator class="assigned" />
+		</id>
+		<property name="finame" type="java.lang.String">
+			<column name="finame" length="100">
+			</column>
+		</property>
+		<property name="seqno" type="java.lang.String">
+			<column name="seqno" length="100">
+			</column>
+		</property>
+		<property name="parentfiid" type="java.lang.String">
+			<column name="parentfiid" />
+		</property>
+		<property name="level" type="java.lang.Integer">
+			<column name="level" />
+		</property>
+		<property name="filogo" type="java.lang.String">
+			<column name="filogo" />
+		</property>
+		<property name="createtime" type="java.lang.String">
+			<column name="createtime" />
+		</property>
+		<property name="updatetime" type="java.lang.String">
+			<column name="updatetime" length="100">
+			</column>
+		</property>
+		<property name="price" type="java.math.BigDecimal">
+			<column name="price">
+			</column>
+		</property>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <meta name="description" content="MSO（眸事网）-国内专业营销服务外包平台，获客线索总交易量高达632500条！上游发包方企业可自由定价，行业包括线上/线下教育培训行业、金融行业、汽车行业、汽车后服务市场、电商平台、运营商增值服务等领域，下游以网络营销、电话营销、地推机构等营销机构为主，平台坐拥10000万以上精准数据用户，月均发包量达80000以上，目前已成为各领域权威人士认可的最专业的营销服务外包机构！">
+	<meta name="keywords" content="">
+    
+    <link rel="stylesheet" href="html/css/bootstrap.min.css">
+    <link rel="stylesheet" href="html/css/style.css">
+	<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script> 
+    <script src="html/js/jquery-1.7.2.min.js"></script>
+    <script src="html/js/react.min.js"></script>
+    <script src="html/js/react-dom.js"></script>
+    <script src="html/js/browser.min.js"></script>
+    <script src="html/js/main_index.js"></script>
+    <script src="html/js/url.js"></script>
+	<script src="//www.mshuoke.com/html/js/hide.js"></script>
+	<script>
+		$.msoid = 6;
+	</script>
+	<!---<script src="//kefu.mshuoke.com/im/4028838b5ac815e3015ac81645f90000.html"></script>-->
+    <style>
+    	.topNav .top .logo { width: 87px;}
+    	body { background: url(images/footer_back.png);}
+    	.fbf-show { display: none;}
+    </style>
+</head>
+<body>
+<div class="topNav">
+    <div class="top">
+        <div class="logo">
+            <a href="//www.mshuoke.com"><img src="//www.mshuoke.com/html/images/public/c_index_logo.png" /></a>
+        </div>
+        <div class="logo_font"><span>&emsp;|&emsp;</span><span>注册账号</span></div>
+    </div>
+</div>
+<div class="register">
+	<div class="register_first" style="display: none;">
+		<h2>请选择您的注册类型</h2>
+		<ul>
+			<li class="request">
+				<h3>需求方</h3>
+				<p>我想获客需要销售线索</p>
+			</li>
+			
+			<li class="service">
+				<h3>服务方</h3>
+				<p>我能提供服务需要业务</p>
+			</li>
+		</ul>
+		<div class="nextStep no-through">下一步</div>
+		<p class="info">已有账号？<a href="login.html">立即登录</a></p>
+	</div>
+    <div class="form_box" style="display: block;">
+		
+    </div>
+</div>
+<footer></footer>
+<div class="aside_bar"></div>
+<script src="html/js/asideBar.js" type="text/babel"></script>
+<script src="html/js/home_index/footer.js" type="text/babel"></script>
+<script src="html/js/home_index/des.js"></script>
+<script type="text/babel" src="html/js/home_index/register.js"></script>
+<script>
+	var usersouce = 0;
+	var pathR = window.location.search;
+	pathR = pathR.substring(pathR.indexOf("?")+6,pathR.length);
+	//console.log(pathR);
+	var abccc = strDec(pathR,key1,key2,key3);
+	//console.log(abccc);
+	if(abccc==""){
+		usersouce = 0;
+		//console.log(usersouce);
+	}else{
+		usersouce = abccc;
+		//console.log(usersouce);
+	}
+    var active=GetRequest();
+    sessionStorage.setItem("fbid",2);
+    if(active.jfutype=="2"){
+        $(".topNav .logo a").attr("href","//vendor.mshuoke.com");
+    }
+    $(".register_first li").click(function(){
+    	$(".nextStep").removeClass("no-through");
+    	$(this).addClass("selected").siblings().removeClass("selected");
+    });
+</script>
+</body>
+</html>

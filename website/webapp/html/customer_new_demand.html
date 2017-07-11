@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>发布新需求 - 眸事网</title>
+	<link rel="stylesheet" href="css/index-1.css" />
+	<link rel="stylesheet" href="css/index-2.css" />
+    <link rel="stylesheet" href="css/style.css"/>
+	<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script> 
+	<script src="js/jquery-1.7.2.min.js"></script>
+	<script src="js/jquery-ui.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/react.js"></script>
+	<script src="js/react-dom.js"></script>
+	<script src="js/browser.min.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/url.js"></script>
+	<script src="js/hide.js"></script>
+	<!---<script src="//kefu.mshuoke.com/im/4028838b5ac815e3015ac81645f90000.html"></script>-->
+	<style>
+		.topNav, .topNav * {box-sizing: border-box;}
+	</style>
+</head>
+<body onselectstart="return false" class="bg-white newDemand">
+    <div class="topNav"></div>
+    <div class="con-box">
+    	<div class="title">请先选择业务类型和行业:</div>
+    	<div class="list">
+	    	<div class="new-demand-top">
+	    		<div class="title-icon">
+	    			<h2>销售线索挖掘</h2>
+	    			<p>对用户行为和特征进行分析，通过有效触达，挖掘意向客户</p>
+	    		</div>
+	    		<div id="mygallery" class="stepcarousel">
+	    			<a href="javascript:" class="left"><img src="images/new-demand/prev.png" /></a>
+					<a href="javascript:" class="right"><img src="images/new-demand/next.png" /></a>
+					<div class="belt">
+						<div class="panel">
+							<div class="subfeature"><a href="javascript:">
+								<img src="images/new-demand/sale1.jpg" alt="教育行业" class="post-image" />
+								<div class="mask">
+									<img src="images/new-demand/newdemand-icon1.png" />
+									<p>教育行业</p>
+								</div>
+								<span class="hot"></span>
+							</a></div>
+						</div>		
+						<div class="panel">
+							<div class="subfeature"><a href="javascript:">
+								<img src="images/new-demand/sale2.jpg" alt="汽车行业" class="post-image" />
+								<div class="mask">
+									<img src="images/new-demand/newdemand-icon2.png" />
+									<p>汽车行业</p>
+								</div>
+							</a></div>
+						</div>	
+						<div class="panel">
+							<div class="subfeature"><a href="javascript:">
+								<img src="images/new-demand/sale3.jpg" alt="金融行业" class="post-image" />
+								<div class="mask">
+									<img src="images/new-demand/newdemand-icon3.png" />
+									<p>金融行业</p>
+								</div>
+							</a></div>
+						</div>	
+						<div class="panel">
+							<div class="subfeature"><a href="javascript:">
+								<img src="images/new-demand/sale4.jpg" alt="互联网行业" class="post-image" />
+								<div class="mask">
+									<img src="images/new-demand/newdemand-icon4.png" />
+									<p>互联网</p>
+								</div>
+							</a></div>
+						</div>	
+						<div class="panel">
+							<div class="subfeature"><a href="javascript:">
+								<img src="images/new-demand/sale5.jpg" alt="医美行业" class="post-image" />
+								<div class="mask">
+									<img src="images/new-demand/newdemand-icon5.png" />
+									<p>医美行业</p>
+								</div>
+							</a></div>
+						</div>	
+						<div class="panel">
+							<div class="subfeature"><a href="javascript:">
+								<img src="images/new-demand/sale6.jpg" alt="其他行业" class="post-image" />
+								<div class="mask">
+									<img src="images/new-demand/newdemand-icon6.png" />
+									<p>其他行业</p>
+								</div>
+							</a></div>
+						</div>	
+						
+					</div>
+				</div>
+	    	</div>
+	    	<div class="new-demand-bottom">
+	    		<div class="left"><a href="customerNewDemandDate.html">
+	    			<h2>数据加工</h2>
+	    			<p>针对企业自有数据和需求，进行有效触达</p>
+	    		</a></div>
+	    		<div class="right">
+	    			<h2>标签匹配</h2>
+	    			<p>对企业碎片化标签进行补充与处理，<br />形成更完整的标签用户</p>
+	    			<span class="build"></span>
+	    		</div>
+	    	</div>
+    	</div>
+    </div>
+    <!--页脚信息开始-->
+    <div class="footer_box"></div>
+	<div class="aside_bar"></div>
+	<script src="js/asideBar.js" type="text/babel"></script> 
+    <script src="js/header-customer.js" type="text/babel"></script>
+	<script src="js/footer.js" type="text/babel"></script>
+	<script>
+		$(".stepcarousel .left").click(function(){
+			$(".stepcarousel .belt").animate({left:"0"});
+		});
+		$(".stepcarousel .right").click(function(){
+			$(".stepcarousel .belt").animate({left:"-200px"});
+		});
+		$(".title-icon").hover(function(){
+			$(this).parent().addClass("shadows");
+		},function(){
+			$(this).parent().removeClass("shadows");
+		});
+		$(".panel a").click(function(){
+			var oType = $(this).find("p").text();
+            sessionStorage.setItem("servicetype", oType);
+            sessionStorage.setItem("industry",oType);
+			if(oType=="教育行业"){
+				location.href = "new_demand.html";
+			}else{
+				location.href = "new_demand_more.html";
+			}
+		});
+	</script>
+</body>
+</html>

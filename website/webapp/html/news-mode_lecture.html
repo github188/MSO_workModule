@@ -1,0 +1,574 @@
+﻿<!Doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>${mkLectureVO.mkLecture.title_html}</title>
+	<meta name="description" content="${mkLectureVO.mkLecture.description}">
+	<meta name="keywords" content="${mkLectureVO.mkLecture.keywords}">
+	
+	<style>
+		body,ul,li,ol,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div,dl,dt,dd,input,button { margin:0; padding: 0;}
+		body { font-size:14px; background: #fff; font-family: "microsoft yahei", sans-serif; min-width: 1200px;}
+		img {border:none; display: block;}
+		li {list-style: none}
+		a { color: #424242; text-decoration: none;}
+		.left { float: left;}
+		.right { float: right;}
+		
+		
+/*公共头部+++*/
+header div.top{background: #f2f2f2;line-height:30px;color:#999;}
+header div.top>div,header div.nav_top>div{width:1200px;margin:0 auto;}
+header div.top a { color:#018cd6;}
+header div.top a:hover { color: #018cd6;text-decoration: underline;}
+header div.top a.logout { color: #999999; text-decoration: none;}
+header div.top a.logout:hover { color: #fd5352; text-decoration: underline;}
+header div.top a.second { color: #666666;}
+header div.top a.second:hover { color: #018cd6;}
+header div.nav_top{background: #282d32;line-height:30px;}
+header div.nav_top div.c_home_logo { height: 32px; margin: 24px 0px;}
+header div.nav_top div.c_home_logo img{display:inline-block;vertical-align: middle;}
+header div.nav_top div.c_home_logo a{color:#eee;}
+header div.nav_top div.c_home_logo a span{vertical-align: sub;}
+header div.nav_top div.c_home_logo+ul li{color:#ccc;}
+header div.nav_top div.c_right{float:right;margin:23px 0px;}
+header div.nav_top div.c_right a:nth-of-type(1){display:inline-block;margin-right:15px;width:100px;height:34px;line-height:32px;border-radius: 17px;background: none;border:1px solid #37b4f5;color:#37b4f5;font-size:16px;text-align:center;box-sizing: border-box;}
+header div.nav_top div.c_right a:nth-of-type(2){display:inline-block;width:100px;height:34px;line-height:34px;border-radius: 17px;background: #37b4f5;color:#fff;font-size:16px;text-align:center;}
+header div.nav_top div.c_right a:nth-of-type(1):hover{color:#008cd6;border-color:#008cd6;}
+header div.nav_top div.c_right a:nth-of-type(2):hover{background:#008cd6;}
+header div.nav_top>div>*{display:inline-block;vertical-align: middle;}
+header div.nav_top>div ul{margin:0px 55px;text-align: center;}
+header div.nav_top>div ul li{position:relative;height:80px;line-height:80px;float:left;font-size:16px;min-width:100px;padding:0px 18px; box-sizing: border-box;text-align: center;color:#ccc;  }
+header div.nav_top>div ul li.active{color:#37b4f5}
+header div.nav_top>div ul li.active i{width:80%;}
+header div.nav_top>div ul li i{position:absolute;left:10%;bottom:0;display:inline-block;width:0%;height:2px;background:#37b4f5;color:#37b4f5;}
+header div.nav_top>div ul li:hover{color:#37b4f5;}
+header div.nav_top>div ul li:not(.active):hover i{animation:bottom 0.5s;https://m.mshuoke.com/
+    -webkit-animation:bottom 0.5s; /*Safari and Chrome*/width:80%;}
+@keyframes bottom
+{
+    from {width:0%;}
+    to {width:80%;}
+}
+@-webkit-keyframes bottom /*Safari and Chrome*/
+{
+    from {width:0%;}
+    to {width:100%;}
+}
+
+header div.nav_top>div div.right a{display:inline-block;width:120px;height:40px;line-height:38px;text-decoration:none;text-align:center;font-size:18px;border-radius: 4px;margin:20px 0px;}
+header div.nav_top>div div.right a:nth-of-type(1){margin-right:10px;background:#fff;border:1px solid #1aa0ff;color:#1aa0ff;}
+header div.nav_top>div div.right a:nth-of-type(2){background:#ff7129;border:none;color:#fff;border:1px solid #ff7129;}
+header div.nav_top>div div.right a:nth-of-type(1):hover { background:#c7e6fc;}
+header div.nav_top>div div.right a:nth-of-type(2):hover { background:#fb894f;}
+header div.nav_top>div div.right a.loginState { width: 200px; height: 40px; background: #1aa0ff; color: #fff; font-size: 18px;}
+header div.nav_top>div div.right a.loginState:hover { background: #51b1fb;}
+header div.nav_top>div div.login_right{float:right;height:100%;line-height:30px;margin:24px 0px;}
+header div.nav_top>div div.login_right .MyInfo{color:#ffffff;max-width:12em;display:inline-block;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+header div.nav_top>div div.login_right .logout{margin-left:40px;color:#999999;}
+header div.nav_top>div div.login_right .logout:hover{margin-left:40px;color:#fd5352;}
+header div.nav_top>div div.login_right>*{vertical-align: middle;}
+/*公共头部*/
+/*公共尾部*/
+footer>div{height:100%;min-height: 160px;}
+footer div.main{background: #303250;}
+footer div.main>div{width:1200px;height:160px;margin:0 auto;}
+footer div.main>div ul li{float:left;width:400px;text-align:center;padding:50px 0px;}
+footer div.main>div ul li:nth-of-type(1){padding-right:100px;}
+footer div.main>div ul li:nth-of-type(3){padding-left:100px;}
+footer div.main>div ul li p:nth-of-type(1) img{margin:0px auto;}
+footer div.main>div ul li p:nth-of-type(2){margin:40px 0px 20px 0px;font-size:24px;line-height:24px;color:#dddddd;}
+footer div.main>div ul li p:nth-of-type(3){font-size:16px;line-height:16px;color:#aaaaaa;}
+
+footer div.nav_bottom{height:100%;background: url("https://news.mshuoke.com/article/images_v_3_1/footer_back.png");}
+footer div.nav_bottom>div{width:1200px;height:160px;margin:0 auto;padding:40px 0px 40px 0px;color:#778496;line-height:14px; box-sizing: border-box; font-size: 12px; }
+footer div.nav_bottom>div div.left{float:left;}
+footer div.nav_bottom>div div.left ul li{display:inline-block;color:#c4d5ed;font-size:14px;}
+footer div.nav_bottom>div div.left ul li.active,
+footer div.nav_bottom>div div.left ul li:hover {color:#018cd6;text-decoration: underline;}
+footer div.nav_bottom>div div.left>div:nth-of-type(2){margin:20px 0px;font-size:12px;}
+footer div.nav_bottom>div div.right>div:nth-of-type(1){float:left;margin-left:180px;}
+footer div.nav_bottom>div div.right>div:nth-of-type(1) a:nth-of-type(1){margin-right:20px;display: inline-block;background: url("https://news.mshuoke.com/article/images_v_3_1/qq.png")no-repeat center center;width:80px;height:80px;border-radius:50%;background-color: #242c5c;}
+footer div.nav_bottom>div div.right>div:nth-of-type(1) a:nth-of-type(1):hover{background-image: url(https://news.mshuoke.com/article/images_v_3_1/qq_hover.png);}
+footer div.nav_bottom>div div.right>div:nth-of-type(1) a:nth-of-type(2){position: relative;display: inline-block;background: url("https://news.mshuoke.com/article/images_v_3_1/weixin.png")no-repeat center center;width:80px;height:80px;border-radius:50%;background-color: #242c5c;}
+footer div.nav_bottom>div div.right>div:nth-of-type(1) a:nth-of-type(2):hover{background-image: url(https://news.mshuoke.com/article/images_v_3_1/weixin_hover.png);}
+footer div.nav_bottom>div div.right>div:nth-of-type(1) a:nth-of-type(2)>div{-webkit-transition: all 0.5s;transition: all 0.5s;display:block;overflow: hidden;position: absolute;height:0px;bottom:85px;left:-26.5px;}
+footer div.nav_bottom>div div.right>div:nth-of-type(1) a:nth-of-type(2):hover>div{height:145px;bottom:85px;}
+footer div.nav_bottom>div div.right>div:nth-of-type(1) a:nth-of-type(2)>div>div{position: relative;background: #fff;padding:3px;border-radius:6px;}
+footer div.nav_bottom>div div.right>div:nth-of-type(1) a:nth-of-type(2)>div>div img{width:127px;height:127px;}
+footer div.nav_bottom>div div.right>div:nth-of-type(1) a:nth-of-type(2)>div>div i{display:inline-block;position: absolute;left:calc(50% - 12px);bottom:-12px;    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 12px solid #fff;}
+
+footer div.nav_bottom>div div.right>div:nth-of-type(2){float:right;}
+footer div.nav_bottom>div div.right>div:nth-of-type(2) p:nth-of-type(1){color:#778496;margin:12px 0px 15px 0px;line-height:14px;}
+footer div.nav_bottom>div div.right>div:nth-of-type(2) p:nth-of-type(2){font-size:36px;line-height:36px;color:#a5b8d3;}
+footer div.nav_bottom .right { float:none;}
+/*公共尾部*/
+
+
+		
+		
+		/*面包屑*/
+		.breadcrumbs { width: 1200px; margin: 0 auto; line-height:76px;}
+		.breadcrumbs li { color: #999999; display: inline-block; font-size: 14px;}
+		.breadcrumbs li a { color: #999999;}
+		.breadcrumbs li a:hover { color: #259EFB; text-decoration: underline;}
+		.breadcrumbs li span { padding: 0 0 0 4px;}
+		.news .content { overflow: hidden; width: 1200px; margin: 0 auto 30px auto; padding-bottom: 40px; padding-top: 0; background: #fff;}
+		.news .content .left { width: 840px; padding: 0;}
+		.news .content .right { width: 320px; background: #f9f9f9;}
+		.news .content .left .title { font-size: 24px; color: #333333; text-align: center; border: 0; height: auto;}
+		.news .content .left .title h2,
+		.news .content .left .title h1 { width: auto; font-size: 24px; color: #333333; font-family: simhei; font-weight: bold; line-height: 24px; height:24px;}
+		.news .content .left .title p { font-size: 16px; color: #666666; line-height:60px;}
+		.news .content .left .title span { display:inline-block; height:30px; line-height:30px; margin:0 5px; font-size:14px; color:#333; background:#e4e4e4; border-radius:13px; padding:0 18px;}
+		.news .content .left .share { text-align: center; padding-bottom:15px; border-bottom:1px #ccc dashed;}
+		.news .content .left .share .jiathis_style_32x32 { display: inline-block;}
+		.news .content .left .share .share-text { float: left; line-height: 30px; padding-right: 8px; font-size: 16px; color: #666666;}
+		.news .content .left .context { clear: both; padding-top: 25px;}
+		.news .content .left .context p { font-size: 16px; color: #666; padding: 14px 0; line-height: 30px; text-indent: 2em;}
+		.news .content .left .context h4 { font-size: 20px; color: #333; line-height: 65px; border-bottom: 1px #cccccc dashed;}
+		.news .content .left .context p.textRight { text-align: right;}
+		.news .content .left .context p a { color: #666;}
+		.news .content .left .context p img { width: 660px; margin: 0 auto;}
+		.news .content .left .bottom { padding-top: 30px; border-top:1px #ccc dashed; padding-top:30px;}
+		.news .content .left .bottom h3 { color:#333333; font-size:16px; font-weight:500; height:16px; line-height:16px;}
+		.news .content .left .bottom p.down { color:#666666; line-height:65px; font-size:14px; color:#666; padding-top:0;}
+		.news .content .left .bottom p.down a { display:line-block; background:url(https://news.mshuoke.com/article/images_v_3_1/download.png) no-repeat; color:#37b4f5; margin-left:100px; padding-left:38px;}
+		.news .content .left .bottom p.down a:hover { text-decoration:underline; color:#37b4f5;}
+		.news .content .left .bottom .jiathis_style_32x32 { float: left; padding-bottom: 10px; border-bottom: 1px #cccccc dashed; margin-bottom: 10px; width: 100%;}
+		.news .content .left .bottom p { clear: both; padding-top: 20px; line-height: 16px; font-size: 16px; color: #444;}
+		.news .content .left .bottom p a { color: #444;}
+		.news .content .left .bottom p a:hover { color: #259efb; text-decoration: underline;}
+		.news .content .right .title { border: 0; height: auto; line-height: 36px; border-bottom: 1px #ccc dashed; padding: 10px 0; margin: 20px;}
+		.news .content .right .title h2,
+		.news .content .right .title h1 { font-size: 16px; line-height: 16px; padding-left: 7px; border-left: 4px #008cd6 solid; font-weight: bold;}
+		.news .content .right .box { background:#fff; margin:14px 20px 0 20px;}
+		.news .content .right .box .news-list { padding: 15px 0 20px 0; border-bottom:1px #e4e4e4 dashed; margin:0 15px 5px 15px;}
+		.news .content .right .box .news-list.last { border-bottom:0;}
+		.news .content .right .box .news-list .img img { width: 100%;}
+		.news .content .right .box .news-list p { padding: 15px 0; font-size: 16px; color: #333; transition: color 0.25s; -moz-transition: color 0.25s; -webkit-transition: color 0.25s; -o-transition: color 0.25s;}
+		.news .content .right .box .news-list a { display: block;}
+		.news .content .right .box .news-list a:hover p { color: #259efb; transition: color 0.25s; -moz-transition: color 0.25s; -webkit-transition: color 0.25s; -o-transition: color 0.25s;}
+		.news footer .main { display: none;}
+		.news .content .right .tag { padding-left:5px; padding-right:20px; overflow:hidden;}
+		.news .content .right .tag a { display:inline-block; height:28px; line-height:28px; background:#fff; border:1px #dddddd solid; padding:0 18px; float:left; margin-left:15px; margin-bottom:15px; font-size:14px; color:#333333; border-radius:13px; transition: all 0.25s; -moz-transition: all 0.25s; -webkit-transition: all 0.25s; -o-transition: all 0.25s;}
+		.news .content .right .tag a:hover { background:#39b5ed; border:1px #39b5ed solid; color:#fff; transition: all 0.25s; -moz-transition: all 0.25s; -webkit-transition: all 0.25s; -o-transition: all 0.25s;}
+		.aside_bar { position: fixed; right: 50px; bottom: 50px; z-index: 10;}
+		.aside_bar ul { height: 170px;}
+		.aside_bar li{ width:50px; height:50px; margin-bottom:10px; text-align: center; line-height:17px; position: relative;}
+		.aside_bar li a { display: block; width: 100%; height: 100%; font-size: 16px;}
+		.aside_bar li:nth-of-type(1) a { background:url("https://www.mshuoke.com/images/supplier/aside_qq.png"); background-size:100% 100%;}
+		.aside_bar li:nth-of-type(2) a { background:url("https://www.mshuoke.com/images/supplier/aside_service.png"); background-size:100% 100%;}
+		.aside_bar li:nth-of-type(3) a { background:url("https://www.mshuoke.com/images/supplier/aside_top.png"); background-size:100% 100%;}
+		.aside_bar li:hover a:after {visibility:visible;}
+		.aside_bar li a:after {display:block;width:50px;height:50px;background:#259efb;color:#fff;visibility:hidden;padding:6px 9px;border-radius: 6px;}
+		.aside_bar li:nth-of-type(1) a:after {content: "联系Q Q"; box-sizing: border-box;}
+		.aside_bar li:nth-of-type(2) a:after { content: "400-900-5288"; overflow: hidden; text-indent: 100%; font-size: 0; width: 246px; height: 0; line-height: 0; text-align: left; padding: 50px 0 0 0; position: absolute; right: 0; top: 0; margin-left: -246px; background:url("https://www.mshuoke.com/images/supplier/aside_service-h.png") right top no-repeat;}
+		.aside_bar li:nth-of-type(3) a:after {content: "向上置顶"; box-sizing: border-box;}
+		a.go-to-top { text-decoration: none;}
+		
+		.cover{
+			position: fixed;
+			background: rgba(0,0,0,.3);
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			width: 100%;
+			height: 100%;
+			display: none;
+			z-index: 100;
+		}
+		
+		.cover-box {
+			width: 580px;
+			height: 280px;
+			position: absolute;
+			top: 40%;
+			left: 50%;
+			margin-left: -280px;
+			margin-top: -115px;
+			background: #fff;
+			border-radius: 4px;
+		}
+		
+		.cover-box .title {
+			background: #f66248;
+			height: 40px;
+			line-height: 40px;
+			color: #fff;
+			font-size: 16px;
+			text-align: center;
+			border-top-left-radius: 4px;
+			border-top-right-radius: 4px;
+		}
+		
+		.cover-box .title span.close2, .cover-box .title span.close3 {
+			background: url(//www.mshuoke.com/html/images/public/ic-needroom-window-close.png) no-repeat;
+			display: inline-block;
+			float: right;
+			width: 16px;
+			height: 16px;
+			margin: 12px 12px 0 0;
+			cursor: pointer;
+		}
+		
+		.cover-box .context {
+			height: 200px;
+			line-height: 200px;
+			text-align: center;
+			font-size: 16px;
+			color: #666;
+		}
+		
+		.cover-box .context a {
+			color: #ff9429;
+			text-decoration: underline;
+		}
+		
+		.cover-box .bt-choose {
+			background: #ddd;
+			height: 40px;
+			text-align: center;
+			border-bottom-left-radius: 4px;
+		}
+			
+		.cover-box .bt-choose button {
+			width: 160px;
+			height: 30px;
+			border-radius: 4px;
+			color: #fff;
+			font-size: 16px;
+			border: 0;
+			margin: 5px 10px;
+		}
+		
+		.cover-box .bt-choose button.bg_blue {
+			background: #31aae1;
+		}
+	</style>
+<script src="//res.mshuoke.com/common/js/jquery/2.1.1/jquery.min.js"></script>
+<script>
+
+
+
+
+/*!
+ * jQuery Cookie Plugin v1.4.1
+ * https://github.com/carhartl/jquery-cookie
+ *
+ * Copyright 2013 Klaus Hartl
+ * Released under the MIT license
+ */
+;;;(function (factory) {
+	if (typeof define === 'function' && define.amd) {
+		// AMD
+		define(['jquery'], factory);
+	} else if (typeof exports === 'object') {
+		// CommonJS
+		factory(require('jquery'));
+	} else {
+		// Browser globals
+		factory(jQuery);
+	}
+}(function ($) {
+
+	var pluses = /\+/g;
+
+	function encode(s) {
+		return config.raw ? s : encodeURIComponent(s);
+	}
+
+	function decode(s) {
+		return config.raw ? s : decodeURIComponent(s);
+	}
+
+	function stringifyCookieValue(value) {
+		return encode(config.json ? JSON.stringify(value) : String(value));
+	}
+
+	function parseCookieValue(s) {
+		if (s.indexOf('"') === 0) {
+			// This is a quoted cookie as according to RFC2068, unescape...
+			s = s.slice(1, -1).replace(/\\"/g, '"').replace(/\\\\/g, '\\');
+		}
+
+		try {
+			// Replace server-side written pluses with spaces.
+			// If we can't decode the cookie, ignore it, it's unusable.
+			// If we can't parse the cookie, ignore it, it's unusable.
+			s = decodeURIComponent(s.replace(pluses, ' '));
+			return config.json ? JSON.parse(s) : s;
+		} catch(e) {}
+	}
+
+	function read(s, converter) {
+		var value = config.raw ? s : parseCookieValue(s);
+		return $.isFunction(converter) ? converter(value) : value;
+	}
+
+	var config = $.cookie = function (key, value, options) {
+
+		// Write
+
+		if (value !== undefined && !$.isFunction(value)) {
+			options = $.extend({}, config.defaults, options);
+
+			if (typeof options.expires === 'number') {
+				var days = options.expires, t = options.expires = new Date();
+				t.setTime(+t + days * 864e+5);
+			}
+
+			return (document.cookie = [
+				encode(key), '=', stringifyCookieValue(value),
+				options.expires ? '; expires=' + options.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE
+				options.path    ? '; path=' + options.path : '',
+				options.domain  ? '; domain=' + options.domain : '',
+				options.secure  ? '; secure' : ''
+			].join(''));
+		}
+
+		// Read
+
+		var result = key ? undefined : {};
+
+		// To prevent the for loop in the first place assign an empty array
+		// in case there are no cookies at all. Also prevents odd result when
+		// calling $.cookie().
+		var cookies = document.cookie ? document.cookie.split('; ') : [];
+
+		for (var i = 0, l = cookies.length; i < l; i++) {
+			var parts = cookies[i].split('=');
+			var name = decode(parts.shift());
+			var cookie = parts.join('=');
+
+			if (key && key === name) {
+				// If second argument (value) is a function it's a converter...
+				result = read(cookie, value);
+				break;
+			}
+
+			// Prevent storing a cookie that we couldn't decode.
+			if (!key && (cookie = read(cookie)) !== undefined) {
+				result[name] = cookie;
+			}
+		}
+
+		return result;
+	};
+
+	config.defaults = {};
+
+	$.removeCookie = function (key, options) {
+		if ($.cookie(key) === undefined) {
+			return false;
+		}
+
+		// Must not alter options, thus extending a fresh object...
+		$.cookie(key, '', $.extend({}, options, { expires: -1 }));
+		return !$.cookie(key);
+	};
+
+}));
+</script>
+ <script type="text/javascript">
+ 	function myload(){
+		$.ajax({
+					type: "PUT",
+					url: '${readingPlusUrl}',
+					dataType: "json",
+					data: '{"reading":${mkLecture.reading}}',
+					contentType: 'application/json',
+					success: function(msg){					
+					 }
+				});  
+
+	 };
+  </script>
+</head>
+<body id="home_index" class="news" onload="myload()">
+	<!-- darren add -->
+	<div class="cover"><div class="cover-box"><div class="title"><!-- react-text: 152 -->提示<!-- /react-text --><span class="close2"></span></div><div class="context" style="line-height: 200px;"><!-- react-text: 155 -->您还未登录，请先都登陆！<!-- /react-text --><a href="https://www.mshuoke.com/login.html">点此登录&gt;&gt;</a></div><div class="bt-choose"><button type="button" class="bg_blue close2">确定</button></div></div></div>
+	<!-- darren add  END-->
+
+	<div class="aside_bar">
+		<ul>  
+			<li><a href="tencent://message/?uin=2850840269&Site=&menu=yes" id="contactQQ"></a></li>
+			<li id="contactTel"><a href="javascript:"></a></li>
+			<li><a href="javascript:" class="go-to-top"></a></li>
+		</ul>
+	</div>
+	<header>
+		<div class="nav_top">
+						<div>
+						<!---这里的图片需要上传   start--->
+							<div class="c_home_logo"><a href="//www.mshuoke.com"><img src="https://news.mshuoke.com/article/images_v_3_1/c_index_logo.png" title="MSO-眸事网，国内专业营销服务外包平台" alt="logo"/></a></div>
+						<!---这里的图片需要上传   end--->
+							<ul>
+								<a href="//www.mshuoke.com"><li>首页<i></i></li></a>
+								<a href="//www.mshuoke.com/headline.html"><li>眸事资讯<i></i></li></a>
+								<a href="//www.mshuoke.com/help.html"><li>帮助中心<i></i></li></a>
+								<a href="//vendor.mso-china.com"><li>服务商<i></i></li></a>
+							</ul>
+							<div class="c_right">
+								<a href="//www.mshuoke.com/login.html">登录</a>
+								<a href="//www.mshuoke.com/register.html?jfutype=1">注册</a>
+							</div>
+						</div>
+					</div>
+	</header>
+	<main>
+		<div class="breadcrumbs">
+			<ul>
+				<li><a href="//www.mso-china.com">首页</a><span>></span></li>
+				<li>眸事资讯</li>
+			</ul>
+		</div>
+		<div class="content">
+			<div class="left">
+				<div class="title">
+					<h1>【课堂】${mkLecture.title}</h1>
+					<p>${mkLecture.begintime}</p>
+					<!---标签开始--->
+					<#list labels as label_item>
+					<a href="${mosfurl}/headline.html?name=${label_item}"><span>${label_item}</span></a>
+					</#list>
+					<!---标签结束--->
+				</div>
+				<div class="share">
+				</div>
+				<div class="context">
+					${mkLectureVO.mkLecture.content_html}
+				</div>
+				<div class="bottom">
+					<!---下载开始--->
+					<h3>干货分享：</h3>
+					<p class="down">分享附件<a href="${resurl}${mkLectureVO.mkLecture.attachmenturl}">下载</a></p>
+					<!---下载结束--->
+					<#if mkLectureVO.mkLecture_prev??>
+					<p><a href="${mkLectureVO.mkLecture_prev.url}">上一篇：${mkLectureVO.mkLecture_prev.title}</a></p>
+					</#if>
+					<#if mkLectureVO.mkLecture_next??>
+					<p><a href="${mkLectureVO.mkLecture_next.url}">下一篇：${mkLectureVO.mkLecture_next.title}</a></p>
+					</#if>
+				</div>
+			</div>
+			<div class="right">
+				<div class="title"><h2>热文推荐</h2></div>
+				<div class="box">
+					<#if first??>
+						<div class="news-list"><a href="${first.url}">
+						<div class="img"><img src="${resurl}${first.thumbnail}" /></div>
+						<p>${first.title}</p>
+					</a></div>
+					</#if>
+					<#if second??>
+						<div class="news-list"><a href="${second.url}">
+						<div class="img"><img src="${resurl}${second.thumbnail}" /></div>
+						<p>${second.title}</p>
+					</a></div>
+					</#if>
+					<#if third??>
+						<div class="news-list last"><a href="${third.url}">
+						<div class="img"><img src="${resurl}${third.thumbnail}" /></div>
+						<p>${third.title}</p>
+					</a></div>
+					</#if>
+				</div>
+				<!---标签开始--->
+				<div class="title"><h2>热文标签</h2></div>
+				<div class="tag">
+					<#list hotLabels as hotLabel>
+					<a href="${mosfurl}/headline.html?name=${hotLabel.name}">${hotLabel.name}</a>
+					</#list>
+				</div>
+				<!---标签结束--->
+			</div>
+		</div>
+	</main>
+	<footer>
+		<div class="nav_bottom">
+			<div>
+				<div class="left">
+					<div>
+						<ul>
+							<a href="//www.mshuoke.com"><li>首页</li></a>丨
+							<a href="//www.mshuoke.com/headline.html"><li>眸事资讯</li></a>丨
+							<a href="//www.mshuoke.com/help.html"><li>帮助中心</li></a>丨
+							<a href="//www.mshuoke.com/about.html"><li>关于我们</li></a>丨
+							<a href="//vendor.mshuoke.com"><li>服务商</li></a>丨
+							<a href="//www.mshuoke.com/friendship.html"><li>友情链接</li></a>
+						</ul>
+					</div>
+					<div>Copyright&nbsp;©&nbsp;2011-2017&emsp;&nbsp;&nbsp;上海脉豪商务信息咨询有限公司&emsp;&nbsp;&nbsp;版权所有&nbsp;&nbsp;沪ICP备17004427号-1</div>
+					<div>上海市虹口区四平路198号轻工国际大厦3楼</div>
+				</div>
+				<!---这里的图片需要上传   start--->
+				<div class="right"><div><a href="tencent://message/?uin=2850840269&Site=&menu=yes"></a><a><div><div><img src="https://news.mshuoke.com/article/images_v_3_1/winxin_code.png" /><i></i></div></div></a></div><div><p>服务热线：</p><p>400-900-5288</p></div></div
+				<!---这里的图片需要上传   end--->
+			</div>
+		</div>
+	</footer>
+	<style>
+		.jiathis_style_32x32 .jiathis_counter.jiathis_bubble_style,
+		.share .jiathis_style_32x32 .jiathis_counter.jiathis_bubble_style { width: 60px !important;}
+		.jiathis_style_32x32 .jtico.jtico_qzone { background: url(https://news.mshuoke.com/article/images/icon_qzone.png) left top no-repeat; width: 30px; height: 30px; padding-left: 8px!important;}
+		.jiathis_style_32x32 .jtico.jtico_qzone:hover { background: url(https://news.mshuoke.com/article/images/icon_qzone-h.png) left top no-repeat; width: 30px; height: 30px;}
+		.jiathis_style_32x32 .jtico.jtico_weixin { background: url(https://news.mshuoke.com/article/images/icon_wechat.png) left top no-repeat; width: 30px; height: 30px; padding-left: 8px!important;}
+		.jiathis_style_32x32 .jtico.jtico_weixin:hover { background: url(https://news.mshuoke.com/article/images/icon_wechat-h.png) left top no-repeat; width: 30px; height: 30px;}
+		.jiathis_style_32x32 .jtico.jtico_tsina { background: url(https://news.mshuoke.com/article/images/icon_weibo.png) left top no-repeat; width: 30px; height: 30px; padding-left: 8px!important;}
+		.jiathis_style_32x32 .jtico.jtico_tsina:hover { background: url(https://news.mshuoke.com/article/images/icon_weibo-h.png) left top no-repeat; width: 30px; height: 30px;}
+		.jiathis_style_32x32 .jtico.jtico_tqq { background: url(https://news.mshuoke.com/article/images/icon_weqq.png) left top no-repeat; width: 30px; height: 30px; padding-left: 8px!important;}
+		.jiathis_style_32x32 .jtico.jtico_tqq:hover { background: url(https://news.mshuoke.com/article/images/icon_weqq-h.png) left top no-repeat; width: 30px; height: 30px;}
+		#jiathis_webchat img { display: initial;}
+	</style>
+	<script>
+		function rightBar() {
+			$(".go-to-top").hide();
+	        $(window).scroll(function () {
+	            var scroll_top = $(document).scrollTop();
+	            if (scroll_top > 100){
+	                $(".go-to-top").fadeIn(100);
+	            }else{
+	              	$(".go-to-top").fadeOut(100);
+	            }
+	        });
+	        $(".go-to-top").click(function(){
+	            $("body,html").stop(false,true).animate({"scrollTop":0});
+	        });
+	    }
+        rightBar();
+		
+		
+		/*判断是否登录下载！*/
+		var jfuid = $.cookie('jfuid');
+		
+		if(jfuid){
+			$('.cover').hide();
+		}else{
+		//debugger;
+			//console.log();
+			$('p.down a').attr('href','javascript:;');
+			$('p.down a').click(function (){
+				$('.cover').show();
+			});
+			
+			$('.bg_blue.close2').click(function (){
+					window.open('https://www.mshuoke.com/login.html',"_blank");
+			});
+				
+				
+			$('.close2').click(function (){
+					$('.cover').hide();
+			});
+			
+		}
+		
+		
+	</script>
+</body>
+</html>

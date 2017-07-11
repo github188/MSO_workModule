@@ -1,0 +1,140 @@
+﻿<!Doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>眸事资讯 | MSO-眸事网，国内专业营销服务外包平台</title>
+	<meta name="description" content="MSO（眸事网）-国内专业营销服务外包平台，获客线索总交易量高达632500条！上游发包方企业可自由定价，行业包括线上/线下教育培训行业、金融行业、汽车行业、汽车后服务市场、电商平台、运营商增值服务等领域，下游以网络营销、电话营销、地推机构等营销机构为主，平台坐拥10000万以上精准数据用户，月均发包量达80000以上，目前已成为各领域权威人士认可的最专业的营销服务外包机构！">
+	<meta name="keywords" content="">
+	<link rel="stylesheet" href="https://www.mshuoke.com/html/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://www.mshuoke.com/html/css/style.css">
+	
+	<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script> 
+	<script src="https://www.mshuoke.com/html/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+	<script src="https://www.mshuoke.com/html/js/react.min.js"></script>
+	<script src="https://www.mshuoke.com/html/js/react-dom.js"></script>
+	<script src="https://www.mshuoke.com/html/js/browser.min.js"></script>
+	<script src="https://www.mshuoke.com/html/js/main_index.js"></script>
+	<script src="https://www.mshuoke.com/html/js/url.js"></script>
+	<script src="//www.mshuoke.com/html/js/hide.js"></script>
+	<script>
+		$.msoid = 3;
+	</script>
+	<!---<script src="//kefu.mshuoke.com/im/4028838b5ac815e3015ac81645f90000.html"></script>-->
+	<style>
+		#home_index .content { width:1200px; margin:auto; }
+		.banner-multy { margin-top:20px; width:100%;  overflow: hidden; }
+		.banner-multy .left { width:580px; height:320px; float:left; position:relative; }
+		.banner-multy .left span { position:absolute; left:0; bottom:0; font-size:16px; display: inline-block;
+  
+    width: 100%;
+    padding: 20px;
+    color: #f2f2f2;
+    line-height: 24px; } 
+	
+	.banner-multy .left span:hover { color:#008cd6; }
+		.banner-multy ol { width:260px; height:320px; margin-left:20px; float:left;  } 
+		.banner-multy ol li { width:260px; height:150px; }
+		.banner-multy ol li { position:relative;  }
+		.banner-multy ol li span { position:absolute; left:0; bottom:0; font-size:16px; display: inline-block;
+    width: 100%;
+    padding: 20px;
+    color: #f2f2f2;
+    line-height: 24px;  }
+	.banner-multy ol li a:hover span{ color:#008cd6; }
+	.banner-multy ol li span:hover { color:#008cd6; }
+		.banner-multy ol li img { width:100%; height:100%; } 
+		.banner-multy ol li.last { margin-top:20px; } 
+		.banner-multy .right { width:320px; height:320px; margin-left:20px; float:left;  position:relative; }
+		.banner-multy .right a:hover span { color:#008cd6; }
+		.banner-multy .right span { position:absolute; left:0; bottom:0; font-size:16px; display: inline-block;
+  
+    width: 100%;
+    padding: 20px;
+    color: #f2f2f2;
+    line-height: 24px; }
+	.banner-multy .right span:hover { color:#008cd6; }
+		.list-left { float:left; width:880px; }
+
+		.list-right { margin-left:20px; float: left; width:300px;}
+		.news-list { overflow:hidden;}
+		.news-list ul li .news-con a.con { width:274px; height:150px; display:block; float:left;}
+		.news-list ul li .news-con a.con img { width:100%; height:100%;}
+		.news-list ul li .news-con .right { float:left;  padding-left:20px; width:560px;}
+		.news-list .list-right {  margin-left:20px; float:left; width:300px;  background: #f9f9f9;}
+		.news-list .list-right .title { border: 0; height: auto; line-height: 36px; border-bottom: 1px #ccc dashed; padding: 10px 0; margin: 20px;}
+		.news-list .list-right .title h2,
+		.news-list .list-right .title h1 { font-size: 16px; line-height: 16px; padding-left: 7px; border-left: 4px #008cd6 solid; font-weight: bold;}
+		.news-list .list-right .box { background:#fff; margin:14px 20px 0 20px;}
+		.news-list .list-right .box .newsList { padding: 15px 0 20px 0; border-bottom:1px #e4e4e4 dashed; margin:0 15px 5px 15px;}
+		.news-list .list-right .box .newsList.last { border-bottom:0;}
+		.news-list .list-right .box .newsList .img img { width: 100%;}
+		.news-list .list-right .box .newsList p { padding: 15px 0; font-size: 16px; color: #333; transition: color 0.25s; -moz-transition: color 0.25s; -webkit-transition: color 0.25s; -o-transition: color 0.25s;}
+		.news-list .list-right .box .newsList a { display: block;}
+		.news-list .list-right .box .newsList a:hover p { color: #259efb; transition: color 0.25s; -moz-transition: color 0.25s; -webkit-transition: color 0.25s; -o-transition: color 0.25s;}
+		.news-list .list-right .tag { padding-left:5px; padding-right:20px; overflow:hidden;}
+		.news-list .list-right .tag a { display:inline-block; height:28px; line-height:28px; background:#fff; border:1px #dddddd solid; padding:0 18px; float:left; margin-left:15px; margin-bottom:15px; font-size:14px; color:#333333; border-radius:13px; transition: all 0.25s; -moz-transition: all 0.25s; -webkit-transition: all 0.25s; -o-transition: all 0.25s;}
+		.news-list .list-right .tag a:hover { background:#39b5ed; border:1px #39b5ed solid; color:#fff; transition: all 0.25s; -moz-transition: all 0.25s; -webkit-transition: all 0.25s; -o-transition: all 0.25s;}
+		.list-title ol { height:30px; width:100%;  border-bottom:1px solid #e4e4e4; }
+		.list-title ol li { height:30px; position:relative; float:left; padding-left:10px;  padding-right:10px; overflow:hidden; font-size:16px; cursor:pointer;}
+		.list-order { border-bottom:1px solid #e4e4e4; }
+		.list-title ol li:hover{ color:#55b2e4;}
+		.list-title ol li:after {  position:absolute; left:0; top:28px;  content:""; 
+		 width:0%; height:2px; background:#008cd6;}
+		 .list-title ol li.current { color:#55b2e4; }
+		.list-title ol li.current:after { width:100%;  color:#55b2e4;}
+		.news-list ul li .news-con .right h1 a { margin-left:-10px; }
+		.news-list ul li .news-con .right h1 { font-size:18px; }
+		#home_index .main_headline .news-list ul.detals { padding:0; }
+		#home_index .main_headline .news-list ul.detals li { padding:0; }
+		.detals { padding:0; overflow:hidden;  width:100%; }
+		.detals li { float:left; }
+		.detals li.last { float:right;   }
+		.detals li.last  img { float:left; }
+		.detals li.last span { float:right; margin-top:-3px; margin-left:3px; }
+		#home_index .main_headline .news-list ul.detals li { border-bottom:none; overflow:hidden; }
+		#home_index .main_headline .news-list ul.detals li:hover { background:none; }
+		#home_index .content .load-more { margin-bottom:50px; }
+		body {background:#ffffff; } 
+		.banner-multy .left img { width:100%; height:100%; }
+	
+		.banner-multy .left a { display:inline-block;}
+	
+		.banner-multy .left a:hover span { color:#008cd6; }
+		.banner-multy .right img { width:100%; height:100%; }
+		#home_index .main_headline .news-list { margin-top:20px; }
+		.news-list ul li .news-con .right{ height:150px; }
+		.content .title { background:none;}
+		#home_index .main_headline .banner { height:90px; background:none; margin-top:30px;  }
+		#home_index .main_headline .banner img { padding:0; }
+	</style>
+</head>
+<body id="home_index" class="product">
+	<header></header>
+	<main class="main_headline">
+	</main>
+	<footer></footer>
+	<div class="aside_bar"></div>
+	<script src="https://www.mshuoke.com/html/js/asideBar.js" type="text/babel"></script>
+	<script src="https://www.mshuoke.com/html/js/home_index/header.js" type="text/babel"></script>
+	<script src="https://www.mshuoke.com/html/js/home_index/footer.js" type="text/babel"></script>
+	<script src="html/js/home_index/headline.js"  type="text/babel"></script>
+	<script>
+		$(function(){
+			var $div_li =$("div.tab-menu ul li");
+			$div_li.click(function(){
+				$(this).addClass("selected").siblings().removeClass("selected");
+				var index =  $div_li.index(this);
+				$("div.tab-box > div").eq(index).show().siblings().hide();
+			}).hover(function(){
+				$(this).addClass("hover");
+			},function(){
+				$(this).removeClass("hover");
+			});
+		});
+		
+		
+	</script>
+</body>
+</html>
+
+</html>

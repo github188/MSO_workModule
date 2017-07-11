@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- identity -->
+<hibernate-mapping>
+
+    <class name="com.mso.model.UserFP" table="user_f_p">
+        <id name="pid" type="java.lang.String">
+            <column name="pid"  />
+        </id>
+        <property name="userId" type="java.lang.String">
+            <column name="USER_ID" />
+        </property>
+        <property name="reviewname" type="java.lang.String">
+            <column name="reviewname" />
+        </property>
+        <property name="bstatus" type="java.lang.Integer">
+            <column name="bstatus" />
+        </property>
+        
+    </class>
+    
+</hibernate-mapping>

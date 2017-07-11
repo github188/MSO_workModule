@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.mso.model.HotLabel" table="mk_hot_label">
+		<id name="mklabelid" type="java.lang.String">
+			<column name="mklabelid"/>
+			<generator class="assigned"/>    
+		</id>
+		<property name="name" type="java.lang.String">
+			<column name="name" length="100">
+			</column>
+		</property>
+		<property name="rank" type="java.lang.Integer">
+			<column name="rank">
+			</column>
+		</property>
+		<property name="createtime" type="java.lang.String">
+			<column name="createtime" length="20">
+			</column>
+		</property>
+		<property name="updatetime" type="java.lang.String">
+			<column name="updatetime" length="20" >
+			</column>
+		</property>
+		<property name="ifshow" type="java.lang.Integer">
+			<column name="ifshow">
+			</column>
+		</property>
+	
+	</class>
+</hibernate-mapping>

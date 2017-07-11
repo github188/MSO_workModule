@@ -1,0 +1,630 @@
+<html><head lang="en">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta charset="UTF-8">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-Control" content="no-cache">
+	<meta http-equiv="Expires" content="0">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="https://hm.baidu.com/hm.js?7da9bd342c0cba6f2d6ebc64c9813b89"></script>
+	<script type="text/javascript" src="js/jquery-1.7.2.min.js" ></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/react.js"></script>
+	<script src="js/react-dom.js"></script>
+	<script src="js/browser.min.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/url.js"></script>
+	<script type="text/javascript">
+		function onkeyseach(event){
+			if(event.keyCode==13)
+			{
+				document.getElementById("btn_submit").click();
+				return false;
+			}
+		}
+	</script></head>
+
+
+
+<body class="supplier" onkeydown="onkeyseach(event)">
+
+<div class="content" style="width: 1200px; margin: 0 auto;">
+	<div class="mid_bg">
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/dateUtil.js"></script>
+		<script type="text/javascript">
+			var jfutype=isNull(sessionStorage.getItem("jfutype"))?localStorage.getItem("jfutype"):sessionStorage.getItem("jfutype");
+			var jfustate=isNull(sessionStorage.getItem("jfustate"))?localStorage.getItem("jfustate"):sessionStorage.getItem("jfustate");
+			//立即竞拍 按钮
+			//console.log(123456);
+			function gotoDetail(demandid){
+				if(4==jfustate){
+					var formid="detailForm_";
+					var detailform=document.getElementById(formid+demandid);
+					var category3=detailform.category3.value;
+					var category1=detailform.category1.value;
+					var twolevindustry=detailform.twolevindustry.value;
+					var threelevindustry=detailform.threelevindustry.value;
+					//detailform.action="customer_lj_DemandDetail";
+					//detailform.method="post";
+					//detailform.submit();
+					if("销售线索挖掘"==category3.trim()){
+						if("其他"==twolevindustry.trim()&&"教育培训"==category1.trim()){
+							window.location.href="customer_Auction.html#"+demandid;
+						}else if("线上"==twolevindustry.trim()&&"教育培训"==category1.trim()){
+							window.location.href="customer_Auction_new.html#"+demandid;
+						}else if("线下"==twolevindustry.trim()&&"教育培训"==category1.trim()){
+							window.location.href="customer_Auction_new.html#"+demandid;
+						}else{
+							window.location.href="customer_Auction.html#"+demandid;
+						}
+					}else{
+						window.location.href="data_Auction.html#"+demandid;
+					}
+				}else{
+					$(".cover").show();
+				}
+			}
+
+			function toTZ(){
+				var toPaggeVlue = document.getElementById("toGoPage").value;
+				var tolPageValue = document.getElementById("tolPageValue").value;
+				if(toPaggeVlue == ''){
+					document.getElementById("toGoPage").value=1;return;
+				}
+				if(isNaN(Number(toPaggeVlue))){
+					document.getElementById("toGoPage").value=1;return;
+				}
+				if(Number(toPaggeVlue)>Number(tolPageValue)){
+					document.getElementById("toGoPage").value=tolPageValue;return;
+				}
+				nextPage(toPaggeVlue);
+			}
+			function nextPage(page){
+				document.getElementById("currentPage").value=page;
+				getDemandHall("page");
+			}
+			function seachDemandHall(){
+				//清空条件 ul li.selected
+				$("#box1 li").eq(0).addClass("selected").siblings().removeClass("selected");
+				$("#box2 li").eq(0).addClass("selected").siblings().removeClass("selected");
+				$("#box3 li").eq(0).addClass("selected").siblings().removeClass("selected");
+				$("#box4 li").eq(0).addClass("selected").siblings().removeClass("selected");
+				$("#box5 li").eq(0).addClass("selected").siblings().removeClass("selected");
+				$("#box6 li").eq(0).addClass("selected").siblings().removeClass("selected");
+				document.getElementById("currentPage").value="1";
+				getDemandHall("");
+			}
+
+
+			//取得需求列表
+			function getDemandHall(page){
+				//非分页过来的  默认到第一页
+				if("page"!=page){
+					document.getElementById("currentPage").value="1";
+				}
+				var orderBy=$(".deman_hall_search .search_box ul li.selected").attr("data");
+				var sort="";
+				var sorttext=$(".deman_hall_search .search_box ul li.selected").find(".sequence").text();
+				if("↑"==sorttext){//desc降序 asc 升序
+					sort="asc";
+				}else if("↓"==sorttext){
+					sort="desc";
+				}
+				var data={
+					"category1":$(".deman_hall_box ul li.selected").eq(0).attr("data"),//面向行业
+					"category3":$(".deman_hall_box ul li.selected").eq(1).attr("data"),//业务类型
+					"targecity":$(".deman_hall_box ul li.selected").eq(2).attr("data"),//目标城市
+					//"category2":$(".deman_hall_box ul li.selected").eq(3).attr("data"),//获客渠道
+					"auction":$(".deman_hall_box ul li.selected").eq(3).attr("data"),//可竞拍不可竞拍
+					"pricerange":$(".deman_hall_box ul li.selected").eq(4).attr("data"),//需求单价
+					"keyword":document.getElementById("ordername").value,
+					"demandid":document.getElementById("demandid").value,
+					"orderBy":orderBy,
+					"sort":sort,
+					"currentPage":document.getElementById("currentPage").value
+				};
+				$.post('getDemandHall',data,function(r){
+					if(r.code=="Y"){
+						if(undefined==r.results.length || r.results.length==0){
+							$("#search_reslut").addClass("no-reslut");
+							$("#search_reslut").html("暂无数据");
+						}else{
+							$("#search_reslut").removeClass("no-reslut");
+							$("#search_reslut").html("");
+							$.each(r.results,function(index,d)
+							{
+								var str='';
+								//业务类型1-销售线索挖掘  -A  2数据筛选  3-人工客服 （4-运营商增值服务  5-到场体验 6-电商代理）
+								var category3=d.category3;//意向挖掘
+								var category1=d.category1;//成人	教育
+								var demandid=d.demandid;//需求编号
+								var orderprice=d.orderprice;//需求单价
+								var fishnum=d.fishnum;
+								var fdstate=d.fdstate;//zi需求状态
+								var ordername=d.ordername;//订单名
+								var targecity=d.targecity;//北京
+								var twolevindustry=d.twolevindustry;//二级行业
+								var threelevindustry=d.threelevindustry;//三级行业
+
+								var jp = 'jp' + index;
+								var div = 'div' + index;
+
+								var zq="";
+								var begintime="";
+								var endtime="";
+								var demandtype=d.demandtype;// 1-套餐    2-个性化需求
+
+								if('1'==demandtype){
+									begintime=d.begintime;//2016-08-25~2016-08-31
+									if(''==begintime||null==begintime){
+									}else{
+										begintime=begintime.substring(0,10);
+										endtime=d.endtime;
+										if(!isNaN(endtime)){
+											//alert("是数字");
+											var val = Date.parse(begintime);
+											var newDate = new Date(val);
+											var time2 = newDate.format("yyyy-MM-dd");
+											endtime=addDate(time2,parseInt(endtime));
+											endtime = endtime.format("yyyy-MM-dd");
+										}else{
+											endtime = new Date(endtime);
+											endtime = endtime.format("yyyy-MM-dd");
+										}
+									}
+								}
+
+								if('2'==demandtype){
+									begintime=d.begintime;
+									if(''==begintime||null==begintime){
+										begintime="";
+									}else{
+										begintime=begintime.substring(0,10);
+									}
+									endtime=d.endtime;
+									if(''==endtime||null==endtime){
+										endtime="";
+									}else{
+										endtime=endtime.substring(0,10);
+									}
+									endtime = new Date(endtime);
+									endtime = endtime.format("yyyy-MM-dd");
+								}
+
+
+
+								//如果结束日期在5天之内，则标红显示（同时竞拍按钮也用红色的，并且按钮内的字变为“马上抢拍”）；
+								var now=new Date();
+								now = now.format("yyyy-MM-dd");
+								var intDay=subDate(now,endtime);
+
+								zq=begintime+"~"+endtime;//项目周期  套餐要计算
+								var category2=d.category2;//获客渠道 -电话营销
+								if(null==category2){
+									category2="";
+								}
+								var demanddescription=d.demanddescription;//需求描述
+								if(null==demanddescription){
+									demanddescription="";
+								}
+
+
+								var favorableway=d.favorableway;//0-无优惠 1-免手续费
+								var newdemand=d.newdemand;//0-老单   1-新单
+								var releasenum=d.releasenum;
+
+								var applicationnum=d.applicationnum;
+								var syl=releasenum-applicationnum;
+								var prent=(syl/releasenum)*100;
+								var prent2=prent.toFixed(2);
+
+
+								str='<div class="reslut_box" id="'+div+'">';
+
+								str+='<form name="detailForm_'+demandid+'" id="detailForm_'+demandid+'" action="">';
+								str+='<input type="hidden" value="'+demandid+'" name="demandid">';
+								str+='<input type="hidden" value="'+category3+'" name="category3">';
+								str+='<input type="hidden" value="'+category1+'" name="category1">';
+								str+='<input type="hidden" value="'+twolevindustry+'" name="twolevindustry">';
+								str+='<input type="hidden" value="'+threelevindustry+'" name="threelevindustry">';
+								str+='<input type="hidden" value="supplier_lj_demandHall2" name="ztDetail">';
+								str+='</form>';
+
+								str+='<div class="title">';
+								str+='<h3 title="'+ordername+'">'+ordername+'</h3>';
+								str+='<ul>';
+
+								if(''==category3||null==category3){
+									str+='<li class="bg_blue" style="display:none">'+category3+'</li>';
+								}else{
+									str+='<li class="bg_blue">'+category3+'</li>';
+								}
+
+								if(''==twolevindustry||null==twolevindustry){
+									str+='<li class="bg_green" style="display:none">'+twolevindustry+'</li>';
+								}else{
+									str+='<li class="bg_green">'+twolevindustry+'</li>';
+								}
+
+//											if(''==threelevindustry||null==threelevindustry){
+//												str+='<li class="bg_blue" style="display:none">'+threelevindustry+'</li>';
+//												}else{
+//												str+='<li class="bg_blue">'+threelevindustry+'</li>';
+//											}
+
+								if(''==category1||null==category1){
+									str+='<li class="bg_rose" style="display:none">'+category1+'</li>';
+								}else{
+									str+='<li class="bg_rose">'+category1+'</li>';
+								}
+
+								if(''==targecity||null==targecity){
+									str+='<li class="bd_blue" style="display:none">'+targecity+'</li>';
+								}else{
+									str+='<li class="bd_blue" title="'+targecity+'">'+targecity+'</li>';
+								}
+
+								str+='<li class="number">需求编号:'+demandid+'</li>';
+								str+='</ul>';
+								if(5>=intDay&&intDay>=0){
+									str+='<p style="color: red">项目周期:'+zq+'</p>';
+								}else if(intDay<0){
+									str+='<p style="color: red">项目周期:'+zq+'</p>';
+								}else{
+									str+='<p>项目周期:'+zq+'</p>';
+								}
+								str+='</div>';
+								str+='<div class="channel" style="display:none">获客渠道： <span>'+category2+'</span></div>';
+								str+='<div class="description">';
+								str+='<h4>需求描述： </h4>';
+								str+='<p>'+demanddescription+'</p>';
+								str+='</div>';
+								str+='<div class="progress_bar">';
+								str+='<div class="box">';
+								str+='<div class="progress-box"><div class="rate" style="width: '+prent2+'%;"></div></div>';
+								str+='<p>需求量<span class="orange">&nbsp;&nbsp;'+syl+'</span><span class="gray">/'+releasenum+'</span></p>';
+								str+='</div>';
+
+								if(4==jfustate){
+									str+='<div class="demand">需求单价<span>'+orderprice+'</span>元</div>';
+								}else{
+									str+='<div class="demand">&nbsp;</div>';
+								}
+								str+='<ul>';
+								if('1'==favorableway){
+									str+='<li class="icon-free"><p>免竞拍手续费</p></li>';
+								}
+								if('1'==newdemand){
+									str+='<li class="icon-new"><p>新上架需求</p></li>';
+								}
+								str+='</ul>';
+								str+='</ul>';
+								if("2"==jfutype){
+									if(5==fdstate||6==fdstate||7==fdstate){
+										str+='<button type="button" class="bg_gray" id="'+jp+'">已结束</button>';
+									}else{
+										//则按钮变灰，按钮内的字变为“已抢完”，并且不可点击   applicationnum   fishnum
+										if(applicationnum>=releasenum){
+											str+='<button type="button" class="bg_gray" id="'+jp+'">已抢完</button>';
+										}
+										// 							当结束日期表红时，按钮按照设计图则变为橙色，并且按钮内的字变为“马上抢拍”
+										else if(5>=intDay&&intDay>=0){
+											if(4==jfustate){
+												str+='<button type="button" class="bg_orange" id="'+jp+'">马上抢拍</button>';
+											}else{
+												str+='<button type="button" class="bg_gray" id="'+jp+'">马上抢拍</button>';
+											}
+										}
+										// 					                     如果需求已经结束，则按钮变灰，按钮内的字变为“已结束”
+										else if(intDay<0){
+											str+='<button type="button" class="bg_gray" id="'+jp+'">已结束</button>';
+										}
+										else{
+											if(4==jfustate){
+												str+='<button type="button" class="bg_blue" id="'+jp+'">立即竞拍</button>';
+											}else{
+												str+='<button type="button" class="bg_gray" id="'+jp+'">立即竞拍</button>';
+											}
+										}
+									}
+
+								}
+								str+='</div>';
+								str+='</div>';
+								$("#search_reslut").append(str);
+								if("2"==jfutype){
+									if(5==fdstate||6==fdstate||7==fdstate){
+
+
+									}else{
+										if(4==jfustate){
+											//则按钮变灰，按钮内的字变为“已抢完”，并且不可点击
+											if(applicationnum>=releasenum){
+
+											}
+											//当结束日期表红时，按钮按照设计图则变为橙色，并且按钮内的字变为“马上抢拍”
+											else if(5>=intDay&&intDay>=0){
+												$("#" + jp).click(function(){
+													gotoDetail(demandid);
+												});
+											}
+											//如果需求已经结束，则按钮变灰，按钮内的字变为“已结束”
+											else if(intDay<0){
+
+											}
+											else if(5==fdstate||6==fdstate||7==fdstate){
+
+											}
+											else{
+												$("#" + jp).click(function(){
+													gotoDetail(demandid);
+												});
+											}
+										}else{
+											$("#" + jp).click(function(){
+												gotoDetail(demandid);
+											});
+										}
+									}
+								}
+							});
+						}
+						document.getElementById("page").innerHTML=r.ajaxPageStr;
+						//免，新 图标效果
+						$(".deman_hall_search .reslut_box .progress_bar li").hover(function(){
+							$(this).find("p").toggle();
+						});
+						//点击翻页跳转到顶部
+						$(".page a").click(function(){
+							$('html,body').animate({scrollTop: '0px'}, 0);
+						});
+					}else{
+						$("#search_reslut").addClass("no-reslut");
+						$("#search_reslut").html("加载失败!");
+// 								document.getElementById("search_reslut").innerHTML="加载失败!";
+						document.getElementById("page").innerHTML="";
+					}
+				});
+			}
+
+
+			$(document).ready(function(){
+// 			  	 if("2"==jfutype){
+// 			  		  var ztseach=document.getElementById("ztseach").value;
+// 			  		  if("supplier_lj_demandHall"==ztseach){
+// 					  	    document.getElementById("ordername").value=document.getElementById("sorderName").value;
+// 					  	    seachDemandHall();
+// 				  	  }else{
+// 				  	  		getDemandHall("");
+// 				  	  }
+// 			  	 }else{
+				getDemandHall("");
+// 			  	 }
+			});
+
+		</script>
+
+
+
+		<div class="topNav"></div>
+		<div class="mid_box">
+			<div class="content_right">
+				<input type="hidden" name="currentPage" id="currentPage" value="1">
+				<div class="deman_hall_box border-gray">
+					<div class="box">
+						<p>面向行业:</p>
+						<ul id="box1">
+							<a href="supplier_demandHall2.html"><li class="selected" data="">全部</li></a>
+							<a href="supplier_demandHall2_1_1.html"><li data="教育培训">教育培训</li></a>
+							<a href="supplier_demandHall2_1_2.html"><li data="汽车行业">汽车行业</li></a>
+							<li data="医美行业">医美行业</li>
+							<li data="房地产">房地产</li>
+							<li data="金融">金融</li>
+							<li data="电商">电商</li>
+							<li data="其他">其他</li>
+						</ul>
+					</div>
+					<div class="box">
+						<p>业务类型:</p>
+						<ul id="box2">
+							<li class="selected" data="">全部</li>
+							<li data="销售线索挖掘">销售线索挖掘</li>
+							<li data="数据筛选">数据筛选</li>
+							<li data="人工客服">人工客服</li>
+						</ul>
+					</div>
+					<div class="box open">
+						<p>目标城市:</p>
+						<ul class="open" id="box3">
+							<li class="selected" data="">全部</li>
+
+							<li data="北京">北京</li>
+							<li data="上海">上海</li>
+							<li data="广州">广州</li>
+							<li data="深圳">深圳</li>
+							<li data="杭州">杭州</li>
+
+
+							<li data="一线城市">一线城市</li>
+							<li data="全国">全国</li>
+
+							<!-- 								<li data="南京">南京</li> -->
+							<!-- 								<li data="苏州">苏州</li> -->
+							<!-- 								<li data="宁波">宁波</li> -->
+							<!-- 								<li data="天津">天津</li> -->
+							<!-- 								<li data="合肥">合肥</li> -->
+							<!-- 								<li data="长沙">长沙</li> -->
+							<!-- 								<li data="青岛">青岛</li> -->
+
+							<!-- 								<li data="重庆">重庆</li> -->
+							<!-- 								<li data="温州">温州</li> -->
+							<!-- 								<li data="西安">西安</li> -->
+							<!-- 								<li data="无锡">无锡</li> -->
+							<!-- 								<li data="东莞">东莞</li> -->
+							<!-- 								<li data="武汉">武汉</li> -->
+							<!-- 								<li data="佛山">佛山</li> -->
+							<!-- 								<li data="成都">成都</li> -->
+							<!-- 								<li data="全国">全国</li> -->
+						</ul>
+						<!-- 							<span class="open">展开</span> -->
+					</div>
+					<!--<div class="box">
+                        <p>获客渠道:</p>
+                        <ul id="box4">
+                            <li class="selected" data="">全部</li>
+                            <li data="电话营销">电话营销</li>
+                            <li data="网络营销">网络营销</li>
+                            <li data="地推推广">地推推广</li>
+                        </ul>
+                    </div>-->
+					<div class="box">
+						<p>需求状态:</p>
+						<ul id="box5">
+							<a href="supplier_demandHall2.html"><li class="selected" data="">全部</li></a>
+							<a href="supplier_demandHall2_4_1.html"><li data="1">可竞拍</li></a>
+							<a href="supplier_demandHall2_4_2.html"><li data="2">不可竞拍</li></a>
+						</ul>
+					</div>
+					<div class="box" id="box6price">
+						<p>需求单价:</p>
+						<ul id="box6">
+							<a href="supplier_demandHall2.html"><li class="selected" data="">全部</li></a>
+							<a href="supplier_demandHall2_5_1.html"><li data="1">0-30</li></a>
+							<a href="supplier_demandHall2_5_2.html"><li data="2">30-60</li></a>
+							<a href="supplier_demandHall2_5_3.html"><li data="3">60-100</li></a>
+							<a href="supplier_demandHall2_5_4.html"><li data="4">100以上</li></a>
+						</ul>
+					</div>
+				</div>
+
+				<div class="deman_hall_search">
+					<div class="search_box">
+						<ul>
+							<li class="selected" id="allzh" data="">综合</li>
+							<li data="u.residualQuantity" id="residualQuantityid">剩余量<span class="sequence" id="residualQuantityspan">↓</span></li>
+							<li data="u.releasetime" id="releasetimeid">上架日期<span class="sequence" id="releasetimespan">↓</span></li>
+							<li data="u.orderprice" id="orderpriceid">单价<span class="sequence" id="orderpricespan">↓</span></li>
+						</ul>
+						<div>
+							<input type="text" placeholder="需求名称" name="ordername" id="ordername">
+							<input type="text" placeholder="需求编号" name="demandid" id="demandid">
+							<button type="button" id="btn_submit" onclick="seachDemandHall();">确定</button>
+						</div>
+					</div>
+					<div class="search_reslut" id="search_reslut"><div class="reslut_box" id="div0"><form name="detailForm_20170111031410410" id="detailForm_20170111031410410" action=""><input type="hidden" value="20170111031410410" name="demandid"><input type="hidden" value="数据筛选" name="category3"><input type="hidden" value="" name="category1"><input type="hidden" value="" name="twolevindustry"><input type="hidden" value="" name="threelevindustry"><input type="hidden" value="supplier_lj_demandHall2" name="ztDetail"></form><div class="title"><h3 title="测试20170111">测试20170111</h3><ul><li class="bg_blue">数据筛选</li><li class="bg_green" style="display:none"></li><li class="bg_rose" style="display:none"></li><li class="bd_blue" style="display:none"></li><li class="number">需求编号:20170111031410410</li></ul><p>项目周期:2017-01-11~2017-01-31</p></div><div class="channel" style="display:none">获客渠道： <span>电话</span></div><div class="description"><h4>需求描述： </h4><p>测试20170111</p></div><div class="progress_bar"><div class="box"><div class="progress-box"><div class="rate" style="width: 100.00%;"></div></div><p>需求量<span class="orange">&nbsp;&nbsp;1</span><span class="gray">/1</span></p></div><div class="demand">需求单价<span>1</span>元</div><ul><li class="icon-new"><p>新上架需求</p></li></ul>
+						<a href="data_Auction.html"><button type="button" class="bg_blue" id="jp0">立即竞拍</button></a></div></div><div class="reslut_box" id="div1"><form name="detailForm_201701060718591841" id="detailForm_201701060718591841" action=""><input type="hidden" value="201701060718591841" name="demandid"><input type="hidden" value="销售线索挖掘" name="category3"><input type="hidden" value="汽车行业" name="category1"><input type="hidden" value="" name="twolevindustry"><input type="hidden" value="" name="threelevindustry"><input type="hidden" value="supplier_lj_demandHall2" name="ztDetail"></form><div class="title"><h3 title="MSO-老版本-汽车行业">MSO-老版本-汽车行业</h3><ul><li class="bg_blue">销售线索挖掘</li><li class="bg_green" style="display:none"></li><li class="bg_rose">汽车行业</li><li class="bd_blue" title="北京">北京</li><li class="number">需求编号:201701060718591841</li></ul><p style="color: red">项目周期:2017-01-06~2017-01-06</p></div><div class="channel" style="display:none">获客渠道： <span>电话营销</span></div><div class="description"><h4>需求描述： </h4><p>MSO-老版本-汽车行业-发包测试</p></div><div class="progress_bar"><div class="box"><div class="progress-box"><div class="rate" style="width: 0.00%;"></div></div><p>需求量<span class="orange">&nbsp;&nbsp;0</span><span class="gray">/100</span></p></div><div class="demand">需求单价<span>20</span>元</div><ul></ul><button type="button" class="bg_gray" id="jp1">已结束</button></div></div><div class="reslut_box" id="div2"><form name="detailForm_20170106072011487" id="detailForm_20170106072011487" action=""><input type="hidden" value="20170106072011487" name="demandid"><input type="hidden" value="数据筛选" name="category3"><input type="hidden" value="" name="category1"><input type="hidden" value="" name="twolevindustry"><input type="hidden" value="" name="threelevindustry"><input type="hidden" value="supplier_lj_demandHall2" name="ztDetail"></form><div class="title"><h3 title="MSO-数据筛选-发包">MSO-数据筛选-发包</h3><ul><li class="bg_blue">数据筛选</li><li class="bg_green" style="display:none"></li><li class="bg_rose" style="display:none"></li><li class="bd_blue" style="display:none"></li><li class="number">需求编号:20170106072011487</li></ul><p style="color: red">项目周期:2017-01-06~2017-01-06</p></div><div class="channel" style="display:none">获客渠道： <span>电话</span></div><div class="description"><h4>需求描述： </h4><p>MSO-数据筛选-发包测试</p></div><div class="progress_bar"><div class="box"><div class="progress-box"><div class="rate" style="width: 0.00%;"></div></div><p>需求量<span class="orange">&nbsp;&nbsp;0</span><span class="gray">/100</span></p></div><div class="demand">需求单价<span>20</span>元</div><ul></ul><button type="button" class="bg_gray" id="jp2">已结束</button></div></div><div class="reslut_box" id="div3"><form name="detailForm_201701050321378101" id="detailForm_201701050321378101" action=""><input type="hidden" value="201701050321378101" name="demandid"><input type="hidden" value="销售线索挖掘" name="category3"><input type="hidden" value="教育培训" name="category1"><input type="hidden" value="线下" name="twolevindustry"><input type="hidden" value="青少儿英语" name="threelevindustry"><input type="hidden" value="supplier_lj_demandHall2" name="ztDetail"></form><div class="title"><h3 title="线下EK-青少儿英语-北京">线下EK-青少儿英语-北京</h3><ul><li class="bg_blue">销售线索挖掘</li><li class="bg_green">线下</li><li class="bg_rose">教育培训</li><li class="bd_blue" title="北京">北京</li><li class="number">需求编号:201701050321378101</li></ul><p>项目周期:2017-01-05~2017-01-31</p></div><div class="channel" style="display:none">获客渠道： <span></span></div><div class="description"><h4>需求描述： </h4><p>挖掘对英语感兴趣的青少儿人群</p></div><div class="progress_bar"><div class="box"><div class="progress-box"><div class="rate" style="width: 0.00%;"></div></div><p>需求量<span class="orange">&nbsp;&nbsp;0</span><span class="gray">/200</span></p></div><div class="demand">需求单价<span>35</span>元</div><ul></ul><button type="button" class="bg_gray" id="jp3">已抢完</button></div></div><div class="reslut_box" id="div4"><form name="detailForm_201701060704116351" id="detailForm_201701060704116351" action=""><input type="hidden" value="201701060704116351" name="demandid"><input type="hidden" value="销售线索挖掘" name="category3"><input type="hidden" value="教育培训" name="category1"><input type="hidden" value="线下" name="twolevindustry"><input type="hidden" value="成人英语" name="threelevindustry"><input type="hidden" value="supplier_lj_demandHall2" name="ztDetail"></form><div class="title"><h3 title="线下-成人英语">线下-成人英语</h3><ul><li class="bg_blue">销售线索挖掘</li><li class="bg_green">线下</li><li class="bg_rose">教育培训</li><li class="bd_blue" title="北京">北京</li><li class="number">需求编号:201701060704116351</li></ul><p style="color: red">项目周期:2017-01-06~2017-01-07</p></div><div class="channel" style="display:none">获客渠道： <span></span></div><div class="description"><h4>需求描述： </h4><p>MSO20170106测试数据</p></div><div class="progress_bar"><div class="box"><div class="progress-box"><div class="rate" style="width: 0.00%;"></div></div><p>需求量<span class="orange">&nbsp;&nbsp;0</span><span class="gray">/100</span></p></div><div class="demand">需求单价<span>60</span>元</div><ul></ul><button type="button" class="bg_gray" id="jp4">已结束</button></div></div><div class="reslut_box" id="div5"><form name="detailForm_201701050641077251" id="detailForm_201701050641077251" action=""><input type="hidden" value="201701050641077251" name="demandid"><input type="hidden" value="销售线索挖掘" name="category3"><input type="hidden" value="教育培训" name="category1"><input type="hidden" value="线下" name="twolevindustry"><input type="hidden" value="成人英语" name="threelevindustry"><input type="hidden" value="supplier_lj_demandHall2" name="ztDetail"></form><div class="title"><h3 title="线下E-佛山-1701-4">线下E-佛山-1701-4</h3><ul><li class="bg_blue">销售线索挖掘</li><li class="bg_green">线下</li><li class="bg_rose">教育培训</li><li class="bd_blue" title="佛山">佛山</li><li class="number">需求编号:201701050641077251</li></ul><p>项目周期:2017-01-05~2017-01-31</p></div><div class="channel" style="display:none">获客渠道： <span></span></div><div class="description"><h4>需求描述： </h4><p>挖掘对于英语感兴趣的成年人群。年龄22-50周岁</p></div><div class="progress_bar"><div class="box"><div class="progress-box"><div class="rate" style="width: 0.00%;"></div></div><p>需求量<span class="orange">&nbsp;&nbsp;0</span><span class="gray">/10</span></p></div><div class="demand">需求单价<span>41</span>元</div><ul></ul><button type="button" class="bg_gray" id="jp5">已抢完</button></div></div><div class="reslut_box" id="div6"><form name="detailForm_201701040551494541" id="detailForm_201701040551494541" action=""><input type="hidden" value="201701040551494541" name="demandid"><input type="hidden" value="销售线索挖掘" name="category3"><input type="hidden" value="教育培训" name="category1"><input type="hidden" value="线下" name="twolevindustry"><input type="hidden" value="兴趣培养" name="threelevindustry"><input type="hidden" value="supplier_lj_demandHall2" name="ztDetail"></form><div class="title"><h3 title="线下-BBLY-上海">线下-BBLY-上海</h3><ul><li class="bg_blue">销售线索挖掘</li><li class="bg_green">线下</li><li class="bg_rose">教育培训</li><li class="bd_blue" title="上海">上海</li><li class="number">需求编号:201701040551494541</li></ul><p>项目周期:2017-01-04~2017-01-31</p></div><div class="channel" style="display:none">获客渠道： <span></span></div><div class="description"><h4>需求描述： </h4><p>年龄：4-12岁
+						可邀约区域：徐汇区，黄浦区，宝山区，闵行区</p></div><div class="progress_bar"><div class="box"><div class="progress-box"><div class="rate" style="width: 0.00%;"></div></div><p>需求量<span class="orange">&nbsp;&nbsp;0</span><span class="gray">/120</span></p></div><div class="demand">需求单价<span>72</span>元</div><ul></ul><button type="button" class="bg_gray" id="jp6">已抢完</button></div></div><div class="reslut_box" id="div7"><form name="detailForm_201701040544153871" id="detailForm_201701040544153871" action=""><input type="hidden" value="201701040544153871" name="demandid"><input type="hidden" value="销售线索挖掘" name="category3"><input type="hidden" value="教育培训" name="category1"><input type="hidden" value="线下" name="twolevindustry"><input type="hidden" value="青少儿英语" name="threelevindustry"><input type="hidden" value="supplier_lj_demandHall2" name="ztDetail"></form><div class="title"><h3 title="线下-精锐教育-1701">线下-精锐教育-1701</h3><ul><li class="bg_blue">销售线索挖掘</li><li class="bg_green">线下</li><li class="bg_rose">教育培训</li><li class="bd_blue" title="上海">上海</li><li class="number">需求编号:201701040544153871</li></ul><p>项目周期:2017-01-04~2017-01-31</p></div><div class="channel" style="display:none">获客渠道： <span></span></div><div class="description"><h4>需求描述： </h4><p>学生年级，小四-高三</p></div><div class="progress_bar"><div class="box"><div class="progress-box"><div class="rate" style="width: 0.00%;"></div></div><p>需求量<span class="orange">&nbsp;&nbsp;0</span><span class="gray">/100</span></p></div><div class="demand">需求单价<span>72</span>元</div><ul></ul><button type="button" class="bg_gray" id="jp7">已抢完</button></div></div><div class="reslut_box" id="div8"><form name="detailForm_201701040533492321" id="detailForm_201701040533492321" action=""><input type="hidden" value="201701040533492321" name="demandid"><input type="hidden" value="销售线索挖掘" name="category3"><input type="hidden" value="教育培训" name="category1"><input type="hidden" value="线上" name="twolevindustry"><input type="hidden" value="青少儿英语" name="threelevindustry"><input type="hidden" value="supplier_lj_demandHall2" name="ztDetail"></form><div class="title"><h3 title="线上-DDABC-一线城市">线上-DDABC-一线城市</h3><ul><li class="bg_blue">销售线索挖掘</li><li class="bg_green">线上</li><li class="bg_rose">教育培训</li><li class="bd_blue" title="一线城市">一线城市</li><li class="number">需求编号:201701040533492321</li></ul><p>项目周期:2017-01-10~2017-01-31</p></div><div class="channel" style="display:none">获客渠道： <span></span></div><div class="description"><h4>需求描述： </h4><p>线上青少儿培训，一线城市占比70%以上</p></div><div class="progress_bar"><div class="box"><div class="progress-box"><div class="rate" style="width: 0.00%;"></div></div><p>需求量<span class="orange">&nbsp;&nbsp;0</span><span class="gray">/350</span></p></div><div class="demand">需求单价<span>60</span>元</div><ul></ul><button type="button" class="bg_gray" id="jp8">已抢完</button></div></div><div class="reslut_box" id="div9"><form name="detailForm_201701040533492362" id="detailForm_201701040533492362" action=""><input type="hidden" value="201701040533492362" name="demandid"><input type="hidden" value="销售线索挖掘" name="category3"><input type="hidden" value="教育培训" name="category1"><input type="hidden" value="线上" name="twolevindustry"><input type="hidden" value="青少儿英语" name="threelevindustry"><input type="hidden" value="supplier_lj_demandHall2" name="ztDetail"></form><div class="title"><h3 title="线上-DDABC-成都">线上-DDABC-成都</h3><ul><li class="bg_blue">销售线索挖掘</li><li class="bg_green">线上</li><li class="bg_rose">教育培训</li><li class="bd_blue" title="成都">成都</li><li class="number">需求编号:201701040533492362</li></ul><p>项目周期:2017-01-10~2017-01-31</p></div><div class="channel" style="display:none">获客渠道： <span></span></div><div class="description"><h4>需求描述： </h4><p>线上青少儿培训，一线城市占比70%以上</p></div><div class="progress_bar"><div class="box"><div class="progress-box"><div class="rate" style="width: 0.00%;"></div></div><p>需求量<span class="orange">&nbsp;&nbsp;0</span><span class="gray">/50</span></p></div><div class="demand">需求单价<span>50</span>元</div><ul></ul><button type="button" class="bg_gray" id="jp9">已抢完</button></div></div></div>
+					<div class="page" id="page">	<div class="page">
+						<span>共78页，771条<input id="tolPageValue" type="hidden" value="78" "=""></span>
+						<span>到</span><input id="toGoPage" type="text" pattern="[0-9]{3}"><span>页</span>
+						<button onclick="toTZ();">Go</button>
+						<a href="javascript:" onclick="nextPage(1)" class="selected">1</a>
+						<a href="javascript:" onclick="nextPage(2)">2</a>
+						<a href="javascript:" onclick="nextPage(3)">3</a>
+						<a href="javascript:" onclick="nextPage(4)">4</a>
+						<a href="javascript:" onclick="nextPage(5)">5</a>
+						...  <a href="javascript:" onclick="nextPage(74)">74</a>
+						<a href="javascript:" onclick="nextPage(75)">75</a>
+						<a href="javascript:" onclick="nextPage(76)">76</a>
+						<a href="javascript:" onclick="nextPage(77)">77</a>
+						<a href="javascript:" onclick="nextPage(78)">78</a>
+						<a href="javascript:" onclick="nextPage(2)" class="next_page">下页</a>
+					</div>
+						<script type="text/javascript">
+						</script></div>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<div class="footer_box"><div class="footer" data-reactid=".2"><p data-reactid=".2.0">Copyright © 2011-2016  上海脉豪商务信息咨询有限公司  版权所有  沪ICP备15029022号-1</p><p data-reactid=".2.1">上海市虹口区四平路198号轻工国际大厦3楼  |  400-900-5288</p></div></div>
+
+<!-- jsp文件尾部和尾部 -->
+<!-- 	include file="../cfooter.jsp"%> -->
+
+
+<!---弹出层1--->
+<div class="cover" style="display:none;">
+	<div class="cover-box">
+		<div class="title">提示<span class="close2"></span></div>
+		<div class="context">您还未完善信息，无法竞拍订单！<a href="PerfectData.html">点此完善信息&gt;&gt;</a></div>
+		<div class="bt-choose">
+			<button type="button" class="bg_blue">确定</button>
+			<!-- 			<button class="bg_gray">取消</button> -->
+		</div>
+	</div>
+</div>
+<div class="aside_bar"><ul data-reactid=".0"><li data-reactid=".0.0"><a href="tencent://message/?uin=2850840269&amp;Site=&amp;menu=yes" id="contactQQ" data-reactid=".0.0.0"></a></li><li id="contactTel" data-reactid=".0.1"><a href="javascript:" data-reactid=".0.1.0"></a></li><li data-reactid=".0.2"><a href="javascript:" class="go-to-top" data-reactid=".0.2.0" style="display: none;"></a></li></ul></div>
+<script src="js/asideBar.js" type="text/babel"></script>
+<script src="js/header-customerHall.js" type="text/babel"></script>
+<script src="js/header-supplierHall.js" type="text/babel"></script>
+<!--<script src="js/footer.js" type="text/babel"></script>-->
+
+
+
+<script>
+	if(sessionStorage.getItem("jfutype")=="1"){
+		document.querySelectorAll(".reslut_box .progress_bar button[class^=bg]").forEach(function(e){
+			e.style.display="none";
+		});
+	}
+	jQuery(function(){
+		if(4!=jfustate){
+			document.getElementById("orderpriceid").style.display="none";
+			document.getElementById("box6price").style.display="none";
+		}else{
+			document.getElementById("orderpriceid").style.display="";
+			document.getElementById("box6price").style.display="";
+		}
+		//面向行业点击蓝色效果
+		$(".deman_hall_box .box ul li").click(function(){
+			$(this).addClass("selected").siblings().removeClass("selected");
+			getDemandHall("");
+		});
+
+		//搜索框点击效果
+		$(".deman_hall_search .search_box ul li").click(function(){
+			$(this).addClass("selected").siblings().removeClass("selected");
+			if($(this).find(".sequence").text()=="↑"){
+				$(this).find(".sequence").text("↓");
+			}else if($(this).find(".sequence").text()=="↓"){
+				$(this).find(".sequence").text("↑");
+			}
+			getDemandHall("");
+		});
+		//展开，收起点击效果
+		$(".deman_hall_box .box span").click(function(){
+			var oUl = $(".deman_hall_box .box ul.open").height();
+			if($(this).hasClass("open")){
+				$(this).addClass("closed");
+				$(this).parent().animate({
+					height: oUl
+				});
+				$(this).text("收起");
+				$(this).removeClass("open");
+			}else{
+				$(this).removeClass("closed");
+				$(this).addClass("open");
+				$(this).parent().animate({
+					height:29
+				});
+				$(this).text("展开");
+				$(this).addClass("open");
+			}
+		});
+
+		//弹出层点击关闭
+		$(".cover-box .title1 span,.cover-box .title span,.cover-box .bt-choose button.bg_blue,.cover-box .bt-choose button.bg_gray").click(function(){
+			$(".cover").hide();
+		});
+	});
+</script>
+
+
+</body></html>

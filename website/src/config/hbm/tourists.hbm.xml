@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- 
+    用户信息表-发包方/接包方
+-->
+<hibernate-mapping>
+	<!-- h_f_intention_tourists -->
+    <class name="com.mso.model.Tourists" table="h_f_intention_tourists">
+         <id name="fitid" type="java.lang.String"> 
+             <column name="fitid" />
+             <generator class="assigned"></generator>
+         </id> 
+        <property name="fiid" type="java.lang.String">
+            <column name="fiid" />
+        </property>
+        <property name="fstid" type="java.lang.String">
+            <column name="fstid" />
+        </property>
+        <property name="fitname" type="java.lang.String">
+            <column name="fitname" />
+        </property>
+        <property name="fitmobilephone" type="java.lang.String">
+            <column name="fitmobilephone" />
+        </property>
+        <property name="fitdemand" type="java.lang.String">
+            <column name="fitdemand" />
+        </property>
+        <property name="fitinvitationcode" type="java.lang.String">
+            <column name="fitinvitationcode" />
+        </property>
+        <property name="fitstate" type="java.lang.Integer">
+            <column name="fitstate" />
+        </property>
+        <property name="createtime" type="java.lang.String">
+            <column name="createtime" />
+        </property>
+        <property name="updatetime" type="java.lang.String">
+            <column name="updatetime" />
+        </property> 
+    </class>
+
+</hibernate-mapping>

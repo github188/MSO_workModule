@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.mso.model.GXqaeverydaystatistics" table="gx_qa_everyday_statistics" >
+        <id name="stid" type="java.lang.String">
+            <column name="stid"  />
+            <generator class="assigned" />
+        </id>
+        
+        <property name="ordername" type="java.lang.String">
+            <column name="ordername" >
+            </column>
+        </property>
+        
+         <property name="demandid" type="java.lang.String">
+            <column name="demandid" >
+            </column>
+        </property>
+        
+        <property name="jfuid" type="java.lang.String">
+            <column name="jfuid" >
+            </column>
+        </property>  
+        
+        <property name="releasenum" type="java.lang.Integer">
+            <column name="releasenum" />
+        </property> 
+        
+        <property name="dba_receive" type="java.lang.Integer">
+            <column name="dba_receive" />
+        </property> 
+        
+        <property name="dba_repetition" type="java.lang.Integer">
+            <column name="dba_repetition" />
+        </property> 
+       
+       <property name="qa_qualified" type="java.lang.Integer">
+            <column name="qa_qualified"/>
+       </property>
+       
+       <property name="qa_notstandard" type="java.lang.Integer">
+            <column name="qa_notstandard"/>
+       </property>
+       
+       <property name="qa_cancel" type="java.lang.Integer">
+            <column name="qa_cancel"/>
+       </property>
+       
+       <property name="qa_disqualification" type="java.lang.Integer">
+            <column name="qa_disqualification"/>
+       </property>
+       
+       <property name="censusfile_url" type="java.lang.String">
+            <column name="censusfile_url"/>
+       </property>
+       
+       <property name="census_recording_url" type="java.lang.String">
+            <column name="census_recording_url"/>
+       </property>
+       
+       <property name="censusday" type="java.lang.String">
+            <column name="censusday"/>
+       </property>
+       
+       <property name="createtime" type="java.lang.String">
+            <column name="createtime"/>
+       </property>
+         
+       <property name="updatetime" type="java.lang.String">
+            <column name="updatetime"/>
+       </property>
+       
+       <property name="isdisable" type="java.lang.Integer">
+            <column name="isdisable"/>
+       </property>
+       
+       <property name="compname" type="java.lang.String">
+            <column name="compname"/>
+       </property>
+         
+       <property name="csstatus" type="java.lang.Integer">
+            <column name="csstatus"/>
+       </property>
+       
+       <property name="censusdayrange" type="java.lang.String">
+            <column name="censusdayrange"/>
+       </property>
+       
+       <property name="csrefuse" type="java.lang.String">
+            <column name="csrefuse"/>
+       </property>
+    </class>
+</hibernate-mapping>

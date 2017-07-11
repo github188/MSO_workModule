@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta charset="UTF-8">
+    <title>子账号管理 - 眸事网</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css"/>
+	
+	<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script> 
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <script src="js/react.min.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/url.js"></script>
+	<script src="js/hide.js"></script>
+	<!---<script src="//kefu.mshuoke.com/im/4028838b5ac815e3015ac81645f90000.html"></script>-->
+</head>
+<body class="supplier">
+<div class="topNav"></div>
+    <div class="content sub-account">
+	    <div class="title">
+			<h2>账号管理</h2>
+		</div>
+		<div class="context">
+			<div class="left"></div>
+			<div class="right" style="padding-bottom:20px;height:auto;"}>
+				<h3>子账号管理</h3>
+				<div class="add-box">
+					<a class="addAccount" href="subAccountNew.html">新增账号</a>
+					<table class="tab subTable" id="tabledata">
+    					<thead>
+    					<tr class="tab-line1">
+    						<th width="235">用户账号</th>
+    						<th>状态</th>
+    						<th>类型</th>
+    						<th width="200">创建时间</th>
+    						<th width="185">操作</th>
+    					</tr>
+    					</thead>
+    					<tbody></tbody>
+    				</table>
+				</div>
+			</div>
+		</div>
+    </div>
+<div class="footer_box"></div>
+<div class="aside_bar"></div>
+<script src="js/asideBar.js" type="text/babel"></script>
+<script>
+	jQuery(function(){
+		getUsers();
+	});
+//var aaa = domain + "/user_getCuser";
+//var bbb = domain + "/user_toUpdateDisable";
+//var ccc = domain + "/user_toUpdateDisable";
+	//进入编辑页面
+	function gotoUpdateHtml(){
+		window.location.href="subAccountEdit.html";
+	}
+
+	//启用  停用修改方法
+	function updateUsers(state,jfuid){
+		//var jfuid="";
+		var subAccount1={
+			"jfuid":jfuid,
+			//"pid":sessionStorage.getItem("jfuid"),
+            "jfudisable":state
+        };
+		$.post("/user_toUpdateDisable",subAccount1,function(date){
+			
+			if(date.code=="Y"){
+				console.log(date);
+				//alert("操作成功!");
+				getUsers();
+			}else{
+				console.log(date.msg);
+			}
+		});
+	}
+	function editAccount(jfuid){
+		var subAccount={
+            "jfutype":3,  //1-发包方   2-接包方   3-子账号
+            "jfuid":sessionStorage.getItem("jfuid"),
+            "pid":sessionStorage.getItem("jfuid"),
+            "jfuname":$("input.accountName").val(),//用户名/昵称-用于登录(3-20 位    不区分大小写)
+            "jfupassword":$("input.loginPsd").val(),//密码(密文)用于登录(6-20 位    区分大小写)
+            "jfudisable":$("input[name=jfudisable]:checked").is("#input1")?"1":"2"//1-启用  2-停用
+        };
+		$.post("/user_toUpdateDisable",subAccount,function(date){
+			if(date.code=="Y"){
+				//alert("修改成功！");
+			}else{
+				alert(date.msg);
+			}
+		});
+	}
+
+	function getUsers(){
+		var subAccount1={
+			"jfuid":sessionStorage.getItem("jfuid"),
+			"pid":sessionStorage.getItem("jfuid"),//后台缓存取得
+            "pageNo":10000,
+            "currentPage":1
+        };
+		$.post("/user_getCuser",subAccount1,function(date){
+			//console.log(date);
+			if(date.code=="Y"){
+				//console.log("取得list！"+date.userList);
+				$("#tabledata tbody").html("");
+				$.each(date.userList, function(index, c)
+				{
+					var str;
+					var jfuid = c.jfuid;
+					var qidong = 'unstop' + index;
+					var tingyong = 'stop'+ index;
+					var bianji = 'bianji' + index;
+
+					str='<tr><td>';
+					str+=c.jfuname;
+					str+='</td><td>';
+					if(c.jfudisable == 1){
+						str+='启用';
+					}else {
+						str+='停用';
+					}
+					str+='</td><td>子账号</td><td>';
+					str+=c.createtime;
+					str+='</td><td>';
+					if(c.jfudisable == 1){
+					str+='<span value="1" class="stop">启用</span><span value="2" class="unstop1" id=' + qidong + '>停用</span><a id=' + bianji + ' href="javascript:;" data-userid=' + jfuid + '>编辑</a>';
+
+					}else{
+						str+='<span value="1" class="unstop2" id=' + tingyong + '>启用</span><span value="2" class="stop">停用</span><a id=' + bianji + ' href="javascript:;" data-userid=' + jfuid + '>编辑</a>';
+					}
+					str+='</td></tr>';
+
+					$("#tabledata tbody").append(str);
+					//console.log(jfuid);
+					$("#" + qidong).click(function(){
+						//var subid = $(this).next().next().attr("data-userid");
+						updateUsers(2,jfuid);
+					});
+					$("#" + tingyong).click(function(){
+						//var subid = $(this).next().attr("data-userid");
+						updateUsers(1,jfuid);
+					});
+					$("#" + bianji).click(function(){
+						gotoUpdateHtml(jfuid);
+						sessionStorage.removeItem("subid");
+						var subid = $(this).attr("data-userid");
+						sessionStorage.setItem("subid", subid);
+					});
+				});
+			}else{
+				console.log(date.msg);
+			}
+		});
+	}
+</script>
+
+<script type="text/babel" src=js/header-supplier.js></script>
+<script src="js/supplier/leftMenu.js" type="text/babel"></script>
+<!--<script src="js/supplier/subAccount.js" type="text/babel"></script>-->
+<script src="js/footer.js" type="text/babel"></script>
+</body>
+</html>

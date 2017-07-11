@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- 
+    用户信息表-发包方/接包方
+-->
+<hibernate-mapping>
+
+    <class name="com.mso.model.JfUser" table="h_jf_user">
+         <id name="jfuid" type="java.lang.String"> 
+             <column name="jfuid" />
+             <generator class="assigned"></generator>
+         </id> 
+        <property name="jfutype" type="java.lang.String">
+            <column name="jfutype" />
+        </property>
+        <property name="pid" type="java.lang.String">
+            <column name="pid" />
+        </property>
+        <property name="jfuname" type="java.lang.String">
+            <column name="jfuname" />
+        </property>
+        <property name="jfunamelowercase" type="java.lang.String">
+            <column name="jfunamelowercase" />
+        </property>
+        
+        <property name="jfupassword" type="java.lang.String">
+            <column name="jfupassword" />
+        </property>
+        
+        <property name="jfumobilephone" type="java.lang.String">
+            <column name="jfumobilephone" />
+        </property>
+        
+        <property name="approveremark" type="java.lang.String">
+            <column name="approveremark" />
+        </property>
+        <property name="jfuinvitationcode" type="java.lang.String">
+            <column name="jfuinvitationcode" />
+        </property>
+        
+        <property name="invitationcode" type="java.lang.String">
+            <column name="invitationcode" />
+        </property>
+        <property name="jfustate" type="java.lang.Integer">
+            <column name="jfustate" />
+        </property>
+        <property name="distributionstate" type="java.lang.Integer">
+            <column name="distributionstate" />
+        </property>
+        
+        <property name="logontimes" type="java.lang.Integer">
+            <column name="logontimes" />
+        </property>  
+        
+        <property name="jfudisable" type="java.lang.Integer">
+            <column name="jfudisable" />
+        </property>
+        
+        
+         <property name="usersouce" type="java.lang.Integer">
+            <column name="usersouce" />
+        </property>
+        
+        
+          
+        <property name="createtime" type="java.lang.String">
+            <column name="createtime" />
+        </property>
+        <property name="updatetime" type="java.lang.String">
+            <column name="updatetime" />
+        </property> 
+    </class>
+    
+
+</hibernate-mapping>
