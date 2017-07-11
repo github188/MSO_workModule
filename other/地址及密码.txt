@@ -1,0 +1,43 @@
+线上地址：https://www.mshuoke.com/
+
+
+Foxmail邮箱：Kelly.zhang@mso-china.com
+
+
+
+公司邮箱(WEB版)(内含通讯录):http://139.196.255.108:6080/main.php
+
+密码：QQ密码
+
+我的项目lab地址web：http://gitlab.mso-test.com/  
+			 name:Kelly.zhang@mso-china.com
+
+
+ 			 password :QQ密码
+
+git地址=> http://gitlab.mso-test.com/tech/website.git   分支kelly-react
+API   地址			http://www.sosoapi.com   用户名密码同下
+原型图 设计稿 bug系统平台：	地址：http://192.168.2.9:9001/    
+		用户名：Kelly.zhang@mso-china.com
+
+
+
+		密码：QQ密码
+		
+	使用:
+	   一、BUG部分	
+	     1）选择bug列表
+	     2）点击KANBAN进入bug列表
+                bug优先级=>p1->p2....
+	     3）NEW BUG 列表中选择某一个点击获取选择自己的名字
+	     3)BUG COMMUNICATION  =>需要与测试沟通
+             4)BUG FIXES IN =>正在改的bug
+	     5)FEEDBACK TEST AGAIN =>已提交bug
+	   二、查看项目需求部分
+	     1）选择右上角文件夹标识点击MOS
+	     2)点击左侧BACKLOG图标
+	     3)选择右侧版本区黑色为未完成，灰色为已完成，下面为最新版本。
+	     4）点击进去可查看“需求”、“验收标准”。。。
+
+
+韩
