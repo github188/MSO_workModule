@@ -300,7 +300,6 @@ class Fj extends React.Component {
                 </div>
             )
         }
-
         return (
             <div className="fj_style">
                 <div className="box">
@@ -314,7 +313,7 @@ class Fj extends React.Component {
                     <div className="tag-free">
                         {this.state.data.chargeTag ? (
                             <ul className="tag3">{JSON.parse(this.state.data.chargeTag).map((v, k) => (
-                                <li key={k}>{v.tagname}</li>))}</ul>) : <p>暂无</p>}
+                                <li key={k}>{v.labelName}</li>))}</ul>) : <p>暂无</p>}
                     </div>
                 </div>
                 <div className="box">

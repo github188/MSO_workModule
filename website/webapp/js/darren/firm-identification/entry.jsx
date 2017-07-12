@@ -375,7 +375,7 @@ class Myinfo extends React.Component{
 				});
 				//检测信息是否正确  
 				jQuery.validator.addMethod("isText", function(value, element) {  
-					var regText = /[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g;;  
+					var regText = /<|>/;  
 					return this.optional(element) || ( !regText.test( value ) );    
 				}, "请正确填写信息");   
 

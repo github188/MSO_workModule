@@ -1418,7 +1418,7 @@ class SaleTemplate extends React.Component {
             JSON.parse(selectedlist).map(function (name, index) {
                 for (var i = 0, k; k = add_label_list[i]; i++) {
                     var current = this.rootEl.find(k).find('span').html();
-                    if (current == name.tagname) {
+                    if (current == name.labelName) {
                         this.rootEl.find(k).find('span').parent().addClass('active');
                     }
                 }
@@ -1977,10 +1977,7 @@ class Preview extends React.Component {
                 "speechcraft": "",//"string,话术附件",
                 "targetAgeTo": $('.people-yang input.last').val(),//"integer,目标区域人群年龄 to",
                 "projectLeaderPhone": pphone,//"string,项目负责人电话",
-                "customTag": customlabel.length != 0 ? JSON.stringify(customlabel) : JSON.stringify([{
-                    tagname: "改价",
-                    price: "0"
-                }]),//"string,自定义标签",
+                "customTag": customlabel.length != 0 ? JSON.stringify(customlabel) : "",//"string,自定义标签",
                 "targetAgeFrom": $('.people-yang input.first').val(),//"integer,目标区域人群年龄 from"
             }
             data = JSON.stringify(data);

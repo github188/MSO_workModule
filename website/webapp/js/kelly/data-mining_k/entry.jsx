@@ -483,11 +483,10 @@ class State extends React.Component {
             var releasenum = isNull(this.props.data.releasenum) ? 0 : this.props.data.releasenum;
             var applicationnum = isNull(this.props.data.applicationnum) ? 0 : this.props.data.applicationnum;
             var finishnum = isNull(this.props.data.finishnum) ? 0 : this.props.data.finishnum;
-            //debugger;
+            //	debugger;
             var orderpricetol = isNull(this.props.data.demandpricetol) ? 0 : this.props.data.demandpricetol;
             //debugger;
             var finlishScale = finishnum / ((releasenum == 0) ? 1 : releasenum);
-            //debugger;
 
             /*天数*/
             var date = new Date();
@@ -501,41 +500,7 @@ class State extends React.Component {
             }
             /*天数*/
 
-
-            return (
-                <div className="right">
-                    <div className="title-explain">需求预览</div>
-                    <div className="context-explain package">
-                        <div>
-                            <table>
-                                <tr>
-                                    <td width="80px"><label>需求状态:</label></td>
-                                    <td><span>驳回</span></td>
-                                </tr>
-                                <tr>
-                                    <td style={{"vertical-align": "top"}}><label>原因:</label></td>
-                                    <td><span>{isNull(this.props.data.remark) ? "暂无" : this.props.data.remark}</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><label>时间:</label></td>
-                                    <td>
-                                        <span>{isNull(this.props.data.updatetime) ? "暂无" : this.props.data.updatetime}</span>
-                                    </td>
-                                </tr>
-                            </table>
-                            <a href="javascript:self.location=document.referrer;">
-                                <button type="button" className="drafts">返回上一页</button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            )
-
-
             //demandid 在全局中
-            //审核中
-            //debugger;
             if (fdstate == 1) {
                 return (<div>
                         <div className="right" style={{"margin-bottom": "20px"}}>
@@ -549,15 +514,13 @@ class State extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="right" style={{"margin-bottom": "20px", "padding": "20px"}}>
+                        <div className="right"
+                             style={{"margin-bottom": "20px", "padding": "20px", textAlign: "center"}}>
                             <p style={{"margin": "15px 0px 27px 0px", "color": "#999", "text-align": "center"}}>
                                 该需求正在审核中，请耐心等待！</p>
-                            {isNull(packageid) ? <a href={"new_demand_copy_5.html#" + demandid}>
-                                <button id="copyDemand" type="button" className="submit">复制需求</button>
-                            </a> : ""}
                             <a href="javascript:self.location=document.referrer;">
-                                <button type="button" className="drafts"
-                                        style={isNull(packageid) ? {} : {"width": "100%"}}>返回上一页
+                                <button type="button" className="drafts" style={{margin: 0, display: "inline-block"}}>
+                                    返回上一页
                                 </button>
                             </a>
                         </div>
@@ -567,7 +530,7 @@ class State extends React.Component {
             }
 
             /*进行中*/
-            if (fdstate == 2 || fdstate == 4) {
+            if (fdstate == 2) {
                 return (<div>
                     <div className="right" style={{"margin-bottom": "20px"}}>
                         <div className="title-explain">
@@ -620,40 +583,14 @@ class State extends React.Component {
                                             className="size">{orderpricetol * finlishScale}</span></span></td>
                                     </tr>
                                 </table>
-                                {isNull(packageid) ? <a href={"new_demand_copy_5.html#" + demandid}>
-                                    <button id="copyDemand" type="button" className="submit">复制需求</button>
-                                </a> : ""}
-                                <a href="javascript:self.location=document.referrer;">
-                                    <button type="button" className="drafts"
-                                            style={isNull(packageid) ? {} : {"width": "100%"}}>返回上一页
-                                    </button>
-                                </a>
+                                <div style={{textAlign: "center"}}>
+                                    <a href="javascript:self.location=document.referrer;">
+                                        <button type="button" className="drafts"
+                                                style={{margin: 0, display: "inline-block"}}>返回上一页
+                                        </button>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-
-
-                    <div className="right">
-                        <div className="title-explain">
-                            <span
-                                style={{"font-size": "16px", "float": "left", "margin-left": "20px"}}>上传目标客户名单</span><a
-                            href="javascript:" className="upload_info_show" id="checkUp"
-                            style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>上传记录>></a>
-                        </div>
-                        <div className="context-explain Supplier_Mining">
-                            <p><span>目标客户名单：&nbsp;</span><a href="javascript:" id="selectfiles" style={{
-                                "color": "#0099ff",
-                                "text-decoration": "underline",
-                                "font-size": "14px"
-                            }}>选择文件</a></p>
-                            <div>
-                                <div className="ossfile" style={{"width": "180px"}}></div>
-                                <button type="button" className="btn" id="postfiles">开始上传</button>
-                            </div>
-                            <button type="button" className="submit upload_submit_show">确定上传</button>
-                            <a href="customerDemandList.html">
-                                <button type="button" className="drafts">返回上一页</button>
-                            </a>
                         </div>
                     </div>
 
@@ -665,7 +602,7 @@ class State extends React.Component {
             /*结算中*/
             //debugger;
             //orderpricetol
-            if (fdstate == 5) {
+            if (fdstate == 3) {
                 return (<div>
 
                     <div className="right">
@@ -707,21 +644,21 @@ class State extends React.Component {
                                             className="size">{orderpricetol * finlishScale}</span></span></td>
                                     </tr>
                                 </table>
-                                {isNull(packageid) ? <a href={"new_demand_copy_5.html#" + demandid}>
-                                    <button id="copyDemand" type="button" className="submit">复制需求</button>
-                                </a> : ""}
-                                <a href="javascript:self.location=document.referrer;">
-                                    <button type="button" className="drafts"
-                                            style={isNull(packageid) ? {} : {"width": "100%"}}>返回上一页
-                                    </button>
-                                </a>
+                                <div style={{textAlign: "center"}}>
+                                    <a href="javascript:self.location=document.referrer;">
+                                        <button type="button" className="drafts"
+                                                style={{margin: 0, display: "inline-block"}}>返回上一页
+                                        </button>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>)
             }
 
-            if (fdstate == 6) {
+            /*已经完成*/
+            if (fdstate == 4) {
 
                 return (<div>
 
@@ -766,12 +703,10 @@ class State extends React.Component {
                                             className="size">{orderpricetol * finlishScale}</span></span></td>
                                     </tr>
                                 </table>
-                                {isNull(packageid) ? <a href={"new_demand_copy_5.html#" + demandid}>
-                                    <button id="copyDemand" type="button" className="submit">复制需求</button>
-                                </a> : ""}
+
                                 <a href="javascript:self.location=document.referrer;">
                                     <button type="button" className="drafts"
-                                            style={isNull(packageid) ? {} : {"width": "100%"}}>返回上一页
+                                            style={{"width": "100%"}}>返回上一页
                                     </button>
                                 </a>
                             </div>
@@ -782,7 +717,7 @@ class State extends React.Component {
 
 
             /*异常*/
-            if (fdstate == 3) {
+            if (fdstate == 5) {
                 return (
                     <div className="right">
                         <div className="title-explain">需求预览</div>
@@ -806,14 +741,14 @@ class State extends React.Component {
                                         </td>
                                     </tr>
                                 </table>
-                                {isNull(this.props.data.packageid) ? <a href={"new_demand_copy_5.html#" + demandid}>
-                                    <button id="copyDemand" type="button" className="submit hide">复制需求</button>
-                                </a> : ""}
+
                                 <a href="javascript:self.location=document.referrer;">
                                     <button type="button" className="drafts"
-                                            style={isNull(this.props.data.packageid) ? {} : {"width": "100%"}}>返回上一页
+                                            style={{"width": "100%"}}>返回上一页
                                     </button>
                                 </a>
+
+
                             </div>
                         </div>
                     </div>
@@ -922,256 +857,7 @@ class State extends React.Component {
                 {this.state.calcullationDetailHtml}
             </div>
         );
-        /*
-         if(this.state.data==null){
-         return false;
-         }
-         var releasenum=isNull(this.state.data.releasenum)?0:this.state.data.releasenum;
-         var applicationnum=isNull(this.state.data.applicationnum)?0:this.state.data.applicationnum;
-         var finishnum=isNull(this.state.data.finishnum)?0:this.state.data.finishnum;
-         var orderpricetol=isNull(this.state.data.demandpricetol)?0:this.state.data.demandpricetol;
-         var date=new Date();
-         var endtime=new Date(this.state.data.endtime);
-         var diffday=Math.ceil(endtime.diff(date))+1;
-         if(parseInt(diffday)<0){
-         diffday=0;
-         }
-         //  if(!isNull(this.state.data.demandProgressList)){
-         //      if(this.state.data.demandProgressList.length!=0){
-         //          this.state.data.demandProgressList.map(function(result){
-         //              finishnum+=isNull(result.finishnum)?0:result.finishnum;
-         //              applicationnum+=isNull(result.applicationnum)?0:result.applicationnum;
-         //          });
-         //      }
-         //  }
-         //  if(!isNull(this.state.data.areaCityList)){
-         //      if(this.state.data.areaCityList.length!=0){
-         //          this.state.data.areaCityList.map(function(result){
-         //              orderpricetol+=isNull(result.orderpricetol)?0:result.orderpricetol;
-         //          });
-         //      }
-         //  }
-         if(this.state.data.pause==1){
-         return (
-         <div className="right">
-         <div className="title-explain">需求预览</div>
-         <div className="context-explain package">
-         <div>
-         <table>
-         <tr>
-         <td width="80px"><label>需求状态:</label></td>
-         <td><span>暂停</span></td>
-         </tr>
-         <tr>
-         <td style={{"vertical-align":"top"}}><label>原因:</label></td>
-         <td><span>{isNull(this.state.data.pausedescription)?"暂无":this.state.data.pausedescription}</span></td>
-         </tr>
-         <tr>
-         <td><label>时间:</label></td>
-         <td><span>{isNull(this.state.data.updatetime)?"暂无":this.state.data.updatetime}</span></td>
-         </tr>
-         </table>
-         {isNull(this.state.data.packageid)?<a href={"customerDateEditNew.html#"+demandid}><button id="copyDemand" type="button" className="submit">复制需求</button></a>:""}
-         <a href="customerDemandList.html"><button type="button" className="drafts" style={isNull(this.state.data.packageid)?{}:{"width":"100%"}}>返回上一页</button></a>
-         </div>
-         </div>
-         </div>
-         )
-         }
-         if(this.state.data.fdstate==1){
-         return (
-         <div>
-         <div className="right" style={{"margin-bottom":"20px"}}>
-         <div className="title-explain">距离项目结束还剩</div>
-         <div className="context-explain package">
-         <div className="countdown">
-         <span className="blue"><span className="size">{diffday}</span>&emsp;<span className="day">天</span></span>
-         </div>
-         </div>
-         </div>
-         <div className="right" style={{"margin-bottom":"20px","padding":"20px"}}>
-         <p style={{"margin":"15px 0px 27px 0px","color":"#999","text-align":"center"}}>该需求正在审核中，请耐心等待！</p>
-         {isNull(this.state.data.packageid)?<a href={"customerDateEditNew.html#"+demandid}><button id="copyDemand" type="button" className="submit">复制需求</button></a>:""}
-         <a href="customerDemandList.html"><button type="button" className="drafts" style={isNull(this.state.data.packageid)?{}:{"width":"100%"}}>返回上一页</button></a>
-         </div>
-         </div>
-         )
-         }else if(this.state.data.fdstate==4||this.state.data.fdstate==2){
-         return (
-         <div>
-         <div className="right" style={{"margin-bottom":"20px"}}>
-         <div className="title-explain">距离项目结束还剩</div>
-         <div className="context-explain package">
-         <div className="countdown">
-         <span className="blue"><span className="size">{diffday}</span>&emsp;<span className="day">天</span></span>
-         </div>
-         </div>
-         </div>
-         <div className="right">
-         <div className="title-explain"><span style={{"font-size":"16px","margin-left":"20px"}}>需求进度</span></div>
-         <div className="context-explain package">
-         <div>
-         <table>
-         <tr><td ><label>竞拍进度:</label></td></tr>
 
-         <tr>
-         <td colSpan="2">
-         <div className="progress"><b>{parseInt(applicationnum/releasenum*100)}%</b>
-         <div className="progress-bar brown" style={{"max-width":"100%","width":parseInt(applicationnum/releasenum*100)+"%"}}></div>
-         <div className="bublle"><p>竞拍量：{applicationnum}</p><p>发布量：{releasenum}</p></div>
-         </div>
-         </td>
-         </tr>
-         <tr>
-         <td><label>完成进度:</label></td>
-         </tr>
-         <tr>
-         <td colSpan="2">
-         <div className="progress"><b>{parseInt(finishnum/releasenum*100)}%</b>
-         <div className="progress-bar brown" style={{"max-width":"100%","width":parseInt(finishnum/releasenum*100)+"%"}}></div>
-         <div className="bublle"><p>完成量：{finishnum}</p><p>发布量：{releasenum}</p></div>
-         </div></td>
-         </tr>
-         <tr>
-         <td><label>总金额:</label></td>
-         </tr>
-         <tr>
-         <td><span className="money"  style={{"float":"left"}}><span>¥</span><span className="size">{orderpricetol}</span></span></td>
-         </tr>
-         </table>
-         {isNull(this.state.data.packageid)?<a href={"customerDateEditNew.html#"+demandid}><button id="copyDemand" type="button" className="submit">复制需求</button></a>:""}
-         <a href="customerDemandList.html"><button type="button" className="drafts" style={isNull(this.state.data.packageid)?{}:{"width":"100%"}}>返回上一页</button></a>
-         </div>
-         </div>
-         </div>
-
-
-
-
-         <div className="right">
-         <div className="title-explain">
-         <span style={{"font-size":"16px","float":"left","margin-left":"20px"}}>上传目标客户名单</span><a href="javascript:"className="upload_info_show" id="checkUp" style={{"color":"#fff","font-size":"14px","float":"right","margin-right":"10px"}}>上传记录>></a></div>
-         <div className="context-explain Supplier_Mining">
-         <p><span>目标客户名单：&nbsp;</span><a href="javascript:" id="selectfiles" style={{"color":"#0099ff","text-decoration":"underline","font-size":"14px"}}>选择文件</a></p>
-         <div><div className="ossfile" style={{"width":"180px"}}></div><button type="button" className="btn" id="postfiles">开始上传</button></div>
-         <button type="button" className="submit upload_submit_show"  >确定上传</button><a href="customerDemandList.html"><button type="button" className="drafts">返回上一页</button></a>
-         </div>
-         </div>
-         </div>
-         )
-         }else if(this.state.data.fdstate==3){
-         return (
-         <div className="right">
-         <div className="title-explain">需求预览</div>
-         <div className="context-explain package">
-         <div>
-         <table>
-         <tr>
-         <td width="80px"><label>需求状态:</label></td>
-         <td><span>驳回</span></td>
-         </tr>
-         <tr>
-         <td style={{"vertical-align":"top"}}><label>原因:</label></td>
-         <td><span>{isNull(this.state.data.remark)?"暂无":this.state.data.remark}</span></td>
-         </tr>
-         <tr>
-         <td><label>时间:</label></td>
-         <td><span>{isNull(this.state.data.updatetime)?"暂无":this.state.data.updatetime}</span></td>
-         </tr>
-         </table>
-         {isNull(this.state.data.packageid)?<a href={"customerDateEditNew.html#"+demandid}><button id="copyDemand" type="button" className="submit">复制需求</button></a>:""}
-         <a href="customerDemandList.html"><button type="button" className="drafts" style={isNull(this.state.data.packageid)?{}:{"width":"100%"}}>返回上一页</button></a>
-         </div>
-         </div>
-         </div>
-         )
-         }else if(this.state.data.fdstate==5){
-         return (
-         <div className="right">
-         <div className="title-explain"><span style={{"font-size":"16px","float":"left","margin-left":"20px"}}>结算详情</span></div>
-         <div className="context-explain package">
-         <table>
-         <tr>
-         <td ><label>竞拍进度:</label></td>
-         </tr>
-         <tr>
-         <td colSpan="2">
-         <div className="progress"><b>{parseInt(applicationnum/releasenum*100)}%</b>
-         <div className="progress-bar brown" style={{"max-width":"100%","width":parseInt(applicationnum/releasenum*100)+"%"}}></div>
-         <div className="bublle"><p>竞拍量：{applicationnum}</p><p>发布量：{releasenum}</p></div>
-         </div>
-         </td>
-         </tr>
-         <tr>
-         <td><label>完成进度:</label></td>
-         </tr>
-         <tr>
-         <td colSpan="2">
-         <div className="progress"><b>{parseInt(finishnum/releasenum*100)}%</b>
-         <div className="progress-bar brown" style={{"max-width":"100%","width":parseInt(finishnum/releasenum*100)+"%"}}></div>
-         <div className="bublle"><p>完成量：{finishnum}</p><p>发布量：{releasenum}</p></div>
-         </div></td>
-         </tr>
-         <tr>
-         <td><label>预计结算金额:</label></td>
-         </tr>
-         <tr>
-         <td><span className="money"  style={{"float":"left"}}><span>¥</span><span className="size">{orderpricetol}</span></span></td>
-         </tr>
-         </table>
-         <hr/>
-         <p style={{"padding":"20px 0px"}}><label>发票状态:</label><span>发票未寄出</span></p>
-
-         {isNull(this.state.data.packageid)?<a href={"customerDateEditNew.html#"+demandid}><button id="copyDemand" type="button" className="submit">复制需求</button></a>:""}
-         <a href="customerDemandList.html"><button type="button" className="drafts" style={isNull(this.state.data.packageid)?{}:{"width":"100%"}}>返回上一页</button></a>
-         </div>
-         </div>
-         )
-         }else if(this.state.data.jdstate=6){
-         return (
-         <div className="right" style={{"margin-bottom":"20px"}}>
-         <div className="title-explain"><span style={{"font-size":"16px"}}>需求进度</span></div>
-         <div className="context-explain package">
-         <div>
-         <table>
-         <tr>
-         <td style={{"color":"#fd5352"}}>需求已完成！</td>
-         </tr>
-         <tr>
-         <td ><label>竞拍进度:</label></td>
-         </tr>
-         <tr>
-         <td colSpan="2">
-         <div className="progress"><b>{parseInt(applicationnum/releasenum*100)}%</b>
-         <div className="progress-bar brown" style={{"max-width":"100%","width":parseInt(applicationnum/releasenum*100)+"%"}}></div>
-         <div className="bublle"><p>竞拍量：{applicationnum}</p><p>发布量：{releasenum}</p></div>
-         </div>
-         </td>
-         </tr>
-         <tr>
-         <td><label>完成进度:</label></td>
-         </tr>
-         <tr>
-         <td colSpan="2"><div className="progress"><b>{parseInt(finishnum/applicationnum*100)}%</b><div className="progress-bar brown" style={{"max-width":"100%","width":parseInt(finishnum/applicationnum*100)+"%"}}></div>
-         <div className="bublle"><p>竞拍量：{applicationnum}</p><p>完成量：{finishnum}</p></div></div></td>
-         </tr>
-         <tr>
-         <td><label>结算金额:</label></td>
-         </tr>
-         <tr>
-         <td><span className="money" style={{"float":"left","color":"#fd5352"}}><span>¥</span><span className="size">{this.state.data.paymentmoney}</span></span></td>
-         </tr>
-         </table>
-         {isNull(this.state.data.packageid)?<a href={"customerDateEditNew.html#"+demandid}><button id="copyDemand" type="button" className="submit">复制需求</button></a>:""}
-         <a href="customerDemandList.html"><button type="button" className="drafts" style={isNull(this.state.data.packageid)?{}:{"width":"100%"}}>返回上一页</button></a>
-         </div>
-         </div>
-         </div>
-         )
-         }else{
-         return false;
-         }
-         */
     }
 }
 ;
@@ -1214,7 +900,7 @@ $.ajax({
                 this.setState({data: result.attachment})
             });
             // React.render(<Progress_speed/>,$(".progress_speed")[0],function(){this.setState({data:data.detail})});
-            React.render(<State data={ result.detail }/>, $("#new_demand div.demend_right")[0], function () {
+            React.render(<State data={ result.demand }/>, $("#new_demand div.demend_right")[0], function () {
                 this.setState({data: result.demand})
             });
 
