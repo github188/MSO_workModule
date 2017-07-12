@@ -339,14 +339,13 @@ class Main extends React.Component {
                 industry: name.industry,
                 twolevindustry: name.twolevindustry
             });//根据类型不同，返回不同的链接，可跳转到对应的详情页
-
             return (<div className="reslut_box" key={index}>
                 <div className="title">
                     <h3 title={name.demandname}>{name.demandname}</h3>
                     <ul>
-                        <li className={"bg_green " + (name.twolevindustry > "-1" ? '' : 'hide')}>{name.twolevindustry == "0" ? "线下" : "线上"}</li>
+                        <li className={"bg_green " + (name.twolevindustry!=null? '' : 'hide')}>{name.twolevindustry=="1"?"线上":"线下"}</li>
                         {/*name.twolevindustry 线上或线下 如果没值隐藏*/}
-                        <li className={"bg_blue1 " + (name.industry ? '' : 'hide')}>{name.industry}</li>
+                        <li className={"bg_blue1 "+(name.industry?"":"hide")}>{name.industry}</li>
                         {/*发包类型 eg:教育培训..*/}
                         <li className="cash"><span>￥</span><span
                             className="font24">{name.demandpricetol.toFixed(2)}</span></li>

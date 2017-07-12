@@ -395,15 +395,14 @@ class State extends React.Component {
 
     createcalcullationDetailHtml() {
         if (this.props.data) {
-            var fdstate = this.props.data.fdstate;
-
-            var releasenum = isNull(this.props.data.releasenum) ? 0 : this.props.data.releasenum;
-            var applicationnum = isNull(this.props.data.applicationnum) ? 0 : this.props.data.applicationnum;
-            var finishnum = isNull(this.props.data.finishnum) ? 0 : this.props.data.finishnum;
+            var fdstate = this.props.data.fdstate;      //审核状态
+            var releasenum = isNull(this.props.data.releasenum) ? 0 : this.props.data.releasenum;  //发布量
+           // var applicationnum = isNull(this.props.data.applicationnum) ? 0 : this.props.data.applicationnum; //
+            var finishnum = isNull(this.props.data.finishnum) ? 0 : this.props.data.finishnum;      //完成量
             //	debugger;
-            var orderpricetol = isNull(this.props.data.demandpricetol) ? 0 : this.props.data.demandpricetol;
+            var orderpricetol = isNull(this.props.data.paymentmoney) ? 0 : this.props.data.paymentmoney;  //总价
             //debugger;
-            var finlishScale = finishnum / ((releasenum == 0) ? 1 : releasenum);
+            var finlishScale = finishnum / ((releasenum == 0) ? 1 : releasenum);            //完成比重
 
             /*天数*/
             var date = new Date();
@@ -413,10 +412,9 @@ class State extends React.Component {
             var packageid = this.props.data.packageid;
 
             if (parseInt(diffday) < 0) {
-                diffday = 0;
+                diffday = 0;                                        //剩余天数
             }
             /*天数*/
-
             //demandid 在全局中
             if (fdstate == 1) {
                 return (<div>
@@ -467,14 +465,14 @@ class State extends React.Component {
                     <div className="right">
                         <div className="title-explain">
                             <span style={{"font-size": "16px", "float": "left", "margin-left": "20px"}}>需求进度</span>
-                            <a href="javascript:" className="progress_speed_show"
-                               style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>
-                                查看进度详情>>
-                            </a>
-                            <a href="javascript:" className="progress_speed_show_new"
-                               style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>
-                                查看进度详情>>
-                            </a>
+                            {/*<a href="javascript:" className="progress_speed_show"*/}
+                               {/*style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>*/}
+                                {/*查看进度详情>>*/}
+                            {/*</a>*/}
+                            {/*<a href="javascript:" className="progress_speed_show_new"*/}
+                               {/*style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>*/}
+                                {/*查看进度详情>>*/}
+                            {/*</a>*/}
                         </div>
                         <div className="context-explain package">
                             <div>
@@ -516,29 +514,24 @@ class State extends React.Component {
                             </div>
                         </div>
                     </div>
-
-
                 </div>);
             }
 
 
             /*结算中*/
-            //debugger;
-            //orderpricetol
             if (fdstate == 3) {
                 return (<div>
-
                     <div className="right">
                         <div className="title-explain">
                             <span style={{"font-size": "16px", "float": "left", "margin-left": "20px"}}>需求进度</span>
-                            <a href="javascript:" className="progress_speed_show"
-                               style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>
-                                查看进度详情>>
-                            </a>
-                            <a href="javascript:" className="progress_speed_show_new"
-                               style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>
-                                查看进度详情>>
-                            </a>
+                            {/*<a href="javascript:" className="progress_speed_show"*/}
+                               {/*style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>*/}
+                                {/*查看进度详情>>*/}
+                            {/*</a>*/}
+                            {/*<a href="javascript:" className="progress_speed_show_new"*/}
+                               {/*style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>*/}
+                                {/*查看进度详情>>*/}
+                            {/*</a>*/}
                         </div>
                         <div className="context-explain package">
                             <div>
@@ -590,14 +583,14 @@ class State extends React.Component {
                     <div className="right">
                         <div className="title-explain">
                             <span style={{"font-size": "16px", "float": "left", "margin-left": "20px"}}>需求进度</span>
-                            <a href="javascript:" className="progress_speed_show"
-                               style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>
-                                查看进度详情>>
-                            </a>
-                            <a href="javascript:" className="progress_speed_show_new"
-                               style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>
-                                查看进度详情>>
-                            </a>
+                            {/*<a href="javascript:" className="progress_speed_show"*/}
+                               {/*style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>*/}
+                                {/*查看进度详情>>*/}
+                            {/*</a>*/}
+                            {/*<a href="javascript:" className="progress_speed_show_new"*/}
+                               {/*style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>*/}
+                                {/*查看进度详情>>*/}
+                            {/*</a>*/}
                         </div>
                         <div className="context-explain package">
                             <div>
@@ -684,7 +677,6 @@ class State extends React.Component {
     }
 
     componentDidMount() {
-        //debugger;
         this.setState({
             calcullationDetailHtml: this.createcalcullationDetailHtml(),
         });

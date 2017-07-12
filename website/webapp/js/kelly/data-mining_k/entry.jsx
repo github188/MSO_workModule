@@ -483,23 +483,20 @@ class State extends React.Component {
             var releasenum = isNull(this.props.data.releasenum) ? 0 : this.props.data.releasenum;
             var applicationnum = isNull(this.props.data.applicationnum) ? 0 : this.props.data.applicationnum;
             var finishnum = isNull(this.props.data.finishnum) ? 0 : this.props.data.finishnum;
-            //	debugger;
             var orderpricetol = isNull(this.props.data.demandpricetol) ? 0 : this.props.data.demandpricetol;
-            //debugger;
             var finlishScale = finishnum / ((releasenum == 0) ? 1 : releasenum);
 
             /*天数*/
             var date = new Date();
             var endtime = new Date(this.props.data.endtime);
             var diffday = Math.ceil(endtime.diff(date));
-
             var packageid = this.props.data.packageid;
+
 
             if (parseInt(diffday) < 0) {
                 diffday = 0;
             }
             /*天数*/
-
             //demandid 在全局中
             if (fdstate == 1) {
                 return (<div>
@@ -519,8 +516,8 @@ class State extends React.Component {
                             <p style={{"margin": "15px 0px 27px 0px", "color": "#999", "text-align": "center"}}>
                                 该需求正在审核中，请耐心等待！</p>
                             <a href="javascript:self.location=document.referrer;">
-                                <button type="button" className="drafts" style={{margin: 0, display: "inline-block"}}>
-                                    返回上一页
+                                <button type="button" className="drafts"
+                                        style={{"width": "100%"}}>返回上一页
                                 </button>
                             </a>
                         </div>
@@ -547,14 +544,14 @@ class State extends React.Component {
                     <div className="right">
                         <div className="title-explain">
                             <span style={{"font-size": "16px", "float": "left", "margin-left": "20px"}}>需求进度</span>
-                            <a href="javascript:" className="progress_speed_show"
-                               style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>
-                                查看进度详情>>
-                            </a>
-                            <a href="javascript:" className="progress_speed_show_new"
-                               style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>
-                                查看进度详情>>
-                            </a>
+                            {/*<a href="javascript:" className="progress_speed_show"*/}
+                               {/*style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>*/}
+                                {/*查看进度详情>>*/}
+                            {/*</a>*/}
+                            {/*<a href="javascript:" className="progress_speed_show_new"*/}
+                               {/*style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>*/}
+                                {/*查看进度详情>>*/}
+                            {/*</a>*/}
                         </div>
                         <div className="context-explain package">
                             <div>
@@ -583,39 +580,42 @@ class State extends React.Component {
                                             className="size">{orderpricetol * finlishScale}</span></span></td>
                                     </tr>
                                 </table>
-                                <div style={{textAlign: "center"}}>
-                                    <a href="javascript:self.location=document.referrer;">
-                                        <button type="button" className="drafts"
-                                                style={{margin: 0, display: "inline-block"}}>返回上一页
-                                        </button>
-                                    </a>
-                                </div>
+                                <a href="javascript:self.location=document.referrer;">
+                                    <button type="button" className="drafts"
+                                            style={{"width": "100%"}}>返回上一页
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                        <div className="right">
+                            <div className="title-explain">
+                                <span style={{"font-size":"16px","float":"left","margin-left":"20px"}}>上传目标客户名单</span><a href="javascript:"className="upload_info_show" id="checkUp" style={{"color":"#fff","font-size":"14px","float":"right","margin-right":"10px"}}>上传记录>></a></div>
+                            <div className="context-explain Supplier_Mining">
+                                <p><span>目标客户名单：&nbsp;</span><a href="javascript:" id="selectfiles" style={{"color":"#0099ff","text-decoration":"underline","font-size":"14px"}}>选择文件</a></p>
+                                <div><div className="ossfile" style={{"width":"180px"}}></div><button type="button" className="btn" id="postfiles">开始上传</button></div>
+                                <button type="button" className="submit upload_submit_show"  >确定上传</button><a href="customerDemandList.html"><button type="button" className="drafts">返回上一页</button></a>
                             </div>
                         </div>
                     </div>
-
-
                 </div>);
             }
 
 
             /*结算中*/
-            //debugger;
-            //orderpricetol
             if (fdstate == 3) {
                 return (<div>
 
                     <div className="right">
                         <div className="title-explain">
                             <span style={{"font-size": "16px", "float": "left", "margin-left": "20px"}}>需求进度</span>
-                            <a href="javascript:" className="progress_speed_show"
-                               style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>
-                                查看进度详情>>
-                            </a>
-                            <a href="javascript:" className="progress_speed_show_new"
-                               style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>
-                                查看进度详情>>
-                            </a>
+                            {/*<a href="javascript:" className="progress_speed_show"*/}
+                               {/*style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>*/}
+                                {/*查看进度详情>>*/}
+                            {/*</a>*/}
+                            {/*<a href="javascript:" className="progress_speed_show_new"*/}
+                               {/*style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>*/}
+                                {/*查看进度详情>>*/}
+                            {/*</a>*/}
                         </div>
                         <div className="context-explain package">
                             <div>
@@ -644,13 +644,11 @@ class State extends React.Component {
                                             className="size">{orderpricetol * finlishScale}</span></span></td>
                                     </tr>
                                 </table>
-                                <div style={{textAlign: "center"}}>
-                                    <a href="javascript:self.location=document.referrer;">
-                                        <button type="button" className="drafts"
-                                                style={{margin: 0, display: "inline-block"}}>返回上一页
-                                        </button>
-                                    </a>
-                                </div>
+                                <a href="javascript:self.location=document.referrer;">
+                                    <button type="button" className="drafts"
+                                            style={{"width": "100%"}}>返回上一页
+                                    </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -665,14 +663,14 @@ class State extends React.Component {
                     <div className="right">
                         <div className="title-explain">
                             <span style={{"font-size": "16px", "float": "left", "margin-left": "20px"}}>需求进度</span>
-                            <a href="javascript:" className="progress_speed_show"
-                               style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>
-                                查看进度详情>>
-                            </a>
-                            <a href="javascript:" className="progress_speed_show_new"
-                               style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>
-                                查看进度详情>>
-                            </a>
+                            {/*<a href="javascript:" className="progress_speed_show"*/}
+                               {/*style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>*/}
+                                {/*查看进度详情>>*/}
+                            {/*</a>*/}
+                            {/*<a href="javascript:" className="progress_speed_show_new"*/}
+                               {/*style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>*/}
+                                {/*查看进度详情>>*/}
+                            {/*</a>*/}
                         </div>
                         <div className="context-explain package">
                             <div>

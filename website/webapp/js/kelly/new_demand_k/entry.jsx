@@ -1905,7 +1905,7 @@ class Preview extends React.Component {
                 "favorableMode": "",//"integer,优惠方式 1-无优惠 2-免手续费",
                 "beginTime": $("input.start_date").val(),//"string,开始时间",
                 "serviceType": "1",//"string,业务类型 1-销售线索挖掘 2-数据筛选 3-人工客服",
-                "industryXifen": ordername,//"string,行业细分",//todo 3级
+                "industryXifen": $(".leaval-box").find("input").val(),//"string,行业细分",//todo 3级
                 "targetPopulation": $(".target-population").html(),//"string,目标人群",
                 "speechcraft": "",//"string,话术附件",
                 "targetAgeTo": $('.people-yang input.last').val(),//"integer,目标区域人群年龄 to",
@@ -2111,7 +2111,7 @@ class Progress extends React.Component {
                 "favorableMode": "",//"integer,优惠方式 1-无优惠 2-免手续费",
                 "beginTime": $("input.start_date").val(),//"string,开始时间",
                 "serviceType": "1",//"string,业务类型 1-销售线索挖掘 2-数据筛选 3-人工客服",
-                "industryXifen": ordername,//"string,行业细分",//todo 3级
+                "industryXifen": $(".leaval-box").find("input").val(),//"string,行业细分",//todo 3级
                 "targetPopulation": $(".target-population").html(),//"string,目标人群",
                 "speechcraft": "",//"string,话术附件",
                 "targetAgeTo": $('.people-yang input.last').val(),//"integer,目标区域人群年龄 to",

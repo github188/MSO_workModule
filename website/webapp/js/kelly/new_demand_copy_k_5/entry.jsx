@@ -838,7 +838,7 @@ class AreaAndRequirement extends React.Component {
                 ReactDOM.render(<Preview name='1' data={areaList()}/>, $(".demend_right .right")[0]);
                 //console.log($(".js_area"));
                 //$(".js_area").change();
-                // console.log('=11111111111');
+
             }.bind(this));
             $(".js_area").change();
         // }
@@ -1839,8 +1839,6 @@ class Preview extends React.Component {
         this.bubble();
         this.progress_speed_show();
         this.save();
-
-
         if (newDandData) {
             //debugger;
             var finmae = JSON.parse(newDandData).industry.item.finmae;
@@ -1851,22 +1849,17 @@ class Preview extends React.Component {
             $($('.areaList1 td')[2]).html(price);
             $($('.areaList1 td')[3]).html(price);
         }
-
-
     }
 
     bubble() {
-
         this.rootEl.find(".bubble-hover").click(function () {
             $(this).next().css("display", "inline-block");
         }).mouseout(function () {
             $(this).next().hide();
         });
-
     }
 
     progress_speed_show() {
-
         /*开始审核代码*/
         this.rootEl.find(".progress_speed_show").click(function () {
             //debugger;
@@ -2002,7 +1995,6 @@ class Preview extends React.Component {
 
     render() {
         var data = this.props.data;
-
         var dom = [];
         var total = 0;
         var price = 0;
@@ -2309,6 +2301,7 @@ var resetStrcture = function (cb) {
         success: function (result) {
             if (result.code == "0") {
                 createTime=result.demand.createTime;
+                console.log(result,111166);
                 callback(result)
             }
         },
