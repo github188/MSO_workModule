@@ -1,7 +1,7 @@
 require('./more.css');
 var fileArr = [];
 var getRecord = [];
-var jsonRecord;
+var jsonRecord,allData;
 /*装所有的上传的文件*/
 function isJson(obj) {
     var isjson = typeof(obj) == "object" && Object.prototype.toString.call(obj).toLowerCase() == "[object object]" && !obj.length;
@@ -472,19 +472,17 @@ class State extends React.Component {
         this.state = {
             calcullationDetailHtml: '',
         };
-
-
     }
 
     createcalcullationDetailHtml() {
         if (this.props.data) {
             var fdstate = this.props.data.fdstate;
 
-            var releasenum = isNull(this.props.data.releasenum) ? 0 : this.props.data.releasenum;
-            var applicationnum = isNull(this.props.data.applicationnum) ? 0 : this.props.data.applicationnum;
-            var finishnum = isNull(this.props.data.finishnum) ? 0 : this.props.data.finishnum;
+            var releasenum = isNull(this.props.data.releasenum) ? 0 : this.props.data.releasenum;//需求发布量
+            //   var applicationnum = isNull(this.state.data.applicationnum) ? 0 : this.state.data.applicationnum;
+            var finishnum = isNull(this.props.data.finishnum) ? 0 : this.props.data.finishnum;      //完成量
             //	debugger;
-            var orderpricetol = isNull(this.props.data.demandpricetol) ? 0 : this.props.data.demandpricetol;
+            var orderpricetol = isNull(this.props.data.paymentmoney) ? 0 : this.props.data.paymentmoney;
             //debugger;
             var finlishScale = finishnum / ((releasenum == 0) ? 1 : releasenum);
 
@@ -492,15 +490,12 @@ class State extends React.Component {
             var date = new Date();
             var endtime = new Date(this.props.data.endtime);
             var diffday = Math.ceil(endtime.diff(date));
-
-            var packageid = this.props.data.packageid;
-
             if (parseInt(diffday) < 0) {
                 diffday = 0;
             }
             /*天数*/
-
             //demandid 在全局中
+fdstate=2;
             if (fdstate == 1) {
                 return (<div>
                         <div className="right" style={{"margin-bottom": "20px"}}>
@@ -514,13 +509,12 @@ class State extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="right"
-                             style={{"margin-bottom": "20px", "padding": "20px", textAlign: "center"}}>
+                        <div className="right" style={{"margin-bottom": "20px", "padding": "20px"}}>
                             <p style={{"margin": "15px 0px 27px 0px", "color": "#999", "text-align": "center"}}>
                                 该需求正在审核中，请耐心等待！</p>
                             <a href="javascript:self.location=document.referrer;">
-                                <button type="button" className="drafts" style={{margin: 0, display: "inline-block"}}>
-                                    返回上一页
+                                <button type="button" className="drafts"
+                                        style={{"width": "100%"}}>返回上一页
                                 </button>
                             </a>
                         </div>
@@ -547,14 +541,14 @@ class State extends React.Component {
                     <div className="right">
                         <div className="title-explain">
                             <span style={{"font-size": "16px", "float": "left", "margin-left": "20px"}}>需求进度</span>
-                            <a href="javascript:" className="progress_speed_show"
-                               style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>
-                                查看进度详情>>
-                            </a>
-                            <a href="javascript:" className="progress_speed_show_new"
-                               style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>
-                                查看进度详情>>
-                            </a>
+                            {/*<a href="javascript:" className="progress_speed_show"*/}
+                            {/*style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>*/}
+                            {/*查看进度详情>>*/}
+                            {/*</a>*/}
+                            {/*<a href="javascript:" className="progress_speed_show_new"*/}
+                            {/*style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>*/}
+                            {/*查看进度详情>>*/}
+                            {/*</a>*/}
                         </div>
                         <div className="context-explain package">
                             <div>
@@ -583,39 +577,44 @@ class State extends React.Component {
                                             className="size">{orderpricetol * finlishScale}</span></span></td>
                                     </tr>
                                 </table>
-                                <div style={{textAlign: "center"}}>
-                                    <a href="javascript:self.location=document.referrer;">
-                                        <button type="button" className="drafts"
-                                                style={{margin: 0, display: "inline-block"}}>返回上一页
-                                        </button>
-                                    </a>
-                                </div>
+                                <a href="javascript:self.location=document.referrer;">
+                                    <button type="button" className="drafts"
+                                            style={{"width": "100%"}}>返回上一页
+                                    </button>
+                                </a>
+
                             </div>
                         </div>
                     </div>
-
+                    <div className="right">
+                        <div className="title-explain">
+                            <span style={{"font-size":"16px","float":"left","margin-left":"20px"}}>上传目标客户名单</span><a href="javascript:"className="upload_info_show" id="checkUp" style={{"color":"#fff","font-size":"14px","float":"right","margin-right":"10px",display:"none"}}>上传记录>></a></div>
+                        <div className="context-explain Supplier_Mining">
+                            <p><span>目标客户名单：&nbsp;</span><a href="javascript:" id="selectfiles" style={{"color":"#0099ff","text-decoration":"underline","font-size":"14px"}}>选择文件</a></p>
+                            <div><div className="ossfile" style={{"width":"180px"}}></div><button type="button" className="btn" id="postfiles">开始上传</button></div>
+                            <button type="button" className="submit upload_submit_show"  >确定上传</button><a href="customerDemandList.html"><button type="button" className="drafts">返回上一页</button></a>
+                        </div>
+                    </div>
 
                 </div>);
             }
 
 
             /*结算中*/
-            //debugger;
-            //orderpricetol
             if (fdstate == 3) {
                 return (<div>
 
                     <div className="right">
                         <div className="title-explain">
                             <span style={{"font-size": "16px", "float": "left", "margin-left": "20px"}}>需求进度</span>
-                            <a href="javascript:" className="progress_speed_show"
-                               style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>
-                                查看进度详情>>
-                            </a>
-                            <a href="javascript:" className="progress_speed_show_new"
-                               style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>
-                                查看进度详情>>
-                            </a>
+                            {/*<a href="javascript:" className="progress_speed_show"*/}
+                            {/*style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>*/}
+                            {/*查看进度详情>>*/}
+                            {/*</a>*/}
+                            {/*<a href="javascript:" className="progress_speed_show_new"*/}
+                            {/*style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>*/}
+                            {/*查看进度详情>>*/}
+                            {/*</a>*/}
                         </div>
                         <div className="context-explain package">
                             <div>
@@ -644,13 +643,11 @@ class State extends React.Component {
                                             className="size">{orderpricetol * finlishScale}</span></span></td>
                                     </tr>
                                 </table>
-                                <div style={{textAlign: "center"}}>
-                                    <a href="javascript:self.location=document.referrer;">
-                                        <button type="button" className="drafts"
-                                                style={{margin: 0, display: "inline-block"}}>返回上一页
-                                        </button>
-                                    </a>
-                                </div>
+                                <a href="javascript:self.location=document.referrer;">
+                                    <button type="button" className="drafts"
+                                            style={{"width": "100%"}}>返回上一页
+                                    </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -665,14 +662,14 @@ class State extends React.Component {
                     <div className="right">
                         <div className="title-explain">
                             <span style={{"font-size": "16px", "float": "left", "margin-left": "20px"}}>需求进度</span>
-                            <a href="javascript:" className="progress_speed_show"
-                               style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>
-                                查看进度详情>>
-                            </a>
-                            <a href="javascript:" className="progress_speed_show_new"
-                               style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>
-                                查看进度详情>>
-                            </a>
+                            {/*<a href="javascript:" className="progress_speed_show"*/}
+                            {/*style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>*/}
+                            {/*查看进度详情>>*/}
+                            {/*</a>*/}
+                            {/*<a href="javascript:" className="progress_speed_show_new"*/}
+                            {/*style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>*/}
+                            {/*查看进度详情>>*/}
+                            {/*</a>*/}
                         </div>
                         <div className="context-explain package">
                             <div>
@@ -759,7 +756,6 @@ class State extends React.Component {
     }
 
     componentDidMount() {
-
         this.setState({
             calcullationDetailHtml: this.createcalcullationDetailHtml(),
         });
@@ -793,19 +789,82 @@ class State extends React.Component {
     uploadSubmit() {
 
         /*已经再全局变量里面pid*/
-        var url = domain + "/hfp/" + pid;
+        // var url = domain + "/hfp/" + pid;
         //
         this.rooEl.on('click', '.upload_submit_show', function (ev) {
-
             var _this = ev.currentTarget;
             if (!file1) {
                 alert('请选择文件!');
                 return;
             }
+var fileXs,fileHs;
+for(let i=0;i<allData.attachment.length;i++){
+    if(allData.attachment[i].type=="1"){
+        fileXs=allData.attachment[i].path
+    }
+    if(allData.attachment[i].type=="2"){
+        fileHs=allData.attachment[i].path
+    }
+}
+
+
+
+ var data = {
+            "createTime":allData.demand.createTime,
+            "releaseQuantity": allData.demand.releasenum,//todo "integer,需求发布量",
+            "areaAndDemandQuantity": "",//目标区域
+            "endTime": allData.demand.endtime,//Todo"string,结束时间",
+            "demandName": allData.demand.demandname,//todo "string,需求名",
+            "projectLeader":allData.demand.pleader,//todo  "string,项目负责人",
+            "chargeTag": "",//todo "string,收费标签",
+            "sales": fileXs||"",//----------------------------------todo "string,销售线索附件",
+            "productPresentation": "",//todo "string,产品介绍附件",
+            "dataCleaningUnitPrice": allData.demand.pprice,//Todo "double,数据加工单价",
+            "basicUnitPrice": "",//"double,基础单价",//TODO 行业单价
+            "productIntroduce": "",// todo "string,产品介绍",
+            "customerList": file1,//todo "string,目标客户名单附件path",
+            "demandDesc": allData.demand.demanddescription,//Todo "string,需求描述 可变长度，最多65535个字符",
+            "totalPrice":allData.demand.pprice*allData.demand.releasenum,//todo  "double,需求总价",
+            "targetChannel": "",//todo "integer,获客渠道 1-电话营销 2-网络营销 3-地推推广",
+            "favorableMode": "",//todo "integer,优惠方式 1-无优惠 2-免手续费",
+            "beginTime": allData.demand.begintime,//todo "string,开始时间",
+            "serviceType": "2",//Todo "string,业务类型 1-销售线索挖掘 2-数据筛选 3-人工客服",
+            "industryXifen": "",//todo "string,行业细分",//todo 3级
+            "targetPopulation": "",//todo "string,目标人群",
+            "speechcraft": fileHs||"",//---------------------------todo "string,话术附件",
+            "targetAgeTo": "",//todo "integer,目标区域人群年龄 to",
+            "projectLeaderPhone":   allData.demand.pphone,//todo "string,项目负责人电话",
+            "customTag":"",//todo "string,自定义标签",
+            "targetAgeFrom":"",//todo "integer,目标区域人群年龄 from"
+    };
+
+
+
+
+            $.ajax({
+                url:`${domain137}/quality/drafts/${this.props.data.pid}/1`,
+                type:"patch",
+                contentType:"application/json",
+                data:JSON.stringify(data),
+                success:function(result){
+                    if(result.code=="0"){
+                        $(".cover").show().find(".context").html("<span>上传成功</span>");
+                    }
+                },
+                error(err){
+                  $(".cover").show().find(".context").html("<span>上传失败</span>")
+                    console.log(err);
+                }
+            })
+
+
+
+    return ;
 
             var namefile = file1.split('/');
             var le = namefile.length;
             filename = namefile[le - 1];
+
 
             var data = {
                 "keyid": "",
@@ -881,12 +940,15 @@ $.ajax({
         }
         if (result.code == "0") {
             /*上传记录模块具体数据*/
+            allData=result;
             if (result.attachment) {
                 //JSON.parse(data.detail.otherreport)
                 getRecord = result.attachment;
 
             }
-
+            $(".cover").find("button,.close2").click(function(){
+                        location.reload();
+            })
 
             $(".loading_cover").hide();
             $(".title_select p").text(result.demand.demandname);

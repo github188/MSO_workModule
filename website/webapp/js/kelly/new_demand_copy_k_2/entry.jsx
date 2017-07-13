@@ -1,5 +1,5 @@
 require('./more.css');
-var createTime;
+var createTime,industryId;
 import {addDemandSubmit, addDemand} from "./post_copy.js";
 
 import {Slider} from 'antd';
@@ -700,7 +700,7 @@ var Jbxx = React.createClass({
                            style={isNull(this.props.data.pleader) && isNull(this.props.data.pphone) ? {"display": "none"} : {"display": "block"}}>
                             <span>负责人姓名：</span><input type="text" style={{"width": "162px"}}
                                                       defaultValue={this.props.data.pleader} className="pleader"/><span
-                            style={{"marginLeft": "84px"}}>负责人电话：</span><input type="text" style={{"width": "162px"}}
+                            style={{"marginLeft": "34px"}}>负责人电话：</span><input type="text" style={{"width": "162px"}}
                                                                                defaultValue={this.props.data.pphone}
                                                                                className="pphone"/></p>
                         <p className="error">请填写负责人姓名</p>
@@ -1623,10 +1623,10 @@ var Fbfb = React.createClass({
 var JinE = React.createClass({
     componentDidMount: function () {
         $(".btn_tj").on("click", function () {
-            addDemandSubmit();
+            addDemandSubmit(createTime,industryId);
         });
         $(".btn_tj2").on("click", function () {
-            addDemand();
+            addDemand(createTime,industryId);
         });
         $(".progress_speed_show").on("click", function () {
             $("input:visible").blur();
@@ -1737,6 +1737,7 @@ function getUrlGetDetailHfp(getDetailHfp) {
         $(".form_col5>.main>table").before("<p>请选择上传相关附件，单个附件最大限制为100MB，不支持应用程序、音频和视频等文件上传</p>");
     }, 0);
 }
+
 $.ajax({
     type: "GET",
     url: `${domain137}/quality/demanddetail/${location.hash.slice(1)}`,
@@ -1756,7 +1757,7 @@ $.ajax({
         }
         if (result.code == "0") {
             createTime=result.demand.createTime
-            // console.log(result,444444444444);
+            industryId=result.demand.industryId
             var industry = result.demand.industry;
 
             $(".content .title_select ul li a").each(function () {

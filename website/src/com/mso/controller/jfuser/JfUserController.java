@@ -551,6 +551,7 @@ public class JfUserController extends BaseController {
         };
 		 */
 	    public  UserRes toRegoster(JfUser addput,HttpSession session,HttpServletResponse response) { 
+			System.out.println("黑海");
 			response.setHeader("Access-Control-Allow-Origin", "*");
 	    	String code="Y";
 	    	String msg="";
@@ -594,6 +595,7 @@ public class JfUserController extends BaseController {
 	    		 */
 	    		res=userService.register(addput);
 			} catch (Exception e) {
+				e.printStackTrace();
 				code="N";
 				res.setCode(code);
 				res.setMsg("异常啦!"+e.toString());

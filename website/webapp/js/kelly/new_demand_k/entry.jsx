@@ -1861,8 +1861,8 @@ class Preview extends React.Component {
                     var label={};
                     label.tagname=labelList[$(this).index()].labelName;
                     label.price=labelList[$(this).index()].labelPrice;
-                    var obj=Object.assign({},labelList[$(this).index()],label)
-                    labelActive.push(obj);
+                    //var obj=Object.assign({},labelList[$(this).index()],label)
+                    labelActive.push(label);
                 }
             });
             $(".form_col4 .diylabel").each(function (i) {
@@ -1880,7 +1880,6 @@ class Preview extends React.Component {
             // customlabel.unshift({labelName: "改价", labelPrice: "0"});
 
             var newIndustryId = $('.industry.select.area.js_area').attr('data-nfiid');
-
 
             //todo  更改  star
 
@@ -1905,7 +1904,7 @@ class Preview extends React.Component {
                 "favorableMode": "",//"integer,优惠方式 1-无优惠 2-免手续费",
                 "beginTime": $("input.start_date").val(),//"string,开始时间",
                 "serviceType": "1",//"string,业务类型 1-销售线索挖掘 2-数据筛选 3-人工客服",
-                "industryXifen": ordername,//"string,行业细分",//todo 3级
+                "industryXifen": $(".leaval-box").find("input").val(),//"string,行业细分",//todo 3级
                 "targetPopulation": $(".target-population").html(),//"string,目标人群",
                 "speechcraft": "",//"string,话术附件",
                 "targetAgeTo": $('.people-yang input.last').val(),//"integer,目标区域人群年龄 to",
@@ -2067,8 +2066,8 @@ class Progress extends React.Component {
                     var label={};
                     label.tagname=labelList[$(this).index()].labelName;
                     label.price=labelList[$(this).index()].labelPrice;
-                    var obj=Object.assign({},labelList[$(this).index()],label)
-                    labelActive.push(obj);
+                  // var obj=Object.assign({},labelList[$(this).index()],label)
+                    labelActive.push(label);
                 }
             });
             $(".form_col4 .diylabel").each(function (i) {
@@ -2111,7 +2110,7 @@ class Progress extends React.Component {
                 "favorableMode": "",//"integer,优惠方式 1-无优惠 2-免手续费",
                 "beginTime": $("input.start_date").val(),//"string,开始时间",
                 "serviceType": "1",//"string,业务类型 1-销售线索挖掘 2-数据筛选 3-人工客服",
-                "industryXifen": ordername,//"string,行业细分",//todo 3级
+                "industryXifen": $(".leaval-box").find("input").val(),//"string,行业细分",//todo 3级
                 "targetPopulation": $(".target-population").html(),//"string,目标人群",
                 "speechcraft": "",//"string,话术附件",
                 "targetAgeTo": $('.people-yang input.last').val(),//"integer,目标区域人群年龄 to",

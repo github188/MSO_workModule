@@ -16,11 +16,11 @@ export function addDemandSubmit() {
         areaCityList[i] = {
             "target": $(this).find("div.input").eq(0).find("input").val(),//目标区域
             "citydesc": $(this).find("div.input").eq(0).find("input").attr("title"),
-            "releasenum": $(this).find("div.input").eq(1).find("input").val(),//数量
+            "releasenum": Number($(this).find("div.input").eq(1).find("input").val()||0),//数量
             "price": $(this).find("div.input").eq(2).find("input").val(),//单价
-            "totalprice": $(this).find("span.green span.size").text(),//总价
+            "totalprice": Number($(this).find("span.green span.size").text()||0),//总价
             "remark": $(this).find("div.input").eq(3).find(":checked").next().text() == "是" ? $(this).find("div.input").eq(4).find("input").val() : "",//备注
-            auto_calc: ""//单价设定方式
+            "auto_calc": ""//单价设定方式
         };
     });
 
@@ -104,11 +104,11 @@ export function addDemand() {
         areaCityList[i] = {
             "target": $(this).find("div.input").eq(0).find("input").val(),//目标区域
             "citydesc": $(this).find("div.input").eq(0).find("input").attr("title"),
-            "releasenum": $(this).find("div.input").eq(1).find("input").val(),//数量
+            "releasenum": Number($(this).find("div.input").eq(1).find("input").val()||0),//数量
             "price": $(this).find("div.input").eq(2).find("input").val(),//单价
-            "totalprice": $(this).find("span.green span.size").text(),//总价
+            "totalprice": Number($(this).find("span.green span.size").text()||0),//总价
             "remark": $(this).find("div.input").eq(3).find(":checked").next().text() == "是" ? $(this).find("div.input").eq(4).find("input").val() : "",//备注
-            auto_calc: ""//单价设定方式
+            "auto_calc": ""//单价设定方式
         };
     });
     var json = {

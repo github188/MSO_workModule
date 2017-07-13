@@ -147,21 +147,6 @@ function checkage(mark) {
 /*业务模块*/
 class Yewu extends React.Component {
     componentDidMount() {
-        $.ajax({
-            url: `${domain137}/quality/getIndustryList`,
-            type: 'get',
-            success: function (result) {
-                if (result.code == "0") {
-                    for (var i = 0; i < result.data.list.length; i++) {
-                        if (result.data.list[i].name == $(".title_select").find("li.selected").find('a').html()) {
-                            $(".title_select").find("li.selected").find('a').attr("data-nfiid", result.data.list[i].nfiid)
-                            break;
-                        }
-
-                    }
-                }
-            }
-        })
         $(".bubble-hover").click(function () {
             $(this).next().css("display", "inline-block");
         }).mouseout(function () {

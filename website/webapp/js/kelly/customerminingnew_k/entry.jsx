@@ -290,14 +290,14 @@ class State extends React.Component {
     }
 
     createcalcullationDetailHtml() {
+        //debugger;
         if (this.props.data) {
             var fdstate = this.props.data.fdstate;
-
-            var releasenum = isNull(this.props.data.releasenum) ? 0 : this.props.data.releasenum;
+            var releasenum = isNull(this.props.data.releasenum) ? 0 : this.props.data.releasenum;//需求发布量
             var applicationnum = isNull(this.props.data.applicationnum) ? 0 : this.props.data.applicationnum;
-            var finishnum = isNull(this.props.data.finishnum) ? 0 : this.props.data.finishnum;
+            var finishnum = isNull(this.props.data.finishnum) ? 0 : this.props.data.finishnum;      //完成量
             //	debugger;
-            var orderpricetol = isNull(this.props.data.demandpricetol) ? 0 : this.props.data.demandpricetol;
+            var orderpricetol = isNull(this.props.data.paymentmoney) ? 0 : this.props.data.paymentmoney;
             //debugger;
             var finlishScale = finishnum / ((releasenum == 0) ? 1 : releasenum);
 
@@ -305,8 +305,6 @@ class State extends React.Component {
             var date = new Date();
             var endtime = new Date(this.props.data.endtime);
             var diffday = Math.ceil(endtime.diff(date));
-
-            var packageid = this.props.data.packageid;
 
             if (parseInt(diffday) < 0) {
                 diffday = 0;
@@ -327,10 +325,13 @@ class State extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="right"
-                             style={{"margin-bottom": "20px", "padding": "20px", textAlign: "center"}}>
+                        <div className="right" style={{"margin-bottom": "20px", "padding": "20px"}}>
                             <p style={{"margin": "15px 0px 27px 0px", "color": "#999", "text-align": "center"}}>
                                 该需求正在审核中，请耐心等待！</p>
+                            <a href={"new_demand_copy_5.html#copy" + demandid} data-reactid=".6.1.1">
+                                <button id="copyDemand" type="button" className="submit" onclick={this.setCopy}>复制需求
+                                </button>
+                            </a>
                             <a href="javascript:self.location=document.referrer;">
                                 <button type="button" className="drafts" style={{margin: 0, display: "inline-block"}}>
                                     返回上一页
@@ -360,14 +361,14 @@ class State extends React.Component {
                     <div className="right">
                         <div className="title-explain">
                             <span style={{"font-size": "16px", "float": "left", "margin-left": "20px"}}>需求进度</span>
-                            <a href="javascript:" className="progress_speed_show"
-                               style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>
-                                查看进度详情>>
-                            </a>
-                            <a href="javascript:" className="progress_speed_show_new"
-                               style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>
-                                查看进度详情>>
-                            </a>
+                            {/*<a href="javascript:" className="progress_speed_show"*/}
+                               {/*style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>*/}
+                                {/*查看进度详情>>*/}
+                            {/*</a>*/}
+                            {/*<a href="javascript:" className="progress_speed_show_new"*/}
+                               {/*style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>*/}
+                                {/*查看进度详情>>*/}
+                            {/*</a>*/}
                         </div>
                         <div className="context-explain package">
                             <div>
@@ -396,13 +397,16 @@ class State extends React.Component {
                                             className="size">{orderpricetol * finlishScale}</span></span></td>
                                     </tr>
                                 </table>
-                                <div style={{textAlign: "center"}}>
-                                    <a href="javascript:self.location=document.referrer;">
-                                        <button type="button" className="drafts"
-                                                style={{margin: 0, display: "inline-block"}}>返回上一页
-                                        </button>
-                                    </a>
-                                </div>
+                                <a href={"new_demand_copy_5.html#copy" + demandid} data-reactid=".6.1.1">
+                                    <button id="copyDemand" type="button" className="submit" onclick={this.setCopy}>复制需求
+                                    </button>
+                                </a>
+                                <a href="javascript:self.location=document.referrer;">
+                                    <button type="button" className="drafts"
+                                            style={{margin: 0, display: "inline-block"}}>返回上一页
+                                    </button>
+                                </a>
+
                             </div>
                         </div>
                     </div>
@@ -421,14 +425,14 @@ class State extends React.Component {
                     <div className="right">
                         <div className="title-explain">
                             <span style={{"font-size": "16px", "float": "left", "margin-left": "20px"}}>需求进度</span>
-                            <a href="javascript:" className="progress_speed_show"
-                               style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>
-                                查看进度详情>>
-                            </a>
-                            <a href="javascript:" className="progress_speed_show_new"
-                               style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>
-                                查看进度详情>>
-                            </a>
+                            {/*<a href="javascript:" className="progress_speed_show"*/}
+                               {/*style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>*/}
+                                {/*查看进度详情>>*/}
+                            {/*</a>*/}
+                            {/*<a href="javascript:" className="progress_speed_show_new"*/}
+                               {/*style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>*/}
+                                {/*查看进度详情>>*/}
+                            {/*</a>*/}
                         </div>
                         <div className="context-explain package">
                             <div>
@@ -457,13 +461,15 @@ class State extends React.Component {
                                             className="size">{orderpricetol * finlishScale}</span></span></td>
                                     </tr>
                                 </table>
-                                <div style={{textAlign: "center"}}>
-                                    <a href="javascript:self.location=document.referrer;">
-                                        <button type="button" className="drafts"
-                                                style={{margin: 0, display: "inline-block"}}>返回上一页
-                                        </button>
-                                    </a>
-                                </div>
+                                <a href={"new_demand_copy_5.html#copy" + demandid} data-reactid=".6.1.1">
+                                    <button id="copyDemand" type="button" className="submit" onclick={this.setCopy}>复制需求
+                                    </button>
+                                </a>
+                                <a href="javascript:self.location=document.referrer;">
+                                    <button type="button" className="drafts"
+                                            style={{margin: 0, display: "inline-block"}}>返回上一页
+                                    </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -478,14 +484,14 @@ class State extends React.Component {
                     <div className="right">
                         <div className="title-explain">
                             <span style={{"font-size": "16px", "float": "left", "margin-left": "20px"}}>需求进度</span>
-                            <a href="javascript:" className="progress_speed_show"
-                               style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>
-                                查看进度详情>>
-                            </a>
-                            <a href="javascript:" className="progress_speed_show_new"
-                               style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>
-                                查看进度详情>>
-                            </a>
+                            {/*<a href="javascript:" className="progress_speed_show"*/}
+                               {/*style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>*/}
+                                {/*查看进度详情>>*/}
+                            {/*</a>*/}
+                            {/*<a href="javascript:" className="progress_speed_show_new"*/}
+                               {/*style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>*/}
+                                {/*查看进度详情>>*/}
+                            {/*</a>*/}
                         </div>
                         <div className="context-explain package">
                             <div>
@@ -669,7 +675,7 @@ class State extends React.Component {
             var fdstate = this.state.data.fdstate;
 
             var releasenum = isNull(this.state.data.releasenum) ? 0 : this.state.data.releasenum;//需求发布量
-            var applicationnum = isNull(this.state.data.applicationnum) ? 0 : this.state.data.applicationnum;
+         //   var applicationnum = isNull(this.state.data.applicationnum) ? 0 : this.state.data.applicationnum;
             var finishnum = isNull(this.state.data.finishnum) ? 0 : this.state.data.finishnum;      //完成量
             //	debugger;
             var orderpricetol = isNull(this.state.data.paymentmoney) ? 0 : this.state.data.paymentmoney;
@@ -685,29 +691,256 @@ class State extends React.Component {
                 diffday = 0;
             }
             /*天数*/
-
-            return (<div>
-                <div className="right" style={{"margin-bottom": "20px"}}>
-                    <div className="title-explain">
-                        距离项目结束还剩
-                    </div>
-                    <div className="context-explain package">
-                        <div className="countdown">
-                    <span className="blue"><span className="size">{diffday}</span>&emsp;<span
-                        className="day">天</span></span>
+            //demandid 在全局中
+            if (fdstate == 1) {
+                return (<div>
+                        <div className="right" style={{"margin-bottom": "20px"}}>
+                            <div className="title-explain">
+                                距离项目结束还剩
+                            </div>
+                            <div className="context-explain package">
+                                <div className="countdown">
+                                    <span className="blue"><span className="size">{diffday}</span>&emsp;<span
+                                        className="day">天</span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="right" style={{"margin-bottom": "20px", "padding": "20px"}}>
+                            <p style={{"margin": "15px 0px 27px 0px", "color": "#999", "text-align": "center"}}>
+                                该需求正在审核中，请耐心等待！</p>
+                            <a href="javascript:self.location=document.referrer;">
+                                <button type="button" className="drafts"
+                                        style={{"width": "100%"}}>返回上一页
+                                </button>
+                            </a>
                         </div>
                     </div>
-                </div>
-                <div className="right" style={{"margin-bottom": "20px", "padding": "20px"}}>
-                    <p style={{"margin": "15px 0px 27px 0px", "color": "#999", "text-align": "center"}}>
-                        该需求正在审核中，请耐心等待！</p>
-                    <a href="javascript:self.location=document.referrer;">
-                        <button type="button" className="drafts">
-                            返回上一页
-                        </button>
-                    </a>
-                </div>
-            </div>)
+
+                );
+            }
+
+            /*进行中*/
+            if (fdstate == 2) {
+                return (<div>
+                    <div className="right" style={{"margin-bottom": "20px"}}>
+                        <div className="title-explain">
+                            距离项目结束还剩
+                        </div>
+                        <div className="context-explain package">
+                            <div className="countdown">
+                                <span className="blue"><span className="size">{diffday}</span>&emsp;<span
+                                    className="day">天</span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="right">
+                        <div className="title-explain">
+                            <span style={{"font-size": "16px", "float": "left", "margin-left": "20px"}}>需求进度</span>
+                            {/*<a href="javascript:" className="progress_speed_show"*/}
+                               {/*style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>*/}
+                                {/*查看进度详情>>*/}
+                            {/*</a>*/}
+                            {/*<a href="javascript:" className="progress_speed_show_new"*/}
+                               {/*style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>*/}
+                                {/*查看进度详情>>*/}
+                            {/*</a>*/}
+                        </div>
+                        <div className="context-explain package">
+                            <div>
+                                <table>
+
+                                    <tr>
+                                        <td><label>完成进度:</label></td>
+                                    </tr>
+                                    <tr>
+                                        <td colSpan="2">
+                                            <div className="progress"><b>{parseInt(finlishScale * 100)}%</b>
+                                                <div className="progress-bar brown" style={{
+                                                    "max-width": "100%",
+                                                    "width": parseInt(finlishScale * 100) + "%"
+                                                }}></div>
+                                                <div className="bublle"><p>完成量：{finishnum}</p><p>发布量：{releasenum}</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label>预计结算金额:</label></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span className="money" style={{"float": "left"}}><span>¥</span><span
+                                            className="size">{orderpricetol * finlishScale}</span></span></td>
+                                    </tr>
+                                </table>
+                                <a href="javascript:self.location=document.referrer;">
+                                    <button type="button" className="drafts"
+                                            style={{"width": "100%"}}>返回上一页
+                                    </button>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>);
+            }
+
+
+            /*结算中*/
+            //debugger;
+            //orderpricetol
+            if (fdstate == 3) {
+                return (<div>
+
+                    <div className="right">
+                        <div className="title-explain">
+                            <span style={{"font-size": "16px", "float": "left", "margin-left": "20px"}}>需求进度</span>
+                            {/*<a href="javascript:" className="progress_speed_show"*/}
+                               {/*style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>*/}
+                                {/*查看进度详情>>*/}
+                            {/*</a>*/}
+                            {/*<a href="javascript:" className="progress_speed_show_new"*/}
+                               {/*style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>*/}
+                                {/*查看进度详情>>*/}
+                            {/*</a>*/}
+                        </div>
+                        <div className="context-explain package">
+                            <div>
+                                <table>
+
+                                    <tr>
+                                        <td><label>完成进度:</label></td>
+                                    </tr>
+                                    <tr>
+                                        <td colSpan="2">
+                                            <div className="progress"><b>{parseInt(finlishScale * 100)}%</b>
+                                                <div className="progress-bar brown" style={{
+                                                    "max-width": "100%",
+                                                    "width": parseInt(finlishScale * 100) + "%"
+                                                }}></div>
+                                                <div className="bublle"><p>完成量：{finishnum}</p><p>发布量：{releasenum}</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label>预计结算金额:</label></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span className="money" style={{"float": "left"}}><span>¥</span><span
+                                            className="size">{orderpricetol * finlishScale}</span></span></td>
+                                    </tr>
+                                </table>
+                                <a href="javascript:self.location=document.referrer;">
+                                    <button type="button" className="drafts"
+                                            style={{"width": "100%"}}>返回上一页
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>)
+            }
+
+            /*已经完成*/
+            if (fdstate == 4) {
+
+                return (<div>
+
+                    <div className="right">
+                        <div className="title-explain">
+                            <span style={{"font-size": "16px", "float": "left", "margin-left": "20px"}}>需求进度</span>
+                            {/*<a href="javascript:" className="progress_speed_show"*/}
+                               {/*style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>*/}
+                                {/*查看进度详情>>*/}
+                            {/*</a>*/}
+                            {/*<a href="javascript:" className="progress_speed_show_new"*/}
+                               {/*style={{"color": "#fff", "font-size": "14px", "float": "right", "margin-right": "10px"}}>*/}
+                                {/*查看进度详情>>*/}
+                            {/*</a>*/}
+                        </div>
+                        <div className="context-explain package">
+                            <div>
+                                <table>
+                                    <tr>
+                                        <td style={{'textAlign': 'center', "color": "#fd5352"}}>需求已完成！</td>
+                                    </tr>
+                                    <tr>
+                                        <td><label>完成进度:</label></td>
+                                    </tr>
+                                    <tr>
+                                        <td colSpan="2">
+                                            <div className="progress"><b>{parseInt(finlishScale * 100)}%</b>
+                                                <div className="progress-bar brown" style={{
+                                                    "max-width": "100%",
+                                                    "width": parseInt(finlishScale * 100) + "%"
+                                                }}></div>
+                                                <div className="bublle"><p>完成量：{finishnum}</p><p>发布量：{releasenum}</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label>预计结算金额:</label></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span className="money" style={{"float": "left"}}><span>¥</span><span
+                                            className="size">{orderpricetol * finlishScale}</span></span></td>
+                                    </tr>
+                                </table>
+
+                                <a href="javascript:self.location=document.referrer;">
+                                    <button type="button" className="drafts"
+                                            style={{"width": "100%"}}>返回上一页
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>)
+            }
+
+
+            /*异常*/
+            if (fdstate == 5) {
+                return (
+                    <div className="right">
+                        <div className="title-explain">需求预览</div>
+                        <div className="context-explain package">
+                            <div>
+                                <table>
+                                    <tr>
+                                        <td width="80px"><label>需求状态:</label></td>
+                                        <td><span>驳回</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style={{"vertical-align": "top"}}><label>原因:</label></td>
+                                        <td>
+                                            <span>{isNull(this.state.data.remark) ? "暂无" : this.state.data.remark}</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label>时间:</label></td>
+                                        <td>
+                                            <span>{isNull(this.state.data.updatetime) ? "暂无" : this.state.data.updatetime}</span>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <a href="javascript:self.location=document.referrer;">
+                                    <button type="button" className="drafts"
+                                            style={{"width": "100%"}}>返回上一页
+                                    </button>
+                                </a>
+
+
+                            </div>
+                        </div>
+                    </div>
+                )
+            }
         }else{
             return (<div></div>)
         }

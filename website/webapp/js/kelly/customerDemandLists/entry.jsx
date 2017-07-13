@@ -344,7 +344,7 @@ class Main extends React.Component {
                 <div className="title">
                     <h3 title={name.demandname}>{name.demandname}</h3>
                     <ul>
-                        <li className={"bg_green " + (name.twolevindustry > "-1" ? '' : 'hide')}>{name.twolevindustry == "0" ? "线下" : "线上"}</li>
+                        <li className={"bg_green " + (name.twolevindustry !=null ? '' : 'hide')}>{name.twolevindustry == "0" ? "线下" : "线上"}</li>
                         {/*name.twolevindustry 线上或线下 如果没值隐藏*/}
                         <li className={"bg_blue1 " + (name.industry ? '' : 'hide')}>{name.industry}</li>
                         {/*发包类型 eg:教育培训..*/}

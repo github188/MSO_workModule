@@ -158,7 +158,7 @@ var Jbxx = React.createClass({
                         <td><span>暂无</span></td>
                     </tr>
                     <tr>
-                        <td>需求备注:</td>
+                        <td>需求描述:</td>
                         <td><span>暂无</span></td>
                     </tr>
                     <tr>
@@ -191,7 +191,7 @@ var Jbxx = React.createClass({
                     <td><span>{isNull(this.state.data.demandname) ? "暂无" : this.state.data.demandname}</span></td>
                 </tr>
                 <tr>
-                    <td>需求备注:</td>
+                    <td>需求描述:</td>
                     <td>
                         <span>{isNull(this.state.data.demanddescription) ? "暂无" : this.state.data.demanddescription}</span>
                     </td>
@@ -313,7 +313,7 @@ class Fj extends React.Component {
                     <div className="tag-free">
                         {this.state.data.chargeTag ? (
                             <ul className="tag3">{JSON.parse(this.state.data.chargeTag).map((v, k) => (
-                                <li key={k}>{v.labelName}</li>))}</ul>) : <p>暂无</p>}
+                                <li key={k}>{v.tagname}</li>))}</ul>) : <p>暂无</p>}
                     </div>
                 </div>
                 <div className="box">

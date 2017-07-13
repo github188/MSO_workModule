@@ -243,7 +243,7 @@ class Yewu extends React.Component {
 
             $('.industry.select.area.js_area').attr('data-nfiid', industryId);
             $('.industry.select.area.js_area').attr('data-value', newIndustryPrice);
-            $('.industry.select.area.js_area').val(industry.demandname.substr(3));
+            $('.industry.select.area.js_area').val(industry.industry);
 
             ReactDOM.render(<Preview name='1' data={areaList()}/>, $(".demend_right .right")[0]);
         }
@@ -797,50 +797,50 @@ class AreaAndRequirement extends React.Component {
     }
 
     resetCityValue() {
-        if(this.props.area){
+        if (this.props.area) {
             var areaCityList = this.props.area.areaanddemandquantity;
-            if(!areaCityList)return;
+            if (!areaCityList)return;
             var arr = [];
-            for(var i=0;i<JSON.parse(areaCityList).length;i++){
+            for (var i = 0; i < JSON.parse(areaCityList).length; i++) {
                 arr.push(true);
             }
-            this.setState({countNumber:arr});
+            this.setState({countNumber: arr});
         }
     }
 
     componentDidUpdate() {
         // if (!this.props.area.isFirst) {
         //     this.props.area.isFirst = true;
-            var areaCityList = this.props.area.areaanddemandquantity;
-            //debugger;
-            newPriceBesic = this.props.area.basicUnitPrice;//基础单价
-            if (!areaCityList)return;
-            // var arr = [];
-            // for (let i = 0; i < data.length; i++) {
-            //     //组装对象
-            //     var obj = {};
-            //     var objArr = data[i].slice(1, -1).split(",");
-            //     for (let i = 0; i < objArr.length; i++) {
-            //         obj[objArr[i].split(":")[0].toString().replace(/'/g, "")] = objArr[i].split(":")[1].toString().replace(/'/g, "")
-            //     }
-            //     arr.push(obj)
-            //
-            // }
+        var areaCityList = this.props.area.areaanddemandquantity;
+        //debugger;
+        newPriceBesic = this.props.area.basicUnitPrice;//基础单价
+        if (!areaCityList)return;
+        // var arr = [];
+        // for (let i = 0; i < data.length; i++) {
+        //     //组装对象
+        //     var obj = {};
+        //     var objArr = data[i].slice(1, -1).split(",");
+        //     for (let i = 0; i < objArr.length; i++) {
+        //         obj[objArr[i].split(":")[0].toString().replace(/'/g, "")] = objArr[i].split(":")[1].toString().replace(/'/g, "")
+        //     }
+        //     arr.push(obj)
+        //
+        // }
 
-            // areaCityList = arr;
+        // areaCityList = arr;
         JSON.parse(areaCityList).map(function (name, index) {
-                //console.log(areaCityList);
-                this.rootEl.find('.select.area').eq(index).val(name.target);//城市名称
-                this.rootEl.find('.number.size').eq(index).val(name.releasenum);//发包数量
-                //$('.color-red span.price').eq(index).html((areaCityList.newIndustryPrice/10*2));
+            //console.log(areaCityList);
+            this.rootEl.find('.select.area').eq(index).val(name.target);//城市名称
+            this.rootEl.find('.number.size').eq(index).val(name.releasenum);//发包数量
+            //$('.color-red span.price').eq(index).html((areaCityList.newIndustryPrice/10*2));
 
-                /*算钱*/
-                ReactDOM.render(<Preview name='1' data={areaList()}/>, $(".demend_right .right")[0]);
-                //console.log($(".js_area"));
-                //$(".js_area").change();
-                // console.log('=11111111111');
-            }.bind(this));
-            $(".js_area").change();
+            /*算钱*/
+            ReactDOM.render(<Preview name='1' data={areaList()}/>, $(".demend_right .right")[0]);
+            //console.log($(".js_area"));
+            //$(".js_area").change();
+
+        }.bind(this));
+        $(".js_area").change();
         // }
 
     }
@@ -1405,7 +1405,7 @@ class SaleTemplate extends React.Component {
 
         var add_label_list = this.rootEl.find('.add_label_list ul li');
         /*如果回填的数据拿到 并且初始数据添加到页面*/
-        if (selectedlist&&JSON.parse(selectedlist)[0] && add_label_list[0]) {
+        if (selectedlist && JSON.parse(selectedlist)[0] && add_label_list[0]) {
             /*如果拿到数据关闭初始化开关*/
             this.isselectedlist = true;
             //this.rootEl.find('.add_label_list').show();
@@ -1418,7 +1418,7 @@ class SaleTemplate extends React.Component {
             JSON.parse(selectedlist).map(function (name, index) {
                 for (var i = 0, k; k = add_label_list[i]; i++) {
                     var current = this.rootEl.find(k).find('span').html();
-                    if (current == name.labelName) {
+                    if (current == name.tagname) {
                         this.rootEl.find(k).find('span').parent().addClass('active');
                     }
                 }
@@ -1433,7 +1433,7 @@ class SaleTemplate extends React.Component {
             }
 
             this.rootEl.find('.label_list-title .price').html(countPrice.toFixed(2));
-            this.setState({activeprice:countPrice});
+            this.setState({activeprice: countPrice});
             //debugger;
             var value = $('.money span.size').html();
             if (/\./.test(value)) {
@@ -1444,10 +1444,10 @@ class SaleTemplate extends React.Component {
             /*自定义标签*/
             if (!Array.isArray(customlabel))return;
 
-            for (var i = 0; i<customlabel.length; i++) {
-                    var diylabel = '<div class="diylabel"><span>标签名：</span><input type="text" value="' + customlabel[i].tagname + '" maxLength="20" placeholder="输入自定义标签名，最多可输入20个字"/><span class="close"></span></div>';
-                    this.rootEl.find(".diylabel_box").append(diylabel);
-                    this.setState({diylabellength: this.rootEl.find(".diylabel").length});
+            for (var i = 0; i < customlabel.length; i++) {
+                var diylabel = '<div class="diylabel"><span>标签名：</span><input type="text" value="' + customlabel[i].tagname + '" maxLength="20" placeholder="输入自定义标签名，最多可输入20个字"/><span class="close"></span></div>';
+                this.rootEl.find(".diylabel_box").append(diylabel);
+                this.setState({diylabellength: this.rootEl.find(".diylabel").length});
             }
 
             $('.activelength').html($('.add_label_list ul li.active').length);
@@ -1462,6 +1462,7 @@ class SaleTemplate extends React.Component {
             this.resetStrcture();
         }
     }
+
     render() {
         return (
             <div>
@@ -1839,8 +1840,6 @@ class Preview extends React.Component {
         this.bubble();
         this.progress_speed_show();
         this.save();
-
-
         if (newDandData) {
             //debugger;
             var finmae = JSON.parse(newDandData).industry.item.finmae;
@@ -1851,22 +1850,17 @@ class Preview extends React.Component {
             $($('.areaList1 td')[2]).html(price);
             $($('.areaList1 td')[3]).html(price);
         }
-
-
     }
 
     bubble() {
-
         this.rootEl.find(".bubble-hover").click(function () {
             $(this).next().css("display", "inline-block");
         }).mouseout(function () {
             $(this).next().hide();
         });
-
     }
 
     progress_speed_show() {
-
         /*开始审核代码*/
         this.rootEl.find(".progress_speed_show").click(function () {
             //debugger;
@@ -1925,7 +1919,11 @@ class Preview extends React.Component {
             });
             $(".form_col4 .add_label_list li").each(function (i) {
                 if ($(this).hasClass("active")) {
-                    labelActive.push(labelList[$(this).index()]);
+                   var label={};
+                    label.tagname=labelList[$(this).index()].labelName;
+                    label.price=labelList[$(this).index()].labelPrice;
+                    //var obj=Object.assign({},labelList[$(this).index()],label)
+                    labelActive.push(label);
                 }
             });
             $(".form_col4 .diylabel").each(function (i) {
@@ -1948,18 +1946,18 @@ class Preview extends React.Component {
             var url = domain137 + `/quality/adddemand/${sessionStorage.getItem("jfuid")}/0?industryId=${newIndustryId || ""}`;
             var urlDraft = domain137 + `/quality/drafts/${location.hash.substr(1)}/0?industryId=${newIndustryId || ""}`;
             var typeDraft = "patch";
-            var type = "get";
-            var choose = location.hash.substr(0,4) == "copy";
+            var type = "post";
+            var choose = location.hash.substr(0, 5) == "#copy";
 
             var data = {
-                createTime:createTime,
+                createTime: createTime,
                 "demandComment": "",//"string,需求备注",
                 "releaseQuantity": releasenum,//"integer,需求发布量",
                 "areaAndDemandQuantity": JSON.stringify(areaCityList),// "string,原子需求[{\"target\":\"目标区域\",\"releasenum\":\"发布数量\",\"price\":\"单价\",\"totalprice\":\"总价\",\"remark\":\"备注\",\"auto_calc\":\"单价设定方式 1-根据标签计算 2-手动设定\"}]",
                 "endTime": $("input.end_date").val(),//"string,结束时间",
                 "demandName": $("td.ordername").text(),//"string,需求名",
                 "projectLeader": pleader,// "string,项目负责人",
-                "chargeTag": JSON.stringify(labelActive),//"string,收费标签",
+                "chargeTag":labelActive.length>0? JSON.stringify(labelActive):"",//"string,收费标签",
                 "sales": "",//"string,销售线索附件",
                 "productPresentation": productaccessories,// "string,产品介绍附件",
                 "dataCleaningUnitPrice": "",//"double,数据加工单价",
@@ -1972,7 +1970,7 @@ class Preview extends React.Component {
                 "favorableMode": "",//"integer,优惠方式 1-无优惠 2-免手续费",
                 "beginTime": $("input.start_date").val(),//"string,开始时间",
                 "serviceType": "1",//"string,业务类型 1-销售线索挖掘 2-数据筛选 3-人工客服",
-                "industryXifen": ordername,//"string,行业细分",//todo 3级
+                "industryXifen": $(".leaval-box").find("input").val(),//"string,行业细分",//todo 3级
                 "targetPopulation": $(".target-population").html(),//"string,目标人群",
                 "speechcraft": "",//"string,话术附件",
                 "targetAgeTo": $('.people-yang input.last').val(),//"integer,目标区域人群年龄 to",
@@ -1981,6 +1979,7 @@ class Preview extends React.Component {
                 "targetAgeFrom": $('.people-yang input.first').val(),//"integer,目标区域人群年龄 from"
             }
             data = JSON.stringify(data);
+
             $.ajax({
                 type: choose ? type : typeDraft,
                 url: choose ? url : urlDraft,
@@ -1991,7 +1990,7 @@ class Preview extends React.Component {
                         if (choose) {
                             sessionStorage.removeItem("copy")
                         }
-                        sessionStorage.setItem("cgid", result.data.id);
+                        sessionStorage.setItem("cgid", result.pid);
                         window.location.href = "customerDemandDraftDone2.html";
                     }
                 }
@@ -2002,7 +2001,6 @@ class Preview extends React.Component {
 
     render() {
         var data = this.props.data;
-
         var dom = [];
         var total = 0;
         var price = 0;
@@ -2120,7 +2118,11 @@ class Progress extends React.Component {
             });
             $(".form_col4 .add_label_list li").each(function (i) {
                 if ($(this).hasClass("active")) {
-                    labelActive.push(labelList[$(this).index()]);
+               var label={};
+                    label.tagname=labelList[$(this).index()].labelName;
+                    label.price=labelList[$(this).index()].labelPrice;
+                    //var obj=Object.assign({},labelList[$(this).index()],label)
+                    labelActive.push(label);
                 }
             });
             $(".form_col4 .diylabel").each(function (i) {
@@ -2141,17 +2143,17 @@ class Progress extends React.Component {
             var url = `${domain137}/quality/adddemand/${sessionStorage.getItem("jfuid")}/1?industryId=${newIndustryId || ""}`;
             var urlDraft = `${domain137}/quality/drafts/${location.hash.substr(1)}/1?industryId=${newIndustryId || ""}`;
             var typeDraft = "patch";
-            var type = "get";
-            var choose = location.hash.substr(0,4) == "copy"
+            var type = "post";
+            var choose = location.hash.substr(0, 5) == "#copy";
             var data = {
-                createTime:createTime,
+                createTime: createTime,
                 "demandComment": "",//"string,需求备注",
                 "releaseQuantity": releasenum,//"integer,需求发布量",
-                "areaAndDemandQuantity": JSON.stringify(areaCityList),// "string,原子需求[{\"target\":\"目标区域\",\"releasenum\":\"发布数量\",\"price\":\"单价\",\"totalprice\":\"总价\",\"remark\":\"备注\",\"auto_calc\":\"单价设定方式 1-根据标签计算 2-手动设定\"}]",
+                "areaAndDemandQuantity": JSON.stringify(areaCityList),
                 "endTime": $("input.end_date").val(),//"string,结束时间",
                 "demandName": $("td.ordername").text(),//"string,需求名",
                 "projectLeader": pleader,// "string,项目负责人",
-                "chargeTag": JSON.stringify(labelActive),//"string,收费标签",
+                "chargeTag":labelActive.length>0? JSON.stringify(labelActive):"",//"string,收费标签",
                 "sales": "",//"string,销售线索附件",
                 "productPresentation": productaccessories,// "string,产品介绍附件",
                 "dataCleaningUnitPrice": "",//"double,数据加工单价",
@@ -2164,7 +2166,7 @@ class Progress extends React.Component {
                 "favorableMode": "",//"integer,优惠方式 1-无优惠 2-免手续费",
                 "beginTime": $("input.start_date").val(),//"string,开始时间",
                 "serviceType": "1",//"string,业务类型 1-销售线索挖掘 2-数据筛选 3-人工客服",
-                "industryXifen": ordername,//"string,行业细分",//todo 3级
+                "industryXifen": $(".leaval-box").find("input").val(),//"string,行业细分",//todo 3级
                 "targetPopulation": $(".target-population").html(),//"string,目标人群",
                 "speechcraft": "",//"string,话术附件",
                 "targetAgeTo": $('.people-yang input.last').val(),//"integer,目标区域人群年龄 to",
@@ -2173,6 +2175,7 @@ class Progress extends React.Component {
                 "targetAgeFrom": $('.people-yang input.first').val(),//"integer,目标区域人群年龄 from"
             }
             data = JSON.stringify(data);
+            
             $.ajax({
                 type: choose ? type : typeDraft,
                 url: choose ? url : urlDraft,
@@ -2183,7 +2186,7 @@ class Progress extends React.Component {
                         if (choose) {
                             sessionStorage.removeItem("copy")
                         }
-                        sessionStorage.setItem("cgid", result.id);
+                        sessionStorage.setItem("cgid", result.pid);                
                         window.location.href = "customerDemandDone.html";
                     }
                 },
@@ -2218,14 +2221,16 @@ class Progress extends React.Component {
 /*采集页面所有的数据*/
 function areaList() {
     var data = {};
+    var citys=$("div.form_col4 div.areaList");
+    if(!(citys.length>0)){
+      return ;
+    }
     $("div.form_col4 div.areaList").each(function (i) {
         var name = $(this).attr("class") + (i + 1);
         var area = $(this).find(".js_area").val();
         var areaTitle = $(this).find(".js_area").attr("title");
         var size = $(this).find("input.size").val();
-
         var industryPrice = $('input.industry.select.area.js_area').attr('data-value');
-
         var ageValue = $('.people-yang span.yuan').attr('data-value') * 1;
         //debugger;
 
@@ -2235,7 +2240,7 @@ function areaList() {
         var lastValue = $('.people-yang input.last').val() * 1;
         var firstCheck = $('.people-yang input.first').data('check');
         var lststCheck = $('.people-yang input.last').data('check');
-        //var lastValue = $('.people-yang input.last').val()*1;
+        // var lastValue = $('.people-yang input.last').val()*1;
 
         if (firstCheck && lststCheck) {
             var industryValue = $('.industry.select.area.js_area').attr('data-value') * 1;
@@ -2255,11 +2260,11 @@ function areaList() {
         /*年龄算价系统*/
 
         //console.log(industryPrice);
-        var price = (Number(ageValue) + Number($(this).find("span.price").html()) + Number(industryPrice) + Number($(".label_list-title .price").html())).toFixed(2);
+        var price = (Number(ageValue) + Number($(this).find("span.price").html()) + Number(industryPrice) + Number($(".label_list-title>span>span.price").html())).toFixed(2);
 
         //	var total=price*$(this).find("input.size").val();
         var total = price * 1;
-      //  console.log($(this).find("input.size").val() + 'input.size');
+        //  console.log($(this).find("input.size").val() + 'input.size');
         //	debugger;
         //var total=price*1;
         data[name] = [];
@@ -2302,13 +2307,13 @@ var resetStrcture = function (cb) {
         };
     // var currentId = location.hash.substring(1);
     // var url = domain + '/' + currentId + '/getDetailHfp';
-    var url = `${domain137}/quality/demanddetail/${location.hash.slice(1).substr(0,4)=="copy"?location.hash.slice(1).substr(4):location.hash.slice(1)}`;
+    var url = `${domain137}/quality/demanddetail/${location.hash.slice(1).substr(0, 4) == "copy" ? location.hash.slice(1).substr(4) : location.hash.slice(1)}`;
     $.ajax({
         url: url,
         type: "get",
         success: function (result) {
             if (result.code == "0") {
-                createTime=result.demand.createTime;
+                createTime = result.demand.createTime;
                 callback(result)
             }
         },
@@ -2321,7 +2326,11 @@ var resetStrcture = function (cb) {
 
 
 resetStrcture(function (data) {
-    ReactDOM.render(<Preview name='1' data={areaList()}/>, $(".demend_right .right")[0]);//右侧部分
+    setTimeout(function(){
+        "use strict";
+        ReactDOM.render(<Preview name='1'  data={areaList()}/>, $(".demend_right .right")[0]);//右侧部分
+    },100)
+
 
     ReactDOM.render(<Yewu industry={data.demand} name="1"/>, React.rootEl.find(".form_col1>.main")[0]);//选择行业部分
 
@@ -2334,7 +2343,6 @@ resetStrcture(function (data) {
     ReactDOM.render(<EssentialInformation information={data.demand}
                                           name='1'/>, React.rootEl.find(".form_col5>.main")[0]);
 
-    ReactDOM.render(<Preview name='1' data={areaList()}/>, $(".demend_right .right")[0]);
     ReactDOM.render(<Progress name='1'/>, $(".demend_left .progress_speed")[0]);
 
     window.onload = function () {

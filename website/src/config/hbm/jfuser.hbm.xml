@@ -70,6 +70,9 @@
         <property name="updatetime" type="java.lang.String">
             <column name="updatetime" />
         </property> 
+         <property name="compname" type="java.lang.String">
+            <column name="compname" />
+        </property> 
     </class>
     
 
