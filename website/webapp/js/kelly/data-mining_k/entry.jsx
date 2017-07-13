@@ -495,7 +495,6 @@ class State extends React.Component {
             }
             /*天数*/
             //demandid 在全局中
-fdstate=2;
             if (fdstate == 1) {
                 return (<div>
                         <div className="right" style={{"margin-bottom": "20px"}}>
