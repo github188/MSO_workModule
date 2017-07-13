@@ -1,7 +1,4 @@
-// import React from "react";
-// import ReactDOM from "react-dom";
 import {Pagination} from 'antd';
-
 $(".loading_cover").hide();
 $.rootEl = $('#search_reslut')[0];	//数据列表
 React.rootElPage = $('#page');
