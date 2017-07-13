@@ -114,7 +114,7 @@ class OrderList extends Component {
             totalNum: 0,                                  //订单总数
             pageSize: 10,                                   //当前每页条数
             currentPage: 1,                                 //当前所在页
-            totalOrder: {       //状态  1-待领取 3-已放弃 5-进行中 6-暂停 7-结算中 8-已完成 9-全部
+            totalOrder: {       //状态  1-待领取 2-已领取显示进行中状态 3-已放弃 5-进行中 6-暂停 7-结算中 8-已完成 9-全部
                 one: [],
                 three: [],
                 five: [],
@@ -136,11 +136,11 @@ class OrderList extends Component {
 
     /**
      * @param jfuid   用户id
-     * @param state   状态  1-待领取 3-已放弃 4-已取消 5-进行中 6-暂停 7-结算中 8-已完成 9-全部
+     * @param state   状态  1-待领取 3-已放弃 4-已取消    2-已领取显示5-进行中 6-暂停 7-结算中 8-已完成 9-全部
      * @param page    页数，默认从0开始
      * @param size    每页的数量
      */
-    getData(jfuid = (this.state.jfuid || "1")) {
+    getData(jfuid = (this.state.jfuid||"")) {
         var _this = this;
         $.ajax({
             type: "get",
@@ -212,7 +212,7 @@ class OrderList extends Component {
                     totalOrder.three.push(Object.assign({}, index, newObj))
                     break;
 
-                case 5://5-进行中
+                case (2||5)://5-进行中
                     newObj.orderState = StateFive;
                     newObj.key = Number(totalOrder.five.length);
                     totalOrder.five.push(Object.assign({}, index, newObj))
@@ -568,7 +568,7 @@ class Detail extends Component {
                 return "已放弃";
             case 4:
                 return "已放弃";
-            case 5:
+            case (2||5):
                 return "进行中";
             case 6:
                 return "暂停";
@@ -611,7 +611,7 @@ class Detail extends Component {
     setOrderState() {
         var _this = this;
         $.ajax({
-            url: `${main}/worker/receiveorder/${_this.state.id}/${_this.state.state}`,
+            url: `${main}/worker/receiveorder/${_this.state.id}`,
             type: "patch",
             contentType: "application/json",
             success: function (result) {
@@ -749,21 +749,21 @@ class Detail extends Component {
                     <div className="order-state" style={{display: this.state.orderState == "进行中" ? "block" : "none"}}>
                         <p style={{marginBottom: "16px"}}>
                             <label className="state-label">订单已完成：</label>
-                            <span className="red">{this.state.orderCompleteQuantity + "条"}</span>
+                            <span className="red">{(this.state.orderCompleteQuantity||0) + "条"}</span>
                         </p>
                     </div>
                     {/*--暂停-*/}
                     <div className="order-state" style={{display: this.state.orderState == "暂停" ? "block" : "none"}}>
                         <p style={{marginBottom: "16px"}}>
                             <label className="state-label">订单已完成：</label>
-                            <span className="red">{this.state.orderCompleteQuantity + "条"}</span>
+                            <span className="red">{(this.state.orderCompleteQuantity||0) + "条"}</span>
                         </p>
                     </div>
                     {/*--结算中-*/}
                     <div className="order-state" style={{display: this.state.orderState == "结算中" ? "block" : "none"}}>
                         <p style={{marginBottom: "16px"}}>
                             <label className="state-label">订单已完成：</label>
-                            <span className="red">{this.state.orderCompleteQuantity + "条"} </span>
+                            <span className="red">{(this.state.orderCompleteQuantity||0) + "条"} </span>
                         </p>
                         <p>
                             <label className="state-label2">此订单正在结算中，预计结算金额：</label>
@@ -776,7 +776,7 @@ class Detail extends Component {
                     <div className="order-state" style={{display: this.state.orderState == "已完成" ? "block" : "none"}}>
                         <p style={{marginBottom: "16px"}}>
                             <label className="state-label">订单已完成：</label>
-                            <span className="red">{this.state.orderCompleteQuantity + "条"} </span>
+                            <span className="red">{(this.state.orderCompleteQuantity||0) + "条"} </span>
                         </p>
                         <p>
                             <label className="state-label2">此订单已完成，实际结算金额：</label>
