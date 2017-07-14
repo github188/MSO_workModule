@@ -522,7 +522,7 @@ class Jbxx extends React.Component {
                                                                                                      name="isFJ"
                                                                                                      defaultChecked/>否</label><span
                             className="length">还可以输入 <span className="size">150</span> 个字</span></p>
-                        <p className="error">请填写产品介绍</p>
+                        <p className="error" style={{top:120,left:0}}>请填写产品介绍</p>
                         <div className="radio_fj">
                             <p>附件支持ppt、pdf、doc等格式文件，大小不可超过100MB</p>
                             <div className="file_box">

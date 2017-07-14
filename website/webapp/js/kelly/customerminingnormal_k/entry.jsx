@@ -311,7 +311,7 @@ class Fj extends React.Component {
                 <div className="box">
                     <h4>选择的标签</h4>
                     <div className="tag-free">
-                        {this.state.data.chargeTag ? (
+                        {(this.state.data.chargeTag&&JSON.parse(this.state.data.chargeTag).length>0) ? (
                             <ul className="tag3">{JSON.parse(this.state.data.chargeTag).map((v, k) => (
                                 <li key={k}>{v.tagname}</li>))}</ul>) : <p>暂无</p>}
                     </div>

@@ -69,19 +69,13 @@ var Header = React.createClass({
        var linkSupplier = "";
        var wordSupplier = "";
      if(jfustate==4){
-        homeSupplier = "/html/supplier_index.html";
-        linkSupplier = "/html/supplierDemandHall.html";
-        wordSupplier = "竞拍订单";
+        homeSupplier = "https://crm.mshuoke.com/sapi/msocallcenter/login?mso_userid="+sessionStorage.getItem("jfuid");
+                linkSupplier = "https://crm.mshuoke.com/sapi/msocallcenter/login?mso_userid="+sessionStorage.getItem("jfuid");
+                wordSupplier = "竞拍订单";
      }else{
-         if(pid!==""){
-             homeSupplier = "/html/supplierDemandList.html";
-             linkSupplier = "/html/supplierDemandList.html";
-             wordSupplier = "我的订单";
-         }else {
-              homeSupplier = "html/PerfectData.html";
-              linkSupplier = "html/PerfectData.html";
-              wordSupplier = "竞拍订单";
-         }
+         homeSupplier = "html/crm-myInfo.html";
+                linkSupplier = "html/crm-myInfo.html";
+                wordSupplier = "竞拍订单";
      }
      return(
          <div>
@@ -95,7 +89,7 @@ var Header = React.createClass({
 						   <a href="//vendor.mshuoke.com/help.html"><li>帮助中心<i></i></li></a>
                       </ul>
                       <div className="login_right">
-                            <a href="html/PerfectData.html" className="MyInfo">{showName}</a><a className="logout" href="javascript:;">安全退出</a>
+                            <a href={homeSupplier} className="MyInfo">{showName}</a><a className="logout" href="javascript:;">安全退出</a>
                       </div>
                   </div>
              </div>

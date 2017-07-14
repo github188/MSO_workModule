@@ -232,7 +232,6 @@ var LoginBox = React.createClass({
 							}else{
 								if(data.jfustate==4){
 									window.location.href="//crm.mshuoke.com/sapi/msocallcenter/login?mso_userid="+oJfuid;
-									//window.location.href="html/supplier_index.html";
 								}else{
 									window.location.href="html/crm-myInfo.html";
 								}

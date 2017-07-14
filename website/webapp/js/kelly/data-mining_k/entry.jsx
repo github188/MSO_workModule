@@ -143,21 +143,21 @@ var Progress_speed = React.createClass({
         if (this.state.res == "null" || this.state.res == null || this.state.res == "") {
             return (
                 <div style={{"width": "auto"}}>
-                    <div className="upload_submit" style={{"width": "700px"}}>
-                        <div className="top"><span>提示</span><i className="close"></i></div>
-                        <div className="main" style={{
-                            "min-height": "230px",
-                            "text-align": "center",
-                            "line-height": "230px",
-                            "font-size": "18px"
-                        }}>
-                            <p>上传成功！</p>
+                        <div className="upload_submit" style={{"width": "700px"}}>
+                            <div className="top"><span>提示</span><i className="close"></i></div>
+                            <div className="main" style={{
+                                "min-height": "230px",
+                                "text-align": "center",
+                                "line-height": "230px",
+                                "font-size": "18px"
+                            }}>
+                                <p>上传成功！</p>
+                            </div>
+                            <div className="bottom">
+                                <button type="submit" className="button_close btn_tj">确&nbsp;定</button>
+                            </div>
                         </div>
-                        <div className="bottom">
-                            <button type="submit" className="button_close btn_tj">确&nbsp;定</button>
-                        </div>
-                    </div>
-                    <div style={{"width": "900px"}} className="upload_info">
+                        <div style={{"width": "900px"}} className="upload_info">
                         <div className="top"><span>成单报告上传记录</span><i className="close1"></i></div>
                         <div className="main">
                             <div className="new_demand">
@@ -477,7 +477,6 @@ class State extends React.Component {
     createcalcullationDetailHtml() {
         if (this.props.data) {
             var fdstate = this.props.data.fdstate;
-
             var releasenum = isNull(this.props.data.releasenum) ? 0 : this.props.data.releasenum;//需求发布量
             //   var applicationnum = isNull(this.state.data.applicationnum) ? 0 : this.state.data.applicationnum;
             var finishnum = isNull(this.props.data.finishnum) ? 0 : this.props.data.finishnum;      //完成量
@@ -751,7 +750,6 @@ class State extends React.Component {
                 )
             }
         }
-
     }
 
     componentDidMount() {
@@ -837,26 +835,21 @@ for(let i=0;i<allData.attachment.length;i++){
             "targetAgeFrom":"",//todo "integer,目标区域人群年龄 from"
     };
 
-
-
-
-            $.ajax({
-                url:`${domain137}/quality/drafts/${this.props.data.pid}/1`,
-                type:"patch",
-                contentType:"application/json",
-                data:JSON.stringify(data),
-                success:function(result){
-                    if(result.code=="0"){
-                        $(".cover").show().find(".context").html("<span>上传成功</span>");
-                    }
-                },
-                error(err){
-                  $(".cover").show().find(".context").html("<span>上传失败</span>")
-                    console.log(err);
-                }
-            })
-
-
+    $.ajax({
+        url:`${domain137}/quality/drafts/${this.props.data.pid}/1`,
+        type:"patch",
+        contentType:"application/json",
+        data:JSON.stringify(data),
+        success:function(result){
+            if(result.code=="0"){
+                $(".cover").show().find(".context").html("<span>上传成功</span>");
+            }
+        },
+        error(err){
+          $(".cover").show().find(".context").html("<span>上传失败</span>")
+            console.log(err);
+        }
+    })
 
     return ;
 
@@ -904,8 +897,6 @@ for(let i=0;i<allData.attachment.length;i++){
             }.bind(this)).fail(function (data) {
                 //debugger;
             });
-
-
         }.bind(this));
     }
 

@@ -96,6 +96,7 @@ export function addDemand() {
     sessionStorage.setItem("demandtype", 2);
     sessionStorage.setItem("fdstate", 0);
     var areaCityList = [];
+
     var demandpricetol = 0;
     var demandNum = 0;
     $(".form_col4 .areaList").each(function (i) {
@@ -111,40 +112,7 @@ export function addDemand() {
             "auto_calc": ""//单价设定方式
         };
     });
-    var json = {
-        "areaCityList": areaCityList,//Todo 目标区域
-        "endtime": $(".endDate").val(),//Todo 结束时间
-        "dremark": "",
-        "demanddescription": $("textarea.descriptionDemand").val(),//Todo  "需求描述",
-        "begintime": $(".startDate").val(),//todo
-        "paymenttime": "",//"结算时间",
-        "beginage": $("input.startAge").val(),//todo
-        "jfuid": sessionStorage.getItem("jfuid"),
-        "jfutype": "1",
-        "fdstate": sessionStorage.getItem("fdstate"),
-        "packageid": $(".block-box .content-right .drafts_details.selected .pid").eq(0).text(),//"套餐id",
-        "demand": $(".introductionPro").val(),//todo "产品描述",
-        "productname": $("input.pro-name").val(),//"产品名",
-        "demandpricetol": $('.countPrice .price').text(),//demandpricetol,
-        "pleader": $("input.pleader").val(),//Todo "负责人",
-        "demandtype": sessionStorage.getItem("demandtype"),
-        "pid": pid,
-        "paymentstandard": "按提交线索数量结算",//结算模式
-        "pphone": $("input.pphone").val(),//todo "负责人电话",
-        "category1": $(".demend_right span.industry").text(),//行业名
-        "category2": $("td.hkqd .select-set").text(),//"获客渠道 ",
-        "category3": $(".demend_right span.business-types").text(),//"业务类型",
-        "targethumen": $(".demend_right span.target-population").text(),//todo "目标人群",
-        "favorableway": 0,
-        "endage": $("input.endAge").val(),//todo
-        "ordername": isNull($("input.demand-name").val()) ? "草稿箱" : $("input.demand-name").val(),//"todo 需求名",
-        "productaccessories": file1,//todo "产品介绍
-        "xsxsurl": file2,//todo 线索文件
-        "standardoperation": file3,//todo上传话术
-        "otherreport": file4//todo 客户名单
-    };
-    //debugger;
-
+   
 
     var url = domain137 + `/quality/adddemand/${sessionStorage.getItem("jfuid")}/0?industryId=${$(".title_select").find("li.selected").find('a').attr("data-nfiid")}`;
     var targetChannelArr = ["", "电话营销", "网络营销", "地推推广"];

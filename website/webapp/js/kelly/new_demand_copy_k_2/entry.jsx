@@ -1421,20 +1421,9 @@ var Area = React.createClass({
 
 var AreaList = React.createClass({
     componentDidMount: function () {
-        //console.log(this.getDOMNode(),'----------------------------------------');
 
         var areaListBox = $('.areaList-box');
-        areaListBox.find("div.close").click("click", function () {
-            var main = $(this).parent().parent().parent();
-            var area = $(this).parent().parent();
-            if ($(".form_col4 .main div.areaList").length > 1) {
-                $(area).remove();
-                $(main).find(".length").html(5 - $(main).find("div.areaList").length);
-                ReactDOM.render(<JinE data={areaList()}/>, $("#new_demand div.demend_right .right").eq(1)[0]);
-            } else {
-                alert("请至少保留一个区域");
-            }
-        });
+       
         areaListBox.find("input.size").on("input", function () {
             var total = $(this).parent().parent().find("span.green span.size");
             var money = $(this).parent().next().find("input.money");
@@ -1502,7 +1491,9 @@ var AreaList = React.createClass({
         } else {
             return (
                 <div className="areaList-box">
-                    <div className="input"><label>目标区域:</label><input type="text" required className="select area"
+                    <div className="input">
+                    <label>目标区域:</label>
+                    <input type="text" required className="select area"
                                                                       placeholder="请选择区域"
                                                                       defaultValue={this.props.data.target}
                                                                       title={this.props.data.target}/><i
@@ -1536,6 +1527,17 @@ var AreaList = React.createClass({
 
 var Fbfb = React.createClass({
     componentDidMount: function () {
+         $(".form_col4>.main").on("click",".close",function(){
+            var main = $(this).parent().parent().parent();
+            var area = $(this).parent().parent();
+            if ($(".form_col4 .main div.areaList").length > 1) {
+                $(area).remove();
+                $(main).find(".length").html(5 - $(main).find("div.areaList").length);
+                ReactDOM.render(<JinE data={areaList()}/>, $("#new_demand div.demend_right .right").eq(1)[0]);
+            } else {
+                alert("请至少保留一个区域");
+            }
+        })
 
         $(".main div[class^=areaList]:not(.areaList_add) .isNote input[name^=note]").live("change", function () {
             if ($(this).parent().text() == "是") {
@@ -1545,21 +1547,16 @@ var Fbfb = React.createClass({
             }
         });
         $("input.area").on("click", function () {
-            //debugger;
             var index = $(this).parent().parent().parent().index();
             ReactDOM.render(<Area area={area} province={province} hotCity={hotCity}
                                   index={index}/>, $("#new_demand div.demend_left div.area")[0]);
             $("div.area>div").css({left: $(this).offset().left, top: $(this).offset().top + 30}).show();
-            //debugger;
-            console.log(this);
-            // $("div.area div.area-box").show();
         });
         var i = $("div.form_col4 .main .areaList").length + 1;
         $(".areaList_add button").click(function () {
             var main = $(this).parent().parent();
             var length_add = $(main).find("div.areaList").length + 1;
             if (length_add <= 5) {
-                //var area=$(main).find("div.areaList:hidden").eq(0);
                 $(main).find("div.areaList_add").before("<div class='areaList'></div>");
                 ReactDOM.render(<AreaList length={i++}/>, $(main).find("div.areaList").eq(length_add - 1)[0]);
                 $(this).next().find(".length").html(5 - $(main).find("div.areaList").length);
@@ -1574,10 +1571,7 @@ var Fbfb = React.createClass({
                 $("div.area>div").css({left: $(this).offset().left, top: $(this).offset().top + 30}).show();
             });
         });
-        // $("div[class^=areaList]:not(.areaList_add) input.area").on("change",function(){
-        //   var areaList=$(this).parent().parent().parent();
-        //   $("div.dement_right table.cost").find("."+$(areaList).attr("class")+" td").eq(0).html($(this).val());
-        // });
+       
         $("input.area").live("change", function () {
             ReactDOM.render(<JinE data={areaList()}/>, $("#new_demand div.demend_right .right").eq(1)[0]);
         });

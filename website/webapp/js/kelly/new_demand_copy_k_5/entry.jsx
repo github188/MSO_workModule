@@ -799,7 +799,7 @@ class AreaAndRequirement extends React.Component {
     resetCityValue() {
         if (this.props.area) {
             var areaCityList = this.props.area.areaanddemandquantity;
-            if (!areaCityList)return;
+            if (!areaCityList||(!JSON.parse(areaCityList).length>0))return;
             var arr = [];
             for (var i = 0; i < JSON.parse(areaCityList).length; i++) {
                 arr.push(true);
@@ -903,9 +903,7 @@ class AreaAndRequirement extends React.Component {
                 return false;
             }
             arr.push(true);
-            this.setState({countNumber: arr});
-            console.log(this.rootEl.find(".areaList").length);
-            //this.setState({areaLength:this.rootEl.find(".areaList").length});
+            this.setState({countNumber: arr,areaLength:arr.length});            
             ReactDOM.render(<Preview name='1' data={areaList()}/>, $(".demend_right .right")[0]);
             $(".js_area").change();
         }.bind(this));
@@ -1991,7 +1989,7 @@ class Preview extends React.Component {
                             sessionStorage.removeItem("copy")
                         }
                         sessionStorage.setItem("cgid", result.pid);
-                        window.location.href = "customerDemandDraftDone2.html";
+                       window.location.href = "customerDemandDraftDone2.html";
                     }
                 }
             })

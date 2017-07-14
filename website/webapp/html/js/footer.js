@@ -14,4 +14,4 @@ var Footer = React.createClass({
         )
     }
 });
-ReactDOM.render(<Footer />,$(".footer_box")[0]);
+ReactDOM.render(<Footer/>,$(".footer_box")[0]);

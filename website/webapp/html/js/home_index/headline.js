@@ -363,7 +363,7 @@ class Headline extends React.Component{
 			<div className="content">
 			<Loadimg />
 				<div className="banner">
-					<a  target="_black" href="https://mp.weixin.qq.com/s?__biz=MzIzNDczMTQ0NA==&mid=2247484056&idx=1&sn=acea466f7040529084179ccb41b48daa&chksm=e8f0a043df872955fc86cd2a418aeb0c42605f6cd3ff74fa7d4d05672a1433d33adc20470c81#rd">
+					<a  target="_black" href="https://www.mshuoke.com/active/training-of-education.html">
 						<img src="html/images/public/ms_top.jpg" />
 					</a>
 				</div>
