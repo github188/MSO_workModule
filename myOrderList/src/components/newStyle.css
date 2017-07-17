@@ -204,10 +204,12 @@ span.bubble-box span.bubble i {
     border-bottom: 1px solid #E0EAF1;
     overflow: hidden;
 }
-
+.details-box ul div{
+    float: left;
+}
 .details-box ul li {
     min-height: 48px;
-    float: left;
+    /*float: left;*/
     width: 502px;
 }
 
@@ -217,7 +219,7 @@ span.bubble-box span.bubble i {
     width: 122px;
     display: inline-block;
     float:left;
-    text-align: left;
+    text-align: right;
 }
 
 .order-state label.state-label2 {
@@ -245,6 +247,9 @@ span.bubble-box span.bubble i {
 .details-box ul li a {
     color: #23A4FF;
     text-decoration: underline;
+}
+.details-box ul li a :hover{
+    text-decoration: none;
 }
 
 .order-state a {
@@ -441,4 +446,7 @@ table.tab th, table.tab td {
 .tab-scroll {
     height: 380px;
     overflow: auto;
+}
+tr>th,tr>td{
+    text-align: center !important;
 }

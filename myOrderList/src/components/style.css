@@ -92,14 +92,16 @@ span.bubble-box span.bubble i { top: -5px; left:8px;position: absolute; width: 0
 .breadcrumb-nav { height:40px; line-height:40px; border-bottom:1px #E0EAF1 solid;}
 .breadcrumb-nav span { color:#23A4FF;}
 .details-box { font-size:14px;}
+.details-box div{float:left;}
 .details-box h3 { line-height:75px; font-size:16px; font-weight:normal; color:#333;}
 .details-box ul { width:100%; border-bottom: 1px solid #E0EAF1; overflow: hidden;}
-.details-box ul li { height:48px; float:left; width:50%;}
+.details-box ul li { height:48px;  width:50%;}
 .details-box ul li label,.order-state label.state-label,.order-state label.state-label2 { color:#666; width:8em; display:inline-block;}
 .order-state label.state-label2 { width:auto; margin-right:20px;}
 .details-box ul li span { color:#333;}
 .details-box ul li span.blue { color:#23A4FF;}
-.details-box ul li a { color:#23A4FF; text-decoration:underline;}
+.details-box ul li a { color:#23A4FF; text-decoration:none;}
+.details-box ul li a:hover{text-decoration:underline;}
 .order-state a { color:#23A4FF;}
 .order-state a:hover { text-decoration:underline;}
 .order-state { padding:30px 0;}
