@@ -3,6 +3,7 @@ import ReactDOM, { render } from "react-dom";
 import { Table, Input, Button, Pagination, TreeSelect, Icon, Checkbox } from "antd";
 
 const root = document.getElementById("main");
+const domainDownShort="http://res.mshuoke.com/";
 import "./newStyle.css";
 
 import Pop from "./common/Pop.jsx";
@@ -793,17 +794,17 @@ class Detail extends Component {
                         </li>
                         <li>
                             <label>质检标准附件：</label>
-                            <span>{this.state.quality ? <a href={this.state.quality}>下载</a> : <span>文件未上传</span>}</span>
+                            <span>{this.state.quality ? <a href={domainDownShort+this.state.quality}>下载</a> : <span>文件未上传</span>}</span>
                         </li>
                         
                         <li>
                             <label>销售线索模板：</label>
-                            <span>{this.state.sales ? <a href={this.state.sales}>下载</a> : <span>文件未上传</span>}</span>
+                            <span>{this.state.sales ? <a href={domainDownShort+this.state.sales}>下载</a> : <span>文件未上传</span>}</span>
                         </li>
                       
                         <li>
                             <label>话术文件：</label>
-                           <span>{this.state.speechcraft ? <a href={this.state.speechcraft}>下载</a> : <span>文件未上传</span>}</span>
+                           <span>{this.state.speechcraft ? <a href={domainDownShort+this.state.speechcraft}>下载</a> : <span>文件未上传</span>}</span>
                         </li>
                         </div>
                     </ul>
