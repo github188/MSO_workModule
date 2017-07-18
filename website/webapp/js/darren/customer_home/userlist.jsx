@@ -21,30 +21,30 @@ class Userlist extends React.Component{
 					<ul>
 						<li className="first">
 							<a href="javascript:">
-								<label></label>
-								<span>发布需求</span>
+								<label className="first"></label>
+								<span className="first">发布需求</span>
 							</a> 
 						</li>
 						<li className="first2">
 							<a href="customerDemandList.html">
-								<label></label>
-								<span>我的需求</span>
+								<label className="first2"></label>
+								<span className="first2">我的需求</span>
 							</a>
 						</li>
 						<li className="first3">
 							<a href="customer_reports_1.html" className="nav-rpt-old">
-								<label></label>
-								<span>成单报表</span>
+								<label className="first3"></label>
+								<span className="first3">成单报表</span>
 							</a>
 							<a href="customerreport.html" className="nav-rpt">
-								<label></label>
-								<span>成单报表</span>
+								<label className="first3"></label>
+								<span className="first3">成单报表</span>
 							</a>
 						</li>
 						<li className="first4">
 							<a href="getsource.html">
-								<label></label>
-								<span>目标搜索</span>
+								<label className="first4"></label>
+								<span className="first4">目标搜索</span>
 							</a>
 						</li>
 					</ul>

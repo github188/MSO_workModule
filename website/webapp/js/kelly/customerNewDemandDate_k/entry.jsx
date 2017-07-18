@@ -13,7 +13,7 @@ var DateFilter = React.createClass({
             $(this).children(".bubble").hide();
         });
         $("input.num").blur(function () {
-            if ($(this).val() == '') {
+            if (!(Number($(this).val())>0)) {
                 $(this).addClass("error");
                 $(this).parent().find("p.error").show();
                 return false;

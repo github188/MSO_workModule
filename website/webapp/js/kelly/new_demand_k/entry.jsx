@@ -2220,7 +2220,8 @@ function areaList() {
     return data;
 }
 function ordername() {
-    var brandname = isNull(sessionStorage.getItem("brandname")) || sessionStorage.getItem("trusteeship") == 1 ? "" : sessionStorage.getItem("brandname") + "-";
+    // var brandname = isNull(sessionStorage.getItem("brandname")) || sessionStorage.getItem("trusteeship") == 1 ? "" : sessionStorage.getItem("brandname") + "-";
+    var brandname=sessionStorage.getItem("brandname")?(sessionStorage.getItem("brandname")+"-"):""
     var twolevindustry = $(".controlPub.selected").index() == 0 ? "线下-" : "线上-";
     //industry select area js_area
     var threelevindustry = $('input.industry.select.area.js_area').attr('data-txt'); //$(".demend_right .industry").text();
