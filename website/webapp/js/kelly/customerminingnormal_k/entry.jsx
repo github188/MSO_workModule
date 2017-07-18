@@ -480,7 +480,7 @@ var State = React.createClass({
                         "float": "left",
                         "margin-left": "20px"
                     }}>需求进度</span>
-                            <a href="javascript:" className="progress_speed_show"
+                      {/*      <a href="javascript:" className="progress_speed_show"
                     style={{
                         "color": "#fff",
                         "font-size": "14px",
@@ -497,7 +497,7 @@ var State = React.createClass({
                         "margin-right": "10px"
                     }}>
                                 查看进度详情>>
-                            </a>
+                            </a>*/}
                         </div>
                         <div className="context-explain package">
                             <div>
@@ -563,7 +563,7 @@ var State = React.createClass({
                         "float": "left",
                         "margin-left": "20px"
                     }}>需求进度</span>
-                            <a href="javascript:" className="progress_speed_show"
+                  { /*         <a href="javascript:" className="progress_speed_show"
                     style={{
                         "color": "#fff",
                         "font-size": "14px",
@@ -580,7 +580,7 @@ var State = React.createClass({
                         "margin-right": "10px"
                     }}>
                                 查看进度详情>>
-                            </a>
+                            </a>*/}
                         </div>
                         <div className="context-explain package">
                             <div>
@@ -641,8 +641,7 @@ var State = React.createClass({
                         "float": "left",
                         "margin-left": "20px"
                     }}>需求进度</span>
-                            <a href="javascript:" className="progress_speed_show"
-                    style={{
+                   {/*<a href="javascript:" className="progress_speed_show" style={{
                         "color": "#fff",
                         "font-size": "14px",
                         "float": "right",
@@ -658,7 +657,7 @@ var State = React.createClass({
                         "margin-right": "10px"
                     }}>
                                 查看进度详情>>
-                            </a>
+                            </a>*/}
                         </div>
                         <div className="context-explain package">
                             <div>
