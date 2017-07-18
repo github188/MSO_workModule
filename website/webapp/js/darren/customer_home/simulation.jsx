@@ -14,10 +14,10 @@ class Demo extends React.Component {
   }
 
  onAfterChange(value){
-	// console.log(value,'--------------------------------');
+	
  }
  componentDidMount(){
-	 //console.log($('.ant-slider-handle'));
+	
 	
 	 $('.ant-slider-handle').mouseout(function (){
 			$('.ant-tooltip-placement-top').css({left:'-100px',top:'-100px'});
@@ -114,8 +114,7 @@ function areaList(){
 		var endAge =  $('.people-yang input.last').val();
 		var  firstCheck = $('.people-yang input.first').data('check');
 		var  laststCheck = $('.people-yang input.last').data('check');
-		//console.log(firstCheck+'==firstCheck');
-		//console.log(laststCheck);
+		
 		/*两个都合格了*/
 		if(firstCheck && laststCheck){
 			var industryValue = $('.industry.select.area.js_area').attr('data-value')*1;
@@ -330,7 +329,6 @@ class Peoples extends React.Component{
 	}
 	componentWillReceiveProps(nextProps){
 		//this.setState({newValue:nextProps.newValue});
-		//console.log(this.state.newValue);
 		
 		
 		/*在这里再次计算新的值*/
@@ -386,16 +384,15 @@ class Peoples extends React.Component{
 		*/
 	}
 	componentDidUpdate(nextProps, nextState){
-		//console.log(this);
+		
 		//debugger; 
 		//用一个值来做判断，一个值来做赋值
-		console.log(nextState);
-		console.log(nextProps.isValue);
+
 		/*搞定*/
 		if(nextProps.isValue){
 			nextProps.isValue = false;
 			//this.setState({newValue:nextProps.newValue});
-			//console.log(this.state.newValue);
+		
 		}
 		
 		//var a = this.props.newValue;
@@ -608,7 +605,6 @@ class Education extends React.Component{
 		this.rootEl.on('input','.people-yang input.first',function (ev){
 			var target = ev.currentTarget;
 			var firstValue = $(target).val();
-			//console.log(typeof firstValue);
 			
 			this.setState({range:[firstValue*1,$('.people-yang input.last').val()*1]});
 		}.bind(this));
@@ -617,7 +613,6 @@ class Education extends React.Component{
 		this.rootEl.on('input','.people-yang input.last',function (ev){
 			var target = ev.currentTarget;
 			var lastValue = $(target).val();
-			//console.log(typeof firstValue);
 			
 			this.setState({range:[$('.people-yang input.first').val()*1,lastValue*1]});
 		}.bind(this));
@@ -655,7 +650,6 @@ class Education extends React.Component{
 			}
 		}.bind(this)).done(function (data){
 			//debugger;
-			//console.log(2);
 		}).fail(function (data){
 			//alert('获取数据失败了');
 		});
@@ -764,7 +758,6 @@ class Education extends React.Component{
 		
 	}
 	transmitHotCity(data){
-		console.log(data);
 		/*这个函数为了在子级 Textarea 拿到值*/
 		//1是线下 2 是线上
 		hotCityValue = data;
@@ -778,7 +771,7 @@ class Education extends React.Component{
 		$(document).on('click',document.body,function (ev){
 			var target = ev.target || ev.srcElement;
 			var leavalFirst = $(target).parent()[0].className;
-			//console.log(leavalFirst);
+			
 			if(!(leavalFirst == 'leavalFirst' || leavalFirst == 'leavalThen' || leavalFirst == 'leaval-box')){
 				this.rootEl.find('.leavalFirst').hide();
 				this.rootEl.find('.leavalThen').hide();
@@ -795,7 +788,7 @@ class Education extends React.Component{
 			
 			var target = ev.currentTarget;
 			var _value = $(target).val();
-			console.log(_value);
+			
 			if(!_value){
 				$(".error.industry").show();
 			}else{
@@ -830,7 +823,7 @@ class Education extends React.Component{
 			IndustryValue += '/'+_value;
 			this.rootEl.find('.leaval-box input').val(IndustryValue);
 			var price = $(target).attr('data-price');
-			//console.log(price);
+			
 			$('input.industry.select.area.js_area').attr('data-value',price);
 			
 			$('input.industry.select.area.js_area').attr('data-txt',_value);
@@ -853,7 +846,7 @@ class Education extends React.Component{
 			$('.people-yang input.start.first').blur();
 			/*计算行业总价*/
 			areaList();
-			//console.log(IndustryValue);
+			
 		}.bind(this));
 		
 		
@@ -894,7 +887,7 @@ class Education extends React.Component{
 		areaList();
 	}
 	render(){
-		console.log(this.state.EducationHtml);
+		
 		return (
 				<div className="education">
 					<ul>

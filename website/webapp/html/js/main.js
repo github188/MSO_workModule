@@ -338,14 +338,13 @@ $(document).ready(function(){
 		var tname;
 		tname=targ.tagName;
 		tClass=targ.className;
-		//console.log("classname is" + targ.className);
-		//console.log("You clicked on a " + tname + " element.");
-		if(targ.id=="seach"){
-			return;
-		}
-		if(tname=="BUTTON"||tname=="A"){
-			seoPoint(urlPath,tname,tClass);
-		}
+		//if(targ.id=="seach"){
+		//	return;
+		//}
+		seoPoint(urlPath,tname,tClass);
+		//if(tname=="BUTTON"||tname=="A"){
+		//	seoPoint(urlPath,tname,tClass);
+		//}
 	}
 });
 // /mso/buryingpoint?syspage=?&description=?&componentid=?

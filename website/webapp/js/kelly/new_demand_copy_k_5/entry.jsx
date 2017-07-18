@@ -2009,7 +2009,7 @@ class Preview extends React.Component {
                     <td title={data[name].areaTitle}>{data[name].area}</td>
                     <td>{data[name].size}</td>
                     <td>{data[name].price}</td>
-                    <td>{(data[name].total).toFixed(2)}</td>
+                    <td>{Number(data[name].total).toFixed(2)}</td>
                 </tr>);
             } else {
                 price = data[name].price;
@@ -2326,7 +2326,18 @@ var resetStrcture = function (cb) {
 resetStrcture(function (data) {
     setTimeout(function(){
         "use strict";
-        ReactDOM.render(<Preview name='1'  data={areaList()}/>, $(".demend_right .right")[0]);//右侧部分
+        var areaLists={};
+        var arr=JSON.parse(data.demand.areaanddemandquantity);
+        for(var i=0;i<arr.length;i++){
+            var obj={}
+            obj.area=arr[i].target
+            obj.price=arr[i].price
+            obj.size=arr[i].releasenum
+            obj.total=arr[i].totalprice
+             areaLists["areaList"+(i+1)]=obj;
+        }
+
+        ReactDOM.render(<Preview name='1'  data={areaLists}/>, $(".demend_right .right")[0]);//右侧部分
     },100)
 
 

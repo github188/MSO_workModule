@@ -76,7 +76,7 @@ class Getcustoms extends React.Component{
 		var data = {};
 		var jfuid =  $.sessionStorage('jfuid');
 		/*quality*/
-		var url = domain137 + '/quality/ups/'+jfuid+'/cds';
+		var url = domain137 + '/quality/ups/'+jfuid+'/cdsnew';
 		callBack = callBack || function (){};
 	
 		$.when($.ajax({

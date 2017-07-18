@@ -635,18 +635,13 @@ class DraftRequire extends React.Component {
   }
 
   industryservice(data) {
-    if (data.industry == "教育培训") {
+    if (data.serviceType == "1"&&data.industry == "教育培训") {
       return 'new_demand_copy_5.html#';
     }
     if (data.serviceType == "2") {
       return 'customerDateEdit.html#';
     }
-    if ((data.serviceType == "1") && (data.industry == ("汽车行业" || "金融行业" || "互联网" || "医美行业" || "其他行业"))) {
       return 'new_demand_copy_2.html#';
-    }
-    return 'new_demand_copy_5.html#';
-
-
   }
 
   createDraftHtml() {

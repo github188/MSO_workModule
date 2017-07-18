@@ -31,7 +31,7 @@ class ServiceType extends React.Component{
 						<h2>销售线索挖掘</h2>
 						<p>企业可根据自身市场需求定制销售线索，从而快速提升销售额。</p>
 						<img src="images/index/type1.png" />
-						<button><span>了解详情</span></button>
+						<button><span className="more1">了解详情</span></button>
 					</div>
 					</li>
 					<li>
@@ -39,7 +39,7 @@ class ServiceType extends React.Component{
 						<h2>数据加工</h2>
 						<p>通过对企业自身已有数据的挖掘与处理，帮助企业提升自身数据的销售转化率。</p>
 						<img src="images/index/type2.png" />
-						<button><span>了解详情</span></button>
+						<button><span className="more2">了解详情</span></button>
 					</div>
 					</li>
 					<li>
@@ -47,7 +47,7 @@ class ServiceType extends React.Component{
 						<h2>标签匹配</h2>
 						<p>通过企业业务场景化标签的需求定位及分析结果，为企业碎片化标签进行整合管理。</p>
 						<img src="images/index/type3.png" />
-						<button><span>了解详情</span></button>
+						<button><span className="more3">了解详情</span></button>
 					</div>
 					</li>
 				</ul>

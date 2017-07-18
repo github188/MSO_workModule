@@ -24,9 +24,9 @@ class PolicyCon extends React.Component{
 			<div className="tab_menu">
 				<p>关于我们</p>
 		        <ul>
-		            <li className="selected">公司介绍</li>
-		            <li>联系我们</li>
-		            <li>加入我们</li>
+		            <li className="selected left-nav1">公司介绍</li>
+		            <li className="left-nav2">联系我们</li>
+		            <li className="left-nav3">加入我们</li>
 		        </ul>
 		    </div>
 		    <div className="breadcrumb">

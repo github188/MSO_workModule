@@ -101,7 +101,7 @@ ul.isOnline { overflow:hidden; }
 .peoples .property ul li span.current {background:blue; }
 .peoples .price { float:left; }
 .peoples .price .real { font-size:20px; color:#37b4f5; }
-.peoples .send { float:right; background:#ff5a56; margin-right:20px;  color:#ffffff; line-height:40px; padding:0 15px 0 15px; border-radius:4px; cursor:pointer;}
+.peoples .send { float:right; background:#ff5a56; margin-right:20px;  color:#ffffff; line-height:40px; padding:0 15px 0 15px; border:none; border-radius:4px; cursor:pointer;}
 .peoples .send:hover { background:#ff4343;}
 .peoples .elementry ul li input { display:none; }
 .peoples .elementry ul li span.icon {width:15px; height:15px; background:#cccccc; display:table; float:left; }
@@ -460,6 +460,16 @@ a.wiseMore { width:100%; display:block; text-align:center; margin-top:20px; }
 .taskPeople .people-yang { float:left; width:370px; margin-left:20px;   }
 .taskPeople .ant-slider { margin-left:0px; margin-bottom:15px; margin-right:0px; }
 .first.task-people { position:absolute; left:0; top:15px; }
+
+.send.ant-btn {
+    font-size: 24px;
+    color: #fff;
+    width: 130px;
+    height: 50px;
+    background: #00d0ee;
+    border-radius: 8px;
+    border: none;
+}
 
 
 

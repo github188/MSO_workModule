@@ -146,10 +146,10 @@ class OrderList extends Component {
     /**
      * @param jfuid   用户id
      * @param state   状态  1-待领取 3-已放弃 4-已取消    2-已领取显示5-进行中 6-暂停 7-结算中 8-已完成 9-全部
-     * @param page    页数，默认从0开始
+     * @param page    页数，默认从0开始  test jfuid 20170714052811707
      * @param size    每页的数量
      */
-    getData(jfuid = (this.state.jfuid || "20170714052811707")) {
+    getData(jfuid = (this.state.jfuid || "")) {
         var _this = this;
         $.ajax({
             type: "get",

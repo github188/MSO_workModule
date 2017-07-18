@@ -32,27 +32,27 @@ class HelpCon extends React.Component{
 				<p>帮助中心</p>
 				<h3>账号密码</h3>
 		        <ul className="selected">
-		            <li className="selected">注册眸事账号</li>
-		            <li>注册常见问题</li>
-					<li>忘记密码</li>
+		            <li className="selected left-nav11">注册眸事账号</li>
+		            <li className="left-nav12">注册常见问题</li>
+					<li className="left-nav13">忘记密码</li>
 		        </ul>
 				<h3>资质认证</h3>
 		        <ul>
-		            <li>合作流程</li>
-		            <li>三证</li>
+		            <li className="left-nav21">合作流程</li>
+		            <li className="left-nav22">三证</li>
 		        </ul>
 				<h3>业务相关</h3>
 		        <ul>
-		            <li>测试</li>
-		            <li>发布需求</li>
-					<li>销售线索模板</li>
-		            <li>如何定价</li>
-					<li>获取销售线索</li>
-		            <li>结算</li>
+		            <li className="left-nav31">测试</li>
+		            <li className="left-nav32">发布需求</li>
+					<li className="left-nav33">销售线索模板</li>
+		            <li className="left-nav34">如何定价</li>
+					<li className="left-nav35">获取销售线索</li>
+		            <li className="left-nav36">结算</li>
 		        </ul>
 				<h3>其他问题</h3>
 		        <ul>
-		            <li>其他常见问题</li>
+		            <li className="left-nav41">其他常见问题</li>
 		        </ul>
 		    </div>
 		    <div className="breadcrumb">
@@ -63,7 +63,7 @@ class HelpCon extends React.Component{
 		    <div className="tab_box"> 
 		        <div>
 		        	<h1>注册眸事账号</h1>
-					<p>进入眸事官网，点击右上方注册按钮，按照页面指引填写注册信息，即可完成注册。<a href="register-customer.html">点此马上注册>></a></p>
+					<p>进入眸事官网，点击右上方注册按钮，按照页面指引填写注册信息，即可完成注册。<a className="help-reg" href="register-customer.html">点此马上注册>></a></p>
 					<p className="img" style={{"padding-top":"26px"}}><img src="/images/help/sign_up_pic.png" /></p>
 		        </div>
 		        <div className="hide">

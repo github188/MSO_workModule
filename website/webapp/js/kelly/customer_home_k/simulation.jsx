@@ -556,7 +556,7 @@ class Peoples extends React.Component{
 				
 					<div className="bottom property">
 						<div className="price"><span>模拟单价:</span><span className="real">{this.state.hasValue?this.state.hasValue:this.state.newValue}</span><span>元/条</span></div>
-						<div className="send">立即发布需求</div>
+						<button className="send">立即发布需求</button>
 					</div>
 					<div className="cover">
 						<div className="cover-box">
@@ -894,7 +894,6 @@ class Education extends React.Component{
 		areaList();
 	}
 	render(){
-		console.log(this.state.EducationHtml);
 		return (
 				<div className="education">
 					<ul>

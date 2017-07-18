@@ -4,7 +4,7 @@ class Getcustoms extends React.Component{
 	constructor(props) {
 		super(props);
 		this.state = {
-			text:'我很想你收到了飞机开绿灯是福建省电力科技发达',
+			text:"",
 			lightId:1,
 			isLightId:true,
 			datalist:[],
@@ -20,7 +20,6 @@ class Getcustoms extends React.Component{
 		/*比对完毕 开始show lighting*/
 		if(this.state.isLightId){
 			this.state.isLightId = false;
-			console.log(this.state.lightId+'============');
 			this.checkProcess(this.state.lightId);
 		}
 	}
@@ -76,7 +75,7 @@ class Getcustoms extends React.Component{
 		var data = {};
 		var jfuid =  $.sessionStorage('jfuid');
 		/*quality*/
-		var url = domain137 + '/quality/ups/'+jfuid+'/cds';
+		var url = domain137 + '/quality/ups/'+jfuid+'/cdsnew';
 		callBack = callBack || function (){};
 	
 		$.when($.ajax({
@@ -89,8 +88,7 @@ class Getcustoms extends React.Component{
 				callBack(data);
 			}
 		}).fail(function (data){
-			
-			//alert('获取数据失败！');
+
 		});
 	}
 	render(){

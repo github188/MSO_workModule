@@ -103,19 +103,19 @@ var Header = React.createClass({
                 <div>
                 <div className="home_logo"><a href="//www.mshuoke.com"><img src="//www.mshuoke.com/html/images/public/c_index_logo.png" title="MSO-眸事网，国内专业营销服务外包平台" alt="logo" /></a></div>                <ul>
                 <a href="//www.mshuoke.com">
-                <li className="menu1">首页<i></i></li>
+                <li>首页<i></i></li>
                 </a>
                 <a href="//www.mshuoke.com/headline.html">
-                <li className="menu2">眸事资讯<i></i></li>
+                <li>眸事资讯<i></i></li>
                 </a>
 				<a href="//www.mshuoke.com/production.html">
-                <li className="menu3">产品<i></i></li>
+                <li>产品<i></i></li>
                 </a>
                 <a href="//www.mshuoke.com/help.html">
-                <li className="menu4">帮助中心<i></i></li>
+                <li>帮助中心<i></i></li>
                 </a>
                 <a href="//vendor.mshuoke.com/" target="_blank">
-                <li className="menu5">服务商<i></i></li>
+                <li>服务商<i></i></li>
                 </a>
                 </ul>
                 <div className="login_right">
@@ -144,23 +144,23 @@ var Header = React.createClass({
                 <div>
                 <div className="home_logo"><a href="//www.mshuoke.com"><img src="//www.mshuoke.com/html/images/public/c_index_logo.png" title="MSO-眸事网，国内专业营销服务外包平台" alt="logo" /></a></div>                <ul>
                 <a href="//www.mshuoke.com">
-                <li className="menu1">首页<i></i></li>
+                <li>首页<i></i></li>
                 </a>
                 <a href="//www.mshuoke.com/headline.html">
-                <li className="menu2">眸事资讯<i></i></li>
+                <li>眸事资讯<i></i></li>
                 </a>
 				<a href="//www.mshuoke.com/production.html">
-                <li className="menu3">产品<i></i></li>
+                <li>产品<i></i></li>
                 </a>
                 <a href="//www.mshuoke.com/help.html">
-                <li className="menu4">帮助中心<i></i></li>
+                <li>帮助中心<i></i></li>
                 </a>
                 <a href="//vendor.mshuoke.com/" target="_blank">
-                <li className="menu5">服务商<i></i></li>
+                <li>服务商<i></i></li>
                 </a>
                 </ul>
                 <div className="login_right">
-                <a href={linkSupplier} className="MyInfo">{showName}</a><a className="logout" href="javascript:;">安全退出</a>
+                <a href={homeSupplier} className="MyInfo">{showName}</a><a className="logout" href="javascript:;">安全退出</a>
                 </div>
                 </div>
                 </div>
@@ -174,19 +174,19 @@ var Header = React.createClass({
                 <div className="home_logo"><a href="//www.mshuoke.com"><img src="//www.mshuoke.com/html/images/public/c_index_logo.png" title="MSO-眸事网，国内专业营销服务外包平台" alt="logo" /></a></div>
                 <ul>
                 <a href="//www.mshuoke.com">
-                <li className="menu1">首页<i></i></li>
+                <li>首页<i></i></li>
                 </a>
                 <a href="//www.mshuoke.com/headline.html">
-                <li className="menu2">眸事资讯<i></i></li>
+                <li>眸事资讯<i></i></li>
                 </a>
 				<a href="//www.mshuoke.com/production.html">
-                <li className="menu3">产品<i></i></li>
+                <li>产品<i></i></li>
                 </a>
                 <a href="//www.mshuoke.com/help.html">
-                <li className="menu4">帮助中心<i></i></li>
+                <li>帮助中心<i></i></li>
                 </a>
                 <a href="//vendor.mshuoke.com/" target="_blank">
-                <li className="menu5">服务商<i></i></li>
+                <li>服务商<i></i></li>
                 </a>
                 </ul>
                 <div className="c_right">
@@ -200,4 +200,4 @@ var Header = React.createClass({
         }
     }
 });
-React.render(<Header/>,$("header")[0]);
+ReactDOM.render(<Header/>,$("header")[0]);
