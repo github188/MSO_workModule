@@ -906,8 +906,8 @@ class List extends Component {
     constructor() {
         super()
         this.state = {
-            listShow: !location.search.split("=")[1],
-            orderId: location.search.split("=")[1] || "",
+            listShow: !location.hash.split("=")[1],
+            orderId: location.hash.split("=")[1] || "",
             createTime: "",
             orderState: ""
         }
