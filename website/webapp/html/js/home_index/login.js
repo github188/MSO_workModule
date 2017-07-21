@@ -157,7 +157,6 @@ var LoginBox = React.createClass({
 						   sessionStorage.setItem(name, data[name]);
 						   localStorage.setItem(name, data[name]);
 					   }
-					   
             var locations = location.search.slice(1);
             var jiemi = strDec(locations, key1, key2, key3);
             const jfuid = jiemi.split("&");
@@ -168,9 +167,9 @@ var LoginBox = React.createClass({
             if (obj.jfuid&&(obj.jfuid == localStorage.getItem("jfuid"))) {
                 var jiami = strEnc(`orderid=${obj.orderid}&mso_userid=${obj.jfuid}`, key1, key2, key3)
                 location.href = `http://crm.mshuoke.com/sapi/msocallcenter/login?${jiami}`;
+                return ;
             }
-
-
+            
 					   whetherDown(data.jfuid,thenNext);
 					   /*暂时中断*/
 					   function thenNext(){
@@ -244,7 +243,9 @@ var LoginBox = React.createClass({
 								
 							}else{
 								if(data.jfustate==4){
-									window.location.href="//crm.mshuoke.com/sapi/msocallcenter/login?mso_userid="+oJfuid;
+									var p = "mso_userid="+oJfuid;
+									var pEnc = strEnc(p,key1,key2,key3);
+									window.location.href="//crm.mshuoke.com/sapi/msocallcenter/login?"+pEnc;
 								}else{
 									window.location.href="html/crm-myInfo.html";
 								}

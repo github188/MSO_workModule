@@ -130,9 +130,11 @@ var Header = React.createClass({
             var linkSupplier = "";
             var wordSupplier = "";
             if(jfustate==4){
-                homeSupplier = "https://crm.mshuoke.com/sapi/msocallcenter/login?mso_userid="+sessionStorage.getItem("jfuid");
-                linkSupplier = "https://crm.mshuoke.com/sapi/msocallcenter/login?mso_userid="+sessionStorage.getItem("jfuid");
-                wordSupplier = "竞拍订单";
+                var p = "mso_userid="+sessionStorage.getItem("jfuid");
+				var pEnc = strEnc(p,key1,key2,key3);
+				homeSupplier = "https://crm.mshuoke.com/sapi/msocallcenter/login?"+pEnc;
+				linkSupplier = "https://crm.mshuoke.com/sapi/msocallcenter/login?"+pEnc;
+				wordSupplier = "竞拍订单";
             }else{
                 homeSupplier = "html/crm-myInfo.html";
                 linkSupplier = "html/crm-myInfo.html";

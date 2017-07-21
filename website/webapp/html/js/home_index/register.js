@@ -19,6 +19,9 @@ var Registe = React.createClass({
 			   //isService 2 
 	},
 	componentDidMount:function(){
+		var fitValue =  /[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g;
+		
+		//var isMobile = /[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g;
 		//手机号验证
         $("input.jfuname").blur(function(){
 		    if($(this).val() == ''){
@@ -47,8 +50,12 @@ var Registe = React.createClass({
 		});
 		//公司名称验证
 		$("input.compname").blur(function(){
+			var okValue = fitValue.test($(this).val());
 		    if($(this).val() == ''){
 			    $(this).next().addClass("error-msg").text("请输入公司名称！");
+			    return false;
+		    }else if(okValue){
+			    $(this).next().addClass("error-msg").text("请输入正确的公司名称！");
 			    return false;
 		    }else{
 			    $(this).next().removeClass("error-msg").text("");
@@ -59,7 +66,11 @@ var Registe = React.createClass({
 		});
 		//请输入您的称呼！
 		$("input.realname").blur(function(){
+			var okValue = fitValue.test($(this).val());
 		    if($(this).val() == ''){
+			    $(this).next().addClass("error-msg").text("请输入您的称呼！");
+			    return false;
+		    }if(okValue){
 			    $(this).next().addClass("error-msg").text("请输入您的称呼！");
 			    return false;
 		    }else{
@@ -70,15 +81,18 @@ var Registe = React.createClass({
 			$(this).next().removeClass("error-msg").text("");
 		});
 		//密码验证
-		$("input[type=password]").blur(function(){
+		$("input.jfupassword").blur(function(){
 		    if($(this).val() == ''){
 			    $(this).next().addClass("error-msg").text("请输入密码！");
+			    return false;
+		    }else if($(this).val().length < 6 || $(this).val().length > 16){
+			    $(this).next().addClass("error-msg").text("请输入6-16位的密码！");
 			    return false;
 		    }else{
 			    $(this).next().removeClass("error-msg").text("");
 		    }
 		});
-		$("input[type=password]").focus(function(){
+		$("input.jfupassword").focus(function(){
 			$(this).next().removeClass("error-msg").text("");
 		});
 		

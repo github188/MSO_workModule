@@ -1,22 +1,22 @@
-
-/*查看是否有下载*/
-function whetherDown(jfuid,callBack){
-		callBack = callBack || function (){};
+function whetherDown(callBack){
 	/*查看是有下载*/
-		var url = domain + "/report/f";
+		callBack = callBack || function (){};
+    let url = domain137 + `/quality/firstreport?jfuid=${$.sessionStorage('jfuid')}&demandName=&demandState=&startTime=&endTime=`;
+		
 		
 		$.when($.ajax({
 			 url:url,
 			 type:"get",
 			 contentType:'application/json',
-			 data:{
-			  "jfuid": jfuid
-			 }
-		})).then(function (data){
-			var ndcountHfd = data.ndcountHfd*1;
-			var ndcountHfdf = data.ndcountHfdf*1;
-			/*ndcountHfd 销售线索挖掘 ndcountHfdf 数据加工*/
-			sessionStorage.setItem("notdownloadcount",(ndcountHfd+ndcountHfdf)); 
+		})).then(function (result){
+		  var num=0;
+      for (var i = result.data.length - 1; i >= 0; i--) {
+        if(result.data[i].downloadcount==0){
+          num++
+        }
+      }
+			sessionStorage.setItem("notdownloadcount",num; 
+			
 			callBack();
 		}).fail(function (data){
 			//alert('获取数据失败！');

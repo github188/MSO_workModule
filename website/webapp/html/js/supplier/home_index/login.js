@@ -157,7 +157,8 @@ var LoginBox = React.createClass({
 						   sessionStorage.setItem(name, data[name]);
 						   localStorage.setItem(name, data[name]);
 					   }
-					   
+					   console.log(324234);
+					   return ;
 					   whetherDown(data.jfuid,thenNext);
 					   /*暂时中断*/
 					   function thenNext(){

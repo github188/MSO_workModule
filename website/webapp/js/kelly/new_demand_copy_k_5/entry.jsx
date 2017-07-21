@@ -564,8 +564,8 @@ class Mbkh extends React.Component {
         /*回填关于人的字段*/
 
         /*回填模块数据*/
-
         if (this.props.targethumen) {
+
             var targethumen = this.props.targethumen;
             var startAge = targethumen.beginage;//开始年龄
             var endAge = targethumen.endage;	//结束年龄
@@ -578,7 +578,6 @@ class Mbkh extends React.Component {
 
             var industryValue = targethumen.basicUnitPrice;//基础单价
             $('.people-yang span.yuan').html('+' + targethumen.endage + '元');
-
             if ((endAge - startAge) < 5) {
                 $('.people-yang span.yuan').attr('data-value', (industryValue / 10 * 1.5).toFixed(2));
                 $('.people-yang span.yuan').html('+' + (industryValue / 10 * 1.5).toFixed(2) + '元');

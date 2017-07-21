@@ -50,6 +50,7 @@ htmls.index = 'index.html';
 htmls.about = 'about.html';
 htmls.help = 'help.html';
 htmls.production = 'production.html';
+htmls.c_login = 'c_login.html';
 htmls['index-s'] = 'index-s.html';
 //	debugger;
 

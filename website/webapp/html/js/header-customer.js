@@ -286,9 +286,9 @@ var LoginBox = React.createClass({
         return(
             <div className="right">
                 <ul>
-                    <li className="company"><a href="customerMyInfo.html">{this.state.compname}</a></li>
+                    <li className="company"><a className="right-info1" href="customerMyInfo.html">{this.state.compname}</a></li>
                     <li className="photo-box">
-                        <div className="photo"><a href="customerMyInfo.html"><img src={this.state.headurls} /></a></div>
+                        <div className="photo"><a className="right-info2" href="customerMyInfo.html"><img src={this.state.headurls} /></a></div>
                         <div className="photo-details">
                             <div className="pd-top">
                                 <div className="default-photo"><a href="avatar_settings.html"><img src={this.state.headurls} /></a></div>
@@ -299,9 +299,9 @@ var LoginBox = React.createClass({
                             </div>
                             <div className="pd-bottom">
                                 <ul>
-									<li className="myhone"><a href="/html/customer_home.html">我的主页</a></li>
-                                    <li className="icon-update"><a href="customerMyInfo.html">修改资料</a></li>
-                                    <li className="icon-pswd"><a href="updatePassword.html">修改密码</a></li>
+									<li className="myhone"><a className="right-home" href="/html/customer_home.html">我的主页</a></li>
+                                    <li className="icon-update"><a className="right-info3" href="customerMyInfo.html">修改资料</a></li>
+                                    <li className="icon-pswd"><a className="right-update" href="updatePassword.html">修改密码</a></li>
                                 </ul>
                                 <p><a className="logout" href="javascript:;">退出</a></p>
                             </div>

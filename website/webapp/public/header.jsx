@@ -132,8 +132,10 @@ class Header extends React.Component {
 			var linkSupplier = "";
 			var wordSupplier = "";
 			if (jfustate == 4) {
-				homeSupplier = "/html/supplier_index.html";
-				linkSupplier = "/html/supplierDemandHall.html";
+				var p = "mso_userid="+sessionStorage.getItem("jfuid");
+				var pEnc = strEnc(p,key1,key2,key3);
+				homeSupplier = "https://crm.mshuoke.com/sapi/msocallcenter/login?"+pEnc;
+				linkSupplier = "https://crm.mshuoke.com/sapi/msocallcenter/login?"+pEnc;
 				wordSupplier = "竞拍订单";
 			} else {
 				homeSupplier = "html/crm-myInfo.html";
