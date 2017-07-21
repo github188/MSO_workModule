@@ -3,7 +3,7 @@ import ReactDOM, { render } from "react-dom";
 import { Table, Input, Button, Pagination, TreeSelect, Icon, Checkbox } from "antd";
 
 const root = document.getElementById("main");
-const domainDownShort="http://res.mshuoke.com/";
+const domainDownShort = "http://res.mshuoke.com/";
 import "./newStyle.css";
 
 import Pop from "./common/Pop.jsx";
@@ -55,18 +55,26 @@ const treeData = [
 //table头设置
 const columns = [
     {
+        title: '订单状态',
+        dataIndex: 'orderState',
+        width: 100,
+
+    },
+    {
         title: '操作',
         dataIndex: 'operate',
-        width: 210,
+        width: 100,
     }, {
         title: '订单名',
         dataIndex: 'name',
         width: 260,
-    }, {
-        title: '订单号',
-        dataIndex: 'id',
-        width: 220,
-    }, {
+    }, 
+    // {
+    //     title: '订单号',
+    //     dataIndex: 'id',
+    //     width: 220,
+    // },
+     {
         title: '业务类型',
         dataIndex: 'serviceTypeNum',
         width: 140,
@@ -89,18 +97,13 @@ const columns = [
 
 
     }, {
-        title: '订单状态',
-        dataIndex: 'orderState',
-        width: 100,
-
-    }, {
         title: '已完成量',
         dataIndex: 'orderCompleteQuantity',
         width: 100,
 
     }, {
         title: '订单创建时间',
-        dataIndex: 'createTime',
+        dataIndex: 'createtime',
         width: 240
     }];
 
@@ -170,6 +173,7 @@ class OrderList extends Component {
     }
 
     updateData(result = []) {
+        console.log(result);
         var data = result.data || [];
         var totalOrder = {};
         totalOrder.one = [];
@@ -182,42 +186,55 @@ class OrderList extends Component {
         var serviceTypeNum = ["", "销售线索挖掘", "数据加工", ""]
         for (let i = 0; i < data.length; i++) {
             data[i].orderCompleteQuantity = (data[i].orderCompleteQuantity || 0) + "条";
+            data[i].createtime = data[i].createTime
             data[i].serviceTypeNum = serviceTypeNum[data[i].serviceTypeNum];
             var index = Object.assign({}, data[i]),
                 newObj = {}
             index.unitPrice = ("¥" + index.unitPrice).indexOf(".") == "-1" ? ("¥" + index.unitPrice + ".00") : ("¥" + index.unitPrice)
             index.serviceCharge = index.serviceCharge > 0 ? (("¥" + index.serviceCharge).indexOf(".") == "-1" ? ("¥" + index.serviceCharge + ".00") : ("¥" + index.serviceCharge)) : "无服务费"
-            if (index.orderState == "1") {
-                index.operate = (<div><Button onClick={this.getOrder.bind(this, index.id)}
-                style={{
-                    backgroundColor: "#0098D8",
-                    float: "left",
-                    color: "#ffffff",
-                    fontSize: 16,
-                    padding: "2px 10px"
-                }}>立即领取</Button>
-                        <Button
+            // if (index.orderState == "1") {
+            //     index.operate = (<div><Button onClick={this.getOrder.bind(this, index.id)}
+            //     style={{
+            //         backgroundColor: "#0098D8",
+            //         float: "left",
+            //         color: "#ffffff",
+            //         fontSize: 16,
+            //         padding: "2px 10px"
+            //     }}>立即领取</Button>
+            //             <Button
+            //     onClick={this.detail.bind(this, index.id, index.createTime, index.orderState)}
+            //     icon="edit"
+            //     style={{
+            //         backgroundColor: "#8F44AD",
+            //         color: "#ffffff",
+            //         float: "right",
+            //         fontSize: 16,
+            //         padding: "2px 10px"
+            //     }}>查看</Button></div>)
+            // } else {
+            //     index.operate = ( <div><Button
+            //     onClick={this.detail.bind(this, index.id, index.createTime, index.orderState)}
+            //     icon="edit"
+            //     style={{
+            //         backgroundColor: "#8F44AD",
+            //         color: "#ffffff",
+            //         float: "right",
+            //         fontSize: 16,
+            //         padding: "2px 10px"
+            //     }}>查看</Button></div>)
+            // }
+
+			index.operate = ( <div><Button
                 onClick={this.detail.bind(this, index.id, index.createTime, index.orderState)}
                 icon="edit"
                 style={{
                     backgroundColor: "#8F44AD",
                     color: "#ffffff",
-                    float: "right",
+                    // float: "right",
                     fontSize: 16,
-                    padding: "2px 10px"
+                    padding: "2px 8px"
                 }}>查看</Button></div>)
-            } else {
-                index.operate = ( <div><Button
-                onClick={this.detail.bind(this, index.id, index.createTime, index.orderState)}
-                icon="edit"
-                style={{
-                    backgroundColor: "#8F44AD",
-                    color: "#ffffff",
-                    float: "right",
-                    fontSize: 16,
-                    padding: "2px 10px"
-                }}>查看</Button></div>)
-            }
+
             index.createTime = moment(index.createTime).format("YYYY-MM-DD DD:mm:ss");
             switch (Number(index.orderState)) {
             case 1: //1-待领取
@@ -794,17 +811,17 @@ class Detail extends Component {
                         </li>
                         <li>
                             <label>质检标准附件：</label>
-                            <span>{this.state.quality ? <a href={domainDownShort+this.state.quality}>下载</a> : <span>文件未上传</span>}</span>
+                            <span>{this.state.quality ? <a href={domainDownShort + this.state.quality}>下载</a> : <span>文件未上传</span>}</span>
                         </li>
                         
                         <li>
                             <label>销售线索模板：</label>
-                            <span>{this.state.sales ? <a href={domainDownShort+this.state.sales}>下载</a> : <span>文件未上传</span>}</span>
+                            <span>{this.state.sales ? <a href={domainDownShort + this.state.sales}>下载</a> : <span>文件未上传</span>}</span>
                         </li>
                       
                         <li>
                             <label>话术文件：</label>
-                           <span>{this.state.speechcraft ? <a href={domainDownShort+this.state.speechcraft}>下载</a> : <span>文件未上传</span>}</span>
+                           <span>{this.state.speechcraft ? <a href={domainDownShort + this.state.speechcraft}>下载</a> : <span>文件未上传</span>}</span>
                         </li>
                         </div>
                     </ul>
