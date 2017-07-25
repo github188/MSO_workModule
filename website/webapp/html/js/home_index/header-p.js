@@ -164,4 +164,4 @@ var Header = React.createClass({
         }
     }
 });
-React.render(<Header/>,$(".header")[0]);
+ReactDOM.render(<Header/>,$(".header")[0]);

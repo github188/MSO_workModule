@@ -642,7 +642,7 @@ class State extends React.Component {
                                         <td><span className="money" style={{
                         "float": "left"
                     }}><span>¥</span><span
-                    className="size">{orderpricetol * finlishScale}</span></span></td>
+                    className="size">{(orderpricetol * finlishScale).toFixed(2)}</span></span></td>
                                     </tr>
                                 </table>
                                 <a href="javascript:self.location=document.referrer;">
@@ -732,7 +732,7 @@ class State extends React.Component {
                                         <td><span className="money" style={{
                         "float": "left"
                     }}><span>¥</span><span
-                    className="size">{orderpricetol * finlishScale}</span></span></td>
+                    className="size">{(orderpricetol * finlishScale).toFixed(2)}</span></span></td>
                                     </tr>
                                 </table>
                                 <a href="javascript:self.location=document.referrer;">
@@ -800,7 +800,7 @@ class State extends React.Component {
                                         <td><span className="money" style={{
                         "float": "left"
                     }}><span>¥</span><span
-                    className="size">{orderpricetol * finlishScale}</span></span></td>
+                    className="size">{(orderpricetol * finlishScale).toFixed(2)}</span></span></td>
                                     </tr>
                                 </table>
 

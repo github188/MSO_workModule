@@ -525,7 +525,7 @@ var State = React.createClass({
                                         <td><span className="money" style={{
                         "float": "left"
                     }}><span>¥</span><span
-                    className="size">{orderpricetol * finlishScale}</span></span></td>
+                    className="size">{(orderpricetol * finlishScale).toFixed(2)}</span></span></td>
                                     </tr>
                                 </table>
                                 <a href={"new_demand_copy_5.html#copy" + demandid} data-reactid=".6.1.1">
@@ -608,7 +608,7 @@ var State = React.createClass({
                                         <td><span className="money" style={{
                         "float": "left"
                     }}><span>¥</span><span
-                    className="size">{orderpricetol * finlishScale}</span></span></td>
+                    className="size">{(orderpricetol * finlishScale).toFixed(2)}</span></span></td>
                                     </tr>
                                 </table>
                                 <a href={"new_demand_copy_5.html#copy" + demandid} data-reactid=".6.1.1">
@@ -690,7 +690,7 @@ var State = React.createClass({
                                         <td><span className="money" style={{
                         "float": "left"
                     }}><span>¥</span><span
-                    className="size">{orderpricetol * finlishScale}</span></span></td>
+                    className="size">{(orderpricetol * finlishScale).toFixed(2)}</span></span></td>
                                     </tr>
                                 </table>
 
@@ -839,7 +839,7 @@ var Progress_speed = React.createClass({
                                 <p className="demand_main"><span>单价：{result.orderprice}
                                     元</span><span>发布量：{result.releasenum} </span><span>完成量：{result.fishnum}</span><span>预计结算金额：<span
                     className="red">¥ <span
-                    className="size">{result.orderpriceTol}</span></span></span></p>
+                    className="size">{(orderpricetol * finlishScale).toFixed(2)}</span></span></span></p>
                             </div>
                 )
             })

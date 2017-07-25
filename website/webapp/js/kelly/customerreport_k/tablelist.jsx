@@ -34,7 +34,6 @@ class Customerreport extends React.Component{
 
 			// $.setSessionStorage('currentData-demandname',demandname)
 			localStorage.setItem('currentData-releasenum',releasenumSum)
-			// return ;
 			location.href = 'customerreportdown.html#'+currentData.pid;
 		}.bind(this));
 	}

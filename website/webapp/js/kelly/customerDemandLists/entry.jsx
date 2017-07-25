@@ -302,6 +302,7 @@ class Main extends React.Component {
             // return 'dataMining.html#';
             return 'data-mining.html#';
         }
+
         if (data.servicetype == "1" && data.industry == '教育培训') {
             // if (data.twolevindustry == "其他") {
             //     return 'customerMining.html#';

@@ -50,9 +50,11 @@ public class HJfUserDetailServiceImpl implements HJfUserDetailService{
 			par.setCompname(user.getCompname());//公司名
 			hfUserDetailDao.addHfUser(par);//editHfUser(
 		}else{
+			String time = DateUtil.getTime();
 			HJUserDetail par=new HJUserDetail();
 			par.setJfuid(user.getJfuid());//用户id
-			par.setCreatetime(DateUtil.getTime());//获取YYYY-MM-DD HH:mm:ss格式
+			par.setCreatetime(time);//获取YYYY-MM-DD HH:mm:ss格式
+			par.setUpdatetime(time);
 			par.setRealname(user.getRealname());//您的姓名
 			par.setCompemail(user.getCompemail());//邮箱
 			par.setCompname(user.getCompname());//公司名

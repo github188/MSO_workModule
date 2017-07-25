@@ -34,7 +34,7 @@ class Mycustoms extends React.Component{
 		callBack = callBack || function (){};
 		$.when($.ajax({
 			 type:'get',
-			 // contentType:'application/json',
+			 contentType:'application/json',
 			 url:url,
 		})).then(function (data){
 			if(data.code=='0'){
