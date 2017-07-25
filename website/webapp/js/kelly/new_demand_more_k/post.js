@@ -102,15 +102,21 @@ export function addDemand() {
     $(".form_col4 .areaList").each(function (i) {
         demandpricetol += ($(this).find("span.green span.size").text() - 1 + 1);
         demandNum += isNaN(Number($(this).find("div.input").eq(1).find("input").val())) ? 0 : Number($(this).find("div.input").eq(1).find("input").val())
-        areaCityList[i] = {
-            "target": $(this).find("div.input").eq(0).find("input").val(),//目标区域
-            "citydesc": $(this).find("div.input").eq(0).find("input").attr("title"),
-            "releasenum": Number($(this).find("div.input").eq(1).find("input").val()||0),//数量
-            "price": $(this).find("div.input").eq(2).find("input").val(),//单价
+        var target=$(this).find("div.input").eq(0).find("input").val()//目标区域
+        var releasenum=Number($(this).find("div.input").eq(1).find("input").val()||0)//数量
+        var price=$(this).find("div.input").eq(2).find("input").val()//单价
+        var remark=$(this).find("div.input").eq(3).find(":checked").next().text() == "是" ? $(this).find("div.input").eq(4).find("input").val() : ""//备注
+        if(target||releasenum||price||remark){
+            var obj={
+            "target": target,
+            "releasenum": releasenum,
+            "price": price,
             "totalprice": Number($(this).find("span.green span.size").text()||0),//总价
-            "remark": $(this).find("div.input").eq(3).find(":checked").next().text() == "是" ? $(this).find("div.input").eq(4).find("input").val() : "",//备注
+            "remark": remark,
             "auto_calc": ""//单价设定方式
-        };
+            }
+            areaCityList.push(obj)
+        }
     });
    
 
@@ -157,7 +163,7 @@ export function addDemand() {
                 window.location.href = "/index.html";
             } else if (res.code == "0") {
                 sessionStorage.setItem("cgid", res.data.id);
-                //	var pid = res.hfp.pid;
+                //  var pid = res.hfp.pid;
                 //  sessionStorage.removeItem("pid");
                 //  sessionStorage.setItem("pid",pid);
                 //              setCookie('proname',$("input.pro-name").val(),10);

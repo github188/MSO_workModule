@@ -3,7 +3,7 @@ export default function addDemand(num,file1,file2,file3,file4) {
     $(".loading_cover").show();
     var data = {
             "releaseQuantity": $("input.num").val(),//todo "integer,需求发布量",
-            "areaAndDemandQuantity": "",// todo "string,原子需求[{\"target\":\"目标区域\",\"releasenum\":\"发布数量\",\"price\":\"单价\",\"totalprice\":\"总价\",\"remark\":\"备注\",\"auto_calc\":\"单价设定方式 1-根据标签计算 2-手动设定\"}]",
+            "areaAndDemandQuantity": JSON.stringify([]),// todo "string,原子需求[{\"target\":\"目标区域\",\"releasenum\":\"发布数量\",\"price\":\"单价\",\"totalprice\":\"总价\",\"remark\":\"备注\",\"auto_calc\":\"单价设定方式 1-根据标签计算 2-手动设定\"}]",
             "endTime": $(".endDate").val(),//Todo"string,结束时间",
             "demandName": isNull($("input.demand-name").val()) ? "无" : $("input.demand-name").val(),//todo "string,需求名",
             "projectLeader": $("input.pleader").val(),//todo  "string,项目负责人",

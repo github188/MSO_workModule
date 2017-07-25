@@ -194,6 +194,7 @@ class Mbkh extends React.Component {
     }
 
     componentDidMount() {
+    $("head").find("style[type='text/css']").eq(0).remove()
         //this.setState({crowdHtml:this.createCrowd()});
         $(".zdy input").on("input", function () {
             $(".demend_right .target-population").text($(this).val());
@@ -1825,8 +1826,8 @@ class Preview extends React.Component {
                 return (
                     <tr>
                         <td>{name.name}</td>
-                        <td>{name.number}</td>
                         <td>{name.unitPrice}</td>
+                        <td>{name.number}</td>
                         <td className="total">{name.unitPrice * name.number}</td>
                     </tr>
                 );

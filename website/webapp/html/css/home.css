@@ -1,0 +1,72 @@
+@charset "utf-8";
+
+body,ul,li,ol,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div,dl,dt,dd,input,button { margin:0; padding: 0;}
+body { font-size:14px; font-family: "microsoft yahei", sans-serif; -moz-user-select: text;  min-width:1200px; background: url(../images/home-index/bg.gif) repeat;}
+img {border:none; display: block;}
+li {list-style: none}
+textarea {resize:none;}
+textarea, input, button { outline: none;}
+a, a:hover {text-decoration: none; color: #424242;}
+button { cursor: pointer;}
+textarea, input, button { font-family: "microsoft yahei";}
+
+/*header*/
+.header { background: #1F3751;}
+.header .nav_top { color: #fff; overflow: hidden; height: 80px; width: 1200px; margin: 0 auto; line-height: 80px;}
+.header .nav_top .home_logo { float: left; padding-top: 21px; margin-right: 70px;}
+.header .nav_top ul {}
+.header .nav_top ul li { float: left; font-size: 14px; padding: 0 18px;}
+.header .nav_top ul li a { padding: 0 12px; color: #fff; overflow: hidden; height: 77px; display: block; transition: all 0.25s; -moz-transition: all 0.25s; -webkit-transition: all 0.25s; -o-transition: all 0.25s;}
+.header .nav_top ul li a:hover { border-bottom: 3px #D4A844 solid; color: #D4A844; transition: all 0.25s; -moz-transition: all 0.25s; -webkit-transition: all 0.25s; -o-transition: all 0.25s;}
+.header .nav_top .login_right { float: right;}
+.header .nav_top .login_right a { color: #fff; margin-top: 20px;}
+.header .nav_top .login_right a.home-login,
+.header .nav_top .login_right a.home-register { width: 84px; height: 36px; line-height: 36px; text-align: center; display: inline-block; border-radius: 4px; font-size: 16px;}
+.header .nav_top .login_right a.home-login { color: #fff; transition: all 0.25s; -moz-transition: color 0.25s; -webkit-transition: color 0.25s; -o-transition: color 0.25s;}
+.header .nav_top .login_right a.home-register { background: #344B63; transition: background 0.25s; -moz-transition: background 0.25s; -webkit-transition: background 0.25s; -o-transition: background 0.25s;}
+.header .nav_top .login_right a.home-login:hover { color: #F4BB41; transition: all 0.25s; -moz-transition: color 0.25s; -webkit-transition: color 0.25s; -o-transition: color 0.25s;}
+.header .nav_top .login_right a.home-register:hover { background: #F4BB41; transition: background 0.25s; -moz-transition: background 0.25s; -webkit-transition: background 0.25s; -o-transition: background 0.25s;}
+.header .nav_top .login_right a.MyInfo,
+.header .nav_top .login_right a.logout { line-height: 36px; font-size: 14px;}
+.header .nav_top .login_right a.MyInfo { color: #F4BB41; margin-right: 30px;}
+.header .nav_top .login_right a.MyInfo:hover { text-decoration: underline;}
+.header .nav_top .login_right a.logout { color: #ccc;}
+.header .nav_top .login_right a.logout:hover { text-decoration: underline;}
+
+/*footer*/
+.footer { background: rgba(31,55,81,0.25); color: #fff; height: 223px; width: 100%; padding: 0; text-align: left;}
+.footer .nav-bottom { width: 1200px; margin: 0 auto;}
+.footer .nav-bottom .nav-li { float: left; padding-top: 45px;}
+.footer .nav-bottom .nav-li ul { overflow: hidden; padding-bottom: 45px; padding-top: 0;}
+.footer .nav-bottom .nav-li ul li { float: left; color: #b5bbc3;}
+.footer .nav-bottom .nav-li ul li a { color: #b5bbc3;}
+.footer .nav-bottom .nav-li ul li a:hover { color: #1FC7FF; text-decoration: underline;}
+.footer .nav-bottom .nav-li p { color: #697685; line-height: 28px; font-size: 12px; padding: 0;}
+.footer .nav-bottom .contact { float: right; padding-top: 45px;}
+.footer .nav-bottom .contact .qr-code { width: 116px; height: 116px; float: right; margin-left: 25px;}
+.footer .nav-bottom .contact .qr-code img { width: 100%;}
+.footer .nav-bottom .contact .tel { float: right; text-align: right;}
+.footer .nav-bottom .contact .tel p { color: #697685; font-size: 14px; height: 14px; line-height: 14px;}
+.footer .nav-bottom .contact .tel h2 { font-size: 36px; height: 36px; line-height: 36px; color: #d0d4d9; font-weight: normal; margin: 9px 0 19px 0;}
+.footer .nav-bottom .contact .tel a { display: inline-block; background: url(../images/home-index/qq_icon.png) no-repeat; width: 32px; height: 32px; line-height: 32px; overflow: hidden; text-indent: 100%;}
+
+
+
+
+/*aside bar*/
+.aside_bar { position: fixed; right: 50px; bottom: 50px; z-index: 10;}
+.aside_bar ul { height: 170px;}
+.aside_bar li{ width:50px; height:50px; margin-bottom:10px; text-align: center; line-height:17px; position: relative;}
+.aside_bar li a { display: block; width: 100%; height: 100%; font-size: 16px;}
+.aside_bar li:nth-of-type(1) a { background:url("../images/supplier/aside_qq.png"); background-size:100% 100%;}
+.aside_bar li:nth-of-type(2) a { background:url("../images/supplier/aside_service.png"); background-size:100% 100%;}
+.aside_bar li:nth-of-type(3) a { background:url("../images/supplier/aside_top.png"); background-size:100% 100%;}
+.aside_bar li:hover a:after {visibility:visible;}
+.aside_bar li a:after {display:block;width:50px;height:50px;background:#259efb;color:#fff;visibility:hidden;padding:6px 9px;border-radius: 6px;}
+.aside_bar li:nth-of-type(1) a:after {content: "在线客服"; box-sizing: border-box;}
+.aside_bar li:nth-of-type(2) a:after { content: "400-900-5288"; overflow: hidden; text-indent: 100%; font-size: 0; width: 246px; height: 0; line-height: 0; text-align: left; padding: 50px 0 0 0; position: absolute; right: 0; top: 0; margin-left: -246px; background:url("../images/supplier/aside_service-h.png") right top no-repeat;}
+.aside_bar li:nth-of-type(3) a:after {content: "向上置顶"; box-sizing: border-box;}
+a.go-to-top { text-decoration: none;}
+
+/*wrap-mid*/
+.wrap-mid { background: url(../images/home-index/bg.png) center 0 no-repeat; min-height: 3620px;}

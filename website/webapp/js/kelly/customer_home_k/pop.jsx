@@ -18,26 +18,38 @@ class Pop extends React.Component{
 		function whetherDown(callBack){
 		/*查看是有下载*/
 			callBack = callBack || function (){};
-			var url = domain + "/report/f";
+			// var url = domain + "/report/f";
+			var url=`${domain137}/quality/${sessionStorage.getItem("jfuid")}/enterpriseinfo`
 			
-			$.when($.ajax({
+			$.when(
+
+			// 	$.ajax({
+			// 	 url:url,
+			// 	 type:"get",
+			// 	 contentType:'application/json',
+			// 	 data:{
+			// 	  "jfuid":sessionStorage.getItem("jfuid"),
+			// 	 }
+			// })
+				$.ajax({
 				 url:url,
 				 type:"get",
-				 contentType:'application/json',
-				 data:{
-				  "jfuid":sessionStorage.getItem("jfuid"),
-				 }
-			}),$.ajax({
+				 contentType:'application/json'
+				
+			})
+
+				,$.ajax({
 			 url:`${domain137}/quality/demandlist?jfuid=${sessionStorage.getItem("jfuid") || ""}&demandName=&demandState=&startTime=&endTime=`,
 			 type:"get",
 			})).then(function (datas,result){
-				var data=datas[0]
-				var ndcountHfd = data.ndcountHfd*1;
-				var ndcountHfdf = data.ndcountHfdf*1;
+				var data=datas[0];
+
+				// var ndcountHfd = data.ndcountHfd*1;
+				// var ndcountHfdf = data.ndcountHfdf*1;
 				/*ndcountHfd 销售线索挖掘 ndcountHfdf 数据加工*/
-				sessionStorage.setItem("notdownloadcount",(ndcountHfd+ndcountHfdf)); 
+				// sessionStorage.setItem("notdownloadcount",(ndcountHfd+ndcountHfdf)); 
 				
-				callBack(data,result[0].data.length);
+				callBack(data.data.resultcode,result[0].data.length);
 			}).fail(function (data){
 				//alert('获取数据失败！');
 			});
@@ -45,8 +57,8 @@ class Pop extends React.Component{
 		//debugger;
 		}
 		whetherDown(function (data,length){
-			var jfustate = $.sessionStorage('jfustate');
-			if(jfustate == 4 && length==0){
+			// var jfustate = $.sessionStorage('jfustate');
+			if(data == 4 && length==0){
 				/*通过审核 但是没有发过需求， 提示发需求*/
 				var antModalMask = $.sessionStorage('ant-modal-mask');
 				if(!antModalMask){

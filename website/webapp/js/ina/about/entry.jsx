@@ -23,13 +23,13 @@ class Main extends React.Component{
 
 	render(){
 		return (<div className="polict">
-			<header>
+			<div className="header">
 				<Header />
-			</header>
+			</div>
 			<MidCon />
-			<footer>
+			<div className="footer">
 				<Footer />
-			</footer>
+			</div>
 			<AsideBar />
 		</div>);
 	}

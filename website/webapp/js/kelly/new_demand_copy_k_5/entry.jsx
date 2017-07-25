@@ -559,6 +559,7 @@ class Mbkh extends React.Component {
     }
 
     componentDidMount() {
+    $("head").find("style[type='text/css']").eq(0).remove()
         //this.setState({crowdHtml:this.createCrowd()});
         this.controlCrowd();
         /*回填关于人的字段*/

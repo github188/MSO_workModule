@@ -11,32 +11,53 @@ class Mycustoms extends React.Component{
 		super(props);
 		
 		var date=new Date();
-		var year=date.getFullYear(); 
+		var year=date.getFullYear().toString(); 
 	    var month=date.getMonth()+1;
 		month = month-1
-		
+		var months=month<10?"0"+month:month;
 		this.state = {
 			/*完成量*/
 			paymentmoneySum:0,
 			paymentnumSum:0,
-			month:month,
+			month:year+"-"+months,
 			year:year
 		}
 	
 	}
+	getEchartsData(callBack,time){
+		//192.168.2.127:8099/myDemandSum/{jfuid}
+		//https://back.mshuoke.com/publicApi/huoke/statistics/user/55/2016/01";
+		//year=?&month=?
+		var jfuid =  $.sessionStorage('jfuid');
+		// var url = domain + "/myDemandSum/"+ jfuid;
+		var url=`${domain137}/quality/forcustomer?jfuid=${jfuid}&year=${time.year?time.year:""}&month=${time.month?time.month:""}`;
+		callBack = callBack || function (){};
+		$.when($.ajax({
+			 type:'get',
+			 // contentType:'application/json',
+			 url:url,
+		})).then(function (data){
+			if(data.code=='0'){
+				callBack(data);
+			}
+			
+		}).fail(function (data){
+			//alert('获取数据失败！');
+		});
+	}
 	componentDidMount(){
 		this.changeTimeData();
-		this.changeargu(this.state.year,this.state.month);
+		this.changeargu({month:this.state.month});
 	}
-	changeargu(year,month){
-		this.getEchartsData(function (data){
-			if(data.data){
+	changeargu(time){
+		this.getEchartsData(function (result){
+			if(result.data){
 				this.setState({
-					paymentmoneySum:data.data.paymentmoneySum,
-					paymentnumSum:data.data.paymentnumSum
+					paymentmoneySum:result.data.finishNumTotal,
+					paymentnumSum:result.data.settlementTotalPrice
 				});
 			}
-		}.bind(this),year,month);
+		}.bind(this),time);
 	}
 	changeTimeData(){
 		var _this = this;
@@ -47,44 +68,17 @@ class Mycustoms extends React.Component{
 			
 			switch(dataTime){
 				case "now":
-					_this.changeargu(_this.state.year,null);
+					_this.changeargu({year:_this.state.year});
 				return;
 				case "all":
-					_this.changeargu();
+					_this.changeargu({});
 				return;
 				default:
-					_this.changeargu(_this.state.year,_this.state.month);
+					_this.changeargu({month:_this.state.month});
 			}
 		});
 	}
-	getEchartsData(callBack,year,month){
-		//192.168.2.127:8099/myDemandSum/{jfuid}
-		//https://back.mshuoke.com/publicApi/huoke/statistics/user/55/2016/01";
-		//year=?&month=?
-		var data = {};
-		var jfuid =  $.sessionStorage('jfuid');
-		var url = domain + "/myDemandSum/"+ jfuid;
-		callBack = callBack || function (){};
-		if(year){
-			data.year = this.state.year;
-		}
-		if(month){
-			data.month = month;
-		}
-		$.when($.ajax({
-			 type:'get',
-			 contentType:'application/json',
-			 data:data,
-			 url:url,
-		})).then(function (data){
-			if(data.code=='Y'){
-				callBack(data);
-			}
-			
-		}).fail(function (data){
-			//alert('获取数据失败！');
-		});
-	}
+	
 	render(){
 		return (<div className="mycustoms">
 					<div className="customstitle">
@@ -104,7 +98,7 @@ class Mycustoms extends React.Component{
 							<img src="/images/public/checkmount.png" />
 							<span className="first">获客完成量</span>
 							<div className="last">
-								<i>{addMark(this.state.paymentnumSum)}</i>
+								<i>{addMark(this.state.paymentnumSum>0?this.state.paymentnumSum:0)}</i>
 								<i className="last">条</i>
 							</div>
 						</div>
@@ -112,7 +106,7 @@ class Mycustoms extends React.Component{
 						<img src="/images/public/redmoney.png" />
 							<span className="first">获客费用</span>
 							<div className="last">
-								<i>{addMark(this.state.paymentmoneySum)}</i>
+								<i>{addMark(this.state.paymentmoneySum>0?this.state.paymentmoneySum:0)}</i>
 								<i className="last">元</i>
 							</div>
 						</div>

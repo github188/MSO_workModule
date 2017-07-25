@@ -12,7 +12,6 @@ export function addDemandSubmit(createTime,industryId){
         demandNum += isNaN(Number($(this).find("div.input").eq(1).find("input").val())) ? 0 : Number($(this).find("div.input").eq(1).find("input").val())
         areaCityList[i] = {
             "target": $(this).find("div.input").eq(0).find("input").val(),//目标区域
-            "citydesc": $(this).find("div.input").eq(0).find("input").attr("title"),
             "releasenum":Number($(this).find("div.input").eq(1).find("input").val()||0),//数量
             "price": $(this).find("div.input").eq(2).find("input").val(),//单价
             "totalprice": Number($(this).find("span.green span.size").text()||0),//总价
@@ -92,15 +91,21 @@ export function addDemand(createTime,industryId){
     $(".form_col4 .areaList").each(function (i) {
         demandpricetol += ($(this).find("span.green span.size").text() - 1 + 1);
         demandNum += isNaN(Number($(this).find("div.input").eq(1).find("input").val())) ? 0 : Number($(this).find("div.input").eq(1).find("input").val())
-        areaCityList[i] = {
-            "target": $(this).find("div.input").eq(0).find("input").val(),//目标区域
-            "citydesc": $(this).find("div.input").eq(0).find("input").attr("title"),
-            "releasenum":Number($(this).find("div.input").eq(1).find("input").val()||0),//数量
-            "price": $(this).find("div.input").eq(2).find("input").val(),//单价
-            "totalprice": Number($(this).find("span.green span.size").text()||0),//总价
-            "remark": $(this).find("div.input").eq(3).find(":checked").next().text() == "是" ? $(this).find("div.input").eq(4).find("input").val() : "",//备注
-            "auto_calc": ""//单价设定方式
-        };
+        var target=$(this).find("div.input").eq(0).find("input").val()//目标区域
+        var releasenum=Number($(this).find("div.input").eq(1).find("input").val()||0)//数量
+        var price= $(this).find("div.input").eq(2).find("input").val()//单价
+
+        if(target||releasenum||price){
+                var obj={
+                     "target": target,
+                    "releasenum": releasenum,
+                    "price":price,
+                    "totalprice": Number($(this).find("span.green span.size").text()||0),//总价
+                    "remark": $(this).find("div.input").eq(3).find(":checked").next().text() == "是" ? $(this).find("div.input").eq(4).find("input").val() : "",//备注
+                    "auto_calc": ""//单价设定方式
+                }
+                areaCityList.push(obj)
+        }
     });
 
 

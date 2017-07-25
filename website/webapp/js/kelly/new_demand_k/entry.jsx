@@ -585,8 +585,7 @@ class Mbkh extends React.Component {
 
     componentDidMount() {
 
-
-
+    $("head").find("style[type='text/css']").eq(0).remove()
         //this.setState({crowdHtml:this.createCrowd()});
         this.controlCrowd();
         /*回填关于人的字段*/
@@ -1913,6 +1912,7 @@ class Preview extends React.Component {
                 "targetAgeFrom": $('.people-yang input.first').val(),//"integer,目标区域人群年龄 from"
             }
             data = JSON.stringify(data)
+
             $.ajax({
                 type: "post",
                 url: url,

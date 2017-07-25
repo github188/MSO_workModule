@@ -921,7 +921,7 @@ class State extends React.Component {
             var data = {
                 "createTime": allData.demand.createTime,
                 "releaseQuantity": allData.demand.releasenum, //todo "integer,需求发布量",
-                "areaAndDemandQuantity": "", //目标区域
+                "areaAndDemandQuantity": JSON.stringify([]), //目标区域
                 "endTime": allData.demand.endtime, //Todo"string,结束时间",
                 "demandName": allData.demand.demandname, //todo "string,需求名",
                 "projectLeader": allData.demand.pleader, //todo  "string,项目负责人",

@@ -20,7 +20,7 @@ class Getcustoms extends React.Component{
 		/*比对完毕 开始show lighting*/
 		if(this.state.isLightId){
 			this.state.isLightId = false;
-			console.log(this.state.lightId+'============');
+			// console.log(this.state.lightId+'============');
 			this.checkProcess(this.state.lightId);
 		}
 	}
@@ -42,7 +42,6 @@ class Getcustoms extends React.Component{
 			var newArr = [];
 			//debugger;
 			var datalist = data.data.datalist;
-			
 			datalist.map(function (data,index){
 				/*倒叙排列*/
 				newArr.push(data.state);
@@ -54,7 +53,7 @@ class Getcustoms extends React.Component{
 			/*采用倒叙比对*/
 			light:for(var i=0;i<newArr.length;i++){
 					for(var k=0;k<datalist.length;k++){
-						if((datalist[k].state==newArr[i]) && (datalist[k].light == 1)){
+						if((datalist[k].state==newArr[i]) && (datalist[k].light)){
 							this.setState({lightId:newArr[i],datalist:datalist});
 							break light;
 						}
@@ -78,13 +77,11 @@ class Getcustoms extends React.Component{
 		/*quality*/
 		var url = domain137 + '/quality/ups/'+jfuid+'/cdsnew';
 		callBack = callBack || function (){};
-	
 		$.when($.ajax({
 			 type:'get',
 			 contentType:'application/json',
 			 url:url,
 		})).then(function (data){
-			
 			if(data.msg=='success'){
 				callBack(data);
 			}

@@ -7,19 +7,17 @@
 	<meta name="keywords" content="大数据营销,销售线索,精准营销,市场营销,眸事获客">
 	<meta name="baidu-site-verification" content="SdcIOUYnNG" />
 	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-	 <script src="https://pv.sohu.com/cityjson?ie=utf-8"></script> 
-	<script src="public/jquery-1.7.2.min.js" type="text/javascript"></script>
-	<script src="public/easing.js" type="text/javascript"></script>
-	<script src="public/react.min.js"></script>
-	<script src="public/react-dom.min.js"></script>
-	<script src="public/menu.js"></script>
-	<script src="public/countUp.js" charset="utf-8"></script>
+
+	<link rel="stylesheet" href="html/css/home.css">
+	<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script> 
+	<script src="html/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+	<script src="html/js/react.js"></script>
+	<script src="html/js/react-dom.js"></script>
+	<script src="html/js/browser.min.js"></script>
+	
 	<script src="//www.mshuoke.com/html/js/main_index.js" charset="utf-8"></script>
 	<script src="//www.mshuoke.com/html/js/url.js" charset="utf-8"></script>
 	<script src="//www.mshuoke.com/html/js/hide.js"></script>
-	<!--<script src="html/js/antd-2.9.3.js" charset="utf-8"></script>	-->
-	<link rel="stylesheet" href="html/css/styleantd.css" />
-
 	<script>
 	var _hmt = _hmt || [];
 	(function() {
@@ -29,120 +27,138 @@
 	  s.parentNode.insertBefore(hm, s);
 	})();
 	</script>
-	<script type="text/javascript">
-		function browserRedirect() {
-		    var sUserAgent = navigator.userAgent.toLowerCase();
-		    var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
-		    var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
-		    var bIsMidp = sUserAgent.match(/midp/i) == "midp";
-		    var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
-		    var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
-		    var bIsAndroid = sUserAgent.match(/android/i) == "android";
-		    var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
-		    var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
-		    if (!(bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) ){
-		        
-		    }else{
-		    	window.location.href="//m.mshuoke.com";
-		    }
-		}
-		browserRedirect();
-		
-		
-		
-	</script>
-	
-
+	<style>
+		.banner { height: 790px;}
+		.home-data { padding-bottom: 140px; width: 1200px; margin: 0 auto;}
+		.home-data ul { overflow: hidden;}
+		.home-data li { width: 25%; background: url(html/images/home-index/hr.gif) right 12px no-repeat; float: left; display: inline-block; color: #fff;}
+		.home-data li.last { background: none;}
+		.home-data li div { padding-left: 100px; height: 62px; overflow: hidden;}
+		.home-data li.icon1 div { background: url(html/images/home-index/icon-data1.png) 45px 8px no-repeat;}
+		.home-data li.icon2 div { background: url(html/images/home-index/icon-data2.png) 45px 8px no-repeat;}
+		.home-data li.icon3 div { background: url(html/images/home-index/icon-data3.png) 45px 8px no-repeat;}
+		.home-data li.icon4 div { background: url(html/images/home-index/icon-data4.png) 45px 8px no-repeat;}
+		.home-data li div h2 { display: inline-block; float: left; font-size: 44px; color: #1FC7FF; line-height: 52px; margin-right: 8px;}
+		.home-data li div span { display: inline-block; float: left; font-size: 18px; color: #FFFFFF; line-height: 78px;}
+		.home-data li p { text-align: center;}
+		.home-case { padding-bottom: 217px; width: 1200px; margin: 0 auto;}
+		.home-case .title { padding-bottom: 52px;}
+		.home-case .title h2,.home-news .title h2 { font-size: 28px; line-height: 28px; height: 28px; color: #CB5F5D; font-weight: normal; padding-bottom: 14px;}
+		.home-case .title p,.home-news .title p { font-family: HelveticaNeue; font-size: 18px; line-height: 18px; height: 18px; color: #D2D2D2;}
+		.home-case .content { background: url(html/images/home-index/case-bg.png) 20px 0 no-repeat; padding-left: 290px;}
+		.home-case .content ul { overflow: hidden;}
+		.home-case .content li { display: inline-block; float: left; margin-right: 56px; padding: 4px 0;}
+		.home-case .content li p { margin: 18px 0;}
+		.home-case .content li.last { margin: 0;}
+		.home-news { padding-bottom: 170px; width: 1200px; margin: 0 auto;}
+		.home-news .title { padding-bottom: 80px;}
+	</style>
 </head>
 <body onselectstart="return false">
-
-	<div id="main"></div>
-	
-<script  src="index.bundle.js" charset="utf-8"></script>
-
-    <script src="public/jquery-ui-1.8.22.custom.min.js"></script>
-    <script src="public/jquery.imagesloaded.min.js"></script>
-    <script src="public/video.js"></script>
-
-    <!-- BigVideo -->
-    <script src="public/bigvideo.js"></script>
-
-    <!-- Demo -->
-    <script>
-	    $(function() {
-            var BV = new $.BigVideo({useFlashForFirefox:false});
-			BV.init();
-			BV.show('images/bg.mp4',{ambient:true});
-	    });
-    </script>
-	
-	<script type="text/javascript" src="html/js/jquery.fullPage.min.js"></script>
-	<script>
-	
-	$(function(){
-		
-		var sHeight = $(window).height();
-		
-		if(sHeight>=880){
-			$('#pageContain').fullpage({
-				//sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', '#f90'],
-				'navigation': true,
-				scrollingSpeed:600,
-				afterLoad: function(anchorLink, index){
-					//console.log(index);
-					if(index>=2){
-						$('.home_logo').show();
-						$('.wrap').hide();
-						$('.nav_top').addClass('current');
-						$('#fp-nav').show();
-					}else{
-						$('#fp-nav').hide();
-						$('.home_logo').hide();
-						$('.wrap').show()
-						$('.nav_top').removeClass('current');
-					}
-				},
-				afterRender:function (){
-					$('#fp-nav').hide();
-				}
-			});
-		}
-		
-		
-		/*处理头部样式问题*/
-		$(window).scroll(function (){
-			var top = $(window).scrollTop();
-			if(top>880){
-				$('.nav_top').addClass('current');
-				$('.home_logo').show();
-				$('.wrap').hide();
-			}else{
-				$('.home_logo').hide();
-				$('.wrap').show()
-				$('.nav_top').removeClass('current');
-			}
-			
-		});
-		
-	});
-	
-	/*滚动吸顶控制
-	
-	jQuery.processControl = function (obj,callBack){
-		var companions = $(obj)[0];
-		if(!companions)return;
-		var distance = companions.getBoundingClientRect();
-		$(window).scroll(function (){
-			var top = $(window).scrollTop();
-			if(top*1>distance.top*1-$(obj).height()*1.8){
-				callBack();
-			}
-		});
-	}
-	*/
-	
-    </script>
-	
-			
+	<div class="header"></div>
+	<div class="wrap-mid">
+		<div class="banner"></div>
+		<div class="home-news">
+			<div class="title">
+				<h2>眸事资讯</h2>
+				<p>MS News</p>
+			</div>
+			<div class="content">
+				<div class="left">
+					<div class="slide-show"></div>
+					<div class="news-class"></div>
+				</div>
+				<div class="right">
+					<ul>
+						<li><a href="https://news.mshuoke.com/article/20170612135114718.html" target="_blank">
+							<img />
+							<p class="date"></p>
+							<h3></h3>
+							<p></p>
+						</a></li>
+						<li><a href="https://news.mshuoke.com/article/20170607135045099.html" target="_blank">
+							<img />
+							<p class="date"></p>
+							<h3></h3>
+							<p></p>
+						</a></li>
+						<li><a href="https://news.mshuoke.com/article/20170607134711508.html" target="_blank">
+							<img />
+							<p class="date"></p>
+							<h3></h3>
+							<p></p>
+						</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="home-case">
+			<div class="title">
+				<h2>成功案例</h2>
+				<p>Successful Cases</p>
+			</div>
+			<div class="content">
+				<ul>
+					<li>
+						<p><img src="html/images/home-index/case-logo1.png" onMouseOver="this.src='html/images/home-index/case-logo1-h.png'" onMouseOut="this.src='html/images/home-index/case-logo1.png'" alt="成功案例" /></p>
+						<p><img src="html/images/home-index/case-logo2.png" onMouseOver="this.src='html/images/home-index/case-logo2-h.png'" onMouseOut="this.src='html/images/home-index/case-logo2.png'" alt="成功案例" /></p>
+					</li>
+					<li>
+						<p><img src="html/images/home-index/case-logo3.png" onMouseOver="this.src='html/images/home-index/case-logo3-h.png'" onMouseOut="this.src='html/images/home-index/case-logo3.png'" alt="成功案例" /></p>
+						<p><img src="html/images/home-index/case-logo4.png" onMouseOver="this.src='html/images/home-index/case-logo4-h.png'" onMouseOut="this.src='html/images/home-index/case-logo4.png'" alt="成功案例" /></p>
+					</li>
+					<li>
+						<p><img src="html/images/home-index/case-logo5.png" onMouseOver="this.src='html/images/home-index/case-logo5-h.png'" onMouseOut="this.src='html/images/home-index/case-logo5.png'" alt="成功案例" /></p>
+						<p><img src="html/images/home-index/case-logo6.png" onMouseOver="this.src='html/images/home-index/case-logo6-h.png'" onMouseOut="this.src='html/images/home-index/case-logo6.png'" alt="成功案例" /></p>
+					</li>
+					<li>
+						<p><img src="html/images/home-index/case-logo7.png" onMouseOver="this.src='html/images/home-index/case-logo7-h.png'" onMouseOut="this.src='html/images/home-index/case-logo7.png'" alt="成功案例" /></p>
+						<p><img src="html/images/home-index/case-logo8.png" onMouseOver="this.src='html/images/home-index/case-logo8-h.png'" onMouseOut="this.src='html/images/home-index/case-logo8.png'" alt="成功案例" /></p>
+					</li>
+					<li class="last">
+						<p><img src="html/images/home-index/case-logo9.png" onMouseOver="this.src='html/images/home-index/case-logo9-h.png'" onMouseOut="this.src='html/images/home-index/case-logo9.png'" alt="成功案例" /></p>
+						<p><img src="html/images/home-index/case-logo10.png" onMouseOver="this.src='html/images/home-index/case-logo10-h.png'" onMouseOut="this.src='html/images/home-index/case-logo10.png'" alt="成功案例" /></p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="home-data">
+			<ul>
+				<li class="icon1">
+					<div>
+						<h2>20万</h2>
+						<span>条</span>
+					</div>
+					<p>月获客需求发布量</p>
+				</li>
+				<li class="icon2">
+					<div>
+						<h2>1.29亿</h2>
+						<span>元</span>
+					</div>
+					<p>累计获客需求发布金额</p>
+				</li>
+				<li class="icon3">
+					<div>
+						<h2>1200万</h2>
+						<span>条</span>
+					</div>
+					<p>月增精准移动用户</p>
+				</li>
+				<li class="last icon4">
+					<div>
+						<h2>1.33亿</h2>
+						<span>条</span>
+					</div>
+					<p>累计精准用户</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="footer"></div>
+<div class="aside_bar"></div>
+<script src="html/js/asideBar.js" type="text/babel"></script>
+<script src="html/js/home_index/header.js" type="text/babel"></script>
+<script src="html/js/home_index/footer.js" type="text/babel"></script>
 </body>
 </html>

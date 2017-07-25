@@ -197,6 +197,8 @@ class Mbkh extends React.Component {
     }
 
     componentDidMount() {
+    $("head").find("style[type='text/css']").eq(0).remove()
+        
         $(".zdy input").on("input", function () {
             $(".demend_right .target-population").text($(this).val());
         });

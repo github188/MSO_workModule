@@ -42,7 +42,6 @@ class Funnel extends React.Component{
 	changeargu(year,month){
 		this.getFunnelData(function (data){
 			if(data.data){
-				
 				this.setState({
 					releasenum:data.data.releasenum?data.data.releasenum:1,
 					applicationnum:data.data.applicationnum,
@@ -97,6 +96,21 @@ class Funnel extends React.Component{
 		})).then(function (data){
 			if(data.msg=='success'){
 				//debugger;
+				var backData={
+					applicationnum:"0.71",
+					paymentnum:"0.41",
+					releasenum:"1.0",
+					tj_num:"0.11"
+				}
+				var num=0;
+				for(var k in data.data){
+					if(data.data[k]){
+						num++
+					}
+				}
+				if(num>3){
+					data.data=backData;
+				}
 				callBack(data);
 			}
 		}).fail(function (data){

@@ -15,6 +15,11 @@ class Header extends React.Component {
 			var urlLink = $(this).parent().attr('href');
 			if (urlPath == urlLink) {
 				$(this).addClass("active").parent().siblings().find("li").removeClass("active");
+				return false;
+			}
+			if (urlPath == "") {
+				$(this).addClass("active").parent().siblings().find("li").removeClass("active");
+				return false;
 			}
 		});
 		$('a.logout').click(function () {
@@ -106,26 +111,21 @@ class Header extends React.Component {
 				linkCustomer = "html/customerMyInfo.html";
 			}
 			return (
-				<div>
-					<div className="nav_top">
-						<div>
-							<div className="c_home_logo"><a href="//www.mshuoke.com"><img
-								src="/images/c_index_logo.png" title="MSO-眸事网，国内专业营销服务外包平台"
-								alt="logo"/></a></div>
-							<ul>
-								<a href="//www.mshuoke.com"><li className="menu1">首页<i></i></li></a>
-								<a href="//www.mshuoke.com/headline.html"><li className="menu2">眸事资讯<i></i></li></a>
-								<a href="//www.mshuoke.com/production.html"><li className="menu3">产品<i></i></li></a>
-								<a href="//www.mshuoke.com/help.html"><li className="menu4">帮助中心<i></i></li></a>
-								<a href="//vendor.mshuoke.com/" target="_blank"><li className="menu5">服务商<i></i></li></a>
-							</ul>
-							<div className="login_right">
-								<a href="html/customerMyInfo.html" className="MyInfo">{showName}</a><a
-								className="logout" href="javascript:;">安全退出</a>
-							</div>
-						</div>
+				<div className="nav_top">
+					<div className="home_logo">
+						<a href="//www.mshuoke.com"><img src="//www.mshuoke.com/html/images/public/c_index_logo.png" title="MSO-眸事网，国内专业营销服务外包平台" alt="logo" /></a>
+					</div>                
+					<ul>
+						<li><a className="menu1" href="//www.mshuoke.com">首页</a></li>
+						<li><a className="menu2" href="//www.mshuoke.com/headline.html">眸事资讯</a></li>
+						<li><a className="menu3" href="//www.mshuoke.com/production.html">产品</a></li>
+						<li><a className="menu4" href="//www.mshuoke.com/help.html">帮助中心</a></li>
+					</ul>
+					<div className="login_right">
+						<a href="html/customerMyInfo.html" className="MyInfo">{showName}</a>
+						<a className="logout" href="javascript:;">安全退出</a>
 					</div>
-				</div>
+                </div>
 			)
 		} else if (jfutype == 2) {
 			var homeSupplier = "";
@@ -143,48 +143,39 @@ class Header extends React.Component {
                 wordSupplier = "竞拍订单";
 			}
 			return (
-				<div>
-					<div className="nav_top">
-						<div>
-							<div className="c_home_logo"><a href="//www.mshuoke.com"><img
-								src="/images/c_index_logo.png" title="MSO-眸事网，国内专业营销服务外包平台"
-								alt="logo"/></a></div>
-							<ul>
-								<a href="//www.mshuoke.com"><li className="menu1">首页<i></i></li></a>
-								<a href="//www.mshuoke.com/headline.html"><li className="menu2">眸事资讯<i></i></li></a>
-								<a href="//www.mshuoke.com/production.html"><li className="menu3">产品<i></i></li></a>
-								<a href="//www.mshuoke.com/help.html"><li>帮助中心<i className="menu4"></i></li></a>
-								<a href="//vendor.mshuoke.com/" target="_blank"><li className="menu5">服务商<i></i></li></a>
-							</ul>
-							<div className="login_right">
-								<a href={homeSupplier} className="MyInfo">{showName}</a><a className="logout" href="javascript:;">安全退出</a>
-							</div>
-						</div>
+				<div className="nav_top">
+					<div className="home_logo">
+						<a href="//www.mshuoke.com"><img src="//www.mshuoke.com/html/images/public/c_index_logo.png" title="MSO-眸事网，国内专业营销服务外包平台" alt="logo" /></a>
+					</div>                
+					<ul>
+						<li><a className="menu1" href="//www.mshuoke.com">首页</a></li>
+						<li><a className="menu2" href="//www.mshuoke.com/headline.html">眸事资讯</a></li>
+						<li><a className="menu3" href="//www.mshuoke.com/production.html">产品</a></li>
+						<li><a className="menu4" href="//www.mshuoke.com/help.html">帮助中心</a></li>
+					</ul>
+					<div className="login_right">
+						<a href={linkSupplier} className="MyInfo">{showName}</a>
+						<a className="logout" href="javascript:;">安全退出</a>
 					</div>
-				</div>
+                </div>
 			)
 		} else {
 			return (
-				<div>
-					<div className="nav_top">
-						<div>
-							<div className="c_home_logo"><a href="//www.mshuoke.com"><img
-								src="/images/c_index_logo.png" title="MSO-眸事网，国内专业营销服务外包平台"
-								alt="logo"/></a></div>
-							<ul>
-								<a href="//www.mshuoke.com"><li className="menu1">首页<i></i></li></a>
-								<a href="//www.mshuoke.com/headline.html"><li className="menu2">眸事资讯<i></i></li></a>
-								<a href="//www.mshuoke.com/production.html"><li className="menu3">产品<i></i></li></a>
-								<a href="//www.mshuoke.com/help.html"><li className="menu4">帮助中心<i></i></li></a>
-								<a href="//vendor.mshuoke.com/" target="_blank"><li className="menu5">服务商<i></i></li></a>
-							</ul>
-							<div className="c_right">
-								<a href="//www.mshuoke.com/login.html">登录</a>
-								<a href="//www.mshuoke.com/register-customer.html">注册</a>
-							</div>
-						</div>
+				<div className="nav_top">
+					<div className="home_logo">
+						<a href="//www.mshuoke.com"><img src="//www.mshuoke.com/html/images/public/c_index_logo.png" title="MSO-眸事网，国内专业营销服务外包平台" alt="logo" /></a>
+					</div>                
+					<ul>
+						<li><a className="menu1" href="//www.mshuoke.com">首页</a></li>
+						<li><a className="menu2" href="//www.mshuoke.com/headline.html">眸事资讯</a></li>
+						<li><a className="menu3" href="//www.mshuoke.com/production.html">产品</a></li>
+						<li><a className="menu4" href="//www.mshuoke.com/help.html">帮助中心</a></li>
+					</ul>
+					<div className="login_right">
+						<a className="home-login" href="//www.mshuoke.com/login.html">登录</a>
+						<a className="home-register" href="//www.mshuoke.com/register-customer.html">注册</a>
 					</div>
-				</div>
+                </div>
 			)
 		}
 	}
