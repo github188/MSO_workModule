@@ -84,9 +84,9 @@ class Echarts extends React.Component {
             var reportDemandList = result.data;
             [reportDemandList].map(function(data, index) {
                 arr.push(data.releasenum);
-                dayArr.push(data.createTime.substr(data.createTime.length - 5)); //时间
+               
+                 data.createTime? dayArr.push(data.createTime.substr(data.createTime.length - 5)):""; //时间
             });
-
             var releasenumSum = result.data.unfinishNum * 1 + result.data.finishNum * 1 > 0 ? result.data.unfinishNum * 1 + result.data.finishNum * 1 : 1;
             this.setState({
                 releasenum: arr,
