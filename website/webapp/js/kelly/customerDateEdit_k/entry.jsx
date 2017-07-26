@@ -1115,13 +1115,13 @@ class PreviewRight extends React.Component {
             if ($("input").hasClass("error") || $("textarea").hasClass("error") || $("input.form_date").val() == "") {
                 //alert(1);addDemand();
             } else {
-                addDemand(1,createTime);
+                addDemand(1,createTime,file1,file2,file3,file4);
             }
         });
         $("button.btn_cg").click(function () {
             $(".loading_cover").show();
             sessionStorage.setItem("fdstate", 0);
-            addDemand(0,createTime);
+            addDemand(0,createTime,file1,file2,file3,file4);
         });
     }
 
