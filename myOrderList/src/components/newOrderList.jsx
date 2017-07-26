@@ -150,7 +150,7 @@ class OrderList extends Component {
     /**
      * @param jfuid   用户id
      * @param state   状态  1-待领取 3-已放弃 4-已取消    2-已领取显示5-进行中 6-暂停 7-结算中 8-已完成 9-全部
-     * @param page    页数，默认从0开始  test jfuid 20170718044142856
+     * @param page    页数，默认从0开始  test jfuid 20170316060326136
      * @param size    每页的数量
      */
     getData(jfuid = (this.state.jfuid || "")) {
@@ -173,7 +173,6 @@ class OrderList extends Component {
     }
 
     updateData(result = []) {
-        console.log(result);
         var data = result.data || [];
         var totalOrder = {};
         totalOrder.one = [];
@@ -760,8 +759,8 @@ class Detail extends Component {
                         </li>
                       <li>
                             <label>订单服务费：</label>
-                            <span>{this.state.serviceCharge == "0" ? "免订单服务费" : ("¥" + this.state.serviceCharge).indexOf(".") == "-1" ? ("¥" + this.state.serviceCharge + ".00") : ("¥" + this.state.serviceCharge)}
-                                <Tip hide={this.state.serviceCharge == "0" ? true : false}
+                            <span>{this.state.serviceCharge?(("¥" + this.state.serviceCharge).indexOf(".") == "-1" ? ("¥" + this.state.serviceCharge + ".00") : ("¥" + this.state.serviceCharge)):"免订单服务费"}
+                                <Tip hide={this.state.serviceCharge? false : true}
             title={"根据订单数量，每一条收取1元钱的订单服务费"} pos={"bottomLeft"}/>
                             </span>
                         </li>
