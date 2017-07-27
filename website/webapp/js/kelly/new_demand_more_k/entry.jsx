@@ -821,9 +821,6 @@ class AreaAndRequirement extends React.Component {
             var oValue = parseInt(target.val());
             //debugger;
             var indexId = target.parents('.areaList').attr('data-id');
-            //console.log(indexId);
-            //console.log(oValue);
-            //console.log(isNaN(oValue));
             /*分成数量和单价*/
             if (target[0].className.indexOf('only') > -1) {
                 /*数量*/
@@ -837,7 +834,7 @@ class AreaAndRequirement extends React.Component {
                 var oValue = target.val();
                 var reg = /^\d+(\.\d{0,2})?$/;
                 if ((oValue * 1 + '') == 'NaN') {
-                    target.val('0.00');
+                    target.val('0');
                 } else if (!reg.test(oValue)) {
                     if (oValue == "") {
                         target.val('');

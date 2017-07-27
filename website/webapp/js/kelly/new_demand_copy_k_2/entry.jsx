@@ -1,8 +1,9 @@
 require('./more.css');
-var createTime,industryId;
-import {addDemandSubmit, addDemand} from "./post_copy.js";
+var createTime,
+    industryId;
+import { addDemandSubmit, addDemand } from "./post_copy.js";
 
-import {Slider} from 'antd';
+import { Slider } from 'antd';
 
 class Demo extends React.Component {
     state = {
@@ -11,7 +12,9 @@ class Demo extends React.Component {
 
     };
     handleDisabledChange = (disabled) => {
-        this.setState({disabled});
+        this.setState({
+            disabled
+        });
     }
 
     onAfterChange(value) {
@@ -21,11 +24,17 @@ class Demo extends React.Component {
     componentDidMount() {
         //console.log($('.ant-slider-handle'));
 
-        $('.ant-slider-handle').mouseout(function () {
-            $('.ant-tooltip-placement-top').css({left: '-100px', top: '-100px'});
+        $('.ant-slider-handle').mouseout(function() {
+            $('.ant-tooltip-placement-top').css({
+                left: '-100px',
+                top: '-100px'
+            });
         });
-        $('.ant-slider-handle').mouseover(function (ev) {
-            $('.ant-tooltip-placement-top').css({left: '-100px', top: '-100px'});
+        $('.ant-slider-handle').mouseover(function(ev) {
+            $('.ant-tooltip-placement-top').css({
+                left: '-100px',
+                top: '-100px'
+            });
             var targat = ev.currentTarget;
             $(targat).show();
         });
@@ -37,8 +46,8 @@ class Demo extends React.Component {
         return (
             <div>
                 <Slider range value={[this.props.rangeArr[0], this.props.rangeArr[1]]}
-                        onAfterChange={this.onAfterChange} onChange={ this.props.change } min={3} max={55}
-                        disabled={disabled}/>
+            onAfterChange={this.onAfterChange} onChange={ this.props.change } min={3} max={55}
+            disabled={disabled}/>
             </div>
         );
     }
@@ -141,23 +150,23 @@ function checkage(mark) {
 }
 React.rootEl = $('#new_demand div.demend_left');
 
-class Yewu extends React.Component{
-    constructor(...prop){
+class Yewu extends React.Component {
+    constructor(...prop) {
         super(...prop)
-        this.state={
+        this.state = {
             servicetype: ["", "销售线索挖掘", "数据加工", "人工客服"]
         }
     }
 
-    componentDidMount(){
-        $(".bubble-hover").click(function () {
+    componentDidMount() {
+        $(".bubble-hover").click(function() {
             $(this).next().css("display", "inline-block");
-        }).mouseout(function () {
+        }).mouseout(function() {
             $(this).next().hide();
         });
     }
 
-    render(){
+    render() {
         var data = this.props.data;
         return (
             <table>
@@ -165,7 +174,7 @@ class Yewu extends React.Component{
                 <tr>
                     <td>业务类型:</td>
                     <td><span
-                        className="business-types">{isNull(this.props.data.servicetype) ? "" : this.state.servicetype[this.props.data.servicetype]}</span>
+            className="business-types">{isNull(this.props.data.servicetype) ? "" : this.state.servicetype[this.props.data.servicetype]}</span>
                         <i className="bubble-hover">?</i>
                         <div className="bubble">对用户行为和特征进行分析，通过有效触达，挖掘意向客户</div>
                     </td>
@@ -189,7 +198,7 @@ class Mbkh extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            category2:["","电话营销","网络营销","地推推广"],
+            category2: ["", "电话营销", "网络营销", "地推推广"],
             range: [8, 38]
         }
         this.change = this.change.bind(this);
@@ -197,17 +206,17 @@ class Mbkh extends React.Component {
     }
 
     componentDidMount() {
-    $("head").find("style[type='text/css']").eq(0).remove()
-        
-        $(".zdy input").on("input", function () {
+        $("head").find("style[type='text/css']").eq(0).remove()
+
+        $(".zdy input").on("input", function() {
             $(".demend_right .target-population").text($(this).val());
         });
 
-        $("input.startAge").blur(function () {
+        $("input.startAge").blur(function() {
             checkage('start');
         });
 
-        $("input.endAge").blur(function () {
+        $("input.endAge").blur(function() {
             checkage();
         });
         /*
@@ -258,26 +267,34 @@ class Mbkh extends React.Component {
          $(this).parent().find("p.error").hide();
          });
          */
-        this.rootEl.on('input', '.startAge', function (ev) {
+        this.rootEl.on('input', '.startAge', function(ev) {
             var target = ev.currentTarget;
-            this.setState({range: [$(target).val() * 1, $('.endAge').val() * 1]});
+            this.setState({
+                range: [$(target).val() * 1, $('.endAge').val() * 1]
+            });
         }.bind(this));
 
-        this.rootEl.on('input', '.endAge', function (ev) {
+        this.rootEl.on('input', '.endAge', function(ev) {
             var target = ev.currentTarget;
-            this.setState({range: [$('.startAge').val() * 1, $(target).val() * 1]});
+            this.setState({
+                range: [$('.startAge').val() * 1, $(target).val() * 1]
+            });
         }.bind(this));
 
 
         /*年龄控件回填*/
         var data = this.props.data;
         if (data.beginage || data.endage) {
-            this.setState({range: [data.beginage, data.endage]});
+            this.setState({
+                range: [data.beginage, data.endage]
+            });
         }
     }
 
     change(value) {
-        this.setState({range: [value[0], value[1]]});
+        this.setState({
+            range: [value[0], value[1]]
+        });
 
         $('.startAge').val(value[0]);
         $('.endAge').val(value[1]);
@@ -285,7 +302,7 @@ class Mbkh extends React.Component {
 
     render() {
         var data = this.props.data;
-        var _this=this;
+        var _this = this;
         return (
             <table>
                 <tbody>
@@ -293,44 +310,49 @@ class Mbkh extends React.Component {
                     <td>目标人群：</td>
                     <td>
                         <select className="ui-select2 target-population" name="drop" required>
-                            {/*<option ></option>*/}
-                            {target_population.map(function (result, index) {
-                                if (result == data.targethumen) {
-                                    if (result == "自定义") {
-                                        $(".zdy").show();
-                                    }
-                                    return <option key={ index } selected>{result}</option>
-                                } else {
-                                    return <option key={ index }>{result}</option>
-                                }
-                            })}
+                            { /*<option ></option>*/ }
+                            {target_population.map(function(result, index) {
+                if (result == data.targethumen) {
+                    if (result == "自定义") {
+                        $(".zdy").show();
+                    }
+                    return <option key={ index } selected>{result}</option>
+                } else {
+                    return <option key={ index }>{result}</option>
+                }
+            })}
                         </select>
                     </td>
                     <td className="zdy"><input type="text" placeholder="请输入自定义人群（12个字以内）"
-                                               defaultValue={data.targethumen} style={{"width": "234px"}}/></td>
+            defaultValue={data.targethumen} style={{
+                "width": "234px"
+            }}/></td>
                 </tr>
                 <tr>
                     <td>对象年龄：</td>
                     <td><Demo change={this.change} rangeArr={ this.state.range }/></td>
                     <td className="age">
                         <input type="number" required defaultValue={data.beginage} min="0" max="120"
-                               className="startAge"/> - <input type="number" required min="0" max="120"
-                                                               defaultValue={data.endage} className="endAge"/><span
-                        style={{"marginLeft": "12px", "color": "#999"}}>周岁</span>
+            className="startAge"/> - <input type="number" required min="0" max="120"
+            defaultValue={data.endage} className="endAge"/><span
+            style={{
+                "marginLeft": "12px",
+                "color": "#999"
+            }}>周岁</span>
                         <p className="error task-age"></p></td>
                 </tr>
                 <tr>
                     <td>获客渠道：</td>
                     <td className="hkqd">
                         <select className="ui-select3 channel" name="drop" required>
-                            {/*<option></option>*/}
-                            {channel.map(function (result, index) {
-                                if (result != _this.state.category2[data.category2]) {
-                                    return <option key={ index }>{result}</option>
-                                } else {
-                                    return <option key={ index } selected>{result}</option>
-                                }
-                            })}
+                            { /*<option></option>*/ }
+                            {channel.map(function(result, index) {
+                if (result != _this.state.category2[data.category2]) {
+                    return <option key={ index }>{result}</option>
+                } else {
+                    return <option key={ index } selected>{result}</option>
+                }
+            })}
                         </select>
                     </td>
                 </tr>
@@ -342,7 +364,7 @@ class Mbkh extends React.Component {
 
 
 var Jbxx = React.createClass({
-    componentDidMount: function () {
+    componentDidMount: function() {
         $("head").find("style[type='text/css']").eq(0).remove()
         var newDate = new Date();
         var t = newDate.toJSON();
@@ -357,7 +379,7 @@ var Jbxx = React.createClass({
             forceParse: 0,
             format: 'yyyy-mm-dd',
             startDate: new Date(t),
-        }).on("click", function (ev) {
+        }).on("click", function(ev) {
             $(".startDate").datetimepicker("setEndDate", $(".endDate").val());
         });
         $(".endDate").datetimepicker({
@@ -371,13 +393,13 @@ var Jbxx = React.createClass({
             forceParse: 0,
             format: 'yyyy-mm-dd',
             startDate: new Date(t),
-        }).on("click", function (ev) {
+        }).on("click", function(ev) {
             $(".endDate").datetimepicker("setStartDate", $(".startDate").val());
         })
-        $("input[name=isFZ]").change(function () {
+        $("input[name=isFZ]").change(function() {
             if ($(this).parent().text() == "是") {
                 $(".radio_fz").show();
-                $("input.pleader").blur(function () {
+                $("input.pleader").blur(function() {
                     if ($(this).val() == '') {
                         $(this).addClass("error");
                         $(this).parent().next().text("请填写负责人姓名").show();
@@ -387,11 +409,11 @@ var Jbxx = React.createClass({
                         $(this).parent().next().hide();
                     }
                 });
-                $("input.pleader").focus(function () {
+                $("input.pleader").focus(function() {
                     $(this).removeClass("error");
                     $(this).parent().next().hide();
                 });
-                $("input.pphone").blur(function () {
+                $("input.pphone").blur(function() {
                     if ($(this).val() == '') {
                         $(this).addClass("error");
                         $(this).parent().next().text("请填写负责人电话").show();
@@ -401,7 +423,7 @@ var Jbxx = React.createClass({
                         $(this).parent().next().hide();
                     }
                 });
-                $("input.pphone").focus(function () {
+                $("input.pphone").focus(function() {
                     $(this).removeClass("error");
                     $(this).parent().next().hide();
                 });
@@ -410,17 +432,17 @@ var Jbxx = React.createClass({
                 $(".radio_fz input").removeClass("error");
             }
         });
-        $("input[name=isFJ]").change(function () {
+        $("input[name=isFJ]").change(function() {
             if ($(this).parent().text() == "是") {
                 $(".radio_fj").show();
             } else {
                 $(".radio_fj").hide();
             }
         });
-        $("input.startDate").change(function () {
+        $("input.startDate").change(function() {
             $(".package li span.startDate").text($(this).val());
         });
-        $("input.startDate").blur(function () {
+        $("input.startDate").blur(function() {
             if ($(this).val() == '') {
                 $(this).addClass("error");
                 $(this).parent().find("p.error").text("请填写开始日期").show();
@@ -430,19 +452,19 @@ var Jbxx = React.createClass({
                 $(this).parent().find("p.error").hide();
             }
         });
-        $("input.startDate").focus(function () {
+        $("input.startDate").focus(function() {
             $(this).removeClass("error");
             $(this).parent().find("p.error").hide();
         });
-        $("table.table-condensed").click(function () {
+        $("table.table-condensed").click(function() {
             //alert(1);
             $("input.startDate").parent().find("p.error").hide();
             $("input.startDate").removeClass("error");
         });
-        $("input.endDate").change(function () {
+        $("input.endDate").change(function() {
             $(".package li span.endDate").text($(this).val());
         });
-        $("input.endDate").blur(function () {
+        $("input.endDate").blur(function() {
             if ($(this).val() == '') {
                 $(this).addClass("error");
                 $(this).parent().find("p.error").text("请填写结束日期").show();
@@ -452,11 +474,11 @@ var Jbxx = React.createClass({
                 $(this).parent().find("p.error").hide();
             }
         });
-        $("input.endDate").focus(function () {
+        $("input.endDate").focus(function() {
             $(this).removeClass("error");
             $(this).parent().find("p.error").hide();
         });
-        $("table.table-condensed").click(function () {
+        $("table.table-condensed").click(function() {
             $("input.endDate").parent().find("p.error").hide();
             $("input.endDate").removeClass("error");
         });
@@ -471,58 +493,66 @@ var Jbxx = React.createClass({
 
             filters: {
                 mime_types: [ //只允许上传图片和zip,rar文件
-                    {extensions: "ppt,pptx,pdf,doc,docx"}
+                    {
+                        extensions: "ppt,pptx,pdf,doc,docx"
+                    }
                 ],
                 max_file_size: '100mb', //最大只能上传10mb的文件
                 prevent_duplicates: true //不允许选取重复文件
             },
 
             init: {
-                PostInit: function () {
+                PostInit: function() {
                     $('.ossfile')[0].innerHTML = '';
-                    document.getElementById('postfiles').onclick = function () {
+                    document.getElementById('postfiles').onclick = function() {
                         set_upload_param(uploader, '', false, 1);
                         return false;
                     };
                 },
 
-                FilesAdded: function (up, files) {
-                    plupload.each(files, function (file) {
+                FilesAdded: function(up, files) {
+                    plupload.each(files, function(file) {
                         if (up.files.length > 1) {
                             up.removeFile(up.files[0]);
                         }
-                        $('.ossfile').css({"text-align": "left"});
+                        $('.ossfile').css({
+                            "text-align": "left"
+                        });
                         $('#postfiles').html("开始上传");
                         $('.ossfile')[0].innerHTML = '<div id="' + file.id + '"><span class="file_name">' + (file.name.substr(0, 6) + /\.[^\.]+/.exec(file.name)) + ' (' + plupload.formatSize(file.size) + ')'
                             + '<span class="bfb"></span></span><i class="file_close"></i><div class="progress"><div class="progress-bar" style="width: 0%"><b></b></div></div>'
                             + '</div>';
-                        $(".ossfile .file_close").click(function () {
+                        $(".ossfile .file_close").click(function() {
                             up.removeFile(up.files[0]);
                             $('.ossfile')[0].innerHTML = '';
-                            $('.ossfile').css({"text-align": "left"});
+                            $('.ossfile').css({
+                                "text-align": "left"
+                            });
                             $('#selectfiles').html("重新上传");
                             $('#postfiles').html("开始上传");
                         });
                     });
                 },
 
-                BeforeUpload: function (up, file) {
+                BeforeUpload: function(up, file) {
                     check_object_radio();
                     set_upload_param(up, file.name, true, 1);
                 },
 
-                UploadProgress: function (up, file) {
+                UploadProgress: function(up, file) {
                     var d = document.getElementById(file.id);
                     var prog = d.getElementsByTagName('div')[0];
                     var progBar = prog.getElementsByTagName('div')[0]
-                    $('.ossfile').css({"text-align": "center"});
+                    $('.ossfile').css({
+                        "text-align": "center"
+                    });
                     $('#postfiles').html("正在上传...");
                     progBar.style.width = file.percent + '%';
                     $(d).find("span.bfb").html("..." + file.percent + "%");
                     progBar.setAttribute('aria-valuenow', file.percent);
                 },
 
-                FileUploaded: function (up, file, info) {
+                FileUploaded: function(up, file, info) {
                     if (info.status == 200) {
                         //document.getElementById(file.id).getElementsByTagName('b')[0].innerHTML = 'upload to oss success, object name:' + get_uploaded_object_name(file.name);
                         file1 = f1;
@@ -531,48 +561,44 @@ var Jbxx = React.createClass({
                         $('.ossfile .progress-bar').css("width", "0%");
                         $('.ossfile .progress-bar')[0].setAttribute('aria-valuenow', 0);
                         $('.ossfile').find("span.bfb").html("");
-                    }
-                    else {
+                    } else {
                         document.getElementById(file.id).getElementsByTagName('b')[0].innerHTML = info.response;
                     }
                 },
 
-                Error: function (up, err) {
+                Error: function(up, err) {
                     if (err.code == -600) {
                         alert("\n选择的文件太大了,可以根据应用情况，在upload.js 设置一下上传的最大大小");
-                        //document.getElementById('console').appendChild(document.createTextNode("\n选择的文件太大了,可以根据应用情况，在upload.js 设置一下上传的最大大小"));
-                    }
-                    else if (err.code == -601) {
+                    //document.getElementById('console').appendChild(document.createTextNode("\n选择的文件太大了,可以根据应用情况，在upload.js 设置一下上传的最大大小"));
+                    } else if (err.code == -601) {
                         alert("\n选择的文件后缀不对,可以根据应用情况，在upload.js进行设置可允许的上传文件类型");
-                        //document.getElementById('console').appendChild(document.createTextNode("\n选择的文件后缀不对,可以根据应用情况，在upload.js进行设置可允许的上传文件类型"));
-                    }
-                    else if (err.code == -602) {
+                    //document.getElementById('console').appendChild(document.createTextNode("\n选择的文件后缀不对,可以根据应用情况，在upload.js进行设置可允许的上传文件类型"));
+                    } else if (err.code == -602) {
                         alert("\n这个文件已经上传过一遍了");
-                        //document.getElementById('console').appendChild(document.createTextNode("\n这个文件已经上传过一遍了"));
-                    }
-                    else {
+                    //document.getElementById('console').appendChild(document.createTextNode("\n这个文件已经上传过一遍了"));
+                    } else {
                         //alert("\nError xml:" + err.response);
                         alert("拒绝访问。请重新上传!");
                         $(".ossfile .file_close").click();
-                        //document.getElementById('console').appendChild(document.createTextNode("\nError xml:" + err.response));
+                    //document.getElementById('console').appendChild(document.createTextNode("\nError xml:" + err.response));
                     }
                 }
             }
         });
         uploader.init();
         //绑定文件添加进队列事件
-        uploader.bind('FilesAdded', function (uploader, files) {
+        uploader.bind('FilesAdded', function(uploader, files) {
             for (var i = 0, len = files.length; i < len; i++) {
                 var file_name = files[i].name;
                 //构造html来更新UI
-                !function (i) {
-                    previewImage(files[i], function (imgsrc) {
+                !function(i) {
+                    previewImage(files[i], function(imgsrc) {
                         $('.file-list img').attr('src', imgsrc);
                     })
                 }(i);
             }
         });
-        $("input.demand-name").blur(function () {
+        $("input.demand-name").blur(function() {
             if ($(this).val() == '') {
                 $(this).addClass("error");
                 $(this).parent().find("p.error").show();
@@ -582,11 +608,11 @@ var Jbxx = React.createClass({
                 $(this).parent().find("p.error").hide();
             }
         });
-        $("input.demand-name").focus(function () {
+        $("input.demand-name").focus(function() {
             $(this).removeClass("error");
             $(this).parent().find("p.error").hide();
         });
-        $("textarea.descriptionDemand").blur(function () {
+        $("textarea.descriptionDemand").blur(function() {
             if ($(this).val() == '') {
                 $(this).addClass("error");
                 $(this).parent().find("p.error").show();
@@ -596,11 +622,11 @@ var Jbxx = React.createClass({
                 $(this).parent().find("p.error").hide();
             }
         });
-        $("textarea.descriptionDemand").focus(function () {
+        $("textarea.descriptionDemand").focus(function() {
             $(this).removeClass("error");
             $(this).parent().find("p.error").hide();
         });
-        $("input.pro-name").blur(function () {
+        $("input.pro-name").blur(function() {
             if ($(this).val() == '') {
                 $(this).addClass("error");
                 $(this).parent().find("p.error").show();
@@ -610,11 +636,11 @@ var Jbxx = React.createClass({
                 $(this).parent().find("p.error").hide();
             }
         });
-        $("input.pro-name").focus(function () {
+        $("input.pro-name").focus(function() {
             $(this).removeClass("error");
             $(this).parent().find("p.error").hide();
         });
-        $("textarea.introductionPro").blur(function () {
+        $("textarea.introductionPro").blur(function() {
             if ($(this).val() == '') {
                 $(this).addClass("error");
                 $(this).parent().find("p.error").show();
@@ -624,30 +650,33 @@ var Jbxx = React.createClass({
                 $(this).parent().find("p.error").hide();
             }
         });
-        $("textarea.introductionPro").focus(function () {
+        $("textarea.introductionPro").focus(function() {
             $(this).removeClass("error");
             $(this).parent().find("p.error").hide();
         });
 
     },
-    handleInput: function () {
+    handleInput: function() {
         $(".introductionPro").next().find('.length>span.size').html(150 - $(".introductionPro").val().length);
         $(".descriptionDemand").next().find('.length>span.size2').html(150 - $(".descriptionDemand").val().length);
     },
-    render: function () {
+    render: function() {
         return (
             <table>
                 <tbody>
                 <tr>
                     <td>需求名称：</td>
                     <td><input type="text" className="demand-name" maxLength="12" required
-                               defaultValue={this.props.data.demandname}/><span className="info">为您的需求命名，限制 12 个字</span>
+            defaultValue={this.props.data.demandname}/><span className="info">为您的需求命名，限制 12 个字</span>
                         <p className="error">请填写需求名称</p></td>
                 </tr>
                 <tr>
-                    <td style={{"verticalAlign": "top", "lineHeight": "30px"}}>需求描述：</td>
+                    <td style={{
+                "verticalAlign": "top",
+                "lineHeight": "30px"
+            }}>需求描述：</td>
                     <td><textarea maxLength="150" className="descriptionDemand" required
-                                  onInput={this.handleInput.bind(this)}>{this.props.data.demanddescription}</textarea>
+            onInput={this.handleInput.bind(this)}>{this.props.data.demanddescription}</textarea>
                         <p><span className="length">还可以输入 <span className="size2">150</span> 个字</span></p>
                         <p className="error">请填写需求描述</p></td>
                 </tr>
@@ -655,20 +684,23 @@ var Jbxx = React.createClass({
                     <td>产品名称：</td>
                     <td>
                         <input type="text" maxLength="12" defaultValue={this.props.data.productname}
-                               className="pro-name" name="proname" autoComplete="on"/><span className="info">您的产品或服务名，限制 12 个字</span>
+            className="pro-name" name="proname" autoComplete="on"/><span className="info">您的产品或服务名，限制 12 个字</span>
                         <p className="error">请填写产品名称</p>
                     </td>
                 </tr>
                 <tr>
-                    <td style={{"verticalAlign": "top", "lineHeight": "30px"}}>产品介绍：</td>
+                    <td style={{
+                "verticalAlign": "top",
+                "lineHeight": "30px"
+            }}>产品介绍：</td>
                     <td>
                         <textarea maxLength="150" className="introductionPro" required
-                                  defaultValue={this.props.data.demand} placeholder="产品或服务介绍，可上传附件，可填入网站链接"
-                                  onInput={this.handleInput.bind(this)}></textarea>
+            defaultValue={this.props.data.demand} placeholder="产品或服务介绍，可上传附件，可填入网站链接"
+            onInput={this.handleInput.bind(this)}></textarea>
                         <p>是否上传产品介绍附件：<label><input type="radio" name="isFJ"/>是</label><label><input type="radio"
-                                                                                                     name="isFJ"
-                                                                                                     defaultChecked/>否</label><span
-                            className="length">还可以输入 <span className="size">150</span> 个字</span></p>
+            name="isFJ"
+            defaultChecked/>否</label><span
+            className="length">还可以输入 <span className="size">150</span> 个字</span></p>
                         <p className="error">请填写产品介绍</p>
                         <div className="radio_fj">
                             <p>附件支持ppt、pdf、doc等格式文件，大小不可超过100MB</p>
@@ -683,28 +715,46 @@ var Jbxx = React.createClass({
                 <tr>
                     <td><span>开始日期:</span></td>
                     <td><input type="text" className="form_date startDate" required autoComplete="off"
-                               onChange={this.handleInput.bind(this)}/><i
-                        className="date_icon"></i><span>结束日期:</span><input type="text" className="form_date endDate"
-                                                                           autoComplete="off" required
-                                                                           onChange={this.handleInput.bind(this)}/><i
-                        className="date_icon"></i>
-                        <p className="error" style={{"left": "0", "top": "33px"}}></p></td>
+            onChange={this.handleInput.bind(this)}/><i
+            className="date_icon"></i><span>结束日期:</span><input type="text" className="form_date endDate"
+            autoComplete="off" required
+            onChange={this.handleInput.bind(this)}/><i
+            className="date_icon"></i>
+                        <p className="error" style={{
+                "left": "0",
+                "top": "33px"
+            }}></p></td>
                 </tr>
                 <tr>
-                    <td style={{"verticalAlign": "top", "lineHeight": "30px"}}>项目负责人：</td>
+                    <td style={{
+                "verticalAlign": "top",
+                "lineHeight": "30px"
+            }}>项目负责人：</td>
                     <td>
-                        <p style={{"marginBottom": "20px"}}>是否需要其他人负责此需求：<label><input type="radio" name="isFZ"
-                                                                                       defaultChecked={!(isNull(this.props.data.pleader) && isNull(this.props.data.pphone))}/>是</label><label><input
-                            type="radio" name="isFZ"
-                            defaultChecked={isNull(this.props.data.pleader) && isNull(this.props.data.pphone)}/>否</label>
+                        <p style={{
+                "marginBottom": "20px"
+            }}>是否需要其他人负责此需求：<label><input type="radio" name="isFZ"
+            defaultChecked={!(isNull(this.props.data.pleader) && isNull(this.props.data.pphone))}/>是</label><label><input
+            type="radio" name="isFZ"
+            defaultChecked={isNull(this.props.data.pleader) && isNull(this.props.data.pphone)}/>否</label>
                         </p>
                         <p className="radio_fz"
-                           style={isNull(this.props.data.pleader) && isNull(this.props.data.pphone) ? {"display": "none"} : {"display": "block"}}>
-                            <span>负责人姓名：</span><input type="text" style={{"width": "162px"}}
-                                                      defaultValue={this.props.data.pleader} className="pleader"/><span
-                            style={{"marginLeft": "34px"}}>负责人电话：</span><input type="text" style={{"width": "162px"}}
-                                                                               defaultValue={this.props.data.pphone}
-                                                                               className="pphone"/></p>
+            style={isNull(this.props.data.pleader) && isNull(this.props.data.pphone) ? {
+                "display": "none"
+            } : {
+                "display": "block"
+            }}>
+                            <span>负责人姓名：</span><input type="text" style={{
+                "width": "162px"
+            }}
+            defaultValue={this.props.data.pleader} className="pleader"/><span
+            style={{
+                "marginLeft": "34px"
+            }}>负责人电话：</span><input type="text" style={{
+                "width": "162px"
+            }}
+            defaultValue={this.props.data.pphone}
+            className="pphone"/></p>
                         <p className="error">请填写负责人姓名</p>
                     </td>
                 </tr>
@@ -715,31 +765,31 @@ var Jbxx = React.createClass({
 });
 
 var Fj = React.createClass({
-    componentDidMount: function () {
-        $(".form_col5 i.bubble-hover").click(function () {
+    componentDidMount: function() {
+        $(".form_col5 i.bubble-hover").click(function() {
             $(this).next().show();
         });
-        $(".form_col5 .bubble-click").click(function () {
+        $(".form_col5 .bubble-click").click(function() {
             $(this).hide();
         });
-        $(".form_col5 .bubble-click>div").click(function (e) {
+        $(".form_col5 .bubble-click>div").click(function(e) {
             e.stopPropagation();
         });
-        $("input[name=isXS]").change(function () {
+        $("input[name=isXS]").change(function() {
             if ($(this).parent().text() == "是") {
                 $(".radio_xs").show();
             } else {
                 $(".radio_xs").hide();
             }
         });
-        $("input[name=isHS]").change(function () {
+        $("input[name=isHS]").change(function() {
             if ($(this).parent().text() == "是") {
                 $(".radio_hs").show();
             } else {
                 $(".radio_hs").hide();
             }
         });
-        $("input[name=isMD]").change(function () {
+        $("input[name=isMD]").change(function() {
             if ($(this).parent().text() == "是") {
                 $(".radio_md").show();
             } else {
@@ -757,56 +807,64 @@ var Fj = React.createClass({
             url: 'http://oss.aliyuncs.com',
             filters: {
                 mime_types: [ //只允许上传图片和zip,rar文件
-                    {extensions: "doc,docx,xls,xlsx,txt,pdf,ppt,zip,rar,7z"}
+                    {
+                        extensions: "doc,docx,xls,xlsx,txt,pdf,ppt,zip,rar,7z"
+                    }
                 ],
                 max_file_size: '100mb', //最大只能上传10mb的文件
                 prevent_duplicates: true //不允许选取重复文件
             },
 
             init: {
-                PostInit: function () {
+                PostInit: function() {
                     $('.ossfile2')[0].innerHTML = '';
-                    document.getElementById('postfiles2').onclick = function () {
+                    document.getElementById('postfiles2').onclick = function() {
                         set_upload_param(uploader2, '', false, 2);
                         return false;
                     };
                 },
 
-                FilesAdded: function (up, files) {
-                    plupload.each(files, function (file) {
+                FilesAdded: function(up, files) {
+                    plupload.each(files, function(file) {
                         if (up.files.length > 1) {
                             up.removeFile(up.files[0]);
                         }
-                        $('.ossfile2').css({"text-align": "left"});
+                        $('.ossfile2').css({
+                            "text-align": "left"
+                        });
                         $('#postfiles2').html("开始上传");
                         $('.ossfile2')[0].innerHTML = '<div id="' + file.id + '"><span class="file_name">' + (file.name.substr(0, 6) + /\.[^\.]+/.exec(file.name)) + ' (' + plupload.formatSize(file.size) + ')'
                             + '<span class="bfb"></span></span><i class="file_close"></i><div class="progress"><div class="progress-bar" style="width: 0%"><b></b></div></div>'
                             + '</div>';
-                        $(".ossfile2 .file_close").click(function () {
+                        $(".ossfile2 .file_close").click(function() {
                             up.removeFile(up.files[0]);
                             $('.ossfile2')[0].innerHTML = '';
-                            $('.ossfile2').css({"text-align": "left"});
+                            $('.ossfile2').css({
+                                "text-align": "left"
+                            });
                         });
                     });
                 },
 
-                BeforeUpload: function (up, file) {
+                BeforeUpload: function(up, file) {
                     check_object_radio();
                     set_upload_param(up, file.name, true, 2);
                 },
 
-                UploadProgress: function (up, file) {
+                UploadProgress: function(up, file) {
                     var d = document.getElementById(file.id);
                     var prog = d.getElementsByTagName('div')[0];
                     var progBar = prog.getElementsByTagName('div')[0]
-                    $('.ossfile2').css({"text-align": "center"});
+                    $('.ossfile2').css({
+                        "text-align": "center"
+                    });
                     $('#postfiles2').html("正在上传...");
                     progBar.style.width = file.percent + '%';
                     $(d).find("span.bfb").html("..." + file.percent + "%");
                     progBar.setAttribute('aria-valuenow', file.percent);
                 },
 
-                FileUploaded: function (up, file, info) {
+                FileUploaded: function(up, file, info) {
                     if (info.status == 200) {
                         //document.getElementById(file.id).getElementsByTagName('b')[0].innerHTML = 'upload to oss success, object name:' + get_uploaded_object_name(file.name);
                         file2 = f2;
@@ -815,29 +873,25 @@ var Fj = React.createClass({
                         $('.ossfile2 .progress-bar').css("width", "0%");
                         $('.ossfile2 .progress-bar')[0].setAttribute('aria-valuenow', 0);
                         $('.ossfile2').find("span.bfb").html("");
-                    }
-                    else {
+                    } else {
                         document.getElementById(file.id).getElementsByTagName('b')[0].innerHTML = info.response;
                     }
                 },
 
 
-                Error: function (up, err) {
+                Error: function(up, err) {
                     if (err.code == -600) {
                         alert("\n选择的文件太大了,可以根据应用情况，在upload.js 设置一下上传的最大大小");
-                        //document.getElementById('console').appendChild(document.createTextNode("\n选择的文件太大了,可以根据应用情况，在upload.js 设置一下上传的最大大小"));
-                    }
-                    else if (err.code == -601) {
+                    //document.getElementById('console').appendChild(document.createTextNode("\n选择的文件太大了,可以根据应用情况，在upload.js 设置一下上传的最大大小"));
+                    } else if (err.code == -601) {
                         alert("\n选择的文件后缀不对,可以根据应用情况，在upload.js进行设置可允许的上传文件类型");
-                        //document.getElementById('console').appendChild(document.createTextNode("\n选择的文件后缀不对,可以根据应用情况，在upload.js进行设置可允许的上传文件类型"));
-                    }
-                    else if (err.code == -602) {
+                    //document.getElementById('console').appendChild(document.createTextNode("\n选择的文件后缀不对,可以根据应用情况，在upload.js进行设置可允许的上传文件类型"));
+                    } else if (err.code == -602) {
                         alert("\n这个文件已经上传过一遍了");
-                        //document.getElementById('console').appendChild(document.createTextNode("\n这个文件已经上传过一遍了"));
-                    }
-                    else {
+                    //document.getElementById('console').appendChild(document.createTextNode("\n这个文件已经上传过一遍了"));
+                    } else {
                         alert("\nError xml:" + err.response);
-                        //document.getElementById('console').appendChild(document.createTextNode("\nError xml:" + err.response));
+                    //document.getElementById('console').appendChild(document.createTextNode("\nError xml:" + err.response));
                     }
                 }
             }
@@ -846,12 +900,12 @@ var Fj = React.createClass({
         uploader2.init();
 
         //绑定文件添加进队列事件
-        uploader2.bind('FilesAdded', function (uploader, files) {
+        uploader2.bind('FilesAdded', function(uploader, files) {
             for (var i = 0, len = files.length; i < len; i++) {
                 var file_name = files[i].name; //文件名
                 //构造html来更新UI
-                !function (i) {
-                    previewImage(files[i], function (imgsrc) {
+                !function(i) {
+                    previewImage(files[i], function(imgsrc) {
                         $('.file-list2 img').attr('src', imgsrc);
                     })
                 }(i);
@@ -867,57 +921,65 @@ var Fj = React.createClass({
             url: 'http://oss.aliyuncs.com',
             filters: {
                 mime_types: [ //只允许上传图片和zip,rar文件
-                    {extensions: "doc,docx,xls,xlsx,txt,pdf,ppt,zip,rar,7z"}
+                    {
+                        extensions: "doc,docx,xls,xlsx,txt,pdf,ppt,zip,rar,7z"
+                    }
                 ],
                 max_file_size: '100mb', //最大只能上传10mb的文件
                 prevent_duplicates: true //不允许选取重复文件
             },
 
             init: {
-                PostInit: function () {
+                PostInit: function() {
                     $('.ossfile3')[0].innerHTML = '';
-                    document.getElementById('postfiles3').onclick = function () {
+                    document.getElementById('postfiles3').onclick = function() {
                         set_upload_param(uploader3, '', false, 3);
                         return false;
                     };
                 },
 
 
-                FilesAdded: function (up, files) {
-                    plupload.each(files, function (file) {
+                FilesAdded: function(up, files) {
+                    plupload.each(files, function(file) {
                         if (up.files.length > 1) {
                             up.removeFile(up.files[0]);
                         }
-                        $('.ossfile3').css({"text-align": "left"});
+                        $('.ossfile3').css({
+                            "text-align": "left"
+                        });
                         $('#postfiles3').html("开始上传");
                         $('.ossfile3')[0].innerHTML = '<div id="' + file.id + '"><span class="file_name">' + (file.name.substr(0, 6) + /\.[^\.]+/.exec(file.name)) + ' (' + plupload.formatSize(file.size) + ')'
                             + '<span class="bfb"></span></span><i class="file_close"></i><div class="progress"><div class="progress-bar" style="width: 0%"><b></b></div></div>'
                             + '</div>';
-                        $(".ossfile3 .file_close").click(function () {
+                        $(".ossfile3 .file_close").click(function() {
                             up.removeFile(up.files[0]);
                             $('.ossfile3')[0].innerHTML = '';
-                            $('.ossfile3').css({"text-align": "left"});
+                            $('.ossfile3').css({
+                                "text-align": "left"
+                            });
                         });
                     });
                 },
 
-                BeforeUpload: function (up, file) {
+                BeforeUpload: function(up, file) {
                     check_object_radio();
                     set_upload_param(up, file.name, true, 3);
                 },
 
-                UploadProgress: function (up, file) {
+                UploadProgress: function(up, file) {
                     var d = document.getElementById(file.id);
                     var prog = d.getElementsByTagName('div')[0];
                     var progBar = prog.getElementsByTagName('div')[0]
-                    $('.ossfile3').css({"text-align": "center"});
+                    $('.ossfile3').css({
+                        "text-align": "center"
+                    });
                     $('#postfiles3').html("正在上传...");
                     progBar.style.width = file.percent + '%';
                     $(d).find("span.bfb").html("..." + file.percent + "%");
                     progBar.setAttribute('aria-valuenow', file.percent);
                 },
 
-                FileUploaded: function (up, file, info) {
+                FileUploaded: function(up, file, info) {
                     if (info.status == 200) {
                         //document.getElementById(file.id).getElementsByTagName('b')[0].innerHTML = 'upload to oss success, object name:' + get_uploaded_object_name(file.name);
                         file3 = f3;
@@ -926,29 +988,25 @@ var Fj = React.createClass({
                         $('.ossfile3 .progress-bar').css("width", "0%");
                         $('.ossfile3 .progress-bar')[0].setAttribute('aria-valuenow', 0);
                         $('.ossfile3').find("span.bfb").html("");
-                    }
-                    else {
+                    } else {
                         document.getElementById(file.id).getElementsByTagName('b')[0].innerHTML = info.response;
                     }
                 },
 
 
-                Error: function (up, err) {
+                Error: function(up, err) {
                     if (err.code == -600) {
                         alert("\n选择的文件太大了,可以根据应用情况，在upload.js 设置一下上传的最大大小");
-                        //document.getElementById('console').appendChild(document.createTextNode("\n选择的文件太大了,可以根据应用情况，在upload.js 设置一下上传的最大大小"));
-                    }
-                    else if (err.code == -601) {
+                    //document.getElementById('console').appendChild(document.createTextNode("\n选择的文件太大了,可以根据应用情况，在upload.js 设置一下上传的最大大小"));
+                    } else if (err.code == -601) {
                         alert("\n选择的文件后缀不对,可以根据应用情况，在upload.js进行设置可允许的上传文件类型");
-                        //document.getElementById('console').appendChild(document.createTextNode("\n选择的文件后缀不对,可以根据应用情况，在upload.js进行设置可允许的上传文件类型"));
-                    }
-                    else if (err.code == -602) {
+                    //document.getElementById('console').appendChild(document.createTextNode("\n选择的文件后缀不对,可以根据应用情况，在upload.js进行设置可允许的上传文件类型"));
+                    } else if (err.code == -602) {
                         alert("\n这个文件已经上传过一遍了");
-                        //document.getElementById('console').appendChild(document.createTextNode("\n这个文件已经上传过一遍了"));
-                    }
-                    else {
+                    //document.getElementById('console').appendChild(document.createTextNode("\n这个文件已经上传过一遍了"));
+                    } else {
                         alert("\nError xml:" + err.response);
-                        //document.getElementById('console').appendChild(document.createTextNode("\nError xml:" + err.response));
+                    //document.getElementById('console').appendChild(document.createTextNode("\nError xml:" + err.response));
                     }
                 }
             }
@@ -957,12 +1015,12 @@ var Fj = React.createClass({
         uploader3.init();
 
         //绑定文件添加进队列事件
-        uploader3.bind('FilesAdded', function (uploader, files) {
+        uploader3.bind('FilesAdded', function(uploader, files) {
             for (var i = 0, len = files.length; i < len; i++) {
                 var file_name = files[i].name; //文件名
                 //构造html来更新UI
-                !function (i) {
-                    previewImage(files[i], function (imgsrc) {
+                !function(i) {
+                    previewImage(files[i], function(imgsrc) {
                         $('.file-list3 img').attr('src', imgsrc);
                     })
                 }(i);
@@ -980,55 +1038,63 @@ var Fj = React.createClass({
             url: 'http://oss.aliyuncs.com',
             filters: {
                 mime_types: [ //只允许上传图片和zip,rar文件
-                    {extensions: "doc,docx,xls,xlsx,txt,pdf,ppt,zip,rar,7z"}
+                    {
+                        extensions: "doc,docx,xls,xlsx,txt,pdf,ppt,zip,rar,7z"
+                    }
                 ],
                 max_file_size: '100mb', //最大只能上传10mb的文件
                 prevent_duplicates: true //不允许选取重复文件
             },
             init: {
-                PostInit: function () {
+                PostInit: function() {
                     $('.ossfile4')[0].innerHTML = '';
-                    document.getElementById('postfiles4').onclick = function () {
+                    document.getElementById('postfiles4').onclick = function() {
                         set_upload_param(uploader4, '', false, 4);
                         return false;
                     };
                 },
 
-                FilesAdded: function (up, files) {
-                    plupload.each(files, function (file) {
+                FilesAdded: function(up, files) {
+                    plupload.each(files, function(file) {
                         if (up.files.length > 1) {
                             up.removeFile(up.files[0]);
                         }
-                        $('.ossfile4').css({"text-align": "left"});
+                        $('.ossfile4').css({
+                            "text-align": "left"
+                        });
                         $('#postfiles4').html("开始上传");
                         $('.ossfile4')[0].innerHTML = '<div id="' + file.id + '"><span class="file_name">' + (file.name.substr(0, 6) + /\.[^\.]+/.exec(file.name)) + ' (' + plupload.formatSize(file.size) + ')'
                             + '<span class="bfb"></span></span><i class="file_close"></i><div class="progress"><div class="progress-bar" style="width: 0%"><b></b></div></div>'
                             + '</div>';
-                        $(".ossfile4 .file_close").click(function () {
+                        $(".ossfile4 .file_close").click(function() {
                             up.removeFile(up.files[0]);
                             $('.ossfile4')[0].innerHTML = '';
-                            $('.ossfile4').css({"text-align": "left"});
+                            $('.ossfile4').css({
+                                "text-align": "left"
+                            });
                         });
                     });
                 },
 
-                BeforeUpload: function (up, file) {
+                BeforeUpload: function(up, file) {
                     check_object_radio();
                     set_upload_param(up, file.name, true, 4);
                 },
 
-                UploadProgress: function (up, file) {
+                UploadProgress: function(up, file) {
                     var d = document.getElementById(file.id);
                     var prog = d.getElementsByTagName('div')[0];
                     var progBar = prog.getElementsByTagName('div')[0]
-                    $('.ossfile4').css({"text-align": "center"});
+                    $('.ossfile4').css({
+                        "text-align": "center"
+                    });
                     $('#postfiles4').html("正在上传...");
                     progBar.style.width = file.percent + '%';
                     $(d).find("span.bfb").html("..." + file.percent + "%");
                     progBar.setAttribute('aria-valuenow', file.percent);
                 },
 
-                FileUploaded: function (up, file, info) {
+                FileUploaded: function(up, file, info) {
                     if (info.status == 200) {
                         //document.getElementById(file.id).getElementsByTagName('b')[0].innerHTML = 'upload to oss success, object name:' + get_uploaded_object_name(file.name);
                         file4 = f4;
@@ -1037,28 +1103,24 @@ var Fj = React.createClass({
                         $('.ossfile4 .progress-bar').css("width", "0%");
                         $('.ossfile4 .progress-bar')[0].setAttribute('aria-valuenow', 0);
                         $('.ossfile4').find("span.bfb").html("");
-                    }
-                    else {
+                    } else {
                         document.getElementById(file.id).getElementsByTagName('b')[0].innerHTML = info.response;
                     }
                 },
 
-                Error: function (up, err) {
+                Error: function(up, err) {
                     if (err.code == -600) {
                         alert("\n选择的文件太大了,可以根据应用情况，在upload.js 设置一下上传的最大大小");
-                        //document.getElementById('console').appendChild(document.createTextNode("\n选择的文件太大了,可以根据应用情况，在upload.js 设置一下上传的最大大小"));
-                    }
-                    else if (err.code == -601) {
+                    //document.getElementById('console').appendChild(document.createTextNode("\n选择的文件太大了,可以根据应用情况，在upload.js 设置一下上传的最大大小"));
+                    } else if (err.code == -601) {
                         alert("\n选择的文件后缀不对,可以根据应用情况，在upload.js进行设置可允许的上传文件类型");
-                        //document.getElementById('console').appendChild(document.createTextNode("\n选择的文件后缀不对,可以根据应用情况，在upload.js进行设置可允许的上传文件类型"));
-                    }
-                    else if (err.code == -602) {
+                    //document.getElementById('console').appendChild(document.createTextNode("\n选择的文件后缀不对,可以根据应用情况，在upload.js进行设置可允许的上传文件类型"));
+                    } else if (err.code == -602) {
                         alert("\n这个文件已经上传过一遍了");
-                        //document.getElementById('console').appendChild(document.createTextNode("\n这个文件已经上传过一遍了"));
-                    }
-                    else {
+                    //document.getElementById('console').appendChild(document.createTextNode("\n这个文件已经上传过一遍了"));
+                    } else {
                         alert("\nError xml:" + err.response);
-                        //document.getElementById('console').appendChild(document.createTextNode("\nError xml:" + err.response));
+                    //document.getElementById('console').appendChild(document.createTextNode("\nError xml:" + err.response));
                     }
                 }
             }
@@ -1067,12 +1129,12 @@ var Fj = React.createClass({
         uploader4.init();
 
         //绑定文件添加进队列事件
-        uploader4.bind('FilesAdded', function (uploader, files) {
+        uploader4.bind('FilesAdded', function(uploader, files) {
             for (var i = 0, len = files.length; i < len; i++) {
                 var file_name = files[i].name; //文件名
                 //构造html来更新UI
-                !function (i) {
-                    previewImage(files[i], function (imgsrc) {
+                !function(i) {
+                    previewImage(files[i], function(imgsrc) {
                         $('.file-list4 img').attr('src', imgsrc);
                     })
                 }(i);
@@ -1080,15 +1142,15 @@ var Fj = React.createClass({
         });
 
     },
-    render: function () {
+    render: function() {
         return (
             <table>
                 <tbody>
                 <tr>
                     <td width="178px">是否上传销售线索文件：</td>
                     <td width="470px"><label><input type="radio" name="isXS"/>是</label><label><input type="radio"
-                                                                                                     name="isXS"
-                                                                                                     defaultChecked/>否</label>
+            name="isXS"
+            defaultChecked/>否</label>
                         <i className="bubble-hover" id="bubble">?</i>
                         <div className="bubble-click">
                             <div>
@@ -1100,48 +1162,66 @@ var Fj = React.createClass({
                 </tr>
                 <tr className="radio_xs">
                     <td>
-                        <button type="button" className="btn" id="selectfiles2" style={{"width": "158px"}}><i
-                            className="add"></i><span>上传销售线索文件</span></button>
+                        <button type="button" className="btn" id="selectfiles2" style={{
+                "width": "158px"
+            }}><i
+            className="add"></i><span>上传销售线索文件</span></button>
                     </td>
                     <td>
-                        <div className="ossfile2" style={{"width": "450px"}}></div>
+                        <div className="ossfile2" style={{
+                "width": "450px"
+            }}></div>
                     </td>
                     <td>
-                        <button type="button" className="btn" id="postfiles2" style={{"width": "152px"}}>开始上传</button>
+                        <button type="button" className="btn" id="postfiles2" style={{
+                "width": "152px"
+            }}>开始上传</button>
                     </td>
                 </tr>
                 <tr>
                     <td>是否上传话术：</td>
                     <td><label><input type="radio" name="isHS"/>是</label><label><input type="radio" name="isHS"
-                                                                                       defaultChecked/>否</label></td>
+            defaultChecked/>否</label></td>
                 </tr>
                 <tr className="radio_hs">
                     <td>
-                        <button type="button" className="btn" id="selectfiles3" style={{"width": "158px"}}><i
-                            className="add"></i><span>上传话术</span></button>
+                        <button type="button" className="btn" id="selectfiles3" style={{
+                "width": "158px"
+            }}><i
+            className="add"></i><span>上传话术</span></button>
                     </td>
                     <td>
-                        <div className="ossfile3" style={{"width": "450px"}}></div>
+                        <div className="ossfile3" style={{
+                "width": "450px"
+            }}></div>
                     </td>
                     <td>
-                        <button type="button" className="btn" id="postfiles3" style={{"width": "152px"}}>开始上传</button>
+                        <button type="button" className="btn" id="postfiles3" style={{
+                "width": "152px"
+            }}>开始上传</button>
                     </td>
                 </tr>
                 <tr>
                     <td>是否上传目标客户名单：</td>
                     <td><label><input type="radio" name="isMD"/>是</label><label><input type="radio" name="isMD"
-                                                                                       defaultChecked/>否</label></td>
+            defaultChecked/>否</label></td>
                 </tr>
                 <tr className="radio_md">
                     <td>
-                        <button type="button" className="btn" id="selectfiles4" style={{"width": "158px"}}><i
-                            className="add"></i><span>上传目标客户名单</span></button>
+                        <button type="button" className="btn" id="selectfiles4" style={{
+                "width": "158px"
+            }}><i
+            className="add"></i><span>上传目标客户名单</span></button>
                     </td>
                     <td>
-                        <div className="ossfile4" style={{"width": "450px"}}></div>
+                        <div className="ossfile4" style={{
+                "width": "450px"
+            }}></div>
                     </td>
                     <td>
-                        <button type="button" className="btn" id="postfiles4" style={{"width": "152px"}}>开始上传</button>
+                        <button type="button" className="btn" id="postfiles4" style={{
+                "width": "152px"
+            }}>开始上传</button>
                     </td>
                 </tr>
                 </tbody>
@@ -1151,13 +1231,13 @@ var Fj = React.createClass({
 });
 
 var Preview = React.createClass({
-    componentDidMount: function () {
-        $(".demend_left .industry div.btn").click(function () {
+    componentDidMount: function() {
+        $(".demend_left .industry div.btn").click(function() {
             $(this).addClass("selected").siblings().removeClass("selected");
             $(".demend_right .industry").html($(".demend_left .industry div.selected").text());
         });
         $(".demend_left .settlement-pattern").selectWidget({
-            change: function (changes) {
+            change: function(changes) {
                 $(".demend_right .settlement-pattern").text(changes);
             },
             effect: "slide",
@@ -1167,7 +1247,7 @@ var Preview = React.createClass({
             overflow: "hidden"
         });
         $(".demend_left .target-population").selectWidget({
-            change: function (changes) {
+            change: function(changes) {
                 if (changes == "自定义") {
                     $("td.zdy").show();
                     $(".demend_right .target-population").text(isNull($(".zdy input").val()));
@@ -1183,7 +1263,7 @@ var Preview = React.createClass({
             overflow: "hidden"
         });
         $(".demend_left .channel").selectWidget({
-            change: function (changes) {
+            change: function(changes) {
                 $(".demend_right .channel").text(changes);
             },
             effect: "slide",
@@ -1192,19 +1272,19 @@ var Preview = React.createClass({
             scrollHeight: 167,
             overflow: "hidden"
         });
-        $(".demend_left .age input[type=number]").on("input", function () {
+        $(".demend_left .age input[type=number]").on("input", function() {
             var number1 = $(".demend_left .age input[type=number]").eq(0).val() === "" ? "?" : $(".demend_left .age input[type=number]").eq(0).val();
             var number2 = $(".demend_left .age input[type=number]").eq(1).val() === "" ? "?" : $(".demend_left .age input[type=number]").eq(1).val();
             $(".demend_right .age").html(number1 + "-" + number2 + " 周岁");
         });
-        $(".demend_left .startDate").on("change", function () {
+        $(".demend_left .startDate").on("change", function() {
             $(".demend_right .startDate").html($(this).val());
         });
-        $(".demend_left .endDate").on("change", function () {
+        $(".demend_left .endDate").on("change", function() {
             $(".demend_right .endDate").html($(this).val());
         });
     },
-    render: function () {
+    render: function() {
         return (
             <div>
                 <div className="title-explain">需求预览</div>
@@ -1229,10 +1309,10 @@ var Preview = React.createClass({
 
 
 var Area = React.createClass({
-    handleClick: function (index) {
+    handleClick: function(index) {
         tabCutover($(this.getDOMNode()).find("div[class^=list]:visible .search ul li").eq(index - 1), 's-citys' + index);
     },
-    componentDidMount: function () {
+    componentDidMount: function() {
         var ReactThis = this;
         append_city();
         $('.city_name').autocomplete(cities, {
@@ -1242,17 +1322,17 @@ var Area = React.createClass({
             scrollHeight: 300, //提示的高度，溢出显示滚动条
             matchContains: true, //包含匹配，就是data参数里的数据，是否只要包含文本框里的数据就显示
             autoFill: false, //自动填充
-            formatItem: function (row, i, max) {
+            formatItem: function(row, i, max) {
                 return row.name + '（' + row.pinyin + '）';
             },
-            formatMatch: function (row, i, max) {
+            formatMatch: function(row, i, max) {
                 return row.match;
             },
-            formatResult: function (row) {
+            formatResult: function(row) {
                 return row.name;
             },
             resultsClass: 'search-text'
-        }).result(function (event, row, formatted) {
+        }).result(function(event, row, formatted) {
 
             $("#hid_city_name").val(row.pinyin);
             $("#hid_real_city_name").val(row.name);
@@ -1265,28 +1345,28 @@ var Area = React.createClass({
                 $("div.area").html("");
             }
         });
-        $('.area ul.list li').click(function () {
+        $('.area ul.list li').click(function() {
             $(this).addClass("active").siblings().removeClass("active");
             $('.area div[class^=list]').eq($(this).index()).addClass("active").siblings().removeClass("active");
         });
-        $('.area a').click(function () {
+        $('.area a').click(function() {
             $('.area div[class^=list]:visible a').removeClass("active");
             $(this).addClass("active");
         });
-        $(".area ul.list i.close").click(function () {
+        $(".area ul.list i.close").click(function() {
             $(this).parent().parent().remove();
         });
-        $(".area div[class^=list]:not(.list4):not(.list3) li a").click(function () {
+        $(".area div[class^=list]:not(.list4):not(.list3) li a").click(function() {
             $("input.area").eq(ReactThis.props.index).val($(this).text()).attr("title", $(this).text());
             $("input.area").eq(ReactThis.props.index).change();
             $("div.area").html("");
         });
-        $(".area div.list3 li a").click(function () {
+        $(".area div.list3 li a").click(function() {
             $("input.area").eq(ReactThis.props.index).val($(this).text()).attr("title", isNull($(this).next().text()) ? $(this).text() : $(this).next().text());
             $("input.area").eq(ReactThis.props.index).change();
             $("div.area").html("");
         });
-        $(".area div.list4 .search-citys-list li").click(function () {
+        $(".area div.list4 .search-citys-list li").click(function() {
             change_city_val();
             if ($(this).hasClass("active")) {
                 $(this).removeClass("active");
@@ -1296,7 +1376,7 @@ var Area = React.createClass({
                 if ($(".area div.list4 .activeCity ul li").length < 20) {
                     $(this).addClass("active");
                     var li = $("<li title=" + $(this).text() + "><span>" + $(this).text() + "</span><i class='close'></i></li>");
-                    $(li).find("i.close").click(function () {
+                    $(li).find("i.close").click(function() {
                         $("div.list4 .search-citys-list ul li a[title=" + $(this).parent().attr("title") + "]").parent().click();
                     });
                     $(".area div.list4 .activeCity ul").append(li);
@@ -1306,9 +1386,9 @@ var Area = React.createClass({
                 }
             }
         });
-        $(".area div.list4 p button").click(function () {
+        $(".area div.list4 p button").click(function() {
             var text;
-            $(".area div.list4 .activeCity ul li").each(function (i) {
+            $(".area div.list4 .activeCity ul li").each(function(i) {
                 if (i == 0) {
                     text = $(this).text() + ";";
                     return true;
@@ -1320,7 +1400,7 @@ var Area = React.createClass({
             $("div.area").html("");
         });
     },
-    render: function () {
+    render: function() {
         return (
             <div className="area-box">
                 <ul className="list">
@@ -1332,15 +1412,15 @@ var Area = React.createClass({
                 </ul>
                 <div className="list1 active">
                     <div className="hot"><span>热门城市:</span>
-                        {this.props.hotCity.map(function (result) {
-                            return <li className="click"><a href="javascript:;" className="click">{result}</a></li>;
-                        })}
+                        {this.props.hotCity.map(function(result) {
+                return <li className="click"><a href="javascript:;" className="click">{result}</a></li>;
+            })}
                     </div>
                     <div className="search pop search-citys-pop click cityarea">
                         <input type="text" placeholder="输入拼音首字母" className="text city_name"/>
                         <ul>
                             <li className="current click" onClick={this.handleClick.bind(this, 1)}
-                                href="javascript:void(0)">ABC<i></i></li>
+            href="javascript:void(0)">ABC<i></i></li>
                             <li className="click" onClick={this.handleClick.bind(this, 2)} href="javascript:void(0)">DEF<i></i>
                             </li>
                             <li className="click" onClick={this.handleClick.bind(this, 3)} href="javascript:void(0)">GHI<i></i>
@@ -1361,32 +1441,40 @@ var Area = React.createClass({
                 </div>
                 <div className="list2">
                     <div className="search-citys-list click">
-                        <p style={{"margin": "30px 0px 30px 20px"}}>请选择省份:</p>
+                        <p style={{
+                "margin": "30px 0px 30px 20px"
+            }}>请选择省份:</p>
                         <ul>
-                            {this.props.province.map(function (result) {
-                                for (var key in result) {
-                                    return <li><a href="javascript:;">{result[key].regionName}</a></li>;
-                                }
-                            })}
+                            {this.props.province.map(function(result) {
+                for (var key in result) {
+                    return <li><a href="javascript:;">{result[key].regionName}</a></li>;
+                }
+            })}
                         </ul>
                     </div>
                 </div>
                 <div className="list3 ">
-                    <p style={{"margin": "20px 0px 30px 20px"}}>请选择区域:</p>
+                    <p style={{
+                "margin": "20px 0px 30px 20px"
+            }}>请选择区域:</p>
                     <ul className="area">
-                        {this.props.area.map(function (result) {
-                            for (var key in result) {
-                                return <li ><a
-                                    href="javascript:;">{result[key].regionName}</a><span>{result[key].remark}</span>
+                        {this.props.area.map(function(result) {
+                for (var key in result) {
+                    return <li ><a
+                        href="javascript:;">{result[key].regionName}</a><span>{result[key].remark}</span>
                                 </li>;
-                            }
-                        })}
+                }
+            })}
                     </ul>
                 </div>
                 <div className="list4 ">
-                    <p style={{"margin": "30px 20px;font-size:16px"}}><span>选择城市加入到自定义区域，最多可添加20个城市，已选择<span
-                        className="length">0</span>个</span>
-                        <button type="button" style={{"float": "right"}} id="area">确定选择</button>
+                    <p style={{
+                "margin": "30px 20px;font-size:16px"
+            }}><span>选择城市加入到自定义区域，最多可添加20个城市，已选择<span
+            className="length">0</span>个</span>
+                        <button type="button" style={{
+                "float": "right"
+            }} id="area">确定选择</button>
                     </p>
                     <div className="activeCity">
                         <ul>
@@ -1396,7 +1484,7 @@ var Area = React.createClass({
                         <input type="text" placeholder="输入拼音首字母" className="text city_name"/>
                         <ul>
                             <li className="current click" onClick={this.handleClick.bind(this, 1)}
-                                href="javascript:void(0)">ABC<i></i></li>
+            href="javascript:void(0)">ABC<i></i></li>
                             <li className="click" onClick={this.handleClick.bind(this, 2)} href="javascript:void(0)">DEF<i></i>
                             </li>
                             <li className="click" onClick={this.handleClick.bind(this, 3)} href="javascript:void(0)">GHI<i></i>
@@ -1422,21 +1510,36 @@ var Area = React.createClass({
 
 
 var AreaList = React.createClass({
-    componentDidMount: function () {
+    componentDidMount: function() {
 
         var areaListBox = $('.areaList-box');
-       
-        areaListBox.find("input.size").on("input", function () {
+
+        areaListBox.find("input.size").on("input", function() {
+            $(this).val(parseInt($(this).val()) || 0)
             var total = $(this).parent().parent().find("span.green span.size");
             var money = $(this).parent().next().find("input.money");
-            $(total).text($(this).val() * $(money).val());
+            $(total).text((($(this).val() * $(money).val()) || 0).toFixed("2"));
         });
-        areaListBox.find("input.money").on("input", function () {
+        areaListBox.find("input.money").on("input", function() {
+
+            if ($(this).val().split(".").length == 2) {
+                if (($(this).val().split(".")[1] !== "") || ($(this).val().split(".")[1] != 0)) {
+                    if ($(this).val().split(".")[1].length > 2) {
+                        $(this).val(Number($(this).val()) > 0 ? Number($(this).val()).toFixed(2) : 0)
+                    } else {
+                        $(this).val(Number($(this).val()) || 0)
+                    }
+                }
+            } else {
+                $(this).val(Number($(this).val()) || 0)
+            }
+
+
             var total = $(this).parent().parent().find("span.green span.size");
             var size = $(this).parent().prev().find("input.size");
-            $(total).text($(this).val() * $(size).val());
+            $(total).text((($(this).val() * $(size).val()) || 0).toFixed("2"));
         });
-        $("input.number.money").blur(function () {
+        $("input.number.money").blur(function() {
             if ($(this).val() == '') {
                 $(this).addClass("error");
                 $(this).parent().find("p.error").show();
@@ -1446,11 +1549,11 @@ var AreaList = React.createClass({
                 $(this).parent().find("p.error").hide();
             }
         });
-        $("input.number.money").focus(function () {
+        $("input.number.money").focus(function() {
             $(this).removeClass("error");
             $(this).parent().find("p.error").hide();
         });
-        $("input.number.size").blur(function () {
+        $("input.number.size").blur(function() {
             if ($(this).val() == '') {
                 $(this).addClass("error");
                 $(this).parent().find("p.error").show();
@@ -1460,34 +1563,36 @@ var AreaList = React.createClass({
                 $(this).parent().find("p.error").hide();
             }
         });
-        $("input.number.size").focus(function () {
+        $("input.number.size").focus(function() {
             $(this).removeClass("error");
             $(this).parent().find("p.error").hide();
         });
     },
-    render: function () {
+    render: function() {
         if (isNull(this.props.data)) {
             return (
                 <div className="areaList-box">
                     <div className="input"><label>目标区域:</label><input type="text" required className="select area"
-                                                                      placeholder="请选择区域"/><i
-                        className="select_icon"></i>
+                placeholder="请选择区域"/><i
+                className="select_icon"></i>
                         <p className="error">请选择区域</p></div>
                     <div className="input"><label>发布数量:</label><input type="text" required
-                                                                      className="number size"/><i>条</i>
+                className="number size"/><i>条</i>
                         <p className="error">请填写发布数量</p></div>
                     <div className="input"><label>单价:</label><input type="text" required
-                                                                    className="number money"/><i>元</i>
+                className="number money"/><i>元</i>
                         <p className="error">请填写单价</p></div>
                     <span className="green">总价:<span className="size"> 0 </span>元</span>
                     <i className="close"></i>
                     <div className="input isNote"><label>是否备注:</label><label><input type="radio"
-                                                                                    name={"note" + this.props.length}/><span>是</span></label><label><input
-                        type="radio" name={"note" + this.props.length} defaultChecked/><span>否</span></label></div>
-                    <div className="input" style={{"display": "none"}}><label>备注:</label><input type="text"
-                                                                                                placeholder="填写备注信息"
-                                                                                                maxLength="50"/><span
-                        className="gray">最多可输入 50 个字</span></div>
+                name={"note" + this.props.length}/><span>是</span></label><label><input
+                type="radio" name={"note" + this.props.length} defaultChecked/><span>否</span></label></div>
+                    <div className="input" style={{
+                    "display": "none"
+                }}><label>备注:</label><input type="text"
+                placeholder="填写备注信息"
+                maxLength="50"/><span
+                className="gray">最多可输入 50 个字</span></div>
                 </div>
             )
         } else {
@@ -1496,29 +1601,33 @@ var AreaList = React.createClass({
                     <div className="input">
                     <label>目标区域:</label>
                     <input type="text" required className="select area"
-                                                                      placeholder="请选择区域"
-                                                                      defaultValue={this.props.data.target}
-                                                                      title={this.props.data.target}/><i
-                        className="select_icon"></i>
+                placeholder="请选择区域"
+                defaultValue={this.props.data.target}
+                title={this.props.data.target}/><i
+                className="select_icon"></i>
                         <p className="error">请选择区域</p></div>
                     <div className="input"><label>发布数量:</label><input type="text" className="number size"
-                                                                      defaultValue={this.props.data.releasenum}/><i>条</i>
+                defaultValue={this.props.data.releasenum}/><i>条</i>
                         <p className="error">请填写发布数量</p></div>
                     <div className="input"><label>单价:</label><input type="text" className="number money"
-                                                                    defaultValue={this.props.data.price}/><i>元</i>
+                defaultValue={this.props.data.price}/><i>元</i>
                         <p className="error">请填写单价</p></div>
                     <span className="green">总价:<span
-                        className="size">{isNull(this.props.data.totalprice) ? "0" : this.props.data.totalprice} </span>元</span>
+                className="size">{isNull(this.props.data.totalprice) ? "0" : this.props.data.totalprice} </span>元</span>
                     <i className="close"></i>
                     <div className="input isNote"><label>是否备注:</label><label><input type="radio"
-                                                                                    name={"note" + this.props.length}
-                                                                                    defaultChecked={!isNull(this.props.data.remark)}/><span>是</span></label><label><input
-                        type="radio" name={"note" + this.props.length}
-                        defaultChecked={isNull(this.props.data.remark)}/><span>否</span></label></div>
+                name={"note" + this.props.length}
+                defaultChecked={!isNull(this.props.data.remark)}/><span>是</span></label><label><input
+                type="radio" name={"note" + this.props.length}
+                defaultChecked={isNull(this.props.data.remark)}/><span>否</span></label></div>
                     <div className="input"
-                         style={isNull(this.props.data.remark) ? {"display": "none"} : {"display": "inline-block"}}>
+                style={isNull(this.props.data.remark) ? {
+                    "display": "none"
+                } : {
+                    "display": "inline-block"
+                }}>
                         <label>备注:</label><input type="text" placeholder="填写备注信息" maxLength="50"
-                                                 defaultValue={this.props.data.remark}/><span className="gray">最多可输入 50 个字</span>
+                defaultValue={this.props.data.remark}/><span className="gray">最多可输入 50 个字</span>
                     </div>
                 </div>
             )
@@ -1528,8 +1637,8 @@ var AreaList = React.createClass({
 
 
 var Fbfb = React.createClass({
-    componentDidMount: function () {
-         $(".form_col4>.main").on("click",".close",function(){
+    componentDidMount: function() {
+        $(".form_col4>.main").on("click", ".close", function() {
             var main = $(this).parent().parent().parent();
             var area = $(this).parent().parent();
             if ($(".form_col4 .main div.areaList").length > 1) {
@@ -1541,21 +1650,24 @@ var Fbfb = React.createClass({
             }
         })
 
-        $(".main div[class^=areaList]:not(.areaList_add) .isNote input[name^=note]").live("change", function () {
+        $(".main div[class^=areaList]:not(.areaList_add) .isNote input[name^=note]").live("change", function() {
             if ($(this).parent().text() == "是") {
                 $(this).parent().parent().next().show();
             } else {
                 $(this).parent().parent().next().hide();
             }
         });
-        $("input.area").on("click", function () {
+        $("input.area").on("click", function() {
             var index = $(this).parent().parent().parent().index();
             ReactDOM.render(<Area area={area} province={province} hotCity={hotCity}
-                                  index={index}/>, $("#new_demand div.demend_left div.area")[0]);
-            $("div.area>div").css({left: $(this).offset().left, top: $(this).offset().top + 30}).show();
+            index={index}/>, $("#new_demand div.demend_left div.area")[0]);
+            $("div.area>div").css({
+                left: $(this).offset().left,
+                top: $(this).offset().top + 30
+            }).show();
         });
         var i = $("div.form_col4 .main .areaList").length + 1;
-        $(".areaList_add button").click(function () {
+        $(".areaList_add button").click(function() {
             var main = $(this).parent().parent();
             var length_add = $(main).find("div.areaList").length + 1;
             if (length_add <= 5) {
@@ -1566,68 +1678,74 @@ var Fbfb = React.createClass({
             } else {
                 alert("最多添加5个区域！");
             }
-            $("input.area").on("click", function () {
+            $("input.area").on("click", function() {
                 var index = $(this).parent().parent().parent().index();
                 ReactDOM.render(<Area area={area} province={province} hotCity={hotCity}
-                                      index={index}/>, $("#new_demand div.demend_left div.area")[0]);
-                $("div.area>div").css({left: $(this).offset().left, top: $(this).offset().top + 30}).show();
+                index={index}/>, $("#new_demand div.demend_left div.area")[0]);
+                $("div.area>div").css({
+                    left: $(this).offset().left,
+                    top: $(this).offset().top + 30
+                }).show();
             });
         });
-       
-        $("input.area").live("change", function () {
+
+        $("input.area").live("change", function() {
             ReactDOM.render(<JinE data={areaList()}/>, $("#new_demand div.demend_right .right").eq(1)[0]);
         });
-        $("input.size").live("input", function () {
+        $("input.size").live("input", function() {
             ReactDOM.render(<JinE data={areaList()}/>, $("#new_demand div.demend_right .right").eq(1)[0]);
         });
-        $("input.money").live("input", function () {
+        $("input.money").live("input", function() {
             ReactDOM.render(<JinE data={areaList()}/>, $("#new_demand div.demend_right .right").eq(1)[0]);
         });
     },
-    render: function () {
+    render: function() {
         var areaCityList;
-        if (isNull(this.props.data.areaanddemandquantity)) {
+        if (!JSON.parse(this.props.data.areaanddemandquantity).length) {
             return (
                 <div>
+                <div className="areaList">
+                     <AreaList length={1}/>
+                </div>
                     <div className="areaList_add">
                         <button type="button"><i className="add"></i><span>添加区域</span></button>
                         <span>还可以添加<span
-                            className="length"> {isNull(this.props.data.areaanddemandquantity) ? 5 : 5 - JSON.parse(this.props.data.areaanddemandquantity).length} </span>个区域</span>
+                className="length"> {!JSON.parse(this.props.data.areaanddemandquantity).length ? 4 : 5 - JSON.parse(this.props.data.areaanddemandquantity).length} </span>个区域</span>
                     </div>
                 </div>
             )
         }
         return (
             <div>
-                {JSON.parse(this.props.data.areaanddemandquantity).map(function (result, index) {
-                    return (
-                        <div key={index} className="areaList">
+                {JSON.parse(this.props.data.areaanddemandquantity).map(function(result, index) {
+                return (
+                    <div key={index} className="areaList">
                             <AreaList data={result} length={index + 1}/>
                         </div>
-                    )
-                })
-                }
+                )
+            })
+            }
                 <div className="areaList_add">
                     <button type="button"><i className="add"></i><span>添加区域</span></button>
                     <span>还可以添加<span
-                        className="length"> {isNull(this.props.data.areaanddemandquantity) ? 5 : 5 - JSON.parse(this.props.data.areaanddemandquantity).length} </span>个区域</span>
+            className="length"> {!JSON.parse(this.props.data.areaanddemandquantity).length ? 4: 5 - JSON.parse(this.props.data.areaanddemandquantity).length} </span>个区域</span>
                 </div>
             </div>
         )
     }
 });
 var JinE = React.createClass({
-    componentDidMount: function () {
-        $(".btn_tj").on("click", function () {
-            addDemandSubmit(createTime,industryId);
+    componentDidMount: function() {
+        $(".btn_tj").on("click", function() {
+            addDemandSubmit(createTime, industryId);
         });
-        $(".btn_tj2").on("click", function () {
-            addDemand(createTime,industryId);
+        $(".btn_tj2").on("click", function() {
+            addDemand(createTime, industryId);
         });
-        $(".progress_speed_show").on("click", function () {
+        $(".progress_speed_show").on("click", function() {
             $("input:visible").blur();
             $("textarea").blur();
-            if (typeof($("input.area").attr("title")) == "undefined") {
+            if (typeof ($("input.area").attr("title")) == "undefined") {
                 //alert(1);
                 $("input.area").addClass("error");
                 $("input.area").parent().find("p.error").show();
@@ -1638,11 +1756,11 @@ var JinE = React.createClass({
             }
 
         });
-        $(".progress_speed .close,.progress_speed .button_close").on("click", function () {
+        $(".progress_speed .close,.progress_speed .button_close").on("click", function() {
             $(".progress_speed").hide();
         });
     },
-    render: function () {
+    render: function() {
         var data = this.props.data;
         var dom = [];
         var total = 0;
@@ -1693,7 +1811,7 @@ var JinE = React.createClass({
 
 
 var Progress_speed = React.createClass({
-    render: function () {
+    render: function() {
         return (
             <div className="demand_submit">
                 <div className="top"><span>提示</span><i className="close"></i></div>
@@ -1701,8 +1819,8 @@ var Progress_speed = React.createClass({
                     <p>您确定提交审核吗？</p>
                 </div>
                 <div className="bottom">
-                    <button type="button" className="button_close btn_tj">确&nbsp;定</button>
-                    <button type="button" className="button_close">取&nbsp;消</button>
+                    <button type="button" className="button_close btn_tj">确 定</button>
+                    <button type="button" className="button_close">取 消</button>
                 </div>
             </div>
         )
@@ -1710,7 +1828,7 @@ var Progress_speed = React.createClass({
 });
 
 function getUrlGetDetailHfp(getDetailHfp) {
-    setTimeout(function () {
+    setTimeout(function() {
         ReactDOM.render(<Yewu data={getDetailHfp.demand}/>, $("#new_demand div.demend_left .form_col1>.main")[0]);
         ReactDOM.render(<Mbkh data={getDetailHfp.demand}/>, $("#new_demand div.demend_left .form_col2>.main")[0]);
         ReactDOM.render(<Jbxx data={getDetailHfp.demand}/>, $("#new_demand div.demend_left .form_col3>.main")[0]);
@@ -1739,7 +1857,7 @@ $.ajax({
     url: `${domain137}/quality/demanddetail/${location.hash.slice(1)}`,
     dataType: "json",
     cache: false,
-    success: function (result) {
+    success: function(result) {
         if (result.code == "N001") {
             sessionStorage.clear();
             $(".loading_cover").hide();
@@ -1752,11 +1870,11 @@ $.ajax({
             return false;
         }
         if (result.code == "0") {
-            createTime=result.demand.createTime
-            industryId=result.demand.industryId
+            createTime = result.demand.createTime
+            industryId = result.demand.industryId
             var industry = result.demand.industry;
 
-            $(".content .title_select ul li a").each(function () {
+            $(".content .title_select ul li a").each(function() {
                 var liIndustry = $(this).text();
                 if (liIndustry == industry) {
                     $(this).parent().addClass("selected").siblings().removeClass("selected");
@@ -1767,7 +1885,7 @@ $.ajax({
             getUrlGetDetailHfp(result);
         }
     },
-    error: function (msg) {
+    error: function(msg) {
         $(".loading_cover").hide();
         console.log(msg);
     }
@@ -1791,7 +1909,7 @@ function getUrlCity(getCity) {
     var cityList = {};
     var ul_index;
 
-    getCity.map(function (result, index) {
+    getCity.map(function(result, index) {
         for (var key in result) {
             if (isNull(cityList[key])) {
                 cityList[key] = [];
@@ -1808,15 +1926,23 @@ function getUrlCity(getCity) {
         }
     });
     for (var key in cityList) {
-        if (key === "A" || key === "B" || key === "C") ul_index = 0;
-        if (key === "D" || key === "E" || key === "F") ul_index = 1;
-        if (key === "G" || key === "H" || key === "I") ul_index = 2;
-        if (key === "J" || key === "K" || key === "L") ul_index = 3;
-        if (key === "M" || key === "N" || key === "O") ul_index = 4;
-        if (key === "P" || key === "Q" || key === "R") ul_index = 5;
-        if (key === "S" || key === "T" || key === "U" || key === "V") ul_index = 6;
-        if (key === "W" || key === "X" || key === "Y" || key === "Z") ul_index = 7;
-        cityList[key].map(function (result, index) {
+        if (key === "A" || key === "B" || key === "C")
+            ul_index = 0;
+        if (key === "D" || key === "E" || key === "F")
+            ul_index = 1;
+        if (key === "G" || key === "H" || key === "I")
+            ul_index = 2;
+        if (key === "J" || key === "K" || key === "L")
+            ul_index = 3;
+        if (key === "M" || key === "N" || key === "O")
+            ul_index = 4;
+        if (key === "P" || key === "Q" || key === "R")
+            ul_index = 5;
+        if (key === "S" || key === "T" || key === "U" || key === "V")
+            ul_index = 6;
+        if (key === "W" || key === "X" || key === "Y" || key === "Z")
+            ul_index = 7;
+        cityList[key].map(function(result, index) {
             var li = '<li class="click"><a title="' + result.regionName + '" onclick="change_city_val(&quot;' + result.regionName + '&quot;,&quot;' + result.regionPinyyin + '&quot;)" href="javascript:;">' + result.regionName + '</a></li>';
             cityarea.find("ul").eq(ul_index).append(li);
         });
@@ -1830,7 +1956,7 @@ if (!sessionStorage.getItem(urlCity)) {
         url: urlCity,
         dataType: "json",
         cache: false,
-        success: function (result) {
+        success: function(result) {
             if (result.code == "N") {
                 console.log(result.msg);
                 return false;
@@ -1838,7 +1964,7 @@ if (!sessionStorage.getItem(urlCity)) {
             sessionStorage.setItem(urlCity, JSON.stringify(result.basreglist));
             getUrlCity(JSON.parse(sessionStorage.getItem(urlCity)));
         },
-        error: function () {
+        error: function() {
             console.log(msg);
         }
     });
@@ -1857,7 +1983,7 @@ if (!sessionStorage.getItem(urlProvince)) {
         url: urlProvince,
         dataType: "json",
         cache: false,
-        success: function (result) {
+        success: function(result) {
             if (result.code == "N") {
                 // console.log(result.msg);
                 return false;
@@ -1865,7 +1991,7 @@ if (!sessionStorage.getItem(urlProvince)) {
             sessionStorage.setItem(urlProvince, JSON.stringify(result.basreglist));
             getUrlProvince(JSON.parse(sessionStorage.getItem(urlProvince)));
         },
-        error: function () {
+        error: function() {
             console.log(msg);
         }
     });
@@ -1876,8 +2002,7 @@ if (!sessionStorage.getItem(urlProvince)) {
 
 function getUrlArea(getArea) {
     area = getArea;
-    setTimeout(function () {
-    }, 0);
+    setTimeout(function() {}, 0);
 }
 
 if (!sessionStorage.getItem(urlArea)) {
@@ -1886,7 +2011,7 @@ if (!sessionStorage.getItem(urlArea)) {
         url: urlArea,
         dataType: "json",
         cache: false,
-        success: function (result) {
+        success: function(result) {
             if (result.code == "N") {
                 console.log(result.msg);
                 return false;
@@ -1894,7 +2019,7 @@ if (!sessionStorage.getItem(urlArea)) {
             sessionStorage.setItem(urlArea, JSON.stringify(result.basreglist));
             getUrlArea(JSON.parse(sessionStorage.getItem(urlArea)));
         },
-        error: function () {
+        error: function() {
             console.log(msg);
         }
     });
@@ -1903,7 +2028,7 @@ if (!sessionStorage.getItem(urlArea)) {
 }
 function areaList() {
     var data = {};
-    $("div.form_col4 div.areaList").each(function (i) {
+    $("div.form_col4 div.areaList").each(function(i) {
         var name = $(this).attr("class") + (i + 1);
         var area = $(this).find("input.area").val();
         var areaTitle = $(this).find("input.area").attr("title");
@@ -1927,4 +2052,7 @@ function areaList() {
 //debugger;
 
 //本页面样式不好，所以采用了js来控制
-$('.title_select').css({left: $('.demend_left').offset().left - 90, top: $('.demend_left').offset().top});
+$('.title_select').css({
+    left: $('.demend_left').offset().left - 90,
+    top: $('.demend_left').offset().top
+});

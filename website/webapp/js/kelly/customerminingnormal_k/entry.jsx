@@ -299,6 +299,7 @@ var Fj = React.createClass({
                 </div>
             )
         }
+
         return (
             <div className="fj_style">
                 <div className="box">
@@ -318,7 +319,7 @@ var Fj = React.createClass({
                 <div className="box">
                     <h4>自定义标签</h4>
                     <div className="tag-free">
-                        {this.state.data.customlabel ? (
+                        {(this.state.data.customlabel&&JSON.parse(this.state.data.customlabel).length) ? (
                 <ul className="tag3">{JSON.parse(this.state.data.customlabel).map((v, k) => (
                     <li key={k}>{v.tagname}</li>))}</ul>) : <p>暂无</p>}
                     </div>

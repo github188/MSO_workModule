@@ -29,7 +29,7 @@ export default function addDemand(num,file1,file2,file3,file4) {
             "targetAgeFrom":"",//todo "integer,目标区域人群年龄 from"
     };
     data = JSON.stringify(data);
-    var url = [`${domain137}/quality/adddemand/${sessionStorage.getItem("jfuid")}/0?`, `${domain137}/quality/adddemand/${sessionStorage.getItem("jfuid")}/1?industryId=`];
+    var url = [`${domain137}/quality/adddemand/${sessionStorage.getItem("jfuid")}/0?industryId=`, `${domain137}/quality/adddemand/${sessionStorage.getItem("jfuid")}/1?industryId=`];
     jQuery.ajax({
         type: 'POST',
         contentType: 'application/json',
