@@ -150,7 +150,7 @@ class OrderList extends Component {
     /**
      * @param jfuid   用户id
      * @param state   状态  1-待领取 3-已放弃 4-已取消    2-已领取显示5-进行中 6-暂停 7-结算中 8-已完成 9-全部
-     * @param page    页数，默认从0开始  test jfuid 20170316060326136
+     * @param page    页数，默认从0开始  test jfuid 20170316060326136   47
      * @param size    每页的数量
      */
     getData(jfuid = (this.state.jfuid || "")) {
@@ -304,6 +304,7 @@ class OrderList extends Component {
         var content = $(this.refs.input.refs.input).val().trim();
         const reg = new RegExp(content, 'gi');
         var filter = this.state.totalOrder.nine.map((record) => {
+        	 record.name=record.name||"";
             const match = record.name.match(reg) || record.id.match(reg);
             if (!match) {
                 return null;
