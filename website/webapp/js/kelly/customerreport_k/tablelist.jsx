@@ -89,7 +89,6 @@ window.tableTotal = function(data){
 	 });
 }
 window.responseHandler = function (result){
-	console.log(result,11)
 	result.finishtotal>0?"":result.finishtotal=0;
 	result.releasetotal>0?"":result.releasetotal=0;
 	var data=result.data;
@@ -117,12 +116,12 @@ window.queryParams = function (params) {
 window.editNext = function (value,row,index) {
 	//$.setSessionStorage('pagination-page-number',$('.pagination .page-number.active a').html());
 	if(row.downloadcount == '0'){		//downloadneed 0 b不显示  1 显示	
-		return `<a class="checkDetail" data-releasenum=${row.releasenum} data-name=${row.demandname}  data-index=${index} href="javascript:;" >
+		return `<a class="checkDetail" data-releasenum=${row.releasenum} data-name=${row.demandname.toString().replace(/\s/g,"")}  data-index=${index} href="javascript:;" >
 		
 		<span class="ant-scroll-number-previous"  ><span >查看</span><sup data-show="true" class="ant-scroll-number ant-badge-count">new</sup></span>
 		</a>`;
 	}
-	return 	`<a class="checkDetail" data-releasenum=${row.releasenum} data-name=${row.demandname} data-index=${index} href="javascript:;" >查看</a>`;
+	return 	`<a class="checkDetail" data-releasenum=${row.releasenum} data-name=${row.demandname.toString().replace(/\s/g,"")} data-index=${index} href="javascript:;" >查看</a>`;
 }
 
 
