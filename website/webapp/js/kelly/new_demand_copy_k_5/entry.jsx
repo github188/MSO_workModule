@@ -1326,7 +1326,7 @@ class AreaAndRequirement extends React.Component {
                     </div>
                     <div className="input">
                         <label>需求量:</label>
-                        <input type="text" className="number size"/>
+                        <input type="text" className="number size" defaultValue="1"/>
                     </div>
                     <i data-id={index} className="close"></i>
                     <p className="error area">请选择目标区域</p><p className="error size">请输入需求量，请输入一个大于1 的整数</p>
@@ -1653,7 +1653,7 @@ class EssentialInformation extends React.Component {
             }
             $('.startDate').html(begintime);
             $('.endDate').html(endtime);
-            $('.context-explain .industry').html(demandname);
+            $('.context-explain .industry').html(demandname.slice(demandname.lastIndexOf("-")-2));
 
         }
     /*
@@ -2431,11 +2431,8 @@ function ordername() {
     //debugger;
     //console.log(twolevindustry+threelevindustry+'====twolevindustry');
     // console.log(threelevindustry);
-
         $(".demend_right .industry").html(twolevindustry + threelevindustry);
 
-    //debugger;
-    //debugger;
     $(".ordername").html(brandname + twolevindustry + threelevindustry);
 
     return brandname + twolevindustry + threelevindustry;
