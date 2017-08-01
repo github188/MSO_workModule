@@ -530,7 +530,7 @@ class Peoples extends React.Component{
 			
 			sessionStorage.setItem("newDandData",JSON.stringify(countJson));
 		
-			if(sessionStorage.getItem("jfustate")=="4"){
+			if(sessionStorage.getItem("companyInfo")=="4"){
 				location.href = 'new_demand.html';
 			}else{
 				$(".cover").show();

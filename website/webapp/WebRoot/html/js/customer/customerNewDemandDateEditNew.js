@@ -883,13 +883,13 @@ var PreviewRight = React.createClass({
             if($("input").hasClass("error") || $("textarea").hasClass("error") || $("input.form_date").val()==""){
               //alert(1);addDemand();
             }else{
-                addDemand();
+                addDemand(1);
             }
           });
         $("button.btn_cg").click(function(){
           $(".loading_cover").show();
           sessionStorage.setItem("fdstate", 0);
-          addDemand();
+          addDemand(0);
         });
     },
     render:function(){

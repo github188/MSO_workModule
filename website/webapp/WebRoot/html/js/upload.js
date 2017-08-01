@@ -57,7 +57,8 @@ function send_request()
         	serverUrl = serverUrlpre+'/aliOrder.do?orderId='+orderid+'&type='+credentials;
         }else if("customer_lj_DemandManagement2"==pagename){
         	credentials="fbxq";
-          serverUrl = serverUrlpre+'/aliOrder/customerDelve?stid='+uid+'&type='+credentials;
+          // serverUrl = serverUrlpre+'/aliOrder/customerDelve?stid='+uid+'&type='+credentials;
+            serverUrl = serverUrlpre+'/ali.do?uid='+uid+'&type='+credentials;
         }
         else{
         	//头像设置 type=headimg

@@ -175,11 +175,10 @@ $(document).ready(function(){
 		var tname;
 		tname=targ.tagName;
 		tClass=targ.className;
-		//console.log("classname is" + targ.className);
-		//console.log("You clicked on a " + tname + " element.");
-		if(tname=="BUTTON"||tname=="A"){
-			seoPoint(urlPath,tname,tClass);
-		}
+		seoPoint(urlPath,tname,tClass);
+		//if(tname=="BUTTON"||tname=="A"){
+		//	seoPoint(urlPath,tname,tClass);
+		//}
 	}
 });
 // /mso/buryingpoint?syspage=?&description=?&componentid=?

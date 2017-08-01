@@ -635,7 +635,7 @@ class DraftRequire extends React.Component {
     }
 
     industryservice(data) {
-        if (data.serviceType == "1" && data.industry == "教育培训") {
+        if (data.serviceType == "1" && (data.industry =="教育行业"|| data.industry=="教育培训"||data.industry==null)) {
             return 'new_demand_copy_5.html#';
         }
         if (data.serviceType == "2") {
@@ -647,7 +647,6 @@ class DraftRequire extends React.Component {
     createDraftHtml() {
 
         return this.state.DraftData.map(function(name, index) {
-            console.log(name)
             var industryservice = this.industryservice({
                 serviceType: name.serviceType,
                 industry: name.industry

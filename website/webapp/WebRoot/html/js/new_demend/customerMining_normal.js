@@ -312,9 +312,8 @@ var FreeTag = React.createClass({
             contentType:"application/x-www-form-urlencoded;charset=utf-8",
             cache:false,
             success:function(result){
-              if(result.code=="N"){
+                if(result.code=="N"){
                   $(".loading_cover").hide();
-                  console.log(result.msg);
                   return false;
               }else if(result.code=="N001"){
 				  sessionStorage.clear();
@@ -362,7 +361,6 @@ var ChoiceTag = React.createClass({
             success:function(result){
               if(result.code=="N"){
                   $(".loading_cover").hide();
-                  console.log(result.msg);
                   return false;
               }else if(result.code=="N001"){
 				  sessionStorage.clear();
@@ -821,7 +819,7 @@ $.ajax({
     dataType:"json",
     cache:false,
     success:function(data){
-		console.log(data);
+        console.log(data.detail,22222);
         if(data.code=="N001"){
          //console.log(data.msg);
          sessionStorage.clear();

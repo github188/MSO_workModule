@@ -1,0 +1,85 @@
+@charset "utf-8";
+
+body,ul,li,ol,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div,dl,dt,dd,input,button { margin:0; padding: 0;}
+body { font-size:14px; font-family: "microsoft yahei", sans-serif; -moz-user-select: text; background: url(https://www.mshuoke.com/images/crm/bg-left.gif) 0 0 repeat-y; min-width:1155px;}
+img {border:none; display: block;}
+li {list-style: none}
+textarea {resize:none;}
+textarea, input, button { outline: none;}
+a, a:hover {text-decoration: none; color: #424242;}
+button { cursor: pointer;}
+textarea, input, button { font-family: "microsoft yahei";}
+
+/*cover*/
+.cover, .cover1, .cover2, .progress_speed { position: fixed; background: rgba(0,0,0,0.3); top: 0; bottom: 0; left: 0; right: 0; width: 100%; height: 100%; display: none; z-index: 100;}
+.cover-box,.demand_submit { width: 400px; height: 235px; position: absolute; top: 40%; left: 50%; margin-left: -200px; margin-top: -120px; background: #fff;}
+.cover-box .title,.demand_submit .top { height: 42px; line-height: 42px; color: #666666; font-size: 16px; border-bottom:1px #dddddd solid; text-indent:1em;}
+.cover-box .title span.close2,
+.cover-box .title span.close3,
+.demand_submit .top i.close { background: url(https://www.mshuoke.com/images/crm/closed.png) no-repeat; display: inline-block; float: right; width: 16px; height: 16px; margin: 18px 12px 0 0; cursor: pointer;}
+.cover-box .context,.demand_submit .main { height: 145px; line-height: 145px; text-align: center; font-size: 16px; color: #666666;}
+.cover-box .context a,.demand_submit .main a { color: #FF9429; text-decoration: underline;}
+.cover-box .context a:hover,.demand_submit .main a:hover { color: #FF9429;}
+.cover-box .bt-choose,.demand_submit .bottom { border-top:1px #dddddd solid; height: 37px; padding-top:9px; text-align: right;}
+.cover-box .bt-choose button,.demand_submit .bottom button { width: 58px; height: 30px; line-height: 28px; color: #fff; font-size: 16px; margin-right:10px;}
+.cover-box .bt-choose button.bg_red,.demand_submit .bottom button.bg_red { background: #ff0000; border:1px #ff0000 solid;}
+.cover-box .bt-choose button.bg_red:hover,.demand_submit .bottom button.bg_red:hover { background:#fd5352; border:1px #fd5352 solid;}
+.cover-box .bt-choose button.bd_gray,.demand_submit .bottom button.bd_gray { background:#fff; border:1px #dddddd solid; color:#646566;}
+.cover-box .bt-choose button.bd_gray:hover,.demand_submit .bottom button.bd_gray:hover { border:1px #646566 solid;}
+.cover-box .title1 { background: #ffb24a; height: 30px; line-height: 30px; color: #fff; font-size: 16px; text-align: center; margin-top: 10px;}
+.cover-box .title1 span { background: url(closed.png) no-repeat; display: inline-block; width: 28px; height: 46px; cursor: pointer; position: absolute; right: 0; top: 0; margin-top: -46px;}
+
+/*top menu*/
+.topNav { height:50px; background:#1f1f1f; color:#fff; position:relative;}
+.topNav .logo { float:left; padding-left:17px; padding-top:17px;}
+.topNav .logo img { width:25px; height:16px;}
+.topNav .logo a, .topNav .logo span { display:inline-block; float:left; font-size:16px; line-height:16px; height:16px;}
+.topNav .right { position:absolute; right:35px; top:0;}
+.topNav .right.selected { height:255px;}
+.photo-box { width:135px; height:50px; position:relative;}
+.photo-box.selected { background:#333333;}
+.photo-box .photo { width:30px;height:30px; border-radius:50%; overflow:hidden; float:left; margin:8px;}
+.photo-box .photo img { width:100%;}
+.photo-box .name { float:left; color:#dddddd; overflow: hidden; text-overflow:ellipsis; white-space: nowrap; width:60px; line-height:50px; height:50px;}
+.photo-box .name a { color:#dddddd;}
+.photo-box .more { position:absolute; right:14px; top:16px; transform:rotate(90deg); -ms-transform:rotate(90deg); -moz-transform:rotate(90deg); -webkit-transform:rotate(90deg); -o-transform:rotate(90deg); font-family:SimSun;}
+.photo-details { width:152px; height:198px; position:absolute; top:53px; right:0; border:1px #eeeeee solid; box-shadow:3px 0 3px #a6a6a6; text-align:center; padding:0 8px; display:none; z-index:2; background:#fff;}
+.pd-top, .pd-mid { line-height:24px; color:#666666; padding:14px 0; border-bottom:1px #eeeeee solid;}
+.pd-mid a { color:#666666;}
+.pd-mid li { text-indent:2em;}
+.pd-mid li.icon-update { background: url(https://www.mshuoke.com/images/crm/icon11.png) 40px center no-repeat;}
+.pd-mid li.icon-pswd { background: url(https://www.mshuoke.com/images/crm/icon12.png) 40px center no-repeat;}
+.pd-bottom { padding-top:12px;}
+.pd-bottom a:hover { color:#428bcb; text-decoration:underline;}
+
+/*left menu*/
+.content-mid { overflow:hidden; min-width:1150px;}
+.content-right { float:left; min-height:600px;}
+.leftNav { float:left; width:240px; padding-top:62px;}
+.leftNav h3 { background: url(https://www.mshuoke.com/images/crm/arrow.png) right center no-repeat #d74634; color:#fff; line-height:43px; height:43px; font-size:14px; font-weight:normal;}
+.leftNav h3 span { display:inline-block; background: url(https://www.mshuoke.com/images/crm/icon01.png) 0 center no-repeat; margin-left:17px; padding-left:27px;}
+.leftNav ul { padding-top:8px;}
+.leftNav ul li { height:35px; line-height:35px;}
+.leftNav ul li:hover, .leftNav ul li.selected { background:#464646;}
+.leftNav ul li a { color:#999; padding-left:64px; display:block;}
+.leftNav ul li.icon1 a { background: url(https://www.mshuoke.com/images/crm/icon02.png) 44px center no-repeat;}
+.leftNav ul li.icon2 a { background: url(https://www.mshuoke.com/images/crm/icon03.png) 44px center no-repeat;}
+.leftNav ul li.icon3 a { background: url(https://www.mshuoke.com/images/crm/icon04.png) 44px center no-repeat;}
+
+/*footer*/
+.footer { position:fixed; background:#1f1f1f; bottom:0; left:0; width:100%; font-size:12px; height:32px; line-height:32px; color:#999999; text-indent:2em; z-index:10;}
+
+/*aside bar*/
+.aside_bar { position: fixed; right: 50px; bottom: 50px; z-index: 10;}
+.aside_bar ul { height: 170px;}
+.aside_bar li{ width:50px; height:50px; margin-bottom:10px; text-align: center; line-height:17px; position: relative;}
+.aside_bar li a { display: block; width: 100%; height: 100%; font-size: 16px;}
+.aside_bar li:nth-of-type(1) a { background:url("../images/supplier/aside_qq.png"); background-size:100% 100%;}
+.aside_bar li:nth-of-type(2) a { background:url("../images/supplier/aside_service.png"); background-size:100% 100%;}
+.aside_bar li:nth-of-type(3) a { background:url("../images/supplier/aside_top.png"); background-size:100% 100%;}
+.aside_bar li:hover a:after {visibility:visible;}
+.aside_bar li a:after {display:block;width:50px;height:50px;background:#259efb;color:#fff;visibility:hidden;padding:6px 9px;border-radius: 6px;}
+.aside_bar li:nth-of-type(1) a:after {content: "在线客服"; box-sizing: border-box;}
+.aside_bar li:nth-of-type(2) a:after { content: "400-900-5288"; overflow: hidden; text-indent: 100%; font-size: 0; width: 246px; height: 0; line-height: 0; text-align: left; padding: 50px 0 0 0; position: absolute; right: 0; top: 0; margin-left: -246px; background:url("../images/supplier/aside_service-h.png") right top no-repeat;}
+.aside_bar li:nth-of-type(3) a:after {content: "向上置顶"; box-sizing: border-box;}
+a.go-to-top { text-decoration: none;}

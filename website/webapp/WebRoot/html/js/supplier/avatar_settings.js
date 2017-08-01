@@ -122,41 +122,23 @@ var Setup=React.createClass({
  },
  render:function(){
        return (
-                 <div>
-                   <div className="rowtitle">头像设置</div>
-                   <div className="rowmain">
-                      <div className="file-list"><img src={localStorage.getItem("headurls")} /></div>
-                      <div className="file-button">
-                      <div className="ossfile" style={{"width":"300px"}}></div>
-                        <p>
-                          <button type="button" className="btn" id="selectfiles" style={{"margin-right":"10px"}}>选择图片</button>
-                          <button type="button" className="btn" id="postfiles">上传头像</button>
-                        </p>
-                        <p className="error-info"></p>
-                        <p>注：仅支持jpg、jpeg、png格式，图片大小限制1M以内</p>
-                      </div>
-                   </div>
-               </div>
+		   <div className="rowmain">
+			  <div className="file-list"><img src={localStorage.getItem("headurls")} /></div>
+			  <div className="file-button">
+			  <div className="ossfile" style={{"width":"300px"}}></div>
+				<p>
+				  <button type="button" className="btn" id="selectfiles" style={{"margin-right":"10px"}}>选择图片</button>
+				  <button type="button" className="btn" id="postfiles">上传头像</button>
+				</p>
+				<p className="error-info"></p>
+				<p className="msg-tips">注：仅支持jpg、jpeg、png格式，图片大小限制1M以内</p>
+			  </div>
+		   </div>
      )
    }
 });
 
-var Set_window=React.createClass({
-  reload:function(){
-    location.reload();
-  },
-  render:function(){
-    return (
-        <div className="demand_submit">
-            <div className="top"><span>提示</span><i className="close" onClick={this.reload}></i></div>
-            <div className="main">
-            <p>上传成功！</p>
-            </div>
-            <div className="bottom"><button type="button" className="button_close" onClick={this.reload}>确&nbsp;定</button></div>
-        </div>
-        )
-  }
-});
+
 function setup(){
   var data={
     jfuid:localStorage.getItem("jfuid"),
@@ -171,7 +153,8 @@ function setup(){
           cache:false,
           success:function(result){
             if(result.code=="Y"){
-              $(".set_window").show();
+              //$(".set_window").show();
+			  $(".cover1").show();
               localStorage.setItem("headurls",domainDown+file1);
             }else{
               alert(result.code);
@@ -183,4 +166,3 @@ function setup(){
       });
 }
 React.render(<Setup/>,$(".row_0")[0]);
-React.render(<Set_window/>,$(".set_window")[0]);

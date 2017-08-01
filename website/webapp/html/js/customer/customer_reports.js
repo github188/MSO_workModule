@@ -16,7 +16,7 @@ function whetherDown(callBack){
           num++
         }
       }
-			sessionStorage.setItem("notdownloadcount",num; 
+			sessionStorage.setItem("notdownloadcount",num); 
 			
 			callBack();
 		}).fail(function (data){

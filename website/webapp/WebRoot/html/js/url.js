@@ -13,7 +13,7 @@ var domain = "https://www.mshuoke.com";
 var domain137 = "https://gateway.mshuoke.com";
 var domainDown = "http://res.mshuoke.com/";//下载前缀
 var domainDownShort = "http://res.mshuoke.com/";//下载前缀
-var serverUrlpre = "https://back.mshuoke.com";//上传正式库//
+var serverUrlpre = domain137 + '/quality';//"https://back.mshuoke.com";//上传正式库//
 //var serverUrlpre = "http://192.168.2.33:8091";//上传正式库//
 
 var oPidDel;
@@ -288,3 +288,17 @@ var information = {
 information.info[location.pathname] = location.pathname;
 
 sessionStorage.setItem('customerinformation',JSON.stringify(information));
+
+
+var urlCompanyInfo = domain137 + "/quality/" + oJfuid + "/enterpriseinfo";//企业认证
+$.ajax({
+	type:"get",
+	url:urlCompanyInfo,
+	async:true,
+	contentType:"application/x-www-form-urlencoded;charset=utf-8",
+	dataType: "json",
+	success:function(r){
+		console.log(111111111111111111);
+		sessionStorage.setItem("companyInfo",r.data.resultcode);
+	}
+});

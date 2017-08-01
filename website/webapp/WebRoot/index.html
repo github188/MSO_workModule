@@ -7,19 +7,21 @@
 	<meta name="keywords" content="大数据营销,销售线索,精准营销,市场营销,眸事获客">
 	<meta name="baidu-site-verification" content="SdcIOUYnNG" />
 	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-	 <script src="https://pv.sohu.com/cityjson?ie=utf-8"></script> 
-	<script src="public/jquery-1.7.2.min.js" type="text/javascript"></script>
-	<script src="public/easing.js" type="text/javascript"></script>
-	<script src="public/react.min.js"></script>
-	<script src="public/react-dom.min.js"></script>
-	<script src="public/menu.js"></script>
-	<script src="public/countUp.js" charset="utf-8"></script>
+
+	<link rel="stylesheet" href="html/css/home.css">
+	<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script> 
+	<script src="html/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+	<!--<script src="html/js/home_index/jquery-1.11.1.min.js"></script>-->
+	<script src="html/js/react.js"></script>
+	<script src="html/js/react-dom.js"></script>
+	<script src="html/js/browser.min.js"></script>
+	
 	<script src="//www.mshuoke.com/html/js/main_index.js" charset="utf-8"></script>
 	<script src="//www.mshuoke.com/html/js/url.js" charset="utf-8"></script>
 	<script src="//www.mshuoke.com/html/js/hide.js"></script>
-	<!--<script src="html/js/antd-2.9.3.js" charset="utf-8"></script>	-->
-	<link rel="stylesheet" href="html/css/styleantd.css" />
-
+	<script src="//www.mshuoke.com/html/js/home_index/des.js"></script>
+	
+	<script src="html/js/home_index/slideshow.js"></script>
 	<script>
 	var _hmt = _hmt || [];
 	(function() {
@@ -47,102 +49,329 @@
 		    }
 		}
 		browserRedirect();
-		
-		
-		
 	</script>
-	
+	<style>
+		.banner { height: 790px;}
+		.home-data { padding-bottom: 140px; width: 1200px; margin: 0 auto;}
+		.home-data ul { overflow: hidden;}
+		.home-data li { width: 25%; background: url(html/images/home-index/hr.gif) right 12px no-repeat; float: left; display: inline-block; color: #fff;}
+		.home-data li.last { background: none;}
+		.home-data li div { padding-left: 100px; height: 62px; overflow: hidden;}
+		.home-data li.icon1 div { background: url(html/images/home-index/icon-data1.png) 45px 8px no-repeat;}
+		.home-data li.icon2 div { background: url(html/images/home-index/icon-data2.png) 45px 8px no-repeat;}
+		.home-data li.icon3 div { background: url(html/images/home-index/icon-data3.png) 45px 8px no-repeat;}
+		.home-data li.icon4 div { background: url(html/images/home-index/icon-data4.png) 45px 8px no-repeat;}
+		.home-data li div h2 { display: inline-block; float: left; font-size: 44px; color: #1FC7FF; line-height: 52px; margin-right: 8px;}
+		.home-data li div span { display: inline-block; float: left; font-size: 18px; color: #FFFFFF; line-height: 78px;}
+		.home-data li p { text-align: center;}
+		.home-case { padding-bottom: 217px; width: 1200px; margin: 0 auto;}
+		.home-case .title { padding-bottom: 52px;}
+		.home-case .title h2,.home-news .title h2 { font-size: 28px; line-height: 28px; height: 28px; color: #CB5F5D; font-weight: normal; padding-bottom: 14px;}
+		.home-case .title p,.home-news .title p { font-family: HelveticaNeue; font-size: 18px; line-height: 18px; height: 18px; color: #D2D2D2;}
+		.home-case .content { background: url(html/images/home-index/case-bg.png) 20px 0 no-repeat; padding-left: 290px;}
+		.home-case .content ul { overflow: hidden;}
+		.home-case .content li { display: inline-block; float: left; margin-right: 56px; padding: 4px 0;}
+		.home-case .content li p { margin: 18px 0;}
+		.home-case .content li.last { margin: 0;}
+		.home-news { padding-bottom: 170px; width: 1200px; margin: 0 auto;}
+		.home-news .title { padding-bottom: 80px;}
+		.home-news .content { overflow: hidden;}
+		.home-news .left { float: left;}
+		.home-news .right { float: left; width: 572px; margin-left: 24px;}
+		.home-news .slide-show { width: 600px; height: 336px; margin-bottom: 20px; background: #F2DEDE;}
+		.home-news .news-class { width: 600px; height: 250px; position: relative;}
+		.home-news .news-class p { position: absolute; bottom: 0; left: 0; width: 100%; line-height: 78px; height: 78px; color: #fff; font-size: 30px; text-align: center;}
+		.home-news .news-class p a { color: #fff;}
+		.home-news .right li { height: 168px; border: 1px #C59043 solid; margin-bottom: 16px;}
+		.home-news .right li:hover { border: 1px solid #CB5F5D;}
+		.home-news .right li img { float: left; margin-right: 22px;}
+		.home-news .right li p { font-size: 14px; color: #D2D2D2; line-height: 24px; padding-top: 18px; padding-right: 28px;}
+		.home-news .right li:hover p { color: #999;}
+		.home-news .right li h3 { font-size: 16px; line-break: 16px; height: 16px; color: #CB5F5D; font-weight: normal; padding-top: 10px;}
+		.home-news .right li p.date { font-size: 12px; color: #BEBBCA; height: 12px; line-height: 12px; padding-top: 24px;}
+		.home-news .right ul { padding-bottom: 14px;}
+		.home-news .right .tag { overflow: hidden;}
+		.home-news .right .tag a { display:inline-block; float: left; margin-right: 8px; color: #BB5A5A; width: 108px; height: 32px; line-height: 32px; text-align: center; font-size: 14px; background: url(html/images/home-index/tag-bg.png) no-repeat;}
+		.home-news .right .tag a.last { margin-right: 0;}
+		.home-news .right .tag a:hover { color: #14263C; background: url(html/images/home-index/tag-bg-h.png) no-repeat;}
+		.home-business { height: 825px; width: 1200px; margin: 0 auto; padding-top: 145px; color: #fff; clear: both;}
+		.home-business .left { float: left;}
+		.home-business .right { float: right; width: 578px;}
+		.home-business .left h2 { font-size: 22px; line-height: 22px; height: 22px; display: inline-block; margin-bottom: 15px; color: #DF6162; background: -webkit-linear-gradient(left, #DF6162 , #CA9343); -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
+		.home-business .left span { width: 60px; height: 2px; background: #EF6B5F; display: inline-block;}
+		.home-business .left i.clear{clear:both;height:0;overflow:hidden;}
+		.home-business .left p { font-size: 16px; color: #D2D2D2; line-height: 30px; width: 485px; margin-top: 4px;}
+		.home-business .left li { margin-bottom: 130px; padding-left: 116px;}
+		.home-business .left li.last { margin-bottom: 0;}
+		.home-business .left li.icon01 { background: url(html/images/home-index/business-icon1.png) 0 0 no-repeat;}
+		.home-business .left li.icon02 { background: url(html/images/home-index/business-icon2.png) 0 0 no-repeat;}
+		.home-business .left li.icon03 { background: url(html/images/home-index/business-icon3.png) 0 0 no-repeat;}
+		.home-business .title { float: right; text-align: center; margin-right: 155px;}
+		.home-business .title h2 { font-size: 28px; line-height: 28px; height: 28px; color: #CB5F5D; font-weight: normal; padding-bottom: 18px;}
+		.home-business .title p { font-family: HelveticaNeue; font-size: 18px; line-height: 18px; height: 18px; color: #D2D2D2;}
+		.home-business .right .content { background: url(html/images/home-index/business-bg.png) center center no-repeat; width: 578px; height: 578px; clear: both; position: relative;} 
+		.home-business .right .content .rightImg01 { position: absolute; right: 264px; top: 141px; overflow: hidden; width: 110px; height: 105px;}
+		.home-business .right .content .rightImg01 p { display: block; position: absolute; right: 0; top: 0; width: 10%;  height: 105px; -webkit-animation:rightImg1 1s linear 1; -webkit-animation-fill-mode:both; overflow: hidden;}
+		@keyframes rightImg1 {
+			0%  { width:10%; opacity:0;}
+			100%{ width:100%; opacity:1;}
+		}
+		.home-business .right .content .rightImg01 p img { position: absolute; right: 0; top: 0;}
+		.home-business .right .content .rightImg02 { position: absolute; left: 240px; top: 58px; overflow: hidden; width: 72px; height: 178px; display: none;}
+		.home-business .right .content .rightImg02 p { display: block; position: absolute; right: 0; bottom: 0; width: 72px;  height: 10%; -webkit-animation:rightImg2 1s linear 1; -webkit-animation-fill-mode:both; overflow: hidden;}
+		@keyframes rightImg2 {
+			0%  { height:10%; opacity:0;}
+			100%{ height:100%; opacity:1;}
+		}
+		.home-business .right .content .rightImg02 p img { position: absolute; right: 0; bottom: 0;}
+		.home-business .right .content .rightImg03 { position: absolute; left: 192px; top: 129px; overflow: hidden; width: 149px; height: 137px; display: none;}
+		.home-business .right .content .rightImg03 p { display: block; position: absolute; right: 0; top: 0; width: 149px;  height: 137px; -webkit-animation:rightImg3 1s ease-in-out 1; -webkit-animation-fill-mode:both; overflow: hidden;}
+		@keyframes rightImg3 {
+			0%  { opacity:0;}
+			100%{ opacity:1;}
+		}
+		.home-business .right .content .rightImg03 p img { position: absolute; left: 50%; top: 50%; margin-left: -74.5px; margin-top: -68.5px;}
+		
 
+		#solid{ width:100%; height:790px; clear:both; position:relative;}
+		#solid .solid0,#solid .solid1,#solid .solid2{position:absolute;left:0px;top:0px;width:100%;height:790px;display:none;}
+		#solid .solid0{background:url(html/images/home-index/banner1.png) center top no-repeat;}
+		#solid .solid1{background:url(html/images/home-index/banner2.png) center top no-repeat;}
+		#solid ul li{ position:absolute; left:50%; top:0px; width:1200px; height:790px; margin-left:-600px; display:none;}
+		#solid #btt{ position:absolute; left:50%; bottom:0; margin-left: -70px;}
+		#solid #btt span{ width:40px; height:3px; float:left; margin:0 15px; background:#6C6C6C; cursor: pointer;}
+		
+
+		
+		#slide-holder{z-index : 40;width : 600px;height : 336px;position : relative;}
+		#slide-holder div#slide-runner{top : 0;left : 0;width : 600px;height : 336px;overflow : hidden;position : absolute;}
+		#slide-holder div#slide-runner a { color: #fff;}
+		#slide-holder img{margin : 0;display : none;position : absolute;}
+		#slide-holder div#slide-controls{left : 0;bottom : 0px;width : 600px;height :89px;display : none;position : absolute;}
+		#slide-holder div#slide-controls p.text{ position: absolute; bottom: 0; left: 9px; width: 580px; color: #fff; height: 89px; font-size: 30px; z-index: 5;}
+		#slide-holder div#slide-controls p#slide-nav{ position: absolute; left: 50%; bottom: 9px; z-index: 5; margin-left: -27px;}
+		#slide-holder div#slide-controls p#slide-nav a {float : left; width : 8px;height : 8px; border-radius:50%; display : inline;font-size : 0; line-height : 0; background: #fff; margin: 0 5px;}
+		#slide-holder div#slide-controls p#slide-nav a.on{ background: #265782;}
+		
+		#solid a { position: absolute; right: 0; top: 497px; display:inline-block; color: #BB5A5A; width: 132px; height: 40px; line-height: 40px; text-align: center; font-size: 20px; background:url(html/images/home-index/banner-btn.png) center top no-repeat;}
+		#solid a:hover { color: #fff; background:url(html/images/home-index/banner-btn-h.png) center top no-repeat;}
+		
+		
+	</style>
 </head>
 <body onselectstart="return false">
-
-	<div id="main"></div>
-	
-<script  src="index.bundle.js" charset="utf-8"></script>
-
-    <script src="public/jquery-ui-1.8.22.custom.min.js"></script>
-    <script src="public/jquery.imagesloaded.min.js"></script>
-    <script src="public/video.js"></script>
-
-    <!-- BigVideo -->
-    <script src="public/bigvideo.js"></script>
-
-    <!-- Demo -->
-    <script>
-	    $(function() {
-            var BV = new $.BigVideo({useFlashForFirefox:false});
-			BV.init();
-			BV.show('images/bg.mp4',{ambient:true});
-	    });
-    </script>
-	
-	<script type="text/javascript" src="html/js/jquery.fullPage.min.js"></script>
-	<script>
-	
-	$(function(){
-		
-		var sHeight = $(window).height();
-		
-		if(sHeight>=880){
-			$('#pageContain').fullpage({
-				//sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', '#f90'],
-				'navigation': true,
-				scrollingSpeed:600,
-				afterLoad: function(anchorLink, index){
-					//console.log(index);
-					if(index>=2){
-						$('.home_logo').show();
-						$('.wrap').hide();
-						$('.nav_top').addClass('current');
-						$('#fp-nav').show();
-					}else{
-						$('#fp-nav').hide();
-						$('.home_logo').hide();
-						$('.wrap').show()
-						$('.nav_top').removeClass('current');
-					}
-				},
-				afterRender:function (){
-					$('#fp-nav').hide();
+	<div class="header"></div>
+	<div class="wrap-mid">
+		<div class="banner" id="solid">
+		    <div class="solid0"></div><div class="solid1"></div>
+		    <ul>
+		        <li><a class="rightNow" href="javascript:;">立即获客</a></li>
+		        <li><a class="goActive" href="https://www.mshuoke.com/active/training-of-education.html" target="_blank">了解详情</a></li>
+		    </ul>
+		    <div id="btt"><span></span> <span></span> </div>
+		</div>
+		<script src="js/fordboy.js"></script>
+		<div class="home-business">
+			<div class="left">
+				<ul>
+					<li class="icon01">
+						<div><h2>销售线索挖掘</h2></div>
+						<span></span>
+						<p>针对用户画像，进行用户行为和特征分析，验证并得到用户授权，提供符合企业市场需求的销售线索。</p>
+					</li>
+					<li class="icon02">
+						<div><h2>数据加工</h2></div>
+						<span></span>
+						<p>对企业自有数据进行挖掘和处理，帮助提升企业自身数据的销售转化率。</p>
+					</li>
+					<li class="last icon03">
+						<div><h2>标签匹配</h2></div>
+						<span></span>
+						<p>对企业用户标签进行完善和更新，形成更完整的标签。</p>
+					</li>
+				</ul>
+			</div>
+			<div class="right">
+				<div class="title">
+					<h2>我们的业务</h2>
+					<p>Our Business</p>
+				</div>
+				<div class="content">
+					<ul>
+						<li class="rightImg01"><p><img src="html/images/home-index/business-sale.png" /></p></li>
+						<li class="rightImg02"><p><img src="html/images/home-index/business-data.png" /></p></li>
+						<li class="rightImg03"><p><img src="html/images/home-index/business-tag.png" /></p></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="home-news">
+			<div class="title">
+				<h2>眸事资讯</h2>
+				<p>MS News</p>
+			</div>
+			<div class="content">
+				<div class="left">
+					<div class="slide-show" id="slide-holder">
+						<div id="slide-runner">
+							<a href="https://news.mshuoke.com/article/20170612135114718.html" target="_blank"><img id="slide-img-1" src="html/images/home-index/slide1.jpg" class="slide" alt="" /></a>
+							<a href="https://news.mshuoke.com/article/20170607135045099.html" target="_blank"><img id="slide-img-2" src="html/images/home-index/slide2.jpg" class="slide" alt="" /></a>
+							<a href="https://news.mshuoke.com/article/20170607134711508.html" target="_blank"><img id="slide-img-3" src="html/images/home-index/slide3.jpg" class="slide" alt="" /></a>
+							<div id="slide-controls">
+							 <p id="slide-client" class="text"><strong></strong><span></span></p>
+							 <p id="slide-desc" class="text"></p>
+							 <p id="slide-nav"></p>
+							</div>
+						</div>
+				   </div>
+				   <script type="text/javascript">
+					    if(!window.slider) {
+							var slider={};
+						}
+					
+						slider.data= [
+					    {
+					        "id":"slide-img-1", // 与slide-runner中的img标签id对应
+					        "client":"<a href='https://news.mshuoke.com/article/20170612135114718.html' target='_blank'>如何用大数据分析精准营销？简单3步搞定</a>",
+					        "desc":"" //这里修改描述
+					    },
+					    {
+					        "id":"slide-img-2",
+					        "client":"<a href='https://news.mshuoke.com/article/20170607135045099.html' target='_blank'>关于如何选取精准关键词营销，这有4个原则</a>",
+					        "desc":""
+					    },
+					    {
+					        "id":"slide-img-3",
+					        "client":"<a href='https://news.mshuoke.com/article/20170607134711508.html' target='_blank'>数据挖掘在精准营销中的3大价值</a>",
+					        "desc":""
+					    }
+						];
+					   </script>
+					<div class="news-class">
+						<div class="img"><a href="https://news.mshuoke.com/article/20170309030103079.html" target="_blank"><img src="html/images/home-index/news-img-class.jpg" /></a></div>
+						<p><a href="https://news.mshuoke.com/article/20170309030103079.html" target="_blank">2017，知识付费会进入寡头时代吗？</a></p>
+					</div>
+				</div>
+				<div class="right">
+					<ul>
+						<li><a href="https://news.mshuoke.com/article/20170628142253482.html" target="_blank">
+							<img src="html/images/home-index/news-img1.png" />
+							<p class="date">2017/06/28</p>
+							<h3>大数据时代，精准营销策略能否解决一切？</h3>
+							<p>大数据时代，当人们开始本着“精准营销”原则，利用网页浏览记录、并未清除过的缓存，所谓的用户 ...</p>
+						</a></li>
+						<li><a href="https://news.mshuoke.com/article/20170616101640836.html" target="_blank">
+							<img src="html/images/home-index/news-img2.png" />
+							<p class="date">2017/06/16</p>
+							<h3>微信公众号全网精准营销5大法则</h3>
+							<p>作为移动互联网时代最重要的产物之一，微信自推出以来就受到社会的很大关注。众所周知，微信首创 ...</p>
+						</a></li>
+						<li><a href="https://news.mshuoke.com/article/20170613110353909.html" target="_blank">
+							<img src="html/images/home-index/news-img3.png" />
+							<p class="date">2017/06/13</p>
+							<h3>零售企业开展精准营销，试试这5个步骤</h3>
+							<p>近年来，同质化商品、频繁的价格战、店铺租金上涨、电子商务的冲击等因素导致零售企业利润不断下 ...</p>
+						</a></li>
+					</ul>
+					<div class="tag">
+						<a href="https://news.mshuoke.com/article/20170628145137761.html" target="_blank" class="tag1">在线教育</a>
+						<a href="https://news.mshuoke.com/article/20170628140619350.html" target="_blank" class="tag2">大数据</a>
+						<a href="https://news.mshuoke.com/article/20170119033553973.html" target="_blank" class="tag3">人工智能</a>
+						<a href="https://news.mshuoke.com/article/20170628155250735.html" target="_blank" class="tag4">精准营销</a>
+						<a class="last" href="https://news.mshuoke.com/article/20170628161350259.html" target="_blank">英语培训</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="home-case">
+			<div class="title">
+				<h2>成功案例</h2>
+				<p>Successful Cases</p>
+			</div>
+			<div class="content">
+				<ul>
+					<li>
+						<p><img src="html/images/home-index/case-logo1.png" onMouseOver="this.src='html/images/home-index/case-logo1-h.png'" onMouseOut="this.src='html/images/home-index/case-logo1.png'" alt="成功案例" /></p>
+						<p><img src="html/images/home-index/case-logo2.png" onMouseOver="this.src='html/images/home-index/case-logo2-h.png'" onMouseOut="this.src='html/images/home-index/case-logo2.png'" alt="成功案例" /></p>
+					</li>
+					<li>
+						<p><img src="html/images/home-index/case-logo3.png" onMouseOver="this.src='html/images/home-index/case-logo3-h.png'" onMouseOut="this.src='html/images/home-index/case-logo3.png'" alt="成功案例" /></p>
+						<p><img src="html/images/home-index/case-logo4.png" onMouseOver="this.src='html/images/home-index/case-logo4-h.png'" onMouseOut="this.src='html/images/home-index/case-logo4.png'" alt="成功案例" /></p>
+					</li>
+					<li>
+						<p><img src="html/images/home-index/case-logo5.png" onMouseOver="this.src='html/images/home-index/case-logo5-h.png'" onMouseOut="this.src='html/images/home-index/case-logo5.png'" alt="成功案例" /></p>
+						<p><img src="html/images/home-index/case-logo6.png" onMouseOver="this.src='html/images/home-index/case-logo6-h.png'" onMouseOut="this.src='html/images/home-index/case-logo6.png'" alt="成功案例" /></p>
+					</li>
+					<li>
+						<p><img src="html/images/home-index/case-logo7.png" onMouseOver="this.src='html/images/home-index/case-logo7-h.png'" onMouseOut="this.src='html/images/home-index/case-logo7.png'" alt="成功案例" /></p>
+						<p><img src="html/images/home-index/case-logo8.png" onMouseOver="this.src='html/images/home-index/case-logo8-h.png'" onMouseOut="this.src='html/images/home-index/case-logo8.png'" alt="成功案例" /></p>
+					</li>
+					<li class="last">
+						<p><img src="html/images/home-index/case-logo9.png" onMouseOver="this.src='html/images/home-index/case-logo9-h.png'" onMouseOut="this.src='html/images/home-index/case-logo9.png'" alt="成功案例" /></p>
+						<p><img src="html/images/home-index/case-logo10.png" onMouseOver="this.src='html/images/home-index/case-logo10-h.png'" onMouseOut="this.src='html/images/home-index/case-logo10.png'" alt="成功案例" /></p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="home-data">
+			<ul>
+				<li class="icon1">
+					<div>
+						<h2>20万</h2>
+						<span>条</span>
+					</div>
+					<p>月获客需求发布量</p>
+				</li>
+				<li class="icon2">
+					<div>
+						<h2>1.29亿</h2>
+						<span>元</span>
+					</div>
+					<p>累计获客需求发布金额</p>
+				</li>
+				<li class="icon3">
+					<div>
+						<h2>1200万</h2>
+						<span>条</span>
+					</div>
+					<p>月增精准移动用户</p>
+				</li>
+				<li class="last icon4">
+					<div>
+						<h2>1.33亿</h2>
+						<span>条</span>
+					</div>
+					<p>累计精准用户</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="footer"></div>
+<div class="aside_bar"></div>
+<script src="html/js/asideBar.js" type="text/babel"></script>
+<script src="html/js/home_index/header.js" type="text/babel"></script>
+<script src="html/js/home_index/footer.js" type="text/babel"></script>
+<script>
+	jQuery(function(){
+		var $div_li =$(".home-business .left li");
+        $div_li.hover(function(){
+            $(this).addClass("selected").siblings().removeClass("selected");
+            var index =  $div_li.index(this);
+            $(".home-business .right .content li").eq(index).show().siblings().hide();
+        });
+        $("a.rightNow").click(function(){
+        	if(sessionStorage.getItem("jfuid")!=undefined&&sessionStorage.getItem("jfuid")!=""&&sessionStorage.getItem("jfuid")!=null){
+        		if(sessionStorage.getItem("companyInfo")==4){
+        			window.location.href="html/customer_new_demand.html";
+        		}else{
+					window.location.href="html/customer_home.html";
 				}
-			});
-		}
-		
-		
-		/*处理头部样式问题*/
-		$(window).scroll(function (){
-			var top = $(window).scrollTop();
-			if(top>880){
-				$('.nav_top').addClass('current');
-				$('.home_logo').show();
-				$('.wrap').hide();
-			}else{
-				$('.home_logo').hide();
-				$('.wrap').show()
-				$('.nav_top').removeClass('current');
+        	}else{
+				window.location.href="register-customer.html";
 			}
-			
-		});
-		
+        });
+        
 	});
-	
-	/*滚动吸顶控制
-	
-	jQuery.processControl = function (obj,callBack){
-		var companions = $(obj)[0];
-		if(!companions)return;
-		var distance = companions.getBoundingClientRect();
-		$(window).scroll(function (){
-			var top = $(window).scrollTop();
-			if(top*1>distance.top*1-$(obj).height()*1.8){
-				callBack();
-			}
-		});
-	}
-	*/
-	
-    </script>
-	
-			
+</script>
 </body>
 </html>

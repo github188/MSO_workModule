@@ -3,18 +3,19 @@
 <head lang="en">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="format-detection" content="telephone=no">
     <title>我的需求 - 眸事网</title>
-	
+
 	<link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/animate.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/index-1.css" />
 	<link rel="stylesheet" href="css/index-2.css" />
-    <link rel="stylesheet" href="css/style.css"/> 
+    <link rel="stylesheet" href="css/style.css"/>
     <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/drop-down.css" rel="stylesheet"> 
+    <link href="css/drop-down.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/bootstrap-datetimepicker.css">
-	
-	<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script> 
+
+	<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
 	<script src="js/jquery-1.7.2.min.js"></script>
 	<script src="js/jquery-ui.min.js"></script>
 
@@ -36,7 +37,7 @@
     <script src="js/jquery.AshAlom.gaugeMeter-2.0.0.min.js"></script>
 </head>
 <body class="bg-white">
-	
+
     <div class="topNav"></div>
     <input type="hidden" name="currentPage" id="currentPage" value="1">
     <input type="hidden" name="par" id="par" value="1">
@@ -56,11 +57,11 @@
     		<div class="deman_hall_search demand-list all-list">
     			<div class="search-box">
     				<ul>
-    					<li data-state="1" class="selected">全部<span></span></li>
-    					<li data-state="2">审核中<span></span></li>
-    					<li data-state="3">进行中<span></span></li>
-    					<li data-state="4">结算中<span></span></li>
-    					<li data-state="5">已完成<span></span></li>
+    					<li class="selected">全部<span></span></li>
+    					<li data-state="1">审核中<span></span></li>
+    					<li data-state="2">进行中<span></span></li>
+    					<li data-state="3">结算中<span></span></li>
+    					<li data-state="4">已完成<span></span></li>
     				</ul>
     				<input type="text" placeholder="请输入需求名" class="demand-name" id="demandname" />
     				<div class="right">
@@ -72,30 +73,30 @@
     				</div>
     			</div>
     			<div class="search-result all-list" id="search_reslut">
-				
+
 				</div>
-				
-				
+
+
 				<!--草稿箱-->
-				
-    			
+
+
     		</div>
     		<!--异常需求-->
-			
-    		
-    		
-    		<div class="center_text">
-				<div class="page" id="page">
-				</div>
-			</div>
-    		
+
+
+
+    		<!--<div class="center_text">-->
+				<!--<div class="page" id="page">-->
+				<!--</div>-->
+			<!--</div>-->
+
     	</div>
-		
-		
-		
-    	
-		
-		
+
+
+
+
+
+
     </div>
     <!--页脚信息开始-->
     <div class="footer_box"></div>
@@ -114,23 +115,24 @@
 	    </div>
 	</div>
 	<div class="cover-bg"></div>
-	<!--<script type="text/javascript"> 
-	$(document).ready(function(){ 
-		$("#test").click( function (e){ 
+	<!--<script type="text/javascript">
+	$(document).ready(function(){
+		$("#test").click( function (e){
 			var ev = window.event;//获取event对象
-		location.replace(this.href); 
-		ev.returnValue=false; 
-		}); 
+		location.replace(this.href);
+		ev.returnValue=false;
+		});
 	});
-	</script> 
+	</script>
 	<a id="test hide">test1</a>-->
-	
+
 	<div class="aside_bar"></div>
-	<script type="text/babel" src="js/customerDemandList/customerDemandList.js"></script>
-	<script src="js/asideBar.js" type="text/babel"></script> 
+	<!--<script type="text/babel" src="js/customerDemandList/customerDemandList.js"></script>-->
+	<script  src="../customerDemandLists.bundle.js"></script>
+	<script src="js/asideBar.js" type="text/babel"></script>
     <script src="js/header-customer.js" type="text/babel"></script>
 <!--    <script src="js/customer/demand-done.js" type="text/babel"></script>-->
 	<script src="js/footer.js" type="text/babel"></script>
-	
+
 </body>
 </html>

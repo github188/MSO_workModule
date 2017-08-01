@@ -29,7 +29,7 @@ class AsideBar extends React.Component{
 		return(
 			<div className="aside_bar">
 				<ul>  
-					<li><a href="tencent://message/?uin=2850840269&Site=&menu=yes" id="contactQQ"></a></li>
+					<li><a href="tencent://message/?uin=2850840276&Site=&menu=yes" id="contactQQ"></a></li>
 					<li id="contactTel"><a href="javascript:"></a></li>
 					<li><a href="javascript:" className="go-to-top"></a></li>
 				</ul>

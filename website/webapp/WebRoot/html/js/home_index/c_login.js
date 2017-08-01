@@ -1,3 +1,29 @@
+function whetherDown(callBack){
+	/*查看是有下载*/
+		callBack = callBack || function (){};
+    let url = domain137 + `/quality/firstreport?jfuid=${$.sessionStorage('jfuid')}&demandName=&demandState=&startTime=&endTime=`;
+		
+		
+		$.when($.ajax({
+			 url:url,
+			 type:"get",
+			 contentType:'application/json',
+		})).then(function (result){
+		  var num=0;
+      for (var i = result.data.length - 1; i >= 0; i--) {
+        if(result.data[i].downloadcount==0){
+          num++
+        }
+      }
+			sessionStorage.setItem("notdownloadcount",num; 
+			
+			callBack();
+		}).fail(function (data){
+			//alert('获取数据失败！');
+		});
+		
+	//debugger;
+}
 
 var LoginBox = React.createClass({
    componentDidMount:function(){
@@ -73,7 +99,7 @@ var LoginBox = React.createClass({
 			//debugger;
 		});
 	}
-$('.btn_login').click(function(){
+  $('.btn_login').click(function(){
 	  
     var checkU = $.trim($("input.username").val());
     var checkP = $("input.pswd").val();
@@ -259,10 +285,10 @@ $('.btn_login').click(function(){
             <li><i className="icon-psw"></i><input type="password" className="pswd" placeholder="密码" /></li>
             <li className="remember-psw">
                 <span>记住密码</span>
-                <a href="c_retrievePassword.html" id="forgetPSW">忘记密码</a>
+                <a href="retrievePassword.html" id="forgetPSW">忘记密码</a>
             </li>
             <li><button type="button" className="btn_login">登录</button></li>
-            <li className="a-center">还没有账号？马上<a href="register-supplier.html">注册新账号</a></li>
+            <li className="a-center">还没有账号？马上<a href="register-customer.html">注册新账号</a></li>
          </ul>
          </form>
        </div>

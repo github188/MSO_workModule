@@ -538,7 +538,7 @@ var State=React.createClass({
              </div>
          )
      }else if(this.state.data.fdstate==5){
-		 debugger;
+		 // debugger;
           return (
             <div className="right">
 {this.state.copyDemandHtml}
@@ -696,14 +696,14 @@ $.ajax({
     cache:false,
     success:function(data){
         if(data.code=="N001"){
-         console.log(data.msg);
+         // console.log(data.msg);
          sessionStorage.clear();
          $(".loading_cover").hide();
          window.location.href="/login.html";
          return false;
         }
         if(data.code=="N"){
-          console.log(data.msg);
+          // console.log(data.msg);
           $(".loading_cover").hide();
           return false;
         }

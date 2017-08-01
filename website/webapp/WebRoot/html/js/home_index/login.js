@@ -77,9 +77,9 @@ var LoginBox = React.createClass({
 		var bconverRecordUrl = domain+'/bconverRecord';
 		var mosid = sessionStorage.getItem('msoid');
 		var visitid = sessionStorage.getItem('visitid');
-		if(mosid.substring(0,1)==1){
-			return;
-		}
+//		if(mosid.substring(0,1)==1){
+//			return;
+//		}
 		$.when($.ajax({
 			 url:bconverRecordUrl,
 			 type:"post",
@@ -157,7 +157,19 @@ var LoginBox = React.createClass({
 						   sessionStorage.setItem(name, data[name]);
 						   localStorage.setItem(name, data[name]);
 					   }
-					   
+            var locations = location.search.slice(1);
+            var jiemi = strDec(locations, key1, key2, key3);
+            const jfuid = jiemi.split("&");
+            var obj = {};
+            for (var i = jfuid.length - 1; i >= 0; i--) {
+                obj[jfuid[i].split("=")[0]] = jfuid[i].split("=")[1]
+            }
+            if (obj.jfuid&&(obj.jfuid == localStorage.getItem("jfuid"))) {
+                var jiami = strEnc(`orderid=${obj.orderid}&mso_userid=${obj.jfuid}`, key1, key2, key3)
+                location.href = `http://crm.mshuoke.com/sapi/msocallcenter/login?${jiami}`;
+                return ;
+            }
+            
 					   whetherDown(data.jfuid,thenNext);
 					   /*暂时中断*/
 					   function thenNext(){
@@ -211,7 +223,7 @@ var LoginBox = React.createClass({
 							 sessionStorage.setItem("jfupassword", $("input.pswd").val());//密码
 						   }
 							var oJfuid = data.jfuid;
-							console.log(oJfuid);
+							//console.log(oJfuid);
 							//var oJfustate = data.jfustate;
 							if(data.jfutype==1){
 								var urlCompanyInfo = domain137 + "/quality/" + oJfuid + "/enterpriseinfo";//企业认证
@@ -231,19 +243,11 @@ var LoginBox = React.createClass({
 								
 							}else{
 								if(data.jfustate==4){
-									if(sessionStorage.getItem("fromHome")=="0"){
-										window.location.href="/html/supplierDemandHall.html";
-									}else{
-										window.location.href="html/supplier_index.html";
-									}
+									var p = "mso_userid="+oJfuid;
+									var pEnc = strEnc(p,key1,key2,key3);
+									window.location.href="//crm.mshuoke.com/sapi/msocallcenter/login?"+pEnc;
 								}else{
-									if(data.pid!==""){
-										sessionStorage.setItem("jfuid", data.pid);
-										localStorage.setItem("jfuid", data.pid);
-										window.location.href="html/supplierDemandList.html";
-									}else {
-										window.location.href="html/supplier_index.html";//html/PerfectData.html
-									}
+									window.location.href="html/crm-myInfo.html";
 								}
 							}
 						}
@@ -285,10 +289,10 @@ var LoginBox = React.createClass({
             <li><i className="icon-psw"></i><input type="password" className="pswd" placeholder="密码" /></li>
             <li className="remember-psw">
                 <span>记住密码</span>
-                <a href="retrievePassword.html" id="forgetPSW">忘记密码</a>
+                <a href="retrievePassword.html" id="forgetPSW" className="forgetPSW">忘记密码</a>
             </li>
             <li><button type="button" className="btn_login">登录</button></li>
-            <li className="a-center">还没有账号？马上<a href="register-customer.html">注册新账号</a></li>
+            <li className="a-center">还没有账号？马上<a className="register-new" href="register-customer.html">注册新账号</a></li>
          </ul>
          </form>
        </div>

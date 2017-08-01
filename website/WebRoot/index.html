@@ -85,7 +85,8 @@
 		.home-news .right li { height: 168px; border: 1px #C59043 solid; margin-bottom: 16px;}
 		.home-news .right li:hover { border: 1px solid #CB5F5D;}
 		.home-news .right li img { float: left; margin-right: 22px;}
-		.home-news .right li p { font-size: 14px; color: #D2D2D2; line-height: 24px; padding-top: 18px;}
+		.home-news .right li p { font-size: 14px; color: #D2D2D2; line-height: 24px; padding-top: 18px; padding-right: 28px;}
+		.home-news .right li:hover p { color: #999;}
 		.home-news .right li h3 { font-size: 16px; line-break: 16px; height: 16px; color: #CB5F5D; font-weight: normal; padding-top: 10px;}
 		.home-news .right li p.date { font-size: 12px; color: #BEBBCA; height: 12px; line-height: 12px; padding-top: 24px;}
 		.home-news .right ul { padding-bottom: 14px;}
@@ -109,10 +110,29 @@
 		.home-business .title h2 { font-size: 28px; line-height: 28px; height: 28px; color: #CB5F5D; font-weight: normal; padding-bottom: 18px;}
 		.home-business .title p { font-family: HelveticaNeue; font-size: 18px; line-height: 18px; height: 18px; color: #D2D2D2;}
 		.home-business .right .content { background: url(html/images/home-index/business-bg.png) center center no-repeat; width: 578px; height: 578px; clear: both; position: relative;} 
-		.home-business .right .content .rightImg01 { position: absolute; left: 204px; top: 141px;}
-		.home-business .right .content .rightImg02 { position: absolute; left: 240px; top: 58px; display: none;}
-		.home-business .right .content .rightImg03 { position: absolute; left: 192px; top: 129px; display: none;}
+		.home-business .right .content .rightImg01 { position: absolute; right: 264px; top: 141px; overflow: hidden; width: 110px; height: 105px;}
+		.home-business .right .content .rightImg01 p { display: block; position: absolute; right: 0; top: 0; width: 10%;  height: 105px; -webkit-animation:rightImg1 1s linear 1; -webkit-animation-fill-mode:both; overflow: hidden;}
+		@keyframes rightImg1 {
+			0%  { width:10%; opacity:0;}
+			100%{ width:100%; opacity:1;}
+		}
+		.home-business .right .content .rightImg01 p img { position: absolute; right: 0; top: 0;}
+		.home-business .right .content .rightImg02 { position: absolute; left: 240px; top: 58px; overflow: hidden; width: 72px; height: 178px; display: none;}
+		.home-business .right .content .rightImg02 p { display: block; position: absolute; right: 0; bottom: 0; width: 72px;  height: 10%; -webkit-animation:rightImg2 1s linear 1; -webkit-animation-fill-mode:both; overflow: hidden;}
+		@keyframes rightImg2 {
+			0%  { height:10%; opacity:0;}
+			100%{ height:100%; opacity:1;}
+		}
+		.home-business .right .content .rightImg02 p img { position: absolute; right: 0; bottom: 0;}
+		.home-business .right .content .rightImg03 { position: absolute; left: 192px; top: 129px; overflow: hidden; width: 149px; height: 137px; display: none;}
+		.home-business .right .content .rightImg03 p { display: block; position: absolute; right: 0; top: 0; width: 149px;  height: 137px; -webkit-animation:rightImg3 1s ease-in-out 1; -webkit-animation-fill-mode:both; overflow: hidden;}
+		@keyframes rightImg3 {
+			0%  { opacity:0;}
+			100%{ opacity:1;}
+		}
+		.home-business .right .content .rightImg03 p img { position: absolute; left: 50%; top: 50%; margin-left: -74.5px; margin-top: -68.5px;}
 		
+
 		#solid{ width:100%; height:790px; clear:both; position:relative;}
 		#solid .solid0,#solid .solid1,#solid .solid2{position:absolute;left:0px;top:0px;width:100%;height:790px;display:none;}
 		#solid .solid0{background:url(html/images/home-index/banner1.png) center top no-repeat;}
@@ -135,6 +155,8 @@
 		
 		#solid a { position: absolute; right: 0; top: 497px; display:inline-block; color: #BB5A5A; width: 132px; height: 40px; line-height: 40px; text-align: center; font-size: 20px; background:url(html/images/home-index/banner-btn.png) center top no-repeat;}
 		#solid a:hover { color: #fff; background:url(html/images/home-index/banner-btn-h.png) center top no-repeat;}
+		
+		
 	</style>
 </head>
 <body onselectstart="return false">
@@ -176,9 +198,9 @@
 				</div>
 				<div class="content">
 					<ul>
-						<li class="rightImg01"><img src="html/images/home-index/business-sale.png" /></li>
-						<li class="rightImg02"><img src="html/images/home-index/business-data.png" /></li>
-						<li class="rightImg03"><img src="html/images/home-index/business-tag.png" /></li>
+						<li class="rightImg01"><p><img src="html/images/home-index/business-sale.png" /></p></li>
+						<li class="rightImg02"><p><img src="html/images/home-index/business-data.png" /></p></li>
+						<li class="rightImg03"><p><img src="html/images/home-index/business-tag.png" /></p></li>
 					</ul>
 				</div>
 			</div>
@@ -236,26 +258,26 @@
 							<img src="html/images/home-index/news-img1.png" />
 							<p class="date">2017/06/28</p>
 							<h3>大数据时代，精准营销策略能否解决一切？</h3>
-							<p>大数据时代，当人们开始本着“精准营销”原则，利用网页浏览记录、并未清除过的缓存，所谓的用户兴趣爱好 ...</p>
+							<p>大数据时代，当人们开始本着“精准营销”原则，利用网页浏览记录、并未清除过的缓存，所谓的用户 ...</p>
 						</a></li>
 						<li><a href="https://news.mshuoke.com/article/20170616101640836.html" target="_blank">
 							<img src="html/images/home-index/news-img2.png" />
 							<p class="date">2017/06/16</p>
 							<h3>微信公众号全网精准营销5大法则</h3>
-							<p>作为移动互联网时代最重要的产物之一，微信自推出以来就受到社会的很大关注。众所周知，微信首创的公众号 ...</p>
+							<p>作为移动互联网时代最重要的产物之一，微信自推出以来就受到社会的很大关注。众所周知，微信首创 ...</p>
 						</a></li>
 						<li><a href="https://news.mshuoke.com/article/20170613110353909.html" target="_blank">
 							<img src="html/images/home-index/news-img3.png" />
 							<p class="date">2017/06/13</p>
 							<h3>零售企业开展精准营销，试试这5个步骤</h3>
-							<p>近年来，同质化商品、频繁的价格战、店铺租金上涨、电子商务的冲击等因素导致零售企业利润不断下降，在当 ...</p>
+							<p>近年来，同质化商品、频繁的价格战、店铺租金上涨、电子商务的冲击等因素导致零售企业利润不断下 ...</p>
 						</a></li>
 					</ul>
 					<div class="tag">
-						<a href="https://news.mshuoke.com/article/20170628145137761.html" target="_blank">在线教育</a>
-						<a href="https://news.mshuoke.com/article/20170628140619350.html" target="_blank">大数据</a>
-						<a href="https://news.mshuoke.com/article/20170119033553973.html" target="_blank">人工智能</a>
-						<a href="https://news.mshuoke.com/article/20170628155250735.html" target="_blank">精准营销</a>
+						<a href="https://news.mshuoke.com/article/20170628145137761.html" target="_blank" class="tag1">在线教育</a>
+						<a href="https://news.mshuoke.com/article/20170628140619350.html" target="_blank" class="tag2">大数据</a>
+						<a href="https://news.mshuoke.com/article/20170119033553973.html" target="_blank" class="tag3">人工智能</a>
+						<a href="https://news.mshuoke.com/article/20170628155250735.html" target="_blank" class="tag4">精准营销</a>
 						<a class="last" href="https://news.mshuoke.com/article/20170628161350259.html" target="_blank">英语培训</a>
 					</div>
 				</div>

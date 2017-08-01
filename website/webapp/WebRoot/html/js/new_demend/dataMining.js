@@ -849,6 +849,7 @@ var Progress_speed=React.createClass({
 */
 
 
+
 $.ajax({
     type:"GET",
     url:urlGetDetailHfp,

@@ -1,26 +1,33 @@
 /*页面通过Preview 模块加载来实现业务的结算 通过 areaList() 函数来完成钱相关的算value */
 function autocompleteCity(cities) {
-    $('.city_name').autocomplete(cities, {
-        max: 12, //列表里的条目数
-        minChars: 0, //自动完成激活之前填入的最小字符
-        width: 240, //提示的宽度，溢出隐藏
-        scrollHeight: 300, //提示的高度，溢出显示滚动条
-        matchContains: true, //包含匹配，就是data参数里的数据，是否只要包含文本框里的数据就显示
-        autoFill: false, //自动填充
-        formatItem: function (row, i, max) {
-            return row.name + '（' + row.pinyin + '）';
-        },
-        formatMatch: function (row, i, max) {
-            return row.match;
-        },
-        formatResult: function (row) {
-            return row.name;
-        }, resultsClass: 'search-text'
-    }).result(function (event, row, formatted) {
-        $('.area-box').hide();
-        $('.areaList .select.area.js_area').val(row.name);
-        $('.areaList .select.area.js_area').change().blur();
-    });
+	$(document).on('focus','.city_name',function (ev){
+		var target = ev.currentTarget;
+		$('.search-text').remove();
+		$(target).autocomplete(cities, {
+			max: 12, //列表里的条目数
+			minChars: 0, //自动完成激活之前填入的最小字符
+			width: 240, //提示的宽度，溢出隐藏
+			scrollHeight: 300, //提示的高度，溢出显示滚动条
+			matchContains: true, //包含匹配，就是data参数里的数据，是否只要包含文本框里的数据就显示
+			autoFill: false, //自动填充
+			formatItem: function (row, i, max) {
+				return row.name + '（' + row.pinyin + '）';
+			},
+			formatMatch: function (row, i, max) {
+				return row.match;
+			},
+			formatResult: function (row) {
+				return row.name;
+			}, resultsClass: 'search-text'
+		}).result(function (event, row, formatted) {
+			$('.area-box').hide();
+			//console.log(event,row,formatted);
+			//debugger;
+		   // $(event.currentTarget).parents('.areaList .select.area.js_area').val(row.name);
+		   $(event.currentTarget).parents('.areaList').find('.select.area.js_area').val(row.name);
+		   $(event.currentTarget).parents('.areaList').find('.select.area.js_area').change().blur();
+		});
+	});
 }
 
 import {Slider} from 'antd';
@@ -1109,25 +1116,7 @@ class AreaAndRequirement extends React.Component {
                 }
             }
         });
-        $('.city_name').autocomplete(cities, {
-            max: 12, //列表里的条目数
-            minChars: 0, //自动完成激活之前填入的最小字符
-            width: 240, //提示的宽度，溢出隐藏
-            scrollHeight: 300, //提示的高度，溢出显示滚动条
-            matchContains: true, //包含匹配，就是data参数里的数据，是否只要包含文本框里的数据就显示
-            autoFill: false, //自动填充
-            formatItem: function (row, i, max) {
-                return row.name + '（' + row.pinyin + '）';
-            },
-            formatMatch: function (row, i, max) {
-                return row.match;
-            },
-            formatResult: function (row) {
-                return row.name;
-            }, resultsClass: 'search-text'
-        }).result(function (event, row, formatted) {
-            $(".area .search-citys-list ul li[title=" + row.name + "]").click();
-        });
+
     }
 
     controlStructure() {
@@ -1205,7 +1194,7 @@ class AreaAndRequirement extends React.Component {
                     </div>
                     <div className="input">
                         <label>需求量:</label>
-                        <input type="text" className="number size"/>
+                        <input type="text" defaultValue="1" className="number size"/>
                     </div>
                     <i data-id={index} className="close"></i>
                     <p className="error area">请选择目标区域</p><p className="error size">请输入需求量，请输入一个大于1 的整数</p>
@@ -1879,10 +1868,12 @@ class Preview extends React.Component {
             // customlabel.unshift({labelName: "改价", labelPrice: "0"});
 
             var newIndustryId = $('.industry.select.area.js_area').attr('data-nfiid');
-
+             if(newIndustryId==undefined||newIndustryId=="0"||newIndustryId==null){
+                newIndustryId=""
+            }
             //todo  更改  star
 
-            var url = domain137 + `/quality/adddemand/${sessionStorage.getItem("jfuid")}/0?industryId=${newIndustryId||""}`;
+            var url = domain137 + `/quality/adddemand/${sessionStorage.getItem("jfuid")}/0?industryId=${newIndustryId=="0"?"":newIndustryId}`;
             var data = {
                 "demandComment": "",//"string,需求备注",
                 "releaseQuantity": releasenum,//"integer,需求发布量",

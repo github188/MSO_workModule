@@ -50,7 +50,7 @@ var Header = React.createClass({
          <div>
              <div className="nav_top">
                   <div>
-                      <div className="c_home_logo"><a href="//vendor.mshuoke.com/"><img src="html/images/public/c_index_logo.png" title="MSO-眸事网，国内专业营销服务外包平台" alt="logo" /></a></div>
+                      <div className="c_home_logo"><a href="//vendor.mshuoke.com/"><img src="//www.mshuoke.com/html/images/public/c_index_logo.png" title="MSO-眸事网，国内专业营销服务外包平台" alt="logo" /></a></div>
                       <ul>
                             <a href="//vendor.mshuoke.com/"><li>首页<i></i></li></a>
                             <a href="//vendor.mshuoke.com/joined-policy.html"><li>加盟政策<i></i></li></a>
@@ -58,7 +58,7 @@ var Header = React.createClass({
 						    <a href="//vendor.mshuoke.com/help.html"><li>帮助中心<i></i></li></a>
                       </ul>
                       <div className="login_right">
-                             <a href="html/customerMyInfo.html" className="MyInfo">{showName}</a><a className="logout" href="javascript:;">安全退出</a>
+                             <a href="//www.mshuoke.com/html/customerMyInfo.html" className="MyInfo">{showName}</a><a className="logout" href="javascript:;">安全退出</a>
                       </div>
                   </div>
              </div>
@@ -73,15 +73,15 @@ var Header = React.createClass({
                 linkSupplier = "https://crm.mshuoke.com/sapi/msocallcenter/login?mso_userid="+sessionStorage.getItem("jfuid");
                 wordSupplier = "竞拍订单";
      }else{
-         homeSupplier = "html/crm-myInfo.html";
-                linkSupplier = "html/crm-myInfo.html";
+         homeSupplier = "//www.mshuoke.com/html/crm-myInfo.html";
+                linkSupplier = "//www.mshuoke.com/html/crm-myInfo.html";
                 wordSupplier = "竞拍订单";
      }
      return(
          <div>
              <div className="nav_top">
                   <div>
-                      <div className="c_home_logo"><a href="//vendor.mshuoke.com/"><img src="html/images/public/c_index_logo.png" title="MSO-眸事网，国内专业营销服务外包平台" alt="logo" /></a></div>
+                      <div className="c_home_logo"><a href="//vendor.mshuoke.com/"><img src="//www.mshuoke.com/html/images/public/c_index_logo.png" title="MSO-眸事网，国内专业营销服务外包平台" alt="logo" /></a></div>
                       <ul>
                            <a href="//vendor.mshuoke.com/"><li>首页<i></i></li></a>
                            <a href="//vendor.mshuoke.com/joined-policy.html"><li>加盟政策<i></i></li></a>
@@ -100,7 +100,7 @@ var Header = React.createClass({
          <div>
              <div className="nav_top">
                   <div>
-                      <div className="c_home_logo"><a href="//vendor.mshuoke.com/"><img src="html/images/public/c_index_logo.png" title="MSO-眸事网，国内专业营销服务外包平台" alt="logo" /></a></div>
+                      <div className="c_home_logo"><a href="//vendor.mshuoke.com/"><img src="//www.mshuoke.com/html/images/public/c_index_logo.png" title="MSO-眸事网，国内专业营销服务外包平台" alt="logo" /></a></div>
                       <ul>
                         <a href="//vendor.mshuoke.com/"><li>首页<i></i></li></a>
                        <a href="//vendor.mshuoke.com/joined-policy.html"><li>加盟政策<i></i></li></a>
@@ -108,8 +108,8 @@ var Header = React.createClass({
 					   <a href="//vendor.mshuoke.com/help.html"><li>帮助中心<i></i></li></a>
                       </ul>
                       <div className="c_right">
-                          <a href="//www.mshuoke.com/c_login.html">登录</a>
-                          <a href="//www.mshuoke.com/register-supplier.html">注册</a>
+                          <a href="//vendor.mshuoke.com/login.html">登录</a>
+                          <a href="//vendor.mshuoke.com/register.html">注册</a>
                       </div>
                   </div>
              </div>

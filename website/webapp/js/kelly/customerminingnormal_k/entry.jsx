@@ -445,7 +445,7 @@ var State = React.createClass({
                             </a>
                             <a href="javascript:self.location=document.referrer;">
                                 <button type="button" className="drafts" style={{
-                        margin: 0,
+                        margin: "0 auto",
                         display: "inline-block"
                     }}>
                                     返回上一页
@@ -536,7 +536,7 @@ var State = React.createClass({
                                 <a href="javascript:self.location=document.referrer;">
                                     <button type="button" className="drafts"
                     style={{
-                        margin: 0,
+                        margin: "0 auto",
                         display: "inline-block"
                     }}>返回上一页
                                     </button>
@@ -619,7 +619,7 @@ var State = React.createClass({
                                 <a href="javascript:self.location=document.referrer;">
                                     <button type="button" className="drafts"
                     style={{
-                        margin: 0,
+                        margin: "0 auto",
                         display: "inline-block"
                     }}>返回上一页
                                     </button>

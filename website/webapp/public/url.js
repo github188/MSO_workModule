@@ -239,3 +239,16 @@ function msoLoginOut(callBack){
 			error:function(){},
 	  });
 }
+
+var urlCompanyInfo = domain137 + "/quality/" + oJfuid + "/enterpriseinfo";//企业认证
+$.ajax({
+	type:"get",
+	url:urlCompanyInfo,
+	async:true,
+	contentType:"application/x-www-form-urlencoded;charset=utf-8",
+	dataType: "json",
+	success:function(r){
+		console.log(111111111111111111);
+		sessionStorage.setItem("companyInfo",r.data.resultcode);
+	}
+});

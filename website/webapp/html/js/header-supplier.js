@@ -38,26 +38,11 @@ if(isNull(sessionStorage.getItem("jfuid"))&&isNull(localStorage.getItem("jfuid")
 
 var menus = [
 	{
-		link:'supplier_index.html',
-		name:"首页"
-	},
-	{
-		link:'supplierDemandHall.html',
-		name:"需求大厅"
-	},
-	{
-		link:'supplierDemandList.html',
+		link:'supplier-list.html',
 		name:"我的订单"
-	},
-	{
-		link:'supplier_reports_1.html',
-		name:"成单报表"
-	},
+	}
 ];
-//	{
-//		link:'javascript:;',
-//		name:"服务平台"
-//	},
+
 if(sessionStorage.getItem("jfustate")==4){
 	$(".topNav .top .menu ul li:last-child").addClass("hide");
 }
@@ -147,12 +132,12 @@ var LoginBox = React.createClass({
         return(
             <div className="right">
                 <ul>
-                    <li className="company"><a href="PerfectData.html">{this.state.compname}</a></li>
+                    <li className="company"><a href="javascript:;">{this.state.compname}</a></li>
                     <li className="photo-box">
-                        <div className="photo"><a href="PerfectData.html"><img src={this.state.headurls} /></a></div>
+                        <div className="photo"><a href="javascript:;"><img src={this.state.headurls} /></a></div>
                         <div className="photo-details">
                             <div className="pd-top">
-                                <div className="default-photo"><a href="avatar_settings.html"><img src={this.state.headurls} /></a></div>
+                                <div className="default-photo"><a href="javascript:;"><img src={this.state.headurls} /></a></div>
                                 <div className="default-info">
                                     <p>用户名：{this.state.showName}</p>
                                     <p>邀请码：<span className="recommend">{this.state.invitationcode}</span></p>
@@ -160,8 +145,8 @@ var LoginBox = React.createClass({
                             </div>
                             <div className="pd-bottom">
                                 <ul>
-                                    <li className="icon-update"><a href="PerfectData.html">修改资料</a></li>
-                                    <li className="icon-pswd"><a href="updatePassword.html">修改密码</a></li>
+                                    <li className="icon-update"><a href="javascript:;">修改资料</a></li>
+                                    <li className="icon-pswd"><a href="javascript:;">修改密码</a></li>
                                 </ul>
                                 <p><a className="logout" href="javascript:;">退出</a></p>
                             </div>

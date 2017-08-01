@@ -181,17 +181,17 @@ class Header extends React.Component {
 							</div>
 							<ul className="header-list">
 								<a href="//www.mshuoke.com">
-									<li>首页<i></i></li>
+									<li className="menu1">首页<i></i></li>
 								</a>
 								<a href="//www.mshuoke.com/headline.html">
-									<li>眸事资讯<i></i></li>
+									<li className="menu2">眸事资讯<i></i></li>
 								</a>
-								<a href="//www.mshuoke.com/production.html"><li>产品<i></i></li></a>
+								<a href="//www.mshuoke.com/production.html"><li className="menu3">产品<i></i></li></a>
 								<a href="//www.mshuoke.com/help.html">
-									<li>帮助中心<i></i></li>
+									<li className="menu4">帮助中心<i></i></li>
 								</a>
 								<a href="//vendor.mshuoke.com" target="_blank">
-									<li>服务商<i></i></li>
+									<li className="menu5">服务商<i></i></li>
 								</a>
 							</ul>
 							<div className="login_right">
@@ -212,15 +212,9 @@ class Header extends React.Component {
 				linkSupplier = "/html/supplierDemandHall.html";
 				wordSupplier = "竞拍订单";
 			} else {
-				if (pid !== "") {
-					homeSupplier = "/html/supplierDemandList.html";
-					linkSupplier = "/html/supplierDemandList.html";
-					wordSupplier = "我的订单";
-				} else {
-					homeSupplier = "html/PerfectData.html";
-					linkSupplier = "html/PerfectData.html";
-					wordSupplier = "竞拍订单";
-				}
+				homeSupplier = "html/crm-myInfo.html";
+                linkSupplier = "html/crm-myInfo.html";
+                wordSupplier = "竞拍订单";
 			}
 			
 			return (
@@ -240,21 +234,21 @@ class Header extends React.Component {
 			</div>
 							<ul className="header-list">
 								<a href="//www.mshuoke.com">
-									<li>首页<i></i></li>
+									<li className="menu1">首页<i></i></li>
 								</a>
 								<a href="//www.mshuoke.com/headline.html">
-									<li>眸事资讯<i></i></li>
+									<li className="menu2">眸事资讯<i></i></li>
 								</a>
-								<a href="//www.mshuoke.com/production.html"><li>产品<i></i></li></a>
+								<a href="//www.mshuoke.com/production.html"><li className="menu3">产品<i></i></li></a>
 								<a href="//www.mshuoke.com/help.html">
-									<li>帮助中心<i></i></li>
+									<li className="menu4">帮助中心<i></i></li>
 								</a>
 								<a href="//vendor.mshuoke.com" target="_blank">
-									<li>服务商<i></i></li>
+									<li className="menu5">服务商<i></i></li>
 								</a>
 							</ul>
 							<div className="sign-box">
-								<a href="html/PerfectData.html" className="MyInfo">{showName}</a>
+								<a href={homeSupplier} className="MyInfo">{showName}</a>
 								<a className="logout" href="javascript:;">安全退出</a>
 							</div>
 						</div>
@@ -279,17 +273,17 @@ class Header extends React.Component {
 							</div>
 							<ul className="header-list">
 								<a href="//www.mshuoke.com">
-									<li>首页<i></i></li>
+									<li className="menu1">首页<i></i></li>
 								</a>
 								<a href="//www.mshuoke.com/headline.html">
-									<li>眸事资讯<i></i></li>
+									<li className="menu2">眸事资讯<i></i></li>
 								</a>
-								<a href="//www.mshuoke.com/production.html"><li>产品<i></i></li></a>
+								<a href="//www.mshuoke.com/production.html"><li className="menu3">产品<i></i></li></a>
 								<a href="//www.mshuoke.com/help.html">
-									<li>帮助中心<i></i></li>
+									<li className="menu4">帮助中心<i></i></li>
 								</a>
 								<a href="//vendor.mshuoke.com" target="_blank">
-									<li>服务商<i></i></li>
+									<li className="menu5">服务商<i></i></li>
 								</a>
 							</ul>
 							<div className="sign-box">

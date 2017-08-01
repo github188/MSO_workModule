@@ -274,16 +274,16 @@ class Main extends React.Component{
 	}
 	servicetype(data){
 		if(data.servicetype == "数据加工"){
-			return 'supplier_dataMinng.html#'; 
+			return 'supplier-data.html#'; 
 		}
 		if(data.servicetype == "销售线索挖掘" && data.industry=="教育培训"){
 			if(data.twolevindustry=="其他"){
-				return 'supplier_customerMining.html#';
+				return 'supplier-unnormal.html#';
 			}else{
-				return 'supplier_customer_mining_normal.html#';
+				return 'supplier-normal.html#';
 			}			 
 		}
-		return 'supplier_customerMining_new.html#';
+		return 'supplier-unnormal.html#';
 		
 	}
 	createMainHtml(){

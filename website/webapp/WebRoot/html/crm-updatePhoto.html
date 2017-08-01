@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta charset="UTF-8">
+    <title>我的信息 - 眸事网</title>
+	<link rel="stylesheet" href="css/crm.css"/>
+    <script src="js/jquery-1.7.2.min.js"></script>
+	<script src="js/react.min.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+	<script src="js/main.js"></script>
+    <script src="js/url.js"></script>
+	<script src="js/hide.js"></script>
+    <style>
+		.passwords .update-pswd { padding:15px;}
+		.passwords .update-pswd h2 { line-height:66px; font-size:22px; color:#333333; font-weight:normal;}
+		.passwords .update-context { width:878px; color:#666; position:relative;}
+		.passwords .update-context h3 { background:#eeeeee; line-height:40px; text-align:center; font-weight:normal; font-size:14px; color:#333;}
+		.rowmain { overflow:hidden;}
+		.rowmain .file-list { width:120px; height:120px; border:1px #cccccc solid; float:left; margin:50px 30px 0 50px;overflow: hidden;}
+		.rowmain .file-list img { width:100%;}
+		.rowmain .file-button { float:left; margin-top:50px; padding-top:33px; position:relative;}
+		.rowmain .file-button .ossfile { position:absolute; left:0; top:4px; height:20px; line-height:20px; font-size:12px;}
+		.progress { width:100%;height:100%;border-radius: 0;background: #eeeeee;  position: absolute;left:0;top:0;}
+		.progress-bar{ background-color: #d7e8f6; -webkit-box-shadow: none;  box-shadow: none; -webkit-transition: width 0s ease; -o-transition: width 0s ease; transition: width 0s ease; text-align:right;}
+		.file_name{ position: relative; z-index: 2;}
+		.file_close{ display:none;}
+		.rowmain .file-button button { width:100px; height:30px; color:#fff; border:0; background:#428bcb;}
+		.rowmain .file-button button:hover { background:#51b1fb;}
+		.msg-tips { color:#999999; margin-top:12px;}
+		.error-info { color:#f00; font-size:12px; line-height:24px;}
+	</style>
+</head>
+<body>
+<div class="topNav"></div>
+<div class="content-mid passwords">
+	<div class="leftNav"></div>
+    <div class="content-right update-pswd">
+	    <div class="title">
+			<h2>账号信息</h2>
+		</div>
+		<div class="update-context">
+			<div class="box">
+				<h3>头像设置</h3>
+				<div class="row_0"></div>
+			</div>
+		</div>
+    </div>
+	<div class="cover1">
+		<div class="cover-box">
+			<div class="title">提示<span class="close2"></span></div>
+			<div class="context">上传成功！</div>
+			<div class="bt-choose"><button type="button" class="bg_red close2">确定</button></div>
+		</div>
+	</div>
+	<div class="cover-bg"></div>
+</div>
+<div class="footer"></div>
+<form name="theform">
+    <input type="radio" name="myradio" value="random_name" checked style="display:none;"/>
+    <input type="hidden" id="pagename" value="credentials">
+</form>
+<div class="aside_bar"></div>
+<script src="js/asideBar-j.js" type="text/babel"></script>
+<script src="js/crm-public.js" type="text/babel"></script>
+<script src="js/supplier/avatar_settings.js"  type="text/babel"></script>
+<script src="https://www.mshuoke.com/js/plupload.full.min.js"></script>
+<script src="js/PerfectData_upload.js"></script>
+<script>
+	jQuery(function(){
+        $(".close2").click(function(){
+            $(".cover1").hide();
+            location.reload() ;
+        });    
+	});
+</script>
+</body>
+</html>
