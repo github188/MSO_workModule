@@ -139,7 +139,7 @@ class Main extends React.Component {
         }
         // var url = domain + '/getHfps';
         var url;
-        var jfuid = $.sessionStorage('jfuid');
+        var jfuid = $.sessionStorage('jfuid')||localStorage.getItem("jfuid");
 
         if (obj.par == 5) {
             //异常需求
