@@ -1,0 +1,587 @@
+@layout("/common/_container.html"){
+<style>
+	ul,ol { list-style:none; }
+	.main-list-item li { line-height:30px; }
+	.modal-body-title { margin-bottom:10px; padding-left:20px; }
+	.modal-body-title .main-txt { font-size:14px; color:#000000; }
+	.data-box .col-sm-9{ width:60%; }
+	.conpanyname { float:left; }
+	.main-list-item.conpany  { padding:0; overflow:hidden; margin-top:15px; }
+	
+	.charge-label i,chargetags i, .free-label i {
+		width: auto;
+		padding: 5px;
+		border: 1px solid #e5e5e5;
+		border-radius: 5px;
+		font-style: normal;
+	}
+	
+	.free-label-box .free-label { overflow:hidden; margin-top:10px;  }
+	.deletetagename { margin-left:10px; }
+	.free-label-box .form-control{ width:170px;  float:left; }
+	textarea { resize:none; width:300px; height:100px; overflow:hidden; }
+	.paycycle , .setcycle { overflow:hidden; }
+	.paycycle input[type=radio], .setcycle input[type=radio] { margin-top:0; }
+	
+	.paycycle i, .setcycle i { display:block; line-height: 15px; }
+	
+	.radio label  { display:block; float:left; margin-left:10px; }
+	.audiparnet { width:300px; }
+</style>
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="${bdDemandReviewId}">
+
+            <div class="row">
+				<div class="modal-body-title special noborder">
+					<span class="main-title"></span>
+					<span class="main-txt">需求概况：</span>
+					<span class="main-txt demandid">${bdDemandReviewId}</span>
+				
+				</div>
+				<div class="main-box col-sm-12">
+					
+					<ul class="main-list-item col-sm-6">
+						<li>
+							<span>需求名：</span>
+							<span class="demandname">
+								${jsondata.demandname}
+							</span>
+						</li>
+						<li>
+							<span>需求数量：</span>
+							<span class="demandquantity">
+							${jsondata.demandquantity}
+							</span>
+						</li>
+							<li>
+							<span>开始日期：</span>
+							<span class="begintime">${jsondata.begintime}</span>
+						</li>
+					</ul>
+					
+					<ul class="main-list-item col-sm-6">
+						<li>
+							<span>业务类型：</span>
+							<span class="servicetype">
+								
+								@servicetype = jsondata.servicetype;
+								@if(servicetype == 1){
+									销售线索挖掘
+								@}
+								
+								@if(servicetype == 2){
+									数据加工
+								@}
+								
+								@if(servicetype == 3){
+									人工服务
+								@}
+								
+							</span>
+						</li>
+						<li>
+							<span>需求总价：</span>
+							<span class="demandtotalprice">
+								${jsondata.demandtotalprice}
+							</span>
+							<span>元</span>
+						</li>
+							<li>
+							<span>结束日期：</span>
+							<span class="endtime">
+								${jsondata.endtime}
+							</span>
+						</li>
+							
+					</ul>
+					
+				</div>
+				<div class="modal-body-title noborder"><span class="main-title"></span><span class="main-txt">基本信息：</span></div>
+				
+				
+				
+				<div class="main-box col-sm-12">
+					
+					<ul class="main-list-item basicdetail col-sm-6">
+						<li>
+							<span>行业：</span>
+							<span class="industry">
+								${jsondata.industry}
+							</span>
+						</li>
+						<li>
+							<span>行业细分：</span>
+							<span class="industryxifen">
+								${jsondata.industryxifen}
+							</span>
+						</li>
+							<li>
+							<span>需求备注：</span>
+							<span class="demandcomment">
+								${jsondata.demandcomment}
+							</span>
+						</li>
+						<li>
+							<span>项目负责人：</span>
+							<span class="projectleader">
+								${jsondata.projectleader}
+							</span>
+						</li>
+						<li>
+							<span style="float:left;">归属年月：</span>
+							<span class="vestingtime">
+								<div class="data-box">
+									<#input id="end_date" name="" underline="false"
+									 value = "${jsondata.vestingtime}"
+                                     clickFun="laydate({ isclear:false, format: 'YYYY-MM', issure: true,  istime: true,})"  />
+									
+								</div>
+							</span>
+							<label class="error vestingtime-error" for="js_area" style="display: inline-block;">请选择日期！</label>
+						</li>
+					</ul>
+					
+					<ul class="main-list-item basicdetail col-sm-6">
+						<li>
+							<span>行业类型：</span>
+							<span class="onoffline">
+							@onoffline = jsondata.onoffline;
+							@if(onoffline == 0){
+								线下
+							@}
+							
+							@if(onoffline == 1){
+								线上
+							@}
+							
+							@if(onoffline == 2){
+								其他
+							@}
+							</span>
+						</li>
+						<li>
+							<span>目标人群：</span>
+							
+							<span class="targetpopulation">
+								${jsondata.targetpopulation}
+							</span>
+							
+							<span style="margin-left:20px;">加价：</span>
+							<span class="targetaddprice">
+								${jsondata.targetaddprice}
+							</span>
+							<span>元</span>
+							
+						</li>
+						<li>
+							<span>产品介绍：</span>
+							<span class="productattach">
+								${jsondata.productattach}
+							</span>
+						</li>
+						<li>
+							<span>负责人电话：</span>
+							<span class="projectleaderphone">
+								${jsondata.projectleaderphone}
+							</span>
+						</li>
+					</ul>
+					
+					
+					
+						
+					
+					
+					
+						<ul class="main-list-item basicnot col-sm-6">
+						<li>
+							<span>行业：</span>
+							<span class="industry">
+							${jsondata.industry}
+							</span>
+						</li>
+						<li>
+							<span>目标人群：</span>
+							
+							<span class="targetpopulation">
+							${jsondata.targetpopulation}
+							</span>
+						</li>
+							<li>
+							<span>产品名称：</span>
+							<span class="productname">
+								${jsondata.productname}
+							</span>
+						</li>
+						<li>
+							<span>需求备注：</span>
+							<span class="demandcomment">
+								${jsondata.demandcomment}
+							</span>
+						</li>
+						<li>
+							<span>项目负责人：</span>
+							<span class="projectleader">
+								${jsondata.projectleader}
+							</span>
+						</li>
+						
+					</ul>
+					
+					<ul class="main-list-item basicnot col-sm-6">
+						<li>
+							<span>获客渠道：</span>
+							<span class="targetchanneldesc">
+								${jsondata.targetchanneldesc}
+							</span>
+						</li>
+						<li>
+							<span>对象年龄：</span>
+							<span class="targetagefrom">
+								${jsondata.targetagefrom}
+							</span>
+							<span>~</span>
+							<span class="targetageto">
+								${jsondata.targetageto}
+							</span>
+							<span>周岁</span>
+						</li>
+						<li>
+							<span>产品介绍：</span>
+							<span class="productattach">
+								${jsondata.productattach}
+							</span>
+						</li>
+						<li style="display:table;">
+							<span style="float:left;">归属年月：</span>
+							<span class="vestingtime">
+								<div class="data-box">
+									<#input id="end_date" name="" underline="false"
+									 value = "${jsondata.vestingtime}"
+                                     clickFun="laydate({ isclear:false, format: 'YYYY-MM', issure: true,  istime: true,})"  />
+									
+								</div>
+							</span>
+							<label class="error vestingtime-error" for="js_area" style="display: inline-block;">请选择日期！</label>
+							
+						</li>
+						<li>
+							<span>负责人电话：</span>
+							<span class="projectleaderphone">
+								${jsondata.projectleaderphone}
+							</span>
+						</li>
+					</ul>
+					
+					
+					
+					<ul class="main-list-item basicmaked col-sm-6">
+						<li>
+							<span>清洗渠道：</span>
+							<span>电话</span>
+						</li>
+						<li>
+							<span>拨打次数：</span>
+							<span>3次</span>
+						</li>
+						
+						<li>
+							<span>项目负责人：</span>
+							<span class="projectleader">
+								${jsondata.projectleader}
+							</span>
+						</li>
+						<li>
+							<span style="float:left;">归属年月：</span>
+							<span class="vestingtime">
+								<div class="data-box">
+								<#input id="end_date" name="" underline="false"
+									 value = "${jsondata.vestingtime}"
+                                     clickFun="laydate({ isclear:false, format: 'YYYY-MM', issure: true,  istime: true,})"  />	
+								</div>
+							</span>
+							
+							<label class="error vestingtime-error" for="js_area" style="display: inline-block;">请选择日期！</label>
+						</li>
+					</ul>
+					
+					<ul class="main-list-item basicmaked col-sm-6">
+						<li>
+							<span>单价：</span>
+							<span class="datacleanunitprice">
+									${jsondata.datacleanunitprice}
+							</span>
+							<span>元</span>
+						</li>
+						
+						<li>
+							<span>需求描述：</span>
+							<span class="demandcomment">
+								${jsondata.demandcomment}
+							</span>
+						</li>
+						<li>
+							<span>负责人电话：</span>
+							<span class="projectleaderphone">
+								${jsondata.projectleaderphone}
+							</span>
+						</li>
+					</ul>
+				</div>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				<div class="modal-body-title noborder standard"><span class="main-title"></span><span class="main-txt">销售线索模板：</span>
+						<span class="main-txt">单价加价：</span>
+						<span class="main-txt addprices"></span>
+				</div>
+				<div class="main-box col-sm-12 standard">
+					
+					<ul class="main-list-item col-sm-6" style="width:auto;">
+						
+						<li class="free-label">
+							<span>免费标签：</span>
+							<br/>
+							<div >
+								<i>中文姓名</i>
+								<i>性别</i>
+								<i>年龄</i>
+								<i>手机号码</i>
+								<i>城市</i>
+								<i>学习目的</i>
+								<i>学习兴趣</i>
+								<i>提升点</i>
+							</div>
+							
+						</li>
+					
+						<li class="chargetags" style="margin-top:15px">
+							<span>收费标签：</span>
+							<span class="chargetags">
+								<!--
+								@chargetags = jsondata.chargetags;
+								@a = "666";
+								@print(chargetags);
+								@print(chargetags.~size);
+								@print(has(a.~size));
+								@if(chargetags == ''){
+									for(var name in chargetags){
+										print(name);
+									}
+								@}
+								-->
+							</span>
+							<br/>
+							<div class="charge-label">
+								
+							</div>
+							
+						</li>
+						<li class="customtags" style="margin-top:15px">
+							<span>自定义标签：</span>
+							<span class="customtags"></span>
+							
+							<div class="free-label-box">
+							
+							
+							</div>
+							
+						</li>
+						
+						<li class="basic" style="margin-top:15px">
+							<span>改价标签：</span>
+							<div class="free-label">
+								<input type="number" style="width:170px;" class="adjustprice form-control" placeholder="free" />			
+							</div>
+						</li>
+					</ul>
+				</div>
+				
+				
+				
+					<div class="modal-body-title subdemands"><span class="main-title"></span><span class="main-txt">子需求：</span></div>
+				<div class="main-box col-sm-12 subdemands">
+					@subdemandscluster = jsondata.subdemands;
+					
+					@for(var name in subdemandscluster){
+						<ul class="main-list-item col-sm-6">
+							<li>
+								<span>目标区域：</span>
+								<span>${name.target}</span>
+							</li>
+							<li>
+								<span>发布数量：</span>
+								<span>${name.releasenum}</span>
+							</li>
+							<li>
+								<span>合同单价：</span>
+								<span class="js_one_price">${name.price}</span>
+								<span>元</span>
+							</li>
+							<li>
+								<span>总价：</span>
+								<span class="js_totalprice"> ${name.totalprice}</span>
+								<span>元</span>
+							</li>
+							
+							<li>
+								<span style="float:left;">备注：</span>
+								<span><input class="comment form-control" style="width:170px; height:26px;line-height:26px;  padding:5px; " value="${name.remark}" type="text" /></span>
+							</li>
+						</ul>
+					@}
+				</div>
+			
+				
+			
+				
+				
+				
+				
+					<div class="modal-body-title special noborder attachment"><span class="main-title"></span><span class="main-txt">附件：</span></div>
+				<div class="main-box col-sm-12  attachment">
+					
+					
+					
+					<ul class="main-list-item">
+						<li>
+							<span>销售线索模板：</span>
+							<span class="saleleadsurl"><a href="javascript:;"></a></span>
+						</li>
+						<li>
+							<span>话术文件：</span>
+							<span class="speechcrafturl"><a href="javascript:;"></a></span>
+						</li>
+						<li>
+							<span>目标客户名单：</span>
+							<span class="targetcusturl"><a href="javascript:;"></a></span>
+						</li>
+						
+					</ul>
+				</div>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+			
+				<div class="main-box col-sm-12 ">
+					<div class="modal-body-title"><span class="main-title"></span><span class="main-txt">操作：</span><div>
+					<ul class="main-list-item conpany" style="width:auto; overflow:hidden;">
+						<li style="overflow:hidden;">
+							<span style = "float:left;" class="settlementcycle">结算周期：</span>
+							
+							<div class="radio setcycle">
+							  <label>
+								<input type="radio"  value="35">
+								<i>35个工作日</i>
+							  </label>
+							  <label>
+								<input type="radio" checked="checked" value="45">
+								<i>45个工作日</i>
+							  </label>
+							   <label>
+								<input type="radio"  class="settleuserdefined">
+								<i>自定义</i>
+							  </label>
+							   <label style="padding:0; width:200px; ">
+								<input type="number" style="width:100px;  height:26px; line-height:26px; float:left; margin-top:-5px; margin-right:7px;" class="form-control" >
+								<i>工作日</i>
+							  </label>
+							</div>
+						</li>
+						<li style="overflow:hidden;">
+							<span  style = "float:left;" class="paymentcycle">付款周期：</span>
+							
+							<div class="radio paycycle">
+							  <label>
+								<input type="radio" value="35">
+								<i>35个工作日</i>
+							  </label>
+							  <label>
+								<input type="radio" checked="checked"  value="45">
+								<i>45个工作日</i>
+							  </label>
+							  
+							   <label>
+								<input  type="radio"  class="payuserdefined" >
+								<i>自定义</i>
+							  </label>
+							  
+							   
+							  <label style="padding:0; width:200px; ">
+								<input type="number" style="width:100px;  height:26px; float:left; line-height:26px; margin-top:-5px; margin-right:7px;" class="form-control" value="">
+								<i>工作日</i>
+							  </label>
+							</div>
+						</li>
+						<li class="audiparnet" style="display:table;">
+							<span style = "float:left;" class="conpanyname">审核：</span>
+							
+							<div class="pull-right1 select">
+									<select class="form-control auditstate">
+										<option value="2">审核通过</option>
+										<option value="3">驳回</option>
+									</select>
+							</div>
+							<div class="auditstatedesc">${jsondata.auditstatedesc}</div>
+						</li>
+						
+						
+						<li class="audiparnet" style="display:table;">
+							<span style = "float:left;" class="conpanyname">审核意见：</span>
+							
+							<div class="pull-right1 select">
+									<textarea class="auditcomment"></textarea>
+							</div>
+							
+							<label class="error auditcomment-error" for="js_area" style="margin-left:100px; display: inline-block;">请填写审核意见！</label>
+						</li>
+						<li>
+							<span style = "float:left;" class="conpanyname">优惠方式：</span>
+							
+							<span class="favorablemodedesc">${jsondata.favorablemodedesc}</span>
+						</li>
+					</ul>
+				</div>
+				</div>
+			</div>
+        </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="BdDemandReviewInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="BdDemandReviewInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="pagedata" style="display:none;">
+${jsondata}
+</div>
+<script src="${ctxPath}/static/modular/mso/bdDemandReview/bdDemandReview_info.js"></script>
+@}

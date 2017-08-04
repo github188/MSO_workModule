@@ -1,0 +1,440 @@
+@layout("/common/_container.html"){
+<style>
+	ul,ol { list-style:none; }
+	.main-list-item li { line-height:30px; }
+	.modal-body-title { margin-bottom:10px; padding-left:20px; }
+	.modal-body-title .main-txt { font-size:14px; color:#000000; }
+	.data-box .col-sm-9{ width:60%; }
+	.conpanyname { float:left; }
+	.main-list-item.conpany  { padding:0; overflow:hidden; margin-top:15px; }
+
+</style>
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="${bdDemandManageId}">
+			
+            <div class="row">
+				<div class="modal-body-title special noborder">
+					<span class="main-title"></span>
+					<span class="main-txt">需求概况：</span>
+					<span class="main-txt demandid">${bdDemandManageId}</span>
+				</div>
+				<div class="main-box col-sm-12">
+					<ul class="main-list-item col-sm-6">
+						<li>
+							<span>需求名：</span>
+
+							<span class="demandname">${jsondata.demandname}</span>
+
+						</li>
+						<li>
+							<span>需求数量：</span>
+							<span class="demandquantity">
+								${jsondata.demandquantity}
+							</span>
+						</li>
+							<li>
+							<span>开始日期：</span>
+							<span class="begintime">
+								${jsondata.begintime}
+							</span>
+						</li>
+					</ul>
+					
+					<ul class="main-list-item col-sm-6">
+						<li>
+							<span>业务类型：</span>
+							<span class="servicetypedesc">
+								${jsondata.servicetypedesc}
+							</span>
+						</li>
+						<li>
+							<span>需求单价：</span>
+							<span class="demandtotalprice">
+							${jsondata.demandtotalprice}
+							</span>
+							<span class="">元</span>
+						</li>
+							<li>
+							<span>结束日期：</span>
+							<span class="endtime">
+							${jsondata.endtime}
+							</span>
+						</li>
+							
+					</ul>
+					
+				</div>
+				
+				
+				
+				
+		
+				<div class="modal-body-title noborder"><span class="main-title"></span><span class="main-txt">基本信息：</span></div>
+				
+				
+				<div class="main-box col-sm-12">
+					
+					<ul class="main-list-item col-sm-6 basicdetail">
+						<li>
+							<span>行业：</span>
+							<span class="industry">
+							${jsondata.industry}
+							</span>
+						</li>
+						<li>
+							<span>行业细分：</span>
+							<span class="industryxifen">
+							${jsondata.industryxifen}
+							</span>
+						</li>
+							<li>
+							<span>霿求备注：</span>
+							<span class="demandcomment">
+							${jsondata.demandcomment}
+							</span>
+						</li>
+						<li>
+							<span>项目负责人：</span>
+							<span class="projectleader">
+							${jsondata.projectleader}
+							</span>
+						</li>
+						<li>
+							<span style="float:left;">归属年月：</span>
+							<span class="vestingtime">
+								<div class="data-box">
+									 <#input id="end_date" name="" underline="false"
+									 value = "${jsondata.vestingtime}"
+                                     clickFun="laydate({ isclear:false, format: 'YYYY-MM', issure: true,  istime: true,})"  />
+								</div>
+							</span>
+						</li>
+					</ul>
+
+					<ul class="main-list-item  col-sm-6 basicdetail">
+						<li>
+							<span>行业类型：</span>
+							<span class="onoffline">
+							@onoffline = jsondata.onoffline;
+							@if(onoffline == 0){
+								线下
+							@}
+							
+							@if(onoffline == 1){
+								线上
+							@}
+							
+							@if(onoffline == 2){
+								其他
+							@}
+							
+							</span>
+						</li>
+						<li>
+							<span>目标人群：</span>
+							<span class="targetagefrom">
+							${jsondata.targetagefrom}
+							</span>
+							<span>~</span>
+							<span class="targetageto">
+							${jsondata.targetageto}
+							</span>
+							<span>周岁：</span>
+							<span style="margin-left:20px;">加价：</span>
+							<span class="targetaddprice">
+							
+							</span>
+							<span>元</span>
+						</li>
+						<li>
+							<span>产品介绍：</span>
+							<span class="productattach">
+							
+							</span>
+						</li>
+						<li>
+							<span>负责人电话：</span>
+							<span class="projectleaderphone">
+							${jsondata.projectleaderphone}
+							</span>
+						</li>
+					</ul>
+					
+					
+					
+					
+					
+					
+					
+					
+					<ul class="main-list-item col-sm-6 basicnot">
+						<li>
+							<span>行业：</span>
+							<span class="industry">
+							${jsondata.industry}
+							</span>
+						</li>
+						<li>
+							<span>目标人群：</span>
+							<span class="targetpopulation">
+								${jsondata.targetpopulation}
+							</span>
+						</li>
+							<li>
+							<span>产品名称：</span>
+							<span class="productname">
+							${jsondata.productname}
+							</span>
+						</li>
+						<li>
+							<span>需求备注：</span>
+							<span class="demandcomment">
+							${jsondata.demandcomment}
+							</span>
+						</li>
+						<li>
+							<span>项目负责人：</span>
+							<span class="projectleader">
+							${jsondata.projectleader}
+							</span>
+						</li>
+						
+					</ul>
+					
+					<ul class="main-list-item col-sm-6 basicnot">
+						<li>
+							<span>获客渠道：</span>
+							<span class="targetchanneldesc">
+							${jsondata.targetchanneldesc}
+							</span>
+						</li>
+						<li>
+							<span>对象年龄：</span>
+							<span class="targetagefrom">
+							${jsondata.targetagefrom}
+							</span>
+							<span>~</span>
+							<span class="targetageto">
+							${jsondata.targetageto}
+							</span>
+							<span>周岁</span>
+						</li>
+						<li>
+							<span>产品介绍：</span>
+							<span class="productintroduce">
+							${jsondata.productintroduce}
+							</span>
+							<span class="productattach">
+							${jsondata.productattach}
+							</span>
+						</li>
+						<li style="display:table; width:100%;">
+							<span style="float:left;">归属年月：</span>
+							<span class="vestingtime">
+								<div class="data-box">
+									
+									 <#input id="end_date" name=""  underline="false"
+												value="${jsondata.vestingtime}"
+                                     clickFun="laydate({istime: false, format: 'YYYY-MM-DD'})"/>
+								</div>
+							</span>
+						</li>
+						<li>
+							<span>负责人电话：</span>
+							<span class="projectleaderphone">
+							${jsondata.projectleaderphone}
+							</span>
+						</li>
+					</ul>
+					
+					
+					
+					
+					
+					
+					
+					<ul class="main-list-item col-sm-6 basicmaked">
+						<li>
+							<span>清洗渠道：</span>
+							<span>电话</span>
+						</li>
+						<li>
+							<span>拨打次数＿</span>
+							<span>3次</span>
+						</li>
+						
+						<li>
+							<span>项目负责人：</span>
+							<span class="projectleader">
+							${jsondata.projectleader}
+							</span>
+						</li>
+						<li>
+							<span style="float:left;">归属年月：</span>
+							<span class="vestingtime">
+								<div class="data-box">
+										<div class="form-group">
+											<label class="col-sm-3 control-label"></label>
+											<div class="col-sm-9">
+												<input class="form-control" id="end_date" name="end_date" type="text" onclick="laydate({id:'#end_date', format: 'YYYY-MM'})">
+
+											</div>
+										</div>
+										<!--
+									  <#input id="end_date" name="" underline="false"
+                                     clickFun="laydate({format: 'YYYY-MM'})"/>
+									 -->
+								</div>
+							</span>
+						</li>
+					</ul>
+					
+					<ul class="main-list-item col-sm-6 basicmaked">
+						<li>
+							<span>单价＿</span>
+							<span class="datacleanunitprice">${jsondata.datacleanunitprice}</span>
+							<span>元</span>
+						</li>
+						
+						<li>
+							<span>需求描述：</span>
+							<span class="demandcomment">
+							${jsondata.demandcomment}
+							</span>
+						</li>
+						<li>
+							<span>负责人电话：</span>
+							<span class="projectleaderphone">
+							${jsondata.projectleaderphone}
+							</span>
+						</li>
+					</ul>
+				</div>
+				
+				
+				
+				
+				
+				
+				
+					<div class="modal-body-title noborder saletemplate customtags"><span class="main-title"></span><span class="main-txt">销售线索模板：</span></div>
+				<div class="main-box col-sm-12 saletemplate customtags">
+					
+					<ul class="main-list-item">
+						<li>
+							<span>标签加价：</span>
+							<span class="customtags">
+							${jsondata.customtags}
+							</span>
+						</li>
+						
+					</ul>
+				</div>
+				
+				<div class="modal-body-title subdemands"><span class="main-title"></span><span class="main-txt">子需求：</span></div>
+				<div class="main-box col-sm-12 subdemands">
+					
+					@subdemandscluster = jsondata.subdemands;
+					
+					@for(var name in subdemandscluster){
+						<ul class="main-list-item col-sm-6">
+							<li>
+								<span>目标区域：</span>
+								<span>${name.target}</span>
+							</li>
+							<li>
+								<span>发布数量：</span>
+								<span>${name.releasenum}</span>
+							</li>
+							<li>
+								<span>合同单价：</span>
+								<span>${name.price}</span>
+								<span>元</span>
+							</li>
+							<li>
+								<span>总价：</span>
+								<span> ${name.totalprice}</span>
+								<span>元</span>
+							</li>
+							
+							<li>
+								<span>备注：</span>
+								<span><input class="comment" style="height:26px;line-height:26px;  padding:5px; " value="${name.remark}" type="text" /></span>
+							</li>
+						</ul>
+					@}
+				</div>
+			
+			
+			
+			
+			
+				<div class="modal-body-title special noborder attachment">
+				<span class="main-title"></span><span class="main-txt">附件：</span>
+				
+				</div>
+				
+				<div class="main-box col-sm-12 attachment">
+					
+					
+					
+					<ul class="main-list-item">
+						<li>
+							<span>销售线索模板：</span>
+							<span class="saleleadsurl">
+							<a href="javascript:;"></a></span>
+						</li>
+						<li>
+							<span>话术文件：</span>
+							<span class="speechcrafturl"><a href="javascript:;"></a></span>
+						</li>
+						<li>
+							<span>目标客户名单：</span>
+							<span class="targetcusturl"><a href="javascript:;"></a></span>
+						</li>
+						
+					</ul>
+				</div>
+				
+			
+				<div class="modal-body-title"></div>
+				@if(jsondata.demandstate == 2){
+					<div class="main-box col-sm-12">
+						<div class="main-title-box modal-body-title"><span class="main-title"></span><span class="main-txt">操作：</span>
+							<div>
+								<ul class="main-list-item conpany">
+									<li>
+										<span class="conpanyname">需求求状态：</span>
+										<div class="pull-right1 col-sm-3 select">
+												<select class="form-control demandstate">
+													<option value="2">进行</option>
+													<option value="3">关闭并结算</option>
+												</select>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				@}
+  
+            </div>
+<!-- /.modal-dialog -->
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="BdDemandManageInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="BdDemandManageInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="pagedata" style="display:none;">
+${jsondata}
+</div>
+<script src="${ctxPath}/static/modular/mso/bdDemandManage/bdDemandManage_info.js"></script>
+@}

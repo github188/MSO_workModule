@@ -1,0 +1,168 @@
+@layout("/common/_container.html"){
+<style>
+    ul,ol { list-style:none; }
+    .main-list-item li { line-height:38px; }
+    .modal-body-title { margin-bottom:10px; padding-left:16px; }
+    .modal-body-title .main-txt { font-size:14px; color:#000000; }
+    .data-box .col-sm-9{ width:60%; }
+    .conpanyname { float:left; }
+    .main-list-item.conpany  { padding:0; overflow:hidden; margin-top:15px; }
+    .main-list-item{padding-left: 0;}
+    .main-title{width: 10px;height: 20px;background: rgba(255, 153, 0, 1);display: block;float: left;}
+    .main-txt{margin-left: 10px;}
+    .main-list-item li span:nth-child(1){font-style: 14px;color:#333333;font-weight: 700;font-family: 'Arial Negreta', 'Arial';}
+   .data-box>.form-group>label.control-label{width:0;padding-left: 0px;}
+   body{font-size: 14px;}
+</style>
+
+
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="${taskManageId}">
+
+            <div class="row">
+
+               <div class="modal-body-title special noborder">
+                    <span class="main-title"></span>
+                    <span class="main-txt">任务概况ID:</span>
+                </div>
+                <div class="main-box col-sm-12">
+                    
+                    <ul class="main-list-item col-sm-6 basicdetail">
+                        <li>
+                            <span>任务名:</span>
+                            <span class="name">
+                            </span>
+                        </li>
+                        <li>
+                            <span>发包方公司：</span>
+                            <span class="companyname">
+                            </span>
+                        </li>
+                            <li>
+                            <span>行业：</span>
+                            <span class="industry">
+                            </span>
+                        </li>
+                        <li>
+                            <span>目标人群：</span>
+                            <span class="targetagefrom">5</span>
+                            <span>~</span>
+                            <span class="targetageto">11</span>
+                            
+                            <span>周岁</span>
+                        </li>
+                         <li>
+                            <span>开始日期： </span>
+                            <span class="begintime">
+                            </span>
+                        </li>
+                          <li>
+                            <span>任务数量： </span>
+                            <span class="taskquantity">
+                            </span>
+                        </li>
+                        <li>
+                            <span>备注： </span>
+                            <span class="comment">
+                            </span>
+                        </li>
+                       
+                    </ul>
+
+                    <ul class="main-list-item  col-sm-6 basicdetail">
+                        <li>
+                            <span>业务类型： </span>
+                            <span class="servicetypedesc">
+                         
+                            </span>
+                        </li>
+                        <li>
+                            <span>品牌名： </span>
+                            <span class="brandname"></span>
+                        </li>
+
+                        <li>
+                            <span>行业类型：</span>
+                            <span class="onoffline">线下</span>
+                        </li>
+                        <li>
+                            <span>目标区域：</span>
+                            <span class="targetarea">全国</span>
+                        </li>
+
+                        <li>
+                            <span>结束日期：</span>
+                            <span class="endtime">
+                            
+                            </span>
+                        </li>
+                        <li>
+                            <span>任务单价：</span>
+                            <span class="taskunitprice">
+                            </span>
+                        </li> 
+                        <li>
+                            <span>归属年月： </span>
+                            <span class="vestingtime">
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+
+
+               <div class="modal-body-title special noborder">
+                    <span class="main-title"></span>
+                    <span class="main-txt">任务附件:</span>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div class="col-sm-6 b-r">
+
+                </div>
+
+                <div class="col-sm-6">
+
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="TaskManageInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="TaskManageInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/mso/taskManage/taskManage_info.js"></script>
+@}

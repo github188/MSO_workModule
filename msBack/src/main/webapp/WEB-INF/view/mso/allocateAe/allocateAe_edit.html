@@ -1,0 +1,98 @@
+@layout("/common/_container.html"){
+<style>
+  ul,ol { list-style:none; }
+    .main-list-item li { line-height:38px; }
+    .modal-body-title { margin-bottom:10px; padding-left:16px; }
+    .modal-body-title .main-txt { font-size:14px; color:#000000; }
+    .data-box .col-sm-9{ width:60%; }
+    .conpanyname { float:left; }
+    .main-list-item.conpany  { padding:0; overflow:hidden; margin-top:15px; }
+    .main-list-item{padding-left: 0;}
+    .main-title{width: 10px;height: 20px;background: rgba(255, 153, 0, 1);display: block;float: left;}
+    .main-txt{margin-left: 10px;font-style: 14px;}
+    .main-list-item li span:nth-child(1){font-style: 14px;color:#333333;font-weight: 700;font-family: 'Arial Negreta', 'Arial';}
+   .data-box>.form-group>label.control-label{width:0;padding-left: 0px;}
+   body{font-size: 14px;}
+</style>
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="${allocateAeId}">
+
+            <div class="row">
+                
+
+            <div class="main-box">
+                    
+                <ul class="main-list-item">
+                    <li>
+                        <span>发包方公司名：</span>
+                        <!-- <span class="companyname">桥吧教育科技（北京）有限公司</span> -->
+                    </li>
+                    <li>
+                        <span>品牌名称：</span>
+                        <!-- <span class="brandname">桥吧国际教育</span> -->
+                    </li>
+                </ul>
+                
+            </div>
+
+
+<div class="modal-body-title"></div>
+
+
+
+<div class="main-box">
+            <div class="main-title-box">
+            <span class="main-title"></span>
+            <span class="main-txt">操作</span><div>
+                <ul class="main-list-item conpany">
+                    <li>
+                        <span class="conpanyname">分配专员：</span>
+                        
+                        <div class="pull-right1 select" style=" width:340px;">
+                                <select style="width:auto; float:left;" class="form-control AEstaff2">
+                                    <option value="">分配AE专员</option>
+                                    <option value="23e13ed237b74003b44c423dee39d45e">dev_csadmin</option>
+                                    <option value="536f2dd0a756488193703cd7fd4b040c">greta</option>
+                                    <option value="5aa62e535d2b4e218f20b5cd7d13697a">CSterry</option>
+                                    <option value="7166dec40ca34bd29201c1e5e5cbe170">ada</option>
+                                    <option value="75816fddb5824bec8d3ce92c1f65a22f">chloe_ae</option>
+                                    <option value="947a68e0162b44058a5387c77116a6af">terry回收</option>
+                                    <option value="9c3fecb3462047d3a90d88168785f001">Vampire-ae</option>
+                                    <option value="a22ba85fdb50414698d5c4790e91bad8">andy_ae</option>
+                                    <option value="f8095e93b02f4509a9a6d58bdcb70772">ella_ae</option>
+                                </select>
+                                <span id="AEstaff2-error" style="display: none;">请选AE专员！</span>
+                        </div>
+                    </li>
+                </ul>
+                </div>
+            </div>      
+    </div>
+
+
+
+
+                <div class="col-sm-6 b-r">
+
+                </div>
+
+                <div class="col-sm-6">
+
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="AllocateAeInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="AllocateAeInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/mso/allocateAe/allocateAe_info.js"></script>
+@}
