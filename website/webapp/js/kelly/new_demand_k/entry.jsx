@@ -31,6 +31,8 @@ function autocompleteCity(cities) {
 }
 
 import {Slider} from 'antd';
+// import React from "react";
+// import ReactDOM from "react-dom";
 
 class Demo extends React.Component {
     state = {

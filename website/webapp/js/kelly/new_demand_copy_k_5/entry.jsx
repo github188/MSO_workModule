@@ -34,6 +34,8 @@ function autocompleteCity(cities) {
 }
 
 var createTime;
+// import React from "react";
+// import ReactDOM from "react-dom";
 import { Slider } from 'antd';
 require('./copy5.css');
 class Demo extends React.Component {
@@ -261,7 +263,10 @@ class Yewu extends React.Component {
             $('.industry.select.area.js_area').attr('data-nfiid', industryId);
             $('.industry.select.area.js_area').attr('data-value', newIndustryPrice);
             $('.industry.select.area.js_area').val(industry.industry);
-            ReactDOM.render(<Preview name='1' data={areaList()}/>, $(".demend_right .right")[0]);
+            console.log("=======111111======")
+            console.log(areaList(),)
+            return ;
+            //ReactDOM.render(<Preview name='1' data={areaList()}/>, $(".demend_right .right")[0]);
         }
     // }
     }
@@ -1873,7 +1878,7 @@ class EssentialInformation extends React.Component {
                     <tbody>
                     <tr>
                         <td>需求名称：</td>
-                        <td className="ordername">{ordername()}</td>
+                        <td className="ordername"></td>
                     </tr>
                     <tr>
                         <td style={{
@@ -2142,7 +2147,7 @@ class Preview extends React.Component {
         for (var name in data) {
             if (!(isNull(data[name].area) || isNull(data[name].size))) {
                 total = Number(data[name].total) + total;
-                dom.push(<tr className={name} key={total}>
+                dom.push(<tr className={name} key={dom.length}>
                     <td title={data[name].areaTitle}>{data[name].area}</td>
                     <td>{data[name].size}</td>
                     <td>{data[name].price}</td>
@@ -2418,7 +2423,6 @@ function areaList() {
         //data[name].ageValue = '0';
 
     });
-
     return data;
 }
 

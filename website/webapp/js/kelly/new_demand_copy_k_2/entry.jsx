@@ -1169,7 +1169,7 @@ var Fj = React.createClass({
                     </td>
                     <td>
                         <div className="ossfile2" style={{
-                "width": "450px"
+                "width": "370px"
             }}></div>
                     </td>
                     <td>
@@ -1192,7 +1192,7 @@ var Fj = React.createClass({
                     </td>
                     <td>
                         <div className="ossfile3" style={{
-                "width": "450px"
+                "width": "370px"
             }}></div>
                     </td>
                     <td>
@@ -1215,7 +1215,7 @@ var Fj = React.createClass({
                     </td>
                     <td>
                         <div className="ossfile4" style={{
-                "width": "450px"
+                "width": "370px"
             }}></div>
                     </td>
                     <td>
