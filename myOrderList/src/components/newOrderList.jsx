@@ -68,13 +68,13 @@ const columns = [
         title: '订单名',
         dataIndex: 'name',
         width: 260,
-    }, 
+    },
     // {
     //     title: '订单号',
     //     dataIndex: 'id',
     //     width: 220,
     // },
-     {
+    {
         title: '业务类型',
         dataIndex: 'serviceTypeNum',
         width: 140,
@@ -223,16 +223,16 @@ class OrderList extends Component {
             //     }}>查看</Button></div>)
             // }
 
-			index.operate = ( <div><Button
-                onClick={this.detail.bind(this, index.id, index.createTime, index.orderState)}
-                icon="edit"
-                style={{
-                    backgroundColor: "#8F44AD",
-                    color: "#ffffff",
-                    // float: "right",
-                    fontSize: 16,
-                    padding: "2px 8px"
-                }}>查看</Button></div>)
+            index.operate = ( <div><Button
+            onClick={this.detail.bind(this, index.id, index.createTime, index.orderState)}
+            icon="edit"
+            style={{
+                backgroundColor: "#8F44AD",
+                color: "#ffffff",
+                // float: "right",
+                fontSize: 16,
+                padding: "2px 8px"
+            }}>查看</Button></div>)
 
             index.createTime = moment(index.createTime).format("YYYY-MM-DD DD:mm:ss");
             switch (Number(index.orderState)) {
@@ -304,7 +304,7 @@ class OrderList extends Component {
         var content = $(this.refs.input.refs.input).val().trim();
         const reg = new RegExp(content, 'gi');
         var filter = this.state.totalOrder.nine.map((record) => {
-        	 record.name=record.name||"";
+            record.name = record.name || "";
             const match = record.name.match(reg) || record.id.match(reg);
             if (!match) {
                 return null;
@@ -509,14 +509,72 @@ class OrderList extends Component {
             </div>
         </div>)
     }
-
-
 }
 
+
+
+
+
+const loadBtn = (url) => (<a href={domainDownShort + url}>下载</a>)
+const orderHistoryColumns = [
+    {
+        key: 0,
+        title: '上传时间',
+        dataIndex: 'uploadtime',
+    }, {
+        key: 1,
+        title: '上传量',
+        dataIndex: 'orderNum',
+        width: 80,
+    }, {
+        key: 2,
+        title: '成功量',
+        dataIndex: 'qaQualified',
+        width: 80,
+    }, {
+        key: 3,
+        title: '失败量',
+        dataIndex: 'qaDisqualification',
+        width: 80,
+    }, {
+        key: 4,
+        title: '重复数据明细',
+        dataIndex: 'dbaUrl',
+        width: 120,
+    }, {
+        key: 5,
+        title: '质检反馈报告',
+        dataIndex: 'qaUrl',
+        width: 120,
+    }, {
+        key: 6,
+        title: 'bda审查',
+        dataIndex: 'dbaCheck',
+        width: 100,
+    }, {
+        key: 7,
+        title: 'qa审查',
+        dataIndex: 'qaCheck',
+        width: 100,
+
+    }];
+
+
+const titles = (cb) => (<h2 style={{
+        color: "#ffffff"
+    }}>成单报告上传记录 <Icon onClick={() => {
+        cb.close(true)
+    }} style={{
+        float: "right",
+        marginTop: 4,
+        cursor: "pointer"
+    }} type="close"/></h2>);
 import back from "../img/go back_icon.png"
 class Detail extends Component {
     componentWillMount() {
         this.state = {
+            orderHistoryList: [], //成单报告长传记录
+            shadeHide: true, //遮罩层是否隐藏
             state: "", //放弃或领取订单  3  5
             close: false, //弹窗默认不显示
             checked: true, //条例默认不选中
@@ -553,6 +611,25 @@ class Detail extends Component {
      * orderId订单号
      */
     componentDidMount() {
+        $(".table .ant-table-title").css({
+            backgroundColor: "#f66248",
+            border: 0,
+            top: 0
+        });
+        // $(".ant-select-tree").css({
+        //     fontSize: "16px"
+        // })
+        $(".ant-table-thead>tr>th").css({
+            backgroundColor: "#EDEDEB",
+            fontSize: "14px"
+        })
+        $(".ant-spin-nested-loading").css({
+            "border": "1px solid #e9e9e9"
+        })
+        // $(".ant-table-tbody").css({
+        //     fontSize: "14px",
+        //     color: "#333333"
+        // })
         var _this = this;
         _this.setState(Object.assign({}, {
             orderState: this.transformState(_this.props.prop.orderState),
@@ -576,6 +653,7 @@ class Detail extends Component {
                         if (_this.state.orderState == "待领取") {
                             _this.countDown()
                         }
+                        this.getOrderHistoryList(this.state.id);
                     })
                 }
 
@@ -708,6 +786,39 @@ class Detail extends Component {
         })
     }
 
+    close(bool) {
+        if (bool) {
+            this.setState({
+                shadeHide: true
+            })
+            return;
+        }
+        this.setState({
+            shadeHide: false
+        })
+
+    }
+    getOrderHistoryList(orderid) {
+        const _this = this;
+        const transfor = ["正确", "错误"]
+        $.ajax({
+            url: `https://gateway.mshuoke.com/worker/orders/${orderid}/reports?size=1000000`,
+            success: function(result) {
+                if (result.code == "0") {
+                    result.data.map((v, k) => {
+                        v.dbaUrl = loadBtn(v.dbaUrl);
+                        v.qaUrl = loadBtn(v.qaUrl)
+                        v.dbaCheck = transfor[v.dbaCheck]
+                        v.qaCheck = transfor[v.qaCheck]
+                    })
+
+                    _this.setState({
+                        orderHistoryList: result.data
+                    })
+                }
+            }
+        })
+    }
     render() {
         return (<div style={{
                 padding: "20px",
@@ -760,8 +871,8 @@ class Detail extends Component {
                         </li>
                       <li>
                             <label>订单服务费：</label>
-                            <span>{this.state.serviceCharge?(("¥" + this.state.serviceCharge).indexOf(".") == "-1" ? ("¥" + this.state.serviceCharge + ".00") : ("¥" + this.state.serviceCharge)):"免订单服务费"}
-                                <Tip hide={this.state.serviceCharge? false : true}
+                            <span>{this.state.serviceCharge ? (("¥" + this.state.serviceCharge).indexOf(".") == "-1" ? ("¥" + this.state.serviceCharge + ".00") : ("¥" + this.state.serviceCharge)) : "免订单服务费"}
+                                <Tip hide={this.state.serviceCharge ? false : true}
             title={"根据订单数量，每一条收取1元钱的订单服务费"} pos={"bottomLeft"}/>
                             </span>
                         </li>
@@ -772,8 +883,17 @@ class Detail extends Component {
                         <li>
                             <label>订单状态：</label>
                             <span className="blue">{this.state.orderState}</span>
+                        </li> 
+                         <li>
+                            <label>历史成单报告：</label>
+                            <span className="blue"> <span style={{
+                cursor: "pointer",
+                color:"#23A4FF",
+                padding:0
+            }} onClick={this.close.bind(this, false)}>查看</span></span>
                         </li>
                             </div>
+
 
                             <div>
 
@@ -913,6 +1033,33 @@ class Detail extends Component {
             className="red">{("¥" + this.state.settlementPrice).indexOf(".") == "-1" ? ("¥" + this.state.settlementPrice + ".00") : ("¥" + this.state.settlementPrice)}</span>
                         </p>
                     </div>
+                </div>
+            </div>
+            <div className="shade" style={{
+                display: (this.state.shadeHide ? "none" : "block"),
+                position: "fixed",
+                left: 0,
+                top: 0,
+                width: "100%",
+                height: "100%",
+                zIndex: 100,
+                backgroundColor: "rgba(0,0,0,0.3)"
+            }}>
+                <div className="table" style={{
+                position: "absolute",
+                top: "40%",
+                left: "50%",
+                width: 860,
+                height: 500,
+                margin: "-250px 0 0 -430px",
+                backgroundColor: "#ffffff",
+                borderRadius: "4px 4px 0 0"
+            }}>
+                      <Table rowKey={record => record.id} showHeader title={() => (titles(this))} bordered={true} columns={orderHistoryColumns} dataSource={this.state.orderHistoryList} pagination={{
+                pageSize: 10
+            }} scroll={{
+                y: 300
+            }} />
                 </div>
             </div>
         </div>)
