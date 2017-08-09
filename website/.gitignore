@@ -3,7 +3,7 @@
 .gradle
 /.settings
 /building-darren
-/node_modules
+node_modules
 /.vscode
 /WebRoot/html
 /WebRoot/images
