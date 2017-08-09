@@ -153,9 +153,8 @@ class OrderList extends Component {
      * @param page    页数，默认从0开始  test jfuid 20170316060326136   47
      * @param size    每页的数量
      */
-    getData(jfuid = (this.state.jfuid || "20170316060326136")) {
+    getData(jfuid = (this.state.jfuid || "")) {
         var _this = this;
-        alert(jfuid)
         $.ajax({
             type: "get",
             contentType: "application/json",
