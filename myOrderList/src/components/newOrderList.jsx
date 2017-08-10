@@ -806,8 +806,12 @@ class Detail extends Component {
             success: function(result) {
                 if (result.code == "0") {
                     result.data.map((v, k) => {
-                        v.dbaUrl = loadBtn(v.dbaUrl);
-                        v.qaUrl = loadBtn(v.qaUrl)
+                        if (v.dbaUrl) {
+                            v.dbaUrl = loadBtn(v.dbaUrl);
+                        }
+                        if (v.qaUrl) {
+                            v.qaUrl = loadBtn(v.qaUrl)
+                        }
                         v.dbaCheck = transfor[v.dbaCheck]
                         v.qaCheck = transfor[v.qaCheck]
                     })
@@ -888,8 +892,8 @@ class Detail extends Component {
                             <label>历史成单报告：</label>
                             <span className="blue"> <span style={{
                 cursor: "pointer",
-                color:"#23A4FF",
-                padding:0
+                color: "#23A4FF",
+                padding: 0
             }} onClick={this.close.bind(this, false)}>查看</span></span>
                         </li>
                             </div>
