@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FormData上传Demo</title>
+    <meta name="description" content="test">
+	<meta name="keywords" content="">
+	<script src="https://www.mshuoke.com/html/js/jquery-1.7.2.min.js"></script>
+	<style>
+		li{
+			list-style: none;
+		}
+		.salepad{
+			width: 200px;
+			height: 200px;
+			text-align: center;
+			line-height: 200px;
+			border: 1px solid #000;
+		}
+	</style>
+</head>
+<body>
+<ul>
+	<li class="upload compimg" data-index="5">
+		
+		<form id="salepad" action="" enctype="">
+			<div>
+				<span style="display:none;">文件路径</span>
+				<input style="display:none;" class="idkey" type="text" name="key" value="">
+				<span style="display:none;">OSSAccessKeyId</span>
+				<input style="display:none;" class="idOSSAccessKeyId" type="text" name="OSSAccessKeyId" value="">
+				<span style="display:none;">policy</span>
+				<input style="display:none;" class="idpolicy" type="text" name="policy" value="">
+				
+				<input style="display:none;" class="status" type="text" name="success_action_status" value="200">   
+				<!-- value=200 成功时返回200,默认204 -->
+				
+
+				<span style="display:none;">Signature</span>
+				<input style="display:none;" class="idSignature" type="text" name="Signature" value="">
+				
+				<input style="display:none;" name="file" type="file" class="file">
+			</div>
+		</form>
+		<div class="salepad test">
+			点击上传
+		</div>
+		<p class="msg-error hy"></p>
+	</li>
+</ul>
+<script>
+$(function(){
+	$(".salepad").click(function(){
+		$(".file")[0].onchange=function () {
+				var typeArr = ['image/jpeg','image/png','image/bmp'];//限制文件格式
+				var fileInfo=this.files[0];		
+				if(typeArr.indexOf(fileInfo.type)=="-1"){
+					return ;
+				}
+				if((fileInfo.size/1024)>3072){			//限制大小
+					return ;
+				}
+				var readerd = new FileReader();//可将图片转换为base64
+				readerd.readAsDataURL(fileInfo);
+				readerd.onload = function (e) {
+					$('div.salepad').html('<img style="width:100%;height:100%;" src="'+this.result+'"/>');
+				}
+
+
+			resultSignature =  JSON.parse(getSignature({fileName:'credentials'}));
+				/*设置签名信息*/
+			$(".upload").find('form')[0].action = resultSignature.host;
+			$(".upload").find('.idkey').val(resultSignature.dir+'${filename}');
+			$(".upload").find('.idpolicy').val(resultSignature.policy);
+			$(".upload").find('.idOSSAccessKeyId').val(resultSignature.accessid);
+			$(".upload").find('.idSignature').val(resultSignature.signature);
+
+				var _path="https://res.mshuoke.com"+resultSignature.dir+fileInfo.name;
+
+				uploadByForm($('#salepad')[0],"https://mso.oss-cn-shanghai.aliyuncs.com");//上传方法
+
+		}
+		return $(".file").click();
+	})
+
+
+
+
+
+
+//获取签名信息
+function getSignature(parm){
+		if(!parm){
+			return;
+		}
+		
+		if(!parm.fileName){
+			return;
+		}
+		var xmlhttp = null;
+		if (window.XMLHttpRequest){
+			xmlhttp=new XMLHttpRequest();
+		}else if (window.ActiveXObject){
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+
+		if (xmlhttp){
+		  
+			var credentials = parm.fileName;
+			/*后台签名上传*/
+			 //https://back.mshuoke.com/aliOrder/customerDelve.do?stid=undefined&type=fbxq  
+			 serverUrl=`https://back.mshuoke.com/ali.do?uid=1&type=${credentials}`
+			// serverUrl = serverUrlpre +'/ali.do?uid='+roleid+'&type='+credentials;
+		   
+			xmlhttp.open( "GET", serverUrl, false );
+			xmlhttp.send( null );
+			return xmlhttp.responseText
+		}else{
+			alert("Your browser does not support XMLHTTP.");
+		}
+	}
+function uploadByForm(Form,host) {
+	  /*模拟二进制流*/
+	  var formData = new FormData(Form);
+	 // oMyForm.append("username", "Groucho");
+	 // var url = "https://mso.oss-cn-shanghai.aliyuncs.com"; 
+
+		 $.when(
+			$.ajax({  
+				url : host,  
+				type : 'POST',  
+				data : formData,  
+				processData : false,  
+				contentType : false,  
+			})
+			).then(function(){alert("上传成功")}).fail("上传失败")	
+ 		}  
+})
+
+</script>
+</body>
+</html>
