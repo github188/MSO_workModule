@@ -737,14 +737,18 @@ var State = React.createClass({
                                     </tr>
                                 </table>
 
+                               <a href={"new_demand_copy_5.html#copy" + demandid} data-reactid=".6.1.1">
+                                    <button id="copyDemand" type="button" className="submit" onclick={this.setCopy}>复制需求
+                                    </button>
+                                </a>
                                 <a href="javascript:self.location=document.referrer;">
                                     <button type="button" className="drafts"
                     style={{
-                        "width": "100%"
+                        margin: "0 auto",
+                        display: "inline-block"
                     }}>返回上一页
                                     </button>
                                 </a>
-
 
                             </div>
                         </div>

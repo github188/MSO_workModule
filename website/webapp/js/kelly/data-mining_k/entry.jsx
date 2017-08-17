@@ -919,6 +919,7 @@ class State extends React.Component {
 
 
             var data = {
+				"type":3,
                 "createTime": allData.demand.createTime,
                 "releaseQuantity": allData.demand.releasenum, //todo "integer,需求发布量",
                 "areaAndDemandQuantity": JSON.stringify([]), //目标区域
@@ -931,7 +932,7 @@ class State extends React.Component {
                 "dataCleaningUnitPrice": allData.demand.pprice, //Todo "double,数据加工单价",
                 "basicUnitPrice": "", //"double,基础单价",//TODO 行业单价
                 "productIntroduce": "", // todo "string,产品介绍",
-                "customerList": file1, //todo "string,目标客户名单附件path",
+               // "customerList": file1, //todo "string,目标客户名单附件path",
                 "demandDesc": allData.demand.demanddescription, //Todo "string,需求描述 可变长度，最多65535个字符",
                 "totalPrice": allData.demand.pprice * allData.demand.releasenum, //todo  "double,需求总价",
                 "targetChannel": "", //todo "integer,获客渠道 1-电话营销 2-网络营销 3-地推推广",
@@ -945,11 +946,15 @@ class State extends React.Component {
                 "projectLeaderPhone": allData.demand.pphone, //todo "string,项目负责人电话",
                 "customTag": "", //todo "string,自定义标签",
                 "targetAgeFrom": "", //todo "integer,目标区域人群年龄 from"
+				"path":file1
             };
-
+			//POST 开发完成 /quality/demands/{demandid}/attachments
+			//console.log(data);
+			//return;
+			
             $.ajax({
-                url: `${domain137}/quality/drafts/${this.props.data.pid}/1`,
-                type: "patch",
+                url: `${domain137}/quality/demands/${this.props.data.pid}/attachments`,
+                type: "post",
                 contentType: "application/json",
                 data: JSON.stringify(data),
                 success: function(result) {

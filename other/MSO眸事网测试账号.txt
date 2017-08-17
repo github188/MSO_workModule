@@ -1,40 +1,33 @@
 前端网页测试账号
 
-生产环境:www.mshuoke.com
+生产环境前端:mshuoke.com
 
 1.发包方：zhangsan     密码：123456abc
 2.接包方：zhangmengqi  密码：123456abc
 
+生产环境后台：back.mshuoke.com
 
-后端系统：back.mshuoke.com
-1.发包方需求审核账号：bd_daphne   密码：123456
 
-2.接包方订单审核账号：ada_cs      密码：123456   /  ae01,123456  / ae02，123456……
 
-3.接包方订单查看账号：cs_am       密码：123456
+测试环境后端系统：back.mshuoke.com
+1.发包方账号、需求审核：bd_daphne   密码：daphne123456
 
-4.后台发包方admin账号：csadmin    密码：123456
+2.创建任务、分配ae、指派订单：ada_cs      密码：123456   /  ae05,123456 
 
-5.每日成单查重账号：dbaadmin      密码：123456  
- 
-6.成单质检账号：ada_qa            密码：123456
+3.接包方账号、订单：cs_am         密码：123456
 
-7.市场部管理员账号：mk_daphne	  密码：123456
+4.上传成单报告：dbaadmin          密码：123456 
 
+5.上传录音文件：it01	          密码：123456  
+
+6.市场部管理员账号：mk_admin      密码：123456
+
+
+嵌入到CRM系统生产环境 mshuoke.com
+
+1.17081430970                     密码：123456
+
+
+
+PS:发包方账号注册统一从官网mshuoke.com；接包方账号注册统一从服务商vendor.mshuoke.com
 --------------------------------------------------------------------------------------
-测试环境：www.mshuoke.com
-
-1.发包方：zhangsan     密码：123456
-2.接包方：zhangmengqi  密码：123456
-
-后台系统：back.mshuoke.com
-1.账号请查看线上环境
-
-PS：测试环境须在本机的以太网（win10）中配置DNS:192.168.2.6；之后清除缓存：运行→cmd→ipconfig /flushdns
-
-    如需切换到生产环境，只需把DNS去掉（自动获取）即可；之后清除缓存：运行→cmd→ipconfig /flushdns
-
-
-
-
-20170410113640390

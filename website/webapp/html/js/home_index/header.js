@@ -14,8 +14,18 @@ var Header = React.createClass({
                 $(this).addClass("active").parent().siblings().find("li").removeClass("active");
             }
         });
+		var urlAll = document.location.href;
+		var crmOut = urlAll.split('?')[1];
+		if(crmOut == "from=crm"){
+			logOut();
+			window.location.href = "//www.mshuoke.com/login.html";
+		}
         $('a.logout').click(function(){
-            $.ajax({
+			logOut();
+            location.reload();
+        });
+		function logOut(){
+			$.ajax({
                 type:"post",
                 url:urlLogout,
                 async:true,
@@ -64,14 +74,14 @@ var Header = React.createClass({
                             localStorage.removeItem("jfuname");//用户名
                             localStorage.removeItem("logontimes");//用户名
                         }
-                        location.reload();
+                        
                     }else{
                         return false;
                     }
                 },
                 error:function(){},
             });
-        });
+		}
     },
     render:function(){
 		

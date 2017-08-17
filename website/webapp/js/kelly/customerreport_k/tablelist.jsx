@@ -115,6 +115,9 @@ window.queryParams = function (params) {
 
 window.editNext = function (value,row,index) {
 	//$.setSessionStorage('pagination-page-number',$('.pagination .page-number.active a').html());
+	if(row.demandname==null || row.demandname == undefined ){
+		row.demandname = "";
+	}
 	if(row.downloadcount == '0'){		//downloadneed 0 b不显示  1 显示	
 		return `<a class="checkDetail" data-releasenum=${row.releasenum} data-name=${row.demandname.toString().replace(/\s/g,"")}  data-index=${index} href="javascript:;" >
 		

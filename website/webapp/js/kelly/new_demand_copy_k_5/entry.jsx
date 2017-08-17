@@ -263,10 +263,7 @@ class Yewu extends React.Component {
             $('.industry.select.area.js_area').attr('data-nfiid', industryId);
             $('.industry.select.area.js_area').attr('data-value', newIndustryPrice);
             $('.industry.select.area.js_area').val(industry.industry);
-            console.log("=======111111======")
-            console.log(areaList(),)
-            return ;
-            //ReactDOM.render(<Preview name='1' data={areaList()}/>, $(".demend_right .right")[0]);
+          //  ReactDOM.render(<Preview name='1' data={areaList()}/>, $(".demend_right .right")[0]);
         }
     // }
     }

@@ -125,17 +125,25 @@ return index += 1;
 
 
 window.reporturl = function(value, row, index) {
-//href="'+'http://res.mshuoke.com/'+row.reporturl+'"
-//console.log(value,row,index);			//	downloadcount下载次数								///reporturl 下载路径
-if (row.downloadcount == '0') {
-    return `<a class="donwFile1" data-reportid="${row.reportid}" href="https://package.mshuoke.com${row.reporturl}">
+	var url = "";
+	//debugger;
+	if((row.prefix+"").trim()!='package.mshuoke.com'){
+		row.prefix = 'res.mshuoke.com'
+	}
+	//console.log(row);
+	row.reporturl.startsWith('/')?(url = '//'+row.prefix+row.reporturl):(url='//'+row.prefix+"/"+row.reporturl);
 		
-				<span class="ant-scroll-number-previous"  ><span >下载</span><sup data-show="true" class="ant-scroll-number ant-badge-count">new</sup></span>
-		</a>`;
-}
+	//处理前缀
+	if (row.downloadcount == '0') {
+	
+		return `<a class="donwFile1" data-reportid="${row.reportid}" href="${url}">
+					
+							<span class="ant-scroll-number-previous"  ><span >下载</span><sup data-show="true" class="ant-scroll-number ant-badge-count">new</sup></span>
+					</a>`;
+	}
 
-return `<a class="donwFile1" data-reportid="${row.reportid}" href="https://package.mshuoke.com${row.reporturl}">下载</a>`;
-
+	return `<a class="donwFile1" data-reportid="${row.reportid}" href="${url}">下载</a>`;
+		
 };
 
 export default Customerreport;

@@ -87,7 +87,7 @@ class Myinfo extends React.Component{
 			if(!data)return;
 			
 			$('.realname').val(data.realname);
-			$('.jfumobilephone').val(data.jfumobilephone);
+			$('.jfumobilephone').val(data.jfumobilephone.toString().replace(/\s/g,""));
 			$('.compemail').val(data.compemail);
 			$('.userqq').val(data.qq);
 			$('.compwebsite').val(data.compwebsite);

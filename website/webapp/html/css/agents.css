@@ -1,0 +1,27 @@
+@charset "utf-8";
+
+body,ul,li,ol,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div,dl,dt,dd,input,button { margin:0; padding: 0;}
+body { font-size:14px; font-family: "microsoft yahei", sans-serif; -moz-user-select: text; background: url(https://www.mshuoke.com/images/crm/bg-left.gif) 0 0 repeat-y; min-width:1155px;}
+img {border:none; display: block;}
+li {list-style: none}
+textarea {resize:none;}
+textarea, input, button { outline: none;}
+a, a:hover {text-decoration: none;}
+button { cursor: pointer;}
+textarea, input, button { font-family: "microsoft yahei";}
+html, body, .wrap { height: 100%;}
+
+
+.wrap { position: relative;}
+.leftNav { width: 240px; position: absolute; left: 0; top: 0; bottom: 0; color: #fff;}
+.leftNav a { color: #fff;}
+.leftNav .logo { width: 104px; margin: 35px auto;}
+.leftNav .logo img { width: 100%;}
+.leftNav .info p { line-height: 34px; height: 34px; text-align: center;}
+.leftNav a.logout { color: #008bf0; text-decoration: underline;}
+.leftNav a.update-pswd { display: block;}
+.leftNav .update-info { background: #4d4d4d; line-height: 34px; text-align: center;}
+
+
+.rightCon { padding-left: 240px;}
+.bootstrap-table { padding: 20px 50px;}

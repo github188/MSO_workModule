@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta charset="UTF-8">
+    <title>代理商 - 眸事网</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>	
+    <link rel="stylesheet" href="css/bootstrap-table.css"/>	
+	<link rel="stylesheet" href="css/agents.css"/>	
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="js/bootstrap-table.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="wrap">
+	<div class="leftNav">
+		<div class="logo"><img src="images/public/c_index_logo.png" /></div>
+		<div class="info">
+			<p>
+				<span class="companyName">脉豪商务-眸事网</span>
+				<span class="glyphicon glyphicon-chevron-down"></span>
+			</p>
+			<div class="update-info">
+				<a href="#" class="update-pswd"><span class="glyphicon glyphicon-user"></span>修改密码</a>
+				<a href="#" class="logout"><span class="glyphicon glyphicon-log-out"></span>退出</a>
+			</div>
+		</div>
+		<div class="nav">
+			<a href="">渠道关联</a>
+		</div>
+	</div>
+	<div class="rightCon">
+		<table id="tabList"></table>
+	</div>
+</div>
+<script>
+/*新增行业*/
+	var domain137 = "https://gateway.mshuoke.com";
+	var url  = domain137 + '/quality/firstreport?jfuid=30';
+	var $table = $('#tabList');
+	//debugger;
+	//文档地址http://bootstrap-table.wenzhixin.net.cn/zh-cn/documentation/
+	/*自定义头部*/
+	/*自己填写数据*/
+	$('#tabList').bootstrapTable({
+		url:url,
+		pagination: true, //分页
+		pagesize:3,
+		contentType:'application/json',
+    	search:true,
+		showColumns:true,
+		striped: true,
+		checkbox:false,
+		queryParams:function (params){
+			/*自定义参数,如果有参数在这里定义*/
+			var data = {};
+			data.size = 100000000;
+			data.limit = params.limit;
+			data.offset = params.offset;
+			return data;
+		},
+		sidePagination: "client",
+		responseHandler:function(res){
+				//console.log(JSON.stringify(res));
+				//debugger;
+				
+				/*"total": 800,*/
+			var newJson = {};
+			newJson.total = '800';
+			newJson.data = res.data;
+				//debugger;
+				//res.rows = res.list;
+            return newJson;
+    	},
+		onLoadSuccess(){
+		/*移动自带事件*/
+		$('.search-btn button').click(function(){
+			$('.search input').eq(1).val($('.search input').eq(0).val());
+			$('.search input').eq(1).keyup();
+		});
+		//debugger;
+		/*当search 没有vlaue的时候*/
+		$('.search input').eq(0)[0].oninput= function (){
+			if(!this.value){
+				$('.search input').eq(1).val(this.value);
+				$('.search input').eq(1).keyup();
+			}
+		};
+		$('.search input').eq(0).keyup(function (ev){	
+			var oEvent = ev || event;
+			if(oEvent.keyCode==13){
+				$('.search input').eq(1).val(this.value);
+				$('.search input').eq(1).keyup();
+			}
+		});
+	},
+	formatNoMatches:function(){
+        return '没有搜索结果'
+    },
+    formatLoadingMessage:function(){
+        return '正在努力加载中...';
+    },
+	columns:[
+		{field: 'selectItem', radio: true},
+		{title: 'id', field: 'id', visible: false, align: 'center', valign: 'middle'},
+		{  
+        	field: 'pid',  
+        	title: '发包方公司'  
+        }, {  
+        	field: 'demandname',  
+        	title: '需求名称'  
+        }, {  
+        	field: 'releasenum',  
+        	title: '需求总量'  
+        }, {  
+        	field: 'finishnum',  
+        	title: '完成总量'
+        }, {  
+        	field: 'createtime',  
+        	title: '归属年月'
+        }, {  
+        	field: 'servicetype',  
+        	title: '支付规则'
+        }, {  
+        	field: 'favorableTotalPrice',  
+        	title: '结算金额'
+        }
+		]  
+	});
+	
+	$(".update-info").toggle(function(){
+	  $("body").css("background-color","green");},
+	  function(){
+	  $("body").css("background-color","red");},
+	  function(){
+	  $("body").css("background-color","yellow");}
+	);
+	$(".info p").click(function(){
+	  $(".update-info").slideToggle();
+	  });
+</script>
+</body>
+</html>

@@ -371,7 +371,7 @@ class Textarea extends React.Component{
 		return (<div className="areaList">
 					<div className="input js_input">
 						<label>目标区域:</label>
-						<input type="text" data-value={false} required=""  className={"select area js_area"} placeholder="请选择区域" title="" />
+						<input type="text" data-value={false} required="" readOnly="readonly" className={"select area js_area"} placeholder="请选择区域" title="" />
 						<i className="select_icon"></i>
 						<div className="area">
 							<div className={"area-box"}>

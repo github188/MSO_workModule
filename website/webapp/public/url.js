@@ -12,7 +12,7 @@ var domain = "https://www.mshuoke.com/";
 
 var domain137 = "https://gateway.mshuoke.com";
 
-var domainDown = "http://res.mso-china.com/";//下载前缀
+var domainDown = "http://res.mshuoke.com/";//下载前缀
 var domainDownShort = "http://res.mso-china.com/";//下载前缀
 var serverUrlpre = "";//正式库//back.mso-china.com
 
