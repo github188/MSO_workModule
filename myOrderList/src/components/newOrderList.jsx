@@ -153,7 +153,7 @@ class OrderList extends Component {
      * @param page    页数，默认从0开始  test jfuid 20170316060326136   47
      * @param size    每页的数量
      */
-    getData(jfuid = (this.state.jfuid || "")) {
+    getData(jfuid = (this.state.jfuid || "20170316060326136")) {
         var _this = this;
         $.ajax({
             type: "get",
@@ -523,39 +523,49 @@ const orderHistoryColumns = [
         dataIndex: 'uploadtime',
     }, {
         key: 1,
+        title: '接收量',
+        dataIndex: 'dbaReceive',
+        width: 60,
+    }, {
+        key: 2,
+        title: '重复量',
+        dataIndex: 'dbaRepetition',
+        width: 60,
+    }, {
+        key: 3,
         title: '上传量',
         dataIndex: 'orderNum',
         width: 80,
     }, {
-        key: 2,
+        key: 4,
         title: '成功量',
         dataIndex: 'qaQualified',
         width: 80,
     }, {
-        key: 3,
+        key: 5,
         title: '失败量',
         dataIndex: 'qaDisqualification',
         width: 80,
     }, {
-        key: 4,
+        key: 6,
         title: '重复数据明细',
         dataIndex: 'dbaUrl',
         width: 120,
     }, {
-        key: 5,
+        key: 7,
         title: '质检反馈报告',
         dataIndex: 'qaUrl',
         width: 120,
     }, {
-        key: 6,
+        key: 8,
         title: 'bda审查',
         dataIndex: 'dbaCheck',
-        width: 100,
+        width: 80,
     }, {
-        key: 7,
+        key: 9,
         title: 'qa审查',
         dataIndex: 'qaCheck',
-        width: 100,
+        width: 80,
 
     }];
 
