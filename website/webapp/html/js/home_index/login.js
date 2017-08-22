@@ -241,7 +241,7 @@ var LoginBox = React.createClass({
 									}
 								});
 								
-							}else{
+							}else if(data.jfutype==2){
 								if(data.jfustate==4){
 									var p = "mso_userid="+oJfuid;
 									var pEnc = strEnc(p,key1,key2,key3);
@@ -249,6 +249,8 @@ var LoginBox = React.createClass({
 								}else{
 									window.location.href="html/crm-myInfo.html";
 								}
+							}else{
+								window.location.href="html/agents.html";
 							}
 						}
                 }else if(data.code=="ER003"){//用户名不存在

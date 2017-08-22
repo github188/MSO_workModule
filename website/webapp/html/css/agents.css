@@ -19,9 +19,38 @@ html, body, .wrap { height: 100%;}
 .leftNav .logo img { width: 100%;}
 .leftNav .info p { line-height: 34px; height: 34px; text-align: center;}
 .leftNav a.logout { color: #008bf0; text-decoration: underline;}
+.leftNav a.logout span { margin-right: 8px;}
 .leftNav a.update-pswd { display: block;}
-.leftNav .update-info { background: #4d4d4d; line-height: 34px; text-align: center;}
-
+.leftNav a.update-pswd span { margin-right: 8px;}
+.leftNav .update-info { background: #4d4d4d; line-height: 34px; text-align: center; display: none;}
+.leftNav .nav { text-align: center; padding-top: 20px;}
+.glyphicon-chevron-down { margin-left: 8px;}
+.leftNav .info p { cursor: pointer;}
 
 .rightCon { padding-left: 240px;}
-.bootstrap-table { padding: 20px 50px;}
+.bootstrap-table { padding: 50px 20px; max-width: 1100px;}
+
+.cover { position: fixed; left: 0; right: 0; top: 0; bottom: 0; width: 100%; height: 100%; background: rgba(0,0,0,0); display: none;}
+.cover .cover-box { width: 600px; height: 400px; background: #fff; box-shadow: 0 0 5px #ccc; position: absolute; left: 50%; top: 50%; margin-left: -300px; margin-top: -220px;}
+.cover .cover-box .title { line-height: 45px; height: 45px; font-size: 16px; text-align: center; background: #6fbffb; color: #fff;}
+.cover .cover-box .content { padding: 50px;}
+.cover .cover-box .content ul { padding-left: 35px;}
+.cover .cover-box .content li { line-height: 35px; height: 60px;}
+.cover .cover-box .content label { display: inline-block; width: 8em; text-align: right; font-weight: normal;}
+.cover .cover-box .content input { height: 32px; line-height: 32px; border: 1px #ccc solid; border-radius: 3px; width: 220px; padding-left: 8px;}
+.cover .cover-box .content input:focus { border: 1px #008df0 solid; box-shadow: 0 0 3px #6fbffb;}
+.cover .cover-box .content input.error { border: 1px #f00 solid; box-shadow: 0 0 3px #fa5353;}
+.cover .cover-box .content li p.error { color: #f00; line-height: 15px; padding-left: 8.5em; display: none;}
+.cover .cover-box .content .btn-box { padding: 25px 0; text-align: center;}
+.cover .cover-box .content .btn-box button { width: 110px; height: 36px; border-radius: 3px; margin: 0 8px; font-size: 16px;}
+.cover .cover-box .content .btn-box button.btn-save { background: #008df0; border: 1px #008DF0 solid; color: #fff;}
+.cover .cover-box .content .btn-box button.btn-save:hover { background: #3eabf8; border: 1px #3eabf8 solid;}
+.cover .cover-box .content .btn-box button.btn-cancel { background: #fff; border: 1px #ccc solid; color: #8C8C8C;}
+.cover .cover-box .content .btn-box button.btn-cancel:hover { background: #fff; border: 1px #B3B3B3 solid; color: #424242;}
+
+.fadeOut { width: 180px; height: 60px; line-height: 50px; text-align: center; position: fixed; left: 50%; top: 50%; margin-left: -95px; margin-top: -60px; border: 5px #6fbffb solid; background: #fff; display: none;}
+
+.table th { background: #27a0d7; color: #fff;}
+.table td { text-align: center;}
+.totalNum { padding: 0 20px; max-width: 1100px; text-align: right;}
+.totalNum span { color: #008BF0;}

@@ -14,8 +14,18 @@ var Header = React.createClass({
                 $(this).addClass("active").parent().siblings().find("li").removeClass("active");
             }
         });
+		var urlAll = document.location.href;
+		var crmOut = urlAll.split('?')[1];
+		if(crmOut == "from=crm"){
+			logOut();
+			window.location.href = "login.html";
+		}
         $('a.logout').click(function(){
-            $.ajax({
+			logOut();
+            location.reload();
+        });
+		function logOut(){
+			$.ajax({
                 type:"post",
                 url:urlLogout,
                 async:true,
@@ -64,47 +74,104 @@ var Header = React.createClass({
                             localStorage.removeItem("jfuname");//用户名
                             localStorage.removeItem("logontimes");//用户名
                         }
-                        location.reload();
+                        
                     }else{
                         return false;
                     }
                 },
                 error:function(){},
             });
-        });
+		}
     },
     render:function(){
 		
-		return(
-                <div>
+		var isLogout = $.cookie('isLogout');
+		if(isLogout=="true"){
+			sessionStorage.clear();
+			localStorage.clear();
+			$.cookie('isLogout', null,{ path: '/' , domain:'.mshuoke.com',expires:-1});
+		}
+        var jfutype = sessionStorage.getItem("jfutype");//用户类型 1 发包方 2接包方
+        var jfuname = sessionStorage.getItem("jfuname");//用户名
+        var jfustate = sessionStorage.getItem("jfustate");//用户状态
+        var pid = sessionStorage.getItem("pid");//有值表示当前账号为子账号
+        var showName = sessionStorage.getItem("showName");
+        if(jfutype==1){
+            var homeCustomer = "";
+            var linkCustomer = "";
+            var wordCustomer = "发布需求";
+            if(jfustate==4){
+                homeCustomer = "html/customer_home.html";
+                linkCustomer = "html/customer_new_demand.html";
+            }else{
+                homeCustomer = "html/customerMyInfo.html";
+                linkCustomer = "html/customerMyInfo.html";
+            }
+            return(
                 <div className="nav_top">
-                <div>
-                <div className="home_logo"><a href="index.html"><img src="html/images/public/c_index_logo.png" title="MSO-眸事网，国内专业营销服务外包平台" alt="logo" /></a></div>
-                <ul>
-                <a href="index.html">
-                <li>首页<i></i></li>
-                </a>
-                <a href="headline.html">
-                <li>眸事资讯<i></i></li>
-                </a>
-				<a href="production.html">
-                <li>产品<i></i></li>
-                </a>
-                <a href="help.html">
-                <li>帮助中心<i></i></li>
-                </a>
-                <a href="vendor/index.html" target="_blank">
-                <li>服务商<i></i></li>
-                </a>
-                </ul>
-                <div className="c_right">
-                <a href="login.html">登录</a>
-                <a href="register-customer.html">注册</a>
-                </div>
-                </div>
-                </div>
+					<div className="home_logo">
+						<a href="//www.mshuoke.com"><img src="//www.mshuoke.com/html/images/public/c_index_logo.png" title="MSO-眸事网，国内专业营销服务外包平台" alt="logo" /></a>
+					</div>                
+					<ul>
+						<li><a className="menu1" href="index.html">首页</a></li>
+						<li><a className="menu2" href="headline.html">眸事资讯</a></li>
+						<li><a className="menu3" href="production.html">产品</a></li>
+						<li><a className="menu4" href="help.html">帮助中心</a></li>
+					</ul>
+					<div className="login_right">
+						<a href="html/customerMyInfo.html" className="MyInfo">{showName}</a>
+						<a className="logout" href="javascript:;">安全退出</a>
+					</div>
                 </div>
         )
+        }else if(jfutype==2){
+            var linkSupplier = "";
+            var wordSupplier = "";
+            if(jfustate==4){
+                var p = "mso_userid="+sessionStorage.getItem("jfuid");
+				var pEnc = strEnc(p,key1,key2,key3);
+				linkSupplier = "https://crm.mshuoke.com/sapi/msocallcenter/login?"+pEnc;
+				wordSupplier = "竞拍订单";
+            }else{
+                linkSupplier = "html/crm-myInfo.html";
+                wordSupplier = "竞拍订单";
+            }
+            return(
+				<div className="nav_top">
+					<div className="home_logo">
+						<a href="index.html"><img src="//www.mshuoke.com/html/images/public/c_index_logo.png" title="MSO-眸事网，国内专业营销服务外包平台" alt="logo" /></a>
+					</div>                
+					<ul>
+						<li><a className="menu1" href="index.html">首页</a></li>
+						<li><a className="menu2" href="headline.html">眸事资讯</a></li>
+						<li><a className="menu3" href="production.html">产品</a></li>
+						<li><a className="menu4" href="help.html">帮助中心</a></li>
+					</ul>
+					<div className="login_right">
+						<a href={linkSupplier} className="MyInfo">{showName}</a>
+						<a className="logout" href="javascript:;">安全退出</a>
+					</div>
+                </div>
+			)
+        }else{
+            return(
+				<div className="nav_top">
+					<div className="home_logo">
+						<a href="index.html"><img src="//www.mshuoke.com/html/images/public/c_index_logo.png" title="MSO-眸事网，国内专业营销服务外包平台" alt="logo" /></a>
+					</div>                
+					<ul>
+						<li><a className="menu1" href="index.html">首页</a></li>
+						<li><a className="menu2" href="headline.html">眸事资讯</a></li>
+						<li><a className="menu3" href="production.html">产品</a></li>
+						<li><a className="menu4" href="help.html">帮助中心</a></li>
+					</ul>
+					<div className="login_right">
+						<a className="home-login" href="login.html">登录</a>
+						<a className="home-register" href="register-customer.html">注册</a>
+					</div>
+                </div>
+			)
+        }
     }
 });
-React.render(<Header/>,$("header")[0]);
+React.render(<Header/>,$(".header")[0]);

@@ -120,6 +120,7 @@ joined-policy:"g:\webpack/js/ina/joined-policy/entry.jsx"
   );
   
   //不压缩打包 
+  /*
    ArrHtmlWebpackPlugin.push(
  	 new webpack.optimize.UglifyJsPlugin({
  		 
@@ -134,7 +135,7 @@ joined-policy:"g:\webpack/js/ina/joined-policy/entry.jsx"
  	})
  );
 
- 
+*/ 
  
 
 //iReturnCode();
