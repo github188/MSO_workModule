@@ -1,0 +1,1152 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Bootstrap Table Examples</title>
+
+
+	<link rel="stylesheet" href="../css/bootstrap.min.css" />
+	<link rel="stylesheet" href="../css/bootstrap-table.css" />
+	<link rel="stylesheet" href="../css/bootstrap-datetimepicker.css" />
+	
+	
+	<script src="../js/jquery.js" type="text/javascript"></script>
+    <script src="../js/bootstrap.min.js"></script>
+
+	<script src="../js/bootstrap-table.min.js" type="text/javascript"></script>
+	<script src="../js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+	<script src="../js/url.js" type="text/javascript"></script>
+	<script src="../js/mock.js" type="text/javascript"></script>
+	<script src="../js/myself-function/main.js" type="text/javascript"></script>
+	
+	<style>
+		#forlogin { display:none; background:#ffffff;  overflow:hidden; height:100%; }
+		*{ padding:0; margin:0; }
+		ul li { list-style-type:none; }
+		#forlogin ul { width:100%; overflow:hidden; margin-top:20px;  }
+		#forlogin ul li { float:left; width:50%; }
+		
+		#forlogin ul li.first {width:60px; text-align:right; }
+		#forlogin ul.industry{ margin-top:30px; }
+		#forlogin ul.industry li {  }
+		#forlogin ul.industry li input { float:left;  }
+		#forlogin ul.high li.high-n   { text-align:left;  }
+		
+		#forlogin ul li.last  { padding-left:20px;  }
+		#forlogin ul li .running { float:left;  width:70px; height:20px; }
+		#forlogin ul li .outOff { float:left; width:70px; height:20px; }
+		#forlogin ul li .outOff  span { float:left; margin-top:2px; margin-left:5px;  display:inline-table; }
+		#forlogin ul li .running  span { float:left; margin-top:2px;    margin-left:5px;   display:inline-table; }
+		#forlogin ul li .outOff input { float:left; }
+		#forlogin ul li .running input { float:left; }
+		#forlogin ul.descening li input { float:left; }
+		#addIndustry  { margin-top:20px; }
+		#toolbar { width:120px; } 
+		.fixed-table-toolbar { width:120px; }
+		.industrySetting { width:100%; overflow:hidden; margin-top:20px; margin-bottom:0; }
+		.industrySetting li { float:left; }
+		.search-box { overflow:hidden; padding-bottom:3px; }
+		.search-box  .fixed-table-toolbar { float:left; }
+		.search-box  #toolbar {margin-left:20px; float:left; margin-top:10px; margin-bottom:10px; }
+		.bootstrap-table { margin-top:15px; }
+		
+		
+		@media (min-width: 100px) {
+			.container {
+				width: auto;
+			}
+		}
+		.fixed-table-toolbar { width:100%; }
+		
+		.pull-right1.search { margin-top:0; float:left; width:200px; }
+		.pull-right1 { float:left; }
+		.pull-right1.select { width:127px; margin-left:5px; }
+		.search-box { margin-top:10px; }
+
+		
+		.data-box {
+			width: 370px;
+			height: 30px;
+			border-radius: 6px;
+			border: 1px solid #e8e8e8;
+			padding-bottom: 0;
+			position: relative;
+			float:left; 
+			margin-top:2px;
+			margin-left:5px; 
+		}
+		
+		.data-box input {
+			color: #a7a7a7;
+			width: 170px;
+			border: none;
+			text-align: center;
+			line-height: 28px;
+		}
+		
+		.select.search-btn { margin-left:20px; }
+		
+		
+		
+	.modal-dialog { width:860px; }
+	.modal-body-title { border-bottom:1px solid #e5e5e5; padding-bottom:15px;  }
+	ul li { list-style:none; }
+	.main-title-box { overflow:hidden; }
+	.main-title { width:10px; height:20px; background:rgba(255, 153, 0, 1); display:block; float:left; }
+	.main-box { margin-top:20px; overflow:hidden;  }
+	.main-txt { margin-left:10px; }
+	.main-list-item { float:left; margin-top:20px; width:400px; }
+	.main-list-item li { line-height:38px; }
+	.main-list-item li span:nth-child(1){ font-weight:700; font-family: 'Arial Negreta', 'Arial';}
+	
+	
+	
+	
+	.main-list-item .radio {
+		float: left;
+		margin-top:0px; 
+	}
+		
+	.main-list-item .radio i {
+		font-style: normal;
+	}
+	
+	 .btn-success.btn-lg { padding:6px 12px; }
+	.btn-lg, .btn-group-lg>.btn { font-size:14px; }
+	
+	.modal-body { max-height:500px; overflow-y:auto; }
+
+	 .vestingtime .data-box {
+		width: 160px;
+		height: auto;
+	}
+	
+	.btn-primary {
+		background: #5cb85c;
+		border-color: #4cae4c;
+	}
+	
+	.pull-right1.search {
+		margin-top: 0;
+		float: left;
+		width: 317px;
+	}
+	
+.bootstrap-table .fixed-table-toolbar {  overflow:-hidden; }
+.pull-left.search { display:none; height:auto;}
+
+.bootstrap-table { margin-top:-30px; }
+.paybox  { margin-top:20px; }
+.paybox input { float:left; width:130px; }
+.paybox span { float:left; }
+.paybox  ol li:nth-child(1){  float:left; }
+.paybox  ol li:nth-child(2){ margin-left:15px; float:left; }
+ 
+	</style>
+</head>
+<body>
+    <div class="container">
+		<div class="search-box">
+			<div class="fixed-table-toolbar">
+				<div class="pull-right1 search">
+					<input class="form-control" type="text" placeholder="Search">
+				</div>
+				
+				<div class="pull-right1 select">
+					<select style="width:auto;" class="form-control AEstaff">
+						<option value="1">选择AE负责人</option>
+					</select>
+				</div>
+				<!--
+				<div class="pull-right1 select">
+					<select class="form-control">
+						<option value="">all</option>
+						<option value="">open</option>
+						<option value="all">close</option>
+					</select>
+				</div>
+				<div class="pull-right1 select">
+					<select class="form-control">
+						<option value="">all</option>
+						<option value="">open</option>
+						<option value="all">close</option>
+					</select>
+				</div>
+				<div class="data-box">
+						<input autoComplete="off" placeholder="开始日期" type="text" class="form_date start_date" readOnly /><i class="date_icon"></i><span>~</span>
+						<input autoComplete="off" placeholder="结束日期" type="text" class="form_date end_date" readOnly /><i class="date_icon"></i>
+						<p class="error time">请填写开始日期</p><p class="error time">请填写结束日期</p>
+				</div>
+				-->
+				<div class="pull-right1 select search-btn">
+					<button type="button" class="btn btn-success">搜索</button>
+				</div>
+			</div>
+		</div>
+        <table id="table">
+            
+        </table>
+   
+	
+	
+	<div id="forlogin">
+		 <div>
+			<ul class="industry">
+				<li class="first" >行业名称:</li>
+				<li class="last"><input id="username" placeholder="请输入行业名称"/></li>
+			</ul>
+			<ul class="high">
+				<li  class="first" >分类级别:</li>
+				<li class="high-n last">一级分类</li>
+			</ul>
+			<ul>
+				<li  class="first" >状态:</li>
+				<li class="last">
+					<div class="running"><input type="radio" /><span>启用</span></div>
+					<div class="outOff"><input type="radio" /><span>停用</span></div>
+				</li>
+			</ul>
+			<ul class="descening">
+				<li  class="first" >排序值</li>
+				<li class="last"><input placeholder="请输入排序值，值越大越靠前"/></li>
+			</ul>
+		 </div>
+	</div>
+
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					需求详情
+				</h4>
+			</div>
+			
+
+			
+			
+			<div class="modal-body">
+					<div class="modal-body-title">需求资料</div>
+					<div class="main-box">
+						<div class="main-title-box">
+							<span class="main-title"></span>
+							
+							<span class="main-txt">需求概况</span>
+							<span>ID：</span>
+							<span class="demandid"></span>
+							
+							<div>
+								<ul class="main-list-item">
+									<li>
+										<span>需求名：</span>
+										<span class="uniquename"></span>
+									</li>
+									<li>
+										<span>需求量：</span>
+										<span class="demandquantity"></span>
+									</li>
+									<li>
+										<span>开始日期：</span>
+										<span class="begintime"></span>
+									</li>
+								</ul>
+								<ul class="main-list-item">
+									<li>
+										<span>业务类型：</span>
+										<span class="servicetypedesc"></span>
+									</li>
+									<li>
+										<span>需求总价：</span>
+										<span class="demandtotalprice"></span>
+										<span>元</span>
+									</li>
+									<li>
+										<span>结束日期：</span>
+										<span class="endtime"></span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					
+					</div>
+	
+					<div class="main-box">
+						<div class="main-title-box">
+							<span class="main-title"></span><span class="main-txt">基本信息：</span>
+							
+				<div class="main-box">
+					
+					<ul class="main-list-item basicdetail">
+						<li>
+							<span>行业：</span>
+							<span class="industry"></span>
+						</li>
+						<li>
+							<span>行业细分：</span>
+							<span class="industryxifen"></span>
+						</li>
+							<li>
+							<span>需求备注：</span>
+							<span class="demandcomment"></span>
+						</li>
+						<li>
+							<span>项目负责人：</span>
+							<span class="projectleader"></span>
+						</li>
+						<li>
+							<span style="float:left;">归属年月：</span>
+							<span class="vestingtime">
+								<div class="data-box">
+									<input autoComplete="off" placeholder="请选择日期" type="text" class="form_date end_date" readOnly /><i class="date_icon"></i>
+									
+								</div>
+							</span>
+						</li>
+					</ul>
+					
+					<ul class="main-list-item basicdetail">
+						<li>
+							<span>行业类型：</span>
+							<span class="onoffline"></span>
+						</li>
+						<li>
+							<span>目标人群：</span>
+							<span class="targetpopulation"></span>
+							<span style="margin-left:20px;">加价：</span>
+							<span class="targetaddprice"></span>
+							<span>元</span>
+							
+						</li>
+						<li>
+							<span>产品介绍：</span>
+							<span class="productintroduce"></span>
+						</li>
+						<li>
+							<span>负责人电话：</span>
+							<span class="projectleaderphone"></span>
+						</li>
+					</ul>
+					
+					
+					
+						
+					
+					
+					
+						<ul class="main-list-item basicnot">
+						<li>
+							<span>行业：</span>
+							<span class="industry"></span>
+						</li>
+						<li>
+							<span>目标人群：</span>
+							<span class="targetpopulation"></span>
+							
+						</li>
+							<li>
+							<span>产品名称：</span>
+							<span class="productname"></span>
+						</li>
+						<li>
+							<span>需求备注：</span>
+							<span class="demandcomment"></span>
+						</li>
+						<li>
+							<span>项目负责人：</span>
+							<span class="projectleader"></span>
+						</li>
+						
+					</ul>
+					
+					<ul class="main-list-item basicnot">
+						<li>
+							<span>获客渠道：</span>
+							<span class="targetchannel"></span>
+						</li>
+						<li>
+							<span>对象年龄：</span>
+							
+							<span class="targetagefrom"></span>
+							<span>~</span>
+							<span class="targetageto"></span>
+							<span>岁</span>
+							
+						</li>
+						<li>
+							<span>产品介绍：</span>
+							<span class="productintroduce"></span>
+						</li>
+						<li style="display:table;">
+							<span style="float:left;">归属年月：</span>
+							<span class="vestingtime">
+								<div class="data-box">
+									<input autoComplete="off" placeholder="请选择日期" type="text" class="form_date end_date" readOnly /><i class="date_icon"></i>
+									
+								</div>
+							</span>
+						</li>
+						<li>
+							<span>负责人电话：</span>
+							<span class="projectleaderphone"></span>
+						</li>
+					</ul>
+					
+					
+					
+					<ul class="main-list-item basicmaked">
+						<li>
+							<span>清洗渠道：</span>
+							<span>电话</span>
+						</li>
+						<li>
+							<span>拨打次数：</span>
+							<span>三次</span>
+						</li>
+						
+						<li>
+							<span>项目负责人：</span>
+							<span class="projectleader"></span>
+						</li>
+						<li>
+							<span style="float:left;">归属年月：</span>
+							<span class="vestingtime">
+								<div class="data-box">
+									<input autoComplete="off" placeholder="请选择日期" type="text" class="form_date end_date" readOnly /><i class="date_icon"></i>
+									
+								</div>
+							</span>
+						</li>
+					</ul>
+					
+					<ul class="main-list-item basicmaked">
+						<li>
+							<span>单价：</span>
+							<span class="datacleaningunitprice"></span>
+							<span>元</span>
+						</li>
+						
+						<li>
+							<span>需求描述：</span>
+							<span class="demandcomment"></span>
+						</li>
+						<li>
+							<span>负责人电话：</span>
+							<span class="projectleaderphone"></span>
+						</li>
+					</ul>
+				</div>
+							
+							
+							
+							
+							
+							
+						</div>
+					
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					<div class="main-box saletemplate">
+						<div class="main-title-box">
+							<span class="main-title"></span><span class="main-txt">销售线索模板：</span>
+							<div>
+								<ul class="main-list-item">
+									<li>
+										<span>标签加价：</span>
+										<span class="addprices"></span>
+									</li>
+									
+								</ul>
+								
+							</div>
+						</div>
+						<div class="modal-body-title"></div>
+					</div>
+					
+					
+					<div class="main-box">
+						<div class="main-title-box subdemands">
+							<span class="main-title"></span><span class="main-txt">子需求：</span>
+							<div class="main-box subdemands">
+							
+								
+							</div>
+						</div>
+					
+					</div>
+					
+					
+
+					
+					<div class="main-box attachment">
+						<div class="main-title-box">
+							<span class="main-title"></span><span class="main-txt">附件：</span>
+							<div>
+								<ul class="main-list-item">
+									<li>
+										<span>销售线索模板：</span>
+										<span class="saleleadsurl"><a href="javascript:;"></a></span>
+									</li>
+									<li>
+										<span>话术文件：</span>
+										<span class="speechcrafturl"><a href="javascript:;"></a></span>
+									</li>
+									<li>
+										<span>目标客户名单：</span>
+										<span  class="targetcusturl"><a href="javascript:;"></a></span>
+									</li>
+									
+								</ul>
+								
+								
+								
+							</div>
+						</div>
+						<div class="modal-body-title"></div>
+					</div>
+					
+					
+	
+					<div class="main-box">
+						<div class="main-title-box">
+							<span class="main-title"></span><span class="main-txt">操作：</span>
+							<div>
+								<ul style="width:800px;" class="main-list-item company demandstate">
+									<li class="paying">
+										<span style="float:left;">确认完成：</span>
+										<div class="pull-right1 select">
+											<select class="form-control demandstate">
+												<option value="3">结算中</option>
+												<option value="4">已完成</option>
+											</select>
+										</div>
+										<br />
+										<div class="paybox">
+											<ol>
+												<li>
+													<span>结算量：</span>
+													<span><input class="form-control settlementquantity" value="0" type="number" /></span>
+												</li>
+												<li>
+													<span>结算金额：</span>
+													<span><input class="form-control settlementprice" value="0" type="number" /></span>
+												</li>
+											</ol>
+										</div>
+									</li>
+									<li class="succeed">
+										<span style="float:left;">确认完成：</span>
+											<div class="radio">
+											  <label>
+												<i>已完成</i>
+											  </label>
+											  <br>
+											  <label>
+												<i>结算量：</i>
+												<i class="settlementquantity"></i>
+											  </label>
+											  <label>
+												<i>结算金额：</i>
+												<i class="settlementprice"></i>
+												<i>元</i>
+											  </label>
+											</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					
+					</div>	
+		
+		</div><!-- /.modal-dialog -->
+		<div class="modal-footer">
+					<button type="button" class="btn determine  btn-primary" >
+						确认
+					</button>
+					<button type="button"  data-dismiss="modal"  class="btn btn-default">
+						取消
+					</button>
+		</div>
+</div>
+</div>
+</div>
+
+
+
+<div class="modal fade" id="loading" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop='static'>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">提示</h4>
+      </div>
+      <div class="modal-body">
+        请稍候。。。
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<script>
+/*显示状态的控制*/
+
+//GET /pasf/tasks
+var url = domain137 + '/csusers/'+roleid+'/demands';
+
+//$('.main-list-item.company li.succeed').show();
+/*显示状态的控制*/
+
+var $table = $('#table');
+	//debugger;
+	//文档地址http://bootstrap-table.wenzhixin.net.cn/zh-cn/documentation/
+/*自定义头部*/
+
+/*自己填写数据*/
+
+$('#table').bootstrapTable({
+	 url:url,
+	 pagination: true, //分页
+	 contentType:'application/json',
+     search:true,
+	 showColumns:true,
+	 searchAlign:'left',
+	 checkbox:false,
+	 queryParams:function (params){
+			 /*自定义参数,如果有参数在这里定义*/
+		
+		 ifAll = $('.AEstaff').val();
+		 // console.log(ifAll);
+		 if(!(ifAll == 1 || ifAll ==0)){
+			 //var selectedtext = $('.AEstaff').find("option:selected").text();
+			 ifAll = 0;
+		 }
+		 
+		var data = {all:ifAll};
+		 data.size = 100000000;
+		return  data;
+	 },
+	 sidePagination: "client",
+	 responseHandler:function(res){
+		var newJson = {};
+		newJson.total = '800';
+		newJson.data = res.data;
+		return newJson;
+     },
+	 formatNoMatches:function(){
+         return '没有搜索结果'
+     },
+     formatLoadingMessage:function(){
+          return '正在努力加载中...';
+     },
+	 onLoadSuccess(){
+		/*移动自带事件*/
+		$('.search-btn button').click(function(){
+			//debugger;
+			$('.search input').eq(1).val($('.search input').eq(0).val());
+			$('.search input').eq(1).keyup();
+		});
+			
+		/*当search 没有vlaue的时候*/
+		$('.search input').eq(0)[0].oninput= function (){
+			if(!this.value){
+				$('.search input').eq(1).val(this.value);
+				$('.search input').eq(1).keyup();
+			}
+		};
+			
+		
+		$('.search input').eq(0).keyup(function (ev){
+			var oEvent = ev || event;
+			if(oEvent.keyCode==13){
+				$('.search input').eq(1).val(this.value);
+				$('.search input').eq(1).keyup();
+			}
+		});
+	 },
+	 columns: [{  
+          field: 'username',  
+          title: '发包方用户名'  
+        }, {  
+          field: 'brandname',  
+          title: '品牌名'  
+        },
+		{  
+          field: 'uniquename',  
+          title: '需求名' 
+		}, 
+		{  
+          field: 'servicetypedesc',  
+          title: '业务类型' 
+		}, {  
+          field: 'demandquantity',  
+          title: '需求总量'  
+        }, {  
+          field: 'totalprice',  
+          title: '需求总金额'  
+        }, {  
+          field: 'ae',  
+          title: 'AE负责人'  
+        }, {  
+          field: 'demandstatedesc',  
+          title: '状态'  
+        }, {  
+          field: 'vestingtime',  
+          title: '归属年月'  
+        }, {  
+          field: 'releasetime',  
+          title: '发布时间'  
+        },{  
+          field: 'settlementquantity',  
+          title: '结算量'  
+        },{  
+          field: 'settlementprice',  
+          title: '结算金额'  
+        },{  
+          field: 'settlementtime',  
+          title: '结算时间'  
+        }, {  
+          field: 'hastask',  
+          title: '是否有创建任务',
+		  formatter:function (data,row,b){
+			var arr = ['否',"是"];
+			return arr[row.hastask]
+		  }		  
+        },{  
+          field: 'hastask',  
+          title: '创建任务' ,
+		  'class':'task',
+		  formatter:function (data,row,b){
+			return '<div data-taskrqueiredata="'+$.encode(JSON.stringify(row))+'" class="btn btn-primary btn-lg btn-success">创建</div>';
+		  }
+        },
+		{  
+          field: 'sendstatus',  
+          title: '操作' ,
+		  'class':'handle',
+		  formatter:function (data,row,b){
+				return '<div class="btn btn-primary btn-success btn-lg"  data-servicetype="'+row.servicetype+'"  data-requiredid="'+row.id+'"  >查看需求</div>';
+		  }
+        }
+		]  
+});
+
+
+
+/*orderstate AM结算中 选择已完成*/
+
+	$('select.demandstate').change(function (){
+		
+		if(/4/.test(this.value)){
+			$('.paybox').show();
+		}else{
+			$('.paybox').hide();
+		}
+	});
+
+	//获取角色列表
+	getRoleList();
+	function getRoleList (){
+		//GET 开发完成 /pasf/pt/sysusers
+			var url = domain137 + "/pt/sysusers";
+			//debugger;
+			$.when($.ajax({
+				url:url,
+				data:{rolename:'cs专员'},
+				dataType:'json',
+			})).then(function (data){
+				//debugger;
+				if(data.msg=="success"){
+					
+					data.data.map(function (data,index){
+						//console.log(data,index);
+						$('.AEstaff').append('<option value="'+data.userid+'">'+data.username+'</option>');
+					});
+				}
+				
+			}).fail(function (data){
+				//$('#loading').modal('hide');
+				//debugger;
+			});
+		
+	}
+	
+	
+		
+		$('.AEstaff').change(function (){
+			url = domain137 + '/csusers/'+this.value+'/demands';
+			$('#table').bootstrapTable('refresh',{url:url});	
+		});
+
+/*查看详情*/
+$('#table').on('click','.handle .btn-primary',function (){
+	//console.log('1111111111111111');
+	
+	//var servicetype = $(this).attr('data-servicetype');
+	var requiredid = $(this).attr('data-requiredid');
+	getdetialdata(requiredid);
+	
+	$('#loading').modal('show');
+});
+
+/*创建任务 data-requiredid*/
+$('#table').on('click','.task .btn-primary',function (){
+	var taskrqueiredata = $.decode($(this).attr('data-taskrqueiredata'));
+	//debugger;
+	$.setSessionStorage('taskrqueiredata',taskrqueiredata);
+	location.href = "create-second.html";
+	
+});
+
+
+
+/*更新需求详情*/
+var demandata;
+$('.determine').click(function (){
+	//PATCH 开发完成 /pasf/csusers/{csuserid}/demands/{demandid} 跟新需求详情
+	var url = domain137 + '/csusers/'+roleid+'/demands/'+demandata.demandid;
+	
+	//$('.vestingtime .end_date').val(data[name]);
+	//统一收集数据
+	/*归属时间*/
+	demandata.vestingtime = $('.vestingtime .end_date:visible').val();
+	//debugger;
+	/*状态更新*/
+	if($('.form-control.demandstate:visible').length){
+		demandata.demandstate = $('.form-control.demandstate').val();
+	}
+	
+	
+	//if()paybox
+	if(demandata.demandstate==4 && $('.paybox:visible').get(0)){
+		//return;
+		demandata.settlementquantity = $('input.settlementquantity').val(); //需求量
+		demandata.settlementprice = $('input.settlementprice').val(); //需求金额
+	}
+	if(demandata.settlementquantity){
+		demandata.settlementquantity = parseInt(demandata.settlementquantity);
+		
+	}
+	
+	if(demandata.settlementprice){
+		demandata.settlementprice = (demandata.settlementprice*1).toFixed(2);
+		
+	}
+
+	$('#loading').modal('show');
+	$('#myModal').modal('hide');
+
+	$.when($.ajax({
+		url:url,
+		type:'PATCH',
+		contentType:'application/json',
+		data:JSON.stringify(demandata),
+	})).then(function (data){
+		if(data.msg == "success"){
+			$('#loading').modal('hide');
+		}
+		$('#table').bootstrapTable('refresh');
+	}).fail(function (data){
+	
+	});
+});
+
+
+/*请求详情数据*/
+function getdetialdata(requiredid){
+
+	if(!requiredid)return;
+	
+	var url = domain137 + '/csusers/'+roleid+'/demands/'+requiredid;
+	
+	$.when($.ajax({
+		url:url,
+		dataType:'json',
+	})).then(function (data){
+		//debugger;
+		if(data.msg=="success"){
+			/*关闭加载层*/
+			$('#loading').modal('hide');
+		
+			handleDetail(data.data);
+		}
+		
+	}).fail(function (data){
+		//$('#loading').modal('hide');
+		//debugger;
+	});
+}
+
+
+
+/*处理详情*/
+
+function setValuedata(data){
+	demandata = data;
+//$('.requiredid').html( 'id：' + data.id );
+	var  servicetype = data.servicetype;
+	var isindustry = data.industry;
+	$('.demandstate').show();
+	
+	$('.basicdetail').hide();
+	$('.basicnot').hide();
+	$('.basicmaked').hide();
+	$('.paybox').hide();
+	$('select.demandstate').val('3');
+	
+	$('input.settlementquantity').val('0');
+	$('input.settlementprice').val('0');
+	
+	/*判断页面的显示流程*/
+	if(servicetype=="1" && isindustry == "教育培训"){
+		/*标准发包 销售线索挖掘*/
+		$('.saletemplate').show();
+		
+		$('.attachment').hide();
+		
+		/*基本信息*/
+		$('.basicdetail').show();
+		$('.basicnot').hide();
+		$('.basicmaked').hide();
+	}
+	
+	
+	if(servicetype=="1" && isindustry != "教育培训"){
+		/*非标准发包*/
+		$('.saletemplate').hide();
+		$('.attachment').show();
+		
+		/*基本信息*/
+		$('.basicdetail').hide();
+		$('.basicnot').show();
+		$('.basicmaked').hide();
+	}
+	
+	if(servicetype=="2"){
+		/*数据加工*/
+		$('.saletemplate').hide();
+		$('.attachment').show();
+		
+		/*基本信息*/
+		$('.basicmaked').show();
+		$('.basicdetail').hide();
+		$('.basicnot').hide();
+	}
+	var customtagValue = 0;
+	var chargeValue = 0;
+	
+	for(var name in data){
+		if(name=="customtags"){
+			//('标签加价');
+			//自定义标签 还有功能没有写完
+		
+			if(data[name]){
+				if(data[name][0]){
+					data[name].map(function (data,index){
+						customtagValue+=data.price;
+					});
+					//$('span.customtags').html('+<i style="font-style:normal;">'+customtagValue+'<i/>元');
+				}
+			}
+			
+			/*if(name=="onoffline"){
+			var onoffline = data[name]?"线上":"线下";
+			$('.'+name).html(onoffline);
+		}else*/
+			
+		}else if(name=="onoffline"){
+		
+			var onoffline = data[name]?"线上":"线下";
+			$('.'+name).html(onoffline);
+		}else if(name=="chargetags"){
+			/*收费标签*/
+		
+			$('.charge-label').html('');
+			$('li.chargetags').hide();
+			if(data[name]){
+				if(data[name][0]){
+					//$('.charge-label').show();
+					//$('li.chargetags').show();
+					data[name].map(function (item,index){
+						//$('.charge-label').append('<i>'+item.tagname+'</i>');
+						chargeValue+=item.price;
+					});
+					//console.log(chargeValue,'darren');
+					//$('span.chargetags').html('+<i style="border:none;">'+chargeValue+'</i>元');
+				}else{
+					//$('.charge-label').hide();
+					//$('li.chargetags').hide();
+				}
+			}
+		
+		
+		}else if(name=="vestingtime"){
+			/*归属年月*/
+			//data.vestingtime= 1;
+			if(data.vestingtime){
+				$('.vestingtime .end_date').val(data[name]);
+			}
+			
+		} else if(name=="demandstate"){
+			//demandstate  结算中3  已完成4 
+			if(data[name]){
+				$('.paying').hide();
+				$('.succeed').hide();
+				//debugger;
+				if(data[name]==3){
+					//paying
+					$('.paying').show();
+				}
+				
+				if(data[name]==4){
+					//succeed
+					$('.succeed').show();
+				}
+			}
+		}else  if(name=="saleleadsurl" || name=="speechcrafturl" || name == "targetcusturl"){
+			//data.targetcusturl = 2;
+
+			if(data[name]){
+				console.log(domainDownShort +data[name]);
+				$('.'+name).html('');
+				$('.'+name).html('<a href = "javascript:;"></a>');
+				$('.'+name+' a').html('下载').attr('href',domainDownShort + data[name]);
+			}else{
+				$('.'+name).html('未上传');
+			}
+			
+		}else if(name=="subdemands"){
+			/*子需求数据模拟*/
+			$('.subdemands').hide();
+			if(data[name]){
+				if(data[name][0]){
+					$('.subdemands').show();
+					//len = data[name].length;
+					$('.main-box.subdemands').html('');
+					data[name].map(function (data,index){
+
+						var subdemandsHtml = `<ul class="main-list-item">
+								<li>
+									<span>目标区域：</span>
+									<span>${data.target}</span>
+								</li>
+								<li>
+									<span>发布数量：</span>
+									<span>${data.releasenum}</span>
+								</li>
+								<li>
+									<span>合同单价：</span>
+									<span>${data.price}</span>
+									<span>元</span>
+								</li>
+								<li>
+									<span>总价：</span>
+									<span> ${data.totalprice}</span>
+									<span>元</span>
+								</li>
+								
+								<li>
+									<span>备注：</span>
+									<span>${data.remark}</span>
+								</li>
+							</ul>`;
+							
+						$('.main-box.subdemands').append(subdemandsHtml);
+						
+					});
+				}else{
+						$('.subdemands').hide();
+				}
+				
+			  }
+				
+		
+		
+		}else{
+			$('.'+name).html(data[name]);
+		}
+		
+	}
+	$('span.addprices').html('+<i style="font-style:normal;">'+(customtagValue+chargeValue)+'</i>元');
+	/*servicetypedesc*/
+}
+
+
+function handleDetail(data){
+	
+	setValuedata(data);
+	
+	$('#myModal').modal('show');
+}
+
+
+
+	
+var newDate = new Date();
+var time = newDate.toJSON();
+ $(".start_date")
+ .datetimepicker({
+		language:  'zh-CN',
+		 weekStart: 1,
+		 todayBtn:  1,
+		 autoclose: 1,
+		 todayHighlight: 1,
+		 startView: 2,
+		 minView: 2,
+		 forceParse: 0,
+		 format: 'yyyy-mm-dd',
+		 startDate:new Date(time),
+}).on("click",function(ev){
+		$(".start_date").datetimepicker("setEndDate", $(".end_date").val());
+}).on("change",function(ev){
+	$(".startDate").html($(".start_date").val());
+	$(".start_date").blur();
+}).on("blur",function(ev){
+	if(isNull($(".start_date").val())){
+		$(this).parent().find("p.error").eq(0).show();
+	}else{
+		$(this).parent().find("p.error").eq(0).hide();
+	}
+});
+					
+$(".end_date")
+.datetimepicker({
+			language:  'zh-CN',
+				 weekStart: 1,
+				 todayBtn:  1,
+				 autoclose: 1,
+				 todayHighlight: 1,
+				 startView: 3,
+				 minView: 3,
+				 forceParse: 0,
+				 format: 'yyyy-mm',
+}).on("click", function (ev) {
+		$(".end_date").datetimepicker("setStartDate", $(".start_date").val());
+}).on("change",function(ev){
+$(".endDate").html($(".end_date").val());
+$(".end_date").blur();
+}).on("blur",function(ev){
+	if(isNull($(".end_date").val())){
+		$(this).parent().find("p.error").eq(1).show();
+	}else{
+		$(this).parent().find("p.error").eq(1).hide();
+	}
+});
+
+</script>
+
+</html>

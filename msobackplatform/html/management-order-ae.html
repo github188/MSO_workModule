@@ -1,0 +1,971 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Bootstrap Table Examples</title>
+
+
+	<link rel="stylesheet" href="../css/bootstrap.min.css" />
+	<link rel="stylesheet" href="../css/bootstrap-table.css" />
+	<link rel="stylesheet" href="../css/bootstrap-datetimepicker.css" />
+	
+	
+	<script src="../js/jquery.js" type="text/javascript"></script>
+    <script src="../js/bootstrap.min.js"></script>
+
+	<script src="../js/bootstrap-table.min.js" type="text/javascript"></script>
+	<script src="../js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+	
+	
+	<script src="../js/url.js" type="text/javascript"></script>
+	<script src="../js/mock.js" type="text/javascript"></script>
+	<script src="../js/myself-function/main.js" type="text/javascript"></script>
+	
+	
+	<style>
+		#forlogin { display:none; background:#ffffff;  overflow:hidden; height:100%; }
+		*{ padding:0; margin:0; }
+		ul li { list-style-type:none; }
+		#forlogin ul { width:100%; overflow:hidden; margin-top:20px;  }
+		#forlogin ul li { float:left; width:50%; }
+		
+		#forlogin ul li.first {width:60px; text-align:right; }
+		#forlogin ul.industry{ margin-top:30px; }
+		#forlogin ul.industry li {  }
+		#forlogin ul.industry li input { float:left;  }
+		#forlogin ul.high li.high-n   { text-align:left;  }
+		
+		#forlogin ul li.last  { padding-left:20px;  }
+		#forlogin ul li .running { float:left;  width:70px; height:20px; }
+		#forlogin ul li .outOff { float:left; width:70px; height:20px; }
+		#forlogin ul li .outOff  span { float:left; margin-top:2px; margin-left:5px;  display:inline-table; }
+		#forlogin ul li .running  span { float:left; margin-top:2px;    margin-left:5px;   display:inline-table; }
+		#forlogin ul li .outOff input { float:left; }
+		#forlogin ul li .running input { float:left; }
+		#forlogin ul.descening li input { float:left; }
+		#addIndustry  { margin-top:20px; }
+		#toolbar { width:120px; } 
+		.fixed-table-toolbar { width:120px; }
+		.industrySetting { width:100%; overflow:hidden; margin-top:20px; margin-bottom:0; }
+		.industrySetting li { float:left; }
+		.search-box { overflow:hidden; padding-bottom:3px; }
+		.search-box  .fixed-table-toolbar { float:left; }
+		.search-box  #toolbar {margin-left:20px; float:left; margin-top:10px; margin-bottom:10px; }
+		.bootstrap-table { margin-top:15px; }
+		
+		
+		@media (min-width: 100px) {
+			.container {
+				width: auto;
+			}
+		}
+		.fixed-table-toolbar { width:100%; }
+		
+		.pull-right1.search { margin-top:0; float:left; width:317px; }
+		.pull-right1 { float:left; }
+		.pull-right1.select { width:127px; }
+		.search-box { margin-top:10px; }
+
+		
+		.data-box {
+			width: 471px;
+			height: 30px;
+			border-radius: 6px;
+			border: 1px solid #e8e8e8;
+			padding-bottom: 0;
+			position: relative;
+			float:left; 
+			margin-top:2px;
+		}
+		
+		.data-box input {
+			color: #a7a7a7;
+			width: 228px;
+			border: none;
+			text-align: center;
+			line-height: 28px;
+		}
+		
+		.search-btn { margin-left:20px; }
+		th,td { text-align:center; }
+		
+		
+		
+		
+		
+		
+		
+		
+		.modal-dialog { width:860px; }
+.modal-body-title { border-bottom:1px solid #e5e5e5; padding-bottom:15px;  }
+ul li { list-style:none; }
+.main-title-box { overflow:hidden; }
+.main-title { width:10px; height:20px; background:rgba(255, 153, 0, 1); display:block; float:left; }
+.main-box { margin-top:20px; overflow:hidden;  }
+.main-txt { margin-left:10px; }
+.main-list-item { float:left; width:800px; }
+.main-list-item li { line-height:38px; }
+.main-list-item li span:nth-child(1){ font-weight:700; font-family: 'Arial Negreta', 'Arial'; width:110px; text-align:right; }
+.btn-primary { background:#5cb85c; border-color:#4cae4c; }
+
+.conpanyname { float:left; }
+
+.main-list-item.conpany { margin-bottom:20px; }
+.main-list-item.conpany  li { display:none; margin-top:15px; width:100%;  }
+.main-list-item.conpany  li span { line-height:34px; }
+.main-list-item.conpany  li span:nth-child(1){ float:left; }
+
+.radio { float:left;  margin-bottom:0px; min-height:12px; }
+.radio i { font-style:normal;  margin-top:-8px; }
+textarea {resize:none; width:200px; height:80px; overflow:hidden; }
+
+
+ .btn-success.btn-lg { padding:6px 12px; }
+ .btn-lg, .btn-group-lg>.btn { font-size:14px; }	
+ 
+ .modal-body { max-height:500px; overflow-y:auto; }
+ 
+ .main-list-item.conpany  li .paybox ol li { width:320px; overflow:hidden; }
+  .main-list-item.conpany  li .paybox ol li  span { float:left; }
+  
+  
+.bootstrap-table .fixed-table-toolbar {  overflow:-hidden; }
+.pull-right.search { display:none; height:auto;}
+
+.bootstrap-table { margin-top:-30px; }
+
+
+.main-list-item {
+    float: left;
+    width: 400px;
+}
+
+	</style>
+</head>
+<body>
+    <div class="container">
+		<div class="search-box">
+			<div class="fixed-table-toolbar">
+				<div class="pull-right1 search">
+					<input class="form-control" type="text" placeholder="Search">
+				</div>
+				<!--
+				<div class="pull-right1 select">
+					<select style="width:auto;" class="form-control AEstaff">
+						<option value="1">选择AE负责人</option>
+					</select>
+				</div>
+				
+				<div class="pull-right1 select">
+					<select class="form-control">
+						<option value="">all</option>
+						<option value="">open</option>
+						<option value="all">close</option>
+					</select>
+				</div>
+				<div class="pull-right1 select">
+					<select class="form-control">
+						<option value="">all</option>
+						<option value="">open</option>
+						<option value="all">close</option>
+					</select>
+				</div>
+				
+				<div class="data-box">
+						<input autoComplete="off" placeholder="开始日期" type="text" class="form_date start_date" readOnly /><i class="date_icon"></i><span>~</span>
+						<input autoComplete="off" placeholder="结束日期" type="text" class="form_date end_date" readOnly /><i class="date_icon"></i>
+						<p class="error time">请填写开始日期</p><p class="error time">请填写结束日期</p>
+				</div>
+				-->
+				<div class="pull-right1 select search-btn">
+					<button type="button" class="btn btn-success">搜索</button>
+				</div>
+			</div>
+		</div>
+        <table id="table">
+            
+        </table>
+   
+	
+	
+	<div id="forlogin">
+		 <div>
+			<ul class="industry">
+				<li class="first" >行业名称:</li>
+				<li class="last"><input id="username" placeholder="请输入行业名称"/></li>
+			</ul>
+			<ul class="high">
+				<li  class="first" >分类级别:</li>
+				<li class="high-n last">一级分类</li>
+			</ul>
+			<ul>
+				<li  class="first" >状态:</li>
+				<li class="last">
+					<div class="running"><input type="radio" /><span>启用</span></div>
+					<div class="outOff"><input type="radio" /><span>停用</span></div>
+				</li>
+			</ul>
+			<ul class="descening">
+				<li  class="first" >排序值</li>
+				<li class="last"><input placeholder="请输入排序值，值越大越靠前"/></li>
+			</ul>
+		 </div>
+	</div>
+	 
+	</div>
+	
+	
+	
+	
+	<!--弹出成-->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					订单详情
+				</h4>
+			</div>
+			
+			<div class="modal-body">
+				<div class="modal-body-title"><span class="main-title"></span>
+				<span class="main-txt">订单概况：</span>
+				<span class="main-txt">ID:</span>
+				<span class="main-txt orderid"></span>
+				
+				</div>
+				<div class="main-box">
+					
+					<ul class="main-list-item">
+						<li>
+							<span>订单名：</span>
+							<span class="uniquename"></span>
+						</li>
+						<li>
+							<span>接包方公司：</span>
+							<span class="companyname"></span>
+						</li>
+						<li>
+							<span>行业：</span>
+							<span class="industry"></span>
+						</li>
+						<li>
+							<span>目标人群：</span>
+							<span class="targetagefrom"></span>
+							<span>~</span>
+							<span class="targetageto"></span>
+							<span>周岁</span>
+						</li>
+							<li>
+							<span>开始日期：</span>
+							<span class="begintime"></span>
+						</li>
+							<li>
+							<span>任务数量：</span>
+							<span class="orderquantity"></span>
+						</li>
+							<li>
+							<span>备注：</span>
+							<span  class="comment"></span>
+						</li>
+					</ul>
+					
+					<ul class="main-list-item">
+						<li>
+							<span>业务类型：</span>
+							<span class="servicetype"></span>
+						</li>
+						<li>
+							<span>内部简称：</span>
+							<span class="shortname"></span>
+						</li>
+							<li>
+							<span>行业类型：</span>
+							<span class="onoffline"></span>
+						</li>
+							<li>
+							<span>目标区域：</span>
+							<span class="targetarea"></span>
+						</li>
+							<li>
+							<span>结束日期：</span>
+							<span class="endtime"></span>
+						</li>
+							<li>
+							<span>任务单价：</span>
+							<span class="orderunitprice"></span>
+							<span>元</span>
+						</li>
+							<li>
+							<span>归属年月：</span>
+							<span class="vestingtime"></span>
+						</li>
+					</ul>
+					
+					
+				</div>
+				
+
+				<div class="modal-body-title">
+					<span class="main-title"></span>
+					<span class="main-txt">附件：</span>
+				</div>
+				<div class="main-box">
+					<ul class="main-list-item">
+	
+						<li>
+							<span>质检标准：</span>
+							<span><a class="qualitystandard"  target="_blank" href="javascript:;">下载</a></span>
+							<span style="margin-left:15px;">文件名</span>
+						</li>
+						<li>
+							<span>销售线索模板：</span>
+							<span><a  class="saleleads" target="_blank" href="javascript:;">下载</a></span>
+							<span style="margin-left:15px;">文件名</span>
+						</li>
+						<li>
+							<span>话术文件：</span>
+							<span><a class="speechcraft" target="_blank" href="javascript:;">下载</a></span>
+							<span style="margin-left:15px;">文件名</span>
+						</li>
+					</ul>
+				</div>
+				
+				
+				<div class="modal-body-title"></div>
+				<div class="main-box">
+					<div class="main-title-box"><span class="main-title"></span><span class="main-txt">操作</span>
+					<div>
+					<!---进行中5 结算中7 已完成8--->
+					<ul class="main-list-item conpany">
+	
+						<li class="making">
+							<span>订单状态：</span>
+							<div class="pull-right1 select">
+								<select class="form-control commerce">
+									<option value="5">进行中</option>
+									<option value="7">关闭并结算</option>
+								</select>
+							</div>
+							
+							
+						</li>
+						<li  class="making">
+							<span style="line-height:38px;">是否暂停：</span>
+							<div class="radio">
+							  <label>
+								<input type="radio" name="optionsRadios" class="pause ispause" value="0">
+								<i style="display:table;">否</i>
+							  </label>
+							  <label>
+								<input type="radio" name="optionsRadios" class="pause ispause" value="1">
+								<i style="display:table;">是</i>
+							  </label>
+							</div>
+						</li>
+						<li  class="making" style="margin-top:0px;"> 
+							<span style="line-height:38px;">暂停原因：</span>
+							<div class="pull-right1 select">
+								<textarea class="pausereason">
+								
+								</textarea>
+							</div>
+						</li>
+						
+						<li class="paying">
+							<span>续传订单：</span>
+							<div class="pull-right1 select">
+								<select class="form-control continuesubmit">
+									<option value="0">不可续传</option>
+									<option value="1">可续传</option>
+								</select>
+							</div>
+						</li>
+						<li  class="paying">
+							<span>确认完成：</span>
+							<div class="pull-right1 select">
+								<select class="form-control orderstate">
+									<option value="7">结算中</option>
+									<option value="8">已完成</option>
+								</select>
+							</div>
+							<br />
+							<div class="paybox">
+								<ol>
+									<li>
+										<span>结算量：</span>
+										<span><input class="form-control settlementquantity" type="number" /></span>
+									</li>
+									<li>
+										<span>结算金额：</span>
+										<span><input class="form-control settlementprice" type="number" /></span>
+									</li>
+								</ol>
+							</div>
+						</li>
+						
+						
+						<li  class="succeed">
+							<span>确认完成：</span>
+							
+							<div class="radio" style="margin-top:0px; font-weight:400px;">
+								<span style="font-weight:400; padding-left:20px;">已完成</span>
+								 <br/>
+								  <label>
+									结算量：
+									<i class="settlementquantity"></i>
+								  </label>
+								  <label>
+									结算金额
+									<i class="settlementprice"></i>
+								  </label>
+							</div>
+					</ul>
+					
+					
+					
+					<!--
+					<ul class="main-list-item">
+						<li>
+							<span>需求名：</span>
+							<span>e-darrn-100</span>
+						</li>
+						<li>
+							<span>需求量</span>
+							<span>1000</span>
+						</li>
+					</ul>
+					-->
+
+				</div>
+				
+			</div>
+	
+		
+		
+	</div><!-- /.modal-dialog -->
+	
+	
+	</div>
+	
+	
+			<div class="modal-footer">
+				<button type="button" class="btn determine btn-primary" >
+					确认
+				</button>
+				<button type="button"  data-dismiss="modal"  class="btn btn-default">
+					取消
+		</button>
+		</div><!-- /.modal-content -->
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="loading" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop='static'>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">提示</h4>
+      </div>
+      <div class="modal-body">
+        请稍候。。。
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+/*新增行业*/
+<!--控制进度流程显示-->
+
+//$('.main-list-item.conpany li.making').css({'display':'table'});
+//$('.main-list-item.conpany li.making').eq(2).hide();
+//$('li.making input.pause').click(function (){
+	//if(this.value==2){
+	//	$('.main-list-item.conpany li.making').eq(2).show();
+		//return;
+	//}
+	//$('.main-list-item.conpany li.making').eq(2).hide();
+//});
+
+
+//$('.main-list-item.conpany li.paying').css({'display':'table'});
+
+
+
+
+
+
+
+<!--控制进度流程显示-->
+
+
+	/*
+	getRoleList($('.AEstaff'));
+	function getRoleList ($obj){
+		//GET 开发完成 /pasf/pt/sysusers
+			var url = domain137 + "/pt/sysusers";
+
+			//debugger;
+			$.when($.ajax({
+				url:url,
+				//选择BD专员
+				data:{rolename:'cs专员'},
+				dataType:'json',
+			})).then(function (data){
+				//debugger;
+				if(data.msg=="success"){
+					
+					data.data.map(function (data,index){
+						//console.log(data,index);
+						$obj.append('<option value="'+data.userid+'">'+data.username+'</option>');
+					});
+				}
+				
+			}).fail(function (data){
+				//$('#loading').modal('hide');
+				//debugger;
+			});
+		
+	}
+	$('.AEstaff').change(function (){
+		//https://gateway.mshuoke.com/pasf/csusers/1/customers?all=1
+		var url = domain137 +  '/csusers/'+this.value+'/orders';
+		
+		$('#table').bootstrapTable('refresh',{url:url});	
+	});
+	*/
+
+
+var $table = $('#table');
+	//debugger;
+	//文档地址http://bootstrap-table.wenzhixin.net.cn/zh-cn/documentation/
+/*自定义头部*/
+
+/*自己填写数据*/
+
+var url = domain137 +  '/csusers/'+roleid+'/orders';
+
+
+
+$('#table').bootstrapTable({
+	 url:url,
+	 pagination: true, //分页
+	 contentType:'application/json',
+     search:true,
+	 showColumns:true,
+	 checkbox:false,
+	 queryParams:function (params){
+			 /*自定义参数,如果有参数在这里定义*/
+			 
+			 ifAll = $('.AEstaff').val();
+			// console.log(ifAll);
+			 if(!(ifAll == 1 || ifAll ==0)){
+				 //var selectedtext = $('.AEstaff').find("option:selected").text();
+				 ifAll = 0;
+			 }
+				
+			  var data = {all:ifAll};
+			  
+			  data.limit = params.limit;
+			  data.offset = params.offset;
+			  data.size = 100000000;
+			 
+	   return  data;
+	 },
+	 sidePagination: "client",
+	 responseHandler:function(res){
+
+				/*"total": 800,*/
+				var newJson = {};
+				newJson.total = '800';
+				//debugger;
+				newJson.data = res.data;
+				//debugger;
+				//res.rows = res.list;
+                return newJson;
+     },
+	 onLoadSuccess(){
+		/*移动自带事件*/
+		$('.search-btn button').click(function(){
+			//debugger;
+			$('.search input').eq(1).val($('.search input').eq(0).val());
+			$('.search input').eq(1).keyup();
+		});
+		//debugger;
+		
+		/*当search 没有vlaue的时候*/
+		$('.search input').eq(0)[0].oninput= function (){
+			if(!this.value){
+				$('.search input').eq(1).val(this.value);
+				$('.search input').eq(1).keyup();
+			}
+		};
+		
+		
+		$('.search input').eq(0).keyup(function (ev){
+			
+			var oEvent = ev || event;
+			if(oEvent.keyCode==13){
+				$('.search input').eq(1).val(this.value);
+				$('.search input').eq(1).keyup();
+			}
+		});
+	 },
+	 formatNoMatches:function(){
+         return '没有搜索结果'
+     },
+     formatLoadingMessage:function(){
+          return '正在努力加载中...';
+     },
+
+	 columns: [{  
+          field: 'orderid',  
+          title: '订单ID'  
+        }, {  
+          field: 'uniquename',  
+          title: '订单名'  
+        },{  
+          field: 'username',  
+          title: '接包方用户名'  
+        },
+		{  
+          field: 'companyname',  
+          title: '接包方公司名'  
+        }, {  
+          field: 'shortname',  
+          title: '内部简称'  
+        }, {  
+          field: 'servicetypedesc',  
+          title: '业务类型'  
+        }, 
+		 {  
+          field: 'orderquantity',  
+          title: '订单数量'  
+        }, 
+		 {  
+          field: 'completequantity',  
+          title: '完成数量'  
+        }, 
+		 {  
+          field: 'unitprice',  
+          title: '订单单价'  
+        }, 
+		 {  
+          field: 'orderstatedesc',  
+          title: '状态'  
+        }, 
+		{  
+          field: 'ispause',  
+          title: '是否暂停',
+		  formatter:function (data,row,b){
+			var arr = ['否','是'];
+			return arr[row.ispause]
+		  }
+        }, 
+		{  
+          field: 'vestingtime',  
+          title: '归属年月'  
+        }, 
+		{  
+          field: 'createtime',  
+          title: '创建时间'  
+        }, 
+		{  
+          field: 'updatetime',  
+          title: '更新时间'  
+        }, 
+		{  
+          field: 'sendstatus',  
+          title: '操作' ,
+		  'class':'handle',
+		  formatter:function (data,row,b){
+			//console.log(row);
+			return '<div data-orderid = "'+row.orderid+'" class="btn btn-primary btn-success btn-lg">查看详情</div>';
+		  }
+        }
+		]  
+		
+});
+
+/*orderstate AM结算中 选择已完成*/
+
+	$('.orderstate').change(function (){
+		
+		if(/8/.test(this.value)){
+			$('.paybox ol li').show();
+		}else{
+			$('.paybox ol li').hide();
+		}
+	});
+
+
+/*处理是否暂停*/
+
+$('.ispause').change(function (){
+	if(this.value*1){
+		$('.pausereason').parents('.making').show();
+	}else{
+		$('.pausereason').parents('.making').hide();
+	}
+});
+
+
+
+var demandata;
+$('.determine').click(function (){
+	//PATCH 开发完成 /pasf/csusers/{csuserid}/orders/{orderid}
+	$('#loading').modal('show');
+	var orderid = $(this).attr('data-orderid');
+	var url = domain137 + '/csusers/'+roleid+'/orders/'+orderid+'?rolename='+rolename;
+	
+	/*跟新各种需求字段*/
+	<!---进行中5 结算中7 已完成8--->
+	
+	/*进行中*/
+	if(demandata.orderstate == 5){
+		// if pause
+		demandata.ispause = $('.ispause').get(0).checked?$('.ispause').get(0).value:($('.ispause').get(1).checked?$('.ispause').get(1).value:"");
+		/*pause of reason*/
+		if($('.ispause').get(1).checked){
+			demandata.pausereason = $('.pausereason').val();
+		}
+		
+		/*orderstate 订单的进行中的状态*/ 
+		demandata.orderstate  = $('.commerce').val();
+	}
+	
+	/*结算中 分为cs/ae AM两个bufen*/
+	if(demandata.orderstate == 7){
+		/*结算中*/
+		if(/AE/.test(rolename)){
+		
+			demandata.continuesubmit = $('.continuesubmit').val();
+
+		}
+	}
+	
+	
+	if(demandata.orderstate == 8){
+		/*不可以在更新数据*/
+	}
+	/**/
+	
+	console.log(demandata);
+	$.when($.ajax({
+		url:url,
+		type:'PATCH',
+		contentType:'application/json',
+		data:JSON.stringify(demandata),
+	})).then(function (data){
+		//debugger;
+		if(data.msg=="success"){
+			/*关闭加载层*/
+			$('#loading').modal('hide');
+			$('#myModal').modal('hide');
+			$('#table').bootstrapTable('refresh');	
+		}
+	}).fail(function (data){
+		//$('#loading').modal('hide');
+		//debugger;
+	});
+
+});
+
+
+$('#table').on('click','.handle .btn-primary',function (){
+	
+	var orderid = $(this).attr('data-orderid');
+	 $('.determine').attr('data-orderid',orderid);
+	
+	//getdetialdata(orderid);
+	$('#loading').modal('show');
+	
+	getdetialdata(orderid);
+});
+
+function getdetialdata(orderid){
+	
+	if(!orderid)return;
+	//GET /pasf/csusers/{csuserid}/orders/{orderid}
+	var url = domain137 + '/csusers/'+roleid+'/orders/'+orderid
+
+	$.when($.ajax({
+		url:url,
+		dataType:'json',
+	})).then(function (data){
+		if(data.msg=="success"){
+			/*关闭加载层*/
+			
+			$('#loading').modal('hide');
+		
+			handleDetail(data.data);
+		}
+		
+	}).fail(function (data){
+		
+		
+		
+	});
+}
+
+
+/*处理详情*/
+function setValuedata(data){
+	demandata = data;
+	/*判断cs/ae 还是am*/
+	if(rolename.indexOf("AE")!=-1){
+		/*显示不同的列表*/
+		
+	}
+	
+	if(rolename.indexOf("AM")!=-1){
+		/*显示不同的列表*/
+	}
+	$('.main-list-item.conpany li').css({'display':'none'});
+	for(var name in data){
+		//console.log(name);
+		if(name == 'demandid'){
+			$('.'+name).html('id:'+data[name]);
+		}else if(name=="customtags"){
+			alert('标签加价');
+			
+		}else if(name=="subdemands"){
+			/*子需求*/
+			//alert('子需求需要从新处理');
+		}else  if(name=="onoffline"){
+			if(data.standard==1){
+				var onoffline = data[name]?"线上":"线下";
+				$('.'+name).html(onoffline);
+			}else{
+				$('.'+name).html('');
+			}
+		}else if(name=="orderstate"){
+			//debugger;
+			//debugger;
+			//$('.main-list-item.conpany li.making').css({'display':'table'});
+			<!---进行中5 结算中7 已完成8--->
+			if(data[name]==5){
+			//debugger;
+				$('.main-list-item.conpany li.making').css({'display':'table'});
+				/*显示是否暂停*/
+				$('.pausereason').parents('.making').hide();
+				/*5特殊处理*/
+				$('.commerce').val(data[name]);
+			}
+			
+			if(data[name]==7){
+				//debugger;
+				$('.main-list-item.conpany li.paying').css({'display':'table'});
+				
+				if(/AE/.test(rolename)){
+					console.log('AM结算中');
+					$('.continuesubmit').parents('.paying').show();
+					$('.orderstate').parents('.paying').hide();
+				}else{
+					$('.continuesubmit').parents('.paying').hide();
+					console.log('不是AE结算中');
+				}
+				$('.'+name).val(data[name]);
+			}
+			
+			if(data[name]==8){
+				//debugger;
+				$('.main-list-item.conpany li.succeed').css({'display':'table'});
+				$('.'+name).val(data[name]);
+			}
+			
+			
+		}else if(name=="continuesubmit"){
+			if(data[name]==0 || data[name]==1){
+				$('.'+name).val(data[name]);
+			}
+		}else if(name=="speechcraft" || name == "qualitystandard" || name == "saleleads" ){
+				if(data[name]){
+					$('.'+name).html('下载').get(0).href = domainDownShort+data[name];
+					$('.'+name).parent().next().html('文件名：' + data[name].substr(data[name].lastIndexOf('/')+1));
+				}else{
+					$('.'+name).html('').get(0).href = 'javascript:;'
+					$('.'+name).parent().next().html('文件未上传！');
+				}
+				
+		}else if(name=="pausereason"){
+			$('.'+name).val(data[name])
+		}else if(name == "ispause"){
+			$('.'+name).eq(data[name]).prop('checked',true);
+		}else{
+			$('.'+name).html(data[name]);
+		}
+		
+	}
+}
+
+/*处理详情*/
+function handleDetail(data){
+	//debugger;
+	setValuedata(data);
+	$('#myModal').modal('show');
+}
+
+
+
+
+
+
+//GET /pasf/csusers/{csuserid}/orders/{orderid}
+var newDate = new Date();
+var time = newDate.toJSON();
+ $(".start_date")
+ .datetimepicker({
+		language:  'zh-CN',
+		 weekStart: 1,
+		 todayBtn:  1,
+		 autoclose: 1,
+		 todayHighlight: 1,
+		 startView: 2,
+		 minView: 2,
+		 forceParse: 0,
+		 format: 'yyyy-mm-dd',
+		 startDate:new Date(time),
+}).on("click",function(ev){
+		$(".start_date").datetimepicker("setEndDate", $(".end_date").val());
+}).on("change",function(ev){
+	$(".startDate").html($(".start_date").val());
+	$(".start_date").blur();
+}).on("blur",function(ev){
+	if(isNull($(".start_date").val())){
+		$(this).parent().find("p.error").eq(0).show();
+	}else{
+		$(this).parent().find("p.error").eq(0).hide();
+	}
+});
+					
+$(".end_date")
+.datetimepicker({
+			language:  'zh-CN',
+				 weekStart: 1,
+				 todayBtn:  1,
+				 autoclose: 1,
+				 todayHighlight: 1,
+				 startView: 2,
+				 minView: 2,
+				 forceParse: 0,
+				 format: 'yyyy-mm-dd',
+}).on("click", function (ev) {
+		$(".end_date").datetimepicker("setStartDate", $(".start_date").val());
+}).on("change",function(ev){
+$(".endDate").html($(".end_date").val());
+$(".end_date").blur();
+}).on("blur",function(ev){
+	if(isNull($(".end_date").val())){
+		$(this).parent().find("p.error").eq(1).show();
+	}else{
+		$(this).parent().find("p.error").eq(1).hide();
+	}
+});
+
+</script>
+
+</body>
+</html>

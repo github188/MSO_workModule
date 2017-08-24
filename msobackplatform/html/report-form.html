@@ -1,0 +1,668 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Bootstrap Table Examples</title>
+
+
+	<link rel="stylesheet" href="../css/bootstrap.min.css" />
+	<link rel="stylesheet" href="../css/bootstrap-table.css" />
+	<link rel="stylesheet" href="../css/bootstrap-datetimepicker.css" />
+	
+	
+	<script src="../js/jquery.js" type="text/javascript"></script>
+    <script src="../js/bootstrap.min.js"></script>
+
+	<script src="../js/bootstrap-table.min.js" type="text/javascript"></script>
+	<script src="../js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+	<script src="../js/url.js" type="text/javascript"></script>
+	
+	<script src="../js/PerfectData_upload-darren.js"></script>
+	
+	<style>
+		#forlogin { display:none; background:#ffffff;  overflow:hidden; height:100%; }
+		*{ padding:0; margin:0; }
+		ul li { list-style-type:none; }
+		#forlogin ul { width:100%; overflow:hidden; margin-top:20px;  }
+		#forlogin ul li { float:left; width:50%; }
+		
+		#forlogin ul li.first {width:60px; text-align:right; }
+		#forlogin ul.industry{ margin-top:30px; }
+		#forlogin ul.industry li {  }
+		#forlogin ul.industry li input { float:left;  }
+		#forlogin ul.high li.high-n   { text-align:left;  }
+		
+		#forlogin ul li.last  { padding-left:20px;  }
+		#forlogin ul li .running { float:left;  width:70px; height:20px; }
+		#forlogin ul li .outOff { float:left; width:70px; height:20px; }
+		#forlogin ul li .outOff  span { float:left; margin-top:2px; margin-left:5px;  display:inline-table; }
+		#forlogin ul li .running  span { float:left; margin-top:2px;    margin-left:5px;   display:inline-table; }
+		#forlogin ul li .outOff input { float:left; }
+		#forlogin ul li .running input { float:left; }
+		#forlogin ul.descening li input { float:left; }
+		#addIndustry  { margin-top:20px; }
+		#toolbar { width:120px; } 
+		.fixed-table-toolbar { width:120px; }
+		.industrySetting { width:100%; overflow:hidden; margin-top:20px; margin-bottom:0; }
+		.industrySetting li { float:left; }
+		.search-box { overflow:hidden; padding-bottom:3px; }
+		.search-box  .fixed-table-toolbar { float:left; }
+		.search-box  #toolbar {margin-left:20px; float:left; margin-top:10px; margin-bottom:10px; }
+		.bootstrap-table { margin-top:15px; }
+		
+		
+		@media (min-width: 100px) {
+			.container {
+				width: auto;
+			}
+		}
+		.fixed-table-toolbar { width:100%;  }
+		
+		.pull-right1.search { margin-top:0; float:left; width:317px; }
+		.pull-right1 { float:left; }
+		.pull-right1.select { width:127px;  margin-left:15px; }
+		.search-box { margin-top:10px; }
+		.bootstrap-table  .fixed-table-toolbar { height:0; }
+		
+		.data-box {
+			width: 471px;
+			height: 30px;
+			border-radius: 6px;
+			border: 1px solid #e8e8e8;
+			padding-bottom: 0;
+			position: relative;
+			float:left; 
+			margin-top:2px;
+		}
+		
+		.data-box input {
+			color: #a7a7a7;
+			width: 228px;
+			border: none;
+			text-align: center;
+			line-height: 28px;
+		}
+		
+		.search-btn { margin-left:20px; }
+		
+		
+		
+	.modal-dialog { width:860px; }
+	.modal-body-title { border-bottom:1px solid #e5e5e5; padding-bottom:15px;  }
+	ul li { list-style:none; }
+	.main-title-box { overflow:hidden; }
+	.main-title { width:10px; height:20px; background:rgba(255, 153, 0, 1); display:block; float:left; }
+	.main-box { margin-top:20px; overflow:hidden;  }
+	.main-txt { margin-left:10px; }
+	.main-list-item { float:left; margin-top:20px; width:600px; }
+	.main-list-item li { line-height:38px; display:table; width:100%; margin-top:20px; }
+	.main-list-item li span:nth-child(1){  margin-right:20px; float:left; font-weight:700; font-family: 'Arial Negreta', 'Arial';}
+	20
+	
+	.main-list-item.company li { display:none; }
+	
+	.main-list-item .radio {
+		float: left;
+		margin-top:0px; 
+	}
+		
+	.main-list-item .radio i {
+		font-style: normal;
+	}
+	th,td { text-align:center; }
+	.info .pull-right1.select { width:auto; }
+	.info .pull-right1.select  .form-control { width:300px; display:table-cell; }
+	
+	
+	 .test span { display:none; }
+	 .test span:nth-child(1){ display:block; cursor:pointer; }
+	 
+	 
+	 
+	  .btn-success.btn-lg { padding:6px 12px; }
+	 .btn-lg, .btn-group-lg>.btn { font-size:14px; }
+	 
+	.container { margin-bottom:50px; }
+	
+	.pull-right1.search { width:150px; }
+	
+	.pull-right.search { display:none; height:auto;}
+
+	.bootstrap-table { margin-top:-30px; }	
+	</style>
+</head>
+<body>
+    <div class="container">
+		<div class="search-box">
+			<div class="fixed-table-toolbar">
+				<div class="pull-right1 search">
+					<input class="form-control demand_name" type="text" placeholder="需求名">
+				</div>
+				<div class="pull-right1 search">
+					<input class="form-control brandname" type="text" placeholder="品牌名">
+				</div>
+				<div class="pull-right1 search">
+					<input class="form-control compname" type="text" placeholder="发包方公司名">
+				</div>
+				
+				<div class="pull-right1 select">
+					<select style="width:auto;" class="form-control service_type">
+						<option value="">选择业务类型</option>
+						<option value="">全部</option>
+						<option value="1">销售线索挖掘</option>
+						<option value="2">数据筛选</option>
+						<option value="3">人工客服</option>
+						
+						<!--业务类型 1-销售线索挖掘 2-数据筛选 3-人工客服-->
+					</select>
+				</div>
+				<div class="pull-right1 select">
+					<select style="width:auto;" class="form-control BDstaff">
+						<option value="0">选择BD专员</option>
+						
+						<!--业务类型 1-销售线索挖掘 2-数据筛选 3-人工客服-->
+					</select>
+				</div>
+				<!--
+				<div class="pull-right1 select">
+					<select class="form-control sort">
+						<option value="0">分类</option>
+						<option value="CS">CS</option>
+						<option value="BD">BD</option>
+					</select>
+				</div>
+				-->
+				
+				<div class="data-box">
+						<input autoComplete="off" placeholder="所属年月(开始)" type="text" class="form_date start_date" readOnly /><i class="date_icon"></i><span>~</span>
+						<input autoComplete="off" placeholder="所属年月(结束)" type="text" class="form_date end_date" readOnly /><i class="date_icon"></i>
+						<!--<p class="error time">(所属年月)开始</p><p class="error time">(所属年月)结束</p>-->
+				</div>
+			
+				
+				<div class="pull-right1 select search-btn">
+					<button type="button" class="btn btn-success">搜索</button>
+				</div>
+			</div>
+		</div>
+		
+        <table id="table">
+            
+        </table>
+   
+	
+	
+	<div id="forlogin">
+		 <div>
+			<ul class="industry">
+				<li class="first" >行业名称:</li>
+				<li class="last"><input id="username" placeholder="请输入行业名称"/></li>
+			</ul>
+			<ul class="high">
+				<li  class="first" >分类级别:</li>
+				<li class="high-n last">一级分类</li>
+			</ul>
+			<ul>
+				<li  class="first" >状态:</li>
+				<li class="last">
+					<div class="running"><input type="radio" /><span>启用</span></div>
+					<div class="outOff"><input type="radio" /><span>停用</span></div>
+				</li>
+			</ul>
+			<ul class="descening">
+				<li  class="first" >排序值</li>
+				<li class="last"><input placeholder="请输入排序值，值越大越靠前"/></li>
+			</ul>
+		 </div>
+	</div>
+		 <div id="addIndustry">
+			<button   class="btn btn-primary  btn-success btn-lg getout">导出报表</button>
+			<button  class="btn btn-default counttable">统计</button>
+		 </div>
+	</div>
+	
+	 <table id="table-report">
+            
+    </table>
+	
+	
+	
+	
+	
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					公司信息
+				</h4>
+			</div>
+			<div class="modal-body">
+					<div class="main-box info">
+						<div class="main-title-box">
+							<span class="main-title"></span><span class="main-txt">公司信息</span>
+							<div>
+								<ul class="main-list-item">
+									<li>
+										<span>公司全称：</span>
+										<span>e-darrn-100</span>
+									</li>
+									<li>
+										<span>内部简称：</span>
+										<div class="pull-right1 select">
+											<input class="form-control" type="text" />
+										</div>
+									</li>
+									<li>
+										<span>公司地址：</span>
+										<div class="pull-right1 select">
+											<input class="form-control" type="text" />
+										</div>
+									</li>
+									<li>
+										<span>擅长行业：</span>
+										<span>1000</span>
+									</li>
+									<li>
+										<span>擅长项目：</span>
+										<span>1000</span>
+									</li>
+									<li>
+										<span>公司网址：</span>
+										<div class="pull-right1 select">
+											<input class="form-control" type="text" />
+										</div>
+									</li>
+									<li>
+										<span>公司规模：</span>
+										<div class="pull-right1 select">
+											<select class="form-control">
+												<option value="0">10人一下</option>
+												<option value="1">是</option>
+												<option value="2">否</option>
+											</select>
+										</div>
+									</li>
+									
+									
+									
+									
+									
+									
+									
+									
+									<li class="upload">
+							<span>公司图片：</span>
+							<span>sdafsadf</span>
+						
+						</li>
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+								</ul>
+							</div>
+						</div>
+					
+					</div>
+		
+		</div><!-- /.modal-dialog -->
+		<div class="modal-footer">
+					<button type="button" class="btn btn-default" >
+						确认
+					</button>
+					<button type="button"  data-dismiss="modal"  class="btn btn-primary">
+						取消
+					</button>
+		</div>
+</div>
+</div>
+</div>
+
+</body>
+<script>
+/*显示状态的控制*/
+$('.main-list-item.company li.succeed').show();
+/*显示状态的控制*/
+
+var $table = $('#table');
+	//debugger;
+	//文档地址http://bootstrap-table.wenzhixin.net.cn/zh-cn/documentation/
+/*自定义头部*/
+
+/*自己填写数据*/
+var domainCs = 'https://back.mshuoke.com';
+var url = domainCs + "/publicApi/csnewreport";
+
+$table.bootstrapTable({
+	 url:url,
+	 pagination: true, //分页
+	 contentType:'application/json',
+    // search:true,
+	 showColumns:true,
+	 checkbox:false,
+	 queryParams:function (params){
+			 /*自定义参数,如果有参数在这里定义*/
+			  var data = {
+					service_type:$('.service_type').val().trim(),
+					//处理默认值全部
+					NAME:($('.BDstaff').val()==0)?"":$('.BDstaff').find('option:selected').text().trim(),
+					demand_name:$('.demand_name').val().trim(),
+					brandname:$('.brandname').val().trim(),
+					compname:$('.compname').val().trim(),
+					vestStart:$('.start_date').val().trim(),
+					vestEnd:$('.end_date').val().trim(),
+			  };
+			  
+			 data.limit = params.limit;
+			 data.offset = params.offset;
+			 //data.vestStart = $('.form_date.start_date').val();
+			 //data.vestEnd =  $('.form_date.end_date').val();
+			 
+			  
+	   return  data;
+	 },
+	 sidePagination: "server",
+	 responseHandler:function(res){
+		var newJson = {};
+		//debugger;
+		newJson.total = res.totalpage;
+		newJson.rows = res.data;
+		return newJson;
+     },
+	 formatNoMatches:function(){
+         return '没有搜索结果'
+     },
+     formatLoadingMessage:function(){
+          return '正在努力加载中...';
+     },
+	 columns: [{  
+          field: 'demand_name',  
+          title: '需求名'  
+        }, {  
+          field: 'service_type',  
+          title: '业务类型',
+		  formatter:function (data,row,index){
+			//service_type 业务类型 1-销售线索挖掘 2-数据筛选 3-人工客服
+			var arr = ['销售线索挖掘','数据筛选','人工客服'];
+			return arr[row.service_type-1];
+		  }
+        }, {  
+          field: 'vesting_time',  
+          title: '所属年月'  
+        }, {  
+          field: 'brandname',  
+          title: '品牌名'  
+        }, {  
+          field: 'compname',  
+          title: '发包方公司'  
+        }, {  
+          field: 'NAME',  
+          title: '需求负责人'  
+        }, {  
+          field: 'bill_credit',  
+          title: '客户需求量'  
+        }, {  
+          field: 'release_quantity',  
+          title: '发布量'  
+        }, {  
+          field: 'total_price',  
+          title: 'GMV'  
+        },{  
+          field: 'fnum',  
+          title: '任务量'  
+        },{  
+          field: 'lacknum',  
+          title: '订单缺口'  
+        },{  
+          field: 'fsnum',  
+          title: 'MTD完成量'  
+        },{  
+          field: 'of',  
+          title: '订单完成率'  
+        },{  
+          field: 'ff',  
+          title: '发布完成率'  
+        },{  
+          field: 'goodsName',  
+          title: '预估单价'  
+        },{  
+          field: 'goodsName',  
+          title: '预估完成总量'  
+        },{  
+          field: 'goodsName',  
+          title: '预估销售营业额'  
+        }
+		,{  
+          field: 'goodsName',  
+          title: '客户需求缺口'  
+        }
+		,{  
+          field: 'goodsName',  
+          title: '客户需求金额缺口'  
+        }
+		]  
+		
+});
+
+
+	getRoleList();
+	function getRoleList (){
+		//GET 开发完成 /pasf/pt/sysusers
+			var url = domain137 + "/pt/sysusers";
+
+			//debugger;
+			$.when($.ajax({
+				url:url,
+				//选择BD专员
+				data:{rolename:'BD专员'},
+				dataType:'json',
+			})).then(function (data){
+				//debugger;
+				if(data.msg=="success"){
+					
+					data.data.map(function (data,index){
+						//console.log(data,index);
+						$('.BDstaff').append('<option value="'+data.userid+'">'+data.username+'</option>');
+					});
+				}
+				
+			}).fail(function (data){
+				//$('#loading').modal('hide');
+				//debugger;
+			});
+		
+	}
+	
+
+$('#table').on('click','.handle .btn-primary',function (){
+	console.log('1111111111111111');
+});
+
+$('.search-box').on('click','.btn-success',function (){
+	$('#table').bootstrapTable('refresh');
+});
+
+$(document).on('keyup','.search-box input',function (ev){
+	var oEvent = ev || event;
+	if(oEvent.keyCode==13){
+		$('#table').bootstrapTable('refresh');
+	}
+});
+
+$('.service_type').change(function (){
+	$table.bootstrapTable('refresh');
+});
+
+$('.BDstaff').change(function (){
+	$table.bootstrapTable('refresh');
+});
+
+
+///publicApi/csnewreportexcel 导出报表
+	
+$('.getout').click(function (){
+	/*导出报表*/
+	toExcel();	
+});
+
+
+/*导出报表*/
+function toExcel(){
+	//var keywords = $("#nav-search-input").val();
+	var url =  domainCs + '/publicApi/csnewreportexcel';
+	//console.log(url + '?service_type='+$('.service_type').val()+'&NAME='+$('.BDstaff').find('option:selected').text());	
+
+	var NAME = ($('.BDstaff').val()==0)?"":$('.BDstaff').find('option:selected').text().trim();
+
+	window.location.href = url + '?'
+	+'service_type='+$('.service_type').val().trim()
+	+'&NAME='+NAME
+	+'&demand_name='+$('.demand_name').val().trim()
+	+'&brandname='+$('.brandname').val().trim()
+	+'&compname='+$('.compname').val().trim()
+	+'&vestStart='+$('.start_date').val().trim()
+	+'&vestEnd='+$('.end_date').val().trim();
+}
+
+	
+	
+/*table-report*/
+//统计报表
+//GET /publicApi/csnewreportsum
+$('.counttable').click(function (){
+	$('#table-report').bootstrapTable('refresh');
+});
+$('#table-report').bootstrapTable({
+	 url:domainCs + '/publicApi/csnewreportsum',
+	 pagination: true, //分页
+	 contentType:'application/json',
+    // search:true,
+	 showColumns:true,
+	 checkbox:false,
+	 queryParams:function (params){
+			 /*自定义参数,如果有参数在这里定义*/
+			   var data = {
+					service_type:$('.service_type').val().trim(),
+					//处理默认值全部
+					NAME:($('.BDstaff').val()==0)?"":$('.BDstaff').find('option:selected').text().trim(),
+					demand_name:$('.demand_name').val().trim(),
+					brandname:$('.brandname').val().trim(),
+					compname:$('.compname').val().trim(),
+					vestStart:$('.start_date').val().trim(),
+					vestEnd:$('.end_date').val().trim(),
+			  };
+			  
+			  data.limit = params.limit;
+			  data.offset = params.offset;
+			  
+	   return  data;
+	 },
+	 sidePagination: "server",
+	 responseHandler:function(res){
+		
+		var newJson = {};
+		//newJson.total = '800';
+		newJson.rows = res.data;
+		return newJson;
+     },
+	 formatNoMatches:function(){
+         return '没有搜索结果'
+     },
+     formatLoadingMessage:function(){
+          return '正在努力加载中...';
+     },
+	 columns: [{  
+          field: 'srelease_quantity',  
+          title: '发布量'  
+        }, {  
+          field: 'stotal_price',  
+          title: 'GMV'  
+        }, {  
+          field: 'sfnum',  
+          title: '任务量'  
+        }, {  
+          field: 'slacknum',  
+          title: '订单缺口'  
+        }, {  
+          field: 'sfsnum',  
+          title: 'MTD完成量'  
+        }, {  
+          field: 'sof',  
+          title: '订单完成率'  
+        }, {  
+          field: 'sff',  
+          title: '发布完成率'  
+        }
+		]  
+		
+});
+
+
+
+
+
+
+
+var newDate = new Date();
+var time = newDate.toJSON();
+ $(".start_date")
+ .datetimepicker({
+		language:  'zh-CN',
+		 weekStart: 1,
+		 todayBtn:  1,
+		 autoclose: 1,
+		 todayHighlight: 1,
+		 startView: 2,
+		 minView: 2,
+		 forceParse: 0,
+		 format: 'yyyy-mm-dd',
+		// startDate:new Date(time),
+}).on("click",function(ev){
+		$(".start_date").datetimepicker("setEndDate", $(".end_date").val());
+}).on("change",function(ev){
+	$(".startDate").html($(".start_date").val());
+	$(".start_date").blur();
+}).on("blur",function(ev){
+	if(isNull($(".start_date").val())){
+		$(this).parent().find("p.error").eq(0).show();
+	}else{
+		$(this).parent().find("p.error").eq(0).hide();
+	}
+});
+					
+$(".end_date")
+.datetimepicker({
+			language:  'zh-CN',
+				 weekStart: 1,
+				 todayBtn:  1,
+				 autoclose: 1,
+				 todayHighlight: 1,
+				 startView: 2,
+				 minView: 2,
+				 forceParse: 0,
+				 format: 'yyyy-mm-dd',
+}).on("click", function (ev) {
+		$(".end_date").datetimepicker("setStartDate", $(".start_date").val());
+}).on("change",function(ev){
+$(".endDate").html($(".end_date").val());
+$(".end_date").blur();
+}).on("blur",function(ev){
+	if(isNull($(".end_date").val())){
+		$(this).parent().find("p.error").eq(1).show();
+	}else{
+		$(this).parent().find("p.error").eq(1).hide();
+	}
+});
+
+</script>
+
+</html>

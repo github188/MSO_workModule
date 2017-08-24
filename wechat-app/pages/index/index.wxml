@@ -1,0 +1,35 @@
+<view class="page">
+
+    <view class="page__bd">
+      <view class="section section_gap swiper">
+        <swiper indicator-dots="{{indicatorDots}}" vertical="{{vertical}}"
+                autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+          <block wx:for-items="{{imgUrls}}">
+              <swiper-item>
+                  <view class="swiper-item">
+                    <image src="{{item}}" class="slide-image" />
+                  </view>
+              </swiper-item>
+          </block>
+        </swiper>
+      </view>
+      <view class="sess">
+        <view class="classname">
+          <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
+            <view class="picker">
+                当前选择: {{time}}
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="btn-area">
+        <navigator url="know-more/know-more" hover-class="navigator-hover">
+            <button type="default">立即了解行业客户</button>
+        </navigator>
+      </view>
+        <slider bindchange="durationChange" value="{{duration}}" show-value min="0" max="80"/>
+        <view class="section__title">duration</view>
+        <slider bindchange="intervalChange" value="{{interval}}" show-value min="3" max="80"/>
+        <view class="section__title">interval</view>
+    </view>
+</view>

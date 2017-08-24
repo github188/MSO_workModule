@@ -1,0 +1,1010 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Bootstrap Table Examples</title>
+
+
+	<link rel="stylesheet" href="../css/bootstrap.min.css" />
+	<link rel="stylesheet" href="../css/bootstrap-table.css" />
+	<link rel="stylesheet" href="../css/bootstrap-datetimepicker.css" />
+	
+	
+	<script src="../js/jquery.js" type="text/javascript"></script>
+    <script src="../js/bootstrap.min.js"></script>
+
+	<script src="../js/bootstrap-table.min.js" type="text/javascript"></script>
+	<script src="../js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+	<script src="../js/PerfectData_upload-darren.js"></script>
+
+	<script src="../js/url.js" type="text/javascript"></script>
+	<script src="../js/mock.js" type="text/javascript"></script>
+	<script src="../js/myself-function/main.js" type="text/javascript"></script>
+	
+	
+	<style>
+		#forlogin { display:none; background:#ffffff;  overflow:hidden; height:100%; }
+		*{ padding:0; margin:0; }
+		ul li { list-style-type:none; }
+		#forlogin ul { width:100%; overflow:hidden; margin-top:20px;  }
+		#forlogin ul li { float:left; width:50%; }
+		
+		#forlogin ul li.first {width:60px; text-align:right; }
+		#forlogin ul.industry{ margin-top:30px; }
+		#forlogin ul.industry li {  }
+		#forlogin ul.industry li input { float:left;  }
+		#forlogin ul.high li.high-n   { text-align:left;  }
+		
+		#forlogin ul li.last  { padding-left:20px;  }
+		#forlogin ul li .running { float:left;  width:70px; height:20px; }
+		#forlogin ul li .outOff { float:left; width:70px; height:20px; }
+		#forlogin ul li .outOff  span { float:left; margin-top:2px; margin-left:5px;  display:inline-table; }
+		#forlogin ul li .running  span { float:left; margin-top:2px;    margin-left:5px;   display:inline-table; }
+		#forlogin ul li .outOff input { float:left; }
+		#forlogin ul li .running input { float:left; }
+		#forlogin ul.descening li input { float:left; }
+		#addIndustry  { margin-top:20px; }
+		#toolbar { width:120px; } 
+		.fixed-table-toolbar { width:120px; }
+		.industrySetting { width:100%; overflow:hidden; margin-top:20px; margin-bottom:0; }
+		.industrySetting li { float:left; }
+		.search-box { overflow:hidden; padding-bottom:3px; }
+		.search-box  .fixed-table-toolbar { float:left; }
+		.search-box  #toolbar {margin-left:20px; float:left; margin-top:10px; margin-bottom:10px; }
+		.bootstrap-table { margin-top:15px; }
+		
+		
+		@media (min-width: 100px) {
+			.container {
+				width: auto;
+			}
+		}
+		.fixed-table-toolbar { width:100%;  }
+		
+		.pull-right1.search { margin-top:0; float:left; width:317px; }
+		.pull-right1 { float:left; }
+		.pull-right1.select { width:127px; }
+		.search-box { margin-top:10px; }
+		
+		.data-box {
+			width: 471px;
+			height: 30px;
+			border-radius: 6px;
+			border: 1px solid #e8e8e8;
+			padding-bottom: 0;
+			position: relative;
+			float:left; 
+			margin-top:2px;
+		}
+		
+		.data-box input {
+			color: #a7a7a7;
+			width: 228px;
+			border: none;
+			text-align: center;
+			line-height: 28px;
+		}
+		
+		.search-btn { margin-left:20px; }
+		th,td { text-align:center; }
+		
+		
+		
+		
+		
+		
+		
+		
+		.modal-dialog { width:860px; }
+.modal-body-title { border-bottom:1px solid #e5e5e5; padding-bottom:15px;  }
+ul li { list-style:none; }
+.main-title-box { overflow:hidden; }
+.main-title { width:10px; height:20px; background:rgba(255, 153, 0, 1); display:block; float:left; }
+.main-box { margin-top:20px; overflow:hidden;  }
+.main-txt { margin-left:10px; }
+.main-list-item { float:left; width:400px; }
+.main-list-item li { line-height:38px; }
+.main-list-item li span:nth-child(1){ font-weight:700; font-family: 'Arial Negreta', 'Arial';}
+.btn-primary { background:#5cb85c; border-color:#4cae4c; }
+
+.conpanyname { float:left; }
+
+.main-list-item.conpany { margin-bottom:20px; }
+
+.task-list li .test span { display: none; }
+
+.task-list li .test span:nth-child(1) {
+    margin-left: 20px;
+    margin-right: 20px;
+    display: block;
+    width: auto;
+    cursor: pointer;
+    color: #FF9933;
+}
+.files-m {
+    float: left;
+}
+.task-list li span:nth-child(1) {
+    float: left;
+    display: table;
+    width: 120px;
+    text-align: right;
+}
+.task-list  li {
+    line-height: 34px;
+    display: table;
+    margin-top: 15px;
+}
+	.task-list  { width:600px; }	
+	
+.task-list li .test span:nth-child(4) {
+    margin-left: 15px;
+}
+
+ .btn-success.btn-lg { padding:6px 12px; }
+ .btn-lg, .btn-group-lg>.btn { font-size:14px; }
+ 
+ .bootstrap-table .fixed-table-toolbar {  overflow:-hidden; }
+.pull-right.search { display:none; height:auto;}
+
+.bootstrap-table { margin-top:-30px; }
+	</style>
+</head>
+<body>
+    <div class="container">
+		<div class="search-box">
+			<div class="fixed-table-toolbar">
+				<div class="pull-right1 search">
+					<input class="form-control" type="text" placeholder="Search">
+				</div>
+				
+				<div class="pull-right1 select">
+					<select style="width:auto;" class="form-control AEstaff">
+						<option value="1">选择AE负责人</option>
+					</select>
+				</div>
+				<!--
+				<div class="pull-right1 select">
+					<select class="form-control">
+						<option value="">all</option>
+						<option value="">open</option>
+						<option value="all">close</option>
+					</select>
+				</div>
+				<div class="pull-right1 select">
+					<select class="form-control">
+						<option value="">all</option>
+						<option value="">open</option>
+						<option value="all">close</option>
+					</select>
+				</div>
+				
+				<div class="data-box">
+						<input autoComplete="off" placeholder="开始日期" type="text" class="form_date start_date" readOnly /><i class="date_icon"></i><span>~</span>
+						<input autoComplete="off" placeholder="结束日期" type="text" class="form_date end_date" readOnly /><i class="date_icon"></i>
+						<p class="error time">请填写开始日期</p><p class="error time">请填写结束日期</p>
+				</div>
+				-->
+				<div class="pull-right1 select search-btn">
+					<button type="button" class="btn btn-success">搜索</button>
+				</div>
+			</div>
+		</div>
+        <table id="table">
+            
+        </table>
+   
+	
+	
+	<div id="forlogin">
+		 <div>
+			<ul class="industry">
+				<li class="first" >行业名称:</li>
+				<li class="last"><input id="username" placeholder="请输入行业名称"/></li>
+			</ul>
+			<ul class="high">
+				<li  class="first" >分类级别:</li>
+				<li class="high-n last">一级分类</li>
+			</ul>
+			<ul>
+				<li  class="first" >状态:</li>
+				<li class="last">
+					<div class="running"><input type="radio" /><span>启用</span></div>
+					<div class="outOff"><input type="radio" /><span>停用</span></div>
+				</li>
+			</ul>
+			<ul class="descening">
+				<li  class="first" >排序值</li>
+				<li class="last"><input placeholder="请输入排序值，值越大越靠前"/></li>
+			</ul>
+		 </div>
+	</div>
+	 
+	 
+	</div>
+	
+			
+	<!--
+	"_comment": {
+      "id": "任务ID",
+      "name": "任务名称",
+      "servicetype": "服务类型",
+      "servicetypedesc": "服务类型描述",
+      "companyname": "发包方公司名称",
+      "brandname": "品牌名",
+      "industry": "行业",
+      "onoffline": "行业类型 1-线上 0-线下",
+      "targetagefrom": "目标人群年龄from",
+      "targetageto": "目标人群年龄to",
+      "targetarea": "目标区域",
+      "begintime": "开始时间",
+      "endtime": "结束时间",
+      "taskquantity": "任务数量",
+      "taskunitprice": "任务单价",
+      "comment": "备注",
+      "vestingtime": "归属年月",
+      "saleleads": "销售线索",
+      "speechcraft": "话术文件",
+      "qualitystandard": "质检标准"
+    }
+	-->
+	
+	
+	<!--弹出成-->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					任务详情
+				</h4>
+			</div>
+			<div class="modal-body">
+				<div class="modal-body-title" ><span class="main-txt">任务资料：</span></div>
+				<div class="modal-body-title" style="border:none; margin-top:20px; ">
+				<span class="main-title"></span><span class="main-txt">任务概况：</span>
+				<span>ID：</span>
+				<span class="id"></span>
+				</div>
+				<div class="main-box">
+					
+					<ul class="main-list-item">
+						<li>
+							<span>任务名：</span>
+							<span class="uniquename"></span>
+						</li>
+						<li>
+							<span>发包方公司：</span>
+							<span class="companyname"></span>
+						</li>
+							<li>
+							<span>行业：</span>
+							<span class="industry"></span>
+						</li>
+						<li>
+							<span>目标人群：</span>
+							<span class="targetagefrom"></span>
+							<span>~</span>
+							<span class="targetageto"></span>
+							
+							<span>周岁</span>
+						</li>
+						<li>
+							<span>开始日期：</span>
+							<span class="begintime"></span>
+						</li>
+							<li>
+							<span>任务数量：</span>
+							<span class="taskquantity"></span>
+						</li>
+							<li>
+							<span>备注：</span>
+							<span class="comment"></span>
+						</li>
+					</ul>
+					
+					<ul class="main-list-item">
+						<li>
+							<span>业务类型：</span>
+							<span class="servicetypedesc"></span>
+						</li>
+						<li>
+							<span>品牌名：</span>
+							<span class="brandname"></span>
+						</li>
+							<li>
+							<span>行业类型：</span>
+							<span class="onoffline"></span>
+						</li>
+							<li>
+							<span>目标区域：</span>
+							<span class="targetarea"></span>
+						</li>
+							<li>
+							<span>结束日期：</span>
+							<span class="endtime"></span>
+						</li>
+							<li>
+							<span>任务单价：</span>
+							<span class="taskunitprice"></span>
+							<span>元</span>
+						</li>
+							<li>
+							<span>归属年月：</span>
+							<span class="vestingtime"></span>
+						</li>
+					</ul>
+					
+					<!--
+					<ul class="main-list-item">
+						<li>
+							<span>需求名：</span>
+							<span>e-darrn-100</span>
+						</li>
+						<li>
+							<span>需求量</span>
+							<span>1000</span>
+						</li>
+					</ul>
+					-->
+				</div>
+				
+				<div class="modal-body-title"></div>
+				<div class="main-box">
+					<div class="main-title-box"><span class="main-title"></span><span class="main-txt">任务附件</span>
+					<div>
+					<ul class="main-list-item task-list">
+						<li class="upload saleleads">
+							<span>销售线索模板：</span>
+							<span class="files-m">
+							
+							<form id="salepad" action=""  enctype="" >
+								<div>
+									<span style="display:none;">文件路径</span>
+									<input style="display:none;" class="idkey" type="text" name="key" value="" />
+									<span style="display:none;">OSSAccessKeyId</span>
+									<input style="display:none;" class="idOSSAccessKeyId" type="text" name="OSSAccessKeyId" value="" />
+									<span style="display:none;">policy</span>
+									<input style="display:none;" class="idpolicy" type="text" name="policy" value="" />
+									
+									<input style="display:none;" class="status" type="text" name="success_action_status" value="200" />
+									
+
+									<span style="display:none;">Signature</span>
+									<input style="display:none;" class="idSignature" type="text" name="Signature" value="" />
+									
+									<input  style="display:none;" name="file" type="file"  class="file" />
+								</div>
+							</form>
+							<div class="salepad test"><span>上传文件</span><span class="js_mark">上传成功</span><span class="js_mark">上传失败</span><span class="js_mark"></span></div>
+							</span>
+						</li>
+						
+						
+						
+						<li class="upload speechcraft">
+					<span>话术文件：</span>
+					<span class="files-m">
+					
+						<form id="wordFile" action=""  enctype="" >
+						<div>
+							<span style="display:none;">文件路径</span>
+							<input style="display:none;" class="idkey" type="text" name="key" value="" />
+							<span style="display:none;">OSSAccessKeyId</span>
+							<input style="display:none;" class="idOSSAccessKeyId" type="text" name="OSSAccessKeyId" value="" />
+							<span style="display:none;">policy</span>
+							<input style="display:none;" class="idpolicy" type="text" name="policy" value="" />
+							
+							<input style="display:none;" class="status" type="text" name="success_action_status" value="200" />
+							
+
+							<span style="display:none;">Signature</span>
+							<input style="display:none;" class="idSignature" type="text" name="Signature" value="" />
+							
+							<input style="display:none;"   name="file" type="file"   class="file" />
+						</div>
+							
+						</form>
+						<div class="wordFile test"><span>上传文件</span><span class="js_mark">上传成功</span><span class="js_mark">上传失败</span><span class="js_mark"></span></div>
+					</span>
+				</li>
+						
+						
+						
+					<li class="upload qualitystandard">
+						<span>质检标准：</span>
+						<span class="files-m">
+						
+							<form id="quality" action=""  enctype="" >
+							<div>
+								<span style="display:none;">文件路径</span>
+								<input style="display:none;" class="idkey" type="text" name="key" value="" />
+								<span style="display:none;">OSSAccessKeyId</span>
+								<input style="display:none;" class="idOSSAccessKeyId" type="text" name="OSSAccessKeyId" value="" />
+								<span style="display:none;">policy</span>
+								<input style="display:none;" class="idpolicy" type="text" name="policy" value="" />
+								
+								<input style="display:none;" class="status" type="text" name="success_action_status" value="200" />
+								
+
+								<span style="display:none;">Signature</span>
+								<input style="display:none;" class="idSignature" type="text" name="Signature" value="" />
+								
+								<input  style="display:none;"  name="file"  type="file"   class="file" />
+							</div>
+							</form>
+							<div class="quality test"><span>上传文件</span><span class="js_mark">上传成功</span><span class="js_mark">上传失败</span><span class="js_mark"></span></div>
+						</span>
+					</li>
+						
+					</ul>
+					
+					
+					
+					<!--
+					<ul class="main-list-item">
+						<li>
+							<span>需求名：</span>
+							<span>e-darrn-100</span>
+						</li>
+						<li>
+							<span>需求量</span>
+							<span>1000</span>
+						</li>
+					</ul>
+					-->
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		
+		
+	</div><!-- /.modal-dialog -->
+	
+	</div>
+	<div class="modal-footer">
+				<button type="button" class="btn determine btn-primary" >
+					确认
+				</button>
+				<button type="button"  data-dismiss="modal"  class="btn btn-default">
+					取消
+		</button>
+		</div>
+</div>
+</div>
+</div>
+<div class="modal fade" id="loading" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop='static'>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">提示</h4>
+      </div>
+      <div class="modal-body">
+        请稍候。。。
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+/*新增行业*/
+
+var url  = domain137 + '/csusers/'+roleid+'/tasks';
+
+var $table = $('#table');
+	//debugger;
+	//文档地址http://bootstrap-table.wenzhixin.net.cn/zh-cn/documentation/
+/*自定义头部*/
+
+/*自己填写数据*/
+
+$('#table').bootstrapTable({
+	 url:url,
+	 pagination: true, //分页
+	 contentType:'application/json',
+     search:true,
+	 showColumns:true,
+	 checkbox:false,
+	 queryParams:function (params){
+			 /*自定义参数,如果有参数在这里定义*/
+			 
+			 
+		 ifAll = $('.AEstaff').val();
+		 // console.log(ifAll);
+		 if(!(ifAll == 1 || ifAll ==0)){
+			 //var selectedtext = $('.AEstaff').find("option:selected").text();
+			 ifAll = 0;
+		 }
+		 var data = {all:ifAll};
+		  data.size = 100000000;  
+		  data.limit = params.limit;
+		  data.offset = params.offset;
+			//var data = {};
+			  
+	   return  data;
+	 },
+	 sidePagination: "client",
+	 responseHandler:function(res){
+			/*"total": 800,*/
+			var newJson = {};
+			newJson.total = '800';
+			newJson.data = res.data;
+			//res.rows = res.list;
+			return newJson;
+     },
+	 onLoadSuccess(){
+		
+		/*移动自带事件*/
+		$('.search-btn button').click(function(){
+			//debugger;
+			$('.search input').eq(1).val($('.search input').eq(0).val());
+			$('.search input').eq(1).keyup();
+		});
+		//debugger;
+		
+		/*当search 没有vlaue的时候*/
+		$('.search input').eq(0)[0].oninput= function (){
+			if(!this.value){
+				$('.search input').eq(1).val(this.value);
+				$('.search input').eq(1).keyup();
+			}
+		};
+		
+		
+		$('.search input').eq(0).keyup(function (ev){
+			
+			var oEvent = ev || event;
+			if(oEvent.keyCode==13){
+				$('.search input').eq(1).val(this.value);
+				$('.search input').eq(1).keyup();
+			}
+		});
+	 },
+	 formatNoMatches:function(){
+         return '没有搜索结果'
+     },
+     formatLoadingMessage:function(){
+          return '正在努力加载中...';
+     },
+
+	 columns: [{  
+          field: 'taskid',  
+          title: '任务ID'  
+        }, {  
+          field: 'uniquename',  
+          title: '任务名'  
+        }, {  
+          field: 'companyname',  
+          title: '发包方公司'  
+        }, {  
+          field: 'brandname',  
+          title: '品牌名'  
+        }, {  
+          field: 'servicetypedesc',  
+          title: '业务类型'  
+        }, 
+		/*
+		 {  
+          field: 'receivedquantity',  
+          title: '已领取订单'  
+        }, 
+		 {  
+          field: 'tobereceivedquantity',  
+          title: '待领取订单'  
+        }, 
+		 {  
+          field: 'completequantity',  
+          title: '完成数量'  
+        }, 
+		*/
+		 {  
+          field: 'unitprice',  
+          title: '任务单价'  
+        }, 
+		/*
+		 {  
+          field: 'totalprice',  
+          title: '任务金额'  
+        }, 
+		*/
+		{  
+          field: 'vestingtime',  
+          title: '归属年月'  
+        }, 
+		{  
+          field: 'ae',  
+          title: 'AE负责人'  
+        }, 
+		{  
+          field: 'createtime',  
+          title: '创建时间'  
+        }, 
+		{  
+          field: 'sendstatus',  
+          title: '操作' ,
+		  'class':'handle',
+		  formatter:function (data,row,b){
+			
+			return '<div  data-taskid = '+row.taskid+' class="btn btn-primary btn-lg">查看详情</div>';
+		  }
+        }
+		]  
+		
+});
+
+
+
+	/*获取角色list*/
+	getRoleList();
+	function getRoleList (){
+		//GET 开发完成 /pasf/pt/sysusers
+			var url = domain137 + "/pt/sysusers";
+
+			//debugger;
+			$.when($.ajax({
+				url:url,
+				//选择BD专员
+				data:{rolename:'cs专员'},
+				dataType:'json',
+			})).then(function (data){
+				//debugger;
+				if(data.msg=="success"){
+					
+					data.data.map(function (data,index){
+						//console.log(data,index);
+						$('.AEstaff').append('<option value="'+data.userid+'">'+data.username+'</option>');
+					});
+				}
+				
+			}).fail(function (data){
+				//$('#loading').modal('hide');
+				//debugger;
+			});
+		
+	}
+	
+	
+		var $table = $('#table');
+
+		var url = domain137 + '/csusers/'+roleid+'/tasks';
+		//debugger; var url = domain137 + "/pt/sysusers";
+		$('.AEstaff').change(function (){
+				url = domain137 + '/csusers/'+this.value+'/tasks';
+				$table.bootstrapTable('refresh',{url:url});
+		});
+		
+	
+	
+//debugger;
+$('#table').on('click','.handle .btn-primary',function (){
+	
+	var taskid = $(this).attr('data-taskid');
+	$('.determine').attr('data-taskid',taskid);
+	getdetialdata(taskid);
+	$('#loading').modal('show');
+	//getdetialdata();
+});
+
+var taskdata;
+
+$('.determine').click(function (){
+
+	//PATCH 开发完成 /pasf/csusers/{csuserid}/tasks/{taskid}
+	var taskid = $(this).attr('data-taskid');
+	var url = domain137 + '/csusers/'+roleid+'/tasks/'+taskid
+	taskdata.saleleads = $('.saleleads').attr('data-path');
+	taskdata.speechcraft = $('.speechcraft').attr('data-path');
+	taskdata.qualitystandard = $('.qualitystandard').attr('data-path');
+	$.when($.ajax({
+		url:url,
+		type:'PATCH',
+		contentType:'application/json',
+		data:JSON.stringify(taskdata),
+	})).then(function (data){
+		//debugger;
+		if(data.msg=="success"){
+			/*关闭加载层*/
+			$('#myModal').modal('hide');
+			$('#loading').modal('hide');
+		}
+		
+	}).fail(function (data){
+		//$('#loading').modal('hide');
+		//debugger;
+	});
+	
+});
+
+
+function getdetialdata(taskid){
+
+	if(!taskid)return;
+	//GET /pasf/csusers/{csuserid}/tasks/{taskid}
+	var url = domain137 + '/csusers/'+roleid+'/tasks/'+taskid
+	
+	$.when($.ajax({
+		url:url,
+		dataType:'json',
+	})).then(function (data){
+		//debugger;
+		if(data.msg=="success"){
+			/*关闭加载层*/
+			$('#loading').modal('hide');
+		
+			handleDetail(data.data);
+		}
+		
+	}).fail(function (data){
+		//$('#loading').modal('hide');
+		//debugger;
+	});
+}
+
+
+
+/*处理详情*/
+function setValuedata(data){
+	for(var name in data){
+		//console.log(name);
+		if(name == 'demandid'){
+			$('.'+name).html('id:'+data[name]);
+		}else  if(name=="onoffline"){
+			if(data.standard==1){
+				var onoffline = data[name]?"线上":"线下";
+				$('.'+name).html(onoffline);
+			}else{
+				$('.'+name).html('');
+			}
+		}else if(name=="customtags"){
+			alert('标签加价');
+			
+		}else if(name=="subdemands"){
+			/*子需求*/
+			//alert('子需求需要从新处理');
+		}else if(name=="vestingtime"){
+			/*归属年月*/
+			//data.vestingtime= 1;
+			$('.vestingtime').html('');
+			if(data.vestingtime){
+				$('.vestingtime').html(data[name]);
+				//debugger;
+			}
+			//alert('vestingtime');
+		} else if(name=="demandstate"){
+			continue;
+		}else if(name=="saleleads" || name=="speechcraft" || name=="qualitystandard"){
+			if(name=="saleleads"){
+				if(!data[name]){
+				
+					$('.saleleads .salepad.test').html('<span class="first">上传</span><span class="js_mark">上传成功</span><span class="js_mark">上传失败</span><span class="js_mark"></span>');
+				
+				}else{
+					var filename = data[name].substr(data[name].lastIndexOf('/')+1);
+					$('.saleleads .salepad.test').html('<span class="first">上传</span><a  style="float:left;" href="https://res.mshuoke.com/'+data[name]+'">下载</a><span class="js_mark">上传成功</span><span class="js_mark">上传失败</span><span style="display:block; float:left; margin-left:15px;" class="js_mark">文件名： '+filename+'</span>');
+				
+				}
+			}
+			if(name=="speechcraft"){
+				//debugger;
+				if(!data[name]){
+					$('.speechcraft .wordFile.test').html('<span class="first">上传</span><span class="js_mark">上传成功</span><span class="js_mark">上传失败</span><span class="js_mark"></span>');
+				}else{
+					//debugger;
+					var filename = data[name].substr(data[name].lastIndexOf('/')+1);
+					$('.speechcraft .wordFile.test').html('<span class="first">上传</span><a style="float:left;"  href="https://res.mshuoke.com/'+data[name]+'">下载</a><span class="js_mark">上传成功</span><span class="js_mark">上传失败</span><span style="display:block; float:left; margin-left:15px;" class="js_mark">文件名： '+filename+'</span>');
+				}
+				
+			}
+			if(name=="qualitystandard"){
+			//debugger;
+				if(!data[name]){
+					$('.qualitystandard .quality.test').html('<span class="first">上传</span><span class="js_mark">上传成功</span><span class="js_mark">上传失败</span><span class="js_mark"></span>');
+				}else{
+					//debugger;
+				
+					var filename = data[name].substr(data[name].lastIndexOf('/')+1);
+					$('.qualitystandard .quality.test').html('<span class="first">上传</span><a style="float:left;" href="https://res.mshuoke.com/'+data[name]+'">下载</a><span class="js_mark">上传成功</span><span class="js_mark">上传失败</span><span style="display:block; float:left; margin-left:15px;" class="js_mark">文件名： '+filename+'</span>');
+				}
+				
+			}
+		}else{
+			console.log(name);
+			$('.'+name).html(data[name]);
+		}
+		
+	}
+
+}
+
+/*处理详情*/
+function handleDetail(data){
+	taskdata = data;
+	setValuedata(data);
+	$('#myModal').modal('show');
+}
+
+
+
+var newDate = new Date();
+var time = newDate.toJSON();
+ $(".start_date")
+ .datetimepicker({
+		language:  'zh-CN',
+		 weekStart: 1,
+		 todayBtn:  1,
+		 autoclose: 1,
+		 todayHighlight: 1,
+		 startView: 2,
+		 minView: 2,
+		 forceParse: 0,
+		 format: 'yyyy-mm-dd',
+		 startDate:new Date(time),
+}).on("click",function(ev){
+		$(".start_date").datetimepicker("setEndDate", $(".end_date").val());
+}).on("change",function(ev){
+	$(".startDate").html($(".start_date").val());
+	$(".start_date").blur();
+}).on("blur",function(ev){
+	if(isNull($(".start_date").val())){
+		$(this).parent().find("p.error").eq(0).show();
+	}else{
+		$(this).parent().find("p.error").eq(0).hide();
+	}
+});
+					
+$(".end_date")
+.datetimepicker({
+			language:  'zh-CN',
+				 weekStart: 1,
+				 todayBtn:  1,
+				 autoclose: 1,
+				 todayHighlight: 1,
+				 startView: 2,
+				 minView: 2,
+				 forceParse: 0,
+				 format: 'yyyy-mm-dd',
+}).on("click", function (ev) {
+		$(".end_date").datetimepicker("setStartDate", $(".start_date").val());
+}).on("change",function(ev){
+$(".endDate").html($(".end_date").val());
+$(".end_date").blur();
+}).on("blur",function(ev){
+	if(isNull($(".end_date").val())){
+		$(this).parent().find("p.error").eq(1).show();
+	}else{
+		$(this).parent().find("p.error").eq(1).hide();
+	}
+});
+
+</script>
+<script>
+	//上传文件
+
+	
+	$(document).on('click','.salepad span.first',function (){
+		$('.salepad .js_mark').hide();
+		$('.salepad a').hide();
+		//debugger;
+		return $('#salepad .file').click();
+	})
+	
+	
+	$('#salepad .file').click(function (){
+		var signature = JSON.parse(getSignature({fileName:'credentials'}));
+		
+		$('#salepad .file')[0].onchange = function (){
+			var file = this.files[0];
+			//debugger;
+		
+			/*成功以后返回对象直接使用*/
+			var then = setupload({
+				formId:'#salepad',
+				key:'.idkey',
+				OSSAccessKeyId:'.idOSSAccessKeyId',
+				policy:'.idpolicy',
+				Signature:'.idSignature'
+			},signature);
+			
+		
+			then.then(function (data){
+				//上传成功
+				//debugger;
+				$('.salepad span').eq(1).show();
+				
+				$('.salepad span').eq(3).show().css({marginLeft:'16px'}).html('文件名为：'+file.name);
+				//debugger;
+				$('.saleleads').attr('data-path',signature.dir+file.name);
+			}).fail(function (data){
+				$('.salepad span').eq(2).show();
+				//debugger;
+				//上传失败
+			});
+			
+		};
+	});
+	//console.log($('.wordFile span').eq(0));
+	
+	$(document).on('click','.wordFile span.first',function (){
+		$('.wordFile .js_mark').hide();
+		$('.wordFile a').hide();
+		//debugger;
+		return $('#wordFile .file').click();
+	})
+	
+	$('#wordFile .file').click(function (){
+		var signature = JSON.parse(getSignature({fileName:'credentials'}));
+		
+		$('#wordFile .file')[0].onchange=function (){
+			var file = this.files[0];
+			/*成功以后返回对象直接使用*/
+			var then = setupload({
+				formId:'#wordFile',
+				key:'.idkey',
+				OSSAccessKeyId:'.idOSSAccessKeyId',
+				policy:'.idpolicy',
+				Signature:'.idSignature'
+			},signature);
+			
+		
+			then.then(function (data){
+				$('.wordFile span').eq(1).show();
+				$('.wordFile span').eq(3).show().css({marginLeft:'16px'}).html('文件名为：'+file.name);
+				//debugger;
+				//上传成功
+				$('.speechcraft').attr('data-path',signature.dir+file.name);
+			}).fail(function (data){
+				//debugger;
+				//上传失败
+				$('.wordFile span').eq(2).show();
+			});
+			
+		};
+	});
+	
+	
+	
+
+	
+	$(document).on('click','.quality span.first',function (){
+		$('.quality .js_mark').hide();
+		$('.quality a').hide();
+		//debugger;
+		return $('#quality .file').click();
+	})
+	
+	
+	$('#quality .file').click(function (){
+	
+		var signature = JSON.parse(getSignature({fileName:'credentials'}));
+		
+		$('#quality .file')[0].onchange = function (){
+			var file = this.files[0];
+			/*成功以后返回对象直接使用*/
+			var then = setupload({
+				formId:'#quality',
+				key:'.idkey',
+				OSSAccessKeyId:'.idOSSAccessKeyId',
+				policy:'.idpolicy',
+				Signature:'.idSignature'
+			},signature);
+			
+			then.then(function (data){
+				//debugger;
+				//上传成功
+				$('.quality span').eq(1).show();
+				$('.quality span').eq(3).show().css({marginLeft:'16px'}).html('文件名为：'+file.name);
+				$('.qualitystandard').attr('data-path',signature.dir+file.name);
+			}).fail(function (data){
+				$('.quality span').eq(2).show();
+				//debugger;
+				//上传失败
+			});
+			
+		};
+	});
+	
+
+
+</script>
+</body>
+</html>

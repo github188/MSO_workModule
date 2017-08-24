@@ -1,0 +1,288 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Bootstrap Table Examples</title>
+
+
+	<link rel="stylesheet" href="../../css/bootstrap.min.css" />
+	<link rel="stylesheet" href="../../css/bootstrap-table.css" />
+	<link rel="stylesheet" href="../../css/bootstrap-datetimepicker.css" />
+	<link rel="stylesheet" href="../../css/combo.select.css" />
+	
+	<script src="../../js/jquery.js" type="text/javascript"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+
+	<script src="../../js/bootstrap-table.min.js" type="text/javascript"></script>
+	<script src="../../js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+	<script src="../../js/url.js" type="text/javascript"></script>
+	<script src="../../js/mock.js" type="text/javascript"></script>
+	<script src="../../js/myself-function/main.js" type="text/javascript"></script>
+	
+	<script src="../../js/jquery.combo.select.js"></script>
+	
+<!-- 以下信息与演示无关，可不必理会 -->
+<style>
+	
+
+	h1 { width: 1000px; margin: 40px auto; font: 32px "Microsoft Yahei"; text-align: center;}
+
+	.menu { position: absolute; left: 0; top: 0; bottom: 0; width: 200px; padding-top: 100px; font-family: Consolas,arial,"宋体"; background-color: #ccc;}
+	.menu a { display: block; height: 40px; margin: 0 0 1px 2px; padding-left: 10px; line-height: 40px; font-size: 14px; color: #333; text-decoration: none;}
+	.menu a:hover { background-color: #eee;}
+	.menu .cur { color: #000; background-color: #fff !important;}
+
+	.vad { margin: 320px 0 10px; font-family: Consolas,arial,宋体,sans-serif; text-align:center;}
+	.vad a { display: inline-block; height: 36px; line-height: 36px; margin: 0 5px; padding: 0 50px; font-size: 14px; text-align:center; color:#eee; text-decoration: none; background-color: #222;}
+	.vad a:hover { color: #fff; background-color: #000;}
+	.thead { width: 728px; height: 90px; margin: 0 auto; border-bottom: 40px solid transparent; }
+	
+	
+	
+			#forlogin { display:none; background:#ffffff;  overflow:hidden; height:100%; }
+		*{ padding:0; margin:0; }
+		ul li { list-style-type:none; }
+		#forlogin ul { width:100%; overflow:hidden; margin-top:20px;  }
+		#forlogin ul li { float:left; width:50%; }
+		
+		#forlogin ul li.first {width:60px; text-align:right; }
+		#forlogin ul.industry{ margin-top:30px; }
+		#forlogin ul.industry li {  }
+		#forlogin ul.industry li input { float:left;  }
+		#forlogin ul.high li.high-n   { text-align:left;  }
+		
+		#forlogin ul li.last  { padding-left:20px;  }
+		#forlogin ul li .running { float:left;  width:70px; height:20px; }
+		#forlogin ul li .outOff { float:left; width:70px; height:20px; }
+		#forlogin ul li .outOff  span { float:left; margin-top:2px; margin-left:5px;  display:inline-table; }
+		#forlogin ul li .running  span { float:left; margin-top:2px;    margin-left:5px;   display:inline-table; }
+		#forlogin ul li .outOff input { float:left; }
+		#forlogin ul li .running input { float:left; }
+		#forlogin ul.descening li input { float:left; }
+		#addIndustry  { margin-top:20px; }
+		#toolbar { width:120px; } 
+		.fixed-table-toolbar { width:120px; }
+		.industrySetting { width:100%; overflow:hidden; margin-top:20px; margin-bottom:0; }
+		.industrySetting li { float:left; }
+		.search-box { overflow:hidden; padding-bottom:3px; }
+		.search-box  .fixed-table-toolbar { float:left; }
+		.search-box  #toolbar {margin-left:20px; float:left; margin-top:10px; margin-bottom:10px; }
+		.bootstrap-table { margin-top:15px; }
+		
+		
+		@media (min-width: 100px) {
+			.container {
+				width: auto;
+			}
+		}
+		.fixed-table-toolbar { width:100%; }
+		
+		.pull-right1.search { margin-top:0; float:left; width:317px; }
+		.pull-right1 { float:left; }
+		.pull-right1.select { width:200px; }
+		.search-box { margin-top:10px; }
+
+		
+		.data-box {
+			width: 471px;
+			height: 30px;
+			border-radius: 6px;
+			border: 1px solid #e8e8e8;
+			padding-bottom: 0;
+			position: relative;
+			float:left; 
+			margin-top:2px;
+		}
+		
+		.data-box input {
+			color: #a7a7a7;
+			width: 228px;
+			border: none;
+			text-align: center;
+			line-height: 28px;
+		}
+		
+		.search-btn { margin-left:20px; }
+		th,td { text-align:center; }
+		
+		
+		
+		
+		
+		
+		
+		
+		.modal-dialog { width:860px; }
+.modal-body-title { border-bottom:1px solid #e5e5e5; padding-bottom:15px;  }
+ul li { list-style:none; }
+.main-title-box { overflow:hidden; }
+.main-title { width:10px; height:20px; background:rgba(255, 153, 0, 1); display:block; float:left; }
+.main-box { margin-top:20px; overflow:hidden;  }
+.main-txt { margin-left:10px; }
+.main-list-item { float:left; width:400px; }
+.main-list-item li { line-height:38px; }
+.main-list-item li span:nth-child(1){ font-weight:700; font-family: 'Arial Negreta', 'Arial';}
+.btn-primary { background:#5cb85c; border-color:#4cae4c; }
+
+.conpanyname { float:left; }
+
+.main-list-item.conpany { margin-bottom:20px; }
+
+ .btn-success.btn-lg { padding:6px 12px; }
+ .btn-lg, .btn-group-lg>.btn { font-size:14px; }
+ 
+.bootstrap-table .fixed-table-toolbar {  overflow:-hidden; }
+.pull-right.search { display:none; height:auto;}
+
+.operation { width:300px; overflow:hidden; float:left; margin-top:5px; margin-left:50px; }
+.operation li { float:left; margin-left:20px; }
+.operation li:nth-child(1){ margin:0; }
+.main { margin:50px; }
+
+@media (min-width: 300px){
+	.modal-content {
+		-webkit-box-shadow: 0 5px 15px rgba(0,0,0,.5);
+		box-shadow: 0 5px 15px rgba(0,0,0,.5);
+		
+	}
+	.modal-dialog { width:500px; }
+}
+
+.targetcustomname ul li { width:100%; overflow:hidden; margin-top:20px;  }
+.targetcustomname ul li span:nth-child(1){ float:left;  width:100px; text-align:right; line-height:34px; }
+.targetcustomname  { margin-bottom:50px; margin-top:50px; }
+</style>
+</head>
+<body>
+
+  <div class="container">
+		<!--
+		<div class="search-box">
+			<div class="fixed-table-toolbar">
+				<div class="pull-right1 search">
+					<input class="form-control" type="text" placeholder="Search">
+				</div>
+				<div class="pull-right1 select search-btn">
+					<button type="button" class="btn btn-success">搜索</button>
+				</div>
+			</div>
+		</div>
+		-->
+		
+		<div  class="main">
+			<select id="datalist" style="float:left;">
+				<option value="">月份</option>
+				<option value="一月">大海</option>
+				<option value="二月">日本</option>
+				<option value="三月">周国</option>
+				<option value="四月">周月</option>
+				<option value="五月">五月</option>
+				<option value="六月">六月</option>
+				<option value="七月">七月</option>
+				<option value="八月">八月</option>
+				<option value="九月">九月</option>
+				<option value="十月">十月</option>
+				<option value="十一月">十一月</option>
+				<option value="十二月">十二月</option>
+			</select>
+			<ul class="operation">
+				<!--<li><button type="button" class="btn updata btn-success">搜索</button></li>-->
+				<li><button type="button" class="btn allotagent  btn-success">分配代理</button></li>
+			</ul>
+		</div>
+		
+			<!--resetenigma弹出成-->
+	<div class="modal fade" id="allot" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+					</button>
+					<h4 class="modal-title" id="myModalLabel">
+						通知
+					</h4>
+				</div>
+				
+				
+				<div style="text-align:center;" class="targetcustomname">
+					
+						<ul>
+							<li>
+								<span>分配代理商：</span>
+								<div class="pull-right1 select">
+									<select class="form-control">
+									  <option>1</option>
+									  <option>2</option>
+									  <option>3</option>
+									  <option>4</option>
+									  <option>5</option>
+									</select>
+								</div>
+							</li>
+							<li>
+								<span>渠道规则：</span>
+								<div class="pull-right1 select">
+									<select class="form-control">
+									  <option>1</option>
+									  <option>2</option>
+									  <option>3</option>
+									  <option>4</option>
+									  <option>5</option>
+									</select>
+								</div>
+								<div>
+									<input style="width:100px; float:left;"  class="form-control" type="number" />
+									<span style="float:left; margin-left:5px; line-height:34px;">单元/元</span>
+								</div>
+							</li>
+						</ul>
+				</div>
+				
+
+				<div class="modal-footer" style=" overflow:hidden;">
+					<button type="button"  class="btn createaccount btn-primary"  >
+						确认
+					</button>
+					<button type="button"  data-dismiss="modal"  class="btn btn-default" >
+						取消
+					</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div>
+	</div>
+</div>
+<script>
+$(function() {
+	$('#datalist').comboSelect();
+	
+	
+	
+	//处理插件细微的不足
+	$('.combo-dropdown li').click(function (ev){
+		var target = $(ev.currentTarget);
+		$('.combo-dropdown li').removeClass('option-hover');
+		target.addClass('option-hover');
+	});
+	
+	$('.allotagent').click(function (){
+		$('.combo-select').removeClass('combo-open');
+		var companyname = $('.combo-input').val();
+		if(companyname){
+			$('#allot').modal('show');
+		}
+		
+	});
+	
+	$('.combo-input').click(function (){
+		$(this).val('');
+		$('.combo-select').addClass('combo-open');
+	});
+	
+
+});
+</script>
+
+
+
+</body>
+</html>

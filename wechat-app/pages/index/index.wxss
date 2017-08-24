@@ -1,0 +1,7 @@
+.swiper-item{
+    display: block;
+    height: 150px;
+}
+.slide-image{
+  width: 100%;
+}

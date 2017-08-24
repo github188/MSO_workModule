@@ -1,0 +1,592 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Bootstrap Table Examples</title>
+
+
+	<link rel="stylesheet" href="../../css/bootstrap.min.css" />
+	<link rel="stylesheet" href="../../css/bootstrap-table.css" />
+	<link rel="stylesheet" href="../../css/bootstrap-datetimepicker.css" />
+	
+	
+	<script src="../../js/jquery.js" type="text/javascript"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+
+	<script src="../../js/bootstrap-table.min.js" type="text/javascript"></script>
+	<script src="../../js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+	<script src="../../js/url.js" type="text/javascript"></script>
+	<script src="../../js/mock.js" type="text/javascript"></script>
+	<script src="../../js/myself-function/main.js" type="text/javascript"></script>
+	
+	
+	<style>
+		#forlogin { display:none; background:#ffffff;  overflow:hidden; height:100%; }
+		*{ padding:0; margin:0; }
+		ul li { list-style-type:none; }
+		#forlogin ul { width:100%; overflow:hidden; margin-top:20px;  }
+		#forlogin ul li { float:left; width:50%; }
+		
+		#forlogin ul li.first {width:60px; text-align:right; }
+		#forlogin ul.industry{ margin-top:30px; }
+		#forlogin ul.industry li {  }
+		#forlogin ul.industry li input { float:left;  }
+		#forlogin ul.high li.high-n   { text-align:left;  }
+		
+		#forlogin ul li.last  { padding-left:20px;  }
+		#forlogin ul li .running { float:left;  width:70px; height:20px; }
+		#forlogin ul li .outOff { float:left; width:70px; height:20px; }
+		#forlogin ul li .outOff  span { float:left; margin-top:2px; margin-left:5px;  display:inline-table; }
+		#forlogin ul li .running  span { float:left; margin-top:2px;    margin-left:5px;   display:inline-table; }
+		#forlogin ul li .outOff input { float:left; }
+		#forlogin ul li .running input { float:left; }
+		#forlogin ul.descening li input { float:left; }
+		#addIndustry  { margin-top:20px; }
+		#toolbar { width:120px; } 
+		.fixed-table-toolbar { width:120px; }
+		.industrySetting { width:100%; overflow:hidden; margin-top:20px; margin-bottom:0; }
+		.industrySetting li { float:left; }
+		.search-box { overflow:hidden; padding-bottom:3px; }
+		.search-box  .fixed-table-toolbar { float:left; }
+		.search-box  #toolbar {margin-left:20px; float:left; margin-top:10px; margin-bottom:10px; }
+		.bootstrap-table { margin-top:15px; }
+		
+		
+		@media (min-width: 100px) {
+			.container {
+				width: auto;
+			}
+		}
+		.fixed-table-toolbar { width:100%; }
+		
+		.pull-right1.search { margin-top:0; float:left; width:317px; }
+		.pull-right1 { float:left; }
+		.pull-right1.select { width:200px; }
+		.search-box { margin-top:10px; }
+
+		
+		.data-box {
+			width: 471px;
+			height: 30px;
+			border-radius: 6px;
+			border: 1px solid #e8e8e8;
+			padding-bottom: 0;
+			position: relative;
+			float:left; 
+			margin-top:2px;
+		}
+		
+		.data-box input {
+			color: #a7a7a7;
+			width: 228px;
+			border: none;
+			text-align: center;
+			line-height: 28px;
+		}
+		
+		.search-btn { margin-left:20px; }
+		th,td { text-align:center; }
+		
+		
+		
+		
+		
+		
+		
+		
+		.modal-dialog { width:860px; }
+.modal-body-title { border-bottom:1px solid #e5e5e5; padding-bottom:15px;  }
+ul li { list-style:none; }
+.main-title-box { overflow:hidden; }
+.main-title { width:10px; height:20px; background:rgba(255, 153, 0, 1); display:block; float:left; }
+.main-box { margin-top:20px; overflow:hidden;  }
+.main-txt { margin-left:10px; }
+.main-list-item { float:left; width:400px; }
+.main-list-item li { line-height:38px; }
+.main-list-item li span:nth-child(1){ font-weight:700; font-family: 'Arial Negreta', 'Arial';}
+.btn-primary { background:#5cb85c; border-color:#4cae4c; }
+
+.conpanyname { float:left; }
+
+.main-list-item.conpany { margin-bottom:20px; }
+
+ .btn-success.btn-lg { padding:6px 12px; }
+ .btn-lg, .btn-group-lg>.btn { font-size:14px; }
+ 
+  .bootstrap-table .fixed-table-toolbar {  overflow:-hidden; }
+.pull-right.search { display:none; height:auto;}
+
+.bootstrap-table { margin-top:-30px; }
+
+
+.operation { margin-top:50px;}
+.operation li { float:left; margin-left:20px; }
+.operation li:nth-child(1){ margin:0; }
+
+@media (min-width: 300px){
+	.modal-content {
+		-webkit-box-shadow: 0 5px 15px rgba(0,0,0,.5);
+		box-shadow: 0 5px 15px rgba(0,0,0,.5);
+		
+	}
+	.modal-dialog { width:500px; }
+}
+
+.targetcustomname ul li { width:100%; overflow:hidden; margin-top:20px;  }
+.targetcustomname ul li span:nth-child(1){ float:left;  width:100px; text-align:right; line-height:34px; }
+.targetcustomname  { margin-bottom:50px; margin-top:50px; }
+		
+	</style>
+</head>
+<body>
+    <div class="container">
+		<!--
+		<div class="search-box">
+			<div class="fixed-table-toolbar">
+				<div class="pull-right1 search">
+					<input class="form-control" type="text" placeholder="Search">
+				</div>
+				<div class="pull-right1 select search-btn">
+					<button type="button" class="btn btn-success">搜索</button>
+				</div>
+			</div>
+		</div>
+		-->
+		<ul class="operation">
+			<li><button type="button" class="btn updata btn-success">修改</button></li>
+			<li><button type="button" class="btn reset  btn-success">重置密码</button></li>
+			<li><button type="button" class="btn freeze btn-success">冻结</button></li>
+			<li><button type="button" class="btn unfreeze btn-success">解除冻结</button></li>
+			<li><button type="button" class="btn information btn-success">通知</button></li>
+		</ul>
+        <table id="table">
+            
+        </table>
+   
+	
+	
+	<div id="forlogin">
+		 <div>
+			<ul class="industry">
+				<li class="first" >行业名称:</li>
+				<li class="last"><input id="username" placeholder="请输入行业名称"/></li>
+			</ul>
+			<ul class="high">
+				<li  class="first" >分类级别:</li>
+				<li class="high-n last">一级分类</li>
+			</ul>
+			<ul>
+				<li  class="first" >状态:</li>
+				<li class="last">
+					<div class="running"><input type="radio" /><span>启用</span></div>
+					<div class="outOff"><input type="radio" /><span>停用</span></div>
+				</li>
+			</ul>
+			<ul class="descening">
+				<li  class="first" >排序值</li>
+				<li class="last"><input placeholder="请输入排序值，值越大越靠前"/></li>
+			</ul>
+		 </div>
+	</div>
+	 
+	 
+	</div>
+	
+	
+	<!--account弹出成-->
+	<div class="modal fade" id="updataModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+					</button>
+					<h4 class="modal-title" id="myModalLabel">
+						修改
+					</h4>
+				</div>
+				
+				
+				<div class="targetcustomname">
+				
+					<ul>
+					
+						<li>
+							<span>联系人：</span>
+							<div class="pull-right1 select">
+								<input class="form-control contactname" type="text">
+							</div>
+						</li>
+						<li>
+							<span>职位：</span>
+							<div class="pull-right1 select">
+								<input class="form-control position" type="text">
+							</div>
+						</li>
+						<li>
+							<span>电话：</span>
+							<div class="pull-right1 select">
+								<input class="form-control telphone" type="text">
+							</div>
+						</li>
+						<li>
+							<span>邮箱：</span>
+							<div class="pull-right1 select">
+								<input class="form-control email" type="text">
+							</div>
+						</li>
+					</ul>
+				</div>
+				
+
+				<div class="modal-footer" style=" overflow:hidden;">
+					<button type="button"  class="btn updataccount btn-primary"  >
+						确认
+					</button>
+					<button type="button"  data-dismiss="modal"  class="btn btn-default" >
+						取消
+					</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div>
+	</div>
+	
+	
+	
+	<!--resetenigma弹出成-->
+	<div class="modal fade" id="resetenigma" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+					</button>
+					<h4 class="modal-title" id="myModalLabel">
+						重置密码
+					</h4>
+				</div>
+				
+				
+				<div style="text-align:center;" class="targetcustomname">
+					是否重置密码为111111？
+				</div>
+				
+
+				<div class="modal-footer" style=" overflow:hidden;">
+					<button type="button"  class="btn resetpassword btn-primary"  >
+						重置
+					</button>
+					<button type="button"  data-dismiss="modal"  class="btn btn-default" >
+						取消
+					</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div>
+	</div>
+	
+	<!--resetenigma弹出成-->
+	<div class="modal fade" id="inform" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+					</button>
+					<h4 class="modal-title" id="myModalLabel">
+						通知
+					</h4>
+				</div>
+				
+				
+				<div style="text-align:center;" class="targetcustomname">
+					是否短信通知XXX？
+				</div>
+				
+
+				<div class="modal-footer" style=" overflow:hidden;">
+					<button type="button"  class="btn createaccount btn-primary"  >
+						确认
+					</button>
+					<button type="button"  data-dismiss="modal"  class="btn btn-default" >
+						取消
+					</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div>
+	</div>
+	
+	
+	<div class="modal fade" id="loading" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop='static'>
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h4 class="modal-title" id="myModalLabel">提示</h4>
+		  </div>
+		  <div class="modal-body freezing">
+			请稍候......
+		  </div>
+		</div>
+	  </div>
+  </div>
+
+		
+<script>
+/*新增行业*/
+
+
+var url  = domain137 + '/channelusers/';
+
+var $table = $('#table');
+
+
+$table.bootstrapTable({
+	 url:url,
+	 pagination: true, //分页
+	 pagesize:3,
+	 contentType:'application/json',
+     search:true,
+	 showColumns:true,
+	 checkbox:false,
+	 sortable: true,           //是否启用排序
+     sortOrder: "asc",   
+	 queryParams:function (params){
+		/*自定义参数,如果有参数在这里定义*/
+	    params.all =  ifAll;
+	    params.size = 100000000;
+	    return  params;
+	 },
+	 sidePagination: "client",
+	 responseHandler:function(res){
+		//console.log(JSON.stringify(res));
+		//debugger;
+		
+		/*"total": 800,*/
+		var newJson = {};
+		newJson.total = '800';
+		newJson.data = res.data;
+		//debugger;
+		//res.rows = res.list;
+		return newJson;
+     },
+	 onLoadSuccess(){
+	
+	 },
+	 formatNoMatches:function(){
+         return '没有搜索结果'
+     },
+     formatLoadingMessage:function(){
+          return '正在努力加载中...';
+     },
+	 columns:[
+		{field: 'selectItem', radio: true},
+		{title: 'id', field: 'id', visible: false, align: 'center', valign: 'middle'},
+		{  
+          field: 'jfuname',  
+          title: '账号',
+		  sortable : true		  
+        }, {  
+          field: 'contactname',  
+          title: '联系人'  
+        }, {  
+          field: 'position',  
+          title: '职位'  
+        }, {  
+          field: 'telphone',  
+          title: '代理账号'
+		 // 'class':'handle',
+		  //formatter:function (data,row,b){
+			
+			//return '<div  data-taskid = '+$.encode(JSON.stringify(row))+' class="btn btn-primary btn-lg">指派订单</div>';
+		 // }
+        },
+		 {  
+          field: 'email',  
+          title: '邮箱'  
+        }
+		,
+		 {  
+          field: 'createtime',  
+          title: '创建时间'  
+        }
+		,
+		 {  
+			  field: 'jfudisable',  
+			  title: '状态',
+			  formatter:function (data,row,b){
+					//"1-启用,2冻结",
+				if(row.jfudisable == 1){
+					return '启用';
+				}
+				
+				if(row.jfudisable == 2){
+					return '冻结';
+				}
+			 }
+        }
+		]  
+		
+});
+
+
+	var $updatabutton =  $('.updata.btn-success');
+	var $updataccount = $('.updataccount');
+	var $resetpassword =  $('.resetpassword');
+	var $reset = $('.reset');
+	var $information = $('.information');
+	var $freeze = $('.freeze');
+	var $unfreeze = $('.unfreeze');
+	//updata
+
+    $(function () {
+		//修改
+		var selecteddata;
+		$updatabutton.click(function (){
+			var selected = $table.bootstrapTable('getAllSelections');
+			selecteddata = selected[selected.length-1];
+			//console.log(selecteddata);
+			for(var name in selecteddata){
+				$('.'+name).val('');
+				if(selecteddata[name]){
+					$('.'+name).val(selecteddata[name]);
+				}
+			}
+			if(selecteddata){
+				$('#updataModal').modal('show');
+			}
+			
+		});
+		
+		$updataccount.click(function (){
+			selecteddata.jfuname = $('.jfuname').val();
+			selecteddata.contactname = $('.contactname').val();
+			selecteddata.position = $('.position').val();
+			selecteddata.telphone = $('.telphone').val();
+			selecteddata.email = $('.email').val();
+			var jfuid = selecteddata.jfuid;
+			var url = domain137 + "/channeluser/"+ jfuid;
+			console.log(JSON.stringify(selecteddata));
+			$.when($.ajax({
+				url:url,
+				type:'PATCH',
+				contentType:'application/json',
+				data:JSON.stringify(selecteddata)
+			})).then(function (data){
+				if(data.msg == "success"){
+					$table.bootstrapTable('refresh');
+				}
+			}).fail(function (data){
+			
+			});
+			$('#updataModal').modal('hide');
+		});
+		
+		
+		
+		
+		//重置密码
+		$reset.click(function (){
+			var selected = $table.bootstrapTable('getAllSelections');
+			selecteddata = selected[selected.length-1];
+			if(!selecteddata)return;
+			//debugger;
+			$('#resetenigma').modal('show');
+		});
+		
+		$resetpassword.click(function (){
+			var jfuid = selecteddata.jfuid;
+			var url = domain137 + "/channeluser/"+ jfuid;
+			selecteddata.jfupassword = '111111';
+			//debugger;
+			$.when($.ajax({
+				url:url,
+				type:'PATCH',
+				contentType:'application/json',
+				data:JSON.stringify(selecteddata)
+			})).then(function (data){
+				if(data.msg == "success"){
+					$table.bootstrapTable('refresh');
+				}
+			}).fail(function (data){
+			
+			});
+			
+			$('#resetenigma').modal('hide');
+		});
+		
+		
+		//冻结
+		var timer;
+		$freeze.click(function (){
+			freese(2,'冻结成功');
+		});
+		
+		//解冻
+		$unfreeze.click(function (){
+			freese(1,'解冻成功');
+		});
+		function freese(jfudisable,msg){
+			clearTimeout(timer);
+			var selected = $table.bootstrapTable('getAllSelections');
+			selecteddata = selected[selected.length-1];
+			if(!selecteddata)return;
+			
+			var jfuid = selecteddata.jfuid;
+			var url = domain137 + "/channeluser/"+ jfuid;
+			selecteddata.jfudisable = jfudisable;
+			//debugger;
+			$('.freezing').html('请稍候......');
+			$('#loading').modal('show');
+			//return;
+			$.when($.ajax({
+				url:url,
+				type:'PATCH',
+				contentType:'application/json',
+				data:JSON.stringify(selecteddata)
+			})).then(function (data){
+				if(data.msg == "success"){
+					$('.freezing').html(msg);
+					timer = setTimeout(function (){
+						$('#loading').modal('hide');
+						$table.bootstrapTable('refresh');
+					},800);
+				}
+			}).fail(function (data){
+			
+			});
+		}
+		
+		
+		//通知
+		$information.click(function (){
+			var selected = $table.bootstrapTable('getAllSelections');
+			selecteddata = selected[selected.length-1];
+			var telphone = selecteddata.telphone;
+			var jfudisable = selecteddata.jfudisable;
+			var regText = /^1[0-9]{10}/g;
+			//debugger;
+			if(regText.test(telphone) && (jfudisable==1)){
+				$('#inform').modal('show');
+			}			
+		});
+		
+		
+		$('.information').click(function (){
+			var url = 'https://gateway.mshuoke.com/message/publicApi/sendmsg'
+			var row = {phonenum:selecteddata.telphone,msg:'mso获客'};
+			//return;
+			$.when($.ajax({
+				url:url,
+				type:'POST',
+				contentType:'application/json',
+				data:JSON.stringify(row)
+			})).then(function (data){
+				if(data.msg == "success"){
+					
+				}
+			}).fail(function (data){
+			
+			});
+		});
+	 });
+
+</script>
+
+</body>
+</html>

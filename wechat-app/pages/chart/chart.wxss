@@ -1,0 +1,13 @@
+.page__title, .page__hd, .section__title{
+    text-align: center;
+}
+.section__title{
+  padding: 20px 0;
+}
+.section__ctn {
+  width: 90%;
+  margin: 0 auto;
+}
+.section__ctn image{
+  width: 100%;
+}

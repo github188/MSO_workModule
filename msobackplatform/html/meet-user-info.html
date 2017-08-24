@@ -1,0 +1,1468 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Bootstrap Table Examples</title>
+
+
+	<link rel="stylesheet" href="../css/bootstrap.min.css" />
+	<link rel="stylesheet" href="../css/bootstrap-table.css" />
+	<link rel="stylesheet" href="../css/bootstrap-datetimepicker.css" />
+	
+	
+	<script src="../js/jquery.js" type="text/javascript"></script>
+    <script src="../js/bootstrap.min.js"></script>
+
+	<script src="../js/bootstrap-table.min.js" type="text/javascript"></script>
+	<script src="../js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+	<script src="../js/url.js" type="text/javascript"></script>
+	
+	<script src="../js/url.js" type="text/javascript"></script>
+	<script src="../js/mock.js" type="text/javascript"></script>
+	<script src="../js/myself-function/main.js" type="text/javascript"></script>
+	<script src="../js/PerfectData_upload-darren.js" type="text/javascript"></script>
+	<script src="../js/jquery.validate.min.js" type="text/javascript"></script>
+	
+
+	
+	<style>
+		#forlogin { display:none; background:#ffffff;  overflow:hidden; height:100%; }
+		*{ padding:0; margin:0; }
+		ul li { list-style-type:none; }
+		#forlogin ul { width:100%; overflow:hidden; margin-top:20px;  }
+		#forlogin ul li { float:left; width:50%; }
+		
+		#forlogin ul li.first {width:60px; text-align:right; }
+		#forlogin ul.industry{ margin-top:30px; }
+		#forlogin ul.industry li {  }
+		#forlogin ul.industry li input { float:left;  }
+		#forlogin ul.high li.high-n   { text-align:left;  }
+		
+		#forlogin ul li.last  { padding-left:20px;  }
+		#forlogin ul li .running { float:left;  width:70px; height:20px; }
+		#forlogin ul li .outOff { float:left; width:70px; height:20px; }
+		#forlogin ul li .outOff  span { float:left; margin-top:2px; margin-left:5px;  display:inline-table; }
+		#forlogin ul li .running  span { float:left; margin-top:2px;    margin-left:5px;   display:inline-table; }
+		#forlogin ul li .outOff input { float:left; }
+		#forlogin ul li .running input { float:left; }
+		#forlogin ul.descening li input { float:left; }
+		#addIndustry  { margin-top:20px; }
+		#toolbar { width:120px; } 
+		.fixed-table-toolbar { width:120px; }
+		.industrySetting { width:100%; overflow:hidden; margin-top:20px; margin-bottom:0; }
+		.industrySetting li { float:left; }
+		.search-box { overflow:hidden; padding-bottom:3px; }
+		.search-box  .fixed-table-toolbar { float:left; }
+		.search-box  #toolbar {margin-left:20px; float:left; margin-top:10px; margin-bottom:10px; }
+		.bootstrap-table { margin-top:15px; }
+		
+		
+		@media (min-width: 100px) {
+			.container {
+				width: auto;
+			}
+		}
+		.fixed-table-toolbar { width:100%;  }
+		
+		.pull-right1.search { margin-top:0; float:left; width:200px; }
+		.pull-right1 { float:left; }
+		.pull-right1.select { width:127px; }
+		.search-box { margin-top:10px; }
+
+		
+		.data-box {
+			width: 471px;
+			height: 30px;
+			border-radius: 6px;
+			border: 1px solid #e8e8e8;
+			padding-bottom: 0;
+			position: relative;
+			float:left; 
+			margin-top:2px;
+		}
+		
+		.data-box input {
+			color: #a7a7a7;
+			width: 228px;
+			border: none;
+			text-align: center;
+			line-height: 28px;
+		}
+		
+		.search-btn { margin-left:20px; }
+		
+		
+		
+	.modal-dialog { width:860px; }
+	.modal-body-title { border-bottom:1px solid #e5e5e5; padding-bottom:15px;  }
+	ul li { list-style:none; }
+	.main-title-box { overflow:hidden; }
+	.main-title { width:10px; height:20px; background:rgba(255, 153, 0, 1); display:block; float:left; }
+	.main-box { margin-top:20px; overflow:hidden;  }
+	.main-txt { margin-left:10px; }
+	.main-list-item { float:left; margin-top:20px; width:100%; }
+	.main-list-item li { line-height:38px; display:table; width:100%; margin-top:20px; }
+	.main-list-item li span:nth-child(1){  margin-right:20px; width:100px; text-align:right; float:left; font-weight:700; font-family: 'Arial Negreta', 'Arial';}
+	
+	.main-list-item.company li { display:none; }
+	
+	.main-list-item .radio {
+		float: left;
+		margin-top:0px; 
+	}
+		
+	.main-list-item .radio i {
+		font-style: normal;
+	}
+	th,td { text-align:center; }
+	.info .pull-right1.select { width:auto; }
+	.info .pull-right1.select  .form-control { width:300px; display:table-cell; }
+	
+	
+	 .test span { display:none; }
+	 .test span:nth-child(1){ display:block; cursor:pointer; }
+	 
+	.btn-primary {
+		background: #5cb85c;
+		border-color: #4cae4c;
+	}
+	
+	.salepad {
+		float: left;
+		width: 220px;
+		height: 138px;
+		border: 1px solid #000000;
+		text-align: center;
+		line-height: 138px;
+		cursor: pointer;
+		overflow: hidden;
+	}
+	
+	.salepad img {
+		width: 100%;
+		height: 100%;
+	}
+	
+	.modal-body {
+		max-height: 500px;
+		overflow-y: auto;
+	}
+	
+	.main-list-item li.upload {
+		width: 220px;
+		height: 180px;
+		float: left;
+		margin-left: 10px;
+	}
+
+	
+	
+	
+.main-list-item li.upload { width:220px; height:180px;  float:left;  margin-left:10px;  }
+
+.main-list-item li:nth-child(1).upload { display:block; }
+.controlUpload { overflow:hidden; list-style:none; }
+
+.controlUpload li{ float:left; width:auto; margin-top:3px; }
+.controlUpload li:nth-child(2){ margin-left:20px; }
+.radio-inline, .checkbox-inline { padding-left:10px; margin-top:-6px; }
+
+.msg-error.hy { color:red; font-size:14px; font-weight:normal; }
+
+.main-list-item li.upload  p { margin:0; line-height:20px; }
+.main-list-item li.upload  p.first{ margin-top:6px; }
+.form-control { width:200px; }
+.form-control.search { width:100%; }
+
+.main-list-item li.upload.compimg { margin-left:0; }
+
+
+textarea {
+    resize: none;
+    width: 200px;
+    height: 80px;
+    overflow: hidden;
+}
+
+
+.pull-right.search { display:none; height:auto;}
+
+.bootstrap-table { margin-top:-30px; }
+
+label.error { color:red; font-weight:normal; margin-left:20px; }
+
+textarea {
+    resize: none;
+    width: 200px;
+    height: 80px;
+    overflow: hidden;
+}
+.main-list-item li.flag {
+    display: none;
+}
+.msg-error.hy { display:none; }
+
+	</style>
+</head>
+<body>
+    <div class="container">
+		<div class="search-box">
+			<div class="fixed-table-toolbar">
+				<div class="pull-right1 search">
+					<input style="width:auto;" class="form-control" type="text" placeholder="Search">
+				</div>
+				<!--
+				<div class="pull-right1 select">
+					<select class="form-control">
+						<option value="0">是否冻结</option>
+						<option value="1">是</option>
+						<option value="2">否</option>
+					</select>
+				</div>
+				<div class="pull-right1 select">
+					<select class="form-control">
+						<option value="">所有</option>
+						<option value="">待分配</option>
+						<option value="all">审核中</option>
+						<option value="all">再次提交</option>
+						<option value="all">通过</option>
+						<option value="all">驳回</option>
+					</select>
+				</div>
+				
+				
+				<div class="data-box">
+						<input autoComplete="off" placeholder="开始日期" type="text" class="form_date start_date" readOnly /><i class="date_icon"></i><span>~</span>
+						<input autoComplete="off" placeholder="结束日期" type="text" class="form_date end_date" readOnly /><i class="date_icon"></i>
+						<p class="error time">请填写开始日期</p><p class="error time">请填写结束日期</p>
+				</div>
+				<div class="data-box">
+						<input autoComplete="off" placeholder="开始日期" type="text" class="form_date start_date" readOnly /><i class="date_icon"></i><span>~</span>
+						<input autoComplete="off" placeholder="结束日期" type="text" class="form_date end_date" readOnly /><i class="date_icon"></i>
+						<p class="error time">请填写开始日期</p><p class="error time">请填写结束日期</p>
+				</div>
+				-->
+				<div class="pull-right1 select search-btn">
+					<button type="button" class="btn btn-success">搜索</button>
+				</div>
+			</div>
+		</div>
+        <table id="table">
+            
+        </table>
+   
+	
+	
+	<div id="forlogin">
+		 <div>
+			<ul class="industry">
+				<li class="first" >行业名称:</li>
+				<li class="last"><input id="username" placeholder="请输入行业名称"/></li>
+			</ul>
+			<ul class="high">
+				<li  class="first" >分类级别:</li>
+				<li class="high-n last">一级分类</li>
+			</ul>
+			<ul>
+				<li  class="first" >状态:</li>
+				<li class="last">
+					<div class="running"><input type="radio" /><span>启用</span></div>
+					<div class="outOff"><input type="radio" /><span>停用</span></div>
+				</li>
+			</ul>
+			<ul class="descening">
+				<li  class="first" >排序值</li>
+				<li class="last"><input placeholder="请输入排序值，值越大越靠前"/></li>
+			</ul>
+		 </div>
+	</div>
+
+	</div>
+	
+	
+	
+	
+	
+	
+	<form id="commentForm" method="get" action="">
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					公司信息
+				</h4>
+			</div>
+			<div class="modal-body">
+			
+					
+					
+					
+					
+					
+					
+						<div class="main-box info">
+							<div class="main-title-box">
+								<span class="main-title"></span><span class="main-txt">注册信息：</span>
+								<div>
+									<ul class="main-list-item">
+										<li>
+											<span>ID：</span>
+											<span class="jfuid"></span>
+										</li>
+										<li>
+											<span>用户名：</span>
+											<span class="jfuname"></span>
+										</li>
+										<li>
+											<span>手机号码：</span>
+											<span class="jfumobilephone"></span>
+										</li>
+										<li>
+											<span>你的称呼：</span>
+											<div class="pull-right1 select">
+												<input class="form-control realname" type="text" />
+											</div>
+										</li>
+										<li>
+											<span>邀请码：</span>
+											<span class="invitationcode"></span>
+										</li>
+									</ul>
+								</div>
+							</div>
+					
+						</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					<div class="main-box info">
+						<div class="main-title-box">
+							<span class="main-title"></span><span class="main-txt">公司信息：</span>
+							<div>
+								<ul class="main-list-item">
+									<li>
+										<span>公司全称：</span>
+										<span class="compname"></span>
+									</li>
+									
+									<li>
+										<span>内部简称：</span>
+										<div class="pull-right1 select">
+											<input  name="shortname"  class="form-control shortname" type="text" />
+											
+										</div>
+									</li>
+									
+									<li>
+										<span>域名前缀：</span>
+										<div class="pull-right1 select">
+											<input  name="domainnameprefix" placeholder="请填写6位英文或数字" class="form-control domainnameprefix" type="text" />
+											<label id="domainnameprefix-error" class="error" for="domainnameprefix"></label>
+										</div>
+										<span class="domainnameprefixtext"></span>
+									</li>
+									
+									<li>
+										<span>公司地址：</span>
+										<div class="pull-right1 select">
+											<input  name="compaddr" class="form-control compaddr" type="text" />
+										</div>
+									</li>
+									
+									<li>
+										<span>擅长行业：</span>
+										<span class="compind"></span>
+									</li>
+									
+									
+									<li>
+										<span>擅长项目：</span>
+										<span class="goodpro"></span>
+									</li>
+									
+									<li>
+										<span>公司网址：</span>
+										<div class="pull-right1 select">
+											<input class="form-control compwebsite" type="text" />
+										</div>
+									</li>
+									
+									<li>
+										<span>公司规模：</span>
+										<div class="pull-right1 select">
+											<select class="form-control companysize">
+												<option value="9">10人以下</option>
+												<option value="10">10~50人</option>
+												<option value="50">50~200人</option>
+												<option value="200">200人以上</option>
+											</select>
+										</div>
+									</li>
+
+									<form>
+									</form>
+									<li class="upload compimg"  >
+												<span style="float:left;">公司图片1：</span>
+												<form id="salepad" action=""  enctype="" >
+													<div>
+														<span style="display:none;">文件路径</span>
+														<input style="display:none;" class="idkey" type="text" name="key" value="" />
+														<span style="display:none;">OSSAccessKeyId</span>
+														<input style="display:none;" class="idOSSAccessKeyId" type="text" name="OSSAccessKeyId" value="" />
+														<span style="display:none;">policy</span>
+														<input style="display:none;" class="idpolicy" type="text" name="policy" value="" />
+														
+														<input style="display:none;" class="status" type="text" name="success_action_status" value="200" />
+														
+
+														<span style="display:none;">Signature</span>
+														<input style="display:none;" class="idSignature" type="text" name="Signature" value="" />
+														
+														<input  style="display:none;" name="file" type="file"  class="file" />
+													</div>
+												</form>
+												<div class="salepad test">
+												点击上传1
+												</div>		
+											<p class="msg-error hy"></p>	
+												
+									</li>
+									
+								</ul>
+							</div>
+						</div>
+					
+					</div>
+					
+					
+					
+					<div class="main-box info">
+							<div class="main-title-box">
+								<span class="main-title"></span><span class="main-txt">联系信息：</span>
+								<div>
+									<ul class="main-list-item">
+								
+										<li>
+											<span>联系人：</span>
+											<div class="pull-right1 select">
+												<input name="contacts" class="form-control contacts" type="text" />
+											</div>
+										</li>
+										<li>
+											<span>联系电话：</span>
+											<div class="pull-right1 select">
+												<input name="contactsphone" maxLength="11" class="form-control contactsphone" type="text" />
+												<label id="contactsphone-error" class="error" for="contactsphone"></label>
+											</div>
+										</li>
+										<li>
+											<span>电子邮箱：</span>
+											<div class="pull-right1 select">
+												<input name="compemail" class="form-control compemail" type="text" />
+											</div>
+										</li>
+										<li>
+											<span>QQ：</span>
+											<div class="pull-right1 select">
+												<input class="form-control qq" type="text" />
+											</div>
+										</li>
+									
+									</ul>
+								</div>
+							</div>
+					
+						</div>
+						
+						
+						
+						
+						<div class="main-box info">
+							<div class="main-title-box">
+								<span class="main-title"></span><span class="main-txt">数据库信息：</span>
+								<div>
+									<ul class="main-list-item">
+								
+										<li>
+											<span>自有数据库：</span>
+											<span class="hasdb"></span>
+										</li>
+										
+										<li>
+											<span>数据分布：</span>
+											<span class="datacity"></span>
+										</li>
+									</ul>
+								</div>
+							</div>
+					
+						</div>
+						
+						
+						
+							<div class="main-box info">
+								<div class="main-title-box">
+									<span class="main-title"></span><span class="main-txt">财务信息：</span>
+									<div>
+										<ul class="main-list-item">
+									
+											<li>
+												<span>开户名称：</span>
+												<span class="accountname"></span>
+											</li>
+											
+											<li>
+												<span>开户行：</span>
+												<span class="bankaccount"></span>
+											</li>
+											<li>
+												<span>公司账号：</span>
+												<span class="comaccount"></span>
+											</li>
+											<li>
+												<span>开发票类型：</span>
+												<!--1增票(一般纳税人)   2增票(小规模纳税人)  3普票-->
+												<span class="openinvoicetype"></span>
+											</li>
+										</ul>
+									</div>
+								</div>
+					
+							</div>
+							
+							
+							
+							
+							<div class="main-box info">
+								<div class="main-title-box">
+									<span class="main-title"></span><span class="main-txt">三证信息：</span>
+									<div>
+									
+				
+										<ul class="main-list-item">
+									
+											<li class="upload updata complicense" data-index="2">
+												
+												<form id="salepad" action=""  enctype="" >
+													<div>
+														<span style="display:none;">文件路径</span>
+														<input style="display:none;" class="idkey" type="text" name="key" value="" />
+														<span style="display:none;">OSSAccessKeyId</span>
+														<input style="display:none;" class="idOSSAccessKeyId" type="text" name="OSSAccessKeyId" value="" />
+														<span style="display:none;">policy</span>
+														<input style="display:none;" class="idpolicy" type="text" name="policy" value="" />
+														
+														<input style="display:none;" class="status" type="text" name="success_action_status" value="200" />
+														
+
+														<span style="display:none;">Signature</span>
+														<input style="display:none;" class="idSignature" type="text" name="Signature" value="" />
+														
+														<input  style="display:none;" name="file" type="file"  class="file" />
+													</div>
+												</form>
+												<div class="salepad test">
+													点击上传
+												</div>
+												<p class="first">营业执照</p>
+												<p class="msg-error hy"></p>
+												
+											</li>
+											<li class="upload updata comptaxcer" data-index="3">
+												
+												<form id="salepad" action=""  enctype="" >
+													<div>
+														<span style="display:none;">文件路径</span>
+														<input style="display:none;" class="idkey" type="text" name="key" value="" />
+														<span style="display:none;">OSSAccessKeyId</span>
+														<input style="display:none;" class="idOSSAccessKeyId" type="text" name="OSSAccessKeyId" value="" />
+														<span style="display:none;">policy</span>
+														<input style="display:none;" class="idpolicy" type="text" name="policy" value="" />
+														
+														<input style="display:none;" class="status" type="text" name="success_action_status" value="200" />
+														
+
+														<span style="display:none;">Signature</span>
+														<input style="display:none;" class="idSignature" type="text" name="Signature" value="" />
+														
+														<input  style="display:none;" name="file" type="file"  class="file" />
+													</div>
+												</form>
+												<div class="salepad test">
+													点击上传
+												</div>
+												<p class="first">税务登记证</p>
+												<p class="msg-error hy"></p>
+												
+											</li>
+											<li class="upload updata comporgcode" data-index="4">
+												
+												<form id="salepad" action=""  enctype="" >
+													<div>
+														<span style="display:none;">文件路径</span>
+														<input style="display:none;" class="idkey" type="text" name="key" value="" />
+														<span style="display:none;">OSSAccessKeyId</span>
+														<input style="display:none;" class="idOSSAccessKeyId" type="text" name="OSSAccessKeyId" value="" />
+														<span style="display:none;">policy</span>
+														<input style="display:none;" class="idpolicy" type="text" name="policy" value="" />
+														
+														<input style="display:none;" class="status" type="text" name="success_action_status" value="200" />
+														
+
+														<span style="display:none;">Signature</span>
+														<input style="display:none;" class="idSignature" type="text" name="Signature" value="" />
+														
+														<input  style="display:none;" name="file" type="file"  class="file" />
+													</div>
+												</form>
+												<div class="salepad test">
+													点击上传
+												</div>
+												<p class="first">组织机构代码证</p>
+												<p class="msg-error hy"></p>
+											</li>
+										</ul>
+									</div>
+								</div>
+					
+							</div>
+							
+							
+							
+							<div class="main-box info">
+								<div class="main-title-box">
+									<span class="main-title"></span><span class="main-txt">操作：</span>
+									<div>
+										<ul class="main-list-item">
+									
+											<li>
+												<span>企业qq：</span>
+												<span class="bz">自有数据库</span>
+											</li>
+											
+											<li>
+												<span>审核：</span>
+												<div class="pull-right1 select">
+														<select style="width:auto;" class="form-control distributionstate">
+															<option value="4">审核通过</option>
+															<option value="3">驳回</option>
+														</select>
+												</div>
+												<span class="isdistributionstate"></span>
+										
+											</li>
+											<!--驳回或者审核通过显示审核意见-->
+											<li class="flag">
+												<span>审核意见：</span>
+												<div class="pull-right1 select">
+													<textarea name="approveremark" class="approveremark">
+													
+													</textarea>
+													<label id="approveremark-error" class="error" for="approveremark">请填写审核意见!</label>
+												</div>
+											</li>
+											<li>
+												<span>是否冻结：</span>
+												<div class="pull-right1 select">
+														<select style="width:auto;" class="form-control jfudisable">
+															<option value="1">启用</option>
+															<option value="2">停用</option>
+														</select>
+												</div>
+											</li>
+											
+											
+											<li class="flag">
+												<span>暂停原因：</span>
+												<div class="pull-right1 select">
+													<textarea name="disableremark" class="disableremark">
+													
+													</textarea>
+												</div>
+											</li>
+
+										</ul>
+									</div>
+								</div>
+					
+							</div>
+					
+					
+					
+				
+					
+		
+		</div><!-- /.modal-dialog -->
+		<div class="modal-footer">
+					<button type="button" class="btn determine  btn-primary" >
+						确认
+					</button>
+					<button type="button"  data-dismiss="modal"  class="btn btn-default">
+						取消
+					</button>
+		</div>
+		<input style="display:none;" id="form-sub" type="submit" />
+</div>
+</div>
+</div>
+</form>
+</body>
+<script>
+/*显示状态的控制*/
+$('.main-list-item.company li.succeed').show();
+/*显示状态的控制*/
+
+var $table = $('#table');
+	//debugger;
+	//文档地址http://bootstrap-table.wenzhixin.net.cn/zh-cn/documentation/
+/*自定义头部*/
+
+/*自己填写数据*/
+//domain137 = 'http://192.168.2.33:20005';
+var url = domain137 +  '/csusers/'+roleid+'/workers';
+
+
+
+
+$('#table').bootstrapTable({
+	 url:url,
+	 pagination: true, //分页
+	 contentType:'application/json',
+     search:true,
+	 showColumns:true,
+	 checkbox:false,
+	 queryParams:function (params){
+			 /*自定义参数,如果有参数在这里定义*/
+		var data = {all:ifAll};
+		data.size = 100000000; 
+	   return  data;
+	 },
+	 sidePagination: "client",
+	 responseHandler:function(res){
+		var newJson = {};
+		//debugger;
+		newJson.total = res.data.length
+		newJson.data = res.data;
+		return newJson;
+     },
+	 formatNoMatches:function(){
+         return '没有搜索结果'
+     },
+     formatLoadingMessage:function(){
+          return '正在努力加载中...';
+     },
+	 onLoadSuccess(){
+
+		/*移动自带事件*/
+		$('.search-btn button').click(function(){
+			//debugger;
+			$('.search input').eq(1).val($('.search input').eq(0).val());
+			$('.search input').eq(1).keyup();
+		});
+		//debugger;
+		
+		/*当search 没有vlaue的时候*/
+		$('.search input').eq(0)[0].oninput= function (){
+			if(!this.value){
+				$('.search input').eq(1).val(this.value);
+				$('.search input').eq(1).keyup();
+			}
+		};
+		
+		
+		$('.search input').eq(0).keyup(function (ev){
+			
+			var oEvent = ev || event;
+			if(oEvent.keyCode==13){
+				$('.search input').eq(1).val(this.value);
+				$('.search input').eq(1).keyup();
+			}
+		});
+	 },
+	 columns: [{  
+          field: 'jfuname',  
+          title: '接包方用户名'  
+        }, {  
+          field: 'compname',  
+          title: '接包方公司名'  
+        }, {  
+          field: 'shortname',  
+          title: '内部简称'  
+        }, {  
+          field: 'sourceName',  
+          title: '来源'
+        }, {  
+          field: 'contactsphone',  
+          title: '联系电话'  
+        }, {  
+          field: 'compemail',  
+          title: '邮箱'  
+        }, {  
+          field: 'invitationcode',  
+          title: '邀请码'  
+        }, {  
+          field: 'jfudisable',  
+          title: '是否冻结' ,
+		  formatter:function (data,row,index){
+				var arr = ['','否','是'];
+				return arr[row.jfudisable];
+		   }
+        }, {  
+			//后台状态  0-初始状态  1-待审核   2-跟踪处理中(注册,完善资料验证中)  3-驳回    4-审核通过处理完成 5-驳回再次提交"
+          field: 'distributionstate',  
+          title: '状态',
+		  formatter:function (data,row,index){
+			var arr = ['待审核','待审核','验证中','驳回','通过','再次提交'];
+			
+			return arr[row.distributionstate];
+		  }
+        },{  
+          field: 'pid',  
+          title: '是否子账号'  
+        },{  
+          field: 'createtime',  
+          title: '注册时间'  
+        },{  
+          field: 'releasetime',  
+          title: '审核时间'  
+        },{  
+          field: 'sendstatus',  
+          title: '操作' ,
+		  'class':'handle',
+		  formatter:function (data,row,index){
+		  
+			//debugger;
+			//return '<div  class="btn btn-primary">审核</div>';
+			return '<div  data-jfuid = '+row.jfuid+' class="btn btn-primary">审核</div>';
+		  }
+        }
+		]  
+		
+});
+
+
+/*是否暂停*/
+$(document).on('change','.jfudisable',function (){
+	if(this.value == 2){
+		$('.disableremark').parents('.flag').show();
+	}else{
+		$('.disableremark').parents('.flag').hide();
+	}
+});
+
+
+/*distributionstate*/
+$('.distributionstate').change(function (){
+	if(this.value == 3){
+		$('.approveremark').parents('.flag').show();
+	}else{
+		$('.approveremark').parents('.flag').hide();
+	}
+});
+
+/*更新详情数据*/
+var demandata;
+$('.determine').click(function (){
+	 //审核通过才验证和采集数据
+	 //驳回直接原数据返回
+	 
+	 var jfuid = $(this).attr('data-jfuid');
+		
+	 var url = domain137 + '/csusers/'+roleid+'/workers/'+jfuid;
+	
+	 if($('.distributionstate').val()==4){
+		/*驳回不用验证也不用采集数据*/
+		 /*开始验证*/
+		 $('#form-sub').submit();
+		 $(".contactsphone").blur();
+		if($('label.error:visible').get(0)){
+			return;
+		}
+		
+		if($('p.msg-error:visible').get(0)){
+			return;
+		}
+		
+		
+		$('#loading').modal('show');
+		
+		
+		/*shortname*/
+		demandata.shortname = $('.shortname').val();
+		/*compaddr*/
+		demandata.compaddr = $('.compaddr').val();
+		/*compwebsite*/
+		demandata.compwebsite = $('.compwebsite').val();
+		/*companysize*/
+		demandata.companysize = $('.companysize').find('option:selected').text();
+		/*compimg data-compimg*/
+		demandata.compimg = $('.compimg').attr('data-path');
+		
+		
+		
+		/*realname*/
+		demandata.realname = $('.realname').val();
+		
+		/*contacts*/
+		demandata.contacts = $('.contacts').val();
+		/*contactsphone*/
+		demandata.contactsphone = $('.contactsphone').val();
+		/*compemail*/
+		demandata.compemail = $('.compemail').val();
+		/*qq*/
+		demandata.qq = $('.qq').val();
+		
+		/*complicense*/
+		demandata.complicense =   $('.complicense').attr('data-path'); //$('.complicense').val();
+		
+		/*comptaxcer*/
+		demandata.comptaxcer =   $('.comptaxcer').attr('data-path'); //$('.comptaxcer').val();
+		/*comporgcode*/
+		demandata.comporgcode =  $('.comporgcode').attr('data-path'); // $('.comporgcode').val();
+		/*distributionstate*/
+		if(demandata.distributionstate == 3 || demandata.distributionstate == 4){
+			delete demandata.distributionstate;
+		}else{
+			demandata.distributionstate = $('.distributionstate').val();
+		}
+		
+		/*jfudisable*/
+		demandata.jfudisable = $('.jfudisable').val();
+		/*approveremark*/
+		if(demandata.distributionstate == 4){
+			demandata.approveremark = "";
+		}
+		
+		if(demandata.distributionstate == 3){
+			demandata.approveremark = $('.approveremark').val();
+		}
+		
+		demandata.domainnameprefix = $('.domainnameprefix').val();
+	}
+	
+	if($('.distributionstate').val()==3){
+		demandata.distributionstate = $('.distributionstate').val();
+		demandata.approveremark = $('.approveremark').val();
+		$('label.error:visible').hide();
+		if(!$('.approveremark').val()){
+			$('#approveremark-error').show().html('请填写审核意见！');
+			return;
+		}else{
+			$('#approveremark-error').hide();
+		}
+	}
+
+	
+	/*审核通过如果返回是3或者4就不再让选择了*/
+	$.when($.ajax({
+		url:url,
+		type:'PATCH',
+		contentType:'application/json',
+		data:JSON.stringify(demandata),
+	})).then(function (data){
+		//debugger;
+		if(data.msg=="success"){
+			/*关闭加载层*/
+			$('#loading').modal('hide');
+			$('#myModal').modal('hide');
+			$('#table').bootstrapTable('refresh');	
+		}
+	}).fail(function (data){
+		//$('#loading').modal('hide');
+		//debugger;
+	});
+	
+});
+
+
+
+$('#table').on('click','.handle .btn-primary',function (){
+
+	//debugger;
+	var jfuid = $(this).attr('data-jfuid');
+	//debugger;
+	getdetialdata(jfuid);
+	
+	
+	$('.optionsRadiosinline').change(function (){
+		//debugger;
+		if($(this).hasClass('one')){
+			$('.main-list-item li.upload.updata').hide();
+			$('.main-list-item li.upload.updata').eq(0).show();
+		}
+		
+		if($(this).hasClass('two')){
+			$('.main-list-item li.upload.updata').show();
+			
+			$('.main-list-item li.upload.updata').eq(0).hide();
+		}
+	});
+	
+});
+
+function getdetialdata(jfuid){
+	$('.determine').attr('data-jfuid',jfuid);
+	if(!jfuid)return;
+	//GET 开发完成 /pasf/csusers/{csuserid}/workers/{workerid}
+	/*GET 开发完成 /csusers/{csuserid}/workers/{workerid*/
+	var url = domain137 + '/csusers/'+roleid+'/workers/'+jfuid
+	
+	$.when($.ajax({
+		url:url,
+		dataType:'json',
+	})).then(function (data){
+		//debugger;
+		if(data.msg=="success"){
+			/*关闭加载层*/
+			$('#loading').modal('hide');
+			
+			handleDetail(data.data);
+		}
+	}).fail(function (data){
+		//$('#loading').modal('hide');
+		//debugger;
+	});
+}
+
+
+
+/*处理详情*/
+function setValuedata(data){
+	
+	demandata = data;
+	//debugger;
+	$('.domainnameprefix').val('');
+	
+	$('#approveremark-error').hide();
+	for(var name in data){
+		//console.log(name);
+		if(name=="compaddr" || name=="shortname" ||  name=="compwebsite" || name=="companysize"){
+			//console.log();
+			/*处理不兼容的问题*/
+			if(name=="companysize"){
+					var arr = [{name:'10人以下',index:9},{name:'50~200人',index:50},{name:'10~50人',index:10},{name:'200人以上',index:200}];
+					arr.map(function (item,index){
+						//console.log(data[name],item.name);
+						if(data[name]==item.name){
+							$('.'+name).val(item.index);
+						}
+					});
+					//$('.'+name).val();
+			}else{
+				//console.log(name,'=============',data[name]);
+				$('.'+name).val(data[name]);
+			}
+			
+		}else if( name=="complicense" ||  name=="comptaxcer" || name=="comporgcode"){
+			//'标签加价'
+			/*切换类型*/
+
+		
+				if(data[name]){
+					$('.optionsRadiosinline.two').attr('checked',true);
+					$('.optionsRadiosinline').change();
+					//debugger;
+					$('.'+name+' .salepad.test').html('<img src="'+imagesurl+data[name]+'">');
+				}else{
+					$('.'+name+' .salepad.test').html('点击上传');
+				}
+			
+			
+			
+		}else if(name=="domainnameprefix"){
+			if(data[name]){
+				$('.domainnameprefix').parent().hide();
+				$('.domainnameprefixtext').html(data[name]).show();
+			}else{
+				$('.domainnameprefix').parent().show();
+				$('.domainnameprefixtext').hide();
+			}
+		}else if(name=="distributionstate"){
+			if(data[name]==3 || data[name]==4){
+				$('.'+name).hide();
+				var distributionstatehtml = ((data[name]==3)?'驳回':((data[name]==4)?'通过':""));
+				$('.isdistributionstate').html(distributionstatehtml).show();
+			}else{
+				$('.'+name).show();
+				/*初始化默认值*/
+				$('.distributionstate').val(4);
+				$('.isdistributionstate').hide();
+			}
+		}else if(name == "approveremark"){
+			
+			if(data.distributionstate == 3){
+				$('.'+name).parents('.flag').show();
+				$('.'+name).val(data[name]);
+			}else if(data.distributionstate == 4){
+				$('.'+name).parents('.flag').hide();
+				$('.'+name).val('');
+			}else{
+				$('.'+name).parents('.flag').hide();
+				$('.'+name).val('');
+			}
+			
+		}else if(name=="compimg"){
+			if(data[name]){
+				$('.compimg .salepad.test').html('<img  src="'+ domainDownShort + data[name]+'"/>');
+			}else{
+				$('.compimg .salepad.test').html('点击上传');
+			}
+		}else if(name=="openinvoicetype"){
+			 var arr = ['增票(一般纳税人)','增票(小规模纳税人)','普票'];
+			
+			 $('.'+name).html(arr[data[name]-1]);
+			/*
+			
+				<!--1增票(一般纳税人)   2增票(小规模纳税人)  3普票-->
+												<span class="openinvoicetype"></span>
+			*/
+		
+		
+		}else if(name=="hasdb"){
+			var arr = ['无','有'];
+			$('.'+name).html(arr[data[name]]);
+		}else{
+			//debugger;
+			console.log(name);
+			if($('.'+name).get(0)){
+				if(($('.'+name).get(0).tagName == "INPUT") || ($('.'+name).get(0).tagName == "SELECT")){
+					$('.'+name).val(data[name]);
+				}else{
+					$('.'+name).html(data[name]);
+				}
+			}
+		}
+	}
+	/*servicetypedesc*/
+}
+
+/*处理详情*/
+function handleDetail(data){
+	setValuedata(data);
+	$('#myModal').modal('show');
+}
+
+	
+var newDate = new Date();
+var time = newDate.toJSON();
+ $(".start_date")
+ .datetimepicker({
+		language:  'zh-CN',
+		 weekStart: 1,
+		 todayBtn:  1,
+		 autoclose: 1,
+		 todayHighlight: 1,
+		 startView: 2,
+		 minView: 2,
+		 forceParse: 0,
+		 format: 'yyyy-mm-dd',
+		 startDate:new Date(time),
+}).on("click",function(ev){
+		$(".start_date").datetimepicker("setEndDate", $(".end_date").val());
+}).on("change",function(ev){
+	$(".startDate").html($(".start_date").val());
+	$(".start_date").blur();
+}).on("blur",function(ev){
+	if(isNull($(".start_date").val())){
+		$(this).parent().find("p.error").eq(0).show();
+	}else{
+		$(this).parent().find("p.error").eq(0).hide();
+	}
+});
+					
+$(".end_date")
+.datetimepicker({
+			language:  'zh-CN',
+				 weekStart: 1,
+				 todayBtn:  1,
+				 autoclose: 1,
+				 todayHighlight: 1,
+				 startView: 2,
+				 minView: 2,
+				 forceParse: 0,
+				 format: 'yyyy-mm-dd',
+}).on("click", function (ev) {
+		$(".end_date").datetimepicker("setStartDate", $(".start_date").val());
+}).on("change",function(ev){
+$(".endDate").html($(".end_date").val());
+$(".end_date").blur();
+}).on("blur",function(ev){
+	if(isNull($(".end_date").val())){
+		$(this).parent().find("p.error").eq(1).show();
+	}else{
+		$(this).parent().find("p.error").eq(1).hide();
+	}
+});
+
+
+/*上传到ali云并且判断是否成功*/
+function uploadByForm(currentIdEle,host) {
+	  /*模拟二进制流*/
+	  var formData = new FormData(currentIdEle.find('form')[0]);
+	// oMyForm.append("username", "Groucho");
+	  var url = "https://mso.oss-cn-shanghai.aliyuncs.com"; 
+
+	function setingpic(host,formData){
+		return $.when(
+			$.ajax({  
+				url : host,  
+				type : 'POST',  
+				data : formData,  
+				processData : false,  
+				contentType : false,  
+			})
+		)
+	}
+	//debugger;
+	
+	var seting = setingpic(host,formData);
+	
+	seting.then(function (data){
+	//debugger;
+		$('.msg-error.hy').removeClass('fail');
+		$('.msg-error.hy').hide();
+		//console.log('上传成功');
+	});
+	
+	seting.fail(function (data){
+		currentIdEle.find('.msg-error.hy').show();
+		currentIdEle.find('.msg-error.hy').addClass('fail');
+		currentIdEle.find('.msg-error.hy').html('您上传失败请从新上传！');
+	});
+		
+ }  
+
+
+
+
+ $(document).on('click',".salepad",function (ev){
+ 
+	var target = ev.currentTarget;
+	var currentIdEle = $(target).parents('li.upload');
+	
+	/*通过id识别every type*/
+	currentUploadId = currentIdEle.attr('data-index');
+	
+	//console.log(currentIdEle,currentUploadId);
+	
+	/*获取签名*/
+	resultSignature =  JSON.parse(getSignature({fileName:'credentials'}));
+	
+
+	currentIdEle.find('.file')[0].onchange = function (){
+		
+		var typeArr = ['image/jpeg','image/png','image/bmp'];
+		var file = this.files[0];
+		var flag = false;
+		
+		typeArr.map(function (data,index){
+			if(file.type==data){
+				flag = true;
+			}
+		});
+		
+		
+		/*图片格式验证*/
+		if(!flag){
+			currentIdEle.find('.msg-error.hy').show();
+			currentIdEle.find('.msg-error.hy').html('请您上传,jpg,jpeg,png,bmp!');
+			return;
+		}
+		
+		
+		/*大小验证*/
+		if((file.size/1024)>3072){
+			//debugger;
+			currentIdEle.find('.msg-error.hy').show();
+			currentIdEle.find('.msg-error.hy').removeClass('fail');
+			currentIdEle.find('.msg-error.hy').html('请您上传小于3M的图片');
+			return;
+		}else{
+			currentIdEle.find('.msg-error.hy').hide();
+		}
+		
+		
+		
+		
+		/*设置签名信息*/
+		currentIdEle.find('form')[0].action = resultSignature.host;
+		currentIdEle.find('.idkey').val(resultSignature.dir+'${filename}');
+		currentIdEle.find('.idpolicy').val(resultSignature.policy);
+		currentIdEle.find('.idOSSAccessKeyId').val(resultSignature.accessid);
+		currentIdEle.find('.idSignature').val(resultSignature.signature);
+		
+		/*组合path路径给后台*/
+		
+		var _path = resultSignature.dir+file.name;
+		/*设置在每个自己身上path*/
+		currentIdEle.attr('data-path',_path);
+		
+		
+		/*设置图片路径*/
+		var readerd = new FileReader();
+		readerd.readAsDataURL(file);
+		readerd.onload = function (e) {
+			currentIdEle.find('div.salepad').html('');
+			currentIdEle.find('div.salepad').append('<img src="'+this.result+'"/>');
+		   ///currentIdEle.find('div.salepad img')[0].src = this.result;
+		}
+		
+		uploadByForm(currentIdEle,currentIdEle.find('form')[0].action);
+	};
+	
+	return currentIdEle.find('.file').click();
+});
+
+
+
+
+				$("#commentForm").validate({
+					 onkeyup:false,//输入时不验证
+					 "rules": {
+					  "shortname": {
+						"required": true,
+						"minlength": 2,
+						//isText:true
+					  },
+					   "domainnameprefix": {
+						"required": true,
+						"domainnameprefixtest":true,
+						"success": function(label) {
+							var wether = $(label).val();
+							if(wether == ""){
+								return;
+							}
+							
+							if($(label).hasClass('valid')){
+								   $('#loading').modal('show');
+								   var jfuids = $('.determine').attr('data-jfuid');
+								   var url = domain137+ '/pt/verifydomainprefix?domainprefix='+$(label).val()+"&uid="+jfuids;
+									$.when($.ajax({
+										url:url,
+										dataType:'json',
+									})).then(function (data){
+										//debugger;
+										if(data.code==0){
+											/*关闭加载层*/
+											$('#loading').modal('hide');
+										}else{
+											//被占用
+											//jQuery.validator.addMethod("prefixtest", function(value, element) {  
+												//return true;
+											//}, "你的域名前缀已经被占用！");  
+											//debugger;
+											$(label).removeClass('valid').addClass('error');
+											//debugger;
+											$(label).attr('aria-invalid',true);
+											$('#domainnameprefix-error').show().html('你的域名前缀已经被占用！');
+											
+										}
+									}).fail(function (data){
+										//$('#loading').modal('hide');
+										//debugger;
+									});
+							}else{
+								//失败
+							}
+							//debugger;
+							// set &nbsp; as text for IE
+							//label.html("&nbsp;").addClass("checked");
+							//label.addClass("valid").text("Ok!")
+							
+						}
+												
+					  },
+					  
+					  "compaddr":{
+						  "required": true,
+						  "minlength": 2,
+					  },
+					  "contacts":{
+						  "required": true,
+					  },
+					  "contactsphone":{
+						  "required":false,
+						  "whetherphone":true,
+					  },
+					  "compemail":{
+						  "required": true,
+					  },
+					  "approveremark":{
+						  "required": true,
+					  },
+					  
+					},
+					"messages": {
+						"shortname": {
+							"required":'请填写公司名称！',
+							"minlength": '请填写正确公司名称！',
+						},
+						
+						"domainnameprefix": {
+							"required":'请填写域名前缀！',
+							"domainnameprefixtest":'请填写正确的域名前缀！',
+						},
+						"compaddr":{
+						  "required":'请填写公司地址！',
+						   
+					    },
+						"contacts":{
+						  "required":'请填写联系人！',
+					    },
+						"contactsphone":{
+						  "required":'请填写联系电话!',
+						  "whetherphone":'请输入正确格式的手机号码!',
+						  
+						},
+						"compemail":{
+						  "required": '请填写联系邮箱!',
+						},
+						"approveremark":{
+						  "required": '请填写审核意见!',
+					  },
+						//
+					}
+				});
+				//检测信息是否正确  
+				jQuery.validator.addMethod("whetherphone", function(value, element) {  
+					var regText = /^1[0-9]{10}/g;  
+				//	if(value.length>=11){
+						return regText.test(value);
+					//}else{
+					//	return true;
+					//}
+				}, "请输入正确格式的手机号码！");   
+				
+				jQuery.validator.addMethod("domainnameprefixtest", function(value, element) {  
+					var regText = /^([a-z]|[0-9]){6}$/i;  
+					
+						//GET 开发完成 /pasf/pt/verifydomainprefix
+						/*如果通过开始重*/
+					
+					
+					return regText.test(value);
+				
+				}, "请填写正确的域名前缀域名前缀！");   
+				
+				
+		
+			$("#commentForm :input").blur(function (){ 
+				$(this).valid();
+			});
+	
+
+</script>
+
+</html>

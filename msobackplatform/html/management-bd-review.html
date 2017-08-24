@@ -1,0 +1,1737 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Bootstrap Table Examples</title>
+	<link rel="stylesheet" href="../css/bootstrap.min.css" />
+	<link rel="stylesheet" href="../css/bootstrap-table.css" />
+	<link rel="stylesheet" href="../css/bootstrap-datetimepicker.css" />
+	
+	
+	<script src="../js/jquery.js" type="text/javascript"></script>
+    <script src="../js/bootstrap.min.js"></script>
+
+	<script src="../js/bootstrap-table.min.js" type="text/javascript"></script>
+	<script src="../js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+	
+	<script src="../js/url.js" type="text/javascript"></script>
+	<script src="../js/mock.js" type="text/javascript"></script>
+	<script src="../js/myself-function/main.js" type="text/javascript"></script>
+	
+	<style>
+		#forlogin { display:none; background:#ffffff;  overflow:hidden; height:100%; }
+		*{ padding:0; margin:0; }
+		ul li { list-style-type:none; }
+		#forlogin ul { width:100%; overflow:hidden; margin-top:20px;  }
+		#forlogin ul li { float:left; width:50%; }
+		
+		#forlogin ul li.first {width:60px; text-align:right; }
+		#forlogin ul.industry { margin-top:30px; }
+		#forlogin ul.industry li {  }
+		#forlogin ul.industry li input { float:left;  }
+		#forlogin ul.high li.high-n   { text-align:left;  }
+		
+		#forlogin ul li.last  { padding-left:20px;  }
+		#forlogin ul li .running { float:left;  width:70px; height:20px; }
+		#forlogin ul li .outOff { float:left; width:70px; height:20px; }
+		#forlogin ul li .outOff  span { float:left; margin-top:2px; margin-left:5px;  display:inline-table; }
+		#forlogin ul li .running  span { float:left; margin-top:2px;    margin-left:5px;   display:inline-table; }
+		#forlogin ul li .outOff input { float:left; }
+		#forlogin ul li .running input { float:left; }
+		#forlogin ul.descening li input { float:left; }
+		#addIndustry  { margin-top:20px; }
+		#toolbar { width:120px; } 
+		.industrySetting { width:100%; overflow:hidden; margin-top:20px; margin-bottom:0; }
+		.industrySetting li { float:left; }
+		.search-box { overflow-y:hidden; padding-bottom:3px; min-width:1200px; }
+		.search-box  .fixed-table-toolbar { float:left; }
+		.search-box  #toolbar {margin-left:20px; float:left; margin-top:10px; margin-bottom:10px; }
+		.bootstrap-table { margin-top:15px; }
+		
+		
+		@media (min-width: 100px) {
+			.container {
+				width: auto;
+			}
+		}
+
+		
+		.pull-right1.search { margin-top:0; float:left; width:317px; }
+		.pull-right1 { float:left; }
+		.pull-right1.select { width:127px; }
+		.search-box { margin-top:10px; }
+		.bootstrap-table  .fixed-table-toolbar { height:0; }
+		
+		.data-box {
+			width: 330px;
+			height: 30px;
+			border-radius: 6px;
+			border: 1px solid #e8e8e8;
+			padding-bottom: 0;
+			position: relative;
+			float:left; 
+			margin-top:2px;
+		}
+		
+		.data-box input {
+			color: #a7a7a7;
+			width: 150px;
+			border: none;
+			text-align: center;
+			line-height: 28px;
+		}
+		
+		.search-btn { margin-left:20px; }
+		th,td { text-align:center; }
+		
+		
+		
+		
+		
+		
+		
+		
+		.modal-dialog { width:860px; }
+.modal-body-title { margin-top:10px; border-bottom:1px solid #e5e5e5; padding-bottom:15px;  }
+ul li { list-style:none; }
+.main-title-box { overflow:hidden; }
+.main-title { width:10px; height:20px; background:rgba(255, 153, 0, 1); display:block; float:left; }
+.main-box { margin-top:20px; overflow:hidden;  }
+.main-txt { margin-left:10px; }
+.main-list-item { float:left; width:400px; }
+.main-list-item li { line-height:38px; }
+.main-list-item li span:nth-child(1){ font-weight:700; font-family: 'Arial Negreta', 'Arial';}
+.btn-primary { background:#5cb85c; border-color:#4cae4c; }
+
+.conpanyname { float:left; }
+
+.main-list-item.conpany { margin-bottom:20px; }
+.error.time { display:none; }
+.modal-body-title.special { margin-top:30px; }
+.modal-body-title.noborder { border-bottom:0; padding:0;}
+.chargetags i,.free-label i { width:auto; padding:5px; border:1px solid #e5e5e5; border-radius:5px; font-style:normal;  }
+.free-label input { height:26px; padding:5px; }
+.free-label span { cursor:pointer; }
+
+
+.main-list-item .radio { float:left; margin-top:-7px; } 
+.main-list-item div.radio label{ margin-left:20px; }
+.main-list-item .radio  i { font-style:normal;}
+.main-list-item .radio  input { margin-top:13px; }
+.main-list-item .radio  input[type="number"]{ height:26px; padding:5px; width:100px; }
+
+ .btn-success.btn-lg { padding:6px 12px; }
+ .btn-lg, .btn-group-lg>.btn { font-size:14px; }
+ 
+ 
+ .modal-body { max-height:500px; overflow-y:auto; }
+ 
+ 
+.vestingtime  .data-box { width:160px; }
+.vestingtime  .data-box { width:160px;  height:auto; }
+
+
+
+
+.bootstrap-table .fixed-table-toolbar {  overflow:-hidden; }
+.pull-right.search { display:none; height:auto;}
+
+.bootstrap-table { margin-top:-30px; }
+textarea { resize:none; line-height:20px; padding:10px; width:200px; height:120px; }
+
+
+label.error {
+    color: red;
+    font-weight: normal;
+    margin-left: 20px;
+	display:none;
+}
+.main-list-item .radio.needrecording { margin-top:0px; }
+ 
+</style>
+</head>
+<body>
+    <div class="container">
+		<div class="search-box">
+			<div class="fixed-table-toolbar">
+				<div class="pull-right1 search">
+					<input class="form-control" type="text" placeholder="Search" >
+				</div>
+				
+				<!--
+				
+				<div class="pull-right1 select">
+					<select class="form-control">
+						<option value="">选择业务类型</option>
+						<option value="">open</option>
+						<option value="all">close</option>
+					</select>
+				</div>
+				<div class="pull-right1 select">
+					<select class="form-control">
+						<option value="">选择审核人</option>
+						<option value="">open</option>
+						<option value="all">close</option>
+					</select>
+				</div>
+				
+				<div class="pull-right1 select">
+					<select class="form-control">
+						<option value="">选择AE负责人</option>
+						<option value="">open</option>
+						<option value="all">close</option>
+					</select>
+				</div>
+				<div class="pull-right1 select">
+					<select class="form-control">
+						<option value="">选择状态</option>
+						<option value="">open</option>
+						<option value="all">close</option>
+					</select>
+				</div>
+				<div class="data-box">
+						<input autoComplete="off" placeholder="开始日期" type="text" class="form_date start_date" readOnly /><i class="date_icon"></i><span>~</span>
+						<input autoComplete="off" placeholder="结束日期" type="text" class="form_date end_date" readOnly /><i class="date_icon"></i>
+						<p class="error time">请填写开始日期</p><p class="error time">请填写结束日期</p>
+				</div>
+				<div class="data-box">
+						<input autoComplete="off" placeholder="开始日期" type="text" class="form_date start_date" readOnly /><i class="date_icon"></i><span>~</span>
+						<input autoComplete="off" placeholder="结束日期" type="text" class="form_date end_date" readOnly /><i class="date_icon"></i>
+						<p class="error time">请填写开始日期</p><p class="error time">请填写结束日期</p>
+				</div>
+				-->
+				<div class="pull-right1 select search-btn">
+					<button type="button" class="btn btn-success">搜索</button>
+				</div>
+			</div>
+		</div>
+        <table id="table">
+            
+        </table>
+   
+	
+	
+	<div id="forlogin">
+		 <div>
+			<ul class="industry">
+				<li class="first" >行业名称:</li>
+				<li class="last"><input id="username" placeholder="请输入行业名称"/></li>
+			</ul>
+			<ul class="high">
+				<li  class="first" >分类级别:</li>
+				<li class="high-n last">一级分类</li>
+			</ul>
+			<ul>
+				<li  class="first" >状态:</li>
+				<li class="last">
+					<div class="running"><input type="radio" /><span>启用</span></div>
+					<div class="outOff"><input type="radio" /><span>停用</span></div>
+				</li>
+			</ul>
+			<ul class="descening">
+				<li  class="first" >排序值</li>
+				<li class="last"><input placeholder="请输入排序值，值越大越靠前"/></li>
+			</ul>
+		 </div>
+	</div>
+	 
+	<!--<button id="addIndustry" class="btn btn-default">新增行业</button>--> 
+	</div>
+	
+	
+	
+	
+	<!--弹出成-->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					需求详情
+				</h4>
+			</div>
+			<div class="modal-body">
+				<div class="modal-body-title">
+					<span class="main-txt">需求资料：</span>
+				</div>
+				<div class="modal-body-title special noborder">
+					<span class="main-title"></span>
+					<span class="main-txt">需求概况：</span>
+					<span class="main-txt demandid"></span>
+				</div>
+				<div class="main-box">
+					
+					<ul class="main-list-item">
+						<li>
+							<span>需求名：</span>
+							<span class="uniquename"></span>
+						</li>
+						<li>
+							<span>需求数量：</span>
+							<span class="demandquantity"></span>
+						</li>
+							<li>
+							<span>开始日期：</span>
+							<span class="begintime"></span>
+						</li>
+					</ul>
+					
+					<ul class="main-list-item">
+						<li>
+							<span>业务类型：</span>
+							<span class="servicetype"></span>
+						</li>
+						<li>
+							<span>需求总价：</span>
+							<span class="demandtotalprice"></span>
+							<span>元</span>
+						</li>
+							<li>
+							<span>结束日期：</span>
+							<span class="endtime"></span>
+						</li>
+							
+					</ul>
+					
+				</div>
+				<div class="modal-body-title noborder"><span class="main-title"></span><span class="main-txt">基本信息：</span></div>
+				
+				
+				
+				<div class="main-box">
+					
+					<ul class="main-list-item basicdetail">
+						<li>
+							<span>行业：</span>
+							<span class="industry"></span>
+						</li>
+						<li>
+							<span>行业细分：</span>
+							<span class="industryxifen"></span>
+						</li>
+							<li>
+							<span>需求备注：</span>
+							<span class="demandcomment"></span>
+						</li>
+						<li>
+							<span>项目负责人：</span>
+							<span class="projectleader"></span>
+						</li>
+						<li>
+							<span style="float:left;">归属年月：</span>
+							<span class="vestingtime">
+								<div class="data-box">
+									<input autoComplete="off" placeholder="请选择日期" type="text" class="form_date end_date" readOnly /><i class="date_icon"></i>
+									
+								</div>
+							</span>
+							<label class="error vestingtime-error" for="js_area" style="display: inline-block;">请选择日期！</label>
+						</li>
+					</ul>
+					
+					<ul class="main-list-item basicdetail">
+						<li>
+							<span>行业类型：</span>
+							<span class="onoffline"></span>
+						</li>
+						<li>
+							<span>目标人群：</span>
+							
+							<span class="targetpopulation"></span>
+							
+							<span style="margin-left:20px;">加价：</span>
+							<span class="targetaddprice"></span>
+							<span>元</span>
+							
+						</li>
+						<li>
+							<span>产品介绍：</span>
+							<span class="productattach"></span>
+						</li>
+						<li>
+							<span>负责人电话：</span>
+							<span class="projectleaderphone"></span>
+						</li>
+						<li class="product_line">
+							<span class="conpanyname">产品线：</span>
+							<div class="pull-right1 selects">
+									
+							</div>
+							<p style="float: left;padding-left: 20px;color: red;display: none" class="error_productLine">产品线不能为空</p>
+						</li>
+					</ul>
+				
+					
+					<ul class="main-list-item basicnot">
+						<li>
+							<span>行业：</span>
+							<span class="industry"></span>
+						</li>
+						<li>
+							<span>目标人群：</span>
+							
+							<span class="targetpopulation"></span>
+						</li>
+							<li>
+							<span>产品名称：</span>
+							<span class="productname"></span>
+						</li>
+						<li>
+							<span>需求备注：</span>
+							<span class="demandcomment"></span>
+						</li>
+						<li>
+							<span>项目负责人：</span>
+							<span class="projectleader"></span>
+						</li>
+					</ul>
+					
+					<ul class="main-list-item basicnot">
+						<li>
+							<span>获客渠道：</span>
+							<span class="targetchanneldesc"></span>
+						</li>
+						<li>
+							<span>对象年龄：</span>
+							<span class="targetagefrom"></span>
+							<span>~</span>
+							<span class="targetageto"></span>
+							<span>周岁</span>
+						</li>
+						<li>
+							<span>产品介绍：</span>
+							<span class="productattach"></span>
+						</li>
+						<li style="display:table;">
+							<span style="float:left;">归属年月：</span>
+							<span class="vestingtime">
+								<div class="data-box">
+									<input autoComplete="off" placeholder="请选择日期" type="text" class="form_date end_date" readOnly /><i class="date_icon"></i>
+									
+								</div>
+							</span>
+							<label class="error vestingtime-error" for="js_area" style="display: inline-block;">请选择日期！</label>
+							
+						</li>
+						<li>
+							<span>负责人电话：</span>
+							<span class="projectleaderphone"></span>
+						</li>
+						<li class="product_line">
+							<span class="conpanyname">产品线：</span>
+							<div class="pull-right1 selects">
+									
+							</div>
+							<p style="float: left;padding-left: 20px;color: red;display: none" class="error_productLine">产品线不能为空</p>
+						</li>
+					</ul>
+					
+					
+					
+					<ul class="main-list-item basicmaked">
+						<li>
+							<span>清洗渠道：</span>
+							<span>电话</span>
+						</li>
+						<li>
+							<span>拨打次数：</span>
+							<span>3次</span>
+						</li>
+						
+						<li>
+							<span>项目负责人：</span>
+							<span class="projectleader"></span>
+						</li>
+						<li>
+							<span style="float:left;">归属年月：</span>
+							<span class="vestingtime">
+								<div class="data-box">
+									<input autoComplete="off" placeholder="请选择日期" type="text" class="form_date end_date" readOnly /><i class="date_icon"></i>
+									
+								</div>
+							</span>
+							
+							<label class="error vestingtime-error" for="js_area" style="display: inline-block;">请选择日期！</label>
+						</li>
+					</ul>
+					<ul class="main-list-item basicmaked">
+						<li>
+							<span>单价：</span>
+							<span class="datacleanunitprice"></span>
+							<span>元</span>
+						</li>
+						
+						<li>
+							<span>需求描述：</span>
+							<span class="demandcomment"></span>
+						</li>
+						<li>
+							<span>负责人电话：</span>
+							<span class="projectleaderphone"></span>
+						</li>
+						<li class="product_line">
+							<span class="conpanyname">产品线：</span>
+							<div class="pull-right1 selects">
+							</div>
+							<p style="float: left;padding-left: 20px;color: red;display: none" class="error_productLine">产品线不能为空</p>
+						</li>
+					</ul>
+				</div>
+				
+				
+				
+				<div class="modal-body-title noborder standard"><span class="main-title"></span><span class="main-txt">销售线索模板：</span>
+						<span class="main-txt">单价加价：</span>
+						<span class="main-txt addprices"></span>
+				</div>
+				<div class="main-box standard">
+					
+					<ul class="main-list-item" style="width:auto;">
+						
+						<li class="free-label">
+							<span>免费标签：</span>
+							<br/>
+							<div >
+								<i>中文姓名</i>
+								<i>性别</i>
+								<i>年龄</i>
+								<i>手机号码</i>
+								<i>城市</i>
+								<i>学习目的</i>
+								<i>学习兴趣</i>
+								<i>提升点</i>
+							</div>
+							
+						</li>
+						
+						<li class="chargetags" style="margin-top:15px">
+							<span>收费标签：</span>
+							<span class="chargetags"></span>
+							<br/>
+							<div class="charge-label">
+								
+							</div>
+							
+						</li>
+						<li class="customtags" style="margin-top:15px">
+							<span>自定义标签：</span>
+							<span class="customtags"></span>
+							
+							<div class="free-label-box">
+							
+							
+							</div>
+							
+						</li>
+						
+						<li class="basic" style="margin-top:15px">
+							<span>改价标签：</span>
+							<div class="free-label">
+								<input type="number" class="adjustprice" placeholder="free" />
+							</div>
+						</li>
+					</ul>
+				</div>
+				
+				
+				
+					<div class="modal-body-title subdemands"><span class="main-title"></span><span class="main-txt">子需求：</span></div>
+				<div class="main-box subdemands">
+					
+					
+					
+					
+				</div>
+			
+				
+			
+				
+				
+				
+				
+					<div class="modal-body-title special noborder attachment"><span class="main-title"></span><span class="main-txt">附件：</span></div>
+				<div class="main-box attachment">
+					
+					
+					
+					<ul class="main-list-item">
+						<li>
+							<span>销售线索模板：</span>
+							<span class="saleleadsurl"><a href="javascript:;"></a></span>
+						</li>
+						<li>
+							<span>话术文件：</span>
+							<span class="speechcrafturl"><a href="javascript:;"></a></span>
+						</li>
+						<li>
+							<span>目标客户名单：</span>
+							<span class="targetcusturl"><a href="javascript:;"></a></span>
+						</li>
+						
+					</ul>
+				</div>
+				
+				
+				
+				
+				
+				<div class="modal-body-title"></div>
+				<div class="main-box">
+					<div class="main-title-box"><span class="main-title"></span><span class="main-txt">操作</span><div>
+					<ul class="main-list-item conpany" style="width:auto; overflow:hidden;">
+						<li style="overflow:hidden;" id="needrecording">
+							<span style = "float:left;" class="settlementcycle">是否需要录音：</span>
+							<div  class="radio needrecording">
+							  <label>
+									<input type="radio"  value="35" />
+								<i>是</i>
+							  </label>
+							  <label>
+								<input type="radio"  value="45">
+								<i>否</i>
+							  </label>
+							  <label class="error needrecording-error" for="js_area" style="margin-left:100px; display: inline-block;">请选择是否需要录音文件！</label>
+							</div>
+						</li>
+						<li id="isRenew" style="overflow:hidden;">
+							<span style = "float:left;" class="renew">是否是续签项目：</span>
+							
+							<div class="radio" style="height:47px;padding-top:10px">
+							  <label>
+								<input type="radio" checked>
+								<i>否</i>
+							  </label>
+							   <label>
+								<input type="radio" class="check">
+								<i>是</i>
+							  </label>
+							   <label style="padding:0;display: none" id="select_renew">
+							   无
+							  </label>
+							</div>
+						</li>
+						<li style="overflow:hidden;">
+							<span style = "float:left;" class="settlementcycle">结算周期：</span>
+							
+							<div class="radio setcycle">
+							  <label>
+								<input type="radio"  value="35">
+								<i>35个工作日</i>
+							  </label>
+							  <label>
+								<input type="radio" checked="checked" value="45">
+								<i>45个工作日</i>
+							  </label>
+							   <label>
+								<input type="radio" class="settleuserdefined">
+								<i>自定义</i>
+							  </label>
+							   <label style="padding:0;">
+								<input type="number" >
+								<i>工作日</i>
+							  </label>
+							</div>
+						</li>
+						<li style="overflow:hidden;">
+							<span  style = "float:left;" class="paymentcycle">付款周期：</span>
+							
+							<div class="radio paycycle">
+							  <label>
+								<input type="radio" value="35">
+								<i>35个工作日</i>
+							  </label>
+							  <label>
+								<input type="radio" checked="checked"  value="45">
+								<i>45个工作日</i>
+							  </label>
+							  
+							   <label>
+								<input type="radio" class="payuserdefined" >
+								<i>自定义</i>
+							  </label>
+							  
+							   
+							  <label style="padding:0;">
+								<input type="number"  value="">
+								<i>工作日</i>
+							  </label>
+							</div>
+						</li>
+						<li class="audiparnet" style="display:table;">
+							<span style = "float:left;" class="conpanyname">审核：</span>
+							
+							<div class="pull-right1 select">
+									<select class="form-control auditstate">
+										<option value="2">审核通过</option>
+										<option value="3">驳回</option>
+									</select>
+							</div>
+							<div class="auditstatedesc"></div>
+						</li>
+						
+						
+						<li class="audiparnet" style="display:table;">
+							<span style = "float:left;" class="conpanyname">审核意见：</span>
+							
+							<div class="pull-right1 select">
+									<textarea class="auditcomment"></textarea>
+							</div>
+							
+							<label class="error auditcomment-error" for="js_area" style="margin-left:100px; display: inline-block;">请填写审核意见！</label>
+						</li>
+						<li>
+							<span style = "float:left;" class="conpanyname">优惠方式：</span>
+							
+							<span class="favorablemodedesc"></span>
+						</li>
+					</ul>
+				</div>
+				</div>
+			</div>
+			
+		
+		
+	</div><!-- /.modal-dialog -->
+	
+	
+	<div class="modal-footer">
+				<button type="button"  class="btn determine btn-primary"  >
+					确认
+				</button>
+				<button type="button"  data-dismiss="modal"  class="btn btn-default" >
+					取消
+		</button>
+		</div><!-- /.modal-content -->
+	</div>
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="loading" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop='static'>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">提示</h4>
+      </div>
+      <div class="modal-body">
+			请稍候。。。
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+	
+	var url = domain137 + '/bdusers/'+roleid+'/demands';
+	// url="https://gateway.mshuoke.com/pasf/bdusers/67018442beb7424b850e658aa43af830/demands"   	//TODO test
+
+
+	/*radio切换*/
+	$('.main-list-item li div.radio input[type="radio"]').click(function (){
+		$(this).parents('.radio').find('input[type="radio"]').prop({checked:false});
+		$(this).prop({checked:true});
+	});
+
+	/*审核切换*/
+	
+	$('.auditcomment').parents('.audiparnet').hide();
+	$('.auditstate').change(function (){
+		if(this.value == 3){
+			$('.auditcomment').parents('.audiparnet').show();
+		}else{
+			$('.auditcomment').parents('.audiparnet').hide();
+		}
+	});
+
+	/*新增行业*/
+
+
+	var $table = $('#table');
+	//debugger;
+	//文档地址http://bootstrap-table.wenzhixin.net.cn/zh-cn/documentation/
+	/*自定义头部*/
+
+	/*自己填写数据*/
+
+	$('#table').bootstrapTable({
+	 url:url,
+	 pagination: true, //分页
+	 contentType:'application/json',
+	 showColumns:true,
+	 search:true,
+	 checkbox:false,
+	 queryParams:function (params){
+				/*审核页面都只是可以看见自己的不管什么权限*/
+			   var data = {all:0};
+			
+			   data.limit = params.limit;
+			   data.offset = params.offset;
+			   data.size = 100000000;
+			  
+			 // data.limit = params.limit;
+			 // data.offset = params.offset;
+			  
+	   return  data;
+	 },
+	 sidePagination: "client",
+	 responseHandler:function(res){
+
+		var newJson = {};
+		newJson.total = res.data.length;
+		newJson.data = res.data;
+		//debugger;
+		//res.rows = res.list;
+		//debugger;
+		return newJson;
+	 },
+	 onLoadSuccess(){
+		/*移动自带事件*/
+		$('.search-btn button').click(function(){
+			$('.search input').eq(1).val($('.search input').eq(0).val());
+			$('.search input').eq(1).keyup();
+		});
+		//debugger;
+		
+		/*当search 没有vlaue的时候*/
+		$('.search input').eq(0)[0].oninput= function (){
+			if(!this.value){
+				$('.search input').eq(1).val(this.value);
+				$('.search input').eq(1).keyup();
+			}
+		};
+		
+		
+		$('.search input').eq(0).keyup(function (ev){
+			
+			var oEvent = ev || event;
+			if(oEvent.keyCode==13){
+				$('.search input').eq(1).val(this.value);
+				$('.search input').eq(1).keyup();
+			}
+		});
+	 },
+	 formatNoMatches:function(){
+		 return '没有搜索结果'
+	 },
+	 formatLoadingMessage:function(){
+		  return '正在努力加载中...';
+	 },
+	  columns: [
+	    {  
+		  field: 'id',  
+		  title: '包id'  
+		}, 
+		{  
+		  field: 'username',  
+		  title: '用户名'  
+		}, {  
+		  field: 'callname',  
+		  title: '称呼'  
+		}, {  
+		  field: 'brandname',  
+		  title: '品牌名'  
+		}, {  
+		  field: 'companyname',  
+		  title: '公司名'  
+		}, 
+		 {  
+		  field: 'servicetypedesc',  
+		  title: '业务类型' ,
+		}, 
+		 {  
+		  field: 'industry',  
+		  title: '行业'  
+		}, 
+		 {  
+		  field: 'uniquename',  
+		  title: '需求名'  
+		}, 
+		 {  
+		  field: 'demandquantity',  
+		  title: '需求量'  
+		}, 
+		 {  
+		  field: 'totalprice',  
+		  title: '总金额'  
+		}, 
+		{  
+		  field: 'auditor',  
+		  title: '审核人'  
+		}, 
+		{  
+		  field: 'demandstatedesc',  
+		  title: '状态'  
+		}, 
+		{  
+		  field: 'vestingtime',  
+		  title: '归属年月'  
+		}, 
+		{  
+		  field: 'releasetime',  
+		  title: '发布时间'  
+		}, 
+		{  
+		  field: 'audittime',  
+		  title: '审核时间'  
+		}, 
+		{  
+		  field: 'sendstatus',  
+		  title: '操作' ,
+		  'class':'handle',
+		  formatter:function (data,row,b){
+			//var datarow = [row.servicetype,row.id];
+			return '<div class="btn btn-primary btn-lg" data-state="'+row.demandstate+'" data-servicetype="'+row.servicetype+'"  data-requiredid="'+row.id+'"  data-customerid="'+row.customerid+'">查看详情</div>';
+
+		  }
+		}
+		]  
+		
+	});
+
+	$('#table').on('click','.handle .btn-primary',function (){
+
+		//var servicetype = $(this).attr('data-servicetype');
+		var dataState = $(this).attr('data-state');
+		var requiredid = $(this).attr('data-requiredid');
+		var customerid = $(this).attr('data-customerid');
+		getdetialdata(requiredid,customerid,dataState);
+
+		$('#loading').modal('show');
+	});
+	
+	var demandata;
+	/*更新数据详情*/
+	
+	var chargeLabelprice;
+	var customtagValue = 0;
+	var chargeValue = 0;
+	
+	
+	$('.determine').click(function (){
+		//debugger;
+	
+		
+		var url = domain137 + '/bdusers/'+roleid+'/demands/'+demandata.demandid+"?rolename="+rolename ;
+		
+		//debugger;
+		//统一收集数据
+		/*归属时间*/
+		demandata.vestingtime = $('.vestingtime .end_date:visible').val();
+		//产品线
+		demandata.productline = $('.product_line_id:visible').val()||$(".selects").html().trim()||"";
+		//demandata.auditcomment = $('.auditcomment:visible').val();
+		//上一个需求ID,需求续期功能
+		demandata.lastdemandid=$("#select_renew:visible").find("select>option:checked").attr("demandid")||$("#isRenew").find(".radio").attr("lastdemandid")||""
+		//TODO 上一个需求名
+		/*审核状态更新*/
+		//1审核中 7再次提交 通过2,3,4 驳回305 // 1 || 7 才可以有审核的权利
+		if(demandata.demandstate == 1 || demandata.demandstate == 7 ){
+			//auditstate == 3
+			demandata.auditstate = $('.form-control.auditstate').val();
+			
+			if(demandata.auditstate == 3){
+				/*只有驳回才传值审核意见*/
+				demandata.auditcomment = $('.auditcomment:visible').val();
+			}
+			
+			/*审核意见*/
+			
+		}
+		
+		
+		//auditcomment
+		if(demandata.industry == "教育培训"){
+			//demandata.basicunitprice =  $('.basicunitprice').val();
+		}
+		
+		/*子需求*/
+		$('.subdemands input.comment').map(function (index,data){
+			if(data){
+				if(demandata.subdemands[index]){
+					demandata.subdemands[index].remark = $('.subdemands input.comment').eq(index).val();
+				}
+			}
+		});
+		
+		
+		/*paymentcycle 付款*/
+		if($('.payuserdefined')[0].checked){
+			/*自定义*/
+			demandata.payuserdefined = 1;
+			demandata.paymentcycle = $('div.radio.paycycle input[type="number"]').val();
+		}else{
+			demandata.payuserdefined = 0;
+			/*判断 35 45 */
+			$('div.radio.paycycle input[type="radio"]').map(function(index,data){
+				if(this.checked){
+				
+					if(this.value==35){
+						demandata.paymentcycle = 35;
+					}
+					
+					if(this.value==45){
+						demandata.paymentcycle = 45;
+					}
+				}
+
+			});
+		}
+		
+		
+		
+		/*settlementcycle 付款*/
+
+		if($('.settleuserdefined')[0].checked){
+			/*自定义*/
+			demandata.settleuserdefined = 1;
+			demandata.settlementcycle = $('div.radio.setcycle input[type="number"]').val();
+		}else{
+			/*判断 35 45 */
+			demandata.settleuserdefined = 0;
+			$('div.radio.setcycle input[type="radio"]').map(function(index,data){
+				if(this.checked){
+					if(this.value==35){
+						demandata.settlementcycle = 35;
+					}
+					
+					if(this.value==45){
+						demandata.settlementcycle = 45;
+					}
+				}
+
+			});
+		}
+		
+		
+		
+		if(!demandata.vestingtime){
+			//alert('请填写归属日期');
+			$('.modal-body').scrollTop(270);
+			$('.vestingtime-error').show();
+		}else{
+			$('.vestingtime-error').hide();
+		}
+		
+		if(demandata.auditstate == 3){
+			demandata.auditcomment = $('.auditcomment:visible').val();
+			if(!demandata.auditcomment){
+				//alert('请填写审核意见');
+				if(demandata.vestingtime){
+					$('.modal-body').scrollTop($('.modal-body').height()-50);
+				}
+				$('.auditcomment-error').show();
+			}else{
+				$('.auditcomment-error').hide();
+			}
+		}
+		
+		//$('.needrecording1')
+		if($('.needrecording input')[0].checked){
+			demandata.needrecording = 1;
+		}
+		
+		if($('.needrecording input')[1].checked){
+			demandata.needrecording = 2;
+		}
+		
+		if(!(demandata.needrecording==1 || demandata.needrecording==2)){
+			$('.needrecording-error').show();
+			return;
+		}
+		$('.needrecording-error').hide();
+		if($('label.error:visible').get(0)){
+		
+			return;
+		}
+		$(".product_line_id:visible").triggerHandler("change")
+		if($(".error_productLine:visible").length){
+			return ;
+		}
+		
+		$('#loading').modal('show');
+
+		
+		
+		/*判断自定义标签*/
+		//debugger;
+		if(demandata.customtags && demandata.customtags[0]){
+			//先看有几个 
+			//现在有几个
+			//删除多余的
+			//改变，改变的
+			
+			var originlen = demandata.customtags.length;
+			
+			var nowlen = $('.free-label-box .free-label').length;
+			if(!(originlen==nowlen)){
+				for(var i=0;i<originlen-nowlen;i++){
+					demandata.customtags.pop();
+				}
+			}
+			
+			//改变现在的
+			
+			var customtagsArr = $('.free-label-box .free-label');
+			
+			for(var k=0;k<demandata.customtags.length;k++){
+				demandata.customtags[k].tagname = customtagsArr.eq(k).find('input[type="text"]').val();
+				demandata.customtags[k].price = customtagsArr.eq(k).find('input[type="number"]').val();
+			}
+		}
+		
+		demandata.adjustprice = $('.adjustprice').val();
+		demandata.needrecording=$("#needrecording").attr("state")||demandata.needrecording
+		//获取完数据在出发change函数，否则恢复到原始状态，无法获取数据
+			
+			$.when($.ajax({
+			url:url,
+			type:'PATCH',
+			contentType:'application/json',
+			data:JSON.stringify(demandata),
+		})).then(function (data){
+			if(data.msg == "success"){
+				$('#loading').modal('hide');
+				$('#table').bootstrapTable('refresh');
+				$('#myModal').modal('hide');
+			}
+		}).fail(function (data){
+		
+		});
+	});
+	
+	
+	
+	/*自定义标签价格计算*/
+	var noadddemandtotalprice = [];
+	
+	var customtagsValue = 0;
+	var countDemandtotalprice = 0;
+	$(document).on('blur','.adjustprice',function(){
+		countDemandtotalprice = 0;
+		if($('.free-label-box .free-label input[type="number"]').get(0)){
+			//debugger;
+			//有自定义标签
+			$('.free-label-box .free-label input[type="number"]').blur();
+		}else{
+			//没有自定义标签
+			//$('.free-label-box .free-label input[type="number"]').blur();
+			/*没有自定义标签的时候调不到 onblur 事件*/
+			
+			//单价加价
+			
+			//chargeValue(收费标签) customtagsValue(自定义标签的价格) defineadjustprice(改价的价格)
+	       
+			var defineadjustprice = $('.adjustprice').val()*1;
+		    var  allprice = (chargeValue*1)+(customtagsValue*1)+(defineadjustprice*1);
+			
+			$('.addprices').html('+<i style="font-style:normal;">'+allprice.toFixed(2)+'</i>元');
+			
+			/*子需求的单价和总价*/
+			
+			/*回到原来的值*/
+		    $.extend(true,noadddemandtotalprice,demandata.subdemands);
+			
+			noadddemandtotalprice.map(function (data,index){
+					data.price += customtagsValue;
+					$('.main-box.subdemands .js_one_price').eq(index).html((data.price+defineadjustprice).toFixed(2));
+					$('.main-box.subdemands .js_totalprice').eq(index).html((data.releasenum*(data.price+defineadjustprice)).toFixed(2));
+			});
+		}
+		
+		/*更新需求页面总价*/
+		$('.js_totalprice').map(function (index,data){
+			//console.log(data,index);
+			countDemandtotalprice+=($(data).html()*1);
+		});
+
+		if(demandata.subdemands[0]){
+			$('.demandtotalprice').html(countDemandtotalprice.toFixed(2));
+		}
+		
+	});
+	
+	
+
+	$(document).on('blur','.free-label-box .free-label input[type="number"]',function (ev){
+		customtagsValue = 0;
+		var target  =  ev.currentTarget;
+		/*深度拷贝*/
+
+		/*回到原来的值*/
+		$.extend(true,noadddemandtotalprice,demandata.subdemands);
+		/*这里时序列化的数据需要同时计数几组数据*/
+		
+
+		var demandtotalprice = $('.free-label-box .free-label input[type="number"]');
+		
+	
+		//算单价
+		demandtotalprice.map(function (index,data){
+			customtagsValue+=(data.value*1);
+			$('span.customtags').html('+<i style="font-style:normal;">'+customtagsValue.toFixed(2)+'<i/>元');
+		});
+		
+		//算一组每个的总价 noadddemandtotalprice 一组的每个单价
+		var defineadjustprice = $('.adjustprice').val()*1;
+		noadddemandtotalprice.map(function (data,index){
+			data.price += customtagsValue;
+			
+			$('.main-box.subdemands .js_one_price').eq(index).html((data.price+defineadjustprice).toFixed(2));
+			//js_totalprice
+			$('.main-box.subdemands .js_totalprice').eq(index).html((data.releasenum*(data.price+defineadjustprice)).toFixed(2));
+
+		});
+		
+		
+		////chargeValue(收费标签) customtagsValue(自定义标签的价格) defineadjustprice(改价的价格)
+
+		var  allprice = (chargeValue*1)+(customtagsValue*1)+(defineadjustprice*1);
+		// console.log(allprice);
+		$('.addprices').html('+<i style="font-style:normal;">'+allprice.toFixed(2)+'</i>元');
+		//debugger;
+		/*标签的总价+自定义标签的价格+改价 */
+		//demandata.demandtotalprice +=demandata.basicunitprice;
+		//改价的标签
+		//demandata.basicunitprice
+		//adjustprice
+		
+	});
+
+
+/*请求详情数据*/
+function getdetialdata(requiredid,customerid){
+
+	if(!requiredid||!customerid)return;
+
+	
+	var url = domain137 + '/bdusers/'+1+'/demands/'+requiredid
+	// url2="https://gateway.mshuoke.com/pasf/customers/20170817105926209/demands/20170817151914851/hisdemands"	//todo test
+	$.when($.ajax({
+		url:url,
+		dataType:'json',
+	})).then(function (data){
+		if(data.msg=="success"){
+			/*关闭加载层*/
+			$('#loading').modal('hide');
+			handleDetail(data.data,requiredid,customerid);
+		}
+		
+	}).fail(function (data){
+		//$('#loading').modal('hide');
+		//debugger;
+	});
+}
+
+
+/*处理详情*/
+
+//
+$(document).on('click','.deletetagename',function (ev){
+	var target = ev.currentTarget;
+	$(target).parent().remove();
+	$('.free-label-box .free-label input[type="number"]').blur();
+	//console.log(target);
+});
+
+
+
+function setValuedata(data,requiredid,customerid){
+	$('.error').hide();
+	demandata = data;
+
+	//var obj1 = {name:xx,age:18,sex:man};
+	//var obj2 = {name:cc,age:18};
+	//$.extend(true,obj1,obj2);
+
+	var  servicetype = data.servicetype;
+	var isindustry = data.industry;
+	var dataState = data.demandstate
+	customtagValue = 0;
+	chargeValue = 0;
+	if(servicetype=="1"){
+		$("#isRenew").show()
+		$("#isRenew").on("click",function(){
+			$(this).find("input:checked").attr("class")?$("#select_renew").show():$("#select_renew").hide()
+		})
+	}else{
+		$("#isRenew").hide()
+
+	}
+		/*判断页面的显示流程*/
+	if(servicetype=="1" && isindustry == "教育培训"){
+		/*标准发包 销售线索挖掘*/
+		$('.attachment').hide();
+		$('.standard').show();
+	
+		/*基本信息*/
+		$('.basicdetail').show();
+		$('.basicnot').hide();
+		$('.basicmaked').hide();
+	}
+	
+	
+	if(servicetype=="1" && isindustry != "教育培训"){
+		/*非标准发包*/
+		$('.standard').hide();
+		$('.attachment').show();
+		
+		
+		/*基本信息*/
+		$('.basicdetail').hide();
+		$('.basicnot').show();
+		$('.basicmaked').hide();
+	}
+	
+	if(servicetype=="2"){
+		/*数据加工*/
+		$('.attachment').show();
+		$('.standard').hide();
+		
+		
+			/*基本信息*/
+		$('.basicmaked').show();
+		$('.basicdetail').hide();
+		$('.basicnot').hide();
+		
+	}
+
+
+
+	
+	/*判断自定义的周期*/
+	
+	if(data.settleuserdefined){
+		$('div.radio.setcycle input[type="radio"]').map(function(index,data){
+				this.checked = false;
+		});
+		$('.settleuserdefined').prop('checked',true);
+		$('div.radio.setcycle input[type="number"]').val(data.settlementcycle);
+	}else{
+		$('div.radio.setcycle input[type="radio"]').map(function(index,data){
+				this.checked = false;
+		});
+		/*初始化*/
+		$('div.radio.setcycle input[type="radio"]').eq(1).prop('checked',true);
+		
+		
+		$('div.radio.setcycle input[type="number"]').val("");
+		
+		
+		if(data.settlementcycle){
+			if(data.settlementcycle == 35){
+				$('div.radio.setcycle input[type="radio"]').map(function(index,data){
+					this.checked = false;
+				});
+				$('div.radio.setcycle input[type="radio"]').eq(0).prop('checked',true);
+				$('div.radio.setcycle input[type="number"]').val('');
+			}
+			
+			if(data.settlementcycle == 45){
+			//debugger;
+				$('div.radio.setcycle input[type="radio"]').map(function(index,data){
+					this.checked = false;
+				});
+				$('div.radio.setcycle input[type="radio"]').eq(1).prop('checked',true);
+				$('div.radio.setcycle input[type="number"]').val('');
+			}
+		}
+	}
+	
+	
+	if(data.payuserdefined){
+		$('div.radio.paycycle input[type="radio"]').map(function(index,data){
+				this.checked = false;
+		});
+		$('.payuserdefined').prop('checked',true);
+		$('div.radio.paycycle input[type="number"]').val(data.paymentcycle);
+	}else{
+		$('div.radio.paycycle input[type="radio"]').map(function(index,data){
+				this.checked = false;
+		});
+		/*初始化*/
+		$('div.radio.paycycle input[type="radio"]').eq(1).prop('checked',true);
+		$('div.radio.paycycle input[type="number"]').val('');
+		if(data.paymentcycle){
+			if(data.paymentcycle == 35){
+				$('div.radio.paycycle input[type="radio"]').map(function(index,data){
+					this.checked = false;
+				});
+				$('div.radio.paycycle input[type="radio"]').eq(0).prop('checked',true);
+				$('div.radio.paycycle input[type="number"]').val('');
+			}
+			
+			if(data.paymentcycle == 45){
+			//debugger;
+				$('div.radio.paycycle input[type="radio"]').map(function(index,data){
+					this.checked = false;
+				});
+				$('div.radio.paycycle input[type="radio"]').eq(1).prop('checked',true);
+				$('div.radio.paycycle input[type="number"]').val('');
+			}
+		}
+	}
+	
+	$('.needrecording input')[0].checked = false;
+	$('.needrecording input')[1].checked = false;
+	for(var name in data){
+		//console.log(name);
+		if(name == 'demandid'){
+			$('.'+name).html('ID:'+data[name]);
+		}else if(name=="productattach"){
+				if(data[name]){
+					$('.'+name).html('<a href="'+domainDownShort + data[name] +'">下载</a>');
+				}else{
+					$('.'+name).html('暂无');
+				}
+		}else if(name == 'needrecording'){
+			//debugger;
+			if(data[name] == 1){
+				$('.needrecording input')[0].checked = true;
+				$("#needrecording").attr("state",1)
+			}
+			if(data[name] == 2){
+				$('.needrecording input')[1].checked = true;
+				$("#needrecording").attr("state",2)
+			}
+		}else if(name=="customtags"){
+			//自定义标签 还有功能没有写完
+		
+			if(data[name]){
+				if(data[name][0]){
+				 $('.free-label-box').html('');
+				 
+					data[name].map(function (data,index){
+						/*创建自定义标签*/
+						$('.free-label-box').append('<div class="free-label"><input type="text" value="'+data.tagname+'" placeholder="标签名" /><input type="number" value="'+data.price+'" placeholder="请输入标签单价" /><span class="deletetagename">删除此条</span></div>');
+						/*求标签的总价格*/
+						customtagValue+=data.price;
+					});
+					$('span.customtags').html('+<i style="font-style:normal;">'+customtagValue+'<i/>元');
+				}else{
+					//没有数据也要清空因为切换多个时会串联
+					 $('.free-label-box').html('');
+				}
+			}
+		}else if(name=="chargetags"){
+			//收费标签
+			$('.charge-label').html('');
+			$('li.chargetags').hide();
+			if(data[name]){
+				if(data[name][0]){
+					$('.charge-label').show();
+					$('li.chargetags').show();
+					data[name].map(function (item,index){
+						$('.charge-label').append('<i>'+item.tagname+'</i>');
+						chargeValue+=item.price;
+					});
+					//console.log(chargeValue,'darren');
+					$('span.chargetags').html('+<i style="border:none;">'+chargeValue.toFixed(2)+'</i>元');
+				}else{
+					$('.charge-label').hide();
+					$('li.chargetags').hide();
+				}
+			}
+		}else  if(name=="onoffline"){
+			var onoffline = data[name]?"线上":"线下";
+			$('.'+name).html(onoffline);
+		}else if(name=="auditstate"){
+				if(dataState == 1 ||  dataState == 7){
+					/*默认数据*/
+					//1审核中 7再次提交 通过2,3,4 驳回305
+					//audiparnet
+					$('.auditstate').show();
+					if(data[name] == 2 || data[name] == 3 ){
+						$('.auditstate').val(data[name]);
+					}else{
+						$('.auditstate').val(2);
+					}
+
+				}else{
+					$('.auditstate').hide();
+				}			
+		}else if(name == "auditcomment"){
+			//通过
+			$('.auditcomment').val('');
+			if(data.auditstate==2){
+				$('.auditcomment').parents('.audiparnet').hide();
+			}
+			//驳回
+			if(data.auditstate==3){
+				$('.auditcomment').val(data[name]);
+			}
+		}else if(name=='auditstatedesc'){
+			$('.auditcomment').parents('.audiparnet').hide();
+			
+			if(dataState == 1 || dataState == 7){
+				//debugger;
+				$('.'+name).hide();
+			}else{
+				//if()
+				
+				if(data.demandstate == 305 || data.demandstate==2 ||  data.demandstate == 3){
+					$('.auditcomment').parents('.audiparnet').show();
+					$('.'+name).show();
+					$('.'+name).html(data[name]);
+				}
+			}
+		}else if(name=="productlines"){
+			if(dataState == 1 || dataState == 7){
+				if(data[name]){
+						var productLines=data[name].split(",");
+						var options='<option value="">请选择产品线</option>';
+						for (var i = 0; i < productLines.length; i++) {
+							options+=`<option value=${productLines[i]}>${productLines[i]}</option>`
+						}
+						var select='<select class="form-control product_line_id">'+options+'</select>'
+						$(".selects").html(select)
+					}else{
+						$(".selects").html("")
+				}
+				
+			}
+		}else if(name=="productline"){
+		if(dataState != 1 || dataState != 7){
+				if(data[name]){
+						$(".selects").html(data[name])
+					}else{
+						$(".selects").html("")
+				}
+				
+			}
+		}else if(name=="servicetype"){
+			var arr = ['销售线索挖掘','数据加工','人工服务'];
+					//return arr[row.servicetype-1];
+			$('.'+name).html(arr[data[name]-1]);
+		}else if(name=="subdemands"){
+		
+			//模拟数据 子需求
+		  // var len = 0;
+		  if(data[name]){
+			if(data[name][0]){
+				$('.subdemands').show();
+				//len = data[name].length;
+				$('.main-box.subdemands').html('');
+				data[name].map(function (data,index){
+
+					var subdemandsHtml = `<ul class="main-list-item">
+							<li>
+								<span>目标区域：</span>
+								<span>${data.target}</span>
+							</li>
+							<li>
+								<span>发布数量：</span>
+								<span>${data.releasenum}</span>
+							</li>
+							<li>
+								<span>合同单价：</span>
+								<span class="js_one_price">${data.price}</span>
+								<span>元</span>
+							</li>
+							<li>
+								<span>总价：</span>
+								<span class="js_totalprice"> ${data.totalprice}</span>
+								<span>元</span>
+							</li>
+							
+							<li>
+								<span>备注：</span>
+								<span><input class="comment" style="height:26px;line-height:26px;  padding:5px; " value="${data.remark}" type="text" /></span>
+							</li>
+						</ul>`;
+						
+					$('.main-box.subdemands').append(subdemandsHtml);
+				});
+			}else{
+					$('.subdemands').hide();
+			}
+			
+		  }	
+		}else if(name=="vestingtime"){
+			/*归属年月*/
+			//data.vestingtime= 1;
+			$('.vestingtime .end_date').val('');
+			if(data.vestingtime){
+				$('.vestingtime .end_date').val(data[name]);
+			}
+			//alert('vestingtime');
+		}else if(name=="demandstate"){
+			if(data[name]){
+				//demandstate 状态值不是1就是2;
+				$('.demandstate').val(data[name]);
+			}
+			//continue;
+		}else if(name=="saleleadsurl" || name=="speechcrafturl" || name == "targetcusturl"){
+		
+			//data.targetcusturl = 2;
+			if(name == "targetcusturl"){
+				if(data[name]){
+					$('.'+name).html('已上传');
+				}else{
+					$('.'+name).html('未上传');
+				}
+			}else{
+				if(data[name]){
+					$('.'+name+' a').html('下载')[0].href = domainDownShort +  data[name];
+				}else{
+					$('.'+name+' a').html('未上传');
+				}
+			}		
+		}else if(name=="paymentcycle" || name=="settlementcycle"){
+			continue;
+		}else{
+			// basicunitprice	
+			if($('.'+name).get(0)){
+				if($('.'+name).get(0).tagName == 'INPUT' || $('.'+name).get(0).tagName == 'TEXTAREA'){
+						$('.'+name).val(data[name]);
+				}else{
+						$('.'+name).html(data[name]);
+				}
+			}
+			//$('.'+name).html(data[name]);
+		}
+		
+		
+	}
+
+		//判断详情状态续签项目 回显 或 列表显示
+	if(dataState==1||dataState==7){
+		
+		//获取续签标签历史记录  产品线个数大于0并且为销售线索挖掘获取
+			var product_lines=$(".product_line_id>option").length;
+		 	if(servicetype=="1"&&product_lines){
+		 		//添加change事件
+		 		$(".product_line_id").change(function(){
+					if($(this).val()){
+						$(".error_productLine").hide()
+						getDemandHistory(requiredid,customerid,$(this).val())?"":$("#select_renew").html("无")
+					}else{
+						$(".error_productLine").show();
+						$("#select_renew").html("无")
+					}
+		 			
+		 		
+		 		})
+		 		
+		 	}else{
+
+				$("#select_renew").html("无")	
+		 	}
+	}else{
+		//回显续签项目
+		$("#isRenew>div.radio").html(data.lastdemanduniquename||"无").attr({"lastdemandid":data.lastdemandid})
+	}
+
+
+	/*回显所有改价相关的数据*/
+	$('input.adjustprice').blur();
+	$('.addprices').html('+<i style="font-style:normal;">'+(customtagValue+chargeValue)+'</i>元');
+	
+}
+
+
+
+
+function handleDetail(data,requiredid,customerid){
+	setValuedata(data,requiredid,customerid);
+
+	$('#myModal').modal('show');
+	$('.free-label-box .free-label input[type="number"]').blur();
+}
+/**
+	根据产品线获取续签标签历史记录
+	productline  产品线
+*/
+function getDemandHistory(requiredid,customerid,productline){
+	$.ajax({
+		url:`${domain137}/customers/${customerid}/demands/${requiredid}/hisdemands?prodline=${productline}`,
+		success:function(result){
+			if(result.code==0){
+				var option="";
+					for (var i = 0; i < result.data.length; i++) {
+						option+=`<option demandid=${result.data[i].demandid}>${result.data[i].demandname}</option>`
+					}
+				var select=`<select class="form-control">${option}</select>`
+				
+				if(!result.data.length){
+					return false;
+				}else{
+					$("#select_renew").html(select);
+					return true;
+				}
+
+			}else{
+				return false;
+			}
+		},
+		error:function(err){
+			console.log(err);
+			return false;
+		}
+	})
+}
+
+
+	
+	
+var newDate = new Date();
+var time = newDate.toJSON();
+ $(".start_date")
+ .datetimepicker({
+		language:  'zh-CN',
+		 weekStart: 1,
+		 todayBtn:  1,
+		 autoclose: 1,
+		 todayHighlight: 1,
+		 startView: 2,
+		 minView: 2,
+		 forceParse: 0,
+		 format: 'yyyy-mm-dd',
+		 startDate:new Date(time),
+}).on("click",function(ev){
+		$(".start_date").datetimepicker("setEndDate", $(".end_date").val());
+}).on("change",function(ev){
+	$(".startDate").html($(".start_date").val());
+	$(".start_date").blur();
+}).on("blur",function(ev){
+	if(isNull($(".start_date").val())){
+		$(this).parent().find("p.error").eq(0).show();
+	}else{
+		$(this).parent().find("p.error").eq(0).hide();
+	}
+});
+					
+$(".end_date")
+.datetimepicker({
+				
+				 language:  'zh-CN',
+				 weekStart: 1,
+				 todayBtn:  1,
+				 autoclose: 1,
+				 todayHighlight: 1,
+				 
+				 startView: 3,/*年视图*/
+				 minView: 3,/*年视图*/
+				 forceParse: 0,
+				 format: 'yyyy-mm',
+				 formatDate:'Y/M', 
+				 startDate:false,			 
+}).on("click", function (ev) {
+		$(".end_date").datetimepicker("setStartDate", $(".start_date").val());
+}).on("change",function(ev){
+$(".endDate").html($(".end_date").val());
+$(".end_date").blur();
+}).on("blur",function(ev){
+	if(isNull($(".end_date").val())){
+		$(this).parent().find("p.error").eq(1).show();
+	}else{
+		$(this).parent().find("p.error").eq(1).hide();
+	}
+});
+
+</script>
+
+</body>
+</html>

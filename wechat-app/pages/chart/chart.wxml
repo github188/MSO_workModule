@@ -1,0 +1,25 @@
+<view class="page">
+    <view class="page__hd">
+        <text class="page__title">了解我们</text>
+    </view>
+    <view class="page__bd">
+        <view class="section section_gap">
+            <view class="section__title">客户案例</view>
+            <view class="section__ctn">
+                <image src="../resources/about/about1.jpg"/>
+            </view>
+        </view>
+        <view class="section section_gap">
+            <view class="section__title">我们的客户</view>
+            <view class="section__ctn">
+                <image src="../resources/about/about2.jpg" />
+            </view>
+        </view>
+        <view class="section section_gap">
+            <view class="section__title">联系我们</view>
+            <view class="section__ctn">
+                <image src="../resources/about/about3.jpg" />
+            </view>
+        </view>
+    </view>
+</view>

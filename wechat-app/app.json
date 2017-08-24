@@ -1,0 +1,50 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/about/about",
+    "pages/chart/chart",
+	
+	  "pages/index/know-more/know-more",
+	  "pages/index/know-more/test-telnum"
+  ],
+  "window":{
+    "backgroundColor":"#000000",
+    "onReachBottomDistance":"13px",
+    "enablePullDownRefresh":true,
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "眸事网",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#dddddd",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "iconPath": "pages/resources/public/userlist1.png",
+      "selectedIconPath": "pages/resources/public/userlist1curr.png",
+      "text": "首页"
+    },
+    {
+      "pagePath": "pages/chart/chart",
+      "iconPath": "pages/resources/public/userlist2.png",
+      "selectedIconPath": "pages/resources/public/userlist2curr.png",
+      "text": "直聊"
+    },
+    {
+      "pagePath": "pages/about/about",
+      "iconPath": "pages/resources/public/userlist2.png",
+      "selectedIconPath": "pages/resources/public/userlist2curr.png",
+      "text": "了解我们"
+    }]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
+}
