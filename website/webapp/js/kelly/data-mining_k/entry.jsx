@@ -531,7 +531,7 @@ class State extends React.Component {
             //   var applicationnum = isNull(this.state.data.applicationnum) ? 0 : this.state.data.applicationnum;
             var finishnum = isNull(this.props.data.finishnum) ? 0 : this.props.data.finishnum; //完成量
             //  debugger;
-            var orderpricetol = isNull(this.props.data.paymentmoney) ? 0 : this.props.data.paymentmoney;
+            var orderpricetol = isNaN(this.props.data.releasenum*this.props.data.pprice)?0:this.props.data.releasenum*this.props.data.pprice
             //debugger;
             var finlishScale = finishnum / ((releasenum == 0) ? 1 : releasenum);
 

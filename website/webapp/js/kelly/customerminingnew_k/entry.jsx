@@ -297,7 +297,15 @@ class State extends React.Component {
             var applicationnum = isNull(this.props.data.applicationnum) ? 0 : this.props.data.applicationnum;
             var finishnum = isNull(this.props.data.finishnum) ? 0 : this.props.data.finishnum;      //完成量
             //	debugger;
-            var orderpricetol = isNull(this.props.data.paymentmoney) ? 0 : this.props.data.paymentmoney;
+                var orderpricetol=0
+            try{
+                var arrCitys=JSON.parse(this.props.data.areaanddemandquantity)
+                for(var i=0;i<arrCitys.length;i++){
+                    orderpricetol+=Number(arrCitys[i].totalprice)
+                }
+            }catch(err){
+
+            }
             //debugger;
             var finlishScale = finishnum / ((releasenum == 0) ? 1 : releasenum);
 

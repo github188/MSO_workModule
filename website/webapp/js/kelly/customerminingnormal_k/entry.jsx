@@ -397,10 +397,21 @@ var State = React.createClass({
             var applicationnum = isNull(this.props.data.applicationnum) ? 0 : this.props.data.applicationnum;
             var finishnum = isNull(this.props.data.finishnum) ? 0 : this.props.data.finishnum;
             //  debugger;
-            var orderpricetol = isNull(this.props.data.demandpricetol) ? 0 : this.props.data.demandpricetol;
+			//预计结算金额
+			var orderpricetol=0
+			try{
+				var arrCitys=JSON.parse(this.props.data.areaanddemandquantity)
+				for(var i=0;i<arrCitys.length;i++){
+					orderpricetol+=Number(arrCitys[i].totalprice)
+				}
+			}catch(err){
+
+			}
+
+
+            
             //debugger;
             var finlishScale = finishnum / ((releasenum == 0) ? 1 : releasenum);
-
             /*天数*/
             var date = new Date();
             var endtime = new Date(this.props.data.endtime);
