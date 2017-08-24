@@ -265,8 +265,12 @@ label.error {
 					
 					<ul class="main-list-item">
 						<li>
-							<span>需求名：</span>
+							<span>crm需求名：</span>
 							<span class="uniquename"></span>
+						</li>
+						<li>
+							<span>需求名：</span>
+							<span class="demandname"></span>
 						</li>
 						<li>
 							<span>需求数量：</span>
@@ -847,6 +851,9 @@ label.error {
 		}, 
 		 {  
 		  field: 'uniquename',  
+		  title: 'crm需求名'  
+		},{  
+		  field: 'demandname',  
 		  title: '需求名'  
 		}, 
 		 {  
@@ -1030,14 +1037,14 @@ label.error {
 		
 		//$('.needrecording1')
 		if($('.needrecording input')[0].checked){
-			demandata.needrecording = 1;
+			demandata.needrecording = "1";
 		}
 		
 		if($('.needrecording input')[1].checked){
-			demandata.needrecording = 2;
+			demandata.needrecording = "0";
 		}
 		
-		if(!(demandata.needrecording==1 || demandata.needrecording==2)){
+		if(!(demandata.needrecording==="1" || demandata.needrecording==="0")){
 			$('.needrecording-error').show();
 			return;
 		}
@@ -1083,7 +1090,7 @@ label.error {
 		}
 		
 		demandata.adjustprice = $('.adjustprice').val();
-		demandata.needrecording=$("#needrecording").attr("state")||demandata.needrecording
+		
 		//获取完数据在出发change函数，否则恢复到原始状态，无法获取数据
 			
 			$.when($.ajax({
