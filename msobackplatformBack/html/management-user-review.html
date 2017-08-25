@@ -688,6 +688,8 @@ textarea {
 							</div>
 						</li>
 					</ul>
+					
+					<p class="underline-error"style="display:none">企业认证信息不完整!</p>
 				</div>
 			</div>
 			
@@ -1000,6 +1002,7 @@ function getdetialdata(jfuid){
 //PATCH /bdusers/all/users/{jfuid}
 /*更新数据详情*/
 	$(document).on('click','.determine',function (){
+		$('textarea,.product_line').blur();
 	
 	/**
 	选择审核通过时 企业认证和企业认证信息必填，选择驳回时，驳回原因必填
@@ -1032,16 +1035,25 @@ function getdetialdata(jfuid){
 		$(".compMationErr").show()
 			return;
 		}
+		
+		if($('.error:visible,.product-error:visible').length){
+			return;
+		}
+
 	}
 	$(".compMationErr").hide()
 
 
 	
 		
-		$('textarea,.product_line').blur();
-		if($('.error:visible,.product-error:visible').length){
+		//选择驳回
+		if($(".select>.distributionstate:visible").length&&$(".select>.distributionstate:visible").val()=="3"){
+			$(".product-error").hide()
+		if($('.error:visible').length){
 			return;
+			}
 		}
+
 
 
 		var jfuid = $(this).attr('jfuid');
@@ -1138,6 +1150,8 @@ function getdetialdata(jfuid){
 			}
 		
 		}
+		
+		
 		$('#loading').modal('show');
 		$('#myModal').modal('hide');
 		$.when($.ajax({
@@ -1376,7 +1390,7 @@ $(document).on("click",".del_product_line",function(){
 })
 //限制输入的长度
 $(document).on("input",".product_line",function(){
-	if($(this).val().trim().length>7){
+	if($(this).val().trim().length>30){
 	$(this).val($(this).val().trim().slice(0,8))
 	}
 })

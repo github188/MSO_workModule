@@ -1397,11 +1397,9 @@ function setValuedata(data,requiredid,customerid){
 			//debugger;
 			if(data[name] == 1){
 				$('.needrecording input')[0].checked = true;
-				$("#needrecording").attr("state",1)
 			}
-			if(data[name] == 2){
+			if(data[name] == 0){
 				$('.needrecording input')[1].checked = true;
-				$("#needrecording").attr("state",2)
 			}
 		}else if(name=="customtags"){
 			//自定义标签 还有功能没有写完
