@@ -196,7 +196,7 @@ $('#tabList').bootstrapTable({
 $("#tabList").on('load-success.bs.table',function(data){
 	var colsNum = 0;
     $("#tabList tbody tr").each(function(){
-    	var sunNum = parseInt($(this).children("td:last").text());
+    	var sunNum = $(this).children("td:last").text()*1;
     	//console.log("获取到的值："+sunNum);
     	colsNum += sunNum;
     	//console.log("计算到的值："+colsNum);
@@ -204,6 +204,6 @@ $("#tabList").on('load-success.bs.table',function(data){
 	if(isNaN(colsNum)){ 
 		$(".totalNum span").text("0");
 	}else{
-		$(".totalNum span").text(colsNum);
+		$(".totalNum span").text(colsNum.toFixed(2));
 	}
 });

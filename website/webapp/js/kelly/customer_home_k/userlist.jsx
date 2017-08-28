@@ -32,11 +32,11 @@ class Userlist extends React.Component{
 							</a>
 						</li>
 						<li className="first3">
-							<a href="customer_reports_1.html" className="nav-rpt-old">
+							<a href="customerreport.html" className="nav-rpt">
 								<label></label>
 								<span>成单报表</span>
 							</a>
-							<a href="customerreport.html" className="nav-rpt">
+							<a href="customer_reports_1.html" className="nav-rpt-old">
 								<label></label>
 								<span>成单报表</span>
 							</a>

@@ -36,7 +36,6 @@ class Customerreport extends React.Component {
         $.ajax({
             url: url,
         }).then(function(result) {
-            console.log(result, 666)
             // if(data.hfp.releasenum){//发布量
             // 	this.setState({
             // 		releasenumSum:data.hfp.releasenum,		//发布量
@@ -75,9 +74,7 @@ class Customerreport extends React.Component {
             $.ajax({
                 type: "patch",
                 url: url,
-                success: function(data) {
-                   
-                },
+                success: function(data) {},
             });
         }.bind(this));
 
@@ -118,35 +115,41 @@ class Customerreport extends React.Component {
     }
 }
 
-
 window.oderdemandname = function(value, row, index) {
 return index += 1;
 };
 
+if (typeof (String.prototype.startWith) == "function") {
+
+} else {
+    String.prototype.startWith = function(str) {
+        var reg = new RegExp("^" + str);
+        return reg.test(this);
+    }
+}
 
 window.reporturl = function(value, row, index) {
-	var url = "";
-	//debugger;
-	if((row.prefix+"").trim()!='package.mshuoke.com'){
-		row.prefix = 'res.mshuoke.com'
-	}
-	//console.log(row);
-	row.reporturl.startsWith('/')?(url = '//'+row.prefix+row.reporturl):(url='//'+row.prefix+"/"+row.reporturl);
-		
-	//处理前缀
-	if (row.downloadcount == '0') {
-	
-		return `<a class="donwFile1" data-reportid="${row.reportid}" href="${url}">
+var url = "";
+//debugger;
+if ((row.prefix + "").trim() != 'package.mshuoke.com') {
+    row.prefix = 'res.mshuoke.com'
+}
+//console.log(row);
+row.reporturl.startWith("/") ? (url = '//' + row.prefix + row.reporturl) : (url = '//' + row.prefix + "/" + row.reporturl);
+
+//处理前缀
+if (row.downloadcount == '0') {
+
+    return `<a class="donwFile1" data-reportid="${row.reportid}" href="${url}">
 					
 							<span class="ant-scroll-number-previous"  ><span >下载</span><sup data-show="true" class="ant-scroll-number ant-badge-count">new</sup></span>
 					</a>`;
-	}
+}
 
-	return `<a class="donwFile1" data-reportid="${row.reportid}" href="${url}">下载</a>`;
-		
+return `<a class="donwFile1" data-reportid="${row.reportid}" href="${url}">下载</a>`;
+
 };
 
 export default Customerreport;
-
 
 
