@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>眸事网-大数据营销获客平台,精准销售线索直达意向客户,提升30%-50%转化</title>
+	<meta name="description" content="眸事获客(眸事网)是国内首家大数据人工智能驱动的获客平台,一站式定制企业营销数据，做到真正的销售闭环.企业可根据自身市场需求定制销售线索，快速提升销售额,以达到最终的市场营销转化">
+	<meta name="keywords" content="大数据营销,销售线索,精准营销,市场营销,眸事获客">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+	<script src="js/jquery-1.7.2.min.js"></script>
+	<script src="js/count.js"></script>
+    <style type="text/css">
+		html { font-family:sans-serif; text-size-adjust: 100%; font-size: 62.5%; line-height: 1.5; position:relative; height:100%; min-height:420px;}
+		body,ul,li,ol,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div,dl,dt,dd,input,button { margin:0; padding: 0;}
+		img {border:none; display: block;}
+		li {list-style: none}
+		textarea {resize:none;}
+		textarea, input, button { outline: none;}
+		a, a:hover {text-decoration: none; color: #424242;}
+		button { cursor: pointer;}
+		textarea, input, button { font-family: "microsoft yahei";}
+		.area a:hover { color: #1aa0ff;}
+		/* Internet Explorer 10+ placeholder颜色*/
+		input::-ms-input-placeholder { color: #999;}
+
+		.home-login { height:100%; background:#ffffff; padding:0 20px; min-height:260px;}
+
+		.code-msg input { width:38%; line-height:50px;height:50px; border:0px; font-size:13px; float:left;  }
+		.code-msgImg { display:inline-block; float:left; width:56px;}
+		.code-msgImg img { width:18px; margin:12px auto 0 auto;}
+		.phoneImg {float:left; display:inline-block; width:56px;}
+		.phoneImg img { width:20px; margin:13px auto 0 auto;}
+
+		.userName{ width:100%; overflow:hidden; height:50px; border-bottom:1px solid #f3f3f4; margin-top: 25px; margin-bottom: 10px;}
+		.password { width:100%; overflow:hidden; height:50px; border-bottom:1px solid #f3f3f4;}
+		.userName input { width:75%; line-height:20px;height:20px; padding:15px 0; border:0px; font-size:13px;}
+		.password input { width:75%; line-height:20px;height:20px; padding:15px 0; border:0px; font-size:13px;}
+		.error-msg { color:#f00; line-height:40px; height:50px; width:100%;}
+		.signUp { background:#00b9ff; line-height:50px; text-align:center; color:#ffffff; border-radius:40px; box-shadow:0 0 12px #b7ebff; font-size:1.6rem; width:100%; border:0;}
+
+		.copyRight { position:absolute; bottom:38px; text-align:center; color:#d9d9d9; left:0;right:0;width:100%;}
+    </style>
+</head>
+<body> 
+	<div class="home-login">
+		<div>
+			<div class="userName">
+				<span class="phoneImg">
+					<img src="images/login/login-user.png"/>
+				</span>
+				<input type="text" placeholder="账号"/>
+			</div>
+			
+			<div class="password">
+				<span class="code-msgImg">
+					<img src="images/login/login-pswd.png" style={{"width":"18px"}} />
+				</span>
+				<input type="password" placeholder="密码"/>
+			</div>
+			<div class="error-msg"></div>
+			<button type="button" class="signUp">登录</button>
+		</div>
+		<div class="copyRight">
+			<p>Copyright©2011-2017</p>
+			<p>上海脉豪商务信息咨询有限公司</p>
+		</div>
+	</div>
+	<script>
+		var pathUrl = location.search;
+		var orderid = pathUrl.split('?')[1];
+		$(".userName input").blur(function(){
+			if($(this).val() == ''){
+				$(this).addClass("error");
+				$(".error-msg").text("请输入账号");
+			}else{
+				$(this).removeClass("error");
+				$(".error-msg").text("");
+			}
+        });
+        $(".userName input").focus(function(){
+            $(this).removeClass("error");
+            $(".error-msg").text("");
+        });
+        $(".password input").blur(function(){
+            if($(this).val() == ''){
+                $(this).addClass("error");
+                $(".error-msg").text("请输入密码");
+            }else{
+                $(this).removeClass("error");
+                $(".error-msg").text("");
+            }
+        });
+        $(".password input").focus(function(){
+            $(this).removeClass("error");
+            $(".error-msg").text("");
+        });
+		$(".signUp").click(function(){
+			if($(".userName input").val()==""){
+				$(".error-msg").text("请输入账号");
+				return false;
+			}
+			if($(".password input").val()==""){
+				$(".error-msg").text("请输入密码");
+				return false;
+			}
+			var domain = "https://www.mshuoke.com";
+			var urlLogin = domain + "/user_toLogin";
+			var data = {
+				jfuname:$(".userName input").val(),
+				jfupassword:$(".password input").val(),
+			}
+			$.ajax({
+                type:"post",
+                url:urlLogin,
+                async:true,
+                data:data,
+                contentType:"application/x-www-form-urlencoded;charset=utf-8",
+                dataType: "json",
+                success:function(data){
+	                if(data.code=="Y"){
+						//sessionStorage.setItem("jfuid", data.jfuid);//用户id
+					    //localStorage.setItem("showName", data.showName);//显示用户名
+					    //localStorage.setItem("pid", data.pid);//父账号id
+					    //localStorage.setItem("realname", data.realname);//昵称
+					    //localStorage.setItem("jfustate", data.jfustate);//用户状态 0-初始状态 1-填写资料-提交 4-已审核 3-驳回
+					    //sessionStorage.setItem("jfutype", data.jfutype);//用户类型 1 发包方 2接包方
+					    //localStorage.setItem("jfuname",data.jfuname);
+					    //localStorage.setItem("trusteeship",data.trusteeship);//是否托管 0-非托管 1-托管,
+					    //localStorage.setItem("brandname",data.brandname);//品牌名
+						if(data.jfutype==1){
+							window.location.href="//m.mshuoke.com";
+						}else{
+							window.location.href="//m.mshuoke.com/supplier/my-order.html?" + orderid;
+						}
+					}else if(data.code=="ER003"){//用户名不存在
+					   $(".error-msg").text("您输入的用户名不存在！");
+					}else if(data.code=="ER004"){//密码错误
+					   $(".error-msg").text("您的密码有误！");
+					}else if(data.code=="ER005"){//账号已停用
+					   $(".error-msg").text("该账号已停用！");
+					}else if(data.code=="N"){//登录失败
+					   $(".error-msg").text("登录失败！");
+					}else{
+					   $(".error-msg").text("请刷新再试");
+					}
+                },
+                error : function(XMLHttpRequest, textStatus, errorThrown) {
+					 console.log(XMLHttpRequest);
+					 console.log(textStatus);
+					 console.log(errorThrown);
+				  },
+             });
+		});
+		
+		sessionStorage.setItem("need-refresh", true);
+	</script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>眸事网-大数据营销获客平台,精准销售线索直达意向客户,提升30%-50%转化</title>
+	<meta name="description" content="眸事获客(眸事网)是国内首家大数据人工智能驱动的获客平台,一站式定制企业营销数据，做到真正的销售闭环.企业可根据自身市场需求定制销售线索，快速提升销售额,以达到最终的市场营销转化">
+	<meta name="keywords" content="大数据营销,销售线索,精准营销,市场营销,眸事获客">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+	<script src="../js/jquery-1.7.2.min.js"></script>
+	<script src="../js/count.js"></script>
+    <style type="text/css">
+		html { font-family:sans-serif; text-size-adjust: 100%; font-size: 62.5%; line-height: 1.5; position:relative; height:100%; min-height:420px;}
+		body,ul,li,ol,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div,dl,dt,dd,input,button { margin:0; padding: 0;}
+		img {border:none; display: block;}
+		li {list-style: none}
+		textarea {resize:none;}
+		textarea, input, button { outline: none;}
+		a, a:hover {text-decoration: none; color: #424242;}
+		button { cursor: pointer;}
+		textarea, input, button { font-family: "microsoft yahei";}
+		.area a:hover { color: #1aa0ff;}
+		/* Internet Explorer 10+ placeholder颜色*/
+		input::-ms-input-placeholder { color: #999;}
+
+		body { background:url(../images/supplier/order-bg.jpg) center center repeat-y; background-size:100% auto;}
+		body.success { background:url(../images/supplier/success-bg.gif) center 12% no-repeat; background-size:50% auto;}
+		.supplier-order { color:#fff; padding:25px 0;}
+		.supplier-order h1 { font-weight:normal; font-size:1.6rem; text-align:center;}
+		.order-num { font-size:1.6rem; text-align:center;}
+		.order-detals { margin:25px 35px; color:#333; background:#fff; border-radius:8px; font-size:1.6rem; height:400px; position:relative;}
+		.order-detals ul { padding:47px 0 0 46px;}
+		.order-detals ul li { height:40px;}
+		.order-detals label { width:7em; display:inline-block;}
+		.btn-box { padding:37px 28px 0 28px;}
+		.btn-box button { height:50px; font-size:1.8rem; background:#00b9ff;border-radius:25px; width:100%; border:0; color:#fff;}
+		.btn-box button.keep-out { background:#ccc;}
+		.terms-box { font-size:1.2rem; padding:25px; line-height:16px;}
+		.terms-box .check { border:1px #ccc solid; background:#fff; height:14px; width:14px; display:inline-block; border-radius:3px; float:left; margin-right:4px;background-size:0% auto;
+		transition: background-size .25s; -moz-transition: background-size .25s; -webkit-transition: background-size .25s; -o-transition: background-size .25s;}
+		.terms-box .checked { border:1px #368eee solid; background:url(../images/supplier/checkbox.png) center center no-repeat #368eee; background-size:78% auto;
+		transition: background-size .25s; -moz-transition: background-size .25s; -webkit-transition: background-size .25s; -o-transition: background-size .25s;}
+		.terms-box a { color:#368eee;}
+		.terms-cover { position:absolute; left:0; top:0; z-index:2; width:100%; height:100%;}
+		.terms-cover {
+			visibility: hidden;
+			-webkit-transform: translateY(55%) scale(0);
+			transform: translateY(55%) scale(0);
+			-webkit-transition: -webkit-transform 0.4s, visibility 0s 0.4s;
+			transition: transform 0.4s, visibility 0s 0.4s;
+		}
+
+		.terms-cover.open {
+			visibility: visible;
+			-webkit-transform: translateY(0%) scale(1);
+			transform: translateY(0%) scale(1);
+			-webkit-transition: -webkit-transform 0.4s;
+			transition: transform 0.4s;
+		}
+		
+		.terms-cover .closed { position:absolute; width:28px; height:28px; background:url(../images/supplier/closed.png) no-repeat; background-size:100%; display:inline-block; right:14px; top:-14px;}
+		.terms-info { height:400px;}
+		.terms-info h1 { background:#33b6db; border-top-left-radius:8px; border-top-right-radius:8px; line-height:48px; color:#fff;}
+		.terms-info p,.terms-info h3 { font-size:1.4rem; text-indent:2em;}
+		.terms-content { padding:16px 26px; overflow: scroll; height:298px; background:#fff;}
+		.copyRight { text-align:center; color:#d9d9d9; font-size:1.2rem;}
+		
+		.received-success { position:relative;}
+		.success .received-success { text-align:center;}
+		.success .received-success h3 { color:#00b9ff; font-size:1.6rem; padding-bottom:10px; font-weight:normal;}
+		.success .received-success p { color:#cacaca; font-size:1.4rem;}
+		.received-w { padding-top:37px; width:80%;text-align:center; color:#333; margin: 0 auto; color:#33b6db; font-size:1.4rem;}
+		
+		@media screen and (max-width: 320px){
+			.supplier-order h1,.order-num,.order-detals { font-size:1.4rem;}
+			.order-detals { height:404px;}
+			.order-detals ul { padding:35px 0 0 35px;}
+			.terms-box { font-size:1.0rem;}
+		}
+    </style>
+</head>
+<body> 
+	<div class="supplier-order">
+		<div class="received-success">
+			<h1 class="order-name">&nbsp;</h1>
+			<p class="order-num">订单号:<span>&nbsp;</span></p>
+			<div class="order-detals">
+				<ul>
+					<li>
+						<label>订单数量：</label>
+						<span class="orderNum">&nbsp;</span>
+					</li>
+					<li>
+						<label>订单单价：</label>
+						<span class="orderPrice">&nbsp;</span>
+					</li>
+					<li>
+						<label>订单服务费：</label>
+						<span class="orderS">&nbsp;</span>
+					</li>
+					<li>
+						<label>开始日期：</label>
+						<span class="beginTime">&nbsp;</span>
+					</li>
+					<li>
+						<label>结束日期：</label>
+						<span class="endTime">&nbsp;</span>
+					</li>
+				</ul>
+				<div class="received">
+					<div class="btn-box"><button type="button">立即领取</button></div>
+					<div class="terms-box"><span class="check checked"></span>我已阅读并同意<a href="javascript:">《眸事网订单领取条例》</a></div>
+				</div>
+				<div class="terms-cover">
+					<span class="closed"></span>
+					<div class="terms-info">
+						<h1>眸事网订单服务条款</h1>
+						<div class="terms-content">
+							<p>本服务条款是眸事网站（以下简称“本网站”）的经营者上海脉豪商务信息咨询有限公司（以下简称“脉豪”），与供应商（以下简称“您”），共同缔结的双方具有约束力的有效契约。</p>
+							<p>脉豪向供应商提供本网站上所展示的订单和服务，并将不断更新服务内容，最新的服务以本网站上的相关产品及服务介绍的页面展示以及向用户实际提供的为准。</p>
+							<h3>第一条 总则</h3>
+							<p>1、您确认：您在领取订单之前，已经充分阅读、理解并接受本服务条款的全部内容，一旦您选择“同意”并领取订单，即表示您同意遵循本服务条款之所有约定。<p>2、您同意：本网站有权随时对本服务条款及相应的规则内容进行单方面的变更，并有权以消息推送、网页公告等方式予以公布，而无需另行单独通知您；若您在本服务条款内容变更后继续领取并执行订单，表示您已充分阅读、理解并接受修改后的协议内容，也将遵循修改后的条款内容。更新后的内容一旦以消息推送、网页公告等方式予以公布即有效代替原来内容。您有义务定期查看本页，以了解最新资讯及操作说明。</p>
+							<h3>第二条 细则</h3>
+							<p>1、指派订单：平台有权依据订单内容和数量，从全局做出选择，安排调配项目和数量给呼叫中心，派选最优质的订单给您，保证您最大的收益。</p>
+							<p>2、订单生效：订单自领取后确认生效。生效后，如一方因故需要修改、变更、中止、解除契约，需双方协商同意，并以双方邮件确认为准。</p>
+							<p>3、订单款项：领取订单后，您需支付订单详情中列明的相关款项，包括但不限于订单服务费、精准信息服务费（不使用则无费用）、补税费用（一般纳税人增票无需补税）以及使用平台电话线路的费用（不使用可不支付），有优惠方案免去的费用以订单详情载明的信息为准。</p>
+							<p>4、订单执行：您需每天向眸事网匀速提交有效数据，提交数据的成功量由眸事网进行质检后确认。</p>
+							<p>5、订单结算：订单执行完毕后，双方需在次月30日前确认订单总额，供应商向脉豪开具等额发票；脉豪在订单完成后45个工作日内（发票按时提交，结束时间按自然月，如遇节假日顺延）向供应商全额支付订单金额。</p>
+							<p>6、订单投诉：如果发生客户方投诉事件，确认供应商责任归属后，每一起投诉脉豪将对此订单中所有的金额扣除10%结算，以此类推。如果一个订单发生两次以上客户方投诉，脉豪有权与供应商终止合作，并不承担任何违约责任。</p>
+							<p>7、订单禁止：非经眸事网书面同意，您不得将订单的权利义务转包或分包给任何第三方，否则眸事网有权单方取消订单，您应该退还本网站已经支付的费用，并向眸事网支付订单总金额20%的违约金；如因您转包分包行为给眸事网或者眸事网客户造成损失的，您应承担全部责任（包括但不限于行政、刑事处罚、经济赔偿等）。</p>
+							<p>8、如有其它事宜，双方可自行协商并以双方邮件确认为准。</p>
+							<h3>第三条 本网站对本服务协议包括基于本服务协议置顶的各项规则以及签订的其他任何书面协议拥有最终解释权。</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="copyRight">
+			<p>Copyright©2011-2017</p>
+			<p>上海脉豪商务信息咨询有限公司</p>
+		</div>
+	</div>
+	
+	<script>
+		var pathUrl = location.search;
+		var orderid = pathUrl.split('?')[1];
+		//if(sessionStorage.getItem("jfuid")==undefined || sessionStorage.getItem("jfutype")==1){
+		//	window.location.href="//m.mshuoke.com/login.html?" + orderid;
+		//}
+		var domain137 = "https://gateway.mshuoke.com";
+		var getUrl = domain137 + "/worker/orderdetail/" + orderid;
+		var receiveUrl = domain137 + '/worker/receiveorder/' + orderid + '/5';
+		$.ajax({
+			type:"get",
+			url:getUrl,
+			data:{order:orderid},
+		    contentType:"application/x-www-form-urlencoded;charset=utf-8",
+			dataType: "json",
+			success:function(data){
+				if(data.code == '0'){
+					//console.log(data);
+					var orderS = data.data;
+					$("h1.order-name").text(orderS.name);
+					$("p.order-num span").text(orderS.id);
+					$("span.orderNum").text(orderS.orderQuantity + "条");
+					$("span.orderPrice").text("￥" + orderS.unitPrice.toFixed(2));
+					$("span.orderS").text("￥" + orderS.serviceCharge.toFixed(2));
+					$("span.beginTime").text(orderS.beginTime.substr(0,10));
+					$("span.endTime").text(orderS.endTime.substr(0,10));
+					var state = orderS.orderState;//1-待领取 2-已领取 3-已放弃 4-已取消 5-进行中 6-暂停 7-结算中 8-已完成
+					if(state=="2"){
+						$(".received").html("<div class='received-w'>当前订单已成功领取，<br />查看更多详情请登录网页版</div>");
+					}
+					if(state=="3"){
+						$(".received").html("<div class='received-w'>此订单已被放弃，<br />查看更多详情请登录网页版</div>");
+					}
+					if(state=="4"){
+						$(".received").html("<div class='received-w'>此订单已取消，<br />查看更多详情请登录网页版</div>");
+					}
+					if(state=="5"){
+						$(".received").html("<div class='received-w'>此订单正在进行中，<br />查看更多详情请登录网页版</div>");
+					}
+					if(state=="6"){
+						$(".received").html("<div class='received-w'>此订单已被暂停执行，<br />查看更多详情请登录网页版</div>");
+					}
+					if(state=="7"){
+						$(".received").html("<div class='received-w'>此订单正在结算中，<br />查看更多详情请登录网页版</div>");
+					}
+					if(state=="8"){
+						$(".received").html("<div class='received-w'>此订单已完成，<br />查看更多详情请登录网页版</div>");
+					}
+				}else{
+					var r = confirm("当前网速不佳，请刷新后重试！");
+					if (r == true){
+						location.reload();
+					}
+				}
+				
+			}
+		});
+		$(".terms-box span").toggle(function(){
+			$(this).removeClass("checked");
+			$(".btn-box button").addClass("keep-out");
+		},function(){
+			$(this).addClass("checked");
+			$(".btn-box button").removeClass("keep-out");
+		});
+		
+		$(".terms-box a").click(function(){
+			$(".terms-cover").addClass("open");
+		});
+
+		$(".closed").click(function(){
+			$(".terms-cover").removeClass("open");
+		});
+		
+		$(".btn-box button").click(function(){
+			if($("span.check").hasClass("checked")!=true){
+				return false;
+			}
+			var receiveBox = confirm("是否确认领取订单？");
+			if (receiveBox == true){
+				var dataR = {
+					orderid:orderid,
+					state:5,
+				}
+				$.ajax({
+					url:receiveUrl,
+					type:'PATCH',
+					contentType:'application/json',
+					data:JSON.stringify(dataR),
+					success:function(data){
+					console.log(data);
+						var oHeight = $(window).height();
+						var oPadding = oHeight*0.45-25;
+						var oPadding1 = oHeight*0.31;
+						$("body").addClass("success");
+						$(".received-success").css("padding-top",oPadding).html("<h3>恭喜您，订单已领取成功！</h3><p>您可以登录眸事网PC端执行该订单</p>");
+						$(".copyRight").css("padding-top",oPadding1);
+					}
+				});
+			}
+		});
+	</script>
+</body>
+</html>

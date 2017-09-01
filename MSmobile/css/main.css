@@ -1,0 +1,20 @@
+    html {
+		-ms-touch-action: none;  /* 阻止windows Phone 的默认触摸事件 */
+    }
+	
+    *{
+    	margin: 0;
+    	padding: 0;
+    }
+	
+    ul,ol {
+        list-style: none;
+    }
+	
+    body {
+    	width: 100%;
+        *cursor: default;
+    	font: 16px/1.5 "Microsoft YaHei",Helvetica,STHeiti STXihei,Microsoft JhengHei,Arial;
+		background:#ffffff;
+    }
+	

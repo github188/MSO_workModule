@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<title>MSO-眸事网，国内专业营销服务外包平台</title>
+	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="/css/main.css" />
+	<script src="../public/jquery-1.7.2.min.js" type="text/javascript"></script>
+	<script src="../public/easing.js" type="text/javascript"></script>
+	<script src="../public/url.js" type="text/javascript"></script>
+	
+	<style>
+	
+		body{ background:#f4f4f4; }
+		
+		.list { width:90%; margin:auto; }
+		.list li { position:relative; font-size:16px; line-height:99px; color:#333333; text-align:center; 
+			background:#ffffff; margin-top:20px; border-radius:12px;
+		}
+		.list li:before { 
+			z-index:10; position: absolute; background:#dddddd; border-radius:50%;
+			width:20px; height:20px; content:""; left: 20px; top:50%; margin-top:-10px;
+		}
+		
+		.list li.active:before {
+			background:#413fe9; 
+		}
+		
+		.list li:after { 
+			z-index:10; position: absolute;
+			background:url(/images/simulated-home/arrow-grey.png) no-repeat;
+			border-radius:50%;
+			width:14px; height:26px; content:""; right: 20px; top:50%; margin-top:-13px;
+		}
+		
+		.list li.active:after {
+			background:url(/images/simulated-home/arrow-blue.png) no-repeat;
+		}
+		.main-top { position:fixed; left:0; top:0; z-index:130; width:100%; height:80px; background:#413ee8; overflow:hidden; }
+		.main-top .homes { font-size:16px; color:#ffffff;  width:95%; margin:auto; text-align:center; line-height:80px; }
+		.main-top .getback { float:left; display:block; width:22px;  height:22px; 
+			background:url(/images/simulated-home/back.png) no-repeat;
+			background-size:100%; 
+			margin-top:29px;
+		}
+		
+		.main-top .gethome { float:right; display:block; width:22px;  height:22px; 
+			background:url(/images/simulated-home/home.png) no-repeat;
+			background-size:100%; 
+			margin-top:29px;
+		}
+		
+		.photo { width:100%; margin-bottom:46px; }
+		.photo img{ width:100%; }
+		.known { height:320px; width:100%; }
+		
+		 button { border:none;}
+		.press {  width:240px; height:50px; border-radius:8px; background:#858df0;
+		 display:table; color:#ffffff; font-size:16px;
+		 margin:auto; margin-top:70px; }
+		 
+		 .low img { width:100%; }
+		 .industry { font-family: .PingFangSC-Regular;
+			font-size: 16px;
+			color: #333333;
+			letter-spacing: 0; display:none; 
+			 position:fixed; left:0; top:0; z-index:100; background:rgba(0,0,0,0.4); width:100%; height:100%; }
+		 .industry .first { width:27%; float:left; line-height:50px;  }
+		 .industry .second { width:27%;  float:left; line-height:50px; position:relative;  }
+		 .industry .thirty { width:46%; float:left;  line-height:50px;  position:relative;  }
+		 .industry .box { margin-top:50%; height:auto; text-align:center; background:#ffffff; width:100%; overflow:hidden; }
+		.industry .second span{ z-index:101; position:absolute; left:0; top:5px; display:block; width:2px; height:40px;
+		background:#d8d8d8;  }
+		
+		.industry .thirty span{ z-index:101; position:absolute; left:0; top:5px; display:block; width:2px; height:40px;
+		background:#d8d8d8;  }
+		.first-list {width:27%; float:left;}
+		.first-list li { line-height:30px; }
+		.second-list {width:27%; float:left;}
+		.second-list li { line-height:30px; }
+		.thirty-list { width:46%; float:left;}
+		.thirty-list li { line-height:30px; }
+		.first-list li.current { background:#e7e7e7;}
+		.second-list li.current { background:#e7e7e7;}
+		.thirty-list li.current { background:#e7e7e7;}
+		
+		.citychoice { width:100%; z-index:100; height:100%; position:absolute; background:#F4F4F4; left:0; top:80px; }
+		
+		
+		.secondHalf {position:fixed; left:0; padding-top:30px;   background:#f4f4f4; width:100%; 
+		 border-bottom:1px solid #dddddd; overflow:hidden; padding-bottom:30px; }
+	
+		.chosen  {
+			 width:86%;
+			margin-left:2.4%; font-size:16px; display:table;
+		}
+		
+		.selectedcity { width:100%; }
+		.hottingcity { width:86%; margin-left:2.4%; font-size:16px; margin-top:270px; }
+		.hottingcity .hotlist { width:100%;  overflow:hidden; }
+		.hottingcity .hotlist  li { margin-top:20px; line-height:60px; border-radius:8px; width:30%; float:left;
+		 background:#ffffff; margin-left:5%; text-align:center;  border:1px solid #cccccc;   }
+		.hottingcity .hotlist  li:nth-of-type(3n-2) { margin-left:0; }
+		.hottingcity .hotlist  li.current { border:1px solid #413fe9; }
+		.citytitle { color:#413fe9; }
+		
+		.cityselected { text-align:center; color:#413fe9; position:fixed; right:0; top:200px; 
+		background:#f8f8f8; width:8.6%; }
+		.caption {
+			font-size: 16px;
+			color: #666666;
+			letter-spacing: 0;
+			line-height: 30px;
+			padding-left:4.9%; 
+			background:#f4f4f4;
+		}
+		.complex { width:91.6%; background:#ffffff; }
+		.complex  ul li{ 
+			font-size: 18px;
+			line-height:48px;
+			color: #333333;
+			letter-spacing: 0;
+			background:#ffffff;
+			border-bottom:1px solid #eeeeee;
+			padding-left:5.4%; 
+		}
+		
+		.major { width:91.6%;  font-size:16px; background:#ffffff; margin-top:30px; }
+		.major div { width:100%; overflow:hidden; margin-left:2.4%;  }
+		.major div .secondtitle { float:left; }
+		.major div ul { float:left; width:70%; }
+		.major div ul li { float:left; margin-left:15px; }
+		
+		.selectedcity li{    
+			margin-top: 20px;
+			line-height: 60px;
+			border-radius: 8px;
+			width: 30%;
+			float: left;
+			background: #ffffff;
+			margin-left: 5%;
+			text-align: center;
+			border: 1px solid #cccccc;
+			position:relative;
+		}
+
+		.selectedcity li span { 
+			z-index:10; position: absolute; 
+			width:30px; height:30px;  background:url(/images/simulated-home/close.png) no-repeat; 
+			right: -15px; top:-15px; 
+			margin-top:0;
+			background-size:100%;
+		}
+		
+		.selectedcity li:nth-of-type(3n-2) {
+			margin-left: 0;
+		}
+		
+		
+		
+	</style>
+</head>
+<body>
+	<div id="main">
+		<div class="main-top">
+			<div class="homes">
+				<span class="getback"></span>
+				获客模拟
+				<span class="gethome"></span>
+			</div>
+		</div>
+		<div class="photo">
+			<img src="/images/simulated-home/photo.png" />
+		</div>
+		<ul class="list">
+			<li data-item="myindustry">我的行业</li>
+			<li>分布地区</li>
+			<li>年龄范围</li>
+			<li>客户标签</li>
+		</ul>
+		<div class="known">
+			<button class="press">立即了解我的客户</button>
+		</div>
+		<div class="industry">
+			<div class="box">
+				<div class="first">
+					行业分类
+				</div>
+				<div class="second">
+					<span></span>
+					二级分类
+				</div>
+				<div class="thirty">
+					<span></span>
+					三级分类
+				</div>
+				<ul class="first-list">
+					<li data-code="1" class="current">线上教育</li>
+					<li data-code="0">线下教育</li>
+				</ul>
+				<ul class="second-list">
+				
+				</ul>
+				<ul class="thirty-list"></ul>
+			</div>
+		</div>
+		
+		<div class="citychoice">
+			<div class="secondHalf">
+				<div class="chosen">
+					<span class="citytitle">已选地区</span>
+					<ul class="selectedcity">
+						<li><span></span>全国</li>
+						<li><span></span>一线</li>
+						<li><span></span>二线</li>
+						<li><span></span>全国</li>
+						<li><span></span>一线</li>
+						<li><span></span>二线</li>
+					</ul>
+				</div>
+			</div>	
+			<div class="hottingcity">
+				<span class="citytitle">热门地区</span>
+				<ul class="hotlist">
+					<li>全国</li>
+					<li>一线</li>
+					<li>二线</li>
+					<li>北京</li>
+					<li>上海</li>
+					<li>广州</li>
+					<li>深圳</li>
+					<li>杭州</li>
+					<li>苏州</li>
+					<li>南京</li>
+					<li>成都</li>
+					<li>天津</li>
+				</ul>
+			</div>
+			
+			<div class="major">
+				<div>
+					<span class="secondtitle">一线城市：</span>
+					<ul>
+						<li>北京、</li>
+						<li>上海、</li>
+						<li>广州、</li>
+						<li>深圳、</li>
+						<li>天津、</li>
+						<li>杭州</li>
+					</ul>
+				</div>
+				<div>
+					<span class="secondtitle">二线城市：</span>
+					<ul>
+						<li>成都、</li>
+						<li>大连、</li>
+						<li>东莞、</li>
+						<li>佛山、</li>
+						<li>福州、</li>
+						<li>哈尔滨、</li>
+						<li>合肥、</li>
+						<li>济南、</li>
+						<li>昆明、</li>
+						<li>济南、</li>
+						<li>南昌、</li>
+						<li>南京、</li>
+						<li>南宁、</li>
+						<li>宁波、</li>
+						<li>青岛、</li>
+						<li>厦门、</li>
+						<li>沈阳、</li>
+						<li>石家庄、</li>
+						<li>太原、</li>
+						<li>唐山、</li>
+						<li>温州、</li>
+						<li>无锡、</li>
+						<li>武汉、</li>
+						<li>西安、</li>
+						<li>烟台、</li>
+						<li>长春、</li>
+						<li>长沙、</li>
+						<li>郑州、</li>
+						<li>重庆、</li>
+						<li>淄博</li>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="cityselected">
+				<span>地区<br/>选择</span>
+				<ul>
+					<li>A</li>
+					<li>B</li>
+					<li>C</li>
+					<li>D</li>
+					<li>E</li>
+					<li>F</li>
+					
+					<li>G</li>
+					<li>H</li>
+					<li>I</li>
+					
+					<li>J</li>
+					<li>K</li>
+					<li>L</li>
+					
+					<li>M</li>
+					<li>N</li>
+					<li>O</li>
+					
+					<li>P</li>
+					<li>Q</li>
+					<li>R</li>
+					
+					<li>S</li>
+					<li>T</li>
+					<li>W</li>
+					
+					<li>X</li>
+					<li>Y</li>
+					<li>Z</li>
+				</ul>
+			</div>
+			
+			<div class="complex">
+				<div class="cityA">
+					<div class="sort_letterA caption"></div>
+					<ul class="sort_listA"></ul>
+				</div>
+				
+				<div class="cityB">
+					<div class="sort_letterB caption"></div>
+					<ul class="sort_listB"></ul>
+				</div>
+				
+				<div class="cityC">
+					<div class="sort_letterC caption"></div>
+					<ul class="sort_listC"></ul>
+				</div>
+				
+				<div class="cityD">
+					<div class="sort_letterD caption"></div>
+					<ul class="sort_listD"></ul>
+				</div>
+				
+				<div class="cityE">
+					<div class="sort_letterE caption"></div>
+					<ul class="sort_listE"></ul>
+				</div>
+				<div class="cityF">
+					<div class="sort_letterF caption"></div>
+					<ul class="sort_listF"></ul>
+				</div>
+				
+				<div class="cityG">
+					<div class="sort_letterG caption"></div>
+					<ul class="sort_listG"></ul>
+				</div>
+				
+				<div class="cityH">
+					<div class="sort_letterH caption"></div>
+					<ul class="sort_listH"></ul>
+				</div>
+				
+				<div class="cityI">
+					<div class="sort_letterI caption"></div>
+					<ul class="sort_listI"></ul>
+				</div>
+				
+				<div class="cityJ">
+					<div class="sort_letterJ caption"></div>
+					<ul class="sort_listJ"></ul>
+				</div>
+				
+				<div class="cityK">
+					<div class="sort_letterK caption"></div>
+					<ul class="sort_listK"></ul>
+				</div>
+				
+				<div class="cityL">
+					<div class="sort_letterL caption"></div>
+					<ul class="sort_listL"></ul>
+				</div>
+				
+				<div class="cityM">
+					<div class="sort_letterM caption"></div>
+					<ul class="sort_listM"></ul>
+				</div>
+				
+				<div class="cityN">
+					<div class="sort_letterN caption"></div>
+					<ul class="sort_listN"></ul>
+				</div>
+				
+				<div class="cityO">
+					<div class="sort_letterO caption"></div>
+					<ul class="sort_listO"></ul>
+				</div>
+				
+				<div class="cityP">
+					<div class="sort_letterP caption"></div>
+					<ul class="sort_listP"></ul>
+				</div>
+				
+				
+				<div class="cityQ">
+					<div class="sort_letterQ caption"></div>
+					<ul class="sort_listQ"></ul>
+				</div>
+				
+				<div class="cityR">
+					<div class="sort_letterR caption"></div>
+					<ul class="sort_listR"></ul>
+				</div>
+				
+				
+				<div class="cityS">
+					<div class="sort_letterS caption"></div>
+					<ul class="sort_listS"></ul>
+				</div>
+				
+				<div class="cityT">
+					<div class="sort_letterT caption"></div>
+					<ul class="sort_listT"></ul>
+				</div>
+				
+				<div class="cityW">
+					<div class="sort_letterW caption"></div>
+					<ul class="sort_listW"></ul>
+				</div>
+				
+				
+				<div class="cityX">
+					<div class="sort_letterX caption"></div>
+					<ul class="sort_listX"></ul>
+				</div>
+				
+				<div class="cityY">
+					<div class="sort_letterY caption"></div>
+					<ul class="sort_listY"></ul>
+				</div>
+				
+				<div class="cityZ">
+					<div class="sort_letterZ caption"></div>
+					<ul class="sort_listZ"></ul>
+				</div>
+		
+			</div>
+		</div>
+		
+		<div class="footer">
+			<div class="low">
+				<img src="/images/index/copyright.png" />
+			</div>
+		</div>
+	</div>
+</body>
+<script src="/js/page/simulated-home.js"></script>
+</html>
