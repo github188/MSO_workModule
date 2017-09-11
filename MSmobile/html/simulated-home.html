@@ -3,76 +3,107 @@
 <head lang="en">
     <meta charset="UTF-8">
 	<title>MSO-眸事网，国内专业营销服务外包平台</title>
-	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="../css/bootstrap.min.css"/>
+	 <meta name="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1.0,user-scalable=no"
+          id="viewport" />
+    <meta name="description"
+          content="MSO（眸事网）-国内专业营销服务外包平台，获客线索总交易量高达632500条！
+		  上游发包方企业可自由定价，行业包括线上/线下教育培训行业、金融行业、汽车行业、汽车后服务市场、电商平台、
+		  运营商增值服务等领域，下游以网络营销、电话营销、地推机构等营销机构为主，平台坐拥10000万以上精准数据用户，
+		  月均发包量达80000以上，目前已成为各领域权威人士认可的最专业的营销服务外包机构！" />
+
 	<link rel="stylesheet" href="/css/main.css" />
-	<script src="../public/jquery-1.7.2.min.js" type="text/javascript"></script>
+	<script src="../js/jquery-1.11.1.min.js"></script>
+    <script src="../js/jquery.mobile-1.4.5.min.js"></script>
 	<script src="../public/easing.js" type="text/javascript"></script>
+	<script src="../js/count.js"></script>
 	<script src="../public/url.js" type="text/javascript"></script>
 	
 	<style>
 	
 		body{ background:#f4f4f4; }
-		
+		.main { height:100%;  }
+		#main { padding-bottom:70px;  margin-top:26vw; height:667px; }
 		.list { width:90%; margin:auto; }
-		.list li { position:relative; font-size:16px; line-height:99px; color:#333333; text-align:center; 
+		.list li { position:relative; font-size:16px; line-height:66px; color:#333333;
 			background:#ffffff; margin-top:20px; border-radius:12px;
+			padding-left: 17%; overflow:hidden;
 		}
-		.list li:before { 
+		.list li:nth-child(4){
+			border-radius:12px 12px 0px 0px;
+		}
+		.list li.icon:before		{ 
+			z-index:10; position: absolute; background:#413fe9; border-radius:50%;
+			width:20px; height:20px; content:""; left: 20px; top:50%; margin-top:-10px;
+		}
+		.list li:before		{ 
 			z-index:10; position: absolute; background:#dddddd; border-radius:50%;
 			width:20px; height:20px; content:""; left: 20px; top:50%; margin-top:-10px;
 		}
-		
 		.list li.active:before {
 			background:#413fe9; 
 		}
 		
-		.list li:after { 
+		.list li.icon:after { 
 			z-index:10; position: absolute;
-			background:url(/images/simulated-home/arrow-grey.png) no-repeat;
+			background:url(/images/simulated-home/arrow-blue.png) no-repeat;
 			border-radius:50%;
 			width:14px; height:26px; content:""; right: 20px; top:50%; margin-top:-13px;
 		}
 		
-		.list li.active:after {
+		.list li.icon.active:after	{
 			background:url(/images/simulated-home/arrow-blue.png) no-repeat;
 		}
-		.main-top { position:fixed; left:0; top:0; z-index:130; width:100%; height:80px; background:#413ee8; overflow:hidden; }
-		.main-top .homes { font-size:16px; color:#ffffff;  width:95%; margin:auto; text-align:center; line-height:80px; }
-		.main-top .getback { float:left; display:block; width:22px;  height:22px; 
+		
+		
+
+		
+		.main-top { position:fixed; left:0; top:0; z-index:130; width:100%; height:64px;
+		background: linear-gradient(to bottom, #5E12CE, #3B48EE);
+		overflow:hidden; }
+		.main-top .homes { position:relative; font-size:18px; color:#ffffff;  width:95%; margin:auto; text-align:center; line-height:64px; }
+		.main-top .getback { float:left; display:block; width:66px;  height:66px; 
 			background:url(/images/simulated-home/back.png) no-repeat;
 			background-size:100%; 
-			margin-top:29px;
+			position:absolute; 
+			left:0; top:0;
+
 		}
 		
 		.main-top .gethome { float:right; display:block; width:22px;  height:22px; 
 			background:url(/images/simulated-home/home.png) no-repeat;
 			background-size:100%; 
-			margin-top:29px;
+			margin-top:22px;
+			position:absolute; 
+			right:0; top:0;
 		}
 		
-		.photo { width:100%; margin-bottom:46px; }
+		.photo { width:100%; margin-bottom:46px; margin-top: 63px;  display:none;}
 		.photo img{ width:100%; }
-		.known { height:320px; width:100%; }
+		.known { height:auto; width:100%; }
 		
 		 button { border:none;}
 		.press {  width:240px; height:50px; border-radius:8px; background:#858df0;
 		 display:table; color:#ffffff; font-size:16px;
-		 margin:auto; margin-top:70px; }
-		 
+		 margin:auto; margin-top:10vw }
+		 .press.active {  background:#3B48EE; }
+		 .low { width:100%; }
 		 .low img { width:100%; }
 		 .industry { font-family: .PingFangSC-Regular;
 			font-size: 16px;
 			color: #333333;
 			letter-spacing: 0; display:none; 
-			 position:fixed; left:0; top:0; z-index:100; background:rgba(0,0,0,0.4); width:100%; height:100%; }
+			 position:fixed; left:0; bottom:0; z-index:100; background:rgba(0,0,0,0.4); width:100%; height:auto; 
+		}
 		 .industry .first { width:27%; float:left; line-height:50px;  }
 		 .industry .second { width:27%;  float:left; line-height:50px; position:relative;  }
 		 .industry .thirty { width:46%; float:left;  line-height:50px;  position:relative;  }
-		 .industry .box { margin-top:50%; height:auto; text-align:center; background:#ffffff; width:100%; overflow:hidden; }
-		.industry .second span{ z-index:101; position:absolute; left:0; top:5px; display:block; width:2px; height:40px;
+		 .industry .box { margin-top:100%; height:98vw; text-align:center; background:#ffffff; width:100%; overflow:hidden; }
+		.industry .second span{ z-index:101; position:absolute; left:0; top:16px; display:block; width:1px; height:20px;
 		background:#d8d8d8;  }
 		
-		.industry .thirty span{ z-index:101; position:absolute; left:0; top:5px; display:block; width:2px; height:40px;
+		.industry .thirty span{ z-index:101; position:absolute; left:0; top:16px; display:block; width:1px; height:20px;
 		background:#d8d8d8;  }
 		.first-list {width:27%; float:left;}
 		.first-list li { line-height:30px; }
@@ -80,32 +111,34 @@
 		.second-list li { line-height:30px; }
 		.thirty-list { width:46%; float:left;}
 		.thirty-list li { line-height:30px; }
-		.first-list li.current { background:#e7e7e7;}
-		.second-list li.current { background:#e7e7e7;}
-		.thirty-list li.current { background:#e7e7e7;}
+		.first-list li.current { background:#ecebfc;}
+		.second-list li.current { background:#ecebfc;}
+		.thirty-list li.current { background:#ecebfc;}
 		
-		.citychoice { width:100%; z-index:100; height:100%; position:absolute; background:#F4F4F4; left:0; top:80px; }
+		.citychoice { width:100%; z-index:100; height:100%; position:absolute; background:#F4F4F4; left:0; top:63px; display:none; }
 		
 		
-		.secondHalf {position:fixed; left:0; padding-top:30px;   background:#f4f4f4; width:100%; 
-		 border-bottom:1px solid #dddddd; overflow:hidden; padding-bottom:30px; }
+		.secondHalf {position:fixed; left:0; padding-top:8vw;   background:#f4f4f4; width:100%; 
+		 border-bottom:1px solid #dddddd; overflow:hidden; height:37vw; z-index:1; }
 	
 		.chosen  {
 			 width:86%;
 			margin-left:2.4%; font-size:16px; display:table;
 		}
 		
-		.selectedcity { width:100%; }
-		.hottingcity { width:86%; margin-left:2.4%; font-size:16px; margin-top:270px; }
+		.selectedcity { width:100%; overflow:hidden; }
+		
+	
+		.hottingcity { width:86%; margin-left:2.4%; font-size:16px; }
 		.hottingcity .hotlist { width:100%;  overflow:hidden; }
-		.hottingcity .hotlist  li { margin-top:20px; line-height:60px; border-radius:8px; width:30%; float:left;
+		.hottingcity .hotlist  li { margin-top:20px; line-height:12vw; border-radius:8px; width:29%; float:left;
 		 background:#ffffff; margin-left:5%; text-align:center;  border:1px solid #cccccc;   }
-		.hottingcity .hotlist  li:nth-of-type(3n-2) { margin-left:0; }
-		.hottingcity .hotlist  li.current { border:1px solid #413fe9; }
+		.hottingcity .hotlist  li:nth-of-type(3n-1) { margin-left:0; }
+		
 		.citytitle { color:#413fe9; }
 		
-		.cityselected { text-align:center; color:#413fe9; position:fixed; right:0; top:200px; 
-		background:#f8f8f8; width:8.6%; }
+		.cityselected { text-align:center; color:#413fe9; position:fixed; right:0; top:65px; 
+		background:#f8f8f8; width:12%; font-size:12px; z-index:2; }
 		.caption {
 			font-size: 16px;
 			color: #666666;
@@ -114,28 +147,34 @@
 			padding-left:4.9%; 
 			background:#f4f4f4;
 		}
-		.complex { width:91.6%; background:#ffffff; }
+		.cityselected ul li { margin-top:-1px; }
+		.complex { width:91.6%; background:#ffffff; height:100%;  padding-bottom: 12vw;}
 		.complex  ul li{ 
-			font-size: 18px;
-			line-height:48px;
+			font-size: 16px;
+			line-height:46px;
 			color: #333333;
 			letter-spacing: 0;
 			background:#ffffff;
 			border-bottom:1px solid #eeeeee;
 			padding-left:5.4%; 
+			
+			box-sizing:border-box;
+			-webkit-box-sizing:border-box; 
+			margin-top:0; 
 		}
 		
 		.major { width:91.6%;  font-size:16px; background:#ffffff; margin-top:30px; }
 		.major div { width:100%; overflow:hidden; margin-left:2.4%;  }
-		.major div .secondtitle { float:left; }
+		.major div:nth-child(1){ padding-top:4vw; }
+		.major div .secondtitle { float:left;  font-size:12px;  }
 		.major div ul { float:left; width:70%; }
-		.major div ul li { float:left; margin-left:15px; }
+		.major div ul li { float:left; margin-left:0vw; font-size:3.2vw; }
 		
 		.selectedcity li{    
-			margin-top: 20px;
-			line-height: 60px;
+			margin-top: 4vw;
+			line-height:12vw;
 			border-radius: 8px;
-			width: 30%;
+			width: 29%;
 			float: left;
 			background: #ffffff;
 			margin-left: 5%;
@@ -146,8 +185,8 @@
 
 		.selectedcity li span { 
 			z-index:10; position: absolute; 
-			width:30px; height:30px;  background:url(/images/simulated-home/close.png) no-repeat; 
-			right: -15px; top:-15px; 
+			width:16px; height:16px;  background:url(/images/simulated-home/close.png) no-repeat; 
+			right: -8px; top:-8px; 
 			margin-top:0;
 			background-size:100%;
 		}
@@ -156,8 +195,73 @@
 			margin-left: 0;
 		}
 		
+		.hottingcity .hotlist  li.js_citykey.current { border:1px solid #413fe9; }
+		.hottingcity .hotlist  li.js_citykey.disabled { background:#E1E1E1;  color: #999999;}
+		
+		.js_citykey.current { background:#ecebfc; }
+		.js_citykey.disabled { background:#E1E1E1;  color: #999999;}
+		
+		.coordination { height:42vw; width:100%; }
+		
+		.complete { color:#ffffff; font-size:16px; background:#413ee8; position:fixed; bottom:0; left:0; width:100%;
+		height:50px; line-height:50px; text-align:center; }
+		
+		.complex div { overflow:hidden; }
+		.complex ul { overflow:hidden; }
+		
+		.footer {  width:100%; }
+		
+		.selectedcity li.special {     
+			margin-top: 4vw;
+			line-height:12vw;
+			height:12vw;
+			border-radius: 8px;
+			width: 29%;
+			float: left;
+			background: #ffffff;
+	
+			text-align: center;
+			border: 1px dashed #cccccc;
+			position: relative;
+		}
+		.ifshow { float:right;     margin-right: 2.4%; font-size:16px; text-decoration:underline; }
 		
 		
+		.userlable { position:relative; }
+		
+		.usermessage {  display:none; padding:20px 0;  width:90%; margin:auto; height:100px; overflow:hidden;   border-top:1px solid #f4f6f7; background:#ffffff;  }
+		
+		.usermessage ul { width:100%; }
+		.usermessage ul li { width:100%; overflow:hidden; font-size:3vw; }
+		.usermessage ul li .one { display:block; width:47%; float:left; padding-right:3%; text-align:right;  }
+		.usermessage ul li .two { width:47%; padding-left:3%; float:left; text-align:left; }
+		
+		.rangeage { float:right; margin-right:20px; }
+		.discription { position:absolute; font-size:12px; left:17%; top:20px; color:#999999; }
+		.userlable .funicon {     width: 14px;   height: 26px; position:absolute;   right: 20px;  top: 50%;  margin-top: -13px;
+				display:block; 
+			}
+		.userlable.active .funicon { background: url(/images/simulated-home/down.png) no-repeat;
+			 right: 17px;  top: 50%;  margin-top: -7px;   width: 26px;   height: 16px; 
+		}
+		
+		.userlable.active .funicon.current {   background: url(/images/simulated-home/shape.png) no-repeat;  }
+		.currentcitylist { display:none; }
+		.findingadd { position:absolute; right:0; font-size:3.2vw; margin-right:7vw; text-decoration:underline; }
+		.js_linestwocity { position:relative; }
+		
+		.ui-loader-default { display:none; }
+		
+		.footer {
+			background: #d0d0d0;
+			color: #fff;
+			text-align: center;
+			font-size: 1.2rem;
+			padding:10px 0;
+		}
+		body >div { outline:none; }
+		
+		.footer p { margin:0; }
 	</style>
 </head>
 <body>
@@ -173,11 +277,24 @@
 			<img src="/images/simulated-home/photo.png" />
 		</div>
 		<ul class="list">
-			<li data-item="myindustry">我的行业</li>
-			<li>分布地区</li>
-			<li>年龄范围</li>
-			<li>客户标签</li>
+			<li class="icon" data-item="myindustry" data-state="0">我的行业</li>
+			<li class="icon" data-item="district" data-state="0" >分布地区</li>
+			<li class="age-range" data-item="range" data-state="0">
+				<span class="basic" >年龄范围</span>
+				<span class="discription">根据行业为您定制了最佳年龄范围</span>
+				<span class="rangeage"></span>
+			</li>
+			<li  class="userlable" data-item="userlable" data-state="0">
+				<span>客户标签</span>
+				<span class="discription">根据行业为您定制了最佳客户标签</span>
+				<span class="funicon"></span>
+			</li>
 		</ul>
+		<div class="usermessage">
+				<ul>
+					
+				</ul>
+		</div>
 		<div class="known">
 			<button class="press">立即了解我的客户</button>
 		</div>
@@ -209,31 +326,29 @@
 			<div class="secondHalf">
 				<div class="chosen">
 					<span class="citytitle">已选地区</span>
+					<span class="ifshow"><a href="javascript:;">展开</a></span>
 					<ul class="selectedcity">
-						<li><span></span>全国</li>
-						<li><span></span>一线</li>
-						<li><span></span>二线</li>
-						<li><span></span>全国</li>
-						<li><span></span>一线</li>
-						<li><span></span>二线</li>
+						<li class="special"></li>
 					</ul>
 				</div>
 			</div>	
 			<div class="hottingcity">
+				<div class="coordination"></div>
 				<span class="citytitle">热门地区</span>
 				<ul class="hotlist">
-					<li>全国</li>
-					<li>一线</li>
-					<li>二线</li>
-					<li>北京</li>
-					<li>上海</li>
-					<li>广州</li>
-					<li>深圳</li>
-					<li>杭州</li>
-					<li>苏州</li>
-					<li>南京</li>
-					<li>成都</li>
-					<li>天津</li>
+					<li style="display:none;" class="js_citykey" data-unique="10" >全国</li>
+					<li class="js_citykey" data-unique="9">一线</li>
+					<li class="js_citykey" data-unique="8">二线</li>
+					<li class="js_citykey" data-unique="1">北京</li>
+					<li class="js_citykey" data-unique="1">上海</li>
+					<li class="js_citykey" data-unique="1">广州</li>
+					<li class="js_citykey" data-unique="1">深圳</li>
+					<li class="js_citykey" data-unique="1">杭州</li>
+					<li class="js_citykey" data-unique="1">天津</li>
+					<li class="js_citykey" data-unique="2">苏州</li>
+					<li class="js_citykey" data-unique="2">南京</li>
+					<li class="js_citykey" data-unique="2">成都</li>
+					<li class="js_citykey" data-unique="2">重庆</li>
 				</ul>
 			</div>
 			
@@ -249,9 +364,17 @@
 						<li>杭州</li>
 					</ul>
 				</div>
-				<div>
+				<div class="js_linestwocity">
 					<span class="secondtitle">二线城市：</span>
-					<ul>
+					<span class="findingadd">查看更多</span>
+					<ul class="defaultcity">
+						<li>成都、</li>
+						<li>大连、</li>
+						<li>东莞、</li>
+						<li>佛山、</li>
+						<li>福州...</li>
+					</ul>
+					<ul class="currentcitylist">
 						<li>成都、</li>
 						<li>大连、</li>
 						<li>东莞、</li>
@@ -446,13 +569,14 @@
 				</div>
 		
 			</div>
+			<button class="complete">选择完成</button>
 		</div>
 		
-		<div class="footer">
-			<div class="low">
-				<img src="/images/index/copyright.png" />
-			</div>
-		</div>
+		
+	</div>
+	<div class="footer">
+		<p>Copyright © 2011-2017   上海脉豪商务信息咨询有限公司</p>
+		<p>版权所有 沪ICP备15029022号</p>
 	</div>
 </body>
 <script src="/js/page/simulated-home.js"></script>

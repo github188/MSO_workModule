@@ -9,15 +9,13 @@
     <meta name="description"
           content="MSO（眸事网）-国内专业营销服务外包平台，获客线索总交易量高达632500条！上游发包方企业可自由定价，行业包括线上/线下教育培训行业、金融行业、汽车行业、汽车后服务市场、电商平台、运营商增值服务等领域，下游以网络营销、电话营销、地推机构等营销机构为主，平台坐拥10000万以上精准数据用户，月均发包量达80000以上，目前已成为各领域权威人士认可的最专业的营销服务外包机构！">
 
-    <script charset="utf-8" src="http://lxbjs.baidu.com/lxb.js?sid=10673648"></script>
-    <script src="https://hm.baidu.com/hm.js?44a17af42420f138f8ce77ae2c9849db"></script>
-    <script src="public/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
     <!--<script src="../public/easing.js" type="text/javascript"></script>-->
     <!--<script src="../public/react.min.js"></script>-->
-    <!-- <script src="public/url.js"></script> -->
     <!--<script src="https://www.mshuoke.com/html/js/url.js"></script>-->
-    <!-- <script src="js/count.js"></script> -->
+    <script src="js/count.js"></script>
     <script src="js/des.js"></script>
+	<script src="public/url.js"></script>
     <!-- <script src="https://www.mshuoke.com/html/js/home_index/des.js"></script> -->
     <style>
         body, button, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, img, input, li, ol, p, table, td, ul {
@@ -34,6 +32,7 @@
         }
 
         .body {
+            /*min-height: 611px;*/
             width: 90%;
             margin: 0 auto;
         }
@@ -71,10 +70,11 @@
         }
 
         .checkNum > img {
-            right: 38%;
+           right: 124px;
         }
 
         input {
+            font-size: 14px;
             padding-left: 3%;
             background-color: #fff;
             -webkit-border-radius: 4px;
@@ -87,7 +87,7 @@
 
         input::placeholder {
             font-family: PingFangSC-Regular;
-            font-size: 16px;
+            font-size: 14px;
             color: #DDDDDD;
         }
 
@@ -113,7 +113,7 @@
             font-family: PingFangSC-Regular;
             font-size: 16px;
             outline: none;
-
+            
         }
 
         .checkNum > button {
@@ -200,8 +200,8 @@
         .back:after {
             content: " ";
             display: inline-block;
-            height: 8px;
-            width: 8px;
+            height: 10px;
+            width: 10px;
             border-width: 2px 2px 0 0;
             border-color: #FFFFFF;
             border-style: solid;
@@ -245,17 +245,23 @@
 </footer>
 </body>
 <script>
-    $(function () {
+   $(function () {
         var getNum, now;
         $("input").on("input", function () {
+            if($(".telNum>input").val().trim()==""||$(".checkNum>input").val().trim()==""||$(".password>input").val().trim()==""){
+                $(".modify").css("opacity",0.6)
+            }else{
+                $(".modify").css("opacity",1)
+            }
+
             var pName = $(this).parent().attr("class")
             var content = "";
             if (pName == "telNum") {
-                content = "手机号不能为空"
+                content = ""
             } else if (pName == "password") {
-                content = "密码不能为空"
+                content = ""
             } else {
-                content = "验证码不能为空"
+                content = ""
             }
             if ($(this).val().trim().length > 0) {
                 $(this).siblings("img").show().siblings(".err").html("")
@@ -265,10 +271,12 @@
 
         })
         $("img").on("click", function () {
-            $(this).hide().siblings("input").val("")
+            $(this).hide().siblings("input").val("");
+            $(".modify").css("opacity","0.6");
+            $(".err").html("")
         })
 
-        now = sessionStorage.getItem("nowTime")
+        now = sessionStorage.getItem("nowTimeF")
         if (now) {
             countDown()
         }
@@ -281,7 +289,7 @@
                 $(".checkNum>button").html(90 - dis + "秒后重新获取");
                 if (dis > 90) {
                     clearInterval(getNum)
-                    sessionStorage.removeItem("nowTime")
+                    sessionStorage.removeItem("nowTimeF")
                     $(".checkNum>button").attr("id", "").html("获取验证码")
                 }
             }, 1000)
@@ -307,13 +315,9 @@
 
                 }
             }
-
-
             now = new Date().getTime();//获取当前时间，存到session
-            sessionStorage.setItem("nowTime", now);
+            sessionStorage.setItem("nowTimeF", now);
             countDown()
-
-
             $.ajax({
                 url: "https://www.mshuoke.com/user/telCode",
                 type: "post",
@@ -323,12 +327,35 @@
                 },
                 success: function (result) {
                     if (result.code == "Y") {
+                        //号码注册过之后合法开始倒计时
+
                         //TODO 获取验证码后是否将验证码和对应的手机号存入session
                         sessionStorage.setItem("smsCode",result.smsCode)
-                        sessionStorage.setItem("telNumSend",result.jfuname)
-
+                        sessionStorage.setItem("telNumSend",telNum)
                     } else {
-                        $(".telNum>.err").html(result.msg);
+
+                         if(result.code=="ER0013"){
+                            $(".checkNum>.err").html("用户名或者手机号码不能为空");
+                        }else if(result.code=="ER0011"){
+                            $(".checkNum>.err").html("您输入的用户名或手机号码格式不对");
+
+                        }else if(result.code=="ER002"){
+                            $(".checkNum>.err").html("用户名或者手机号已经被占用");
+
+                        }else if(result.code=="ER003"){
+                            $(".checkNum>.err").html("您输入的用户名不存在");
+
+                        }else if(result.code=="ER0028"){
+                            $(".checkNum>.err").html("短信发送失败");
+
+                        }else{
+                            $(".checkNum>.err").html("网络失败，请重新获取");
+                        }
+
+                        clearInterval(getNum)
+                    
+                        
+                    
                     }
                 },
                 error: function (msg) {
@@ -342,6 +369,9 @@
          * 重置密码
          */
         $(".modify").on("click", function () {
+            if($(".modify").css("opacity")==0.6){
+                return ;
+            }
             var telNum = $(".telNum>input").val().trim();
             var checkNum = $(".checkNum>input").val().trim();
             var password = $(".password>input").val().trim();
@@ -393,20 +423,21 @@
 
             $.ajax({
                 url: "https://www.mshuoke.com/user/resetPassword",
-                data: {username: telNum, jfupassword: password, type:2,smscode:sessionStorage.getItem("smsCode")},
+                data: {username: telNum, password: password, type:2,smscode:sessionStorage.getItem("smsCode")},
                 type: "post",
                 success: function (result) {
                     if(result.code=="Y"){
                         sessionStorage.setItem("telNum",result.jfuname);
                         sessionStorage.removeItem("smscode")
                         sessionStorage.removeItem("telNumSend")
+                        sessionStorage.removeItem("nowTimeF")
                         location.href="./index.html"
                     }else{
                         alert(result.msg)
                     }
                 },
                 error: function (err) {
-                    console.log(err);
+                    // console.log(err);
                 }
             })
 
@@ -416,9 +447,4 @@
 
     })
 </script>
-</html></title>
-</head>
-<body>
-
-</body>
 </html>

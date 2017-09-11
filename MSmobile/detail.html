@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>MSO-眸事网，国内专业营销服务外包平台</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="description"
+          content="MSO（眸事网）-国内专业营销服务外包平台，获客线索总交易量高达632500条！上游发包方企业可自由定价，行业包括线上/线下教育培训行业、金融行业、汽车行业、汽车后服务市场、电商平台、运营商增值服务等领域，下游以网络营销、电话营销、地推机构等营销机构为主，平台坐拥10000万以上精准数据用户，月均发包量达80000以上，目前已成为各领域权威人士认可的最专业的营销服务外包机构！">
+
+    <script src="../public/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <!--<script src="../public/easing.js" type="text/javascript"></script>-->
+    <script src="js/count.js"></script>
+    <!--<script src="js/des.js"></script>-->
+    <script src="./public/echarts.min.js"></script>
+    <!-- <script src="./public/industry.js"></script> -->
+
+    <style>
+        html {
+            font-family: sans-serif;
+            text-size-adjust: 100%;
+            font-size: 62.5%;
+            line-height: 1.5;
+            position: relative;
+            height: 100%;
+            min-height: 420px
+        }
+
+        body, button, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, img, input, li, ol, p, table, td, ul {
+            margin: 0;
+            padding: 0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        img {
+            border: none;
+            display: block
+        }
+
+        li {
+            list-style: none
+        }
+
+        textarea {
+            resize: none
+        }
+
+        input::-ms-input-placeholder {
+            color: #999
+        }
+
+        body {
+            background-color: #F4F4F4;
+
+        }
+
+        .body {
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        i {
+            font-style: normal;
+        }
+
+        .clear::before, .clear::after {
+            display: block;
+            clear: both;
+            content: '';
+            zoom: 1;
+        }
+
+        footer {
+            padding-top: 9px;
+            background-color: #D0D0D0;
+            font-size: 12px;
+            height: 52px;
+            width: 100%;
+            color: #FFFFFF;
+            text-align: center;
+        }
+
+        header {
+            background: linear-gradient(to bottom, #5E12CE, #3B48EE);
+            color: #FFFFFF;
+            width: 100%;
+            height: 64px;
+            line-height: 64px;
+            font-size: 18px;
+            position: relative;
+            text-align: center;
+            font-family: PingFangSC-Regular;
+        }
+
+        .back {
+            position: absolute;
+            left: 10px;
+        }
+
+        .back:after {
+            content: " ";
+            display: inline-block;
+            height: 10px;
+            width: 10px;
+            border-width: 2px 2px 0 0;
+            border-color: #FFFFFF;
+            border-style: solid;
+            -webkit-transform: matrix(-0.71, -0.71, 0.71, -0.71, 0, 0);
+            transform: matrix(-0.71, -0.71, 0.71, -0.71, 0, 0);
+        }
+
+        .index_home {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            margin-top: -11px;
+            background: url("images/public/ic_home.png") no-repeat center;
+            width: 22px;
+            height: 22px;
+        }
+
+        .topPic {
+            width: 100%;
+            height: 72px;
+            text-align: center;
+            line-height: 72px;
+            color: #FFFFFF;
+            font-size: 16px;
+            font-family: PingFangSC-Semibold;
+            background-color: #4B3198;
+            -webkit-background-size: 30px;
+        }
+
+        .topPic > span {
+            font-size: 18px;
+        }
+
+        .title {
+            line-height: 70px;
+            height: 62px;
+            nt-family: PingFangSC-Regular;
+            font-size: 16px;
+            color: #413FE9;
+            letter-spacing: 0;
+        }
+
+        .chart {
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            min-height: 220px;
+            background-color: #FFFFFF;
+        }
+
+        .noRegister {
+            /*height: 146px;*/
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .noRegister > a {
+            display: block;
+        }
+
+        .register {
+            background-color: #3B48EE;
+            width: 240px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 16px;
+            color: #FFFFFF;
+            margin: 0 auto;
+            margin-top: 36px;
+            margin-bottom: 18px;
+        }
+
+        .login {
+            padding-bottom: 20px;
+            width: 220px;
+            color: #666666;
+            font-size: 14px;
+            margin: 0 auto;
+
+        }
+
+        /*.noRegister {*/
+        /*height: 40px;*/
+        /*}*/
+
+        .cost > .chart {
+            padding: 3% 4%;
+            font-family: PingFangSC-Regular;
+            font-size: 16px;
+            color: #666666;
+        }
+
+        .cost > .chart > ul > li:nth-child(1), .cost > .chart > ul > li:nth-child(2) {
+            padding-bottom: 5%;
+        }
+
+        .cost > .chart > ul > li {
+            padding-bottom: 10%;
+            position: relative;
+        }
+
+        .cost > .chart > ul > li > lable {
+            width: 100px;
+            float: left;
+            top: 0;
+            left: 0;
+            position: absolute;
+
+        }
+
+        .cost > .chart > ul > li > div {
+            margin-left: 74px;
+        }
+
+        .cost > .chart > ul > li > div > span {
+            float: right;
+        }
+
+        .h5 {
+            font-family: PingFangSC-Regular;
+            font-size: 12px;
+            color: #999999;
+            padding-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .cost p {
+            padding-bottom: 3%;
+        }
+
+        .cost > > .chart > ul > {
+            font-family: PingFangSC-Regular;
+            font-size: 16px;
+            color: #666666;
+        }
+
+        .cost > .chart > ul > li > div {
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .cost > .chart > ul > li > div > span {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 78px;
+            text-align: right;
+        }
+
+        .cost > .chart > ul > li > div span.number {
+            ont-family: PingFangSC-Regular;
+            font-size: 16px;
+            color: #413FE9;
+        }
+
+        .slider_container {
+            margin-right: 82px;
+            position: relative;
+            top: 5px;
+            height: 14px;
+        }
+
+        .slider {
+            position: absolute;
+            top: 0%;
+            margin-top: 6px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #413FE9;
+        }
+
+         .circle {
+            position: absolute;
+            top: 50%;
+            margin-top: -10px;
+            height: 20px;
+            width: 20px;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+        }
+        .circle:before{
+            content:"";
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            display: block;
+            top: 50%;
+            left: 50%;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+            border: 2px solid #413FE9;
+            margin-top: -7px;
+            margin-left: -7px;
+            background-color: #fff;
+        }
+
+
+        .school_circle, .age_circleL {
+            left: -10px;
+        }
+
+        .age_circleR {
+            right: -10px;
+        }
+
+        .cost > .title > span {
+            float: right;
+            font-style: normal;
+            font-weight: 600;
+            font-family: PingFangSC-Semibold;
+
+        }
+
+        .cost > .title > span > i {
+            font-style: normal;
+        }
+
+         .wamYuan {
+            font-size: 18px;
+        }
+
+       .money {
+            padding: 0 8px;
+            font-size: 20px;
+            text-decoration: underline;
+        }
+
+        .tiao {
+            font-weight: 200;
+        }
+
+        #CSAT {
+            width: 100%;
+            height: 370px;
+        }
+
+        #sexAge {
+            width: 100%;
+            height: 370px;
+        }
+
+        #customer_demand {
+            width: 100%;
+            height: 288px;
+        }
+
+        #city_customerNum {
+            width: 100%;
+            height: 370px;
+        }
+
+        #history_completeNum {
+            width: 100%;
+            height: 288px;
+        }
+
+        #city_ranking {
+            width: 100%;
+            height: 288px;
+        }
+
+        .body > ul > li:nth-child(n+3) {
+            display: none;
+        }
+
+        .downline, .industry3 {
+            font-style: normal;
+        }
+
+        .areaAll li {
+            float: left;
+        }
+
+        .douhao {
+            /*padding: 4px;*/
+
+        }
+
+        .loading {
+            width: 100%;
+            height: 100%;
+            background: url("images/public/loading.gif") no-repeat center;
+        }
+
+        .body > ul .title > span {
+            color: #666666;
+            font-size: 12px;
+            margin-top: 2px;
+        }
+
+        .industryType i {
+            float: left;
+        }
+    </style>
+</head>
+<!-- <script src="https://code.jquery.com/jquery-1.11.3.js"></script> -->
+<body>
+<header>
+    <a class="back" href="javascript:history.go(-1)"> </a>
+    客户数据详情 <a class="index_home" href="./index.html"></a>
+</header>
+<div class="topPic">
+    符合您要求的客户约 <span class="topData"></span> 人
+</div>
+<div class="body">
+    <ul>
+        <li class="charts customer noLogin">
+            <div class="title">客户意向度 <span>基于行为特征的学习意向</span></div>
+            <div class="chart">
+                <div id="CSAT">
+                    <div class="loading"></div>
+                </div>
+            </div>
+        </li>
+        <li class="charts sexAndAge noLogin">
+            <div class="title">性别年龄 <span>客群年龄分布情况</span></div>
+            <div class="chart">
+                <div id="sexAge">
+                    <div class="loading"></div>
+                </div>
+            </div>
+        </li>
+        <li class="charts">
+            <div class="title">城市客群数量 <span>城市客群数量排名（前十位）</span></div>
+            <div class="chart">
+                <div id="city_customerNum">
+                    <div class="loading"></div>
+                </div>
+            </div>
+        </li>
+        <!--<li class="charts">-->
+        <!--<div class="title">历史成单量</div>-->
+        <!--<div class="chart">-->
+        <!--<div id="history_completeNum"></div>-->
+        <!--</div>-->
+        <!--</li>-->
+        <li class="charts">
+            <div class="title">城市获客排名 <span>城市理想获客数量排名</span></div>
+            <div class="chart">
+                <div id="city_ranking">
+                    <div class="loading"></div>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div class="cost">
+        <div class="title">获客成本 <span> &nbsp;≈ <i class="money">1.3</i> <i class="wamYuan"> 万元</i> <span class="tiao">/100条</span></span>
+        </div>
+        <div class="chart">
+            <div class="h5">进一步调整价格</div>
+            <ul>
+                <li>
+                    <lable>行业</lable>
+                    <div class="industryType clear"><i class="downline"> 线下教育</i>  <i>></i>  <i class="industry2"></i>  <i>></i> <i class="industry3">
+                        青少儿英语培训</i></div>
+                </li>
+                <li>
+                    <lable>地区</lable>
+                    <div class="areaAll clear"></div>
+                </li>
+                <li>
+                    <lable>年龄</lable>
+                    <div class="clear">
+                        <div class="slider_container">
+                            <div class="slider">
+                                <i class="age_circleL circle" id="age_circleL"></i>
+                                <i class="age_circleR circle" id="age_circleR"></i>
+
+                            </div>
+                        </div>
+                        <span> <span class="number"><span class="minAge">12</span>- <span
+                                class=maxAge>38</span>   </span> 岁</span>
+                    </div>
+                </li>
+                <li class="lineDownSchool" id="lineDownSchool">
+                    <lable>线下校区</lable>
+                    <div class="clear">
+                        <div class="slider_container">
+                            <div class="slider">
+                                <i class="school_circle circle"></i>
+                            </div>
+                        </div>
+                        <span> <span class="number schoolNum">1</span> 个</span>
+                    </div>
+                </li>
+            </ul>
+            <p>预计销售线索 <span class="bottomData">0</span> 条</p>
+        </div>
+    </div>
+    <div class="noRegister">
+        <a href="./registerNew.html" class="register">立即注册查看更多数据详情</a>
+        <a href="./login.html" class="login">已有账号？立即登录</a>
+    </div>
+</div>
+<img src="images/public/footAd.png" style="width:100%;" alt="">
+<footer>
+    <p>
+        Copyright © 2011-2017 上海脉豪商务信息咨询有限公司
+    </p>
+    <p>
+        版权所有 沪ICP备15029022号
+    </p>
+</footer>
+</body>
+<script>
+    $(function () {
+        var moniData = JSON.parse(sessionStorage.getItem("usermessage"));
+ 		//获取6个维度数据
+        var intention=JSON.parse(moniData.industry.hangyeyixiangID)
+        var intentionName=intention.map(v=>({name:v.name,max:1}))
+        var intentionNum=intention.map(v=>v.level)
+
+        
+          var bottomData = sessionStorage.getItem('bottomData') || 0; //session获取底部数据
+        function topDataNum(num){
+            var topData=num.toString();
+            //顶部数据后三位是0 ，每三位用逗号隔开
+            var num1 = topData.length % 3
+            var result = topData.substr(0, num1)
+            for (var i = 0; i < Math.floor(topData.length / 3); i++) {
+                result += "," + topData.substr(num1 + 3 * i, 3)
+            }
+            var result0 = num1 == 0 ? result.substr(1) : result;
+            result0 = result0.lastIndexOf(",") == "-1" ? result0 : (result0.substr(0, result0.lastIndexOf(",")) + ",000")
+            return result0
+        }
+        //回填顶部与底部数据
+        $(".bottomData").html(bottomData)
+
+
+        //获客模拟带过来的信息
+        var downline = moniData.lineOff =="1"? "线上教育" : "线下教育";          //判断线上还是线下 1线上 0 线下
+
+        var firstPrice = moniData.industry.firstprice;                 //一线城市价格
+        var secondprice = moniData.industry.secondprice;               //二线城市价格
+        var priceAll = ["", firstPrice, secondprice]
+        var basicPriceAll = 0
+        moniData.city.map(v => basicPriceAll += v.type==1?Number(firstPrice):Number(secondprice))
+        var basicPrice = basicPriceAll / (100 * moniData.city.length);
+        var industry3 = moniData.industry.name;                         //三级行业
+        var industry2 = moniData.twoLine.name;                         //二级行业
+
+
+        var cityListHtml = "";                 //todo 所选城市
+        for (var i = 0; i < moniData.city.length; i++) {
+            if (i == 0) {
+                cityListHtml += `<li>${moniData.city[i].city}</li>`
+            } else {
+                cityListHtml += `<li class="douhao"> , </li><li>${moniData.city[i].city}</li>`
+            }
+
+        }
+        var cityList = moniData.city.map(v => v.city).join();
+        var citys = moniData.city.map(v => v.city);
+        var industryId = moniData.industry.id;                        // todo 行业id
+       // var isDown =  moniData.lineOff ==0;                        //todo 是否 线下
+        var downSchoolNum;                         //线下校区加价
+        var minAge = moniData.industry.age1.split("~")[0];
+        var maxAge =parseInt(moniData.industry.age1.split("~")[1]);
+        $(".maxAge").html(maxAge);              //回填 //todo  最大年龄
+        $(".minAge").html(minAge);              //回填  //todo 最小年龄
+        var isAdult = maxAge > 18 ? true : false;
+        var agePrice;
+        $(".downline").html(downline);
+        $(".industry2").html(industry2);
+        $(".industry3").html(industry3);
+        $(".areaAll").html(cityListHtml);
+        $(".bottomData").html(bottomData)
+
+        //线上还是线下对选择线下校区个数进行是否隐藏判断
+        if (moniData.lineOff == 0) {
+            downSchoolNum = 1.5;
+            $(".lineDownSchool").show()
+        } else {
+            downSchoolNum = 1
+            $(".lineDownSchool").hide()
+
+        }
+        disAgePrice(maxAge, minAge)  //出始显示的价钱
+
+
+        //是否登录  登录显示6个图不显示底部的登录注册，否则显示2个图显示底部登录注册;
+        var isLogin = sessionStorage.getItem("telNum");
+            cityChart(cityList);
+        if (isLogin) {
+            $(".noRegister").height(40).html("");
+            $(".body>ul>li.charts").show()
+            rankingChart(industryId)
+        } else {
+            $(".noRegister").height(156)
+            $(".body>ul>li:not(.noLogin)").hide();
+        }
+
+
+        //初始化echarts对象
+        var echartsContainerW = $(".chart").width()
+
+        //初始化echarts对象
+        function initEcharts(id) {
+            return echarts.init(document.getElementById(id))
+        }
+
+        //获取6个随机数，第一个最大
+        function getRandom() {
+            //生成随机数
+            var result = [], max, f = false;
+            for (var i = 0; i < 6; i++) {
+                result.push(Math.random());
+            }
+            max = result[0];
+            //第一个数字最大
+            for (var j = 0; j < result.length; j++) {
+                if (j === 0) {
+                    continue;
+                }
+                if (result[j] > max) {
+                    f = true;
+                    max = result[j];
+                }
+            }
+            if (f) {
+                result.splice(result.indexOf(max), 1);
+                result.unshift(max);
+            }
+            return result;
+        }
+
+        //根据三级行业获取6个
+        function getIndustry(line, industry3) {
+            var arr;
+            try {
+                arr = industry[line][industry3].map(function (v) {
+                        return {name: v, max: 1}
+                    }
+                )
+            } catch (err) {
+                arr = [{name: "", v: 1}]
+            }
+
+            return arr;
+        }
+
+        //客户满意度图
+        try {
+            var option1 = {
+                itemStyle: {
+                    normal: {
+                        color: '#ffffff'
+                    }
+                },
+                title: {
+                    top: "top",
+                    left: "center",
+//                text: "学习意向",
+                    textStyle: {
+                        fontStyle: "normal",
+                        fontWeight: "normal",
+                        fontSize: 14,
+                        color: "#333333"
+                    }
+                },
+                radar: {
+                    indicator: intentionName,//getIndustry(isDown ? "线下" : "线上", industry3),
+
+                    name: {
+                        textStyle: {
+                            color: "#666666",
+                            fontSize: 14
+                        }
+                    },
+                    radius: echartsContainerW / 3.6,
+                    center: ["50%", "50%"]
+                },
+                series: [{
+                    // name: '预算 vs 开销（Budget vs spending）',
+                    type: 'radar',
+                    data: [
+                        {
+                            value: intentionNum,//getRandom(),
+                            name: '行为特征',
+
+                            lineStyle: {
+                                normal: {
+                                    color: "#3B48EE"
+                                }
+                            },
+                            areaStyle: {
+                                normal: {
+                                    opacity: 0.5,
+                                    color: new echarts.graphic.RadialGradient(0.5, 0.5, 1, [
+                                        {
+                                            color: '#3B48EE',
+                                            offset: 0
+                                        }
+                                    ])
+                                }
+                            }
+                        }
+                    ]
+                }]
+            };
+            var CSAT = initEcharts("CSAT");
+            CSAT.setOption(option1)
+        } catch (err) {
+            console.log(err);
+            $("#CSAT").css("backgroundColor", "#F6F4F7").find(".loading").css({
+                background: "url(images/public/loadErr.png) no-repeat center",
+                backgroundSize: 200
+            })
+        }
+
+
+        //性别年龄图
+        function sexAgeChart(cityList, industryid) {
+            //是否是成年人
+            $.ajax({
+                url: `https://gateway.mshuoke.com/chart/sex?cityidlist=${cityList}&industryid=${industryid}`,
+                type: "get",
+                timeOut: 5000,
+                success: function (result) {
+                    if (result.code == 0&&result.data.length) {
+                        var sexAge = initEcharts("sexAge");
+                        var totalData = getSexAndAge(isAdult, result.data);
+                        var series, xAxis;
+                        if (isAdult) {
+                            series = [{
+                                data: totalData.adult.man.numbers,
+                                name: '男',
+                                type: 'line',
+                                stack: null,
+                                label: {
+                                    normal: {
+                                        show: false,
+                                        position: 'top'
+                                    }
+                                },
+                                itemStyle: {
+                                    normal: {
+                                        color: "#413FE9",
+                                        lineStyle: {
+                                            color: "#413FE9"
+                                        }
+                                    }
+                                },
+                                areaStyle: {normal: {color: "#413FE9"}}
+                            }, {
+                                data: totalData.adult.woman.numbers,
+                                name: '女',
+                                type: 'line',
+                                stack: null,
+                                label: {
+                                    normal: {
+                                        show: false,
+                                        position: 'top'
+                                    }
+                                },
+                                itemStyle: {
+                                    normal: {
+                                        color: "#B370DA",
+                                        lineStyle: {
+                                            color: "#B370DA"
+                                        }
+                                    }
+                                },
+                                areaStyle: {normal: {color: "#B370DA"}}
+                            }];
+                            xAxis = [
+                                {
+                                    show: false,
+                                    type: 'category',
+                                    name: "男",
+                                    boundaryGap: false,
+                                    data: totalData.adult.man.ages
+                                }, {
+                                    show: false,
+                                    type: 'category',
+                                    name: "女",
+                                    boundaryGap: false,
+                                    data: totalData.adult.woman.ages
+                                }
+                            ]
+                        } else {
+                            series = [{
+                                data: totalData.noAdult.numbers,
+                                name: '青少年',
+                                type: 'line',
+                                stack: '总量',
+                                label: {
+                                    normal: {
+                                        show: false,
+                                        position: 'top'
+                                    }
+                                },
+                                itemStyle: {
+                                    normal: {
+                                        color: "#413FE9",
+                                        lineStyle: {
+                                            color: "#413FE9"
+                                        }
+                                    }
+                                },
+                                areaStyle: {normal: {color: "#413FE9"}}
+                            }];
+                            xAxis = [
+                                {
+                                    show: false,
+                                    type: 'category',
+                                    name: "青少年",
+                                    boundaryGap: false,
+                                    data: totalData.noAdult.ages
+                                }
+                            ]
+                        }
+                        ;
+
+
+//                        console.log(valueList);
+                        var option2 = {
+                            title: {
+                                text: '数量',
+                                top: "8%",
+                                left: "16",
+                                textStyle: {
+                                    fontSize: "14",
+                                    color: "#333333",
+                                    fontWeight: "normal"
+                                }
+                            },
+                            tooltip: {
+                                trigger: 'axis'
+                                // axisPointer: {
+                                //     type: 'cross',
+                                //     label: {
+                                //         backgroundColor: '#6a7985'
+                                //     }
+                                // }
+                            },
+                            color: ["#413FE9", "#B370DA"],
+                            legend: {
+                                right: "10",
+                                top: "20",
+                                data: [{
+                                    name: '男',
+                                    // 强制设置图形为圆。
+                                    icon: 'circle',
+                                    // 设置文本为红色
+                                    textStyle: {
+                                        color: '#333333'
+                                    }
+                                }, {
+                                    name: '女',
+                                    // 强制设置图形为圆。
+                                    icon: 'circle',
+                                    // 设置文本为红色
+                                    textStyle: {
+                                        color: '#333333'
+                                    }
+                                },
+                                    {
+                                        name: '青少年',
+                                        // 强制设置图形为圆。
+                                        icon: 'circle',
+                                        // 设置文本为红色
+                                        textStyle: {
+                                            color: '#333333'
+                                        }
+                                    },]
+                            },
+                            toolbox: {
+                                feature: {
+                                    saveAsImage: {}
+                                }
+                            },
+                            grid: {
+//                                top: "8%",
+                                left: '3%',
+                                right: '4%',
+                                bottom: '1%',
+                                containLabel: true
+                            },
+                            xAxis: xAxis,
+                            yAxis: [
+                                {
+                                    type: 'value'
+                                }
+                            ],
+                            series: series
+                        }
+                        sexAge.setOption(option2)
+
+                    }
+                },
+                error: function (err) {
+                    console.log(err);
+                    $("#sexAge").css("backgroundColor", "#F6F4F7").find(".loading").css({
+                        background: "url(image/public/loadErr.png) no-repeat center",
+                        backgroundSize: 200
+                    })
+                }
+
+            })
+
+        }
+
+        //年龄性别数据转换
+        function transform(arr) {
+            var obj = {};
+            for (var i = 0; i < arr.length; i++) {
+                arr[i].age = arr[i].age.toString();
+                if (Object.keys(obj).indexOf(arr[i].age) == -1) {
+                    obj[arr[i].age] = [arr[i].requirenum]
+                } else {
+                    obj[arr[i].age].push(arr[i].requirenum)
+                }
+            }
+            var ages = []
+            var numbers = []
+
+            for (var key in obj) {
+                var num = 0;
+                obj[key].map(v => num += Number(v))
+                obj[key] = num;
+                ages.push(key);
+                numbers.push(obj[key])
+            }
+            obj.ages = ages
+            obj.numbers = numbers
+            return obj;
+        }
+
+        //年龄筛选
+        function getSexAndAge(isAdult, data) {
+//            console.log(data);
+            var obj = {
+                noAdult: [],
+                adult: {
+                    man: [],
+                    woman: []
+                }
+            };
+            if (isAdult) {
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].sex == 0) {
+                        obj.adult.woman.push(data[i])
+                    }
+                    if (data[i].sex == 1) {
+                        obj.adult.man.push(data[i])
+                    }
+
+                }
+                obj.adult.man = transform(obj.adult.man.sort((a, b) => (a.age - b.age)))
+                obj.adult.woman = transform(obj.adult.woman.sort((a, b) => (a.age - b.age)))
+            } else {
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].sex == 2) {
+                        obj.noAdult.push(data[i])
+                    }
+
+                }
+                obj.noAdult = transform(obj.noAdult.sort((a, b) => (a.age - b.age)))
+
+            }
+            return obj;
+        }
+
+        sexAgeChart(cityList, industryId)//TODO TEST 年龄性别图
+
+
+        //城市客群数量
+        function cityChart(cityList) {
+            $.ajax({
+                url: `https://gateway.mshuoke.com/chart/cityrequire?citylist=${cityList}`,
+                type: "get",
+                timeOut: 5000,
+                success: function (result) {
+                    if (result.code == 0&&result.data.length) {
+                        var data = result.data.sort((a, b) => (b.num - a.num)).map(v => {
+                            var obj = {};
+                            obj.value = v.num;
+                            obj.name = v.cityName;
+                            return obj;
+                        }).slice(0, 10)
+
+                       	var topnum =0;
+                        data.map(v=>topnum+=Number(v.value));
+                        $(".topData").html(topDataNum(topnum));
+                        var city_customerNum = initEcharts("city_customerNum");
+                        var option3 = {
+                            tooltip: {
+                                trigger: 'item',
+                                formatter: "{a} <br/>{b} : {c} ({d}%)"
+                            },
+                            legend: {
+                                orient: 'vertical',
+                                left: 'left',
+                                // data: ['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+                            },
+                            series: [
+                                {
+                                    color:["#3d42d4","#3b48ee","#4b57ee","#7982ef","#979ce1","#3d42d4","#979ce1","#3b48ee","#4b57ee","#7982ef"],
+                                    name: '',
+                                    type: 'pie',
+                                    radius: ["30%", '58%'],
+                                    center: ['50%', '50%'],
+                                    data: data,
+                                    itemStyle: {
+                                        emphasis: {
+                                            shadowBlur: 10,
+                                            shadowOffsetX: 0,
+                                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                        city_customerNum.setOption(option3)
+                    } else {
+                        $("#city_customerNum").css("backgroundColor", "#F6F4F7").find(".loading").css({
+                            background: "url(images/public/loadErr.png) no-repeat center",
+                            backgroundSize: 200
+                        })
+                    }
+                },
+                error: function (err) {
+                    console.log(err);
+                    $("#city_customerNum").css("backgroundColor", "#F6F4F7").find(".loading").css({
+                        background: "url(images/public/loadErr.png) no-repeat center",
+                        backgroundSize: 200
+                    })
+                }
+            })
+
+        }
+
+        //城市获客排名
+        function rankingChart() {
+            $.ajax({
+                url: `https://gateway.mshuoke.com/chart/citytransformranking`,
+                type: 'post',
+                contentType: "application/json",
+                data: JSON.stringify({
+                    industryid: industryId,
+                    agefrom: minAge,
+                    ageto: maxAge,
+                    citys: citys
+                }),
+                success: function (result) {
+                    if (result.code == 0&&result.data.length) {
+                        var cityname = [], amount = []
+                        result.data.sort(function (a, b) {
+                            a.amount - b.amount
+                        }).slice(0, 10).map(v => {
+                            cityname.push(v.cityname);
+                            amount.push(v.amount)
+                        })
+                        var city_ranking = initEcharts("city_ranking");
+                        var option5 = {
+                            color: ['#3B48EE'],
+                            tooltip: {
+                                trigger: 'axis',
+                                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                                    type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                                }
+                            },
+                            grid: {
+                                top: "12%",
+                                left: '3%',
+                                right: '4%',
+                                bottom: '3%',
+                                containLabel: true
+                            },
+                            xAxis: [
+                                {
+                                    type: 'category',
+                                    data: cityname,
+                                    axisTick: {
+                                        alignWithLabel: true
+                                    }
+                                }
+                            ],
+                            yAxis: [
+                                {
+                                    type: 'value'
+                                }
+                            ],
+                            series: [
+                                {
+                                    name: '',
+                                    type: 'bar',
+                                    barWidth: '60%',
+                                    data: amount
+                                }
+                            ]
+                        };
+                        city_ranking.setOption(option5)
+                    } else {
+                        $("#city_ranking").css("backgroundColor", "#F6F4F7").find(".loading").css({
+                            background: "url(images/public/loadErr.png) no-repeat center",
+                            backgroundSize: 200
+                        })
+                    }
+                },
+                error: function (err) {
+                    $("#city_ranking").css("backgroundColor", "#F6F4F7").find(".loading").css({
+                        background: "url(images/public/loadErr.png) no-repeat center",
+                        backgroundSize: 200
+                    })
+                    console.log(err);
+                }
+            })
+//
+
+        }
+
+
+            //滑块滑动事件
+        var circleWidth=$(".circle").outerWidth();                          //滑块宽度，包括边框
+        var containerWidth = parseInt($(".slider_container").width());      //滑动的有效距离  线条长度+滑块宽度（以圆心为定位）
+        var startX_school =-(circleWidth/2),                                    //线下校区的圆点每次的停留位置(也是初始位置)
+            startX_age_circleL =-(circleWidth/2),                               //年龄的左圆点每次的停留位置(也是初始位置)
+            startX_age_circleR =containerWidth-(circleWidth/2),        //年龄的右圆点每次的停留位置(也是初始位置)
+            deltaX,                                                 //圆点每次的滑动的距离
+            ageDis = maxAge - minAge,                               //年龄区间
+            maxSchoolNum = 25;                                      //线下校区的个数
+
+
+
+        $(".slider_container")[0].addEventListener("touchstart", touch)
+        $(".slider_container")[0].addEventListener("touchmove", function (e) {
+            touch(e);
+            var bool = ["age_circleL", "age_circleR"].indexOf(e.target.id) == -1
+            if (deltaX && !bool) {
+//                debugger;
+                var nowPos = deltaX + (e.target.id == "age_circleL" ? startX_age_circleL : startX_age_circleR);      //当前位置
+                var Lmax = e.target.id == "age_circleL" ? -(circleWidth/2): Math.ceil(parseFloat($("#age_circleL").css("left")) + containerWidth / ageDis);//左，右 滑块能滑到最左边的位置
+                var Rmax = e.target.id == "age_circleL" ? Math.ceil(parseFloat($("#age_circleR").css("left")) - containerWidth / ageDis) : (containerWidth-(circleWidth/2))
+                if (nowPos < Lmax) {
+                    nowPos = Lmax
+                }
+                if (nowPos > Rmax) {
+                    nowPos = Rmax
+
+                }
+                $("#" + e.target.id).css("left", nowPos);
+
+                var ageNum = Math.floor(ageDis * (nowPos+(circleWidth/2)) / containerWidth + minAge*1)
+                e.target.id == "age_circleL" ? $(".minAge").html(ageNum) : $(".maxAge").html(ageNum);
+
+                disAgePrice($(".maxAge").html(), $(".minAge").html())
+
+
+            }
+        })
+        $(".slider_container")[0].addEventListener("touchend", function (e) {
+            touch(e)
+            if (deltaX) {
+                if (e.target.id == "age_circleL") {
+                    startX_age_circleL = parseInt($("#" + e.target.id).css("left"))
+                }
+                if (e.target.id == "age_circleR") {
+                    startX_age_circleR = parseInt($("#" + e.target.id).css("left"))
+                }
+
+
+            }
+
+        })
+        if (moniData.lineOff == 1) {
+            return;
+        }
+        $(".slider_container")[1].addEventListener("touchstart", touch)
+        $(".slider_container")[1].addEventListener("touchmove", function (e) {
+            touch(e);
+            if (deltaX) {
+                var nowPos = deltaX + startX_school;
+                if (nowPos <-(circleWidth/2) ) {
+                    nowPos =-(circleWidth/2)
+                }
+                if (nowPos > (containerWidth-(circleWidth/2))) {
+                    nowPos = containerWidth-(circleWidth/2)
+                }
+
+                $(".school_circle").css("left", nowPos);
+                var schoolNum = Math.ceil((maxSchoolNum - 1) * (nowPos+circleWidth/2) / containerWidth) + 1;
+                $(".schoolNum").html(schoolNum == maxSchoolNum ? (maxSchoolNum + "+") : schoolNum)
+
+                if (schoolNum < 3) {
+                    downSchoolNum = 1.5
+                } else {
+                    downSchoolNum = 1
+                }
+                total()
+            }
+        })
+        $(".slider_container")[1].addEventListener("touchend", function (e) {
+            if (deltaX) {
+                startX_school = parseInt($(".school_circle").css("left"))
+            }
+
+        })
+
+
+        var startPosition = {}, endPosition = {};
+
+        /**
+         * 滑动距离封装
+         * @param event
+         */
+        function touch(event) {
+            var tarClassName = event.target.className;
+            var allClassName = ["school_circle circle", "age_circleR circle", "age_circleL circle"];
+            if(allClassName.indexOf(tarClassName)=="-1"){
+                return ;
+            }
+            var event = event || window.event;
+            switch (event.type) {
+                case "touchstart":
+                    deltaX = 0;
+                    if (allClassName.indexOf(tarClassName) == "-1") {
+                        return;
+                    }
+                    var touch = event.touches[0];
+                    startPosition = {
+                        x: touch.pageX
+                    }
+
+                    $("#" + event.target.id).css("z-index", 100).siblings().css("z-index", 4);
+
+                    break;
+                case "touchend":
+                    break;
+                case "touchmove":
+                    var touch = event.touches[0];
+                    endPosition = {
+                        x: touch.pageX
+                    }
+                    deltaX = isNaN(endPosition.x - startPosition.x) ? 0 : (endPosition.x - startPosition.x);
+                    break;
+            }
+
+        }
+
+        /**
+         * 获客成本总价
+         * 价格算法  线下校区小于3（≤2）个加价50%；低于6（≤5）个年龄段加价20%；低于4（≤3）个年龄段加价50%
+         */
+        function total() {
+            var total = (basicPrice * downSchoolNum * agePrice).toFixed(1)   //获取小数点后两位
+            $(".money").html(total)
+        }
+
+        //根据年龄获取获客模拟价格
+        function disAgePrice(maxAge, minAge) {
+            var disNum = maxAge - minAge;
+            if (disNum < 3) {
+                agePrice = 1.5
+            } else if (disNum < 5) {
+                agePrice = 1.2
+            } else {
+                agePrice = 1;
+            }
+            total()
+        }
+
+    })
+</script>
+</html>

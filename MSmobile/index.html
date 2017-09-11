@@ -2,274 +2,226 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>眸事网-大数据营销获客平台,精准销售线索直达意向客户,提升30%-50%转化</title>
-	<meta name="description" content="眸事获客(眸事网)是国内首家大数据人工智能驱动的获客平台,一站式定制企业营销数据，做到真正的销售闭环.企业可根据自身市场需求定制销售线索，快速提升销售额,以达到最终的市场营销转化">
-	<meta name="keywords" content="大数据营销,销售线索,精准营销,市场营销,眸事获客">
+    <title>眸事网-大数据教育应用,一站式精准获客平台</title>
+	<meta name="description" content="眸事网通过线上行为数据采集与线下静态数据库匹配的方式，形成完整的用户画像，提供给企业，帮助企业提升50%销售转化率。">
+	<meta name="keywords" content="精准营销,大数据教育应用,获客">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-	<script src="js/count.js"></script>
-	
-	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css"/>
-	
-	<link rel="stylesheet" href="/css/main.css" />
+
 	<script src="js/jquery-1.7.2.min.js"></script>
-	<script src="js/jquery.event.drag-1.5.min.js"></script>
-   <script src="js/jquery.touchSlider.js"></script>
-   <script type="text/javascript">
-$(document).ready(function(){
+	<script src="js/count.js"></script>
+	<script src="public/url.js"></script>
 
-	$(".main_visual").hover(function(){
-		$("#btn_prev,#btn_next").fadeIn()
-	},function(){
-		$("#btn_prev,#btn_next").fadeOut()
-	});
+<style type="text/css">
+	html { -ms-touch-action: none;/* 阻止windows Phone 的默认触摸事件 */ font-size: 62.5%; line-height: 1.5;}
+    body,ul,p,li,img,h1,h2,h3,h4 { margin: 0; padding: 0;}
+    ul { list-style: none;}
+    img { display: block;}
+    a { text-decoration: none;}
+    body { width: 100%; *cursor: default; font: 16px/1.5 "Microsoft YaHei",Helvetica,STHeiti STXihei,Microsoft JhengHei,Arial; background: #f4f4f4;}
 	
-	$dragBln = false;
+	.home-top {}
+	.home-top .menu { position: relative;}
+	/*.home-top .menu .menu-icon { width: 28px; height: 28px; display: block; background: url(images/index/icon-menu.png) center center no-repeat; background-size: 100%; position: absolute; right: 12px; top: 26px; z-index: 2;}
+	.home-top .menu .menu-icon.login-icon { background: url(images/index/icon-account.png) center center no-repeat; background-size: 100%;}
+	.home-top .menu .menu-icon.active { background: url(images/index/icon-menu.png) center center no-repeat rgba(0,0,0,.5); background-size: 100%;}
+	.home-top .menu .menu-icon.login-icon.active { background: url(images/index/icon-account.png) center center no-repeat rgba(0,0,0,.5); background-size: 100%;}*/
+	.home-top .menu .menu-toggle { position: absolute; right: 12px; top: 26px; z-index: 2;}
+	.home-top .menu .menu-toggle li { color: #fff; width: 3em; font-size: 1.2rem; text-align: center; line-height: 30px; float: left;}
+	.home-top .menu .menu-toggle li a { color: #fff;}
+	.logout { display: none;}
+    .mso-banner { width:100%;}
+	.mso-banner img{ width:100%; float:left;}
+	.home-link { padding: 26px 14px; clear: both; overflow: hidden; background: #fff;}
+	.home-link li { display: inline-block; box-shadow: 0 0 4px #ccc;}
+	.home-link li.left { float: left; width: 57%; background: url(images/index/bg-simulation.png); background-size: auto 100%;}
+	.home-link li.right { float: right; width: 39%; background: url(images/index/bg-news.png); background-size: auto 100%;}
+	.home-link li .bg-icon { padding: 80px 0 12px 0; text-align: center;}
+	.home-link li.left .bg-icon { background: url(images/index/icon-simulation.png) center 10px no-repeat; background-size: auto 60px;}
+	.home-link li.right .bg-icon { background: url(images/index/icon-news.png) center 10px no-repeat; background-size: auto 60px;}
+	.home-link li h1 { font-size: 1.6rem; line-height: 1.6rem; font-weight: normal; padding-bottom: 8px;}
+	.home-link li p { font-size: 1.2rem;}
+	.home-link li.left h1 { color: #0071D4;}
+	.home-link li.right h1 { color: #08AE90;}
+	.home-link li.left p { color: #0087DD;}
+	.home-link li.right p { color: #08AE90;}
+	.home-ad { background: url(images/index/bg-ad.png) center top no-repeat; background-size: 100% auto; color: #fff; padding: 36px 0; font-size: 1.4rem;}
+	.home-ad p { width: 19em; margin: 0 auto;}
+	.home-profile { background: #fff; overflow: hidden; padding: 0 0 30px 0; color: #7d7d7d;}
+	.home-profile li { display: inline-block; float: left; width: 50%; box-sizing: border-box; padding: 30px 0 0 50px;}
+	.home-profile li h2 { font-size: 1.6rem; font-weight: normal; height: 2.8rem; line-height: 2.8rem;}
+	.home-profile li h2 span { font-size: 2.8rem; height: 2.8rem; line-height: 2.8rem; color: #1fc7ff; display: inline-block; width: 3.5em;}
+	.home-profile li p { font-size: 1.2rem;}
+	.home-profile li.icon-pro1 { background: url(images/index/icon-pro1.png) 20px 36px no-repeat; background-size: auto 22px;}
+	.home-profile li.icon-pro2 { background: url(images/index/icon-pro2.png) 20px 36px no-repeat; background-size: auto 26px;}
+	.home-profile li.icon-pro3 { background: url(images/index/icon-pro3.png) 20px 36px no-repeat; background-size: auto 22px;}
+	.home-profile li.icon-pro4 { background: url(images/index/icon-pro4.png) 20px 36px no-repeat; background-size: auto 24px;}
+	.home-case,.home-success { margin-top: 10px; background: #fff; padding: 0 34px 60px 34px;}
+	.case-title,.success-title { padding: 26px 0 16px 0; text-align: center; font-size: 1.8rem;}
+	.case-box { padding: 40px 20px 30px 20px; margin-bottom: 12px; color: #fff; border-radius: 6px; overflow: hidden;}
+	.case-box.bg1 { background: url(images/index/bg-case1.png) no-repeat; background-size: cover;}
+	.case-box.bg2 { background: url(images/index/bg-case2.png) no-repeat; background-size: cover;}
+	.case-box.bg3 { background: url(images/index/bg-case3.png) no-repeat; background-size: cover;}
+	.case-box h1 { font-size: 1.4rem; font-weight: normal; text-align: center; margin-bottom: 20px;}
+	.case-box p { font-size: 1.2rem;}
+	.home-success { padding: 0 34px 36px 34px;}
+	.success-img {}
+	.success-img img { width: 100%;}
+	.home-contact { padding: 50px 0 8px 0; text-align: center;}
+	.home-contact h2 { font-size: 1.8rem; line-height: 1.8rem; height: 1.8rem; color: #333; font-weight: normal;}
+	.home-contact h3 { font-size: 2rem; line-height: 30px; height: 30px; font-weight: normal; color: rgba(0,0,0,.5); background: url(images/index/icon-tel.png) no-repeat; background-size: 30px 30px; display: inline-block; padding-left: 44px; margin: 6px 0 8px 0;}
+	.home-contact h3 a { color: rgba(0,0,0,.5);}
+	.home-contact p { font-size: 1.2rem; line-height: 1.2rem; height: 1.2rem; color: rgba(0,0,0,.5);}
+	.home-contact .qr-code { width: 30%; margin: 10px auto;}
+	.home-contact .qr-code img { width: 100%;}
+	.footer { background: #d0d0d0; color: #fff; text-align: center; font-size: 1.2rem; padding: 10px 0;}
 	
-	$(".main_image").touchSlider({
-		flexible : true,
-		speed : 200,
-		btn_prev : $("#btn_prev"),
-		btn_next : $("#btn_next"),
-		paging : $(".flicking_con a"),
-		counter : function (e){
-			$(".flicking_con a").removeClass("on").eq(e.current-1).addClass("on");
-		}
-	});
-	
-	$(".main_image").bind("mousedown", function() {
-		$dragBln = false;
-	});
-	
-	$(".main_image").bind("dragstart", function() {
-		$dragBln = true;
-	});
-	
-	$(".main_image a").click(function(){
-		if($dragBln) {
-			return false;
-		}
-	});
-	
-	var requiredtime = 3000;
-	timer = setInterval(function(){
-		$("#btn_next").click();
-	}, requiredtime);
-	
-	$(".main_visual").hover(function(){
-		clearInterval(timer);
-	},function(){
-		timer = setInterval(function(){
-			$("#btn_next").click();
-		},requiredtime);
-	});
-	
-	$(".main_image").bind("touchstart",function(){
-		clearInterval(timer);
-	}).bind("touchend", function(){
-		timer = setInterval(function(){
-			$("#btn_next").click();
-		}, requiredtime);
-	});
-	
-});
-</script>
-
-   <style type="text/css">
-	
-
-
-	
-    .mso-banner { width:100%; }
-	.mso-banner li { width:100%; float:left; }
-	.mso-banner li img{ width:100%; float:left;  }
-	
-	
-	
-	
-	
-	@charset "utf-8";
-*{margin:0;padding:0;list-style:none;border:0;}
-body{width:100%; margin:0 auto; overflow-x:hidden; }
-
-/* main_image */
-.main_visual{height:auto; border-top:1px solid #d7d7d7;overflow:hidden;position:relative;}
-.main_image{ height:auto; overflow:hidden; position:relative; width:100%; height:100%;}
-
-
-*, :after, :before {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-
-
-.ratio2_1:before {
-    padding-top: 56%;
-}
-
-.img_box:before {
-    content: "";
-    display: block;
-}
-
-.img_con {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-}
-
-.img_con span {
-    display: block;
-    text-align: center;
-    font-size: 30px;
-    color: #fff;
-    padding-top: 40px;
-}
-
-
-
-
-
-
-.main_image ul{width:9999px; height:100%; overflow:hidden;position:absolute; top:0; left:0}
-.main_image li{float:left; width:100%; height:100%;}
-
-.main_image li span{ display:block; width:100%; height:100%; }
-.main_image li a{ display:block; width:100%; height:100%; }
-
-.main_image li .img_1{background:url('/images/index/banner.png') center top no-repeat; background-size:100% auto;}
-.main_image li .img_2{background:url('/images/index/banner-two.png') center top no-repeat;  background-size:100% auto;}
-
-
-
-div.flicking_con { position:absolute;top:360px;left:50%;z-index:999;width:300px;height:21px;margin:0 0 0 -50px;}
-div.flicking_con a{float:left;width:21px;height:21px;margin:0;padding:0;background:url('../images/btn_main_img.png') 0 0 no-repeat; display:block;text-indent:-1000px}
-div.flicking_con a.on{background-position:0 -21px}
-#btn_prev,#btn_next{z-index:11111;position:absolute;display:block;width:73px!important;height:74px!important;top:50%;margin-top:-37px;display:none;}
-#btn_prev{background:url(../images/hover_left.png) no-repeat left top;left:100px;}
-#btn_next{background:url(../images/hover_right.png) no-repeat right top;right:100px;}
-
-.main_cen { width:100%; padding-bottom:60px;}
-.main_cen img { width:100%; }
-
-
-.mso-home { width:100%; overflow:hidden; margin-top:25px; margin-bottom:25px;   }
-.mso-home ul { width:90%; overflow:hidden;  margin:auto; }
-.mso-home ul li:nth-child(1){ float:left; width:60.25%;  }
-.mso-home ul li:nth-child(2){ float:left; width:39.75%;  }
-.mso-home ul li img { width:100%; display:block; }
-
-.footer { text-align:center; background:#f4f4f4; }
-.footer ul {float:left;  width:100%; }
-.footer ul li:nth-child(1){ color:#333333; font-size:16px; line-height:20px; margin-top:30px; margin-bottom:20px; }
-.footer ul li:nth-child(4){ margin:20px 0 20px 0; }
-
-.footer ul li{ color:#000000; line-height:20px;  font-size:14px;  }
-.low img { width:100%; }
-.entrance { position:absolute; z-index:10000; background:#281b4d; width:30px; height:30px; background-size:100%;
- top:22px; right:22px;
- }
-.entrance .back{ background:url(/images/index/righticon.png) no-repeat; background-size:100%; width:100%; height:100%; 
-	position:relative;
- }
-.simultaneous { display:none; color:#ffffff; background:#241845; position:absolute; z-index:10000000; top:30px; width:60px;  right:0px; }
-.simultaneous li { text-align:center; font-size:12px; background:#281b4d; line-height:31px;  }
-.simultaneous li:nth-child(2){ margin-top:2px; }
+	@media screen and (max-width: 400px){
+		.home-case { padding: 0 20px 50px 20px;}
+		.case-box { padding: 30px 16px 20px 16px;}
+		.case-box h1 { margin-bottom: 12px;}
+	}
+	@media screen and (max-width: 320px){
+		.home-ad { padding: 25px 0;}
+		.home-profile li { padding: 30px 0 0 27px;}
+		.home-profile li h2 { font-size: 1.4rem; font-weight: normal; height: 2.2rem; line-height: 2.2rem;}
+		.home-profile li h2 span { font-size: 2.2rem; height: 2.2rem; line-height: 2.2rem; color: #1fc7ff; display: inline-block; width: 3.5em;}
+		.home-profile li.icon-pro1 { background: url(images/index/icon-pro1.png) 8px 34px no-repeat; background-size: auto 16px;}
+		.home-profile li.icon-pro2 { background: url(images/index/icon-pro2.png) 8px 34px no-repeat; background-size: auto 18px;}
+		.home-profile li.icon-pro3 { background: url(images/index/icon-pro3.png) 8px 34px no-repeat; background-size: auto 16px;}
+		.home-profile li.icon-pro4 { background: url(images/index/icon-pro4.png) 8px 34px no-repeat; background-size: auto 18px;}
+		.home-case { padding: 0 10px 30px 10px;}
+		.case-box { padding: 20px 0 15px 2px;}
+		.case-box h1 { margin-bottom: 8px;}
+	}
 </style>
 </head>
 
 <body> 
-
-<div id="pageContain">
-	
-	<div class="main_visual img_box ratio2_1">
-		<div class="entrance">
-			<div class="back">
-			
-				<ul class="simultaneous">
-					<li data="register">注册</li>
-					<li data="login">登陆</li>
-				</ul>
-			</div>
-			
-		</div>
-		<div class="img_con">
-           <!--<span>2:1</span>-->
-		   <!--
-			<div class="flicking_con">
-				<a href="#" class="on">1</a>
-				<a href="#" class="">2</a>
-				<a href="#" class="">3</a>
-			</div>
-			-->
-			<div class="main_image">
-				<ul>
-					<li><span class="img_1"></span></li>
-					<li><span class="img_2"></span></li>
-				</ul>
-				<a href="javascript:;" id="btn_prev"></a>
-				<a href="javascript:;" id="btn_next"></a>
-			</div>
-        </div>
-	</div>
-	<div class="mso-home">
-			<ul>
-				<li><img src="/images/index/msocaculation.png" /> </li>
-				<li><img src="/images/index/msonews.png" /> </li>
+<div class="wrap">
+	<div class="home-top">
+		<div class="menu">
+			<p class="menu-icon"></p>
+			<ul class="menu-toggle">
+				<li class="regiset"><a href="registerNew.html">注册</a></li>
+				<li class="login"><a href="login.html">登录</a></li>
+				<li class="logout"><a href="javascript:;">退出</a></li>
 			</ul>
-	</div>	
-	<div class="main_cen">
-		<img src="/images/index/mainnew.png" />
+		</div>
+		<div class="mso-banner">
+			<img src="images/index/banner.png" alt="banner" />
+		</div>
 	</div>
-
-</div>
-<div class="footer">
-	<ul>
-		<li>联系我们</li>
-		<li>400-900-5822</li>
-		<li>上海市虹口区四平路198号轻工国际大厦3楼</li>
-		<li><img src="/images/index/binary-code.png" /></li>
-	</ul>
-	<div class="low">
-		<img src="/images/index/copyright.png" />
+	<div class="home-link">
+		<ul>
+			<li class="left"><a href="html/simulated-home.html">
+				<div class="bg-icon simulated">
+					<h1 class="simulated">获客模拟</h1>
+					<p class="simulated">您想更了解自己的客户吗？</p>
+					<p class="simulated">您想更了解获客成本吗？</p>
+					<p class="simulated">立即使用获客模拟器！</p>
+				</div>
+			</a></li>
+			<li class="right"><a href="https://mp.weixin.qq.com/mp/homepage?__biz=MzIzNDczMTQ0NA==&hid=1&sn=646e22ff422a06a6be4b490ea0807c5c&scene=18#wechat_redirect">
+				<div class="bg-icon">
+					<h1>眸事资讯</h1>
+					<p>看教育行业大咖</p>
+					<p>如何获客，干货</p>
+					<p>内容点击进入。</p>
+				</div>
+			</a></li>
+		</ul>
+	</div>
+	<div class="home-ad">
+		<p>国内首家以人工智能驱动的大数据获客平台</p>
+		<p>帮助企业提升50%自身销售转换率</p>
+		<p>教育行业最大获客服务商</p>
+	</div>
+	<div class="home-profile">
+		<ul>
+			<li class="icon-pro1">
+				<h2><span>20万</span>条</h2>
+				<p>月获客需求发布量</p>
+			</li>
+			<li class="icon-pro2">
+				<h2><span>1.29亿</span>元</h2>
+				<p>累积获客需求发布金额</p>
+			</li>
+			<li class="icon-pro3">
+				<h2><span>1200万</span>条</h2>
+				<p>月增精准移动用户</p>
+			</li>
+			<li class="icon-pro4">
+				<h2><span>1.33亿</span>条</h2>
+				<p>累积精准用户</p>
+			</li>
+		</ul>
+	</div>
+	<div class="home-case">
+		<div class="case-title">客户案例</div>
+		<div class="case-box bg1">
+			<h1>成人英语培训</h1>
+			<p>案例背景：某知名英语培训品牌获客需求</p>
+			<p>总体目标：每月挖掘2万条销售线索，分布全国15个城市</p>
+			<p>目标人群：20-49岁</p>
+			<p>营销成果：每月有效LEAD 17100条</p>
+			<p>&emsp;&emsp;&emsp;&emsp;&emsp;完成率 85.5%</p>
+			<p>&emsp;&emsp;&emsp;&emsp;&emsp;签约转化率0.92%</p>
+		</div>
+		<div class="case-box bg2">
+			<h1>青少儿英语培训</h1>
+			<p>案例背景：某线上青少儿英语培训品牌获客需求</p>
+			<p>总体目标：每月挖掘5000条销售线索，全国不限城市</p>
+			<p>目标人群：5-16岁</p>
+			<p>营销互果：每月有效LEAD 5000条</p>
+			<p>&emsp;&emsp;&emsp;&emsp;&emsp;完成率100%</p>
+			<p>&emsp;&emsp;&emsp;&emsp;&emsp;签约转化率2.5%</p>
+		</div>
+		<div class="case-box bg3">
+			<h1>数据加工项目</h1>
+			<p>案例背景：某互联网品牌获客需求</p>
+			<p>总体目标：月均数据标签20000条，全国不限城市</p>
+			<p>目标人群：20-50岁</p>
+			<p>营销互果：每月完成2000条数据处理</p>
+			<p>&emsp;&emsp;&emsp;&emsp;&emsp;完成率100%</p>
+			<p>&emsp;&emsp;&emsp;&emsp;&emsp;数据加工成功率35%</p>
+		</div>
+	</div>
+	<div class="home-success">
+		<div class="success-title">成功案列</div>
+		<div class="success-img"><img src="images/index/img-success.png" alt="成功案例" /></div>
+	</div>
+	<div class="home-contact">
+		<h2>联系我们</h2>
+		<h3><a href="tel:4009005288" class="telNum">400-900-5288</a></h3>
+		<p>上海市虹口区四平路198号轻工国际大厦3楼</p>
+		<div class="qr-code">
+			<img src="images/index/qr-code1.png" alt="二维码" />
+		</div>
+	</div>
+	<div class="footer">
+		<p>Copyright © 2011-2017   上海脉豪商务信息咨询有限公司</p>
+		<p>版权所有 沪ICP备15029022号</p>
 	</div>
 </div>
-</body>
 <script type="text/javascript">
-
-	
-	$(".sign-up").bind("touchstart",function(){
-		location.href = "register.html"
+	//判断是否登录
+	if(telNumname){
+		$(".menu-icon").addClass("login-icon");
+		$(".logout").show();
+		$(".regiset,.login").hide();
+	}else{
+		$(".menu-icon").removeClass("login-icon");
+		$(".logout").hide();
+		$(".regiset,.login").show();
+	}
+	//点击退出
+	$("li.logout").click(function(){
+		msoLoginOut(function(){
+			$.removeSessionStorage('telNum');
+			location.reload();
+		});
 	});
-	var _switch = true;
-	$(".entrance").bind("touchstart",function(ev){
-		var target = ev.currentTarget;
-		console.log(target);
-		if(_switch){
-			$('.simultaneous').show();
-			_switch = false;
-		}else{
-			$('.simultaneous').hide();
-			_switch = true;
-		}
-	});
-	
-	$(".simultaneous li").bind("touchstart",function(ev){
-		var target = ev.currentTarget;
-		console.log(target);
-		var data = $(target).attr('data');
-		console.log(data);
-		if(data == "login"){
-			//登陆
-		}else{
-			//注册
-		}
-		
-	});
-	
 </script>
+</body>
 </html>
