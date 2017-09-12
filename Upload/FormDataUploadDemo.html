@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FormData上传Demo</title>
+    <meta name="description" content="test">
+	<meta name="keywords" content="">
+	<!-- <script src="https://www.mshuoke.com/html/js/jquery-1.7.2.min.js"></script> -->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<style>
+		li{
+			list-style: none;
+		}
+		.salepad{
+			width: 200px;
+			height: 200px;
+			text-align: center;
+			line-height: 200px;
+			border: 1px solid #000;
+		}
+		#progress{
+			width: 400px;
+			height: 40px;
+			border: 1px solid #000;
+		}
+		#percent{
+			width:0;
+			height: 40px;
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+<ul>
+	<li class="upload compimg" data-index="5">
+		
+		<form id="salepad" action="" enctype="">
+			<div>
+				<span style="display:none;">文件路径</span>
+				<input style="display:none;" class="idkey" type="text" name="key" value="">
+				<span style="display:none;">OSSAccessKeyId</span>
+				<input style="display:none;" class="idOSSAccessKeyId" type="text" name="OSSAccessKeyId" value="">
+				<span style="display:none;">policy</span>
+				<input style="display:none;" class="idpolicy" type="text" name="policy" value="">
+				
+				<input style="display:none;" class="status" type="text" name="success_action_status" value="200">   
+				<!-- value=200 成功时返回200,默认204 -->
+				
+
+				<span style="display:none;">Signature</span>
+				<input style="display:none;" class="idSignature" type="text" name="Signature" value="">
+				
+				<input style="display:none;" name="file" type="file" class="file">
+			</div>
+		</form>
+		<div class="salepad test">
+			点击上传
+		</div>
+		<p class="msg-error hy"></p>
+	</li>
+</ul>
+<div id="progress">
+	<div id="percent"></div>
+</div>
+<p>进度: <span id="bai">0</span>%</p>
+<button id="cancel">取消上传</button>
+<script>
+//http://blog.csdn.net/yc1022/article/details/21226703
+$(function(){
+	var xhr;
+	$(".salepad").click(function(){
+		$(".file")[0].onchange=function () {
+				var typeArr = ['image/jpeg','image/png','image/bmp'];//限制文件格式
+				var fileInfo=this.files[0];		
+				// if(typeArr.indexOf(fileInfo.type)=="-1"){	//限制格式
+				// 	return ;
+				// }
+				// if((fileInfo.size/1024)>3072){			//限制大小
+				// 	return ;
+				// }
+				// var readerd = new FileReader();//可将图片转换为base64
+				// readerd.readAsDataURL(fileInfo);
+				// readerd.onload = function (e) {
+				// 	$('div.salepad').html('<img style="width:100%;height:100%;" src="'+this.result+'"/>');
+				// }
+
+
+			resultSignature =  JSON.parse(getSignature({fileName:'credentials'}));
+				/*设置签名信息*/
+			$(".upload").find('form')[0].action = resultSignature.host;
+			$(".upload").find('.idkey').val(resultSignature.dir+'${filename}');
+			$(".upload").find('.idpolicy').val(resultSignature.policy);
+			$(".upload").find('.idOSSAccessKeyId').val(resultSignature.accessid);
+			$(".upload").find('.idSignature').val(resultSignature.signature);
+
+				var _path="https://res.mshuoke.com/"+resultSignature.dir+fileInfo.name;
+// console.log(_path)
+				uploadByForm($('#salepad')[0],"https://mso.oss-cn-shanghai.aliyuncs.com");//上传方法
+
+		}
+		return $(".file").click();
+	})
+
+
+$("#cancel").click(function(){
+	xhr.abort()
+})
+
+//获取签名信息
+function getSignature(parm){
+		if(!parm){
+			return;
+		}
+		
+		if(!parm.fileName){
+			return;
+		}
+		var xmlhttp = null;
+		if (window.XMLHttpRequest){
+			xmlhttp=new XMLHttpRequest();
+		}else if (window.ActiveXObject){
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+
+		if (xmlhttp){
+		  
+			var credentials = parm.fileName;
+			/*后台签名上传*/
+			 //https://back.mshuoke.com/aliOrder/customerDelve.do?stid=undefined&type=fbxq  
+			 serverUrl=`https://back.mshuoke.com/ali.do?uid=1&type=${credentials}`
+			// serverUrl = serverUrlpre +'/ali.do?uid='+roleid+'&type='+credentials;
+		   
+			xmlhttp.open( "GET", serverUrl, false );
+			xmlhttp.send( null );
+			return xmlhttp.responseText
+		}else{
+			alert("Your browser does not support XMLHTTP.");
+		}
+	}
+function uploadByForm(Form,host) {
+	  /*模拟二进制流*/
+	  var formData = new FormData(Form);
+					 // oMyForm.append("username", "Groucho");
+					 // var url = "https://mso.oss-cn-shanghai.aliyuncs.com"; 
+
+						 // $.when(
+							// $.ajax({  
+							// 	url : host,  
+							// 	type : 'POST',  
+							// 	data : formData,  
+							// 	processData : false,  
+							// 	contentType : false,  
+							// 	xhr:function(e){
+							// 		console.log(e)
+							// 	}
+							// })
+							// ).then(function(){alert("上传成功")})  
+
+/**
+xhr2 上传测试
+*/
+
+	   xhr=new XMLHttpRequest();			//新建XMLHttp对象
+	   console.log(xhr)
+	　	xhr.open('POST', host,true);			//请求方式  url  是否异步(默认为异步true)
+		xhr.responseType='blob';
+		xhr.onreadystatechange=function(e){
+			//状态改变时调用
+			console.log(e,"onreadystatechange")
+			 console.log(xhr.readyState )
+			 console.log(xhr.status)
+			 console.log(xhr.statusText)   
+			 console.log(this.responses)
+		}
+		//xhr.timeout=5000   //设置超时
+		xhr.upload.onprogress = function(event) {
+　　　　		if (event.lengthComputable) {
+　　　　　　		var percentComplete =(100*event.loaded / event.total).toFixed(2);
+					var baifen=percentComplete+"%";
+					$("#bai").html(percentComplete);
+					$("#percent").css("width",baifen)
+　　　　		}
+		}
+		
+
+		xhr.onloadstart=function(e){
+			console.log(e,"开始上传")
+		}
+		xhr.onabort=function(e){
+			console.log(e,"暂停")
+		}
+	  　xhr.ontimeout = function(event){
+　　	　　alert('请求超时！');
+　　	}
+		xhr.onerror=function(e){
+			console.log(e,"出错")
+		}
+		xhr.onload=function(e){
+			console.log(e,"上传成功")
+		}
+		xhr.response=function(e){
+			console.log(e,"end")
+		}
+		xhr.onprogress =function(e){
+			//下载进度事件
+		}
+	  　xhr.send(formData);
+
+
+		}
+		
+
+})
+
+</script>
+</body>
+</html>
