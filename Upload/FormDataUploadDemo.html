@@ -69,7 +69,10 @@
 $(function(){
 	var xhr;
 	$(".salepad").click(function(){
+
+		$("#salepad")[0].reset();//清空防止重复选择时change事件不起作用
 		$(".file")[0].onchange=function () {
+			alert(345345)
 				var typeArr = ['image/jpeg','image/png','image/bmp'];//限制文件格式
 				var fileInfo=this.files[0];		
 				// if(typeArr.indexOf(fileInfo.type)=="-1"){	//限制格式
@@ -138,6 +141,7 @@ function getSignature(parm){
 		}
 	}
 function uploadByForm(Form,host) {
+	alert(333)
 	  /*模拟二进制流*/
 	  var formData = new FormData(Form);
 					 // oMyForm.append("username", "Groucho");
@@ -167,10 +171,17 @@ xhr2 上传测试
 		xhr.onreadystatechange=function(e){
 			//状态改变时调用
 			console.log(e,"onreadystatechange")
-			 console.log(xhr.readyState )
+			 console.log(xhr.readyState)
 			 console.log(xhr.status)
 			 console.log(xhr.statusText)   
 			 console.log(this.responses)
+
+			if(this.readyState==4&&this.status==200){
+				alert("上传成功")
+			}
+
+
+
 		}
 		//xhr.timeout=5000   //设置超时
 		xhr.upload.onprogress = function(event) {
