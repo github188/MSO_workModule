@@ -88,7 +88,7 @@ $(function(){
 				// }
 
 
-			resultSignature =  JSON.parse(getSignature({fileName:'credentials'}));
+			resultSignature =  JSON.parse(getSignature({fileName:'creds'}));
 				/*设置签名信息*/
 			$(".upload").find('form')[0].action = resultSignature.host;
 			$(".upload").find('.idkey').val(resultSignature.dir+'${filename}');
@@ -130,7 +130,7 @@ function getSignature(parm){
 			var credentials = parm.fileName;
 			/*后台签名上传*/
 			 //https://back.mshuoke.com/aliOrder/customerDelve.do?stid=undefined&type=fbxq  
-			 serverUrl=`https://back.mshuoke.com/ali.do?uid=1&type=${credentials}`
+			 serverUrl=`https://back.mshuoke.com/ali.do?uid=30&type=${credentials}`
 			// serverUrl = serverUrlpre +'/ali.do?uid='+roleid+'&type='+credentials;
 		   
 			xmlhttp.open( "GET", serverUrl, false );
