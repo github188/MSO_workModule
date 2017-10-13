@@ -1,0 +1,52 @@
+body{
+	background-color: #f2f3f5;
+}
+.content{
+	padding: 0px 360px;
+}
+.content img{
+	width: 100%;
+	height: auto;
+}
+.con-nav{
+	width: 1183px;
+	margin: auto;
+	padding: 22px 0px;
+	overflow: hidden;
+}
+.con-nav-logo,.con-nav-txt{
+	float: left;
+}
+.con-nav-logo{
+	width: 72px;
+}
+.con-nav-txt{
+	padding: 30px 0px 30px 76px;
+	color: #333;
+	font-size: 20px;
+}
+.con-mainImg{
+	width: 660px;
+	margin: 22px auto 76px;
+}
+.con-ins{
+	font-size: 20px;
+	color: #333;
+	height: 84px;
+	text-align: center;
+	padding-bottom: 122px;
+}
+.fixed{
+	position: fixed;
+	right: 52px;
+	bottom: 290px;
+	width: 50px;
+	height: 110px;
+}
+.fixed-icon a{
+	display: block;
+	width: 50px;
+	height: 50px;
+	background: ;
+}
+

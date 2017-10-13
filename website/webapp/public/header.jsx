@@ -118,7 +118,6 @@ class Header extends React.Component {
 					<ul>
 						<li><a className="menu1" href="//www.mshuoke.com">首页</a></li>
 						<li><a className="menu2" href="//www.mshuoke.com/headline.html">眸事资讯</a></li>
-						<li><a className="menu3" href="//www.mshuoke.com/production.html">产品</a></li>
 						<li><a className="menu4" href="//www.mshuoke.com/help.html">帮助中心</a></li>
 					</ul>
 					<div className="login_right">
@@ -150,7 +149,6 @@ class Header extends React.Component {
 					<ul>
 						<li><a className="menu1" href="//www.mshuoke.com">首页</a></li>
 						<li><a className="menu2" href="//www.mshuoke.com/headline.html">眸事资讯</a></li>
-						<li><a className="menu3" href="//www.mshuoke.com/production.html">产品</a></li>
 						<li><a className="menu4" href="//www.mshuoke.com/help.html">帮助中心</a></li>
 					</ul>
 					<div className="login_right">
@@ -168,7 +166,6 @@ class Header extends React.Component {
 					<ul>
 						<li><a className="menu1" href="//www.mshuoke.com">首页</a></li>
 						<li><a className="menu2" href="//www.mshuoke.com/headline.html">眸事资讯</a></li>
-						<li><a className="menu3" href="//www.mshuoke.com/production.html">产品</a></li>
 						<li><a className="menu4" href="//www.mshuoke.com/help.html">帮助中心</a></li>
 					</ul>
 					<div className="login_right">

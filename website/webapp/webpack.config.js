@@ -50,6 +50,9 @@ htmls.index = 'index.html';
 htmls.about = 'about.html';
 htmls.help = 'help.html';
 htmls.production = 'production.html';
+htmls.['loginbefore_hasresult'] = 'loginbefore_hasresult.html';
+htmls.['testmobx'] = 'testmobx.html';
+
 //htmls['index-s'] = 'index-s.html';
 //	debugger;
 

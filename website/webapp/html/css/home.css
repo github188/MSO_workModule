@@ -34,7 +34,7 @@ textarea, input, button { font-family: "microsoft yahei";}
 .header .nav_top .login_right a.logout:hover { text-decoration: underline;}
 
 /*footer*/
-.footer { background: rgba(31,55,81,0.25); color: #fff; height: 223px; width: 100%; padding: 0; text-align: left;}
+.footer { background: rgba(31,55,81,0.25); color: #fff; height: 223px; width: 100%; padding: 0; text-align: left;margin-top: 30px;}
 .footer .nav-bottom { width: 1200px; margin: 0 auto;}
 .footer .nav-bottom .nav-li { float: left; padding-top: 45px;}
 .footer .nav-bottom .nav-li ul { overflow: hidden; padding-bottom: 45px; padding-top: 0;}

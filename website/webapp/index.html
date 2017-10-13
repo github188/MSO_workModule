@@ -2,13 +2,14 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-	<title>眸事网-大数据营销获客平台,精准销售线索直达意向客户,提升30%-50%转化</title>
-	<meta name="description" content="眸事获客(眸事网)是国内首家大数据人工智能驱动的获客平台,一站式定制企业营销数据，做到真正的销售闭环.企业可根据自身市场需求定制销售线索，快速提升销售额,以达到最终的市场营销转化">
-	<meta name="keywords" content="大数据营销,销售线索,精准营销,市场营销,眸事获客">
+	<title>眸事网-大数据教育应用,一站式精准获客平台</title>
+	<meta name="description" content="眸事网通过线上行为数据采集与线下静态数据库匹配的方式，形成完整的用户画像，提供给企业，帮助企业提升50%销售转化率。">
+	<meta name="keywords" content="精准营销,大数据教育应用,获客">
 	<meta name="baidu-site-verification" content="SdcIOUYnNG" />
 	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
-	<link rel="stylesheet" href="html/css/home.css">
+	<link rel="stylesheet" href="html/css/home.css" />
+	<link rel="stylesheet" href="html/css/city-select.css" />
 	<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script> 
 	<script src="html/js/jquery-1.7.2.min.js" type="text/javascript"></script>
 	<!--<script src="html/js/home_index/jquery-1.11.1.min.js"></script>-->
@@ -21,16 +22,9 @@
 	<script src="//www.mshuoke.com/html/js/hide.js"></script>
 	<script src="//www.mshuoke.com/html/js/home_index/des.js"></script>
 	
+	
+	
 	<script src="html/js/home_index/slideshow.js"></script>
-	<script>
-	var _hmt = _hmt || [];
-	(function() {
-	  var hm = document.createElement("script");
-	  hm.src = "https://hm.baidu.com/hm.js?dc784c26de3d04a007a050c3c39368f2";
-	  var s = document.getElementsByTagName("script")[0]; 
-	  s.parentNode.insertBefore(hm, s);
-	})();
-	</script>
 	<script type="text/javascript">
 		function browserRedirect() {
 		    var sUserAgent = navigator.userAgent.toLowerCase();
@@ -51,7 +45,9 @@
 		browserRedirect();
 	</script>
 	<style>
-		.banner { height: 790px;}
+		 body{position: relative;}
+		.wrap-mid { overflow: hidden;}
+		.home-banner { height: 930px;}
 		.home-data { padding-bottom: 140px; width: 1200px; margin: 0 auto;}
 		.home-data ul { overflow: hidden;}
 		.home-data li { width: 25%; background: url(html/images/home-index/hr.gif) right 12px no-repeat; float: left; display: inline-block; color: #fff;}
@@ -73,7 +69,13 @@
 		.home-case .content li { display: inline-block; float: left; margin-right: 56px; padding: 4px 0;}
 		.home-case .content li p { margin: 18px 0;}
 		.home-case .content li.last { margin: 0;}
-		.home-news { padding-bottom: 170px; width: 1200px; margin: 0 auto;}
+		.box-top { height: 916px; overflow: hidden;}
+		.home-news { padding-bottom: 170px; width: 1200px; margin-top: 916px; margin-right: auto; margin-bottom: 0; margin-left: auto;}
+		.box-top.move .home-news { -webkit-animation:topCome 1s ease-in-out 1; -webkit-animation-fill-mode:both;}
+		@keyframes topCome {
+			0%  { margin-top:916px;}
+			100%{ margin-top:0;}
+		}
 		.home-news .title { padding-bottom: 80px;}
 		.home-news .content { overflow: hidden;}
 		.home-news .left { float: left;}
@@ -94,10 +96,20 @@
 		.home-news .right .tag a { display:inline-block; float: left; margin-right: 8px; color: #BB5A5A; width: 108px; height: 32px; line-height: 32px; text-align: center; font-size: 14px; background: url(html/images/home-index/tag-bg.png) no-repeat;}
 		.home-news .right .tag a.last { margin-right: 0;}
 		.home-news .right .tag a:hover { color: #14263C; background: url(html/images/home-index/tag-bg-h.png) no-repeat;}
-		.home-business { height: 825px; width: 1200px; margin: 0 auto; padding-top: 145px; color: #fff; clear: both;}
-		.home-business .left { float: left;}
-		.home-business .right { float: right; width: 578px;}
-		.home-business .left h2 { font-size: 22px; line-height: 22px; height: 22px; display: inline-block; margin-bottom: 15px; color: #DF6162; background: -webkit-linear-gradient(left, #DF6162 , #CA9343); -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
+		.home-business { height: 825px; width: 1200px; margin: 0 auto; color: #fff; clear: both; position: relative;}
+		.home-business .left { position: absolute; left: 0; top: 0; margin-left: -601px; opacity:0;}
+		.home-business .right { position: absolute; right: 0; top: 0; width: 578px; margin-right: -578px; opacity:0;}
+		.home-business.move .left { -webkit-animation:leftCome 1s ease-in-out 1; -webkit-animation-fill-mode:both;}
+		@keyframes leftCome {
+			0%  { margin-left:-601px; opacity:0;}
+			100%{ margin-left:0; opacity:1;}
+		}
+		.home-business.move .right { -webkit-animation:rightCome 1s ease-in-out 1; -webkit-animation-fill-mode:both;}
+		@keyframes rightCome {
+			0%  { margin-right:-578px; opacity:0;}
+			100%{ margin-right:0; opacity:1;}
+		}
+		.home-business .left h2 { font-size: 22px; line-height: 22px; height: 22px; display: inline-block; margin-bottom: 15px; color: #DF6162; font-weight: normal; background: -webkit-linear-gradient(left, #DF6162 , #CA9343); -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
 		.home-business .left span { width: 60px; height: 2px; background: #EF6B5F; display: inline-block;}
 		.home-business .left i.clear{clear:both;height:0;overflow:hidden;}
 		.home-business .left p { font-size: 16px; color: #D2D2D2; line-height: 30px; width: 485px; margin-top: 4px;}
@@ -106,31 +118,31 @@
 		.home-business .left li.icon01 { background: url(html/images/home-index/business-icon1.png) 0 0 no-repeat;}
 		.home-business .left li.icon02 { background: url(html/images/home-index/business-icon2.png) 0 0 no-repeat;}
 		.home-business .left li.icon03 { background: url(html/images/home-index/business-icon3.png) 0 0 no-repeat;}
-		.home-business .title { float: right; text-align: center; margin-right: 155px;}
+		.home-business .title { float: right; text-align: right; margin-right: 42px;}
 		.home-business .title h2 { font-size: 28px; line-height: 28px; height: 28px; color: #CB5F5D; font-weight: normal; padding-bottom: 18px;}
 		.home-business .title p { font-family: HelveticaNeue; font-size: 18px; line-height: 18px; height: 18px; color: #D2D2D2;}
-		.home-business .right .content { background: url(html/images/home-index/business-bg.png) center center no-repeat; width: 578px; height: 578px; clear: both; position: relative;} 
-		.home-business .right .content .rightImg01 { position: absolute; right: 264px; top: 141px; overflow: hidden; width: 110px; height: 105px;}
-		.home-business .right .content .rightImg01 p { display: block; position: absolute; right: 0; top: 0; width: 10%;  height: 105px; -webkit-animation:rightImg1 1s linear 1; -webkit-animation-fill-mode:both; overflow: hidden;}
+		.home-business .right .content { background: url(html/images/home-index/business-bg.png) center 65px no-repeat; width: 578px; height: 578px; clear: both; position: relative;} 
+		.home-business .right .content .rightImg01 { position: absolute; right: 231px; top: 141px; overflow: hidden; width: 160px; height: 173px;}
+		.home-business .right .content .rightImg01 p { display: block; position: absolute; right: 0; top: 0; width: 10%;  height: 173px; -webkit-animation:rightImg1 1s linear 1; -webkit-animation-fill-mode:both; overflow: hidden;}
 		@keyframes rightImg1 {
 			0%  { width:10%; opacity:0;}
 			100%{ width:100%; opacity:1;}
 		}
 		.home-business .right .content .rightImg01 p img { position: absolute; right: 0; top: 0;}
-		.home-business .right .content .rightImg02 { position: absolute; left: 240px; top: 58px; overflow: hidden; width: 72px; height: 178px; display: none;}
-		.home-business .right .content .rightImg02 p { display: block; position: absolute; right: 0; bottom: 0; width: 72px;  height: 10%; -webkit-animation:rightImg2 1s linear 1; -webkit-animation-fill-mode:both; overflow: hidden;}
+		.home-business .right .content .rightImg02 { position: absolute; left: 256px; top: 20px; overflow: hidden; width: 104px; height: 271px; display: none;}
+		.home-business .right .content .rightImg02 p { display: block; position: absolute; right: 0; bottom: 0; width: 104px;  height: 10%; -webkit-animation:rightImg2 1s linear 1; -webkit-animation-fill-mode:both; overflow: hidden;}
 		@keyframes rightImg2 {
 			0%  { height:10%; opacity:0;}
 			100%{ height:100%; opacity:1;}
 		}
 		.home-business .right .content .rightImg02 p img { position: absolute; right: 0; bottom: 0;}
-		.home-business .right .content .rightImg03 { position: absolute; left: 192px; top: 129px; overflow: hidden; width: 149px; height: 137px; display: none;}
-		.home-business .right .content .rightImg03 p { display: block; position: absolute; right: 0; top: 0; width: 149px;  height: 137px; -webkit-animation:rightImg3 1s ease-in-out 1; -webkit-animation-fill-mode:both; overflow: hidden;}
+		.home-business .right .content .rightImg03 { position: absolute; left: 192px; top: 144px; overflow: hidden; width: 213px; height: 196px; display: none;}
+		.home-business .right .content .rightImg03 p { display: block; position: absolute; right: 0; top: 0; width: 213px;  height: 196px; -webkit-animation:rightImg3 1s ease-in-out 1; -webkit-animation-fill-mode:both; overflow: hidden;}
 		@keyframes rightImg3 {
 			0%  { opacity:0;}
 			100%{ opacity:1;}
 		}
-		.home-business .right .content .rightImg03 p img { position: absolute; left: 50%; top: 50%; margin-left: -74.5px; margin-top: -68.5px;}
+		.home-business .right .content .rightImg03 p img { position: absolute; left: 50%; top: 50%; margin-left: -106.5px; margin-top: -98px;}
 		
 
 		#solid{ width:100%; height:790px; clear:both; position:relative;}
@@ -153,24 +165,93 @@
 		#slide-holder div#slide-controls p#slide-nav a {float : left; width : 8px;height : 8px; border-radius:50%; display : inline;font-size : 0; line-height : 0; background: #fff; margin: 0 5px;}
 		#slide-holder div#slide-controls p#slide-nav a.on{ background: #265782;}
 		
+		
 		#solid a { position: absolute; right: 0; top: 497px; display:inline-block; color: #BB5A5A; width: 132px; height: 40px; line-height: 40px; text-align: center; font-size: 20px; background:url(html/images/home-index/banner-btn.png) center top no-repeat;}
 		#solid a:hover { color: #fff; background:url(html/images/home-index/banner-btn-h.png) center top no-repeat;}
 		
-		
+		.home-banner .title { text-align: center; padding-top: 115px;}
+		.home-banner .title img { display: inline-block;}
+		.home-banner .description { padding-top: 68px; font-size: 30px; color: #CCC097; line-height: 30px; height: 30px; text-align: center;}
+		.home-banner .search-bar { padding-top: 114px; height: 144px; width: 916px; margin: 0 auto; }
+		.home-banner .btn-search { width: 230px; height: 60px; line-height: 60px;text-align: center; display: block; margin: 0 auto; background: url(html/images/home-index/banner-btn.png) no-repeat; border: 0; color: #fff; font-size: 24px;}
+		.home-banner .btn-search:hover { background: url(html/images/home-index/banner-btn-h.png) no-repeat;}
+		.home-banner .search-bar ul.switchOnOff { overflow: hidden; float: left;}
+		.home-banner .search-bar ul.switchOnOff li { width: 100px; height: 58px; border: 1px #fff solid; display: inline-block; float: left; background: rgba(255,255,255,.2); color: #fff; font-size: 18px; text-align: center;}
+		.home-banner .search-bar ul.switchOnOff li.offline { margin-left: -1px;}
+		.home-banner .search-bar ul.switchOnOff li.active { background: none;}
+		.home-banner .search-bar ul.switchOnOff li a { display: block; height: 54px; line-height: 58px; overflow: hidden; color: #fff;}
+		.home-banner .search-bar ul.switchOnOff li.active a { border-bottom: 4px #F4BB41 solid;}
+		.home-banner .search-bar .box-search { padding-left: 30px; float: left; color: #fff; font-size: 18px; line-height: 58px;}
+		.home-banner .search-bar .box-search .box-industry { border: 1px #fff solid; width: 300px; height: 58px; background: url(html/images/home-index/select-down.png) 270px center no-repeat rgba(255,255,255,.2); float: left; text-indent: 16px; position: relative;}
+		.home-banner .search-bar .box-search .box-area { border: 1px #fff solid; width: 380px; height: 58px; background: url(html/images/home-index/select-down.png) 350px center no-repeat rgba(255,255,255,.2); float: left; margin-left: -1px; text-indent: 16px; position: relative;}
+		.valued-p{cursor:pointer;}
+		.industry-box { font-size: 16px; position: absolute; left: -1px; top: 60px; line-height: 33px;}
+		.industry-first-level { display:none; width: 120px; background: #415263; border: 1px #fff solid; position: absolute; left: 0; top: 0;}
+		.industry-first-level li {}
+		.industry-second-level { display:none; width: 178px; background: #415263; border: 1px #fff solid; position: absolute; left: 122px; top: 0;}
+		.area-box { width: 536px; position: absolute; left: -1px; top: 60px; background: #415263; border: 1px #fff solid; border-bottom: 0;}
+		.area-input { height: 55px;}
+		.area-input input { width: 374px; height: 38px; background: #2C3B4A; border: 1px #fff solid; float: left; margin-top: 7px; margin-left: 8px; padding-left: 8px;}
+		.area-input .close { background: url(html/images/home-index/icon-close.png) no-repeat; width: 20px; height: 20px; float: right; margin: 6px; cursor: pointer;}
+		.area-input .close:hover { background: url(html/images/home-index/icon-close-h.png) no-repeat;}
+		.letter-nav { height: 40px; background: #14273D; color: #fff;}
+
+		.city-list { padding-top: 8px; line-height: 36px; color: #fff;}
+		.cover { background: rgba(0,0,0,.6); position: fixed; left: 0; top: 0; bottom: 0; right: 0; width: 100%; height: 100%; z-index: 100; display: none;}
+		.cover .ad-promotion { position: absolute; width: 80%; margin-left: -40%; top: 20px; left: 50%;}
+		.cover .ad-promotion .closed { display: inline-block; background: url(html/images/home-index/icon-close.png) no-repeat; width: 20px; height: 20px; position: absolute; right: 12px; top: 12px; cursor: pointer;}
+		.cover .ad-promotion img { width: 100%;}
+		.box-industry .valued-i { cursor: pointer;}
+		#multi-select-2 { display:none; }
+		.home-banner .search-bar .industry-first-level ul li.active { background:#2C3B4A; color:#ffffff; }
+		.home-banner .search-bar .industry-first-level ul li:hover { background:#2C3B4A; color:#ffffff; }
+		.home-banner .search-bar .industry-second-level ul li.active { background:#2C3B4A; color:#ffffff; }
+		.home-banner .search-bar .industry-second-level ul li:hover { background:#2C3B4A; color:#ffffff; }		
+		.outbox { position:relative; line-height: 60px; cursor: pointer;}
+		.error { position:absolute; left:0; top:50px; color:#CB5F5D; font-size:14px; display:none; text-indent: 0;}
+		.loading{position: absolute;top: 0px;left: 0px;bottom: 0px;right: 0px;background: rgba(0,0,0,0.4);z-index: 9;display: none}
+		.loading img{width: 30px;height: 30px;display: block;position: fixed;top: 66%;left: 50%;}
 	</style>
 </head>
 <body onselectstart="return false">
+	<div class="loading">
+		<img src="images/loading.gif" alt="" class="loading-img">
+	</div>
 	<div class="header"></div>
 	<div class="wrap-mid">
-		<div class="banner" id="solid">
-		    <div class="solid0"></div><div class="solid1"></div>
-		    <ul>
-		        <li><a class="rightNow" href="javascript:;">立即获客</a></li>
-		        <li><a class="goActive" href="https://www.mshuoke.com/active/training-of-education.html" target="_blank">了解详情</a></li>
-		    </ul>
-		    <div id="btt"><span></span> <span></span> </div>
+		<div class="home-banner">
+		    <div class="title"><img src="html/images/home-index/banner-title.png" alt="一站式精准获客平台" /></div>
+		    <div class="description">大数据&nbsp;·&nbsp;获客&nbsp;·&nbsp;人工智能</div>
+		    <div class="search-bar">
+				<div class="outbox">
+					<ul class="switchOnOff">
+						<li data-code="1" class="online"><a href="javascript:;">线上</a></li>
+						<li data-code="2" class="offline"><a href="javascript:;">线下</a></li>
+					</ul>
+					<div class="onoffline-error error">请选择运营模式!</div>
+				</div>
+		    	<div class="box-search">
+		    		<div class="box-industry">
+		    			<p class="valued-i">所属行业</p>
+		    			<div class="industry-box">
+		    				<div class="industry-first-level">
+		    					<ul></ul>
+		    				</div>
+		    				<div class="industry-second-level">
+		    					<ul></ul>
+		    				</div>
+		    			</div>
+						<div class="industry-error error">请选择行业!</div>
+		    		</div>
+		    		<div class="box-area">
+		    			<p class="valued-p">目标区域</p>
+		    			<div class="area-box city-select multi down" id="multi-select-2"></div>
+						<div class="area-error error">请选择目标区域!</div>
+		    		</div>
+		    	</div>
+		    </div>
+		    <button class="btn-search">精准获客</button>
 		</div>
-		<script src="js/fordboy.js"></script>
 		<div class="home-business">
 			<div class="left">
 				<ul>
@@ -205,88 +286,98 @@
 				</div>
 			</div>
 		</div>
-		<div class="home-news">
-			<div class="title">
-				<h2>眸事资讯</h2>
-				<p>MS News</p>
-			</div>
-			<div class="content">
-				<div class="left">
-					<div class="slide-show" id="slide-holder">
-						<div id="slide-runner">
-							<a href="https://news.mshuoke.com/article/20170612135114718.html" target="_blank"><img id="slide-img-1" src="html/images/home-index/slide1.jpg" class="slide" alt="" /></a>
-							<a href="https://news.mshuoke.com/article/20170607135045099.html" target="_blank"><img id="slide-img-2" src="html/images/home-index/slide2.jpg" class="slide" alt="" /></a>
-							<a href="https://news.mshuoke.com/article/20170607134711508.html" target="_blank"><img id="slide-img-3" src="html/images/home-index/slide3.jpg" class="slide" alt="" /></a>
-							<div id="slide-controls">
-							 <p id="slide-client" class="text"><strong></strong><span></span></p>
-							 <p id="slide-desc" class="text"></p>
-							 <p id="slide-nav"></p>
-							</div>
-						</div>
-				   </div>
-				   <script type="text/javascript">
-					    if(!window.slider) {
-							var slider={};
-						}
-					
-						slider.data= [
-					    {
-					        "id":"slide-img-1", // 与slide-runner中的img标签id对应
-					        "client":"<a href='https://news.mshuoke.com/article/20170612135114718.html' target='_blank'>如何用大数据分析精准营销？简单3步搞定</a>",
-					        "desc":"" //这里修改描述
-					    },
-					    {
-					        "id":"slide-img-2",
-					        "client":"<a href='https://news.mshuoke.com/article/20170607135045099.html' target='_blank'>关于如何选取精准关键词营销，这有4个原则</a>",
-					        "desc":""
-					    },
-					    {
-					        "id":"slide-img-3",
-					        "client":"<a href='https://news.mshuoke.com/article/20170607134711508.html' target='_blank'>数据挖掘在精准营销中的3大价值</a>",
-					        "desc":""
-					    }
-						];
-					   </script>
-					<div class="news-class">
-						<div class="img"><a href="https://news.mshuoke.com/article/20170309030103079.html" target="_blank"><img src="html/images/home-index/news-img-class.jpg" /></a></div>
-						<p><a href="https://news.mshuoke.com/article/20170309030103079.html" target="_blank">2017，知识付费会进入寡头时代吗？</a></p>
-					</div>
+		<div class="box-top">
+			<div class="home-news">
+				<div class="title">
+					<h2>眸事资讯</h2>
+					<p>MS News</p>
 				</div>
-				<div class="right">
-					<ul>
-						<li><a href="https://news.mshuoke.com/article/20170628142253482.html" target="_blank">
-							<img src="html/images/home-index/news-img1.png" />
-							<p class="date">2017/06/28</p>
-							<h3>大数据时代，精准营销策略能否解决一切？</h3>
-							<p>大数据时代，当人们开始本着“精准营销”原则，利用网页浏览记录、并未清除过的缓存，所谓的用户 ...</p>
-						</a></li>
-						<li><a href="https://news.mshuoke.com/article/20170616101640836.html" target="_blank">
-							<img src="html/images/home-index/news-img2.png" />
-							<p class="date">2017/06/16</p>
-							<h3>微信公众号全网精准营销5大法则</h3>
-							<p>作为移动互联网时代最重要的产物之一，微信自推出以来就受到社会的很大关注。众所周知，微信首创 ...</p>
-						</a></li>
-						<li><a href="https://news.mshuoke.com/article/20170613110353909.html" target="_blank">
-							<img src="html/images/home-index/news-img3.png" />
-							<p class="date">2017/06/13</p>
-							<h3>零售企业开展精准营销，试试这5个步骤</h3>
-							<p>近年来，同质化商品、频繁的价格战、店铺租金上涨、电子商务的冲击等因素导致零售企业利润不断下 ...</p>
-						</a></li>
-					</ul>
-					<div class="tag">
-						<a href="https://news.mshuoke.com/article/20170628145137761.html" target="_blank" class="tag1">在线教育</a>
-						<a href="https://news.mshuoke.com/article/20170628140619350.html" target="_blank" class="tag2">大数据</a>
-						<a href="https://news.mshuoke.com/article/20170119033553973.html" target="_blank" class="tag3">人工智能</a>
-						<a href="https://news.mshuoke.com/article/20170628155250735.html" target="_blank" class="tag4">精准营销</a>
-						<a class="last" href="https://news.mshuoke.com/article/20170628161350259.html" target="_blank">英语培训</a>
+				<div class="content">
+					<div class="left">
+						<div class="slide-show" id="slide-holder">
+							<div id="slide-runner">
+								<a href="javascript:;"><img id="slide-img-1" src="html/images/home-index/slide1.jpg" class="slide" alt="" /></a>
+								<a href="https://news.mshuoke.com/article/20170612135114718.html" target="_blank"><img id="slide-img-2" src="html/images/home-index/slide1.jpg" class="slide" alt="" /></a>
+								<a href="https://news.mshuoke.com/article/20170607135045099.html" target="_blank"><img id="slide-img-3" src="html/images/home-index/slide2.jpg" class="slide" alt="" /></a>
+								<a href="https://news.mshuoke.com/article/20170607134711508.html" target="_blank"><img id="slide-img-4" src="html/images/home-index/slide3.jpg" class="slide" alt="" /></a>
+								<div id="slide-controls">
+								 <p id="slide-client" class="text"><strong></strong><span></span></p>
+								 <p id="slide-desc" class="text"></p>
+								 <p id="slide-nav"></p>
+								</div>
+							</div>
+					   </div>
+					   
+					   <script type="text/javascript">
+						    if(!window.slider) {
+								var slider={};
+							}
+						
+							slider.data= [
+						    {
+						        "id":"slide-img-1",
+						        "client":"<a href='javascript:;' target='_blank'>活动弹出层</a>",
+						        "desc":""
+						    },
+						    {
+						        "id":"slide-img-2", // 与slide-runner中的img标签id对应
+						        "client":"<a href='https://news.mshuoke.com/article/20170612135114718.html' target='_blank'>如何用大数据分析精准营销？简单3步搞定</a>",
+						        "desc":"" //这里修改描述
+						    },
+						    {
+						        "id":"slide-img-3",
+						        "client":"<a href='https://news.mshuoke.com/article/20170607135045099.html' target='_blank'>关于如何选取精准关键词营销，这有4个原则</a>",
+						        "desc":""
+						    },
+						    {
+						        "id":"slide-img-4",
+						        "client":"<a href='https://news.mshuoke.com/article/20170607134711508.html' target='_blank'>数据挖掘在精准营销中的3大价值</a>",
+						        "desc":""
+						    }
+							];
+						   </script>
+						<div class="news-class">
+							<div class="img"><a href="https://news.mshuoke.com/article/20170309030103079.html" target="_blank"><img src="html/images/home-index/news-img-class.jpg" /></a></div>
+							<p><a href="https://news.mshuoke.com/article/20170309030103079.html" target="_blank">2017，知识付费会进入寡头时代吗？</a></p>
+						</div>
+					</div>
+					<div class="right">
+						<ul>
+							<li><a href="https://news.mshuoke.com/article/20170628142253482.html" target="_blank">
+								<img src="html/images/home-index/news-img1.png" />
+								<p class="date">2017/06/28</p>
+								<h3>大数据时代，精准营销策略能否解决一切？</h3>
+								<p>大数据时代，当人们开始本着“精准营销”原则，利用网页浏览记录、并未清除过的缓存，所谓的用户 ...</p>
+							</a></li>
+							<li><a href="https://news.mshuoke.com/article/20170616101640836.html" target="_blank">
+								<img src="html/images/home-index/news-img2.png" />
+								<p class="date">2017/06/16</p>
+								<h3>微信公众号全网精准营销5大法则</h3>
+								<p>作为移动互联网时代最重要的产物之一，微信自推出以来就受到社会的很大关注。众所周知，微信首创 ...</p>
+							</a></li>
+							<li><a href="https://news.mshuoke.com/article/20170613110353909.html" target="_blank">
+								<img src="html/images/home-index/news-img3.png" />
+								<p class="date">2017/06/13</p>
+								<h3>零售企业开展精准营销，试试这5个步骤</h3>
+								<p>近年来，同质化商品、频繁的价格战、店铺租金上涨、电子商务的冲击等因素导致零售企业利润不断下 ...</p>
+							</a></li>
+						</ul>
+						<div class="tag">
+							<a href="https://news.mshuoke.com/article/20170628145137761.html" target="_blank" class="tag1">在线教育</a>
+							<a href="https://news.mshuoke.com/article/20170628140619350.html" target="_blank" class="tag2">大数据</a>
+							<a href="https://news.mshuoke.com/article/20170119033553973.html" target="_blank" class="tag3">人工智能</a>
+							<a href="https://news.mshuoke.com/article/20170628155250735.html" target="_blank" class="tag4">精准营销</a>
+							<a class="last" href="https://news.mshuoke.com/article/20170628161350259.html" target="_blank">英语培训</a>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		
 		<div class="home-case">
 			<div class="title">
-				<h2>成功案例</h2>
-				<p>Successful Cases</p>
+				<h2>合作伙伴</h2>
+				<p>Cooperation Parterners</p>
 			</div>
 			<div class="content">
 				<ul>
@@ -348,30 +439,19 @@
 	</div>
 	<div class="footer"></div>
 <div class="aside_bar"></div>
+<div class="cover">
+	<div class="ad-promotion">
+		<span class="closed"></span>
+		<img src="images/table.png" />
+	</div>
+</div>
+<script  src="html/js/home_index/method.js"></script>
+
+<script  src="html/js/citydata.js"></script>
+<script  src="html/js/citySelect-1.0.0.min.js"></script>
 <script src="html/js/asideBar.js" type="text/babel"></script>
 <script src="html/js/home_index/header.js" type="text/babel"></script>
 <script src="html/js/home_index/footer.js" type="text/babel"></script>
-<script>
-	jQuery(function(){
-		var $div_li =$(".home-business .left li");
-        $div_li.hover(function(){
-            $(this).addClass("selected").siblings().removeClass("selected");
-            var index =  $div_li.index(this);
-            $(".home-business .right .content li").eq(index).show().siblings().hide();
-        });
-        $("a.rightNow").click(function(){
-        	if(sessionStorage.getItem("jfuid")!=undefined&&sessionStorage.getItem("jfuid")!=""&&sessionStorage.getItem("jfuid")!=null){
-        		if(sessionStorage.getItem("companyInfo")==4){
-        			window.location.href="html/customer_new_demand.html";
-        		}else{
-					window.location.href="html/customer_home.html";
-				}
-        	}else{
-				window.location.href="register-customer.html";
-			}
-        });
-        
-	});
-</script>
+<script src="html/js/home_index/main.js" ></script>
 </body>
 </html>

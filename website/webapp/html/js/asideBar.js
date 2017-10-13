@@ -1,5 +1,6 @@
-var AsideBar = React.createClass({
-    componentDidMount:function(){
+
+class AsideBar extends React.Component{
+    componentDidMountfunction(){
 		function rightBar() {
 			$(".go-to-top").hide();
 	        $(window).scroll(function () {
@@ -19,8 +20,9 @@ var AsideBar = React.createClass({
 
 	    }
         rightBar();
-    },
-    render:function(){
+	}
+	
+    render(){
         return(
             <ul>  
                 <li><a className="aside-qq" href="//wpa.qq.com/msgrd?v=3&uin=2850840276&site=qq&menu=yes" target="_blank" id="contactQQ"></a></li>
@@ -29,6 +31,6 @@ var AsideBar = React.createClass({
             </ul>
         );
     }
-})
+}
 
 ReactDOM.render(<AsideBar />,$(".aside_bar")[0]);

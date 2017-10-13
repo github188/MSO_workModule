@@ -124,7 +124,7 @@ public class UserServiceImpl implements IUserService{
 		res.setRealname(user.getRealname());
 		res.setCompname(user.getCompname());
 		res.setJfuinvitationcode(user.getJfuinvitationcode());
-//		3.插入用户基本信息表
+//		3.插入用户基本信息表..
 		try {
 			user=userDao.addUser(user);
 			res.setJfuid(user.getJfuid());

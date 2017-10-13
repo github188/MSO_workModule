@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+body,ul,li,ol,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div,dl,dt,dd,input,button { margin:0; padding: 0;}
+body { font-size:14px; font-family: "microsoft yahei", sans-serif; -moz-user-select: text; min-width:1155px;}
+img {border:none; display: block;}
+li {list-style: none}
+textarea {resize:none;}
+textarea, input, button { outline: none;}
+a, a:hover {text-decoration: none;}
+button { cursor: pointer;}
+textarea, input, button { font-family: "microsoft yahei";}
+html, body, .wrap { height: 100%;}

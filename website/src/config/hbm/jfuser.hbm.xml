@@ -73,6 +73,9 @@
          <property name="compname" type="java.lang.String">
             <column name="compname" />
         </property> 
+         <property name="shortname" type="java.lang.String">
+            <column name="shortname" />
+        </property> 
     </class>
     
 

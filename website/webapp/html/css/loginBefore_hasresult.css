@@ -1,0 +1,264 @@
+#home_index .content{
+	background: #f2f3f5;
+	padding: 0px 360px;
+}
+.con-nav{
+	padding: 22px 0px;
+	overflow: hidden;
+}
+.con-nav img{
+	width: 100%;
+	height: auto;
+}
+.con-nav-logo,.con-nav-txt{
+	float: left;
+}
+.con-nav-logo{
+	width: 72px;
+}
+.con-nav-txt{
+	padding: 30px 0px 30px 76px;
+	color: #333;
+	font-size: 20px;
+}
+.con-nav-txt span{
+	font-size: 36px;
+	line-height: 36px;
+}
+.con-main{
+	overflow: hidden;
+	width: 1183px;
+}
+.con-main-chart{
+	float: left;
+	width: 420px;
+	margin-left: 148px;
+	margin-right: 64px;
+}
+.con-main-chartDetail{
+	width: 420px;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	padding: 0px 32px;
+	background: #fff;
+	margin-bottom: 20px;
+}
+.con-main-chartTitle img{
+	width: 18px;
+	height: 20px;
+}
+.con-main-chartTitle p{
+	padding: 12px 0px 28px;
+	height: 20px;
+	font-size: 20px;
+	line-height: 20px;
+	color: #333;
+}
+.con-main-chartTitle p span{
+	color: #999;
+	margin-left: 10px;
+	font-size: 12px;
+}
+.con-main-dataTitle p{
+	padding: 12px 0px 28px;
+	height: 20px;
+	font-size: 20px;
+	line-height: 20px;
+	color: #333;
+	margin: 0px;
+}
+.con-main-chartTable{
+	position: relative;
+}
+.loading{
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	top: 38%;
+	left: 46%;
+	/* display: none; */
+}	
+.loading img{
+	width: 100%;
+	height: auto;
+}
+#radar-chart,#area-chart{
+	width: 360px;
+	height: 400px;
+}
+.con-main-data{
+	width: 420px;
+	float: left;
+	box-sizing: border-box;
+	margin-right: 64px;
+	-webkit-box-sizing: border-box;
+	margin-bottom: 20px;
+}
+.con-main-dataTitle{
+	padding: 0px 32px;
+	background: #fff;
+}
+.con-main-dataTitle p span{
+	float: right;
+	color: #D2981D;
+}
+.con-main-dataTitle p span b{
+	font-weight: normal;
+	text-decoration: underline;
+}
+.con-main-hint{
+	color: #999;
+	font-size: 12px;
+	padding: 0px 20px 20px;
+	background: #fff;
+}
+.con-main-list{
+	padding: 0px 0px 0px 20px;
+	background: #fff;
+}
+.con-main-list ul{
+	margin: 0px;
+	padding: 0px;
+}
+.con-main-list ul li{
+	list-style: none;
+	padding-bottom: 30px;
+	color: #333333;
+	font-size: 16px;
+	line-height: 16px;
+	overflow: hidden;
+}
+.con-main-listLeft{
+	width: 64px;
+	margin-right: 10px;
+}
+.con-main-listRight{
+	width: 315px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.con-main-listLeft,.on-main-listRight{
+	float: left;
+}
+.on-main-listLeft{
+	font-size: 84px;
+}
+.on-main-listRight{
+	width: 218px;
+	padding: 12px;
+}
+.con-main-info{
+	padding-top: 36px;
+	padding-bottom: 104px;
+	font-size: 20px;
+}
+.con-main-info span{
+	font-size: 30px;
+	margin: 0px 4px;
+}
+.con-main-register a{
+	display: block;
+	width: 240px;
+	margin: 0px auto;
+	text-align: center;
+	color: #fff;
+	font-size: 16px;
+	height: 42px;
+	line-height: 42px;
+	background: #F4BB41;
+	text-decoration: none;
+}
+.con-main-register a:hover{
+	background: #d1981d;
+	color: #fff;
+}
+.con-main-login a{
+	display: block;
+	width: 240px;
+	margin: 20px auto 60px;
+	font-size: 14px;
+	color: #666;
+	text-decoration: underline;
+	text-align: center;
+}
+.con-main-login a:hover{
+	color: #D2981D;
+}
+/* 滚动条 */
+.industry-val .sliderright{
+	width: 200px;
+	padding: 0px;
+	margin: 0px;
+	margin: 6px 10px 5px 10px;
+	float: left;
+	height: 4px;
+	background: #999;
+}
+.industry-val .sliderright:hover{
+	background: #999;
+}
+.industry-val .sliderright .ant-slider-rail{
+	background: #999;
+}
+.industry-val .sliderright:hover .ant-slider-rail{
+	background: #999;
+}
+.industry-val .sliderright:hover .ant-slider-track{
+	background: #f4bb41;
+}
+.industry-val .sliderright .ant-slider-track{
+	background: #f4bb41;
+}
+.industry-val .sliderright .ant-slider-handle{
+	border-color: #f4bb41;
+}
+.industry-val .sliderright:hover .ant-slider-handle{
+	transform: scale(1);
+	border-color: #f4bb41;
+	box-shadow: none;
+	-webkit-box-shadow:none;
+	margin-top: -6px;
+}
+.industry-val .sliderright .ant-slider-handle:hover{
+	border-color: #f4bb41;
+	transform: scale(1);
+	box-shadow: none;
+	-webkit-box-shadow:none;
+}
+.industry-val .sliderright .ant-slider-handle:focus{
+	outline: none;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+}
+.schools,.ages{
+	width: 65px;
+	text-align: right;
+	float: left;
+	margin-left: 15px;
+}
+.schools i,.ages i{
+	color: #f4bb41;
+	font-style: normal;
+}
+.industry-school{
+	background: #FFFBF4;
+	padding: 12px 20px;
+	box-sizing: border-box;
+}
+.industry-school ul li{
+	overflow: hidden;
+	padding: 0px;
+	padding: 6px;
+	font-size: 14px;
+	line-height: 14px;
+}
+.con-main-listRight-babelName{
+	width: 140px;
+	float: left;
+	text-align: right;
+	margin-right: 24px;
+}
+.con-main-listRight-babelValue{
+	
+}

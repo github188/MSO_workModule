@@ -71,6 +71,8 @@ public class JfUser extends BaseSeach implements Serializable {
 	private String dbtype;
 	private Integer usersouce;//用户来源  0-官网  1-第三方页面
 	
+	private String shortname;//公司简称...
+	
 	public Integer getUsersouce() {
 		return usersouce;
 	}
@@ -366,4 +368,14 @@ public class JfUser extends BaseSeach implements Serializable {
 	public void setOpeninvoicetype(Integer openinvoicetype) {
 		this.openinvoicetype = openinvoicetype;
 	}
+	public String getShortname() {
+		return shortname;
+	}
+	public void setShortname(String shortname) {
+		this.shortname = shortname;
+	}
+	
+	
+	
+	
 }

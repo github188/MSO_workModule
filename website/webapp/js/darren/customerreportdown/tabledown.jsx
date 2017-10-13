@@ -79,8 +79,7 @@ class Customerreport extends React.Component{
 		
 	}
 	render(){
-		console.log($.sessionStorage('currentData-demandname'));
-		
+
 		return (
 				<div id="toolbar">
 				<div>

@@ -28,7 +28,6 @@ class Customerhome extends React.Component{
 			$('html,body').animate({scrollTop:sHeihgt-65},0);
 		}
 	}
-	
 	render(){
 		return (
 				<div>

@@ -10,7 +10,6 @@ class Footer extends React.Component{
 					<ul>
 						<li><a href="//www.mshuoke.com" className="footer-nav1">首页</a>&nbsp;&nbsp;|&nbsp;&nbsp;</li>
 						<li><a href="//www.mshuoke.com/headline.html" className="footer-nav2">眸事资讯</a>&nbsp;&nbsp;|&nbsp;&nbsp;</li>
-						<li><a href="//www.mshuoke.com/production.html" className="footer-nav3">产品</a>&nbsp;&nbsp;|&nbsp;&nbsp;</li>
 						<li><a href="//www.mshuoke.com/help.html" className="footer-nav4">帮助中心</a>&nbsp;&nbsp;|&nbsp;&nbsp;</li>
 						<li><a href="//www.mshuoke.com/about.html" className="footer-nav5">关于我们</a>&nbsp;&nbsp;|&nbsp;&nbsp;</li>
 						<li><a href="//www.mshuoke.com/friendship.html" className="footer-nav6">友情链接</a>&nbsp;&nbsp;|&nbsp;&nbsp;</li>

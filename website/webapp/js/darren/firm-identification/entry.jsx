@@ -878,13 +878,13 @@ class Myinfo extends React.Component {
 								<div className="coverd-box"></div>
 								<PicturesWall getthisEle = {this.getthisEle} faceplusimg={'faceplusimg'} />
 								<Uploads data={{
-                formid: 'postform',
-                fileType: 'application/x-www-form-urlencoded',
-                fileId: 'selectFile',
-                fileName: 'credentials',
-                faceplusimg: 'faceplusimg',
-                getPath: this.getPath
-            }}/>
+								formid: 'postform',
+								fileType: 'application/x-www-form-urlencoded',
+								fileId: 'selectFile',
+								fileName: 'credentials',
+								faceplusimg: 'faceplusimg',
+								getPath: this.getPath
+							}}/>
 								<span className="name">营业执照</span>
 								<p className="msg-error hy">请上传营业执照</p>
 							</li>

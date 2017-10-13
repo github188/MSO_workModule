@@ -184,6 +184,7 @@ public class JfUserController extends BaseController {
 	@ResponseBody
     @RequestMapping(value="/user_toLogin")  
     public  UserRes toLogin(JfUser addput,HttpSession session) { 
+		System.out.println("66666");
     	String code="Y";
     	String msg="";
     	UserRes res = new UserRes(code,msg);  
@@ -272,6 +273,7 @@ public class JfUserController extends BaseController {
           		session.setAttribute("usermap",usermap);//手机号
     		}
 		} catch (Exception e) {
+			e.printStackTrace();
 			code="N";
 			res.setCode(code);
 			res.setMsg("登录失败"+e.toString());
