@@ -149,7 +149,7 @@ class OrderList extends Component {
 
     /**
      * @param jfuid   用户id
-     * @param state   状态  1-待领取 3-已放弃 4-已取消    2-已领取显示5-进行中 6-暂停 7-结算中 8-已完成 9-全部
+     * @param state   状态  1-待领取 3-已放弃 4-已取消    2-已领取 显示5-进行中 6-暂停 7-结算中 8-已完成 9-全部
      * @param page    页数，默认从0开始  test jfuid 20170316060326136   47
      * @param size    每页的数量
      */
@@ -242,7 +242,7 @@ class OrderList extends Component {
                 totalOrder.one.push(Object.assign({}, index, newObj))
                 break;
 
-            case ( 2): //5-进行中
+            case 2: //5-进行中
                 newObj.orderState = StateFive;
                 newObj.key = Number(totalOrder.five.length);
                 totalOrder.five.push(Object.assign({}, index, newObj))
@@ -259,7 +259,7 @@ class OrderList extends Component {
                 totalOrder.three.push(Object.assign({}, index, newObj))
                 break;
 
-            case ( 5): //5-进行中
+            case 5: //5-进行中
                 newObj.orderState = StateFive;
                 newObj.key = Number(totalOrder.five.length);
                 totalOrder.five.push(Object.assign({}, index, newObj))
@@ -278,6 +278,11 @@ class OrderList extends Component {
                 newObj.orderState = StateEight;
                 newObj.key = Number(totalOrder.eight.length);
                 totalOrder.eight.push(Object.assign({}, index, newObj))
+                break;
+            case 9: //5-进行中
+                newObj.orderState = StateFive;
+                newObj.key = Number(totalOrder.five.length);
+                totalOrder.five.push(Object.assign({}, index, newObj))
                 break;
             }
             var obj = Object.assign({}, index, newObj, {
@@ -743,6 +748,8 @@ class Detail extends Component {
             return "结算中";
         case 8:
             return "已完成";
+        case 9:
+            return "进行中";
         }
     }
 
