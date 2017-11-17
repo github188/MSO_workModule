@@ -1,5 +1,7 @@
-cookie 操作
+cookie 操作  miaov
 北京的人事还有郑州的运营
-
+sokiet.io
+vue
+generator
 
 axios封装
